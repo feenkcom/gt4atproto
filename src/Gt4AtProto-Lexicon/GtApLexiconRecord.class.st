@@ -1,0 +1,29 @@
+Class {
+	#name : #GtApLexiconRecord,
+	#superclass : #GtApLexiconCustom,
+	#instVars : [
+		'key',
+		'record'
+	],
+	#category : #'Gt4AtProto-Lexicon'
+}
+
+{ #category : #accessing }
+GtApLexiconRecord >> key [
+	^ key
+]
+
+{ #category : #accessing }
+GtApLexiconRecord >> key: anObject [
+	key := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconRecord >> record [
+	^ record
+]
+
+{ #category : #accessing }
+GtApLexiconRecord >> record: anObject [
+	record := anObject
+]

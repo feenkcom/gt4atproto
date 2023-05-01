@@ -23,7 +23,15 @@ BaselineOfGt4AtProto class >> loadLepiter [
 BaselineOfGt4AtProto >> baseline: spec [
 	<baseline>
 		^ spec for: #common do: [
+		
+			spec
+				baseline: 'JSONSchema'
+				with: [ spec repository: 'github://feenkcom/JSONSchema/source' ].
+			
 			spec package: 'Gt4AtProto'.
-			spec package: 'Gt4AtProto-Lexicon.'
-		]
+			spec 
+				package: 'Gt4AtProto-Lexicon';
+				with: [
+					spec requires: 'JSONSchema' ] 
+	]
 ]
