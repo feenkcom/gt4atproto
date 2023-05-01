@@ -30,7 +30,7 @@ BaselineOfGt4AtProto >> baseline: spec [
 			
 			spec package: 'Gt4AtProto'.
 			spec 
-				package: 'Gt4AtProto-Lexicon';
+				package: 'Gt4AtProto-Lexicon'
 				with: [
 					spec requires: 'JSONSchema' ] 
 	]
