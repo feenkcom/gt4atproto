@@ -18,43 +18,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:25:46.094124+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:25:46.094124+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "T8p39xq3DQCg61aRACuSBg=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-02T19:26:45.043379+02:00"
 					}
 				},
@@ -66,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:26:45.043379+02:00"
+						"dateAndTimeString" : "2023-05-02T19:27:32.513952+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "The repo [https://github.com/bluesky-social/atproto](https://github.com/bluesky-social/atproto) should be cloned locally."
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -92,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:26:47.80678+02:00"
+						"dateAndTimeString" : "2023-05-02T23:14:51.04652+02:00"
 					}
 				},
 				"editEmail" : {
@@ -103,14 +66,48 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:27:11.513362+02:00"
+						"dateAndTimeString" : "2023-05-02T23:15:09.11178+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Im4l+xq3DQCibBL8ACuSBg=="
+					"uidString" : "SRy7Kh63DQC0HnSDBU+hHw=="
 				},
-				"code" : "atprotoRepositoryFolder := '<path to https://github.com/bluesky-social/atproto>' asFileReference"
+				"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-02T23:15:02.812358+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-02T23:16:19.248226+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "LaVuKx63DQC0Mtl0BU+hHw=="
+				},
+				"code" : "atprotoRepositoryFolder ensureDeleteAll.\ratprotoRepositoryFolder := IceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoRepositoryFolder.\ratprotoRepositoryFolder"
 			},
 			{
 				"__type" : "pharoSnippet",
