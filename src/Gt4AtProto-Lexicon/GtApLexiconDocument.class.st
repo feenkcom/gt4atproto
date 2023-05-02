@@ -32,6 +32,24 @@ GtApLexiconDocument >> description: anObject [
 	description := anObject
 ]
 
+{ #category : #'gt - extensions' }
+GtApLexiconDocument >> gtViewDefinitionsFor: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Definitions';
+		items: [ self definitions associations ];
+		column: 'Name' text: [ :assoc | assoc key ];
+		column: 'Type' text: [ :assoc | assoc value type ];
+		column: 'Description' text: [ :assoc | assoc value description ifNil: [''] ];
+		send: #value
+]
+
+{ #category : #testing }
+GtApLexiconDocument >> hasMainDefinition [
+	^ definitions includesKey: #main
+]
+
 { #category : #accessing }
 GtApLexiconDocument >> id [
 	^ id
@@ -50,6 +68,18 @@ GtApLexiconDocument >> lexicon [
 { #category : #accessing }
 GtApLexiconDocument >> lexicon: anObject [
 	lexicon := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconDocument >> mainDefinition [
+	^ definitions at: #main
+]
+
+{ #category : #printing }
+GtApLexiconDocument >> printOn: aStream [
+	super printOn: aStream.
+	aStream parenthesize: [
+		aStream << self id ]
 ]
 
 { #category : #accessing }

@@ -1,5 +1,5 @@
 Class {
 	#name : #GtApLexiconPrimitive,
-	#superclass : #GtApLexiconDefinition,
+	#superclass : #GtApLexiconEntity,
 	#category : #'Gt4AtProto-Lexicon'
 }
