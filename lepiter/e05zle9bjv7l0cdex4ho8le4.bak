@@ -100,14 +100,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T23:16:19.248226+02:00"
+						"dateAndTimeString" : "2023-05-02T23:19:26.962464+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "LaVuKx63DQC0Mtl0BU+hHw=="
 				},
-				"code" : "atprotoRepositoryFolder ensureDeleteAll.\ratprotoRepositoryFolder := IceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoRepositoryFolder.\ratprotoRepositoryFolder"
+				"code" : "atprotoRepositoryFolder ensureDeleteAll.\rIceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoRepositoryFolder.\ratprotoRepositoryFolder"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -134,14 +134,48 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:26:41.947225+02:00"
+						"dateAndTimeString" : "2023-05-03T10:23:22.506405+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "esy59xq3DQCg7s96ACuSBg=="
 				},
-				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\rlexisons := GtApGenericLexiconImporter new \r\timportLexiconsFromDirectory: lexiconsFolder"
+				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\rlexicons := GtApGenericLexiconImporter new \r\timportLexiconsFromDirectory: lexiconsFolder"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-03T15:50:12.223653+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-03T15:50:12.223653+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "7fJjEiy3DQCLchBrC9GBBg=="
+				},
+				"code" : ""
 			}
 		]
 	},

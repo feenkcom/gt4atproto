@@ -35,6 +35,51 @@ GtApLexicons >> addLexiconDocument: aLexiconDocument [
 ]
 
 { #category : #accessing }
+GtApLexicons >> buildObjects [
+	| model |
+	model := RBNamespace new.
+	definitionsById
+		keysAndValuesDo: [ :aKey :aDefinition | 
+			aDefinition type = 'object'
+				ifTrue: [ | className anApObject |
+					anApObject := aDefinition asObject.
+					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
+					(RBAddClassRefactoring
+						model: model
+						addClass: className
+						superclass: Object
+						subclasses: #()
+						category: #'Gt4AtProto-Generated') primitiveExecute.
+					anApObject properties
+						keysAndValuesDo: [ :aPropertyKey :aProperty | 
+							| key |
+							key := 'atProto' , aPropertyKey asCamelCase.
+							(RBAddInstanceVariableRefactoring
+								model: model
+								variable: key
+								class: className) primitiveExecute.
+							(RBAddMethodRefactoring
+								model: model
+								addMethod: (aProperty generateGetterAs: key)
+								toClass: className
+								inProtocols: #accessing) primitiveExecute.
+							(RBAddMethodRefactoring
+								model: model
+								addMethod: (aProperty generateSetterAs: key)
+								toClass: className
+								inProtocols: #accessing) primitiveExecute.
+
+							(RBAddMethodRefactoring
+								model: model
+								addMethod: (aProperty
+										generateDescriptorFor: aPropertyKey
+										isRequired: (anApObject isRequired: aPropertyKey))
+								toClass: className
+								inProtocols: #magritte) primitiveExecute ] ] ].
+	^ model
+]
+
+{ #category : #accessing }
 GtApLexicons >> gtViewDefinitionsFor: aView [
 	<gtView>
 	
@@ -57,8 +102,8 @@ GtApLexicons >> gtViewDocumentsFor: aView [
 	^ aView columnedList 
 		title: 'Documents';
 		items: [ documentsById values ];
-		column: 'Id' text: [ :aLexiconDocument |
-			aLexiconDocument id ];
+		column: 'Id' text: #id;
+		column: 'Main Type' text: #mainType;
 		column: 'Description' text: [ :aLexiconDocument |
 			aLexiconDocument description ifNil: [''] ]
 ]

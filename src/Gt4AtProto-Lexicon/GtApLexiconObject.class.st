@@ -8,6 +8,26 @@ Class {
 	#category : #'Gt4AtProto-Lexicon'
 }
 
+{ #category : #'instance creation' }
+GtApLexiconObject class >> from: aDefinition [
+	^ self new
+		properties: (aDefinition attributes at: #properties);
+		required: (aDefinition attributes at: #required)
+]
+
+{ #category : #accessing }
+GtApLexiconObject >> isRequired: anId [
+	^ required isNotNil and: [ required includes: anId ]
+]
+
+{ #category : #accessing }
+GtApLexiconObject >> magritteDescription [
+	| basicDescription |
+	basicDescription := GtApMagritteBuilder for: self.
+
+	^ basicDescription
+]
+
 { #category : #accessing }
 GtApLexiconObject >> properties [
 	^ properties

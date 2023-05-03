@@ -8,6 +8,39 @@ Class {
 	#category : #'Gt4AtProto-Lexicon'
 }
 
+{ #category : #accessing }
+GtApLexiconReference >> asClassName [
+	^ (self referenceString replaceAllRegex: '[.#]' with: ' ') asCamelCase
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> generateDescriptorFor: aString isRequired: aBoolean [
+	^ aString, 'Description
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: ''' , aString
+		, '''' , (aBoolean ifTrue: [ ';
+		beRequired' ] ifFalse: [ '' ])
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> generateGetterAs: aString [
+	^ aString
+		, '
+	<referenceTo:''' , self referenceString
+		, '''>
+	^ ', aString
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> generateSetterAs: aString [
+	^ aString
+		, ': anObject
+	<referenceTo:''' , self referenceString
+		, '''>
+	', aString, ' := anObject'
+]
+
 { #category : #printing }
 GtApLexiconReference >> printOn: aStream [
 	super printOn: aStream.

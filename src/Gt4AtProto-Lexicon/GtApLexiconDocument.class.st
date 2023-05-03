@@ -75,6 +75,11 @@ GtApLexiconDocument >> mainDefinition [
 	^ definitions at: #main
 ]
 
+{ #category : #accessing }
+GtApLexiconDocument >> mainType [
+	^ self mainDefinition ifNil: [ 'No Main' ] ifNotNil: #type
+]
+
 { #category : #printing }
 GtApLexiconDocument >> printOn: aStream [
 	super printOn: aStream.
