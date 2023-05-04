@@ -283,14 +283,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-01T16:35:38.196038+02:00"
+									"dateAndTimeString" : "2023-05-04T10:57:32.817742+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "YSCFcQS3DQCyeX4PACuSBg=="
 							},
-							"code" : "client := ZnClient new \r\turl: pdsUrl;\r\taddPath: 'xrpc';\r\taddPath: 'app.bsky.feed.getTimeline';\r\tsetBearerAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client get.\rtimelineData := STONJSON fromString: timelineResult"
+							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client query"
 						}
 					]
 				},

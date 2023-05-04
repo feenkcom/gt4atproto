@@ -52,7 +52,7 @@ GtApLexiconGenericDefinition >> generateDescriptorFor: aString isRequired: aBool
 	source := aString
 			, 'Description
 	<magritteDescription>
-	'.
+	^ '.
 	self type = 'union'
 		ifTrue: [ source := source
 					, 'MASingleOptionDescription new

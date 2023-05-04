@@ -15,12 +15,17 @@ GtApLexiconReference >> asClassName [
 
 { #category : #accessing }
 GtApLexiconReference >> generateDescriptorFor: aString isRequired: aBoolean [
-	^ aString, 'Description
+	^ aString
+		, 'Description
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: ''' , aString capitalized
-		, '''' , (aBoolean ifTrue: [ ';
-		beRequired' ] ifFalse: [ '' ])
+		, ''';
+		accessor: #atProto' , aString asCamelCase
+		, (aBoolean
+				ifTrue: [ ';
+		beRequired' ]
+				ifFalse: [ '' ])
 ]
 
 { #category : #accessing }

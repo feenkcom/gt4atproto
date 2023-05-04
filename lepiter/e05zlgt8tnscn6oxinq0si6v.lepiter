@@ -211,14 +211,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-04T10:57:03.220986+02:00"
+									"dateAndTimeString" : "2023-05-04T16:27:32.153758+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "o2t9YgS3DQCw9EjpACuSBg=="
 							},
-							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginResult := client procedure"
+							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginData := client procedure"
 						}
 					]
 				},

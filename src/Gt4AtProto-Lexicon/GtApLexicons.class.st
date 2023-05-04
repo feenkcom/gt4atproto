@@ -115,3 +115,13 @@ GtApLexicons >> initialize [
 	documentsById := OrderedDictionary new.
 	definitionsById := OrderedDictionary new.
 ]
+
+{ #category : #accessing }
+GtApLexicons >> removeObjects [
+	definitionsById
+		keysAndValuesDo: [ :aKey :aDefinition | 
+			aDefinition type = 'object'
+				ifTrue: [ | className |
+					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
+					className asClass removeFromSystem ] ]
+]
