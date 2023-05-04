@@ -1,6 +1,6 @@
 Class {
-	#name : #GtApLexiconAudio,
-	#superclass : #GtApLexiconData,
+	#name : #GtApLexiconBytes,
+	#superclass : #GtApLexiconCustom,
 	#instVars : [
 		'maxLength'
 	],
@@ -8,16 +8,16 @@ Class {
 }
 
 { #category : #accessing }
-GtApLexiconAudio class >> typeName [
-	^ #audio
+GtApLexiconBytes class >> typeName [
+	^ #bytes
 ]
 
 { #category : #accessing }
-GtApLexiconAudio >> maxLength [
+GtApLexiconBytes >> maxLength [
 	^ maxLength
 ]
 
 { #category : #accessing }
-GtApLexiconAudio >> maxLength: anObject [
+GtApLexiconBytes >> maxLength: anObject [
 	maxLength := anObject
 ]

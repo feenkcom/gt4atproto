@@ -1,10 +1,10 @@
 Class {
-	#name : #GtApLexiconString,
+	#name : #GtApLexiconBoolean,
 	#superclass : #GtApLexiconPrimitive,
 	#category : #'Gt4AtProto-Lexicon'
 }
 
 { #category : #accessing }
-GtApLexiconString class >> typeName [
-	^ #string
+GtApLexiconBoolean class >> typeName [
+	^ #boolean
 ]

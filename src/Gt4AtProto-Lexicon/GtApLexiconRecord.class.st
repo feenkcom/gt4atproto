@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApLexiconRecord class >> typeName [
+	^ #record
+]
+
+{ #category : #accessing }
 GtApLexiconRecord >> key [
 	^ key
 ]

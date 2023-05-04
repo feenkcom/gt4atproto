@@ -6,3 +6,8 @@ Class {
 	],
 	#category : #'Gt4AtProto-Lexicon'
 }
+
+{ #category : #accessing }
+GtApLexiconXrpcProcedure class >> typeName [
+	^ #procedure
+]

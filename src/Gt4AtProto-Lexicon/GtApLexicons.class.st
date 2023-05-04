@@ -23,10 +23,10 @@ GtApLexicons >> addLexiconDocument: aLexiconDocument [
 		at: aLexiconDocument id
 		put: aLexiconDocument.
 	
-	aLexiconDocument hasMainDefinition ifTrue: [
+	"aLexiconDocument hasMainDefinition ifTrue: [
 		self 
 			addLexiconDefiniton: aLexiconDocument mainDefinition 
-			withId: aLexiconDocument id ].
+			withId: aLexiconDocument id ]."
 	 
 	aLexiconDocument definitions keysAndValuesDo: [ :aDefinitionName :aLexiconDefinition |
 		self 
@@ -73,10 +73,38 @@ GtApLexicons >> buildObjects [
 								model: model
 								addMethod: (aProperty
 										generateDescriptorFor: aPropertyKey
-										isRequired: (anApObject isRequired: aPropertyKey))
+										isRequired: (anApObject isPropertyRequired: aPropertyKey))
 								toClass: className
 								inProtocols: #magritte) primitiveExecute ] ] ].
 	^ model
+]
+
+{ #category : #accessing }
+GtApLexicons >> definitionWithId: anId [
+	^ (anId includesSubstring: '#')
+		ifTrue: [ definitionsById at: anId ]
+		ifFalse: [ definitionsById at: anId, '#main' ]
+]
+
+{ #category : #accessing }
+GtApLexicons >> definitionsByType [
+	^ (definitionsById values groupedBy: [ :aDefinition |
+		aDefinition type ]) collect: [ :anArray |
+			GtApLexiconDefinitionsGroup withAll:  anArray ]
+]
+
+{ #category : #'gt - extensions' }
+GtApLexicons >> gtViewDefinitionsByTypeFor: aView [
+	<gtView>
+	
+	^ aView columnedList 
+		title: 'Definitions (by type)';
+		priority: 2;
+		items: [ self definitionsByType associations
+			sorted: [ :assoc | assoc value size ] descending ];
+		column: 'Type' text: [ :assoc | assoc key ];
+		column: 'Number of definitions' text: [ :assoc | assoc value size ];
+		send: [ :assoc | assoc value ]
 ]
 
 { #category : #accessing }
@@ -85,14 +113,14 @@ GtApLexicons >> gtViewDefinitionsFor: aView [
 	
 	^ aView columnedList 
 		title: 'Definitions';
+		priority: 1;
 		items: [ definitionsById associations ];
 		column: 'Id' text: [ :assoc |
 			assoc key ];
 		column: 'Type' text: [ :assoc | assoc value type ] width: 75;
 		column: 'Description' text: [ :assoc |
 			assoc value description ifNil: [ '' ] ];
-		send: [ :assoc |
-			assoc value ]
+		send: [ :assoc |assoc value ]
 ]
 
 { #category : #accessing }
@@ -101,9 +129,17 @@ GtApLexicons >> gtViewDocumentsFor: aView [
 	
 	^ aView columnedList 
 		title: 'Documents';
+		priority: 10;
 		items: [ documentsById values ];
 		column: 'Id' text: #id;
-		column: 'Main Type' text: #mainType;
+		column: 'Main Type' text: #mainType width: 100;
+		column: 'Definitions' 
+			text: [ :aLexiconDocument |
+				aLexiconDocument definitions size asString
+					, ' '
+					, ('definition' 
+						asPluralBasedOn: aLexiconDocument definitions size) ]
+			width: 120;
 		column: 'Description' text: [ :aLexiconDocument |
 			aLexiconDocument description ifNil: [''] ]
 ]
@@ -114,6 +150,11 @@ GtApLexicons >> initialize [
 	
 	documentsById := OrderedDictionary new.
 	definitionsById := OrderedDictionary new.
+]
+
+{ #category : #accessing }
+GtApLexicons >> lexiconDocuments [
+	^ documentsById values
 ]
 
 { #category : #accessing }

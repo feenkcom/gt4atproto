@@ -2,15 +2,26 @@ Class {
 	#name : #GtApLexiconReference,
 	#superclass : #Object,
 	#instVars : [
-		'referenceString',
-		'referencedEntity'
+		'referencedDefinition',
+		'rawData',
+		'ref'
 	],
 	#category : #'Gt4AtProto-Lexicon'
 }
 
 { #category : #accessing }
+GtApLexiconReference class >> typeName [
+	^ #ref
+]
+
+{ #category : #accessing }
 GtApLexiconReference >> asClassName [
 	^ (self referenceString replaceAllRegex: '[.#]' with: ' ') asCamelCase
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> description [
+	^ nil
 ]
 
 { #category : #accessing }
@@ -46,6 +57,11 @@ GtApLexiconReference >> generateSetterAs: aString [
 	', aString, ' := anObject'
 ]
 
+{ #category : #accessing }
+GtApLexiconReference >> isReference [
+	^ true
+]
+
 { #category : #printing }
 GtApLexiconReference >> printOn: aStream [
 	super printOn: aStream.
@@ -55,11 +71,48 @@ GtApLexiconReference >> printOn: aStream [
 ]
 
 { #category : #accessing }
+GtApLexiconReference >> rawData [
+	^ rawData
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> rawData: anObject [
+	rawData := anObject
+]
+
+{ #category : #accessing }
 GtApLexiconReference >> referenceString [
-	^ referenceString
+	^ ref
 ]
 
 { #category : #accessing }
 GtApLexiconReference >> referenceString: anObject [
-	referenceString := anObject
+	ref := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> referencedDefinition [
+	^ referencedDefinition
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> referencedDefinition: anObject [
+	referencedDefinition := anObject
+]
+
+{ #category : #'reference resolving' }
+GtApLexiconReference >> resolveContainedReferenceUsing: aBlock [
+	self referencedDefinition: (aBlock value: self referenceString)
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> type [
+	^ self class typeName
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> typeDescription [
+	^ self referencedDefinition
+		ifNil: [ 'ref(', self referenceString, ')' ]
+		ifNotNil: [ :aDefinition | aDefinition typeDescription ]
 ]
