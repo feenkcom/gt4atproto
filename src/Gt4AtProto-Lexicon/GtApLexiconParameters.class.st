@@ -1,27 +1,20 @@
 Class {
-	#name : #GtApLexiconObject,
+	#name : #GtApLexiconParameters,
 	#superclass : #GtApLexiconCustom,
 	#instVars : [
-		'required',
-		'properties'
+		'properties',
+		'required'
 	],
 	#category : #'Gt4AtProto-Lexicon'
 }
 
-{ #category : #'instance creation' }
-GtApLexiconObject class >> from: aDefinition [
-	^ self new
-		properties: (aDefinition attributes at: #properties);
-		required: (aDefinition attributes at: #required)
+{ #category : #accessing }
+GtApLexiconParameters class >> typeName [
+	^ #params
 ]
 
 { #category : #accessing }
-GtApLexiconObject class >> typeName [
-	^ #object
-]
-
-{ #category : #'gt - extensions' }
-GtApLexiconObject >> gtViewPropertiesFor: aView [
+GtApLexiconParameters >> gtViewPropertiesFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Properties';
@@ -43,35 +36,27 @@ GtApLexiconObject >> gtViewPropertiesFor: aView [
 		send: #value
 ]
 
-{ #category : #accessing }
-GtApLexiconObject >> isPropertyRequired: aPropertyName [
+{ #category : #testing }
+GtApLexiconParameters >> isPropertyRequired: aPropertyName [
 	^ required isNotNil and: [ required includes: aPropertyName ]
 ]
 
 { #category : #accessing }
-GtApLexiconObject >> magritteDescription [
-	| basicDescription |
-	basicDescription := GtApMagritteBuilder for: self.
-
-	^ basicDescription
-]
-
-{ #category : #accessing }
-GtApLexiconObject >> properties [
+GtApLexiconParameters >> properties [
 	^ properties
 ]
 
 { #category : #accessing }
-GtApLexiconObject >> properties: anObject [
+GtApLexiconParameters >> properties: anObject [
 	properties := anObject
 ]
 
 { #category : #accessing }
-GtApLexiconObject >> required [
+GtApLexiconParameters >> required [
 	^ required
 ]
 
 { #category : #accessing }
-GtApLexiconObject >> required: anObject [
+GtApLexiconParameters >> required: anObject [
 	required := anObject
 ]

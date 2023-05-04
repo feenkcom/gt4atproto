@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApLexiconImage class >> typeName [
+	^ #image
+]
+
+{ #category : #accessing }
 GtApLexiconImage >> maxHeight [
 	^ maxHeight
 ]

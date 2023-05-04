@@ -19,6 +19,19 @@ GtApLexiconXrpcRequest >> errors: anObject [
 	errors := anObject
 ]
 
+{ #category : #'gt - extensions' }
+GtApLexiconXrpcRequest >> gtViewParametersFor: aView [
+
+	<gtView>
+	self parameters ifNil: [ ^ aView empty  ].
+	
+	^ aView forward
+		title: 'Parameters';
+		priority: 10;
+		object: [ self parameters ];
+		view: #gtViewPropertiesFor:
+]
+
 { #category : #accessing }
 GtApLexiconXrpcRequest >> output [
 	^ output

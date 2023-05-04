@@ -1,10 +1,10 @@
 Class {
-	#name : #GtApLexiconToken,
+	#name : #GtApLexiconCidLink,
 	#superclass : #GtApLexiconCustom,
 	#category : #'Gt4AtProto-Lexicon'
 }
 
 { #category : #accessing }
-GtApLexiconToken class >> typeName [
-	^ #token
+GtApLexiconCidLink class >> typeName [
+	^ 'cid-link'
 ]

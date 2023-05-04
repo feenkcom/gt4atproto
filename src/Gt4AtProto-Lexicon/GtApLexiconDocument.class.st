@@ -77,7 +77,9 @@ GtApLexiconDocument >> mainDefinition [
 
 { #category : #accessing }
 GtApLexiconDocument >> mainType [
-	^ self mainDefinition ifNil: [ 'No Main' ] ifNotNil: #type
+	^ self hasMainDefinition 
+		ifFalse: [ 'No Main' ] 
+		ifTrue: [ (self mainDefinition) type ]
 ]
 
 { #category : #printing }

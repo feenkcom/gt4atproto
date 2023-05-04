@@ -2,15 +2,26 @@ Class {
 	#name : #GtApLexiconReference,
 	#superclass : #Object,
 	#instVars : [
-		'referenceString',
-		'referencedEntity'
+		'referencedEntity',
+		'rawData',
+		'ref'
 	],
 	#category : #'Gt4AtProto-Lexicon'
 }
 
 { #category : #accessing }
+GtApLexiconReference class >> typeName [
+	^ #ref
+]
+
+{ #category : #accessing }
 GtApLexiconReference >> asClassName [
 	^ (self referenceString replaceAllRegex: '[.#]' with: ' ') asCamelCase
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> description [
+	^ nil
 ]
 
 { #category : #accessing }
@@ -50,11 +61,26 @@ GtApLexiconReference >> printOn: aStream [
 ]
 
 { #category : #accessing }
+GtApLexiconReference >> rawData [
+	^ rawData
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> rawData: anObject [
+	rawData := anObject
+]
+
+{ #category : #accessing }
 GtApLexiconReference >> referenceString [
-	^ referenceString
+	^ ref
 ]
 
 { #category : #accessing }
 GtApLexiconReference >> referenceString: anObject [
-	referenceString := anObject
+	ref := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> type [
+	^ self class typeName
 ]

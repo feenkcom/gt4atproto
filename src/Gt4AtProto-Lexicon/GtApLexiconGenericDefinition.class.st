@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'type',
 		'rawData',
-		'attributes'
+		'attributes',
+		'id'
 	],
 	#category : #'Gt4AtProto-Lexicon'
 }
@@ -141,6 +142,16 @@ GtApLexiconGenericDefinition >> gtViewAttributesFor: aView [
 		priority: 20;
 		object: [ self attributes];
 		view: #gtItemsFor: 
+]
+
+{ #category : #accessing }
+GtApLexiconGenericDefinition >> id [
+	^ id
+]
+
+{ #category : #accessing }
+GtApLexiconGenericDefinition >> id: anObject [
+	id := anObject
 ]
 
 { #category : #accessing }

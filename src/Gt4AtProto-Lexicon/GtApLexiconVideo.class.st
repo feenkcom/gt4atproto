@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApLexiconVideo class >> typeName [
+	^ #video
+]
+
+{ #category : #accessing }
 GtApLexiconVideo >> maxHeight [
 	^ maxHeight
 ]
