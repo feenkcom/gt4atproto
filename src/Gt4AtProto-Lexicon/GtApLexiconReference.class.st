@@ -18,7 +18,7 @@ GtApLexiconReference >> generateDescriptorFor: aString isRequired: aBoolean [
 	^ aString, 'Description
 	<magritteDescription>
 	^ MAToOneRelationDescription new
-		label: ''' , aString
+		label: ''' , aString capitalized
 		, '''' , (aBoolean ifTrue: [ ';
 		beRequired' ] ifFalse: [ '' ])
 ]

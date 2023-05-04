@@ -139,14 +139,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-01T17:29:02.828798+02:00"
+									"dateAndTimeString" : "2023-05-04T10:56:34.094175+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "qup0vgO3DQCrrwQjACuSBg=="
 							},
-							"code" : "client := ZnClient new \r\turl: pdsUrl;\r\taddPath: 'xrpc';\r\taddPath: 'com.atproto.server.createAccount';\r\tcontents: (STONJSON toString: {\r\t\t'handle' -> handle.\r\t\t'email' -> email.\r\t\t'password' -> password } asDictionary);\r\tcontentType: ZnMimeType applicationJson.\r\t\rcreateResult := client post.\rcreateData := STONJSON fromString: createResult"
+							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createAccount';\r\tbody: (STONJSON toString: {\r\t\t'handle' -> handle.\r\t\t'email' -> email.\r\t\t'password' -> password } asDictionary).\r\t\rcreateData := client procedure"
 						}
 					]
 				},
@@ -211,14 +211,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-01T16:31:46.225341+02:00"
+									"dateAndTimeString" : "2023-05-04T10:57:03.220986+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "o2t9YgS3DQCw9EjpACuSBg=="
 							},
-							"code" : "client := ZnClient new \r\turl: pdsUrl;\r\taddPath: 'xrpc';\r\taddPath: 'com.atproto.server.createSession';\r\tcontents: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary);\r\tcontentType: ZnMimeType applicationJson.\r\t\rloginResult := client post.\rloginData := STONJSON fromString: loginResult"
+							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginResult := client procedure"
 						}
 					]
 				},
