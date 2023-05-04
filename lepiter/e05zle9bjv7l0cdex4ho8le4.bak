@@ -113,7 +113,42 @@
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-04T17:54:27.575806+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-04T17:54:31.305551+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "BvWa7EG3DQCJb6tEACuSBg=="
+							},
+							"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\rlexicons := GtApLexiconImporter new \r\timportLexiconsFromDirectory: lexiconsFolder"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -142,6 +177,40 @@
 					"uidString" : "esy59xq3DQCg7s96ACuSBg=="
 				},
 				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\rlexicons := GtApGenericLexiconImporter new \r\timportLexiconsFromDirectory: lexiconsFolder"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-04T23:44:38.122769+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-04T23:44:42.853716+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "tnvu0Ea3DQCKNoP2ACuSBg=="
+				},
+				"code" : "GTApLexiconReferencesRevolver new \r\tresolveLexicon: lexicons"
 			},
 			{
 				"__type" : "pharoSnippet",

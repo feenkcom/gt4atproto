@@ -53,6 +53,9 @@ GtApGenericLexiconImporter >> importLexiconsFromDirectory: aDirectory [
 		document := aLexiconFile readStreamDo: [ :aStream |
 			self importLexiconDocumentFromStream:  aStream ].
 		lexicons addLexiconDocument:  document ].
+		
+	GTApLexiconReferencesRevolver new 
+		resolveLexicon: lexicons.
 	
 	^ lexicons
 ]

@@ -80,6 +80,13 @@ GtApLexicons >> buildObjects [
 ]
 
 { #category : #accessing }
+GtApLexicons >> definitionWithId: anId [
+	^ (anId includesSubstring: '#')
+		ifTrue: [ definitionsById at: anId ]
+		ifFalse: [ definitionsById at: anId, '#main' ]
+]
+
+{ #category : #accessing }
 GtApLexicons >> definitionsByType [
 	^ (definitionsById values groupedBy: [ :aDefinition |
 		aDefinition type ]) collect: [ :anArray |
@@ -143,4 +150,9 @@ GtApLexicons >> initialize [
 	
 	documentsById := OrderedDictionary new.
 	definitionsById := OrderedDictionary new.
+]
+
+{ #category : #accessing }
+GtApLexicons >> lexiconDocuments [
+	^ documentsById values
 ]

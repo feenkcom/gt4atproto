@@ -1,9 +1,8 @@
 Class {
 	#name : #GtApLexiconGenericDefinition,
-	#superclass : #Object,
+	#superclass : #GtApLexiconEntity,
 	#instVars : [
 		'type',
-		'rawData',
 		'attributes',
 		'id'
 	],
@@ -113,28 +112,6 @@ GtApLexiconGenericDefinition >> generateSetterAs: aString [
 ]
 
 { #category : #'gt - extensions' }
-GtApLexiconGenericDefinition >> gtJsonObjectFor: aView context: aContext [
-	<gtView>
-	
-	^ aView forward 
-		title: 'Raw Data';
-		priority: 40;
-		object: [ GtJson forJsonObject: rawData];
-		view: #gtJsonObjectFor:context:
-]
-
-{ #category : #'gt - extensions' }
-GtApLexiconGenericDefinition >> gtJsonStringFor: aView [
-	<gtView>
-	
-	^ aView forward 
-		title: 'JSON String';
-		priority: 50;
-		object: [ GtJson forJsonObject: rawData];
-		view: #gtJsonStringFor:
-]
-
-{ #category : #'gt - extensions' }
 GtApLexiconGenericDefinition >> gtViewAttributesFor: aView [
 	<gtView>
 	^ aView forward 
@@ -159,22 +136,12 @@ GtApLexiconGenericDefinition >> keysAndValuesDo: aBlock [
 	^ self attributes keysAndValuesDo: aBlock
 ]
 
-{ #category : #accessing }
+{ #category : #printing }
 GtApLexiconGenericDefinition >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream parenthesize: [
 		aStream << self type]
-]
-
-{ #category : #accessing }
-GtApLexiconGenericDefinition >> rawData [
-	^ rawData
-]
-
-{ #category : #accessing }
-GtApLexiconGenericDefinition >> rawData: anObject [
-	rawData := anObject
 ]
 
 { #category : #accessing }

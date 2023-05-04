@@ -29,6 +29,11 @@ GtApLexiconEntity >> gtJsonStringFor: aView [
 		view: #gtJsonStringFor:
 ]
 
+{ #category : #testing }
+GtApLexiconEntity >> isReference [
+	^ false
+]
+
 { #category : #accessing }
 GtApLexiconEntity >> rawData [
 	^ rawData
@@ -40,6 +45,16 @@ GtApLexiconEntity >> rawData: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconEntity >> referencedDefinitions [
+	^ #()
+]
+
+{ #category : #accessing }
 GtApLexiconEntity >> type [
 	^ self class typeName
+]
+
+{ #category : #accessing }
+GtApLexiconEntity >> typeDescription [
+	^ self type
 ]

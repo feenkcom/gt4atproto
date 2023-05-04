@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApLexiconDocument >> definitionWithName: anId [
+	^ definitions at: anId
+]
+
+{ #category : #accessing }
 GtApLexiconDocument >> definitions [
 	^ definitions
 ]

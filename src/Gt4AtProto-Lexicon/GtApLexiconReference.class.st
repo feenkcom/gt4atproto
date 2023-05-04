@@ -2,7 +2,7 @@ Class {
 	#name : #GtApLexiconReference,
 	#superclass : #Object,
 	#instVars : [
-		'referencedEntity',
+		'referencedDefinition',
 		'rawData',
 		'ref'
 	],
@@ -52,6 +52,11 @@ GtApLexiconReference >> generateSetterAs: aString [
 	', aString, ' := anObject'
 ]
 
+{ #category : #accessing }
+GtApLexiconReference >> isReference [
+	^ true
+]
+
 { #category : #printing }
 GtApLexiconReference >> printOn: aStream [
 	super printOn: aStream.
@@ -81,6 +86,28 @@ GtApLexiconReference >> referenceString: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconReference >> referencedDefinition [
+	^ referencedDefinition
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> referencedDefinition: anObject [
+	referencedDefinition := anObject
+]
+
+{ #category : #'reference resolving' }
+GtApLexiconReference >> resolveContainedReferenceUsing: aBlock [
+	self referencedDefinition: (aBlock value: self referenceString)
+]
+
+{ #category : #accessing }
 GtApLexiconReference >> type [
 	^ self class typeName
+]
+
+{ #category : #accessing }
+GtApLexiconReference >> typeDescription [
+	^ self referencedDefinition
+		ifNil: [ 'ref(', self referenceString, ')' ]
+		ifNotNil: [ :aDefinition | aDefinition typeDescription ]
 ]

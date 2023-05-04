@@ -54,3 +54,8 @@ GtApLexiconArray >> minLength [
 GtApLexiconArray >> minLength: anObject [
 	minLength := anObject
 ]
+
+{ #category : #accessing }
+GtApLexiconArray >> typeDescription [
+	^ super typeDescription, ' of ', self items typeDescription
+]

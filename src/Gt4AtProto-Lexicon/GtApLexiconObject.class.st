@@ -31,16 +31,19 @@ GtApLexiconObject >> gtViewPropertiesFor: aView [
 			text: [ :assoc | 
 				(self isPropertyRequired: assoc key)
 					ifTrue: [ assoc key asRopedText bold ]
-					ifFalse: [ assoc key ] ];
+					ifFalse: [ assoc key ] ] width: 150;
 		column: 'Required'
 			text: [ :assoc | (self isPropertyRequired: assoc key) 
 				ifTrue: [ 'yes' ] 
 				ifFalse: [ '' ] ]
-			width: 100;
-		column: 'Type' text: [ :assoc | assoc value type ];
+			width: 75;
+		column: 'Type' text: [ :assoc | assoc value typeDescription ];
 		column: 'Description'
 			text: [ :assoc | assoc value description ifNil: [ '' ] ];
-		send: #value
+		send: [ :assoc |
+			assoc value isReference
+				ifTrue: [ assoc value referencedDefinition ifNil: [ assoc value ] ] 
+				ifFalse: [ assoc value ] ]
 ]
 
 { #category : #accessing }
@@ -56,6 +59,15 @@ GtApLexiconObject >> magritteDescription [
 	^ basicDescription
 ]
 
+{ #category : #printing }
+GtApLexiconObject >> printOn: aStream [
+	super printOn: aStream.
+	
+	self id ifNotNil: [
+		aStream parenthesize: [
+			aStream << self id ]] 
+]
+
 { #category : #accessing }
 GtApLexiconObject >> properties [
 	^ properties
@@ -67,6 +79,11 @@ GtApLexiconObject >> properties: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconObject >> referencedDefinitions [
+	^ properties values
+]
+
+{ #category : #accessing }
 GtApLexiconObject >> required [
 	^ required
 ]
@@ -74,4 +91,11 @@ GtApLexiconObject >> required [
 { #category : #accessing }
 GtApLexiconObject >> required: anObject [
 	required := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconObject >> typeDescription [
+	^ self id 
+		ifNil: [ super typeDescription]
+		ifNotNil: [ super typeDescription, '(', self id, ')' ]
 ]
