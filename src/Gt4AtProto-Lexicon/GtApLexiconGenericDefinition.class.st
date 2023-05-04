@@ -84,7 +84,7 @@ GtApLexiconGenericDefinition >> generateDescriptorFor: aString isRequired: aBool
 
 	source := source
 			, '
-		label: ''' , aString , ''';
+		label: ''' , aString capitalized , ''';
 		accessor: #atProto', aString asCamelCase.
 
 	aBoolean
