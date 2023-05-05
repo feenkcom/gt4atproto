@@ -1,6 +1,6 @@
 Class {
-	#name : #GtApLexiconCustom,
-	#superclass : #GtApLexiconEntity,
+	#name : #GtApLexiconCustomDefinition,
+	#superclass : #GtApLexiconDefinition,
 	#instVars : [
 		'description',
 		'id'
@@ -9,21 +9,21 @@ Class {
 }
 
 { #category : #accessing }
-GtApLexiconCustom >> description [
+GtApLexiconCustomDefinition >> description [
 	^ description
 ]
 
 { #category : #accessing }
-GtApLexiconCustom >> description: anObject [
+GtApLexiconCustomDefinition >> description: anObject [
 	description := anObject
 ]
 
 { #category : #accessing }
-GtApLexiconCustom >> id [
+GtApLexiconCustomDefinition >> id [
 	^ id
 ]
 
 { #category : #accessing }
-GtApLexiconCustom >> id: anObject [
+GtApLexiconCustomDefinition >> id: anObject [
 	id := anObject
 ]

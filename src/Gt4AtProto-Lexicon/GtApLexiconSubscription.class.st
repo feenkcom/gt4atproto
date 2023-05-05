@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconSubscription,
-	#superclass : #GtApLexiconCustom,
+	#superclass : #GtApLexiconCustomDefinition,
 	#instVars : [
 		'parameters',
 		'message',

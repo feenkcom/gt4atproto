@@ -49,6 +49,6 @@ GtApLexiconImporter >> mappings [
 
 { #category : #accessing }
 GtApLexiconImporter >> modelClasses [
-	^ GtApLexiconEntity allSubclasses , {GtApLexiconReference}
+	^ GtApLexiconDefinition allSubclasses , {GtApLexiconReference}
 		select: [ :aClass | aClass classSide includesSelector: #typeName ]
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconRecord,
-	#superclass : #GtApLexiconCustom,
+	#superclass : #GtApLexiconCustomDefinition,
 	#instVars : [
 		'key',
 		'record'

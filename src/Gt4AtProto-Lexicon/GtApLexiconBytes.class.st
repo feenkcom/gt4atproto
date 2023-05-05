@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconBytes,
-	#superclass : #GtApLexiconCustom,
+	#superclass : #GtApLexiconCustomDefinition,
 	#instVars : [
 		'maxLength'
 	],

@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconPrimitive,
-	#superclass : #GtApLexiconEntity,
+	#superclass : #GtApLexiconDefinition,
 	#instVars : [
 		'description',
 		'id'

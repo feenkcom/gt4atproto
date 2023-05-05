@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconData,
-	#superclass : #GtApLexiconCustom,
+	#superclass : #GtApLexiconCustomDefinition,
 	#instVars : [
 		'accept',
 		'maxSize'

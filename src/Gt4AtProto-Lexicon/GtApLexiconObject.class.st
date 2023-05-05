@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconObject,
-	#superclass : #GtApLexiconCustom,
+	#superclass : #GtApLexiconCustomDefinition,
 	#instVars : [
 		'required',
 		'properties'

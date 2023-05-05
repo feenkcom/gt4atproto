@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconUnion,
-	#superclass : #GtApLexiconEntity,
+	#superclass : #GtApLexiconDefinition,
 	#instVars : [
 		'refs',
 		'resolvedDefinitions'

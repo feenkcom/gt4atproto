@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconToken,
-	#superclass : #GtApLexiconCustom,
+	#superclass : #GtApLexiconCustomDefinition,
 	#category : #'Gt4AtProto-Lexicon'
 }
 

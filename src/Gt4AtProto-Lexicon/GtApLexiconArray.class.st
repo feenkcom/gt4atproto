@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconArray,
-	#superclass : #GtApLexiconEntity,
+	#superclass : #GtApLexiconDefinition,
 	#instVars : [
 		'items',
 		'minLength',

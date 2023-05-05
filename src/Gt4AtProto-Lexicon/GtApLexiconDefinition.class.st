@@ -1,5 +1,5 @@
 Class {
-	#name : #GtApLexiconEntity,
+	#name : #GtApLexiconDefinition,
 	#superclass : #Object,
 	#instVars : [
 		'rawData'
@@ -8,21 +8,21 @@ Class {
 }
 
 { #category : #accessing }
-GtApLexiconEntity >> generateGetterAs: aString [
+GtApLexiconDefinition >> generateGetterAs: aString [
 	^ aString
 		, '
 	^ ', aString
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> generateSetterAs: aString [
+GtApLexiconDefinition >> generateSetterAs: aString [
 	^ aString
 		, ': anObject
 	', aString, ' := anObject'
 ]
 
 { #category : #'gt - extensions' }
-GtApLexiconEntity >> gtJsonObjectFor: aView context: aContext [
+GtApLexiconDefinition >> gtJsonObjectFor: aView context: aContext [
 	<gtView>
 	
 	^ aView forward 
@@ -33,7 +33,7 @@ GtApLexiconEntity >> gtJsonObjectFor: aView context: aContext [
 ]
 
 { #category : #'gt - extensions' }
-GtApLexiconEntity >> gtJsonStringFor: aView [
+GtApLexiconDefinition >> gtJsonStringFor: aView [
 	<gtView>
 	
 	^ aView forward 
@@ -44,36 +44,36 @@ GtApLexiconEntity >> gtJsonStringFor: aView [
 ]
 
 { #category : #testing }
-GtApLexiconEntity >> isReference [
+GtApLexiconDefinition >> isReference [
 	^ false
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> isXRPCCall [
+GtApLexiconDefinition >> isXRPCCall [
 	^ false
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> rawData [
+GtApLexiconDefinition >> rawData [
 	^ rawData
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> rawData: anObject [
+GtApLexiconDefinition >> rawData: anObject [
 	rawData := anObject
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> referencedDefinitions [
+GtApLexiconDefinition >> referencedDefinitions [
 	^ #()
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> type [
+GtApLexiconDefinition >> type [
 	^ self class typeName
 ]
 
 { #category : #accessing }
-GtApLexiconEntity >> typeDescription [
+GtApLexiconDefinition >> typeDescription [
 	^ self type
 ]
