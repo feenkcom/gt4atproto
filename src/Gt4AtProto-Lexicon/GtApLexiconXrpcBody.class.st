@@ -5,7 +5,7 @@ Class {
 		'encoding',
 		'schema'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
 { #category : #accessing }

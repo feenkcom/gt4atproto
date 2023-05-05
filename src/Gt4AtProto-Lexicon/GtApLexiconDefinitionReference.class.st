@@ -1,31 +1,31 @@
 Class {
-	#name : #GtApLexiconReference,
+	#name : #GtApLexiconDefinitionReference,
 	#superclass : #Object,
 	#instVars : [
 		'referencedDefinition',
 		'rawData',
 		'ref'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
 { #category : #accessing }
-GtApLexiconReference class >> typeName [
+GtApLexiconDefinitionReference class >> typeName [
 	^ #ref
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> asClassName [
+GtApLexiconDefinitionReference >> asClassName [
 	^ (self referenceString replaceAllRegex: '[.#]' with: ' ') asCamelCase
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> description [
+GtApLexiconDefinitionReference >> description [
 	^ nil
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconDefinitionReference >> generateDescriptorFor: aString isRequired: aBoolean [
 	^ aString
 		, 'Description
 	<magritteDescription>
@@ -40,7 +40,7 @@ GtApLexiconReference >> generateDescriptorFor: aString isRequired: aBoolean [
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> generateGetterAs: aString [
+GtApLexiconDefinitionReference >> generateGetterAs: aString [
 	^ aString
 		, '
 	<referenceTo:''' , self referenceString
@@ -49,7 +49,7 @@ GtApLexiconReference >> generateGetterAs: aString [
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> generateSetterAs: aString [
+GtApLexiconDefinitionReference >> generateSetterAs: aString [
 	^ aString
 		, ': anObject
 	<referenceTo:''' , self referenceString
@@ -58,12 +58,12 @@ GtApLexiconReference >> generateSetterAs: aString [
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> isReference [
+GtApLexiconDefinitionReference >> isReference [
 	^ true
 ]
 
 { #category : #printing }
-GtApLexiconReference >> printOn: aStream [
+GtApLexiconDefinitionReference >> printOn: aStream [
 	super printOn: aStream.
 	
 	aStream parenthesize: [
@@ -71,47 +71,47 @@ GtApLexiconReference >> printOn: aStream [
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> rawData [
+GtApLexiconDefinitionReference >> rawData [
 	^ rawData
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> rawData: anObject [
+GtApLexiconDefinitionReference >> rawData: anObject [
 	rawData := anObject
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> referenceString [
+GtApLexiconDefinitionReference >> referenceString [
 	^ ref
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> referenceString: anObject [
+GtApLexiconDefinitionReference >> referenceString: anObject [
 	ref := anObject
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> referencedDefinition [
+GtApLexiconDefinitionReference >> referencedDefinition [
 	^ referencedDefinition
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> referencedDefinition: anObject [
+GtApLexiconDefinitionReference >> referencedDefinition: anObject [
 	referencedDefinition := anObject
 ]
 
 { #category : #'reference resolving' }
-GtApLexiconReference >> resolveContainedReferenceUsing: aBlock [
+GtApLexiconDefinitionReference >> resolveContainedReferenceUsing: aBlock [
 	self referencedDefinition: (aBlock value: self referenceString)
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> type [
+GtApLexiconDefinitionReference >> type [
 	^ self class typeName
 ]
 
 { #category : #accessing }
-GtApLexiconReference >> typeDescription [
+GtApLexiconDefinitionReference >> typeDescription [
 	^ self referencedDefinition
 		ifNil: [ 'ref(', self referenceString, ')' ]
 		ifNotNil: [ :aDefinition | aDefinition typeDescription ]

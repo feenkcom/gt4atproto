@@ -5,7 +5,7 @@ Class {
 		'documentsById',
 		'definitionsById'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Importer'
 }
 
 { #category : #adding }

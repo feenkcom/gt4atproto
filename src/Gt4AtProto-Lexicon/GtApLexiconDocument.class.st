@@ -9,7 +9,7 @@ Class {
 		'description',
 		'definitions'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Documents'
 }
 
 { #category : #accessing }

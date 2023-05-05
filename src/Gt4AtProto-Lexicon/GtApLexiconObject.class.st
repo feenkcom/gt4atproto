@@ -5,7 +5,7 @@ Class {
 		'required',
 		'properties'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
 { #category : #'instance creation' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #GtApLexiconBlob,
 	#superclass : #GtApLexiconData,
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
 { #category : #accessing }

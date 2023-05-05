@@ -4,5 +4,5 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Definitions'
 }

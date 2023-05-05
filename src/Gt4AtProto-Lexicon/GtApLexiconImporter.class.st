@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'cachedMappings'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Importer'
 }
 
 { #category : #accessing }
@@ -49,6 +49,6 @@ GtApLexiconImporter >> mappings [
 
 { #category : #accessing }
 GtApLexiconImporter >> modelClasses [
-	^ GtApLexiconDefinition allSubclasses , {GtApLexiconReference}
+	^ GtApLexiconDefinition allSubclasses , {GtApLexiconDefinitionReference}
 		select: [ :aClass | aClass classSide includesSelector: #typeName ]
 ]

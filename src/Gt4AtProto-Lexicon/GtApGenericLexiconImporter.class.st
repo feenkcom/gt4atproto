@@ -1,7 +1,7 @@
 Class {
 	#name : #GtApGenericLexiconImporter,
 	#superclass : #Object,
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Importer'
 }
 
 { #category : #api }
@@ -33,7 +33,7 @@ GtApGenericLexiconImporter >> importLexiconDocumentFromStream: aStream [
 { #category : #importing }
 GtApGenericLexiconImporter >> importLexiconSchemaFrom: aSchemaData [
 	aSchemaData type = #ref
-		ifTrue: [ ^ GtApLexiconReference new 
+		ifTrue: [ ^ GtApLexiconDefinitionReference new 
 			referenceString: aSchemaData ref ].
 			
 	^ GtApLexiconGenericDefinition new

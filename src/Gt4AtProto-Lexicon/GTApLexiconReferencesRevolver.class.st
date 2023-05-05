@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'lexicon'
 	],
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Importer'
 }
 
 { #category : #accessing }

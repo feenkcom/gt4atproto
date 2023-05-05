@@ -1,7 +1,7 @@
 Class {
 	#name : #GtApLexiconNeoJsonObject,
 	#superclass : #NeoJSONObject,
-	#category : #'Gt4AtProto-Lexicon'
+	#category : #'Gt4AtProto-Lexicon-Importer'
 }
 
 { #category : #accessing }
