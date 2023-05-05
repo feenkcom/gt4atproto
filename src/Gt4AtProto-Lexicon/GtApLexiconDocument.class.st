@@ -56,6 +56,11 @@ GtApLexiconDocument >> hasMainDefinition [
 ]
 
 { #category : #accessing }
+GtApLexiconDocument >> hasXRPCCalls [
+	^ self xrpcCalls isNotEmpty
+]
+
+{ #category : #accessing }
 GtApLexiconDocument >> id [
 	^ id
 ]
@@ -102,4 +107,9 @@ GtApLexiconDocument >> revision [
 { #category : #accessing }
 GtApLexiconDocument >> revision: anObject [
 	revision := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconDocument >> xrpcCalls [
+	^ self definitions select: #isXRPCCall
 ]

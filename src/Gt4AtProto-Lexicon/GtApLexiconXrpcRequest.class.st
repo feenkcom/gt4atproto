@@ -33,6 +33,11 @@ GtApLexiconXrpcRequest >> gtViewParametersFor: aView [
 ]
 
 { #category : #accessing }
+GtApLexiconXrpcRequest >> isXRPCCall [
+	^ true
+]
+
+{ #category : #accessing }
 GtApLexiconXrpcRequest >> output [
 	^ output
 ]

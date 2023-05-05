@@ -49,6 +49,11 @@ GtApLexiconEntity >> isReference [
 ]
 
 { #category : #accessing }
+GtApLexiconEntity >> isXRPCCall [
+	^ false
+]
+
+{ #category : #accessing }
 GtApLexiconEntity >> rawData [
 	^ rawData
 ]

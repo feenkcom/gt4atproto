@@ -35,9 +35,7 @@ GtApLexicons >> addLexiconDocument: aLexiconDocument [
 ]
 
 { #category : #accessing }
-GtApLexicons >> buildObjects [
-	| model |
-	model := RBNamespace new.
+GtApLexicons >> buildDefinitionObjectsIn: aModel [ 
 	definitionsById
 		keysAndValuesDo: [ :aKey :aDefinition | 
 			aDefinition type = 'object'
@@ -45,7 +43,7 @@ GtApLexicons >> buildObjects [
 					anApObject := aDefinition asObject.
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
 					(RBAddClassRefactoring
-						model: model
+						model: aModel
 						addClass: className
 						superclass: Object
 						subclasses: #()
@@ -55,27 +53,58 @@ GtApLexicons >> buildObjects [
 							| key |
 							key := 'atProto' , aPropertyKey asCamelCase.
 							(RBAddInstanceVariableRefactoring
-								model: model
+								model: aModel
 								variable: key
 								class: className) primitiveExecute.
 							(RBAddMethodRefactoring
-								model: model
+								model: aModel
 								addMethod: (aProperty generateGetterAs: key)
 								toClass: className
 								inProtocols: #accessing) primitiveExecute.
 							(RBAddMethodRefactoring
-								model: model
+								model: aModel
 								addMethod: (aProperty generateSetterAs: key)
 								toClass: className
 								inProtocols: #accessing) primitiveExecute.
 
 							(RBAddMethodRefactoring
-								model: model
+								model: aModel
 								addMethod: (aProperty
 										generateDescriptorFor: aPropertyKey
 										isRequired: (anApObject isPropertyRequired: aPropertyKey))
 								toClass: className
 								inProtocols: #magritte) primitiveExecute ] ] ].
+]
+
+{ #category : #accessing }
+GtApLexicons >> buildDocumentObjectsIn: aModel [
+	documentsById
+		keysAndValuesDo: [ :aKey :aDocument | 
+			| className |
+			aDocument hasXRPCCalls
+				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase , 'Client'.
+					(RBAddClassRefactoring
+						model: aModel
+						addClass: className
+						superclass: ATPClient
+						subclasses: #()
+						category: #'Gt4AtProto-Generated') primitiveExecute.
+
+					aDocument xrpcCalls
+						keysAndValuesDo: [ :aName :aMethod | 
+							(RBAddMethodRefactoring
+								model: aModel
+								addMethod: (aMethod asXRPCMethodNamed: aKey , '#' , aName)
+								toClass: className
+								inProtocols: {#'atproto-xrpc-call'}) primitiveExecute ] ] ]
+]
+
+{ #category : #accessing }
+GtApLexicons >> buildObjects [
+	| model |
+	model := RBNamespace new.
+	self buildDefinitionObjectsIn: model.
+	self buildDocumentObjectsIn: model.
 	^ model
 ]
 

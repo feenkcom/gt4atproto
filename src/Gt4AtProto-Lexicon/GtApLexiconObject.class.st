@@ -9,6 +9,13 @@ Class {
 }
 
 { #category : #'instance creation' }
+GtApLexiconObject class >> empty [
+	^ self new
+		properties: {} asDictionary;
+		required: {}
+]
+
+{ #category : #'instance creation' }
 GtApLexiconObject class >> from: aDefinition [
 	^ self new
 		properties: (aDefinition attributes at: #properties);

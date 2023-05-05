@@ -47,16 +47,16 @@ ATPClient >> loginUser: aUserNameString withPass: aPasswordString [
 	| result |
 	result := self
 			procedureOn: 'com.atproto.server.createSession'
-			withBody: (STONJSON
-					toString: {'identifier' -> aUserNameString.
-							'password' -> aPasswordString} asDictionary).
+			withBody: {'identifier' -> aUserNameString.
+							'password' -> aPasswordString} asDictionary.
 
 	jwtAccess := result at: 'accessJwt'
 ]
 
 { #category : #accessing }
-ATPClient >> procedureOn: aMethodId withBody: aBodyString [
-	^ (self clientFor: aMethodId body: aBodyString) procedure
+ATPClient >> procedureOn: aMethodId withBody: aBodyDictionary [
+	^ (self clientFor: aMethodId body: (STONJSON toString: aBodyDictionary))
+		procedure
 ]
 
 { #category : #accessing }
