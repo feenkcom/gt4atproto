@@ -94,7 +94,7 @@ GtApLexicons >> buildDocumentObjectsIn: aModel [
 						keysAndValuesDo: [ :aName :aMethod | 
 							(RBAddMethodRefactoring
 								model: aModel
-								addMethod: (aMethod asXRPCMethodNamed: aKey , '#' , aName)
+								addMethod: (aMethod asXRPCMethodNamed: aKey)
 								toClass: className
 								inProtocols: {#'atproto-xrpc-call'}) primitiveExecute ] ] ]
 ]
@@ -193,5 +193,12 @@ GtApLexicons >> removeObjects [
 			aDefinition type = 'object'
 				ifTrue: [ | className |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
+					className asClass removeFromSystem ] ].
+
+	documentsById
+		keysAndValuesDo: [ :aKey :aDocument | 
+			| className |
+			aDocument hasXRPCCalls
+				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase , 'Client'.
 					className asClass removeFromSystem ] ]
 ]

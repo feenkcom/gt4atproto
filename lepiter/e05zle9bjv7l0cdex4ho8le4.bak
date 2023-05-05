@@ -202,7 +202,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-05T16:15:22.375048+02:00"
+						"dateAndTimeString" : "2023-05-05T16:28:25.663396+02:00"
 					}
 				},
 				"uid" : {
@@ -210,6 +210,40 @@
 					"uidString" : "2HECqFS3DQC+95bCB1tzrA=="
 				},
 				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-05T16:28:26.09546+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-05T16:28:26.592356+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
+				},
+				"code" : "lexicons buildObjects"
 			}
 		]
 	},
