@@ -64,11 +64,6 @@ GtApLexiconNamespace >> id [
 	^ id
 ]
 
-{ #category : #accessing }
-GtApLexiconNamespace >> identityHash^ [ id
-
-]
-
 { #category : #initialization }
 GtApLexiconNamespace >> initializeWithId: anId [ 
 	id := anId.
