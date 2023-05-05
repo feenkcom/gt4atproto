@@ -171,6 +171,7 @@ GtApLexicons >> gtViewNamespacesFor: aView [
 		items: [ GtApLexiconNamespacesBuilder new 
 			buildNamespacesForLexicon: self ];
 		children: [ :aNamespace | aNamespace childNamespaces ];
+		expandAll;
 		itemText: [ :aNamespace | aNamespace localName ]
 ]
 
