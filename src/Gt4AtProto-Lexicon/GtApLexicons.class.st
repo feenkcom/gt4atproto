@@ -156,21 +156,22 @@ GtApLexicons >> gtViewDefinitionsFor: aView [
 GtApLexicons >> gtViewDocumentsFor: aView [
 	<gtView>
 	
-	^ aView columnedList 
+	^ aView forward 
 		title: 'Documents';
 		priority: 10;
-		items: [ documentsById values ];
-		column: 'Id' text: #id;
-		column: 'Main Type' text: #mainType width: 100;
-		column: 'Definitions' 
-			text: [ :aLexiconDocument |
-				aLexiconDocument definitions size asString
-					, ' '
-					, ('definition' 
-						asPluralBasedOn: aLexiconDocument definitions size) ]
-			width: 120;
-		column: 'Description' text: [ :aLexiconDocument |
-			aLexiconDocument description ifNil: [''] ]
+		object: [ self lexiconDocuments ];
+		view: #gtItemsFor:
+]
+
+{ #category : #accessing }
+GtApLexicons >> gtViewNamespacesFor: aView [
+	<gtView>
+	^ aView tree
+		title: 'Namespaces';
+		items: [ GtApLexiconNamespacesBuilder new 
+			buildNamespacesForLexicon: self ];
+		children: [ :aNamespace | aNamespace childNamespaces ];
+		itemText: [ :aNamespace | aNamespace localName ]
 ]
 
 { #category : #initiailize }
@@ -183,7 +184,7 @@ GtApLexicons >> initialize [
 
 { #category : #accessing }
 GtApLexicons >> lexiconDocuments [
-	^ documentsById values
+	^ GtApLexiconDocumentsGroup withAll: documentsById values
 ]
 
 { #category : #accessing }
