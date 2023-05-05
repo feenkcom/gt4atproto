@@ -168,14 +168,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-04T16:49:05.338195+02:00"
+						"dateAndTimeString" : "2023-05-04T16:49:18.973248+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "7fJjEiy3DQCLchBrC9GBBg=="
 				},
-				"code" : "lexicons removeObjects"
+				"code" : "lexicons buildObjects"
 			}
 		]
 	},

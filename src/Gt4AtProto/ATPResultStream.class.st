@@ -32,16 +32,15 @@ ATPResultStream >> pollNext: anAsynchronousContext [
 	 - Poll::Ready(None) means that the stream has terminated, and poll_next should not be invoked again."
 
 	<return: #AsyncPoll>
-	^ resultsList
+	resultsList
 		ifEmpty: [ | res |
 			cursor
-				ifNil: [ AsyncPollReady value: AsyncOptionalValue none ]
+				ifNil: [ ^ AsyncPollReady value: AsyncOptionalValue none ]
 				ifNotNil: [ res := (client clientFor: method parameters: {'cursor' -> cursor} asDictionary)
 							query.
-					resultsList := res at: key.
-					cursor := res at: 'cursor' ] ]
-		ifNotEmpty: [ AsyncPollReady
-				value: (AsyncOptionalValue some: resultsList removeFirst) ]
+					resultsList := (res at: key) asOrderedCollection.
+					cursor := res at: 'cursor' ] ].
+	^ AsyncPollReady value: (AsyncOptionalValue some: resultsList removeFirst)
 ]
 
 { #category : #accessing }
