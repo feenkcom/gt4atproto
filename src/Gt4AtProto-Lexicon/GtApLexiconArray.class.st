@@ -26,6 +26,25 @@ GtApLexiconArray >> description: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconArray >> generateDescriptorFor: aString isRequired: aBoolean [
+	| source |
+	source := aString
+			, 'Description
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {' , (self items) asClassName
+					, '};
+		label: ''' , aString capitalized , ''';
+		accessor: #atProto', aString asCamelCase.
+
+	aBoolean
+		ifTrue: [ source := source
+					, ';
+	beRequired' ].
+	^ source
+]
+
+{ #category : #accessing }
 GtApLexiconArray >> items [
 	^ items
 ]

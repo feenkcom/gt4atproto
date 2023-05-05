@@ -19,6 +19,24 @@ GtApLexiconData >> accept: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconData >> generateDescriptorFor: aString isRequired: aBoolean [
+	| source |
+	source := aString
+			, 'Description
+	<magritteDescription>
+	^ MAFileDescription new
+		label: ''' , aString capitalized
+			, ''';
+		accessor: #atProto' , aString asCamelCase.
+
+	aBoolean
+		ifTrue: [ source := source
+					, ';
+	beRequired' ].
+	^ source
+]
+
+{ #category : #accessing }
 GtApLexiconData >> maxSize [
 	^ maxSize
 ]

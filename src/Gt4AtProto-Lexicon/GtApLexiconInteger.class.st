@@ -1,10 +1,15 @@
 Class {
 	#name : #GtApLexiconInteger,
-	#superclass : #GtApLexiconPrimitive,
+	#superclass : #GtApLexiconNumericalPrimitive,
 	#category : #'Gt4AtProto-Lexicon'
 }
 
 { #category : #accessing }
 GtApLexiconInteger class >> typeName [
 	^ #integer
+]
+
+{ #category : #accessing }
+GtApLexiconInteger >> asClassName [
+	^ 'Number'
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconNumber,
-	#superclass : #GtApLexiconPrimitive,
+	#superclass : #GtApLexiconNumericalPrimitive,
 	#category : #'Gt4AtProto-Lexicon'
 }
 

@@ -20,6 +20,11 @@ GtApLexiconObject class >> typeName [
 	^ #object
 ]
 
+{ #category : #accessing }
+GtApLexiconObject >> asObject [
+	^ self
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconObject >> gtViewPropertiesFor: aView [
 	<gtView>

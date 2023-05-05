@@ -14,8 +14,35 @@ GtApLexiconUnion class >> typeName [
 ]
 
 { #category : #accessing }
+GtApLexiconUnion >> asClassName [
+	^ '. '
+		join: (self refs
+				collect: [ :aClassName | (aClassName replaceAllRegex: '[.#]' with: ' ') asCamelCase ])
+]
+
+{ #category : #accessing }
 GtApLexiconUnion >> description [
 	^ nil
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> generateDescriptorFor: aString isRequired: aBoolean [
+	| source |
+	source := aString
+			, 'Description
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		options: {' , ('. ' join: (self refs collect: [ :aRef | '''' , aRef , '''' ]))
+			, '};
+		label: ''' , aString capitalized
+			, ''';
+		accessor: #atProto' , aString asCamelCase.
+
+	aBoolean
+		ifTrue: [ source := source
+					, ';
+		beRequired' ].
+	^ source
 ]
 
 { #category : #testing }

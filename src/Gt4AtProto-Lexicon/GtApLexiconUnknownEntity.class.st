@@ -1,6 +1,6 @@
 Class {
 	#name : #GtApLexiconUnknownEntity,
-	#superclass : #GtApLexiconEntity,
+	#superclass : #GtApLexiconString,
 	#category : #'Gt4AtProto-Lexicon'
 }
 

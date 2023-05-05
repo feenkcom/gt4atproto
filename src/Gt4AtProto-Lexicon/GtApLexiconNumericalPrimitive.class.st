@@ -1,16 +1,11 @@
 Class {
-	#name : #GtApLexiconBoolean,
+	#name : #GtApLexiconNumericalPrimitive,
 	#superclass : #GtApLexiconPrimitive,
 	#category : #'Gt4AtProto-Lexicon'
 }
 
 { #category : #accessing }
-GtApLexiconBoolean class >> typeName [
-	^ #boolean
-]
-
-{ #category : #accessing }
-GtApLexiconBoolean >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconNumericalPrimitive >> generateDescriptorFor: aString isRequired: aBoolean [
 	| source |
 	source := aString
 			, 'Description

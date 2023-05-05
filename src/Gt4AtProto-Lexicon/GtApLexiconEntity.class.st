@@ -7,6 +7,20 @@ Class {
 	#category : #'Gt4AtProto-Lexicon'
 }
 
+{ #category : #accessing }
+GtApLexiconEntity >> generateGetterAs: aString [
+	^ aString
+		, '
+	^ ', aString
+]
+
+{ #category : #accessing }
+GtApLexiconEntity >> generateSetterAs: aString [
+	^ aString
+		, ': anObject
+	', aString, ' := anObject'
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconEntity >> gtJsonObjectFor: aView context: aContext [
 	<gtView>
