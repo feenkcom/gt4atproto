@@ -30,6 +30,11 @@ XRPCClient >> methodId: aString [
 ]
 
 { #category : #accessing }
+XRPCClient >> parameters: aDictionary [
+	self client queryAddAll: aDictionary
+]
+
+{ #category : #accessing }
 XRPCClient >> procedure [
 	^ STONJSON fromString: self client post
 ]
