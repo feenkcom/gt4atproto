@@ -9,7 +9,7 @@ Class {
 
 { #category : #mappings }
 GtApLexiconXrpcProcedure class >> customAttributeMappings [
-	^ {
+	^ super customAttributeMappings, {
 		#input -> [ :anImporter :aSchemaData |
 			anImporter 
 				createSchemaOfType: GtApLexiconXrpcBody fromData: aSchemaData ] }

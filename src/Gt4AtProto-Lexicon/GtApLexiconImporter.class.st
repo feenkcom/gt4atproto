@@ -16,15 +16,17 @@ GtApLexiconImporter >> cacheMappings [
 { #category : #accessing }
 GtApLexiconImporter >> createSchemaOfType: aSchemaType fromData: aSchemaData [
 	| lexiconValue transformedValues |
-	lexiconValue := aSchemaType new.
-	lexiconValue rawData: aSchemaData.
+	
 	transformedValues := aSchemaType needsCustomAttributeMappings
 		ifTrue: [
 			self 
-				transformUsingAttributeMappingsSchema: lexiconValue 
+				transformUsingAttributeMappingsSchemaType: aSchemaType 
 				fromData: aSchemaData ]
 		ifFalse: [ (aSchemaData collect: [ :aValue |
 			self transformIfNeededLexiconSchemaValue: aValue ])].
+
+	lexiconValue := aSchemaType new.
+	lexiconValue rawData: aSchemaData.
 	self 
 		initializeLexicon: lexiconValue 
 		fromSchemaData: transformedValues.
@@ -67,10 +69,10 @@ GtApLexiconImporter >> modelClasses [
 ]
 
 { #category : #accessing }
-GtApLexiconImporter >> transformUsingAttributeMappingsSchema: aSchemaDefinition fromData: aSchemaData [ 
+GtApLexiconImporter >> transformUsingAttributeMappingsSchemaType: aSchemaType fromData: aSchemaData [ 
 	| customMappings |
 	
-	customMappings := aSchemaDefinition class customAttributeMappings asOrderedDictionary.
+	customMappings := aSchemaType customAttributeMappings asOrderedDictionary.
 	^ (aSchemaData associations collect: [ :assoc |
 		assoc key -> (customMappings 
 			at: assoc key
