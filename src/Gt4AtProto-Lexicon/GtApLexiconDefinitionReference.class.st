@@ -1,9 +1,8 @@
 Class {
 	#name : #GtApLexiconDefinitionReference,
-	#superclass : #Object,
+	#superclass : #GtApLexiconDefinition,
 	#instVars : [
 		'referencedDefinition',
-		'rawData',
 		'ref'
 	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
@@ -27,6 +26,11 @@ GtApLexiconDefinitionReference >> asClassName [
 { #category : #accessing }
 GtApLexiconDefinitionReference >> description [
 	^ nil
+]
+
+{ #category : #printing }
+GtApLexiconDefinitionReference >> descriptionOn: aStream [
+	aStream << self referenceString
 ]
 
 { #category : #accessing }
@@ -62,37 +66,9 @@ GtApLexiconDefinitionReference >> generateSetterAs: aString [
 	', aString, ' := anObject'
 ]
 
-{ #category : #testing }
-GtApLexiconDefinitionReference >> isObjectDefinition [
-	^ false
-]
-
 { #category : #accessing }
 GtApLexiconDefinitionReference >> isReference [
 	^ true
-]
-
-{ #category : #testing }
-GtApLexiconDefinitionReference >> isUnionDefinition [
-	^ false
-]
-
-{ #category : #printing }
-GtApLexiconDefinitionReference >> printOn: aStream [
-	super printOn: aStream.
-	
-	aStream parenthesize: [
-		aStream << self referenceString]
-]
-
-{ #category : #accessing }
-GtApLexiconDefinitionReference >> rawData [
-	^ rawData
-]
-
-{ #category : #accessing }
-GtApLexiconDefinitionReference >> rawData: anObject [
-	rawData := anObject
 ]
 
 { #category : #accessing }
@@ -142,20 +118,8 @@ GtApLexiconDefinitionReference >> resolvedReferencedDefinitions [
 ]
 
 { #category : #accessing }
-GtApLexiconDefinitionReference >> type [
-	^ self class typeName
-]
-
-{ #category : #accessing }
 GtApLexiconDefinitionReference >> typeDescription [
 	^ self referencedDefinition
 		ifNil: [ 'ref(', self referenceString, ')' ]
 		ifNotNil: [ :aDefinition | aDefinition typeDescription ]
-]
-
-{ #category : #traversing }
-GtApLexiconDefinitionReference >> withAllReferencedDefinitionsDo: aBlock [
-	aBlock cull: self.
-	self referencedDefinition ifNotNil: [ :aDefinition |
-		aDefinition withAllReferencedDefinitionsDo: aBlock ]
 ]

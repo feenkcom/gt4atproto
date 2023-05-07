@@ -103,7 +103,10 @@ GtApLexiconObject >> paintDefinitionReferences: aCollectionOfDefinitions on: aVi
 				padding: (BlInsets all: 5);
 				addChild: (BrLabel new
 						fitContent;
-						aptitude: BrGlamorousLabelAptitude;
+						aptitude: (BrGlamorousLabelAptitude new
+							highlight: (aDefinition == self
+								ifTrue: [Color red muchLighter]
+								ifFalse:[Color transparent]));
 						text: (aDefinition id ifNil: [ aDefinition type asString ])) ];
 		with: aCollectionOfDefinitions.
 

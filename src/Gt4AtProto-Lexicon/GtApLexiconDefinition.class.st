@@ -128,9 +128,9 @@ GtApLexiconDefinition >> typeDescription [
 
 { #category : #traversing }
 GtApLexiconDefinition >> withAllReferencedDefinitionsDo: aBlock [
-	aBlock cull: self.
-	self directlyReferencedDefinitionsDo: [ :aDefinition |
-		aDefinition withAllReferencedDefinitionsDo: aBlock ].
+	^ self 
+		withDeep: [ :aDefinition | aDefinition referencedDefinitions ] 
+		do: aBlock
 ]
 
 { #category : #traversing }
