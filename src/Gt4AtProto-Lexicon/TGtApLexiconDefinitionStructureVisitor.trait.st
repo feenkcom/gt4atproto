@@ -43,6 +43,10 @@ TGtApLexiconDefinitionStructureVisitor >> visitLexiconDefinitionReference: aLexi
 ]
 
 { #category : #visiting }
+TGtApLexiconDefinitionStructureVisitor >> visitLexiconGenericDefinition: aLexiconBlob [
+]
+
+{ #category : #visiting }
 TGtApLexiconDefinitionStructureVisitor >> visitLexiconImage: aLexiconImage [
 ]
 

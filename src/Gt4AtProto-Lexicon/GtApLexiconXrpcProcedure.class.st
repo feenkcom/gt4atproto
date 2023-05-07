@@ -7,6 +7,14 @@ Class {
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
+{ #category : #mappings }
+GtApLexiconXrpcProcedure class >> customAttributeMappings [
+	^ {
+		#input -> [ :anImporter :aSchemaData |
+			anImporter 
+				createSchemaOfType: GtApLexiconXrpcBody fromData: aSchemaData ] }
+]
+
 { #category : #accessing }
 GtApLexiconXrpcProcedure class >> typeName [
 	^ #procedure

@@ -9,6 +9,11 @@ Class {
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
+{ #category : #visiting }
+GtApLexiconGenericDefinition >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconGenericDefinition:  self
+]
+
 { #category : #accessing }
 GtApLexiconGenericDefinition >> asClassName [
 	self type = 'union'

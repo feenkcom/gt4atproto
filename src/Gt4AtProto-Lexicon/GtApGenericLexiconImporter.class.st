@@ -40,7 +40,7 @@ GtApGenericLexiconImporter >> importLexiconSchemaFrom: aSchemaData [
 		rawData: aSchemaData;
 		type: aSchemaData type;
 		attributes: (aSchemaData collect: [ :aValue |
-			self transforIfNeededLexiconSchemaValue: aValue ])
+			self transformIfNeededLexiconSchemaValue: aValue ])
 ]
 
 { #category : #importing }
@@ -61,12 +61,12 @@ GtApGenericLexiconImporter >> importLexiconsFromDirectory: aDirectory [
 ]
 
 { #category : #importing }
-GtApGenericLexiconImporter >> transforIfNeededLexiconSchemaValue: aValue [
+GtApGenericLexiconImporter >> transformIfNeededLexiconSchemaValue: aValue [
 	(aValue isKindOf: GtApLexiconNeoJsonObject) ifFalse: [ ^ aValue ].
 	
 	^ ((aValue includesKey: #type) and: [(aValue at: #type) isString ])
 		ifTrue: [ self importLexiconSchemaFrom: aValue ]
 		ifFalse: [
 			aValue collect: [ :each | 
-				self transforIfNeededLexiconSchemaValue: each ] ] 
+				self transformIfNeededLexiconSchemaValue: each ] ] 
 ]

@@ -7,6 +7,11 @@ Class {
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
+{ #category : #testing }
+GtApLexiconDefinition class >> needsCustomAttributeMappings [
+	^ false
+]
+
 { #category : #visiting }
 GtApLexiconDefinition >> acceptVisitor: aLexiconVisitor [
 	self subclassResponsibility

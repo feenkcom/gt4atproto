@@ -127,10 +127,7 @@ GtApLexiconObject >> paintDefinitionReferences: aCollectionOfDefinitions on: aVi
 							border: (BlBorder paint: lineColor width: 1)) ] ];
 		connectToAll: [ :aDefinition | aDefinition resolvedReferencedDefinitions ].
 
-	aView layout force
-		strength: 0.15;
-		charge: -350;
-		length: 100.
+	aView layout horizontalTree.
 
 	aView
 ]

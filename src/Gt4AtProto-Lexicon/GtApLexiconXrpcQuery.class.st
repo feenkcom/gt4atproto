@@ -23,3 +23,9 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 		, '
 	^ self queryOn: ''' , aName , ''''
 ]
+
+{ #category : #initialization }
+GtApLexiconXrpcQuery >> initializeFromRawData: aSchemaData usingImporter: anImporter [
+	self rawData:  aSchemaData.
+	self halt.
+]

@@ -9,6 +9,19 @@ Class {
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
+{ #category : #mappings }
+GtApLexiconXrpcRequest class >> customAttributeMappings [
+	^ {
+		#output -> [ :anImporter :aSchemaData |
+			anImporter 
+				createSchemaOfType: GtApLexiconXrpcBody fromData: aSchemaData ] }
+]
+
+{ #category : #testing }
+GtApLexiconXrpcRequest class >> needsCustomAttributeMappings [
+	^ true
+]
+
 { #category : #accessing }
 GtApLexiconXrpcRequest >> errors [
 	^ errors

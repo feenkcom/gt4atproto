@@ -14,15 +14,28 @@ GtApLexiconImporter >> cacheMappings [
 ]
 
 { #category : #accessing }
-GtApLexiconImporter >> importLexiconSchemaFrom: aSchemaData [
-	| lexiconValue |
-	lexiconValue := (self mappingForSchemaDefinition: aSchemaData) new.
+GtApLexiconImporter >> createSchemaOfType: aSchemaType fromData: aSchemaData [
+	| lexiconValue transformedValues |
+	lexiconValue := aSchemaType new.
 	lexiconValue rawData: aSchemaData.
+	transformedValues := aSchemaType needsCustomAttributeMappings
+		ifTrue: [
+			self 
+				transformUsingAttributeMappingsSchema: lexiconValue 
+				fromData: aSchemaData ]
+		ifFalse: [ (aSchemaData collect: [ :aValue |
+			self transformIfNeededLexiconSchemaValue: aValue ])].
 	self 
 		initializeLexicon: lexiconValue 
-		fromSchemaData: (aSchemaData collect: [ :aValue |
-			self transforIfNeededLexiconSchemaValue: aValue ]).
+		fromSchemaData: transformedValues.
 	^ lexiconValue
+]
+
+{ #category : #accessing }
+GtApLexiconImporter >> importLexiconSchemaFrom: aSchemaData [
+	^ self 
+		createSchemaOfType: (self mappingForSchemaDefinition: aSchemaData)  
+		fromData: aSchemaData
 ]
 
 { #category : #accessing }
@@ -51,4 +64,18 @@ GtApLexiconImporter >> mappings [
 GtApLexiconImporter >> modelClasses [
 	^ GtApLexiconDefinition allSubclasses , {GtApLexiconDefinitionReference}
 		select: [ :aClass | aClass classSide includesSelector: #typeName ]
+]
+
+{ #category : #accessing }
+GtApLexiconImporter >> transformUsingAttributeMappingsSchema: aSchemaDefinition fromData: aSchemaData [ 
+	| customMappings |
+	
+	customMappings := aSchemaDefinition class customAttributeMappings asOrderedDictionary.
+	^ (aSchemaData associations collect: [ :assoc |
+		assoc key -> (customMappings 
+			at: assoc key
+			ifPresent: [ :aMappingBlock |
+				aMappingBlock value: self value: assoc value ]
+			ifAbsent: [
+				self transformIfNeededLexiconSchemaValue: assoc value ]) ]) asOrderedDictionary
 ]
