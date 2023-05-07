@@ -7,6 +7,17 @@ Class {
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
+{ #category : #visiting }
+GtApLexiconDefinition >> acceptVisitor: aLexiconVisitor [
+	self subclassResponsibility
+]
+
+{ #category : #traversing }
+GtApLexiconDefinition >> directlyReferencedDefinitionsDo: aBlock [
+	self referencedDefinitions do: [ :aDefinition |
+		aBlock cull: aDefinition ]
+]
+
 { #category : #accessing }
 GtApLexiconDefinition >> generateGetterAs: aString [
 	^ aString
@@ -44,11 +55,26 @@ GtApLexiconDefinition >> gtJsonStringFor: aView [
 ]
 
 { #category : #testing }
+GtApLexiconDefinition >> isArrayDefinition [
+	^ false
+]
+
+{ #category : #testing }
+GtApLexiconDefinition >> isObjectDefinition [
+	^ false
+]
+
+{ #category : #testing }
 GtApLexiconDefinition >> isReference [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : #testing }
+GtApLexiconDefinition >> isUnionDefinition [
+	^ false
+]
+
+{ #category : #testing }
 GtApLexiconDefinition >> isXRPCCall [
 	^ false
 ]
@@ -69,6 +95,16 @@ GtApLexiconDefinition >> referencedDefinitions [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinition >> resolvedReferencedDefinitions [
+	^ self referencedDefinitions flatCollect: [ :each |
+		(each isReference or: [each isUnionDefinition] )
+			ifTrue: [ each resolvedDefinitions ]
+			ifFalse: [ each isArrayDefinition 
+				ifTrue: [ each resolvedReferencedDefinitions  ]
+				ifFalse: [ {each}  ] ] ]
+]
+
+{ #category : #accessing }
 GtApLexiconDefinition >> type [
 	^ self class typeName
 ]
@@ -76,4 +112,17 @@ GtApLexiconDefinition >> type [
 { #category : #accessing }
 GtApLexiconDefinition >> typeDescription [
 	^ self type
+]
+
+{ #category : #traversing }
+GtApLexiconDefinition >> withAllReferencedDefinitionsDo: aBlock [
+	aBlock cull: self.
+	self directlyReferencedDefinitionsDo: [ :aDefinition |
+		aDefinition withAllReferencedDefinitionsDo: aBlock ].
+]
+
+{ #category : #traversing }
+GtApLexiconDefinition >> withDirectlyReferencedDefinitionsDo: aBlock [
+	aBlock cull: self.
+	self directlyReferencedDefinitionsDo: aBlock.
 ]

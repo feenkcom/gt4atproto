@@ -27,3 +27,12 @@ GtApLexiconCustomDefinition >> id [
 GtApLexiconCustomDefinition >> id: anObject [
 	id := anObject
 ]
+
+{ #category : #printing }
+GtApLexiconCustomDefinition >> printOn: aStream [
+	super printOn: aStream.
+	
+	self id ifNotNil: [
+		aStream parenthesize: [
+			aStream << self id ]] 
+]

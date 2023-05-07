@@ -1,5 +1,5 @@
 Class {
-	#name : #GTApLexiconReferencesRevolver,
+	#name : #GtApLexiconReferencesRevolver,
 	#superclass : #Object,
 	#instVars : [
 		'lexicon'
@@ -8,12 +8,17 @@ Class {
 }
 
 { #category : #accessing }
-GTApLexiconReferencesRevolver >> resolveGlobalReferenceId: anId [ 
+GtApLexiconReferencesRevolver >> collectReferencesInDefinition: aDefiniton [ 
+	^ GtApLexiconReferencesCollectorVisitor collectForDefinition:  aDefiniton
+]
+
+{ #category : #accessing }
+GtApLexiconReferencesRevolver >> resolveGlobalReferenceId: anId [ 
 	^ lexicon definitionWithId: anId
 ]
 
 { #category : #accessing }
-GTApLexiconReferencesRevolver >> resolveLexicon: aLexicon [
+GtApLexiconReferencesRevolver >> resolveLexicon: aLexicon [
 	lexicon := aLexicon.
 	
 	aLexicon lexiconDocuments do: [ :aDocument |
@@ -21,12 +26,12 @@ GTApLexiconReferencesRevolver >> resolveLexicon: aLexicon [
 ]
 
 { #category : #accessing }
-GTApLexiconReferencesRevolver >> resolveLocalReferenceId: anId fromDocument: aDocument [ 
+GtApLexiconReferencesRevolver >> resolveLocalReferenceId: anId fromDocument: aDocument [ 
 	^ aDocument definitionWithName: anId
 ]
 
 { #category : #accessing }
-GTApLexiconReferencesRevolver >> resolveReferenceId: anId fromDocument: aDocument [ 
+GtApLexiconReferencesRevolver >> resolveReferenceId: anId fromDocument: aDocument [ 
 	^ (anId beginsWith: '#')
 		ifTrue: [
 			self 
@@ -37,11 +42,8 @@ GTApLexiconReferencesRevolver >> resolveReferenceId: anId fromDocument: aDocumen
 ]
 
 { #category : #accessing }
-GTApLexiconReferencesRevolver >> resolveReferencesInDefiniton: aDefiniton fromDocument: aDocument [ 
-
-	(aDefiniton referencedDefinitions 
-		select: [ :aReferencedDefinition |
-			aReferencedDefinition isReference ])
+GtApLexiconReferencesRevolver >> resolveReferencesInDefiniton: aDefiniton fromDocument: aDocument [ 
+	(self collectReferencesInDefinition: aDefiniton)
 		do: [ :aReferenceDefiniton |
 			aReferenceDefiniton 
 				resolveContainedReferenceUsing: [ :aReferenceId |
@@ -51,8 +53,7 @@ GTApLexiconReferencesRevolver >> resolveReferencesInDefiniton: aDefiniton fromDo
 ]
 
 { #category : #accessing }
-GTApLexiconReferencesRevolver >> resolveReferencesInDocument: aDocument [ 
-
+GtApLexiconReferencesRevolver >> resolveReferencesInDocument: aDocument [ 
 	aDocument definitions do: [ :aDefiniton |
 		self 
 			resolveReferencesInDefiniton: aDefiniton 

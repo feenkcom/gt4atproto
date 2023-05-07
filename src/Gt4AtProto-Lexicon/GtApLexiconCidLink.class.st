@@ -9,6 +9,11 @@ GtApLexiconCidLink class >> typeName [
 	^ 'cid-link'
 ]
 
+{ #category : #visiting }
+GtApLexiconCidLink >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconCidLink: self
+]
+
 { #category : #accessing }
 GtApLexiconCidLink >> asClassName [
 	^ 'String'

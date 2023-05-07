@@ -13,6 +13,11 @@ GtApLexiconUnion class >> typeName [
 	^ #union
 ]
 
+{ #category : #visiting }
+GtApLexiconUnion >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconUnion:  self
+]
+
 { #category : #accessing }
 GtApLexiconUnion >> asClassName [
 	^ '. '
@@ -45,9 +50,29 @@ GtApLexiconUnion >> generateDescriptorFor: aString isRequired: aBoolean [
 	^ source
 ]
 
-{ #category : #testing }
-GtApLexiconUnion >> isReference [
+{ #category : #accessing }
+GtApLexiconUnion >> gtViewResolvedDefinitionsFor: aView [ 
+	<gtView>
+	resolvedDefinitions  ifNil: [ ^ aView empty ].
+	
+	^ aView columnedList 
+		title: 'References';
+		priority: 10;
+		items: [ resolvedDefinitions ];
+		column: 'Id' text: [ :aDefinition |
+			aDefinition id ];
+		column: 'Type' text: [ :aDefinition |
+			aDefinition type ]
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> isUnionDefinition [
 	^ true
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> referencedDefinitions [
+	^ self resolvedDefinitions ifNil: [ #() ]
 ]
 
 { #category : #accessing }
@@ -68,7 +93,12 @@ GtApLexiconUnion >> resolveContainedReferenceUsing: aBlock [
 
 { #category : #accessing }
 GtApLexiconUnion >> resolvedDefinitions [
-	^ resolvedDefinitions
+	^ resolvedDefinitions 
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> resolvedReferencedDefinitions [
+	^ self resolvedDefinitions
 ]
 
 { #category : #accessing }

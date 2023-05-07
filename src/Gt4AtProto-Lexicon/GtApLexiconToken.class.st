@@ -8,3 +8,8 @@ Class {
 GtApLexiconToken class >> typeName [
 	^ #token
 ]
+
+{ #category : #accessing }
+GtApLexiconToken >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconToken:  self
+]

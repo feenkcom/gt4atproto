@@ -12,6 +12,11 @@ GtApLexiconBytes class >> typeName [
 	^ #bytes
 ]
 
+{ #category : #visiting }
+GtApLexiconBytes >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconBytes: self
+]
+
 { #category : #accessing }
 GtApLexiconBytes >> generateDescriptorFor: aString isRequired: aBoolean [
 	| source |

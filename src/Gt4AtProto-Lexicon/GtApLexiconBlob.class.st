@@ -8,3 +8,8 @@ Class {
 GtApLexiconBlob class >> typeName [
 	^ #blob
 ]
+
+{ #category : #visiting }
+GtApLexiconBlob >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconBlob: self
+]

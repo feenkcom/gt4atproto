@@ -9,6 +9,11 @@ GtApLexiconInteger class >> typeName [
 	^ #integer
 ]
 
+{ #category : #visiting }
+GtApLexiconInteger >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconInteger:  self
+]
+
 { #category : #accessing }
 GtApLexiconInteger >> asClassName [
 	^ 'Number'

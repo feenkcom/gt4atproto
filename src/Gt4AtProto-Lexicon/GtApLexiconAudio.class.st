@@ -12,6 +12,11 @@ GtApLexiconAudio class >> typeName [
 	^ #audio
 ]
 
+{ #category : #visiting }
+GtApLexiconAudio >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconAudio: self
+]
+
 { #category : #accessing }
 GtApLexiconAudio >> maxLength [
 	^ maxLength

@@ -9,6 +9,11 @@ GtApLexiconString class >> typeName [
 	^ #string
 ]
 
+{ #category : #visiting }
+GtApLexiconString >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconString:  self
+]
+
 { #category : #accessing }
 GtApLexiconString >> asClassName [
 	^ 'String'

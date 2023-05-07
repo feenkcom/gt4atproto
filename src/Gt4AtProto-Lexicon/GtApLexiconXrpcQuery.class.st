@@ -9,6 +9,11 @@ GtApLexiconXrpcQuery class >> typeName [
 	^ #query
 ]
 
+{ #category : #visiting }
+GtApLexiconXrpcQuery >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconXrpcQuery: self
+]
+
 { #category : #accessing }
 GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	| methodName |

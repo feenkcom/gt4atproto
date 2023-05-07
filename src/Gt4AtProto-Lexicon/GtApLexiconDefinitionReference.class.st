@@ -14,6 +14,11 @@ GtApLexiconDefinitionReference class >> typeName [
 	^ #ref
 ]
 
+{ #category : #visiting }
+GtApLexiconDefinitionReference >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconDefinitionReference:  self
+]
+
 { #category : #accessing }
 GtApLexiconDefinitionReference >> asClassName [
 	^ (self referenceString replaceAllRegex: '[.#]' with: ' ') asCamelCase
@@ -57,9 +62,19 @@ GtApLexiconDefinitionReference >> generateSetterAs: aString [
 	', aString, ' := anObject'
 ]
 
+{ #category : #testing }
+GtApLexiconDefinitionReference >> isObjectDefinition [
+	^ false
+]
+
 { #category : #accessing }
 GtApLexiconDefinitionReference >> isReference [
 	^ true
+]
+
+{ #category : #testing }
+GtApLexiconDefinitionReference >> isUnionDefinition [
+	^ false
 ]
 
 { #category : #printing }
@@ -100,9 +115,30 @@ GtApLexiconDefinitionReference >> referencedDefinition: anObject [
 	referencedDefinition := anObject
 ]
 
+{ #category : #traversing }
+GtApLexiconDefinitionReference >> referencedDefinitions [
+	^ self referencedDefinition 
+		ifNil: [ #() ] 
+		ifNotNil: [ :aDefinition |
+			{aDefinition} ]
+]
+
 { #category : #'reference resolving' }
 GtApLexiconDefinitionReference >> resolveContainedReferenceUsing: aBlock [
 	self referencedDefinition: (aBlock value: self referenceString)
+]
+
+{ #category : #traversing }
+GtApLexiconDefinitionReference >> resolvedDefinitions [
+	^ self referencedDefinition 
+		ifNil: [ #() ] 
+		ifNotNil: [ :aDefinition |
+			{aDefinition} ]
+]
+
+{ #category : #traversing }
+GtApLexiconDefinitionReference >> resolvedReferencedDefinitions [
+	^ self resolvedDefinitions
 ]
 
 { #category : #accessing }
@@ -115,4 +151,11 @@ GtApLexiconDefinitionReference >> typeDescription [
 	^ self referencedDefinition
 		ifNil: [ 'ref(', self referenceString, ')' ]
 		ifNotNil: [ :aDefinition | aDefinition typeDescription ]
+]
+
+{ #category : #traversing }
+GtApLexiconDefinitionReference >> withAllReferencedDefinitionsDo: aBlock [
+	aBlock cull: self.
+	self referencedDefinition ifNotNil: [ :aDefinition |
+		aDefinition withAllReferencedDefinitionsDo: aBlock ]
 ]

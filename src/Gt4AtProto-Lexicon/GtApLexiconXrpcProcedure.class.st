@@ -12,6 +12,11 @@ GtApLexiconXrpcProcedure class >> typeName [
 	^ #procedure
 ]
 
+{ #category : #visiting }
+GtApLexiconXrpcProcedure >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconXrpcProcedure: self
+]
+
 { #category : #accessing }
 GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 	| methodName |

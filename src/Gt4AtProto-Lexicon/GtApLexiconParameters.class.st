@@ -13,6 +13,11 @@ GtApLexiconParameters class >> typeName [
 	^ #params
 ]
 
+{ #category : #visiting }
+GtApLexiconParameters >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconParameters:  self
+]
+
 { #category : #accessing }
 GtApLexiconParameters >> gtViewPropertiesFor: aView [
 	<gtView>

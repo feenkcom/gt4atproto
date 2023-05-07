@@ -8,3 +8,8 @@ Class {
 GtApLexiconNumber class >> typeName [
 	^ #number
 ]
+
+{ #category : #visiting }
+GtApLexiconNumber >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconNumber:  self
+]

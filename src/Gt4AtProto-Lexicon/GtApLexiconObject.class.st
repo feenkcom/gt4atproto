@@ -27,9 +27,27 @@ GtApLexiconObject class >> typeName [
 	^ #object
 ]
 
+{ #category : #visiting }
+GtApLexiconObject >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconObject:  self
+]
+
 { #category : #accessing }
 GtApLexiconObject >> asObject [
 	^ self
+]
+
+{ #category : #'gt - extensions' }
+GtApLexiconObject >> gtViewDefinitionReferencesFor: aView [ 
+	<gtView>
+	
+	^ aView mondrian
+		title: 'Definition References';
+		priority: 15;
+		painting: [ :view | 
+			self 
+				paintDefinitionReferences: self withAllReferencedObjects 
+				on: view ]
 ]
 
 { #category : #'gt - extensions' }
@@ -58,6 +76,11 @@ GtApLexiconObject >> gtViewPropertiesFor: aView [
 				ifFalse: [ assoc value ] ]
 ]
 
+{ #category : #testing }
+GtApLexiconObject >> isObjectDefinition [
+	^ true
+]
+
 { #category : #accessing }
 GtApLexiconObject >> isPropertyRequired: aPropertyName [
 	^ required isNotNil and: [ required includes: aPropertyName ]
@@ -71,13 +94,42 @@ GtApLexiconObject >> magritteDescription [
 	^ basicDescription
 ]
 
-{ #category : #printing }
-GtApLexiconObject >> printOn: aStream [
-	super printOn: aStream.
-	
-	self id ifNotNil: [
-		aStream parenthesize: [
-			aStream << self id ]] 
+{ #category : #'gt - extensions' }
+GtApLexiconObject >> paintDefinitionReferences: aCollectionOfDefinitions on: aView [
+	aView nodes
+		stencil: [ :aDefinition | 
+			BrFrame new
+				fitContent;
+				padding: (BlInsets all: 5);
+				addChild: (BrLabel new
+						fitContent;
+						aptitude: BrGlamorousLabelAptitude;
+						text: (aDefinition id ifNil: [ aDefinition type asString ])) ];
+		with: aCollectionOfDefinitions.
+
+	aView edges
+		stencil: [ :aDefinition :fromElement :toElement | 
+			| lineColor |
+			lineColor := Color gray alpha: 0.2.
+			fromElement = toElement
+				ifFalse: [ BlLineElement new
+						border: (BlBorder paint: lineColor width: 1);
+						toHead: (BlArrowheadSimpleArrow new 
+							border: (BlBorder paint: lineColor width: 1)) ]
+				ifTrue: [ BlParabollaArcElement new
+						zIndex: 0;
+						curvatureFraction: 0.5;
+						border: (BlBorder paint: lineColor width: 1);
+						toHead: (BlArrowheadSimpleArrow new 
+							border: (BlBorder paint: lineColor width: 1)) ] ];
+		connectToAll: [ :aDefinition | aDefinition resolvedReferencedDefinitions ].
+
+	aView layout force
+		strength: 0.15;
+		charge: -350;
+		length: 100.
+
+	aView
 ]
 
 { #category : #accessing }
@@ -110,4 +162,16 @@ GtApLexiconObject >> typeDescription [
 	^ self id 
 		ifNil: [ super typeDescription]
 		ifNotNil: [ super typeDescription, '(', self id, ')' ]
+]
+
+{ #category : #traversing }
+GtApLexiconObject >> withAllReferencedObjects [
+	| referencedObjects |
+	referencedObjects := OrderedCollection new.
+	self withAllReferencedDefinitionsDo: [ :aDefiniton |
+		aDefiniton isObjectDefinition ifTrue: [
+			(referencedObjects includes: aDefiniton)
+				ifFalse: [ 
+					referencedObjects add: aDefiniton ] ] ].
+	^ referencedObjects 
 ]

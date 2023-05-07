@@ -14,6 +14,11 @@ GtApLexiconImage class >> typeName [
 ]
 
 { #category : #accessing }
+GtApLexiconImage >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconImage: self
+]
+
+{ #category : #accessing }
 GtApLexiconImage >> maxHeight [
 	^ maxHeight
 ]

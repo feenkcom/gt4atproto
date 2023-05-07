@@ -15,6 +15,11 @@ GtApLexiconArray class >> typeName [
 	^ #array
 ]
 
+{ #category : #visiting }
+GtApLexiconArray >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconArray:  self
+]
+
 { #category : #accessing }
 GtApLexiconArray >> description [
 	^ description
@@ -45,6 +50,11 @@ GtApLexiconArray >> generateDescriptorFor: aString isRequired: aBoolean [
 ]
 
 { #category : #accessing }
+GtApLexiconArray >> isArrayDefinition [
+	^ true
+]
+
+{ #category : #accessing }
 GtApLexiconArray >> items [
 	^ items
 ]
@@ -72,6 +82,19 @@ GtApLexiconArray >> minLength [
 { #category : #accessing }
 GtApLexiconArray >> minLength: anObject [
 	minLength := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconArray >> referencedDefinitions [
+	^ self items isCollection 
+		ifTrue: [ self items] 
+		ifFalse: [ {self items} ]
+]
+
+{ #category : #accessing }
+GtApLexiconArray >> resolvedReferencedDefinitions [
+	^ self referencedDefinitions flatCollect: [ :aDefinition |
+		aDefinition resolvedReferencedDefinitions ]
 ]
 
 { #category : #accessing }

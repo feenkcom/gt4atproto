@@ -9,6 +9,11 @@ GtApLexiconBoolean class >> typeName [
 	^ #boolean
 ]
 
+{ #category : #visiting }
+GtApLexiconBoolean >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconBoolean:  self
+]
+
 { #category : #accessing }
 GtApLexiconBoolean >> generateDescriptorFor: aString isRequired: aBoolean [
 	| source |

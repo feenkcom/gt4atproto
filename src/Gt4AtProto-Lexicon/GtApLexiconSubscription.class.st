@@ -15,6 +15,11 @@ GtApLexiconSubscription class >> typeName [
 ]
 
 { #category : #accessing }
+GtApLexiconSubscription >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconSubscription:  self
+]
+
+{ #category : #accessing }
 GtApLexiconSubscription >> errors [
 	^ errors
 ]

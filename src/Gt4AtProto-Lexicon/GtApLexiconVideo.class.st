@@ -14,6 +14,11 @@ GtApLexiconVideo class >> typeName [
 	^ #video
 ]
 
+{ #category : #visiting }
+GtApLexiconVideo >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconVideo: self
+]
+
 { #category : #accessing }
 GtApLexiconVideo >> maxHeight [
 	^ maxHeight
