@@ -18,6 +18,13 @@ GtApLexiconCustomDefinition >> description: anObject [
 	description := anObject
 ]
 
+{ #category : #printing }
+GtApLexiconCustomDefinition >> descriptionOn: aStream [
+	
+	self id ifNotNil: [
+		aStream << self id ]
+]
+
 { #category : #accessing }
 GtApLexiconCustomDefinition >> id [
 	^ id
@@ -26,13 +33,4 @@ GtApLexiconCustomDefinition >> id [
 { #category : #accessing }
 GtApLexiconCustomDefinition >> id: anObject [
 	id := anObject
-]
-
-{ #category : #printing }
-GtApLexiconCustomDefinition >> printOn: aStream [
-	super printOn: aStream.
-	
-	self id ifNotNil: [
-		aStream parenthesize: [
-			aStream << self id ]] 
 ]

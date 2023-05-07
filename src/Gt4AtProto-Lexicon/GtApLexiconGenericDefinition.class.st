@@ -46,6 +46,12 @@ GtApLexiconGenericDefinition >> description [
 		ifAbsent: [ nil ]
 ]
 
+{ #category : #printing }
+GtApLexiconGenericDefinition >> descriptionOn: aStream [
+	
+	aStream << self type
+]
+
 { #category : #accessing }
 GtApLexiconGenericDefinition >> generateDescriptorFor: aString isRequired: aBoolean [
 	| source |
@@ -134,14 +140,6 @@ GtApLexiconGenericDefinition >> id: anObject [
 { #category : #accessing }
 GtApLexiconGenericDefinition >> keysAndValuesDo: aBlock [
 	^ self attributes keysAndValuesDo: aBlock
-]
-
-{ #category : #printing }
-GtApLexiconGenericDefinition >> printOn: aStream [
-	super printOn: aStream.
-	
-	aStream parenthesize: [
-		aStream << self type]
 ]
 
 { #category : #accessing }

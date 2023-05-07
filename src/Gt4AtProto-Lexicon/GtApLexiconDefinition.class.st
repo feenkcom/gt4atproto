@@ -12,6 +12,10 @@ GtApLexiconDefinition >> acceptVisitor: aLexiconVisitor [
 	self subclassResponsibility
 ]
 
+{ #category : #printing }
+GtApLexiconDefinition >> descriptionOn: aStream [ 
+]
+
 { #category : #traversing }
 GtApLexiconDefinition >> directlyReferencedDefinitionsDo: aBlock [
 	self referencedDefinitions do: [ :aDefinition |
@@ -77,6 +81,14 @@ GtApLexiconDefinition >> isUnionDefinition [
 { #category : #testing }
 GtApLexiconDefinition >> isXRPCCall [
 	^ false
+]
+
+{ #category : #printing }
+GtApLexiconDefinition >> printOn: aStream [
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		self descriptionOn: aStream ]
 ]
 
 { #category : #accessing }
