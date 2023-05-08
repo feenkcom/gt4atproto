@@ -17,11 +17,23 @@ GtApLexiconXrpcQuery >> acceptVisitor: aLexiconVisitor [
 { #category : #accessing }
 GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	| methodName |
-	methodName := (aName replaceAllRegex: '[.#]' with: ' ') asCamelCase
-			uncapitalized.
+	methodName := self methodName: aName.
 	^ methodName
 		, '
 	^ self queryOn: ''' , aName , ''''
+]
+
+{ #category : #accessing }
+GtApLexiconXrpcQuery >> gtRequestActionFor: anAction [
+	<gtAction>
+	| className |
+	className := self asClassName asClassIfAbsent: [ ^ anAction noAction ].
+
+	^ anAction button
+		tooltip: 'Send Request';
+		icon: BrGlamorousVectorIcons play;
+		priority: 1;
+		action: [ :aButton | aButton phlow spawnObject: (className new perform: (self methodName: self id)) ]
 ]
 
 { #category : #initialization }
