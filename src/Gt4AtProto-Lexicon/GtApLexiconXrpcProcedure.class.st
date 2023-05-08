@@ -44,7 +44,7 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 GtApLexiconXrpcProcedure >> schema [
 	^ input
 		ifNil: [ GtApLexiconObject empty ]
-		ifNotNil: [ (input at: 'schema') ifNil: [ GtApLexiconObject empty ] ]
+		ifNotNil: [ input schema ifNil: [ GtApLexiconObject empty ] ]
 ]
 
 { #category : #accessing }
