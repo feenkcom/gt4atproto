@@ -45,6 +45,11 @@ XRPCClient >> query [
 ]
 
 { #category : #accessing }
+XRPCClient >> queryAddAll: aKeysCollection [
+	client queryAddAll: aKeysCollection
+]
+
+{ #category : #accessing }
 XRPCClient >> server: aString [
 	self
 		client: (ZnClient new

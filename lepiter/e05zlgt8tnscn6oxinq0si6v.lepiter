@@ -272,6 +272,78 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-08T23:36:57.945112+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-08T23:36:57.945112+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "FzbeLJe3DQCCjm/vCCHVSw=="
+							},
+							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.actor.getProfile';\r\tsetAuthentication: (loginData at: 'accessJwt');\r\tqueryAddAll: {'actor' -> 'tudorgirba.com'} asDictionary.\r\t\rprofileResult := client query."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-08T23:26:15.456351+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-08T23:26:22.913039+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wp6SBpe3DQCAGDRJCCHVSw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#GetProfile"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2023-05-01T16:33:29.545067+02:00"
 								}
 							},
@@ -291,6 +363,40 @@
 								"uidString" : "YSCFcQS3DQCyeX4PACuSBg=="
 							},
 							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client query"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-08T23:37:12.715335+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-08T23:37:38.20595+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "AJu/LZe3DQCDGjm6CCHVSw=="
+							},
+							"code" : "GtApUser new\r\trawData: profileResult;\r\tposts: ((timelineResult at: 'feed') collect: [ :each |\r\t\tGtApPost fromRawData: (each at: 'post') ])"
 						}
 					]
 				},
