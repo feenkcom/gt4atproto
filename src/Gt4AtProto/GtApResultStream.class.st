@@ -1,5 +1,5 @@
 Class {
-	#name : #ATPResultStream,
+	#name : #GtApResultStream,
 	#superclass : #Object,
 	#traits : 'TAsyncStream',
 	#classTraits : 'TAsyncStream classTrait',
@@ -14,17 +14,17 @@ Class {
 }
 
 { #category : #accessing }
-ATPResultStream >> client: aClient [
+GtApResultStream >> client: aClient [
 	client := aClient
 ]
 
 { #category : #accessing }
-ATPResultStream >> method: aMethodId [
+GtApResultStream >> method: aMethodId [
 	method := aMethodId
 ]
 
 { #category : #'api - stream' }
-ATPResultStream >> pollNext: anAsynchronousContext [
+GtApResultStream >> pollNext: anAsynchronousContext [
 	"Attempt to pull out the next value of this stream, registering the current task for wakeup if the value is not yet available, and returning None if the stream is exhausted.
 	There are several possible return values, each indicating a distinct stream state:
 	 - Poll::Pending means that this stream's next value is not ready yet. Implementations will ensure that the current task will be notified when the next value may be ready.
@@ -44,7 +44,7 @@ ATPResultStream >> pollNext: anAsynchronousContext [
 ]
 
 { #category : #accessing }
-ATPResultStream >> result: aQueryResult [
+GtApResultStream >> result: aQueryResult [
 	cursor := aQueryResult at: 'cursor'.
 	key := (aQueryResult keys asOrderedCollection
 			remove: 'cursor';

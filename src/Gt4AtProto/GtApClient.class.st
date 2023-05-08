@@ -1,5 +1,5 @@
 Class {
-	#name : #ATPClient,
+	#name : #GtApClient,
 	#superclass : #Object,
 	#instVars : [
 		'jwtAccess',
@@ -9,14 +9,14 @@ Class {
 }
 
 { #category : #accessing }
-ATPClient class >> onServer: aUrl [
+GtApClient class >> onServer: aUrl [
 	^ self new server: aUrl
 ]
 
 { #category : #accessing }
-ATPClient >> clientFor: aMethodId [
+GtApClient >> clientFor: aMethodId [
 	| client |
-	client := XRPCClient new
+	client := GtXRPCClient new
 			server: self server;
 			methodId: aMethodId.
 			
@@ -28,22 +28,22 @@ ATPClient >> clientFor: aMethodId [
 ]
 
 { #category : #accessing }
-ATPClient >> clientFor: aMethodId body: aBody [
+GtApClient >> clientFor: aMethodId body: aBody [
 	^ (self clientFor: aMethodId) body: aBody
 ]
 
 { #category : #accessing }
-ATPClient >> clientFor: aMethodId parameters: aDictionary [
+GtApClient >> clientFor: aMethodId parameters: aDictionary [
 	^ (self clientFor: aMethodId) parameters: aDictionary
 ]
 
 { #category : #accessing }
-ATPClient >> isLoggedIn [
+GtApClient >> isLoggedIn [
 	^ jwtAccess isNotNil
 ]
 
 { #category : #accessing }
-ATPClient >> loginUser: aUserNameString withPass: aPasswordString [
+GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 	| result |
 	result := self
 			procedureOn: 'com.atproto.server.createSession'
@@ -54,30 +54,30 @@ ATPClient >> loginUser: aUserNameString withPass: aPasswordString [
 ]
 
 { #category : #accessing }
-ATPClient >> procedureOn: aMethodId withBody: aBodyDictionary [
+GtApClient >> procedureOn: aMethodId withBody: aBodyDictionary [
 	^ (self clientFor: aMethodId body: (STONJSON toString: aBodyDictionary))
 		procedure
 ]
 
 { #category : #accessing }
-ATPClient >> queryOn: aMethodId [
+GtApClient >> queryOn: aMethodId [
 	| res |
 	res := (self clientFor: aMethodId) query.
 
 	(res includesKey: 'cursor') ifFalse: [ ^ res ].
 
-	^ ATPResultStream new
+	^ GtApResultStream new
 		result: res;
 		method: aMethodId;
 		client: self
 ]
 
 { #category : #accessing }
-ATPClient >> server [
+GtApClient >> server [
 	^ server
 ]
 
 { #category : #accessing }
-ATPClient >> server: anObject [
+GtApClient >> server: anObject [
 	server := anObject
 ]

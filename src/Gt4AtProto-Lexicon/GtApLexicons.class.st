@@ -88,7 +88,7 @@ GtApLexicons >> buildDocumentObjectsIn: aModel [
 					(RBAddClassRefactoring
 						model: aModel
 						addClass: className
-						superclass: ATPClient
+						superclass: GtApClient
 						subclasses: #()
 						category: #'Gt4AtProto-Generated') primitiveExecute.
 
