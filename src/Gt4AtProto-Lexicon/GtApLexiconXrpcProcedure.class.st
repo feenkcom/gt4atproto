@@ -36,6 +36,7 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 
 	^ methodName
 		, '
+	<xrpcProcedure>
 	^ self procedureOn: ''' , aName , ''' withBody: {'
 		, ('. ' join: self xrpcRequestBodyAssociations) , '} asDictionary'
 ]

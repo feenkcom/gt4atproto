@@ -38,12 +38,39 @@ GtApClient >> clientFor: aMethodId parameters: aDictionary [
 ]
 
 { #category : #accessing }
+GtApClient >> gtProceduresFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Procedures';
+		priority: 2;
+		items: [ self procedures collect: #selector ]
+]
+
+{ #category : #accessing }
+GtApClient >> gtQueriesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Queries';
+		priority: 1;
+		items: [ self queries ];
+		column: 'Name' text: #selector;
+		column: 'Play'
+			stencil: [ :aPragma | 
+				BrButton new
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					label: 'Send Query';
+					icon: BrGlamorousVectorIcons play;
+					action: [ :aButton | aButton phlow spawnObject: (self perform: aPragma method selector) ] ]
+]
+
+{ #category : #accessing }
 GtApClient >> isLoggedIn [
 	^ jwtAccess isNotNil
 ]
 
 { #category : #accessing }
 GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
+	<xrpcProcedure>
 	| result |
 	result := self
 			procedureOn: 'com.atproto.server.createSession'
@@ -57,6 +84,16 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 GtApClient >> procedureOn: aMethodId withBody: aBodyDictionary [
 	^ (self clientFor: aMethodId body: (STONJSON toString: aBodyDictionary))
 		procedure
+]
+
+{ #category : #accessing }
+GtApClient >> procedures [
+	^ Pragma allNamed: #xrpcProcedure in: self class
+]
+
+{ #category : #accessing }
+GtApClient >> queries [
+	^ Pragma allNamed: #xrpcQuery in: self class
 ]
 
 { #category : #accessing }

@@ -20,6 +20,7 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	methodName := self methodName: aName.
 	^ methodName
 		, '
+	<xrpcQuery>
 	^ self queryOn: ''' , aName , ''''
 ]
 
