@@ -42,12 +42,14 @@ GtApLexicons >> buildDefinitionObjectsIn: aModel [
 				ifTrue: [ | className anApObject |
 					anApObject := aDefinition asObject.
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
+					
 					(RBAddClassRefactoring
 						model: aModel
 						addClass: className
 						superclass: Object
 						subclasses: #()
 						category: #'Gt4AtProto-Generated') primitiveExecute.
+					
 					anApObject properties
 						keysAndValuesDo: [ :aPropertyKey :aProperty | 
 							| key |

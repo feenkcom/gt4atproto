@@ -33,6 +33,11 @@ GtApLexiconObject >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconObject >> asClassName [
+	^ (self id replaceAllRegex: '[.#]' with: ' ') asCamelCase
+]
+
+{ #category : #accessing }
 GtApLexiconObject >> asObject [
 	^ self
 ]
@@ -48,6 +53,22 @@ GtApLexiconObject >> gtViewDefinitionReferencesFor: aView [
 			self 
 				paintDefinitionReferences: self withAllReferencedObjects 
 				on: view ]
+]
+
+{ #category : #accessing }
+GtApLexiconObject >> gtViewFormFor: aView [
+	<gtView>
+	| objectClass |
+	self hasId ifFalse: [ ^ aView empty ].
+	
+	objectClass := self asClassName asClassIfAbsent: [ ^ aView empty ].
+	
+	^ aView explicit
+		title: 'Form';
+		priority: 1;
+		stencil: [
+			objectClass new asGtMagritteViewModel
+		]
 ]
 
 { #category : #'gt - extensions' }
@@ -76,6 +97,11 @@ GtApLexiconObject >> gtViewPropertiesFor: aView [
 				ifFalse: [ assoc value ] ]
 ]
 
+{ #category : #accessing }
+GtApLexiconObject >> hasId [
+	^ id isNotNil
+]
+
 { #category : #testing }
 GtApLexiconObject >> isObjectDefinition [
 	^ true
@@ -84,14 +110,6 @@ GtApLexiconObject >> isObjectDefinition [
 { #category : #accessing }
 GtApLexiconObject >> isPropertyRequired: aPropertyName [
 	^ required isNotNil and: [ required includes: aPropertyName ]
-]
-
-{ #category : #accessing }
-GtApLexiconObject >> magritteDescription [
-	| basicDescription |
-	basicDescription := GtApMagritteBuilder for: self.
-
-	^ basicDescription
 ]
 
 { #category : #'gt - extensions' }
