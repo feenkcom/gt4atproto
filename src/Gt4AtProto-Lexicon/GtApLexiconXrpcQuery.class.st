@@ -20,6 +20,7 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	methodName := self methodName: aName.
 	^ methodName
 		, '
+	<xrpcQuery>
 	^ self queryOn: ''' , aName , ''''
 ]
 
@@ -29,11 +30,16 @@ GtApLexiconXrpcQuery >> gtRequestActionFor: anAction [
 	| className |
 	className := self asClassName asClassIfAbsent: [ ^ anAction noAction ].
 
-	^ anAction button
+	^ anAction dropdown
 		tooltip: 'Send Request';
 		icon: BrGlamorousVectorIcons play;
 		priority: 1;
-		action: [ :aButton | aButton phlow spawnObject: (className new perform: (self methodName: self id)) ]
+		content: [ :aDropdown | 
+			GtApLoginForm new
+				clientClass: className;
+				clientCallback: [ :aClient | 
+					aDropdown phlow spawnObject: (aClient perform: (self methodName: self id) asSymbol).
+					aDropdown dispatchEvent: BrDropdownHideWish new ] ]
 ]
 
 { #category : #initialization }

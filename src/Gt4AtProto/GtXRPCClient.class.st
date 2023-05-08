@@ -1,5 +1,5 @@
 Class {
-	#name : #XRPCClient,
+	#name : #GtXRPCClient,
 	#superclass : #Object,
 	#instVars : [
 		'client'
@@ -8,49 +8,44 @@ Class {
 }
 
 { #category : #accessing }
-XRPCClient >> body: aString [
+GtXRPCClient >> body: aString [
 	self client
 		contents: aString;
 		contentType: ZnMimeType applicationJson
 ]
 
 { #category : #accessing }
-XRPCClient >> client [
+GtXRPCClient >> client [
 	^ client
 ]
 
 { #category : #accessing }
-XRPCClient >> client: anObject [
+GtXRPCClient >> client: anObject [
 	client := anObject
 ]
 
 { #category : #accessing }
-XRPCClient >> methodId: aString [
+GtXRPCClient >> methodId: aString [
 	self client addPath: aString
 ]
 
 { #category : #accessing }
-XRPCClient >> parameters: aDictionary [
+GtXRPCClient >> parameters: aDictionary [
 	self client queryAddAll: aDictionary
 ]
 
 { #category : #accessing }
-XRPCClient >> procedure [
+GtXRPCClient >> procedure [
 	^ STONJSON fromString: self client post
 ]
 
 { #category : #accessing }
-XRPCClient >> query [
+GtXRPCClient >> query [
 	^ STONJSON fromString: self client get
 ]
 
 { #category : #accessing }
-XRPCClient >> queryAddAll: aKeysCollection [
-	client queryAddAll: aKeysCollection
-]
-
-{ #category : #accessing }
-XRPCClient >> server: aString [
+GtXRPCClient >> server: aString [
 	self
 		client: (ZnClient new
 				url: aString;
@@ -58,6 +53,6 @@ XRPCClient >> server: aString [
 ]
 
 { #category : #accessing }
-XRPCClient >> setAuthentication: aString [
+GtXRPCClient >> setAuthentication: aString [
 	self client setBearerAuthentication: aString
 ]
