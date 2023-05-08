@@ -66,6 +66,11 @@ GtApLexiconUnion >> gtViewResolvedDefinitionsFor: aView [
 ]
 
 { #category : #accessing }
+GtApLexiconUnion >> initialize [
+	resolvedDefinitions := OrderedCollection new
+]
+
+{ #category : #accessing }
 GtApLexiconUnion >> isUnionDefinition [
 	^ true
 ]

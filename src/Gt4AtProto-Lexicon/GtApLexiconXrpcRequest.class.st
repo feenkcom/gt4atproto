@@ -23,6 +23,13 @@ GtApLexiconXrpcRequest class >> needsCustomAttributeMappings [
 ]
 
 { #category : #accessing }
+GtApLexiconXrpcRequest >> asClassName [
+	^ ((self id replaceAllRegex: '#main' with: '')
+		replaceAllRegex: '[.#]'
+		with: ' ') asCamelCase , 'Client'
+]
+
+{ #category : #accessing }
 GtApLexiconXrpcRequest >> errors [
 	^ errors
 ]
@@ -61,6 +68,12 @@ GtApLexiconXrpcRequest >> gtViewParametersFor: aView [
 { #category : #accessing }
 GtApLexiconXrpcRequest >> isXRPCCall [
 	^ true
+]
+
+{ #category : #accessing }
+GtApLexiconXrpcRequest >> methodName: aName [
+	^ ((aName replaceAllRegex: '#main' with: '') replaceAllRegex: '[.#]' with: ' ')
+		asCamelCase uncapitalized
 ]
 
 { #category : #accessing }
