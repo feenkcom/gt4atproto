@@ -118,6 +118,12 @@ GtApLexiconDefinitionReference >> resolvedReferencedDefinitions [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinitionReference >> targetDefinition [
+	^ self referencedDefinition ifNotNil: [ :aDefinition |
+		aDefinition targetDefinition ]
+]
+
+{ #category : #accessing }
 GtApLexiconDefinitionReference >> typeDescription [
 	^ self referencedDefinition
 		ifNil: [ 'ref(', self referenceString, ')' ]

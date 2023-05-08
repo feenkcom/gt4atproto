@@ -113,12 +113,18 @@ GtApLexiconDefinition >> referencedDefinitions [
 
 { #category : #accessing }
 GtApLexiconDefinition >> resolvedReferencedDefinitions [
+	<todo: 'Replace with a dedicated object'>
 	^ self referencedDefinitions flatCollect: [ :each |
 		(each isReference or: [each isUnionDefinition] )
 			ifTrue: [ each resolvedDefinitions ]
 			ifFalse: [ each isArrayDefinition 
 				ifTrue: [ each resolvedReferencedDefinitions  ]
 				ifFalse: [ {each}  ] ] ]
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> targetDefinition [
+	^ self
 ]
 
 { #category : #accessing }

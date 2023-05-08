@@ -33,6 +33,19 @@ GtApLexiconXrpcRequest >> errors: anObject [
 ]
 
 { #category : #'gt - extensions' }
+GtApLexiconXrpcRequest >> gtViewOutputPropertiesFor: aView [
+	<gtView>
+	
+	output ifNil: [ ^ aView empty ].
+	
+	^ aView forward 
+		title: 'Output';
+		priority: 15;
+		object: [ output ];
+		view: #gtViewSchemaPropertiesFor:  
+]
+
+{ #category : #'gt - extensions' }
 GtApLexiconXrpcRequest >> gtViewParametersFor: aView [
 
 	<gtView>
