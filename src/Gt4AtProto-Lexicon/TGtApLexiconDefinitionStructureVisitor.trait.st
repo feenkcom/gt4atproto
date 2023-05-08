@@ -100,11 +100,23 @@ TGtApLexiconDefinitionStructureVisitor >> visitLexiconVideo: aLexiconVideo [
 ]
 
 { #category : #visiting }
+TGtApLexiconDefinitionStructureVisitor >> visitLexiconXrpBody: anXrpBody [
+	anXrpBody schema ifNotNil: [ :aBody | 
+	self visitDefinition:  aBody] 
+]
+
+{ #category : #visiting }
 TGtApLexiconDefinitionStructureVisitor >> visitLexiconXrpcProcedure: aLexiconXrpcProcedure [
+	aLexiconXrpcProcedure input ifNotNil: [ :aDefiniton | 
+		self visitDefinition:  aDefiniton ].
+	aLexiconXrpcProcedure output ifNotNil: [ :aDefiniton | 
+		self visitDefinition:  aDefiniton ]
 ]
 
 { #category : #visiting }
 TGtApLexiconDefinitionStructureVisitor >> visitLexiconXrpcQuery: aLexiconXrpcQuery [
+	aLexiconXrpcQuery output ifNotNil: [ :aDefiniton | 
+		self visitDefinition:  aDefiniton ]
 ]
 
 { #category : #visiting }

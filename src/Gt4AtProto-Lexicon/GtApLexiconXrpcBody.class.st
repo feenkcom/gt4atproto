@@ -8,6 +8,16 @@ Class {
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
+{ #category : #visiting }
+GtApLexiconXrpcBody >> acceptVisitor: aLexiconVisitor [
+	^ aLexiconVisitor visitLexiconXrpBody: self
+]
+
+{ #category : #printing }
+GtApLexiconXrpcBody >> descriptionOn: aStream [
+	aStream << self encoding
+]
+
 { #category : #accessing }
 GtApLexiconXrpcBody >> encoding [
 	^ encoding
@@ -16,6 +26,17 @@ GtApLexiconXrpcBody >> encoding [
 { #category : #accessing }
 GtApLexiconXrpcBody >> encoding: anObject [
 	encoding := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconXrpcBody >> gtViewSchemaPropertiesFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Properties';
+		priority: 10;
+		object: [ schema targetDefinition ];
+		view: #gtViewPropertiesFor:  
 ]
 
 { #category : #accessing }

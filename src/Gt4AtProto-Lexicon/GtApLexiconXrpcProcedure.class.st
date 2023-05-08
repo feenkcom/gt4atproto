@@ -40,6 +40,29 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 		, ('. ' join: self xrpcRequestBodyAssociations) , '} asDictionary'
 ]
 
+{ #category : #'gt - extensions' }
+GtApLexiconXrpcProcedure >> gtViewInputPropertiesFor: aView [
+	<gtView>
+	
+	input ifNil: [ ^ aView empty ].
+	
+	^ aView forward 
+		title: 'Input';
+		priority: 10;
+		object: [ input ];
+		view: #gtViewSchemaPropertiesFor:  
+]
+
+{ #category : #accessing }
+GtApLexiconXrpcProcedure >> input [
+	^ input
+]
+
+{ #category : #accessing }
+GtApLexiconXrpcProcedure >> input: anObject [
+	input := anObject
+]
+
 { #category : #accessing }
 GtApLexiconXrpcProcedure >> schema [
 	^ input
