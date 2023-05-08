@@ -283,14 +283,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-08T23:36:57.945112+02:00"
+									"dateAndTimeString" : "2023-05-08T23:48:24.407045+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "FzbeLJe3DQCCjm/vCCHVSw=="
 							},
-							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.actor.getProfile';\r\tsetAuthentication: (loginData at: 'accessJwt');\r\tqueryAddAll: {'actor' -> 'tudorgirba.com'} asDictionary.\r\t\rprofileResult := client query."
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.actor.getProfile';\r\tsetAuthentication: (loginData at: 'accessJwt');\r\tqueryAddAll: {'actor' -> 'tudorgirba.com'} asDictionary.\r\t\rprofileResult := client query."
 						}
 					]
 				},

@@ -45,6 +45,11 @@ GtXRPCClient >> query [
 ]
 
 { #category : #accessing }
+GtXRPCClient >> queryAddAll: aDictionary [
+	client queryAddAll: aDictionary
+]
+
+{ #category : #accessing }
 GtXRPCClient >> server: aString [
 	self
 		client: (ZnClient new

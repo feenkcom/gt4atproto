@@ -389,14 +389,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-08T23:37:35.005108+02:00"
+									"dateAndTimeString" : "2023-05-08T23:37:38.20595+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "AJu/LZe3DQCDGjm6CCHVSw=="
 							},
-							"code" : "GtApUser new\r\trawData: profileResult;\r\tposts: ((self at: 'feed') collect: [ :each |\r\tGtApPost fromRawData: (each at: 'post') ])"
+							"code" : "GtApUser new\r\trawData: profileResult;\r\tposts: ((timelineResult at: 'feed') collect: [ :each |\r\t\tGtApPost fromRawData: (each at: 'post') ])"
 						}
 					]
 				},
