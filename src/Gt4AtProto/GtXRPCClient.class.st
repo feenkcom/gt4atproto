@@ -3,7 +3,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'client',
-		'methodId'
+		'methodId',
+		'request',
+		'response'
 	],
 	#category : #'Gt4AtProto-XRPC'
 }
@@ -50,12 +52,16 @@ GtXRPCClient >> printOn: aStream [
 
 { #category : #accessing }
 GtXRPCClient >> procedure [
-	^ STONJSON fromString: self client post
+	request := self client request.
+	response := self client post.
+	^ STONJSON fromString: response
 ]
 
 { #category : #accessing }
 GtXRPCClient >> query [
-	^ STONJSON fromString: self client get
+	request := self client request.
+	response := self client get.
+	^ STONJSON fromString: response
 ]
 
 { #category : #accessing }
