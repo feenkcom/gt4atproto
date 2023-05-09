@@ -34,20 +34,21 @@ GtApUser >> downloadFollowers [
 			GtApUser new
 				targetUrl: targetUrl;
 				loginData: loginData;
-				client: client;
-				rawData: each ]
+				rawData: each;
+				client: client ]
 ]
 
 { #category : #accessing }
 GtApUser >> downloadFollowing [
 	^ (self client
 		queryOn: 'app.bsky.graph.getFollows'
-		parameters: {'actor' -> self handle} asDictionary)collect: [ :each |
+		parameters: {'actor' -> self handle} asDictionary)
+		collect: [ :each | 
 			GtApUser new
 				targetUrl: targetUrl;
 				loginData: loginData;
-				client: client;
-				rawData: each ]
+				rawData: each;
+				client: client ]
 ]
 
 { #category : #accessing }
@@ -74,8 +75,8 @@ GtApUser >> downloadPosts [
 			GtApPost new
 				targetUrl: targetUrl;
 				loginData: loginData;
-				client: client;
-				rawData: (each at: 'post') ]
+				rawData: (each at: 'post');
+				client: client ]
 ]
 
 { #category : #accessing }
@@ -135,7 +136,10 @@ GtApUser >> handle [
 
 { #category : #accessing }
 GtApUser >> onClientChanged [
-	rawData := self client queryOn: self class methodId parameters: {'actor' -> self client context handle} asDictionary 
+	rawData
+		ifNil: [ rawData := self client
+					queryOn: self class methodId
+					parameters: {'actor' -> self client context handle} asDictionary ]
 ]
 
 { #category : #accessing }
