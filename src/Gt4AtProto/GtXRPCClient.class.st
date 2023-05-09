@@ -5,10 +5,24 @@ Class {
 		'client',
 		'methodId',
 		'request',
-		'response'
+		'response',
+		'historicalRequests'
 	],
 	#category : #'Gt4AtProto-XRPC'
 }
+
+{ #category : #accessing }
+GtXRPCClient >> asHistoricalRequest [
+	| aRequest |
+	aRequest := XRPCHistoricalRequest new
+		request: request;
+		response: response;
+		methodId: methodId.
+		
+	historicalRequests add: aRequest.
+		
+	^ aRequest
+]
 
 { #category : #accessing }
 GtXRPCClient >> body: aString [
@@ -25,6 +39,11 @@ GtXRPCClient >> client [
 { #category : #accessing }
 GtXRPCClient >> client: anObject [
 	client := anObject
+]
+
+{ #category : #accessing }
+GtXRPCClient >> initialize [
+	historicalRequests := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -54,6 +73,13 @@ GtXRPCClient >> printOn: aStream [
 GtXRPCClient >> procedure [
 	request := self client request.
 	response := self client post.
+	
+	historicalRequests
+		do: [ :aRequest | 
+			aRequest
+				request: request;
+				response: response ].
+	
 	^ STONJSON fromString: response
 ]
 
@@ -61,6 +87,13 @@ GtXRPCClient >> procedure [
 GtXRPCClient >> query [
 	request := self client request.
 	response := self client get.
+
+	historicalRequests
+		do: [ :aRequest | 
+			aRequest
+				request: request;
+				response: response ].
+
 	^ STONJSON fromString: response
 ]
 

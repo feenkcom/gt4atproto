@@ -5,33 +5,23 @@ Class {
 		'server',
 		'handle',
 		'loginInformation',
-		'clients'
+		'requestHistory'
 	],
 	#category : #Gt4AtProto
 }
 
 { #category : #accessing }
-GtApContext >> addClient: aClient [
-	clients add: aClient
+GtApContext >> addRequest: aRequest [
+	requestHistory add: aRequest
 ]
 
 { #category : #accessing }
-GtApContext >> clients [
-	^ clients
-]
-
-{ #category : #accessing }
-GtApContext >> clients: anObject [
-	clients := anObject
-]
-
-{ #category : #accessing }
-GtApContext >> gtClientHistoryFor: aView [
+GtApContext >> gtRequestHistoryFor: aView [
 	<gtView>
 	^ aView list
-		title: 'Client History';
+		title: 'Request History';
 		priority: 1;
-		items: [ self clients ]
+		items: [ self requestHistory ]
 ]
 
 { #category : #accessing }
@@ -46,7 +36,7 @@ GtApContext >> handle: anObject [
 
 { #category : #accessing }
 GtApContext >> initialize [
-	clients := OrderedCollection new
+	requestHistory := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -67,6 +57,11 @@ GtApContext >> loginInformation [
 { #category : #accessing }
 GtApContext >> loginInformation: anObject [
 	loginInformation := anObject
+]
+
+{ #category : #accessing }
+GtApContext >> requestHistory [
+	^ requestHistory
 ]
 
 { #category : #accessing }

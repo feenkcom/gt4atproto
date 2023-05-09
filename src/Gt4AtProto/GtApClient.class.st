@@ -23,7 +23,7 @@ GtApClient >> clientFor: aMethodId [
 		client setAuthentication: context jwtAccess.
 	].
 	
-	context addClient: client.
+	context addRequest: client asHistoricalRequest.
 	
 	^ client
 ]
@@ -46,13 +46,6 @@ GtApClient >> context [
 { #category : #accessing }
 GtApClient >> context: anObject [
 	context := anObject
-]
-
-{ #category : #accessing }
-GtApClient >> gtClientHistoryFor: aView [
-	<gtView>
-	
-	^ context gtClientHistoryFor: aView
 ]
 
 { #category : #accessing }
@@ -79,6 +72,13 @@ GtApClient >> gtQueriesFor: aView [
 					label: 'Send Query';
 					icon: BrGlamorousVectorIcons play;
 					action: [ :aButton | aButton phlow spawnObject: (self perform: aPragma method selector) ] ]
+]
+
+{ #category : #accessing }
+GtApClient >> gtRequestHistoryFor: aView [
+	<gtView>
+	
+	^ context gtRequestHistoryFor: aView
 ]
 
 { #category : #accessing }
