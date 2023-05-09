@@ -39,6 +39,14 @@ GtApPost >> mediaItems [
 	^ #()
 ]
 
+{ #category : #printing }
+GtApPost >> printOn: aStream [
+	super printOn: aStream.
+	
+	aStream parenthesize: [
+		aStream << self recordText ]
+]
+
 { #category : #accessing }
 GtApPost >> recordText [
 	^ (rawData at: 'record') at: 'text'

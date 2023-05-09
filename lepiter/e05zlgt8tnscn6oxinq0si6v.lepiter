@@ -211,14 +211,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-04T16:27:32.153758+02:00"
+									"dateAndTimeString" : "2023-05-09T08:34:48.936026+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "o2t9YgS3DQCw9EjpACuSBg=="
 							},
-							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginData := client procedure"
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginData := client procedure"
 						}
 					]
 				},
@@ -389,14 +389,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-08T23:37:38.20595+02:00"
+									"dateAndTimeString" : "2023-05-09T08:34:29.758041+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "AJu/LZe3DQCDGjm6CCHVSw=="
 							},
-							"code" : "GtApUser new\r\trawData: profileResult;\r\tposts: ((timelineResult at: 'feed') collect: [ :each |\r\t\tGtApPost fromRawData: (each at: 'post') ])"
+							"code" : "GtApUser new\r\ttargetUrl: pdsUrl;\r\tloginData: loginData;\r\trawData: profileResult;\r\tposts: ((timelineResult at: 'feed') collect: [ :each |\r\t\tGtApPost fromRawData: (each at: 'post') ])"
 						}
 					]
 				},
