@@ -99,7 +99,7 @@ GtApUserSummaryElement >> initialize [
 	
 	contentContainer addChild:  self buildUserHeaderElement.
 	contentContainer addChild:  self buildUserDescriptionElement.	
-	contentContainer addChild:  self buildUserDetailsElement.
+	"contentContainer addChild:  self buildUserDetailsElement."
 	
 	mainContainer addChild: contentContainer.
 	
