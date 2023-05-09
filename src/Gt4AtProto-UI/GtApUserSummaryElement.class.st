@@ -28,7 +28,7 @@ GtApUserSummaryElement >> buildGrayLabel [
 
 { #category : #'building  - widgets' }
 GtApUserSummaryElement >> buildProfilePictureElement [
-	^ pictureElement := GtTwUserPictureElement new
+	^ pictureElement := GtApUserPictureElement new
 		margin: (BlInsets right: 10)
 ]
 

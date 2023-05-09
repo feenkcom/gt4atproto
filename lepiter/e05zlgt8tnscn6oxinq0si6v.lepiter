@@ -355,14 +355,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-04T10:57:32.817742+02:00"
+									"dateAndTimeString" : "2023-05-09T13:04:52.278839+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "YSCFcQS3DQCyeX4PACuSBg=="
 							},
-							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client query"
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client query"
 						},
 						{
 							"__type" : "pharoSnippet",
@@ -389,7 +389,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-09T13:00:36.865652+02:00"
+									"dateAndTimeString" : "2023-05-09T13:03:50.562806+02:00"
 								}
 							},
 							"uid" : {
