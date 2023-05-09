@@ -211,14 +211,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-04T16:27:32.153758+02:00"
+									"dateAndTimeString" : "2023-05-09T08:34:48.936026+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "o2t9YgS3DQCw9EjpACuSBg=="
 							},
-							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginData := client procedure"
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginData := client procedure"
 						}
 					]
 				},
@@ -461,14 +461,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-05T15:19:26.595889+02:00"
+									"dateAndTimeString" : "2023-05-09T12:58:37.15658+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "zkzQ21O3DQC6E8pEB1tzrA=="
 							},
-							"code" : "client := ATPClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient queryOn: 'app.bsky.feed.getTimeline'."
+							"code" : "client := GtApClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient queryOn: 'app.bsky.feed.getTimeline'."
 						},
 						{
 							"__type" : "pharoSnippet",
