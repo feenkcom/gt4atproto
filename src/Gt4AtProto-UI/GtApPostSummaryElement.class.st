@@ -145,7 +145,11 @@ GtApPostSummaryElement >> updateMedia [
 	self post hasPhotos
 		ifFalse: [ mediaContainer visibility: BlVisibility gone ]
 		ifTrue: [ mediaContainer visibility: BlVisibility visible ].
+
 	mediaContainer removeChildren.
-	(self post mediaItems select: #isPhoto)
-		do: [ :each | mediaContainer addChild: each asElement ]
+
+	self post photos
+		do: [ :each | 
+			mediaContainer
+				addChild: (BrAsyncFileWidget new url: (each at: 'fullsize')) matchParent ]
 ]

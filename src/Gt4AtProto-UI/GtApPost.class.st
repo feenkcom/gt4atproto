@@ -66,7 +66,7 @@ GtApPost >> gtThreadFor: aView [
 
 { #category : #accessing }
 GtApPost >> hasPhotos [
-	^ false
+	^ self photos isNotEmpty
 ]
 
 { #category : #accessing }
@@ -75,8 +75,10 @@ GtApPost >> likesCount [
 ]
 
 { #category : #accessing }
-GtApPost >> mediaItems [
-	^ #()
+GtApPost >> photos [
+	^ (rawData at: 'embed' ifAbsent: [ {} asDictionary ])
+		at: 'images'
+		ifAbsent: [ {} ]
 ]
 
 { #category : #printing }
