@@ -64,16 +64,15 @@ GtApUserPictureElement >> initialize [
 
 { #category : #updating }
 GtApUserPictureElement >> updateContentForUser: aUser [
-	pictureElement formBlock: [ 
-		aUser 
-			ifNil: [ self emptyDefaultForm ]
-			ifNotNil: [ 
-				aUser profilePictureForm
-					ifNil: [self emptyDefaultForm] ]  ].
-		
-	"pictureElement asyncFuture future: [ 
-		aUser profilePictureForm asElement
-			asScalableElement ] asAsyncFuture."
+	pictureElement
+		formBlock: [ aUser
+				ifNil: [ self emptyDefaultForm ]
+				ifNotNil: [ aUser profilePictureForm ifNil: [ self emptyDefaultForm ] ] ].
+
+	self
+		removeEventHandlersSuchThat: [ :aHandler | aHandler wantsEvent: BlClickEvent new ].
+
+	self when: BlClickEvent do: [ self phlow spawnObject: aUser ]
 ]
 
 { #category : #accessing }

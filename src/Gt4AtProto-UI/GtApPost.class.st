@@ -11,7 +11,7 @@ GtApPost class >> methodId [
 
 { #category : #accessing }
 GtApPost >> author [
-	^ GtApUser fromRawData: (rawData at: 'author')
+	^ (GtApUser fromRawData: (rawData at: 'author')) client: client
 ]
 
 { #category : #accessing }

@@ -34,6 +34,7 @@ GtApUser >> downloadFollowers [
 			GtApUser new
 				targetUrl: targetUrl;
 				loginData: loginData;
+				client: client;
 				rawData: each ]
 ]
 
@@ -45,6 +46,7 @@ GtApUser >> downloadFollowing [
 			GtApUser new
 				targetUrl: targetUrl;
 				loginData: loginData;
+				client: client;
 				rawData: each ]
 ]
 
@@ -61,12 +63,18 @@ GtApUser >> downloadPofileImage [
 
 { #category : #accessing }
 GtApUser >> downloadPosts [
-	^ (self client
-		queryOn: 'app.bsky.feed.getAuthorFeed'
-		parameters: {'actor' -> self handle} asDictionary) collect: [ :each |
+	| response |
+	response := self client
+			queryOn: 'app.bsky.feed.getAuthorFeed'
+			parameters: {'actor' -> self handle} asDictionary.
+	(response isKindOf: Dictionary) ifTrue: [ ^ {} ].
+
+	^ response
+		collect: [ :each | 
 			GtApPost new
 				targetUrl: targetUrl;
 				loginData: loginData;
+				client: client;
 				rawData: (each at: 'post') ]
 ]
 
@@ -113,8 +121,7 @@ GtApUser >> gtViewFollowingFor: aView [
 { #category : #'gt - extensions' }
 GtApUser >> gtViewPostsTimelineFor: aView [
 	<gtView>
-	
-	^ aView forward 
+	^ aView forward
 		title: 'Timeline';
 		priority: 5;
 		object: [ GtApUserTimeline forPosts: self posts ];
