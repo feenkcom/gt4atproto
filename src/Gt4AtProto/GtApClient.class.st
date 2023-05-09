@@ -2,8 +2,7 @@ Class {
 	#name : #GtApClient,
 	#superclass : #Object,
 	#instVars : [
-		'jwtAccess',
-		'server'
+		'context'
 	],
 	#category : #'Gt4AtProto-XRPC'
 }
@@ -21,8 +20,10 @@ GtApClient >> clientFor: aMethodId [
 			methodId: aMethodId.
 			
 	self isLoggedIn ifTrue: [
-		client setAuthentication: jwtAccess.
+		client setAuthentication: context jwtAccess.
 	].
+	
+	context addClient: client.
 	
 	^ client
 ]
@@ -35,6 +36,23 @@ GtApClient >> clientFor: aMethodId body: aBody [
 { #category : #accessing }
 GtApClient >> clientFor: aMethodId parameters: aDictionary [
 	^ (self clientFor: aMethodId) parameters: aDictionary
+]
+
+{ #category : #accessing }
+GtApClient >> context [
+	^ context
+]
+
+{ #category : #accessing }
+GtApClient >> context: anObject [
+	context := anObject
+]
+
+{ #category : #accessing }
+GtApClient >> gtClientHistoryFor: aView [
+	<gtView>
+	
+	^ context gtClientHistoryFor: aView
 ]
 
 { #category : #accessing }
@@ -64,8 +82,18 @@ GtApClient >> gtQueriesFor: aView [
 ]
 
 { #category : #accessing }
+GtApClient >> handle [
+	^ context handle
+]
+
+{ #category : #accessing }
+GtApClient >> initialize [
+	context := GtApContext new
+]
+
+{ #category : #accessing }
 GtApClient >> isLoggedIn [
-	^ jwtAccess isNotNil
+	^ context isLoggedIn
 ]
 
 { #category : #accessing }
@@ -77,7 +105,8 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 			withBody: {'identifier' -> aUserNameString.
 							'password' -> aPasswordString} asDictionary.
 
-	jwtAccess := result at: 'accessJwt'
+	context handle: aUserNameString.
+	context loginInformation: result
 ]
 
 { #category : #accessing }
@@ -125,10 +154,10 @@ GtApClient >> queryOn: aMethodId parameters: aDictionary [
 
 { #category : #accessing }
 GtApClient >> server [
-	^ server
+	^ context server
 ]
 
 { #category : #accessing }
 GtApClient >> server: anObject [
-	server := anObject
+	context server: anObject
 ]

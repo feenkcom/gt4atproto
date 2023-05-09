@@ -2,7 +2,8 @@ Class {
 	#name : #GtXRPCClient,
 	#superclass : #Object,
 	#instVars : [
-		'client'
+		'client',
+		'methodId'
 	],
 	#category : #'Gt4AtProto-XRPC'
 }
@@ -25,13 +26,26 @@ GtXRPCClient >> client: anObject [
 ]
 
 { #category : #accessing }
+GtXRPCClient >> methodId [
+	^ methodId
+]
+
+{ #category : #accessing }
 GtXRPCClient >> methodId: aString [
+	methodId := aString.
 	self client addPath: aString
 ]
 
 { #category : #accessing }
 GtXRPCClient >> parameters: aDictionary [
 	self client queryAddAll: aDictionary
+]
+
+{ #category : #accessing }
+GtXRPCClient >> printOn: aStream [
+	super printOn: aStream.
+
+	aStream parenthesize: [ aStream << self methodId ]
 ]
 
 { #category : #accessing }

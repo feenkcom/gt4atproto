@@ -128,7 +128,7 @@ GtApUser >> handle [
 
 { #category : #accessing }
 GtApUser >> onClientChanged [
-	rawData := self client queryOn: 'app.bsky.actor.getProfile' parameters: {'actor' -> 'tudorgirba.com'} asDictionary
+	rawData := self client queryOn: self class methodId parameters: {'actor' -> self client context handle} asDictionary 
 ]
 
 { #category : #accessing }
