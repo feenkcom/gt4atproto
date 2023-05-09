@@ -18,6 +18,11 @@ GtApPost >> author [
 ]
 
 { #category : #accessing }
+GtApPost >> createdAt [
+	^ DateAndTime fromString: ((rawData at: 'record') at: 'createdAt')
+]
+
+{ #category : #accessing }
 GtApPost >> getReplies [
 	^ (((self client
 		queryOn: 'app.bsky.feed.getPostThread'

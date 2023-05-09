@@ -10,7 +10,8 @@ Class {
 		'mediaContainer',
 		'post',
 		'postTextEditor',
-		'repostsCountLabel'
+		'repostsCountLabel',
+		'dateLabel'
 	],
 	#category : #'Gt4AtProto-UI'
 }
@@ -72,7 +73,8 @@ GtApPostSummaryElement >> buildUserHeaderElement [
 	headerElement 
 		addChild: (authorNameLabel := (BrLabel new 
 			aptitude: BrGlamorousLabelAptitude new));
-		addChild: (authorHandleLabel := self buildGrayLabel).
+		addChild: (authorHandleLabel := self buildGrayLabel);
+		addChild: (dateLabel := self buildGrayLabel).
 	
 	^ headerElement
 ]
@@ -135,6 +137,7 @@ GtApPostSummaryElement >> updateContent [
 	pictureElement user: self post author.
 	self updateAuthorDetails.
 	postTextEditor text: self post recordText.
+	dateLabel text: ' at ', self post createdAt printToMinute.
 	self updateMedia.
 	likesCountLabel text: self post likesCount asString , ' Likes'.
 	repostsCountLabel text: self post repostsCount asString , ' RT'
