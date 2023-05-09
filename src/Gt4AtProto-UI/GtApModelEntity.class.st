@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'rawData',
 		'targetUrl',
-		'loginData'
+		'loginData',
+		'client'
 	],
 	#category : #'Gt4AtProto-UI'
 }
@@ -16,11 +17,24 @@ GtApModelEntity class >> fromRawData: aDictionary [
 ]
 
 { #category : #accessing }
-GtApModelEntity >> createClientForId: anId [
-	^ GtXRPCClient new 
-		server: targetUrl;
-		methodId: anId;
-		setAuthentication: (loginData at: 'accessJwt').
+GtApModelEntity class >> methodId [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtApModelEntity >> client [
+	^ client
+]
+
+{ #category : #accessing }
+GtApModelEntity >> client: anObject [
+	client := anObject.
+	self onClientChanged
+]
+
+{ #category : #accessing }
+GtApModelEntity >> initialize [
+	client := GtApClient new
 ]
 
 { #category : #accessing }
@@ -31,6 +45,11 @@ GtApModelEntity >> loginData [
 { #category : #accessing }
 GtApModelEntity >> loginData: anObject [
 	loginData := anObject
+]
+
+{ #category : #accessing }
+GtApModelEntity >> onClientChanged [
+	"can be overriden by subclasses to react to client changes"
 ]
 
 { #category : #accessing }

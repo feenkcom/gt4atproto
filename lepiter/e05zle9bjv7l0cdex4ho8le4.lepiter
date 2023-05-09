@@ -270,7 +270,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-05T19:33:01.429519+02:00"
+						"dateAndTimeString" : "2023-05-09T17:38:44.886796+02:00"
 					}
 				},
 				"uid" : {
@@ -278,6 +278,40 @@
 					"uidString" : "yYiyale3DQCPVfo/C/wKlw=="
 				},
 				"code" : "lexicons removeObjects"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-09T17:38:45.260405+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-09T17:39:06.990051+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "WkKlSaa3DQCtiOSPDuRBkQ=="
+				},
+				"code" : ""
 			}
 		]
 	},

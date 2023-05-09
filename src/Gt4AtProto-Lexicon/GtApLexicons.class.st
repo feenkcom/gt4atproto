@@ -197,12 +197,12 @@ GtApLexicons >> removeObjects [
 			aDefinition type = 'object'
 				ifTrue: [ | className |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					className asClass removeFromSystem ] ].
+					className asClassIfPresent: #removeFromSystem ] ].
 
 	documentsById
 		keysAndValuesDo: [ :aKey :aDocument | 
 			| className |
 			aDocument hasXRPCCalls
 				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase , 'Client'.
-					className asClass removeFromSystem ] ]
+					className asClassIfPresent: #removeFromSystem ] ]
 ]

@@ -110,6 +110,20 @@ GtApClient >> queryOn: aMethodId [
 ]
 
 { #category : #accessing }
+GtApClient >> queryOn: aMethodId parameters: aDictionary [
+	| res |
+	res := (self clientFor: aMethodId parameters: aDictionary) query.
+
+	(res includesKey: 'cursor') ifFalse: [ ^ res ].
+
+	^ GtApResultStream new
+		result: res;
+		method: aMethodId;
+		parameters: aDictionary;
+		client: self
+]
+
+{ #category : #accessing }
 GtApClient >> server [
 	^ server
 ]

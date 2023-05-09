@@ -5,6 +5,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApPost class >> methodId [
+	^ 'app.bsky.feed.getTimeline'
+]
+
+{ #category : #accessing }
 GtApPost >> author [
 	^ GtApUser fromRawData: (rawData at: 'author')
 ]

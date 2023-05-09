@@ -64,7 +64,7 @@ GtApLoginForm >> magritteAcceptAction [
 				action: [ :aModel :aButton :aMemento :aDescription | 
 					self clientCallback
 						ifNil: [ aButton phlow spawnObject: self buildClient ]
-						ifNotNil: [ :aCallback | aCallback value: self buildClient ] ])
+						ifNotNil: [ :aCallback | aCallback cull: self buildClient cull: aButton ] ])
 ]
 
 { #category : #accessing }

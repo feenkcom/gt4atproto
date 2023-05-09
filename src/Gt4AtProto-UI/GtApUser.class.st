@@ -11,6 +11,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApUser class >> methodId [
+	^ 'app.bsky.actor.getProfile'
+]
+
+{ #category : #accessing }
 GtApUser >> description [
 	^ rawData at: 'description' ifAbsent: [ '' ]
 ]
@@ -22,9 +27,10 @@ GtApUser >> displayName [
 
 { #category : #accessing }
 GtApUser >> downloadFollowers [
-	^ (((self createClientForId: 'app.bsky.graph.getFollowers') 
-		queryAddAll: {'actor' -> self handle} asDictionary;
-		query) at: 'followers') collect: [ :each |
+	^ (self client
+		queryOn: 'app.bsky.graph.getFollowers'
+		parameters: {'actor' -> self handle} asDictionary)
+		collect: [ :each | 
 			GtApUser new
 				targetUrl: targetUrl;
 				loginData: loginData;
@@ -33,9 +39,9 @@ GtApUser >> downloadFollowers [
 
 { #category : #accessing }
 GtApUser >> downloadFollowing [
-	^ (((self createClientForId: 'app.bsky.graph.getFollows') 
-		queryAddAll: {'actor' -> self handle} asDictionary;
-		query) at: 'follows') collect: [ :each |
+	^ (self client
+		queryOn: 'app.bsky.graph.getFollows'
+		parameters: {'actor' -> self handle} asDictionary)collect: [ :each |
 			GtApUser new
 				targetUrl: targetUrl;
 				loginData: loginData;
@@ -55,9 +61,9 @@ GtApUser >> downloadPofileImage [
 
 { #category : #accessing }
 GtApUser >> downloadPosts [
-	^ (((self createClientForId: 'app.bsky.feed.getAuthorFeed') 
-		queryAddAll: {'actor' -> self handle} asDictionary;
-		query) at: 'feed') collect: [ :each |
+	^ (self client
+		queryOn: 'app.bsky.feed.getAuthorFeed'
+		parameters: {'actor' -> self handle} asDictionary) collect: [ :each |
 			GtApPost new
 				targetUrl: targetUrl;
 				loginData: loginData;
@@ -118,6 +124,11 @@ GtApUser >> gtViewPostsTimelineFor: aView [
 { #category : #accessing }
 GtApUser >> handle [
 	^ rawData at: 'handle'
+]
+
+{ #category : #accessing }
+GtApUser >> onClientChanged [
+	rawData := self client queryOn: 'app.bsky.actor.getProfile' parameters: {'actor' -> 'tudorgirba.com'} asDictionary
 ]
 
 { #category : #accessing }

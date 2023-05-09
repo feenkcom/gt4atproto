@@ -8,7 +8,8 @@ Class {
 		'key',
 		'resultsList',
 		'method',
-		'client'
+		'client',
+		'parameters'
 	],
 	#category : #'Gt4AtProto-XRPC - Streams'
 }
@@ -21,6 +22,16 @@ GtApResultStream >> client: aClient [
 { #category : #accessing }
 GtApResultStream >> method: aMethodId [
 	method := aMethodId
+]
+
+{ #category : #accessing }
+GtApResultStream >> parameters [
+	^ parameters ifNil: [ parameters := {} asDictionary ]
+]
+
+{ #category : #accessing }
+GtApResultStream >> parameters: anObject [
+	parameters := anObject
 ]
 
 { #category : #'api - stream' }
@@ -36,7 +47,7 @@ GtApResultStream >> pollNext: anAsynchronousContext [
 		ifEmpty: [ | res |
 			cursor
 				ifNil: [ ^ AsyncPollReady value: AsyncOptionalValue none ]
-				ifNotNil: [ res := (client clientFor: method parameters: {'cursor' -> cursor} asDictionary)
+				ifNotNil: [ res := (client clientFor: method parameters: ({'cursor' -> cursor} asDictionary union: self parameters))
 							query.
 					resultsList := (res at: key) asOrderedCollection.
 					cursor := res at: 'cursor' ] ].
