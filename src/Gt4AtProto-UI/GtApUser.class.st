@@ -123,7 +123,7 @@ GtApUser >> gtViewFollowingFor: aView [
 GtApUser >> gtViewPostsTimelineFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Timeline';
+		title: 'Posts';
 		priority: 5;
 		object: [ GtApUserTimeline forPosts: self posts ];
 		view: #gtViewPostsSummaryUIFor:
