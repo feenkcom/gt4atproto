@@ -79,7 +79,9 @@ GtApModelBuilder >> remove [
 			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
 				ifTrue: [ | className |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					className asClassIfPresent: #removeFromSystem ] ]
+					className asClassIfPresent: #removeFromSystem ] ].
+
+	#GtApGeneratedClient asClassIfPresent: #removeFromSystem
 ]
 
 { #category : #accessing }
