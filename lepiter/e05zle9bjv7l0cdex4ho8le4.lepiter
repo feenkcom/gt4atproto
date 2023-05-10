@@ -18,6 +18,112 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-11T00:20:40.105577+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-11T00:21:10.863736+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "nPHXBMC3DQCWUVo2BH44Jw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Importing lexicons"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-02T23:14:51.04652+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:21:34.104088+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "SRy7Kh63DQC0HnSDBU+hHw=="
+							},
+							"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-02T23:15:02.812358+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:20:32.610192+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "LaVuKx63DQC0Mtl0BU+hHw=="
+							},
+							"code" : "atprotoRepositoryFolder ensureDeleteAll.\rIceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoRepositoryFolder.\ratprotoRepositoryFolder"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-02T19:26:45.043379+02:00"
 					}
 				},
@@ -42,10 +148,45 @@
 				"string" : "The repo [https://github.com/bluesky-social/atproto](https://github.com/bluesky-social/atproto) should be cloned locally."
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-05T16:15:21.107346+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-05T16:28:25.663396+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "2HECqFS3DQC+95bCB1tzrA=="
+							},
+							"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -55,7 +196,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T23:14:51.04652+02:00"
+						"dateAndTimeString" : "2023-05-11T00:20:33.704713+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,20 +207,240 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T23:15:09.11178+02:00"
+						"dateAndTimeString" : "2023-05-11T00:21:28.636885+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "SRy7Kh63DQC0HnSDBU+hHw=="
+					"uidString" : "DUV2BMC3DQCV6BE6BH44Jw=="
 				},
-				"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Once the repository exists, simply import the lexicons into a model:"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "pharoSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-05-10T13:35:26.024724+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-05-11T00:22:29.847379+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
+										},
+										"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #Gt4AtProtoGeneratedCode;\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #Gt4AtProtoGeneratedCode\r\t\t\tinSubclass: #GtApGeneratedClient;\r\t\tbuild"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:21:54.456451+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:23:15.514082+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "sndGCcC3DQCYeEGPBH44Jw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "We can use the imported model to generate code. The code generation can be parameterized in several ways through a `builder`:"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "pharoSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-05-05T16:28:26.09546+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-05-11T00:22:59.497972+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
+										},
+										"code" : "builder apply"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:23:18.721079+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:23:31.648713+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "5DpMDsC3DQCccu2dBH44Jw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Once the builder exist, we can use it to generate the code:"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [
+									{
+										"__type" : "pharoSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-05-05T19:32:57.36229+02:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2023-05-10T11:37:26.095075+02:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "yYiyale3DQCPVfo/C/wKlw=="
+										},
+										"code" : "builder remove"
+									}
+								]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:23:33.832329+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-11T00:23:41.323475+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "StQyD8C3DQCdqsVjBH44Jw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Or to remove the already generated code:"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -89,7 +450,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T23:15:02.812358+02:00"
+						"dateAndTimeString" : "2023-05-11T00:21:43.695873+02:00"
 					}
 				},
 				"editEmail" : {
@@ -100,184 +461,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T23:19:26.962464+02:00"
+						"dateAndTimeString" : "2023-05-11T00:21:49.944499+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "LaVuKx63DQC0Mtl0BU+hHw=="
+					"uidString" : "QkKiCMC3DQCYEe/9BH44Jw=="
 				},
-				"code" : "atprotoRepositoryFolder ensureDeleteAll.\rIceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoRepositoryFolder.\ratprotoRepositoryFolder"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
+				"paragraphStyle" : {
+					"__type" : "textStyle"
 				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-05T16:15:21.107346+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-05T16:28:25.663396+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "2HECqFS3DQC+95bCB1tzrA=="
-				},
-				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T19:32:52.685585+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T19:32:52.685585+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "Dgig/7u3DQCkTnTWBrGd3w=="
-				},
-				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProtoGeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProtoGeneratedCode' inSubclass: #GtApGeneratedClient.\r"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T13:35:26.024724+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T19:32:52.68737+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
-				},
-				"code" : "builder build."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-05T16:28:26.09546+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T13:35:29.611236+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
-				},
-				"code" : "builder apply"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-05T19:32:57.36229+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T11:37:26.095075+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "yYiyale3DQCPVfo/C/wKlw=="
-				},
-				"code" : "builder remove"
+				"string" : "#Generating code"
 			}
 		]
 	},
@@ -300,12 +494,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-02T19:25:46.016585+02:00"
+			"dateAndTimeString" : "2023-05-11T00:21:06.654387+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Import Lexicon"
+		"title" : "Importing lexicons and generating code"
 	},
 	"uid" : {
 		"__type" : "uuid",
