@@ -116,16 +116,23 @@ GtApLexiconObject >> isPropertyRequired: aPropertyName [
 GtApLexiconObject >> paintDefinitionReferences: aCollectionOfDefinitions on: aView [
 	aView nodes
 		stencil: [ :aDefinition | 
-			BrFrame new
-				fitContent;
-				padding: (BlInsets all: 5);
-				addChild: (BrLabel new
-						fitContent;
-						aptitude: (BrGlamorousLabelAptitude new
-							highlight: (aDefinition == self
-								ifTrue: [Color red muchLighter]
-								ifFalse:[Color transparent]));
-						text: (aDefinition id ifNil: [ aDefinition type asString ])) ];
+			| string container |
+			string := aDefinition id ifNil: [ aDefinition type asString ].
+			container := BrVerticalPane new
+					fitContent;
+					margin: (BlInsets all: 10);
+					aptitude: BrShadowAptitude;
+					padding: (BlInsets all: 5);
+					background: (aDefinition == self
+							ifTrue: [ Color blue muchLighter ]
+							ifFalse: [ Color white ]).
+			(string findTokens: '#')
+				do: [ :token | 
+					container
+						addChild: (BrLabel new
+								aptitude: BrGlamorousLabelAptitude new;
+								text: token) ].
+			container ];
 		with: aCollectionOfDefinitions.
 
 	aView edges
@@ -134,18 +141,16 @@ GtApLexiconObject >> paintDefinitionReferences: aCollectionOfDefinitions on: aVi
 			lineColor := Color gray alpha: 0.2.
 			fromElement = toElement
 				ifFalse: [ BlLineElement new
-						border: (BlBorder paint: lineColor width: 1);
-						toHead: (BlArrowheadSimpleArrow new 
-							border: (BlBorder paint: lineColor width: 1)) ]
+						border: lineColor;
+						toHead: (BlArrowheadSimpleArrow new border: lineColor) ]
 				ifTrue: [ BlParabollaArcElement new
 						zIndex: 0;
 						curvatureFraction: 0.5;
-						border: (BlBorder paint: lineColor width: 1);
-						toHead: (BlArrowheadSimpleArrow new 
-							border: (BlBorder paint: lineColor width: 1)) ] ];
+						border: lineColor;
+						toHead: (BlArrowheadSimpleArrow new border: lineColor) ] ];
 		connectToAll: [ :aDefinition | aDefinition resolvedReferencedDefinitions ].
 
-	aView layout horizontalTree.
+	aView layout horizontalTree levelDistance: 30; nodeDistance: 10.
 
 	aView
 ]

@@ -389,14 +389,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-09T13:03:50.562806+02:00"
+									"dateAndTimeString" : "2023-05-09T17:47:18.513577+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "AJu/LZe3DQCDGjm6CCHVSw=="
 							},
-							"code" : "GtApUser new\r\ttargetUrl: pdsUrl;\r\tloginData: loginData;\r\trawData: profileResult;\r\tposts: ((timelineResult at: 'feed') collect: [ :each |\r\t\tGtApPost fromRawData: (each at: 'post') ])"
+							"code" : "client := GtApClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rGtApUser new client: client"
 						}
 					]
 				},
@@ -495,14 +495,48 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-05T19:35:14.99679+02:00"
+									"dateAndTimeString" : "2023-05-10T22:48:28.971987+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "t38eX1e3DQCOiLZDC/wKlw=="
 							},
-							"code" : "client := AppBskyFeedGetTimelineClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient appBskyFeedGetTimeline."
+							"code" : "client := GtApGeneratedClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient appBskyFeedGetTimeline."
+						},
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-10T22:48:29.214739+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-10T22:48:29.214739+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "YkUtu763DQCTVWRYBH44Jw=="
+							},
+							"code" : ""
 						}
 					]
 				},
