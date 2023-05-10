@@ -35,102 +35,6 @@ GtApLexicons >> addLexiconDocument: aLexiconDocument [
 ]
 
 { #category : #accessing }
-GtApLexicons >> buildDefinitionObjectsIn: aModel inPackage: aPackageName [
-	definitionsById
-		keysAndValuesDo: [ :aKey :aDefinition | 
-			aDefinition type = 'object'
-				ifTrue: [ | className traitName anApObject |
-					anApObject := aDefinition asObject.
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					traitName := 'T' , className.
-
-					(RBAddClassRefactoring
-						model: aModel
-						addClass: className
-						superclass: Object
-						subclasses: #()
-						category: aPackageName) primitiveExecute.
-
-					traitName
-						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
-
-					anApObject properties
-						keysAndValuesDo: [ :aPropertyKey :aProperty | 
-							| key |
-							key := 'atProto' , aPropertyKey asCamelCase.
-							(RBAddInstanceVariableRefactoring
-								model: aModel
-								variable: key
-								class: className) primitiveExecute.
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aProperty generateGetterAs: key)
-								toClass: className
-								inProtocols: #accessing) primitiveExecute.
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aProperty generateSetterAs: key)
-								toClass: className
-								inProtocols: #accessing) primitiveExecute.
-
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aProperty
-										generateDescriptorFor: aPropertyKey
-										isRequired: (anApObject isPropertyRequired: aPropertyKey))
-								toClass: className
-								inProtocols: #magritte) primitiveExecute ] ] ]
-]
-
-{ #category : #accessing }
-GtApLexicons >> buildDocumentObjectsIn: aModel inPackage: aPackageName [
-	documentsById
-		keysAndValuesDo: [ :aKey :aDocument | 
-			aDocument hasXRPCCalls
-				ifTrue: [ | className traitName |
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase
-							, 'Client'.
-					traitName := 'X' , className.
-					(RBAddClassRefactoring
-						model: aModel
-						addClass: className
-						superclass: GtApClient
-						subclasses: #()
-						category: aPackageName) primitiveExecute.
-
-
-					traitName
-						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
-
-					aDocument xrpcCalls
-						keysAndValuesDo: [ :aName :aMethod | 
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aMethod asXRPCMethodNamed: aKey)
-								toClass: className
-								inProtocols: {#'atproto-xrpc-call'}) primitiveExecute ] ] ]
-]
-
-{ #category : #accessing }
-GtApLexicons >> buildObjects [
-	^ self buildObjectsInPackage: self defaultPackage
-]
-
-{ #category : #accessing }
-GtApLexicons >> buildObjectsInPackage: aPackageName [
-	| model |
-	model := RBNamespace new.
-	self buildDefinitionObjectsIn: model inPackage: aPackageName.
-	self buildDocumentObjectsIn: model inPackage: aPackageName.
-	^ model
-]
-
-{ #category : #accessing }
-GtApLexicons >> defaultPackage [
-	^ #'Gt4AtProto-Generated'
-]
-
-{ #category : #accessing }
 GtApLexicons >> definitionWithId: anId [
 	^ (anId includesSubstring: '#')
 		ifTrue: [ definitionsById at: anId ]
@@ -138,10 +42,20 @@ GtApLexicons >> definitionWithId: anId [
 ]
 
 { #category : #accessing }
+GtApLexicons >> definitions [
+	^ definitionsById
+]
+
+{ #category : #accessing }
 GtApLexicons >> definitionsByType [
 	^ (definitionsById values groupedBy: [ :aDefinition |
 		aDefinition type ]) collect: [ :anArray |
 			GtApLexiconDefinitionsGroup withAll:  anArray ]
+]
+
+{ #category : #accessing }
+GtApLexicons >> documents [
+	^ documentsById
 ]
 
 { #category : #'gt - extensions' }
@@ -208,21 +122,4 @@ GtApLexicons >> initialize [
 { #category : #accessing }
 GtApLexicons >> lexiconDocuments [
 	^ GtApLexiconDocumentsGroup withAll: documentsById values
-]
-
-{ #category : #accessing }
-GtApLexicons >> removeObjects [
-	definitionsById
-		keysAndValuesDo: [ :aKey :aDefinition | 
-			aDefinition type = 'object'
-				ifTrue: [ | className |
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					className asClassIfPresent: #removeFromSystem ] ].
-
-	documentsById
-		keysAndValuesDo: [ :aKey :aDocument | 
-			| className |
-			aDocument hasXRPCCalls
-				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase , 'Client'.
-					className asClassIfPresent: #removeFromSystem ] ]
 ]

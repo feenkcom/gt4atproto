@@ -123,74 +123,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:25:50.421426+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-03T10:23:22.506405+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "esy59xq3DQCg7s96ACuSBg=="
-				},
-				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\rlexicons := GtApGenericLexiconImporter new \r\timportLexiconsFromDirectory: lexiconsFolder"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-03T15:50:12.223653+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-04T16:49:18.973248+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "7fJjEiy3DQCLchBrC9GBBg=="
-				},
-				"code" : "lexicons buildObjects"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-05T16:15:21.107346+02:00"
 					}
 				},
@@ -236,14 +168,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T10:48:46.132214+02:00"
+						"dateAndTimeString" : "2023-05-10T11:24:13.569999+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
 				},
-				"code" : "lexicons buildObjects"
+				"code" : "builder := GtApModelBuilder new\r\tlexicons: lexicons;\r\tpackageName: #'Gt4AtProto-GeneratedCode';\r\tmodelClassPrefix: #'GtAp';\r\tclientSuffix: #'Client';\r\tinstanceVarPrefix: #'atProto'.\r\t\rbuilder build"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -270,48 +202,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T17:38:44.886796+02:00"
+						"dateAndTimeString" : "2023-05-10T11:37:26.095075+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "yYiyale3DQCPVfo/C/wKlw=="
 				},
-				"code" : "lexicons removeObjects"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T17:38:45.260405+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T17:39:06.990051+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "WkKlSaa3DQCtiOSPDuRBkQ=="
-				},
-				"code" : ""
+				"code" : "builder remove"
 			}
 		]
 	},
