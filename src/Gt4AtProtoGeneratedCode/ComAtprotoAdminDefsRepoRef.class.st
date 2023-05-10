@@ -1,0 +1,27 @@
+Class {
+	#name : #ComAtprotoAdminDefsRepoRef,
+	#superclass : #Object,
+	#instVars : [
+		'atProtoDid'
+	],
+	#category : #Gt4AtProtoGeneratedCode
+}
+
+{ #category : #accessing }
+ComAtprotoAdminDefsRepoRef >> atProtoDid [
+	^ atProtoDid
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsRepoRef >> atProtoDid: anObject [
+	atProtoDid := anObject
+]
+
+{ #category : #magritte }
+ComAtprotoAdminDefsRepoRef >> didDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Did';
+		accessor: #atProtoDid;
+	beRequired
+]
