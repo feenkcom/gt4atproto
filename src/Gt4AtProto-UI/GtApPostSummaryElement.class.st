@@ -11,7 +11,8 @@ Class {
 		'post',
 		'postTextEditor',
 		'repostsCountLabel',
-		'dateLabel'
+		'dateLabel',
+		'repliesCountLabel'
 	],
 	#category : #'Gt4AtProto-UI'
 }
@@ -30,7 +31,7 @@ GtApPostSummaryElement >> buildPostContentElement [
 		aptitude: BrGlamorousRegularEditorAptitude;
 		hMatchParent;
 		vFitContent;
-		margin: (BlInsets bottom: 10) )
+		margin: (BlInsets top: 0 left: 0 bottom: 10 right: 0) )
 ]
 
 { #category : #'building widgets' }
@@ -39,14 +40,15 @@ GtApPostSummaryElement >> buildPostDetailsElement [
 	
 	detailsElement := BrHorizontalPane new
 		hMatchParent;
-		vFitContent.
+		vFitContent;
+		margin: (BlInsets left: 3).
 	
 	detailsElement 
+		addChild: (repliesCountLabel := self buildGrayLabel);
 		addChild: (repostsCountLabel := self buildGrayLabel);
-		addChild: (likesCountLabel := self buildGrayLabel)";
-		addChild: (tweetDateLabel := self buildGrayLabel)".
+		addChild: (likesCountLabel := self buildGrayLabel).
 		
-	repostsCountLabel margin: (BlInsets right: 10).
+	repostsCountLabel margin: (BlInsets left: 10 right: 10).
 	
 	^ detailsElement
 ]
@@ -68,7 +70,8 @@ GtApPostSummaryElement >> buildUserHeaderElement [
 	
 	headerElement := BrHorizontalPane new
 		hMatchParent;
-		vFitContent.
+		vFitContent;
+		margin: (BlInsets left: 3).
 	
 	headerElement 
 		addChild: (authorNameLabel := (BrLabel new 
@@ -139,8 +142,9 @@ GtApPostSummaryElement >> updateContent [
 	postTextEditor text: self post recordText.
 	dateLabel text: ' at ', self post createdAt printToMinute.
 	self updateMedia.
+	repliesCountLabel text: self post repliesCount asString , ' Replies'.
 	likesCountLabel text: self post likesCount asString , ' Likes'.
-	repostsCountLabel text: self post repostsCount asString , ' RT'
+	repostsCountLabel text: self post repostsCount asString , ' Reposts'
 ]
 
 { #category : #accessing }

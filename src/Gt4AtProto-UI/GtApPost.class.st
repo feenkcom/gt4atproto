@@ -105,6 +105,11 @@ GtApPost >> replies [
 ]
 
 { #category : #accessing }
+GtApPost >> repliesCount [
+	^ rawData at: 'replyCount'
+]
+
+{ #category : #accessing }
 GtApPost >> repostsCount [
 	^ rawData at: 'repostCount'
 ]
