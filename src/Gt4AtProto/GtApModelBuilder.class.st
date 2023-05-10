@@ -74,14 +74,12 @@ GtApModelBuilder >> model: anObject [
 
 { #category : #accessing }
 GtApModelBuilder >> remove [
-	self lexicons definitions
-		keysAndValuesDo: [ :aKey :aDefinition | 
-			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
-				ifTrue: [ | className |
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					className asClassIfPresent: #removeFromSystem ] ].
+	^ self removeUsing: self model
+]
 
-	#GtApGeneratedClient asClassIfPresent: #removeFromSystem
+{ #category : #accessing }
+GtApModelBuilder >> removeUsing: aModel [
+	self builders do: [ :aBuilder | aBuilder removeUsing: aModel ]
 ]
 
 { #category : #accessing }

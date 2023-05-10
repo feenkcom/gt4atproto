@@ -47,3 +47,14 @@ GtApDefinitionsBuilder >> packageName [
 GtApDefinitionsBuilder >> packageName: anObject [
 	packageName := anObject
 ]
+
+{ #category : #accessing }
+GtApDefinitionsBuilder >> removeUsing: aModel [
+	self lexicons definitions
+		keysAndValuesDo: [ :aKey :aDefinition | 
+			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
+				ifTrue: [ | className |
+					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
+					(GtRBRemoveClassRefactoring model: aModel classNames: {className asSymbol})
+						primitiveExecute ] ]
+]

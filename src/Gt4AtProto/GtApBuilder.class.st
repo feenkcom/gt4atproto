@@ -21,3 +21,8 @@ GtApBuilder >> lexicons [
 GtApBuilder >> lexicons: anObject [
 	lexicons := anObject
 ]
+
+{ #category : #accessing }
+GtApBuilder >> removeUsing: aModel [
+	^ self subclassResponsibility
+]

@@ -157,6 +157,40 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-10T19:32:52.685585+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-10T19:32:52.685585+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Dgig/7u3DQCkTnTWBrGd3w=="
+				},
+				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProtoGeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProtoGeneratedCode' inSubclass: #GtApGeneratedClient.\r"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-10T13:35:26.024724+02:00"
 					}
 				},
@@ -168,14 +202,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T16:59:12.29387+02:00"
+						"dateAndTimeString" : "2023-05-10T19:32:52.68737+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
 				},
-				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProtoGeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProtoGeneratedCode' inSubclass: #GtApGeneratedClient.\r\rbuilder build."
+				"code" : "builder build."
 			},
 			{
 				"__type" : "pharoSnippet",

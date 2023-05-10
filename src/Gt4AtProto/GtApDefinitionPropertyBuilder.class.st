@@ -26,3 +26,8 @@ GtApDefinitionPropertyBuilder >> buildUsing: aModel [
 								usingPropertyKey: aPropertyKey
 								andProperty: aProperty ] ] ]
 ]
+
+{ #category : #accessing }
+GtApDefinitionPropertyBuilder >> removeUsing: aModel [
+	"noop"
+]
