@@ -123,40 +123,6 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:25:50.421426+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-03T10:23:22.506405+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "esy59xq3DQCg7s96ACuSBg=="
-				},
-				"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\rlexicons := GtApGenericLexiconImporter new \r\timportLexiconsFromDirectory: lexiconsFolder"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-05T16:15:21.107346+02:00"
 					}
 				},
@@ -202,14 +168,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T11:24:13.569999+02:00"
+						"dateAndTimeString" : "2023-05-10T13:31:55.185251+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
 				},
-				"code" : "builder := GtApModelBuilder new\r\tlexicons: lexicons;\r\tpackageName: #'Gt4AtProto-GeneratedCode';\r\tmodelClassPrefix: #'GtAp';\r\tclientSuffix: #'Client';\r\tinstanceVarPrefix: #'atProto'.\r\t\rbuilder build"
+				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProto-GeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProto-GeneratedCode'\r\t\t\tandClientSuffix: #Client.\r\rbuilder build"
 			},
 			{
 				"__type" : "pharoSnippet",

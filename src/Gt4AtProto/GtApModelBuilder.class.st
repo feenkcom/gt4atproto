@@ -1,71 +1,22 @@
 Class {
 	#name : #GtApModelBuilder,
-	#superclass : #Object,
+	#superclass : #GtApBuilder,
 	#instVars : [
-		'lexicons',
-		'packageName',
-		'modelClassPrefix',
 		'clientSuffix',
-		'instanceVarPrefix'
+		'builders',
+		'model'
 	],
 	#category : #'Gt4AtProto-Code Generation'
 }
 
 { #category : #accessing }
-GtApModelBuilder >> build [
-	| model |
-	model := RBNamespace new.
-	self buildDefinitionObjectsIn: model.
-	self buildDocumentObjectsIn: model.
-	^ model
+GtApModelBuilder >> apply [
+	self model changes gtExecuteWithNotification
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> buildDefinitionObjectsIn: aModel [
-	self lexicons definitions
-		keysAndValuesDo: [ :aKey :aDefinition | 
-			aDefinition type = 'object'
-				ifTrue: [ | className traitName anApObject |
-					anApObject := aDefinition asObject.
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					traitName := 'T' , className.
-
-					(RBAddClassRefactoring
-						model: aModel
-						addClass: className
-						superclass: Object
-						subclasses: #()
-						category: self packageName) primitiveExecute.
-
-					traitName
-						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
-
-					anApObject properties
-						keysAndValuesDo: [ :aPropertyKey :aProperty | 
-							| key |
-							key := self instanceVarPrefix , aPropertyKey asCamelCase.
-							(RBAddInstanceVariableRefactoring
-								model: aModel
-								variable: key
-								class: className) primitiveExecute.
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aProperty generateGetterAs: key)
-								toClass: className
-								inProtocols: #accessing) primitiveExecute.
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aProperty generateSetterAs: key)
-								toClass: className
-								inProtocols: #accessing) primitiveExecute.
-
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aProperty
-										generateDescriptorFor: aPropertyKey
-										isRequired: (anApObject isPropertyRequired: aPropertyKey))
-								toClass: className
-								inProtocols: #magritte) primitiveExecute ] ] ]
+GtApModelBuilder >> build [
+	self buildUsing: self model
 ]
 
 { #category : #accessing }
@@ -98,6 +49,21 @@ GtApModelBuilder >> buildDocumentObjectsIn: aModel [
 ]
 
 { #category : #accessing }
+GtApModelBuilder >> buildUsing: aModel [
+	self builders do: [ :aBuilder | aBuilder buildUsing: aModel ]
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> builders [
+	^ builders
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> builders: anObject [
+	builders := anObject
+]
+
+{ #category : #accessing }
 GtApModelBuilder >> clientSuffix [
 	^ clientSuffix
 ]
@@ -113,66 +79,26 @@ GtApModelBuilder >> defaultClientSuffix [
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> defaultInstanceVarPrefix [
-	^ 'atProto'
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> defaultModelClassPrefix [
-	^ ''
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> defaultPackageName [
-	^ #'Gt4AtProto-Generated'
+GtApModelBuilder >> gtViewModelFor: aView [
+	<gtView>
+	^ self model gtChangesFor: aView
 ]
 
 { #category : #accessing }
 GtApModelBuilder >> initialize [
-	packageName := self defaultPackageName.
-	modelClassPrefix := self defaultModelClassPrefix.
 	clientSuffix := self defaultClientSuffix.
-	instanceVarPrefix := self defaultInstanceVarPrefix
+	builders := OrderedCollection new.
+	model := RBNamespace new
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> instanceVarPrefix [
-	^ instanceVarPrefix
+GtApModelBuilder >> model [
+	^ model
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> instanceVarPrefix: anObject [
-	instanceVarPrefix := anObject
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> lexicons [
-	^ lexicons
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> lexicons: anObject [
-	lexicons := anObject
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> modelClassPrefix [
-	^ modelClassPrefix
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> modelClassPrefix: anObject [
-	modelClassPrefix := anObject
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> packageName [
-	^ packageName
-]
-
-{ #category : #accessing }
-GtApModelBuilder >> packageName: anObject [
-	packageName := anObject
+GtApModelBuilder >> model: anObject [
+	model := anObject
 ]
 
 { #category : #accessing }
@@ -191,4 +117,62 @@ GtApModelBuilder >> remove [
 				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase
 							, self clientSuffix.
 					className asClassIfPresent: #removeFromSystem ] ]
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionAccessorBuilder [
+	builders add: (GtApDefinitionAccessorBuilder new lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionAccessorBuilderWithPrefix: aPrefix [
+	builders
+		add: (GtApDefinitionAccessorBuilder new
+				accessorPrefix: aPrefix;
+				lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionInstanceVarBuilder [
+	builders add: (GtApDefinitionInstanceVarBuilder new lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionInstanceVarBuilderWithPrefix: aPrefix [
+	builders
+		add: (GtApDefinitionInstanceVarBuilder new
+				instanceVarPrefix: aPrefix;
+				lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionMagritteBuilder [
+	builders add: (GtApDefinitionMagritteBuilder new lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionsBuilder [
+	builders add: (GtApDefinitionsBuilder new lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionsBuilderInPackage: aPackageName [
+	builders
+		add: (GtApDefinitionsBuilder new
+				packageName: aPackageName;
+				lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDocumentsBuilder [
+	builders add: (GtApDocumentsBuilder new lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDocumentsBuilderInPackage: aPackageName andClientSuffix: aString [
+	builders
+		add: (GtApDocumentsBuilder new
+				lexicons: self lexicons;
+				packageName: aPackageName;
+				clientSuffix: aString)
 ]

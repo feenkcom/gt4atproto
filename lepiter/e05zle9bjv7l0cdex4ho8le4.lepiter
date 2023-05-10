@@ -157,6 +157,40 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-10T13:35:26.024724+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-10T13:35:26.024724+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
+				},
+				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProto-GeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProto-GeneratedCode'\r\t\t\tandClientSuffix: #Client.\r\rbuilder build."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-05T16:28:26.09546+02:00"
 					}
 				},
@@ -168,14 +202,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T11:24:13.569999+02:00"
+						"dateAndTimeString" : "2023-05-10T13:35:29.611236+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
 				},
-				"code" : "builder := GtApModelBuilder new\r\tlexicons: lexicons;\r\tpackageName: #'Gt4AtProto-GeneratedCode';\r\tmodelClassPrefix: #'GtAp';\r\tclientSuffix: #'Client';\r\tinstanceVarPrefix: #'atProto'.\r\t\rbuilder build"
+				"code" : "builder apply"
 			},
 			{
 				"__type" : "pharoSnippet",
