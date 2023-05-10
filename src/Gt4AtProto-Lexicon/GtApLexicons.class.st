@@ -35,7 +35,7 @@ GtApLexicons >> addLexiconDocument: aLexiconDocument [
 ]
 
 { #category : #accessing }
-GtApLexicons >> buildDefinitionObjectsIn: aModel [ 
+GtApLexicons >> buildDefinitionObjectsIn: aModel inPackage: aPackageName [
 	definitionsById
 		keysAndValuesDo: [ :aKey :aDefinition | 
 			aDefinition type = 'object'
@@ -48,7 +48,7 @@ GtApLexicons >> buildDefinitionObjectsIn: aModel [
 						addClass: className
 						superclass: Object
 						subclasses: #()
-						category: #'Gt4AtProto-Generated') primitiveExecute.
+						category: aPackageName) primitiveExecute.
 					
 					anApObject properties
 						keysAndValuesDo: [ :aPropertyKey :aProperty | 
@@ -79,7 +79,7 @@ GtApLexicons >> buildDefinitionObjectsIn: aModel [
 ]
 
 { #category : #accessing }
-GtApLexicons >> buildDocumentObjectsIn: aModel [
+GtApLexicons >> buildDocumentObjectsIn: aModel inPackage: aPackageName [
 	documentsById
 		keysAndValuesDo: [ :aKey :aDocument | 
 			| className |
@@ -90,7 +90,7 @@ GtApLexicons >> buildDocumentObjectsIn: aModel [
 						addClass: className
 						superclass: GtApClient
 						subclasses: #()
-						category: #'Gt4AtProto-Generated') primitiveExecute.
+						category: aPackageName) primitiveExecute.
 
 					aDocument xrpcCalls
 						keysAndValuesDo: [ :aName :aMethod | 
@@ -103,11 +103,21 @@ GtApLexicons >> buildDocumentObjectsIn: aModel [
 
 { #category : #accessing }
 GtApLexicons >> buildObjects [
+	^ self buildObjectsInPackage: self defaultPackage
+]
+
+{ #category : #accessing }
+GtApLexicons >> buildObjectsInPackage: aPackageName [
 	| model |
 	model := RBNamespace new.
-	self buildDefinitionObjectsIn: model.
-	self buildDocumentObjectsIn: model.
+	self buildDefinitionObjectsIn: model inPackage: aPackageName.
+	self buildDocumentObjectsIn: model inPackage: aPackageName.
 	^ model
+]
+
+{ #category : #accessing }
+GtApLexicons >> defaultPackage [
+	^ #'Gt4AtProto-Generated'
 ]
 
 { #category : #accessing }
