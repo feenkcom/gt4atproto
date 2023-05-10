@@ -168,14 +168,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T13:35:26.024724+02:00"
+						"dateAndTimeString" : "2023-05-10T14:10:02.3664+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
 				},
-				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProto-GeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProto-GeneratedCode'\r\t\t\tandClientSuffix: #Client.\r\rbuilder build."
+				"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #'Gt4AtProto-GeneratedCode';\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #'Gt4AtProto-GeneratedCode' inSubclass: #GtAp.\r\rbuilder build."
 			},
 			{
 				"__type" : "pharoSnippet",
