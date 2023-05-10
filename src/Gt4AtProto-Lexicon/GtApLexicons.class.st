@@ -75,17 +75,17 @@ GtApLexicons >> gtViewDefinitionsByTypeFor: aView [
 { #category : #accessing }
 GtApLexicons >> gtViewDefinitionsFor: aView [
 	<gtView>
-	
-	^ aView columnedList 
+	^ aView columnedList
 		title: 'Definitions';
 		priority: 1;
-		items: [ definitionsById associations ];
-		column: 'Id' text: [ :assoc |
-			assoc key ];
-		column: 'Type' text: [ :assoc | assoc value type ] width: 75;
-		column: 'Description' text: [ :assoc |
-			assoc value description ifNil: [ '' ] ];
-		send: [ :assoc |assoc value ]
+		items: [ definitionsById associations sorted: [ :a :b | a key < b key ] ];
+		column: 'Id' text: [ :assoc | assoc key ];
+		column: 'Type'
+			text: [ :assoc | assoc value type ]
+			width: 75;
+		column: 'Description'
+			text: [ :assoc | assoc value description ifNil: [ '' ] ];
+		send: [ :assoc | assoc value ]
 ]
 
 { #category : #accessing }

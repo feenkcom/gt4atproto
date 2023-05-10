@@ -13,7 +13,7 @@ GtApDefinitionPropertyBuilder >> buildPropertyInClass: className forObject: anAp
 GtApDefinitionPropertyBuilder >> buildUsing: aModel [
 	lexicons definitions
 		keysAndValuesDo: [ :aKey :aDefinition | 
-			aDefinition type = 'object'
+			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
 				ifTrue: [ | className anApObject |
 					anApObject := aDefinition asObject.
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.

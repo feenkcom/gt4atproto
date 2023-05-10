@@ -11,11 +11,10 @@ Class {
 GtApDefinitionsBuilder >> buildUsing: aModel [
 	self lexicons definitions
 		keysAndValuesDo: [ :aKey :aDefinition | 
-			aDefinition type = 'object'
+			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
 				ifTrue: [ | className traitName |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
 					traitName := 'T' , className.
-
 					(RBAddClassRefactoring
 						model: aModel
 						addClass: className
@@ -24,7 +23,9 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 						category: self packageName) primitiveExecute.
 
 					traitName
-						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ] ] ]
+						asClassIfPresent: [ ((GtRBAddTraitUsageToClassByNameRefactoring
+								traitName: traitName
+								inClassNamed: className asSymbol) model: aModel) primitiveExecute ] ] ]
 ]
 
 { #category : #accessing }

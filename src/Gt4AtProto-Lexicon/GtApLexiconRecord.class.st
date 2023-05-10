@@ -18,6 +18,11 @@ GtApLexiconRecord >> acceptVisitor: aLexiconVisitor [
 	^ aLexiconVisitor visitLexiconRecord:  self
 ]
 
+{ #category : #accessing }
+GtApLexiconRecord >> asObject [
+	^ self record
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconRecord >> gtViewRecordPropertiesFor: aView [
 	<gtView>

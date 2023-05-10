@@ -20,35 +20,6 @@ GtApModelBuilder >> build [
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> buildDocumentObjectsIn: aModel [
-	self lexicons documents
-		keysAndValuesDo: [ :aKey :aDocument | 
-			aDocument hasXRPCCalls
-				ifTrue: [ | className traitName |
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase
-							, self clientSuffix.
-					traitName := 'X' , className.
-					(RBAddClassRefactoring
-						model: aModel
-						addClass: className
-						superclass: GtApClient
-						subclasses: #()
-						category: self packageName) primitiveExecute.
-
-
-					traitName
-						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
-
-					aDocument xrpcCalls
-						keysAndValuesDo: [ :aName :aMethod | 
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aMethod asXRPCMethodNamed: aKey)
-								toClass: className
-								inProtocols: {#'atproto-xrpc-call'}) primitiveExecute ] ] ]
-]
-
-{ #category : #accessing }
 GtApModelBuilder >> buildUsing: aModel [
 	self builders do: [ :aBuilder | aBuilder buildUsing: aModel ]
 ]
@@ -105,17 +76,9 @@ GtApModelBuilder >> model: anObject [
 GtApModelBuilder >> remove [
 	self lexicons definitions
 		keysAndValuesDo: [ :aKey :aDefinition | 
-			aDefinition type = 'object'
+			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
 				ifTrue: [ | className |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					className asClassIfPresent: #removeFromSystem ] ].
-
-	self lexicons documents
-		keysAndValuesDo: [ :aKey :aDocument | 
-			| className |
-			aDocument hasXRPCCalls
-				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase
-							, self clientSuffix.
 					className asClassIfPresent: #removeFromSystem ] ]
 ]
 
