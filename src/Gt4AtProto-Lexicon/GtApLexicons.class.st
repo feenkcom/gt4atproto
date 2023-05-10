@@ -39,17 +39,21 @@ GtApLexicons >> buildDefinitionObjectsIn: aModel inPackage: aPackageName [
 	definitionsById
 		keysAndValuesDo: [ :aKey :aDefinition | 
 			aDefinition type = 'object'
-				ifTrue: [ | className anApObject |
+				ifTrue: [ | className traitName anApObject |
 					anApObject := aDefinition asObject.
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					
+					traitName := 'T' , className.
+
 					(RBAddClassRefactoring
 						model: aModel
 						addClass: className
 						superclass: Object
 						subclasses: #()
 						category: aPackageName) primitiveExecute.
-					
+
+					traitName
+						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
+
 					anApObject properties
 						keysAndValuesDo: [ :aPropertyKey :aProperty | 
 							| key |
@@ -75,22 +79,28 @@ GtApLexicons >> buildDefinitionObjectsIn: aModel inPackage: aPackageName [
 										generateDescriptorFor: aPropertyKey
 										isRequired: (anApObject isPropertyRequired: aPropertyKey))
 								toClass: className
-								inProtocols: #magritte) primitiveExecute ] ] ].
+								inProtocols: #magritte) primitiveExecute ] ] ]
 ]
 
 { #category : #accessing }
 GtApLexicons >> buildDocumentObjectsIn: aModel inPackage: aPackageName [
 	documentsById
 		keysAndValuesDo: [ :aKey :aDocument | 
-			| className |
 			aDocument hasXRPCCalls
-				ifTrue: [ className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase , 'Client'.
+				ifTrue: [ | className traitName |
+					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase
+							, 'Client'.
+					traitName := 'X' , className.
 					(RBAddClassRefactoring
 						model: aModel
 						addClass: className
 						superclass: GtApClient
 						subclasses: #()
 						category: aPackageName) primitiveExecute.
+
+
+					traitName
+						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
 
 					aDocument xrpcCalls
 						keysAndValuesDo: [ :aName :aMethod | 
