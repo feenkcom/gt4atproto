@@ -169,10 +169,9 @@ GtApModelBuilder >> useDocumentsBuilder [
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> useDocumentsBuilderInPackage: aPackageName andClientSuffix: aString [
+GtApModelBuilder >> useDocumentsBuilderInPackage: aPackageName [
 	builders
 		add: (GtApDocumentsBuilder new
 				lexicons: self lexicons;
-				packageName: aPackageName;
-				clientSuffix: aString)
+				packageName: aPackageName)
 ]

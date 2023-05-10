@@ -2,7 +2,6 @@ Class {
 	#name : #GtApDocumentsBuilder,
 	#superclass : #GtApBuilder,
 	#instVars : [
-		'clientSuffix',
 		'packageName'
 	],
 	#category : #'Gt4AtProto-Code Generation'
@@ -12,44 +11,13 @@ Class {
 GtApDocumentsBuilder >> buildUsing: aModel [
 	self lexicons documents
 		keysAndValuesDo: [ :aKey :aDocument | 
-			aDocument hasXRPCCalls
-				ifTrue: [ | className traitName |
-					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase
-							, self clientSuffix.
-					traitName := 'X' , className.
-					(RBAddClassRefactoring
+			aDocument xrpcCalls
+				keysAndValuesDo: [ :aName :aMethod | 
+					(RBAddMethodRefactoring
 						model: aModel
-						addClass: className
-						superclass: GtApClient
-						subclasses: #()
-						category: self packageName) primitiveExecute.
-
-
-					traitName
-						asClassIfPresent: [ GtRBAddTraitUsageRefactoring traitName: traitName class: className ].
-
-					aDocument xrpcCalls
-						keysAndValuesDo: [ :aName :aMethod | 
-							(RBAddMethodRefactoring
-								model: aModel
-								addMethod: (aMethod asXRPCMethodNamed: aKey)
-								toClass: className
-								inProtocols: {#'atproto-xrpc-call'}) primitiveExecute ] ] ]
-]
-
-{ #category : #accessing }
-GtApDocumentsBuilder >> clientSuffix [
-	^ clientSuffix
-]
-
-{ #category : #accessing }
-GtApDocumentsBuilder >> clientSuffix: anObject [
-	clientSuffix := anObject
-]
-
-{ #category : #accessing }
-GtApDocumentsBuilder >> defaultClientSuffix [
-	^ 'Client'
+						addMethod: (aMethod asXRPCMethodNamed: aKey)
+						toClass: 'GtApClient'
+						inProtocols: {#* , packageName}) primitiveExecute ] ]
 ]
 
 { #category : #accessing }
@@ -59,7 +27,6 @@ GtApDocumentsBuilder >> defaultPackageName [
 
 { #category : #accessing }
 GtApDocumentsBuilder >> initialize [
-	clientSuffix := self defaultClientSuffix.
 	packageName := self defaultPackageName
 ]
 
