@@ -22,7 +22,7 @@ GtApUserTimeline >> gtViewPostsSummaryUIFor: aView [
 			BrSimpleList new
 				stream: self posts;
 				itemStencil: [ GtApPostSummaryListContainerElement new ];
-				itemDataBinder: [ :aPostElement :aPost | aPostElement post: aPost; when: BlClickEvent do: [ :e | e target phlow spawnObject: aPost ] ] ]
+				itemDataBinder: [ :aPostElement :aPost | aPostElement post: aPost; when: BlClickEvent do: [ :e | e target phlow spawnObject: aPostElement post ] ] ]
 ]
 
 { #category : #accessing }
