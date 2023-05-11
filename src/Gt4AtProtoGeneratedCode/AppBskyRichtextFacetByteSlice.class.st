@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
+	^ self new atProtoByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]); 
+		atProtoByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyRichtextFacetByteSlice >> atProtoByteEnd [
 	^ atProtoByteEnd
@@ -31,7 +37,7 @@ AppBskyRichtextFacetByteSlice >> atProtoByteStart: anObject [
 { #category : #magritte }
 AppBskyRichtextFacetByteSlice >> byteEndDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'ByteEnd';
 		accessor: #atProtoByteEnd;
 	beRequired
@@ -40,7 +46,7 @@ AppBskyRichtextFacetByteSlice >> byteEndDescription [
 { #category : #magritte }
 AppBskyRichtextFacetByteSlice >> byteStartDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'ByteStart';
 		accessor: #atProtoByteStart;
 	beRequired

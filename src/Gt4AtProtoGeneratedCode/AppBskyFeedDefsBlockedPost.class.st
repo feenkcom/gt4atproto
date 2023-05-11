@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost >> atProtoBlocked [
 	^ atProtoBlocked

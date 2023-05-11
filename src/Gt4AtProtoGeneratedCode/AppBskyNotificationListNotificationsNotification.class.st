@@ -15,6 +15,19 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoAuthor: (AppBskyActorDefsProfileView fromRequest: (aRequest at: 'author' ifAbsent: [ nil ])); 
+		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atProtoReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]); 
+		atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
+		atProtoIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atProtoAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>

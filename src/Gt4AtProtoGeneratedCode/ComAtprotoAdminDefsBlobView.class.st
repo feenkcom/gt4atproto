@@ -12,6 +12,16 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
+	^ self new atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]); 
+		atProtoSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atProtoDetails: (aRequest at: 'details' ifAbsent: [ nil ]); 
+		atProtoModeration: (ComAtprotoAdminDefsModeration fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atProtoCid [
 	^ atProtoCid
@@ -121,7 +131,7 @@ ComAtprotoAdminDefsBlobView >> moderationDescription [
 { #category : #magritte }
 ComAtprotoAdminDefsBlobView >> sizeDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Size';
 		accessor: #atProtoSize;
 	beRequired

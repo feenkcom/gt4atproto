@@ -13,6 +13,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsReportViewDetail class >> fromRequest: aRequest [
+	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atProtoReasonType: (String fromRequest: (aRequest at: 'reasonType' ifAbsent: [ nil ])); 
+		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atProtoReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atProtoResolvedByActions: (aRequest at: 'resolvedByActions' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atProtoCreatedAt [
 	^ atProtoCreatedAt
@@ -97,7 +108,7 @@ ComAtprotoAdminDefsReportViewDetail >> createdAtDescription [
 { #category : #magritte }
 ComAtprotoAdminDefsReportViewDetail >> idDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atProtoId;
 	beRequired

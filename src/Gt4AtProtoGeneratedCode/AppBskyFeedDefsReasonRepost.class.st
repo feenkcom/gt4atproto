@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
+	^ self new atProtoBy: (AppBskyActorDefsProfileViewBasic fromRequest: (aRequest at: 'by' ifAbsent: [ nil ])); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedDefsReasonRepost >> atProtoBy [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>

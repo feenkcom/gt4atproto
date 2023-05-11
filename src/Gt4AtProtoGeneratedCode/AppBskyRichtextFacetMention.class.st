@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyRichtextFacetMention class >> fromRequest: aRequest [
+	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyRichtextFacetMention >> atProtoDid [
 	^ atProtoDid

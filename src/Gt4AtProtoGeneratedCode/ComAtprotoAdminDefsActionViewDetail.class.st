@@ -17,6 +17,21 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
+	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atProtoAction: (String fromRequest: (aRequest at: 'action' ifAbsent: [ nil ])); 
+		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atProtoSubjectBlobs: (aRequest at: 'subjectBlobs' ifAbsent: [ nil ]); 
+		atProtoCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
+		atProtoNegateLabelVals: (aRequest at: 'negateLabelVals' ifAbsent: [ nil ]); 
+		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atProtoReversal: (ComAtprotoAdminDefsActionReversal fromRequest: (aRequest at: 'reversal' ifAbsent: [ nil ])); 
+		atProtoResolvedReports: (aRequest at: 'resolvedReports' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 ComAtprotoAdminDefsActionViewDetail >> actionDescription [
 	<magritteDescription>
@@ -170,7 +185,7 @@ ComAtprotoAdminDefsActionViewDetail >> createdByDescription [
 { #category : #magritte }
 ComAtprotoAdminDefsActionViewDetail >> idDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atProtoId;
 	beRequired
@@ -198,7 +213,7 @@ ComAtprotoAdminDefsActionViewDetail >> reasonDescription [
 ComAtprotoAdminDefsActionViewDetail >> resolvedReportsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {ReportView};
+		classes: {ComAtprotoAdminDefsReportView};
 		label: 'ResolvedReports';
 		accessor: #atProtoResolvedReports;
 	beRequired
@@ -216,7 +231,7 @@ ComAtprotoAdminDefsActionViewDetail >> reversalDescription [
 ComAtprotoAdminDefsActionViewDetail >> subjectBlobsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {BlobView};
+		classes: {ComAtprotoAdminDefsBlobView};
 		label: 'SubjectBlobs';
 		accessor: #atProtoSubjectBlobs;
 	beRequired

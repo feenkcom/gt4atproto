@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedRepostMain class >> fromRequest: aRequest [
+	^ self new atProtoSubject: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'subject' ifAbsent: [ nil ])); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedRepostMain >> atProtoCreatedAt [
 	^ atProtoCreatedAt

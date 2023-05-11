@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyRichtextFacetMain class >> fromRequest: aRequest [
+	^ self new atProtoIndex: (AppBskyRichtextFacetByteSlice fromRequest: (aRequest at: 'index' ifAbsent: [ nil ])); 
+		atProtoFeatures: (aRequest at: 'features' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyRichtextFacetMain >> atProtoFeatures [
 	^ atProtoFeatures

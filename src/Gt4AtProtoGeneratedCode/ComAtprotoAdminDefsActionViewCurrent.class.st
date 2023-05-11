@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
+	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atProtoAction: (String fromRequest: (aRequest at: 'action' ifAbsent: [ nil ]))
+]
+
 { #category : #magritte }
 ComAtprotoAdminDefsActionViewCurrent >> actionDescription [
 	<magritteDescription>
@@ -42,7 +48,7 @@ ComAtprotoAdminDefsActionViewCurrent >> atProtoId: anObject [
 { #category : #magritte }
 ComAtprotoAdminDefsActionViewCurrent >> idDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atProtoId;
 	beRequired

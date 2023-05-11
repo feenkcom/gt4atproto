@@ -12,6 +12,16 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
+	^ self new atProtoSrc: (aRequest at: 'src' ifAbsent: [ nil ]); 
+		atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoVal: (aRequest at: 'val' ifAbsent: [ nil ]); 
+		atProtoNeg: (aRequest at: 'neg' ifAbsent: [ nil ]); 
+		atProtoCts: (aRequest at: 'cts' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atProtoCid [
 	^ atProtoCid

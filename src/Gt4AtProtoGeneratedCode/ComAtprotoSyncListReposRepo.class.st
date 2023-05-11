@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
+	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atProtoHead: (aRequest at: 'head' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoSyncListReposRepo >> atProtoDid [
 	^ atProtoDid

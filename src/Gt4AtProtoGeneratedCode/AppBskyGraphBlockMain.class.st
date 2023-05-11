@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyGraphBlockMain class >> fromRequest: aRequest [
+	^ self new atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyGraphBlockMain >> atProtoCreatedAt [
 	^ atProtoCreatedAt

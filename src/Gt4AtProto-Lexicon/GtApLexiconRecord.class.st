@@ -45,6 +45,11 @@ GtApLexiconRecord >> key: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconRecord >> properties [
+	^ record properties
+]
+
+{ #category : #accessing }
 GtApLexiconRecord >> record [
 	^ record
 ]

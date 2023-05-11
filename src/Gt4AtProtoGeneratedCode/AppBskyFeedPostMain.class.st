@@ -12,6 +12,16 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedPostMain class >> fromRequest: aRequest [
+	^ self new atProtoText: (aRequest at: 'text' ifAbsent: [ nil ]); 
+		atProtoEntities: (aRequest at: 'entities' ifAbsent: [ nil ]); 
+		atProtoFacets: (aRequest at: 'facets' ifAbsent: [ nil ]); 
+		atProtoReply: (AppBskyFeedPostReplyRef fromRequest: (aRequest at: 'reply' ifAbsent: [ nil ])); 
+		atProtoEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedPostMain >> atProtoCreatedAt [
 	^ atProtoCreatedAt
@@ -96,7 +106,7 @@ AppBskyFeedPostMain >> embedDescription [
 AppBskyFeedPostMain >> entitiesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {Entity};
+		classes: {AppBskyFeedPostEntity};
 		label: 'Entities';
 		accessor: #atProtoEntities
 ]
@@ -105,7 +115,7 @@ AppBskyFeedPostMain >> entitiesDescription [
 AppBskyFeedPostMain >> facetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyRichtextFacet};
+		classes: {AppBskyRichtextFacetMain};
 		label: 'Facets';
 		accessor: #atProtoFacets
 ]

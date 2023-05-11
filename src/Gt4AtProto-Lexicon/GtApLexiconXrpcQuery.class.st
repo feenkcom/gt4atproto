@@ -18,10 +18,16 @@ GtApLexiconXrpcQuery >> acceptVisitor: aLexiconVisitor [
 GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	| methodName |
 	methodName := self methodName: aName.
+
+	self parameters properties
+		keysDo: [ :anInputName | methodName := methodName , anInputName , ': ' , anInputName , ' ' ].
+
 	^ methodName
 		, '
 	<xrpcQuery>
-	^ self queryOn: ''' , aName , ''''
+	^ ' , self output generateDeserialization , ' (self queryOn: ''' , aName
+		, ''' parameters: {' , ('. ' join: self xrpcRequestParameterAssociations)
+		, '} asDictionary)'
 ]
 
 { #category : #accessing }
@@ -46,4 +52,10 @@ GtApLexiconXrpcQuery >> gtRequestActionFor: anAction [
 GtApLexiconXrpcQuery >> initializeFromRawData: aSchemaData usingImporter: anImporter [
 	self rawData:  aSchemaData.
 	self halt.
+]
+
+{ #category : #accessing }
+GtApLexiconXrpcQuery >> xrpcRequestParameterAssociations [
+	^ self parameters properties keys
+		collect: [ :anInputName | '''' , anInputName , ''' -> ' , anInputName ]
 ]

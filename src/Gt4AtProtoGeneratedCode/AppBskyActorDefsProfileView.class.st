@@ -14,6 +14,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyActorDefsProfileView class >> fromRequest: aRequest [
+	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atProtoDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
+		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atProtoAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoViewer: (AppBskyActorDefsViewerState fromRequest: (aRequest at: 'viewer' ifAbsent: [ nil ])); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atProtoAvatar [
 	^ atProtoAvatar

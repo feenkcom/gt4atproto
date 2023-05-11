@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
+	^ self new atProtoCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
+		atProtoRkey: (aRequest at: 'rkey' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete >> atProtoCollection [
 	^ atProtoCollection

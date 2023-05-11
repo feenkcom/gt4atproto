@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
+	^ self new atProtoPost: (AppBskyFeedDefsPostView fromRequest: (aRequest at: 'post' ifAbsent: [ nil ])); 
+		atProtoParent: (aRequest at: 'parent' ifAbsent: [ nil ]); 
+		atProtoReplies: (aRequest at: 'replies' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost >> atProtoParent [
 	^ atProtoParent

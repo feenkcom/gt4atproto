@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
+	^ self new atProtoStart: (aRequest at: 'start' ifAbsent: [ nil ]); 
+		atProtoEnd: (aRequest at: 'end' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedPostTextSlice >> atProtoEnd [
 	^ atProtoEnd
@@ -31,7 +37,7 @@ AppBskyFeedPostTextSlice >> atProtoStart: anObject [
 { #category : #magritte }
 AppBskyFeedPostTextSlice >> endDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'End';
 		accessor: #atProtoEnd;
 	beRequired
@@ -40,7 +46,7 @@ AppBskyFeedPostTextSlice >> endDescription [
 { #category : #magritte }
 AppBskyFeedPostTextSlice >> startDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Start';
 		accessor: #atProtoStart;
 	beRequired

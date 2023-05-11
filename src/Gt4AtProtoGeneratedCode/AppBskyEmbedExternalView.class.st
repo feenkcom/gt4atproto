@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedExternalView class >> fromRequest: aRequest [
+	^ self new atProtoExternal: (AppBskyEmbedExternalViewExternal fromRequest: (aRequest at: 'external' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 AppBskyEmbedExternalView >> atProtoExternal [
 	<referenceTo:'#viewExternal'>

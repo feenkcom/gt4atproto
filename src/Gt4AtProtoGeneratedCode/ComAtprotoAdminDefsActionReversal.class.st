@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
+	^ self new atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atProtoCreatedAt [
 	^ atProtoCreatedAt

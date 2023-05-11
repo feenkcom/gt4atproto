@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
+	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsLabels >> atProtoLabels [
 	^ atProtoLabels
@@ -41,7 +47,7 @@ ComAtprotoLabelSubscribeLabelsLabels >> labelsDescription [
 { #category : #magritte }
 ComAtprotoLabelSubscribeLabelsLabels >> seqDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atProtoSeq;
 	beRequired

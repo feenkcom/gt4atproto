@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
+	^ self new atProtoPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]); 
+		atProtoTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atProtoPrivacyPolicy [
 	^ atProtoPrivacyPolicy

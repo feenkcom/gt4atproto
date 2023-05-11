@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyRichtextFacetLink class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyRichtextFacetLink >> atProtoUri [
 	^ atProtoUri

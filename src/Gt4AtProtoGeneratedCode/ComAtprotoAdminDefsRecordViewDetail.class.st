@@ -14,6 +14,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsRecordViewDetail class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
+		atProtoBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoModeration: (ComAtprotoAdminDefsModerationDetail fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ])); 
+		atProtoRepo: (ComAtprotoAdminDefsRepoView fromRequest: (aRequest at: 'repo' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atProtoBlobs [
 	^ atProtoBlobs
@@ -102,7 +114,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atProtoValue: anObject [
 ComAtprotoAdminDefsRecordViewDetail >> blobsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {BlobView};
+		classes: {ComAtprotoAdminDefsBlobView};
 		label: 'Blobs';
 		accessor: #atProtoBlobs;
 	beRequired

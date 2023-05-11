@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedRecordMain class >> fromRequest: aRequest [
+	^ self new atProtoRecord: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'record' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 AppBskyEmbedRecordMain >> atProtoRecord [
 	<referenceTo:'com.atproto.repo.strongRef'>

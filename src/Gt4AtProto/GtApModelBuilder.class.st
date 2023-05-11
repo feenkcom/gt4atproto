@@ -96,6 +96,14 @@ GtApModelBuilder >> useDefinitionAccessorBuilderWithPrefix: aPrefix [
 ]
 
 { #category : #accessing }
+GtApModelBuilder >> useDefinitionFromRequestBuilderWithPrefix: aPrefix [
+	builders
+		add: (GtApDefinitionFromRequestBuilder new
+				accessorPrefix: aPrefix;
+				lexicons: self lexicons)
+]
+
+{ #category : #accessing }
 GtApModelBuilder >> useDefinitionInstanceVarBuilder [
 	builders add: (GtApDefinitionInstanceVarBuilder new lexicons: self lexicons)
 ]

@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedImagesImage class >> fromRequest: aRequest [
+	^ self new atProtoImage: (aRequest at: 'image' ifAbsent: [ nil ]); 
+		atProtoAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 AppBskyEmbedImagesImage >> altDescription [
 	<magritteDescription>

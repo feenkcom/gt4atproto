@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord >> atProtoCid [
 	^ atProtoCid

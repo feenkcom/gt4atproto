@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
+	^ self new atProtoRepost: (aRequest at: 'repost' ifAbsent: [ nil ]); 
+		atProtoLike: (aRequest at: 'like' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedDefsViewerState >> atProtoLike [
 	^ atProtoLike

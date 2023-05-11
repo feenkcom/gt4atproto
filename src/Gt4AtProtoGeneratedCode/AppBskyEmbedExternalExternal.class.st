@@ -10,6 +10,14 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedExternalExternal class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoTitle: (aRequest at: 'title' ifAbsent: [ nil ]); 
+		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atProtoThumb: (aRequest at: 'thumb' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyEmbedExternalExternal >> atProtoDescription [
 	^ atProtoDescription

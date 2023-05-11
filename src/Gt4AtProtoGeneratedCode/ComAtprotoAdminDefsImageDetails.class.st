@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
+	^ self new atProtoWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
+		atProtoHeight: (aRequest at: 'height' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsImageDetails >> atProtoHeight [
 	^ atProtoHeight
@@ -31,7 +37,7 @@ ComAtprotoAdminDefsImageDetails >> atProtoWidth: anObject [
 { #category : #magritte }
 ComAtprotoAdminDefsImageDetails >> heightDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Height';
 		accessor: #atProtoHeight;
 	beRequired
@@ -40,7 +46,7 @@ ComAtprotoAdminDefsImageDetails >> heightDescription [
 { #category : #magritte }
 ComAtprotoAdminDefsImageDetails >> widthDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Width';
 		accessor: #atProtoWidth;
 	beRequired

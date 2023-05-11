@@ -17,6 +17,21 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
+	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atProtoAction: (String fromRequest: (aRequest at: 'action' ifAbsent: [ nil ])); 
+		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atProtoSubjectBlobCids: (aRequest at: 'subjectBlobCids' ifAbsent: [ nil ]); 
+		atProtoCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
+		atProtoNegateLabelVals: (aRequest at: 'negateLabelVals' ifAbsent: [ nil ]); 
+		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atProtoReversal: (ComAtprotoAdminDefsActionReversal fromRequest: (aRequest at: 'reversal' ifAbsent: [ nil ])); 
+		atProtoResolvedReportIds: (aRequest at: 'resolvedReportIds' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 ComAtprotoAdminDefsActionView >> actionDescription [
 	<magritteDescription>
@@ -170,7 +185,7 @@ ComAtprotoAdminDefsActionView >> createdByDescription [
 { #category : #magritte }
 ComAtprotoAdminDefsActionView >> idDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atProtoId;
 	beRequired

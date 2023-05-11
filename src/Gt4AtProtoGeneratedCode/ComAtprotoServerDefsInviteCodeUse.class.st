@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
+	^ self new atProtoUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]); 
+		atProtoUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoServerDefsInviteCodeUse >> atProtoUsedAt [
 	^ atProtoUsedAt

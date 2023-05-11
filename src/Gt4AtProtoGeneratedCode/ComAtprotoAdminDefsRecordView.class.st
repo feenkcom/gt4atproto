@@ -13,6 +13,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsRecordView class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
+		atProtoBlobCids: (aRequest at: 'blobCids' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoModeration: (ComAtprotoAdminDefsModeration fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ])); 
+		atProtoRepo: (ComAtprotoAdminDefsRepoView fromRequest: (aRequest at: 'repo' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsRecordView >> atProtoBlobCids [
 	^ atProtoBlobCids

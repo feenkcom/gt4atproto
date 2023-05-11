@@ -10,6 +10,14 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest [
+	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atProtoDid [
 	^ atProtoDid
@@ -71,7 +79,7 @@ ComAtprotoSyncSubscribeReposHandle >> handleDescription [
 { #category : #magritte }
 ComAtprotoSyncSubscribeReposHandle >> seqDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atProtoSeq;
 	beRequired

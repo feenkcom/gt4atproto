@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyEmbedRecordViewNotFound >> atProtoUri [
 	^ atProtoUri
