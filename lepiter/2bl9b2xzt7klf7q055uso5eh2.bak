@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T20:32:28.856163+02:00"
+						"dateAndTimeString" : "2023-05-11T07:03:19.681733+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T20:32:28.868348+02:00"
+						"dateAndTimeString" : "2023-05-11T07:04:37.261196+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "nllixwe3DQCbmDU1ACuSBg=="
+					"uidString" : "BXi2pMW3DQCfm0JuBH44Jw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[Basic API requests]]"
+				"string" : "This is an environment for [[AT Protocol]] built in {{gtPage:Glamorous Toolkit|db=2j9m7db2i4oz116bexd7wbdxo}}."
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:25:37.385591+02:00"
+						"dateAndTimeString" : "2023-05-11T07:04:51.075019+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,54 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-11T00:21:06.663774+02:00"
+						"dateAndTimeString" : "2023-05-11T07:04:53.682478+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "KuLy9hq3DQCghQw5ACuSBg=="
+					"uidString" : "6fOIqcW3DQChx60yBH44Jw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "[[Importing lexicons and generating code]]"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T18:25:49.463893+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-11T00:24:18.63936+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "7yT78aa3DQCzNU4xDuRBkQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "[[Browsing a user]]s]"
+				"string" : "It is meant to "
 			}
 		]
 	},
@@ -125,7 +88,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-01T20:32:13.729404+02:00"
+			"dateAndTimeString" : "2023-05-11T07:03:17.004726+02:00"
 		}
 	},
 	"editEmail" : {
@@ -136,15 +99,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-11T07:02:57.117857+02:00"
+			"dateAndTimeString" : "2023-05-11T07:03:17.004726+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Glamorous Toolkit for AT Protocol"
+		"title" : "About this project"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "12e54ec7-07b7-0d00-9b97-53af002b9206"
+		"uuid" : "8600b5a4-c5b7-0d00-9f9a-add8047e3827"
 	}
 }
