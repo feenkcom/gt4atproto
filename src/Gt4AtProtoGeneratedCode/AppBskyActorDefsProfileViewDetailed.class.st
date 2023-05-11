@@ -32,7 +32,7 @@ AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
 		atProtoFollowsCount: (aRequest at: 'followsCount' ifAbsent: [ nil ]); 
 		atProtoPostsCount: (aRequest at: 'postsCount' ifAbsent: [ nil ]); 
 		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoViewer: (AppBskyActorDefsViewerState fromRequest: (aRequest at: 'viewer' ifAbsent: [ nil ])); 
+		atProtoViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 

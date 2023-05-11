@@ -21,14 +21,14 @@ Class {
 AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoAuthor: (AppBskyActorDefsProfileViewBasic fromRequest: (aRequest at: 'author' ifAbsent: [ nil ])); 
+		atProtoAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
 		atProtoEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
 		atProtoReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]); 
 		atProtoRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]); 
 		atProtoLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]); 
 		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoViewer: (AppBskyFeedDefsViewerState fromRequest: (aRequest at: 'viewer' ifAbsent: [ nil ])); 
+		atProtoViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyFeedDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 

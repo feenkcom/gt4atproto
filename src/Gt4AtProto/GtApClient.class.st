@@ -54,7 +54,8 @@ GtApClient >> gtProceduresFor: aView [
 	^ aView list
 		title: 'Procedures';
 		priority: 2;
-		items: [ self procedures collect: #selector ]
+		items: [ self procedures ];
+		itemText: [:aPragma | aPragma method selector ]
 ]
 
 { #category : #accessing }
@@ -64,7 +65,7 @@ GtApClient >> gtQueriesFor: aView [
 		title: 'Queries';
 		priority: 1;
 		items: [ self queries ];
-		column: 'Name' text: #selector;
+		column: 'Name' text: [:aPragma | aPragma method selector ];
 		column: 'Play'
 			stencil: [ :aPragma | 
 				BrButton new

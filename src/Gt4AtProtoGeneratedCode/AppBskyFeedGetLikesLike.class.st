@@ -13,7 +13,7 @@ Class {
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
 	^ self new atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
 		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoActor: (AppBskyActorDefsProfileView fromRequest: (aRequest at: 'actor' ifAbsent: [ nil ]))
+		atProtoActor: (aRequest at: 'actor' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

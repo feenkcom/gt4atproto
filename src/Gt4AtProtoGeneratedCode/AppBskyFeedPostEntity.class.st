@@ -11,7 +11,7 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedPostEntity class >> fromRequest: aRequest [
-	^ self new atProtoIndex: (AppBskyFeedPostTextSlice fromRequest: (aRequest at: 'index' ifAbsent: [ nil ])); 
+	^ self new atProtoIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyFeedPostTextSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoType: (aRequest at: 'type' ifAbsent: [ nil ]); 
 		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]

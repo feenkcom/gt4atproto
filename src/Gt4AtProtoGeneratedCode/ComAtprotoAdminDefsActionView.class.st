@@ -20,7 +20,7 @@ Class {
 { #category : #serialization }
 ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
 	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoAction: (String fromRequest: (aRequest at: 'action' ifAbsent: [ nil ])); 
+		atProtoAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
 		atProtoSubjectBlobCids: (aRequest at: 'subjectBlobCids' ifAbsent: [ nil ]); 
 		atProtoCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
@@ -28,7 +28,7 @@ ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
 		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
 		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoReversal: (ComAtprotoAdminDefsActionReversal fromRequest: (aRequest at: 'reversal' ifAbsent: [ nil ])); 
+		atProtoReversal: (aRequest at: 'reversal' ifPresent: [:aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoResolvedReportIds: (aRequest at: 'resolvedReportIds' ifAbsent: [ nil ])
 ]
 

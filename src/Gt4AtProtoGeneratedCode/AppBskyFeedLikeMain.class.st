@@ -10,7 +10,7 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedLikeMain class >> fromRequest: aRequest [
-	^ self new atProtoSubject: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'subject' ifAbsent: [ nil ])); 
+	^ self new atProtoSubject: (aRequest at: 'subject' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 

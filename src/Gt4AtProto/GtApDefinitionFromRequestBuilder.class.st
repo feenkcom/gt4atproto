@@ -32,8 +32,9 @@ GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
 								, ((({'ref'.
 										'record'} includes: aChildDefinition type)
 										or: [ aChildDefinition type = 'object' and: [ aChildDefinition hasId ] ])
-										ifTrue: [ '(' , aChildDefinition asClassName , ' fromRequest: (aRequest at: ''' , aKey
-												, ''' ifAbsent: [ nil ]))' ]
+										ifTrue: [ '(aRequest at: ''' , aKey , ''' ifPresent: [:aValue | '
+												, aChildDefinition asClassName
+												, ' fromRequest: aValue ] ifAbsent: [ nil ])' ]
 										ifFalse: [ '(aRequest at: ''' , aKey , ''' ifAbsent: [ nil ])' ]) ]))
 ]
 

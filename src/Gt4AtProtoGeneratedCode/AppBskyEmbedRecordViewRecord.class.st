@@ -17,7 +17,7 @@ Class {
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoAuthor: (AppBskyActorDefsProfileViewBasic fromRequest: (aRequest at: 'author' ifAbsent: [ nil ])); 
+		atProtoAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
 		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
 		atProtoEmbeds: (aRequest at: 'embeds' ifAbsent: [ nil ]); 

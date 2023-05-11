@@ -10,7 +10,7 @@ Class {
 
 { #category : #serialization }
 AppBskyRichtextFacetMain class >> fromRequest: aRequest [
-	^ self new atProtoIndex: (AppBskyRichtextFacetByteSlice fromRequest: (aRequest at: 'index' ifAbsent: [ nil ])); 
+	^ self new atProtoIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoFeatures: (aRequest at: 'features' ifAbsent: [ nil ])
 ]
 

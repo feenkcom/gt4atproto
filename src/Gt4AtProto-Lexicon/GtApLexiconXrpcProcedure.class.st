@@ -37,8 +37,9 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 	^ methodName
 		, '
 	<xrpcProcedure>
-	^ self procedureOn: ''' , aName , ''' withBody: {'
-		, ('. ' join: self xrpcRequestBodyAssociations) , '} asDictionary'
+	^ ' , self output generateDeserialization , ' (self procedureOn: ''' , aName
+		, ''' withBody: {' , ('. ' join: self xrpcRequestBodyAssociations)
+		, '} asDictionary)'
 ]
 
 { #category : #'gt - extensions' }

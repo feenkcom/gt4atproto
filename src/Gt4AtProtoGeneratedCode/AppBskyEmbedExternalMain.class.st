@@ -9,7 +9,7 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedExternalMain class >> fromRequest: aRequest [
-	^ self new atProtoExternal: (AppBskyEmbedExternalExternal fromRequest: (aRequest at: 'external' ifAbsent: [ nil ]))
+	^ self new atProtoExternal: (aRequest at: 'external' ifPresent: [:aValue | AppBskyEmbedExternalExternal fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

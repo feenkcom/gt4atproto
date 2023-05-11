@@ -10,8 +10,8 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedPostReplyRef class >> fromRequest: aRequest [
-	^ self new atProtoRoot: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'root' ifAbsent: [ nil ])); 
-		atProtoParent: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'parent' ifAbsent: [ nil ]))
+	^ self new atProtoRoot: (aRequest at: 'root' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atProtoParent: (aRequest at: 'parent' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

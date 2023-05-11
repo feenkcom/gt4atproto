@@ -18,7 +18,7 @@ AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
 		atProtoDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
 		atProtoAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atProtoViewer: (AppBskyActorDefsViewerState fromRequest: (aRequest at: 'viewer' ifAbsent: [ nil ])); 
+		atProtoViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 

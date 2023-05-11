@@ -16,7 +16,7 @@ Class {
 { #category : #serialization }
 ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoReasonType: (String fromRequest: (aRequest at: 'reasonType' ifAbsent: [ nil ])); 
+		atProtoReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
 		atProtoReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 

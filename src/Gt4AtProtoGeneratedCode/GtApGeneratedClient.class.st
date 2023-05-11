@@ -17,33 +17,33 @@ GtApGeneratedClient >> appBskyActorGetProfilesactors: actors [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorGetSuggestionslimit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyActorGetSuggestions [
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadterm: term limit: limit [ 
+GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadterm: term [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.actor.searchActorsTypeahead' parameters: {'term' -> term. 'limit' -> limit} asDictionary)
+	^  (self queryOn: 'app.bsky.actor.searchActorsTypeahead' parameters: {'term' -> term} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsterm: term limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyActorSearchActorsterm: term [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.actor.searchActors' parameters: {'term' -> term. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.actor.searchActors' parameters: {'term' -> term} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetAuthorFeedactor: actor limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyFeedGetAuthorFeedactor: actor [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.feed.getAuthorFeed' parameters: {'actor' -> actor. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyFeedDefsFeedViewPost fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.feed.getAuthorFeed' parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetLikesuri: uri cid: cid limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyFeedGetLikesuri: uri cid: cid [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.feed.getLikes' parameters: {'uri' -> uri. 'cid' -> cid. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^  (self queryOn: 'app.bsky.feed.getLikes' parameters: {'uri' -> uri. 'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -59,51 +59,51 @@ GtApGeneratedClient >> appBskyFeedGetPostsuris: uris [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetRepostedByuri: uri cid: cid limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyFeedGetRepostedByuri: uri cid: cid [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.feed.getRepostedBy' parameters: {'uri' -> uri. 'cid' -> cid. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^  (self queryOn: 'app.bsky.feed.getRepostedBy' parameters: {'uri' -> uri. 'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetTimelinealgorithm: algorithm limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyFeedGetTimelinealgorithm: algorithm [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.feed.getTimeline' parameters: {'algorithm' -> algorithm. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyFeedDefsFeedViewPost fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.feed.getTimeline' parameters: {'algorithm' -> algorithm} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetBlockslimit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyGraphGetBlocks [
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.graph.getBlocks' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getBlocks' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetFollowersactor: actor limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyGraphGetFollowersactor: actor [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.graph.getFollowers' parameters: {'actor' -> actor. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^  (self queryOn: 'app.bsky.graph.getFollowers' parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetFollowsactor: actor limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyGraphGetFollowsactor: actor [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.graph.getFollows' parameters: {'actor' -> actor. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^  (self queryOn: 'app.bsky.graph.getFollows' parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetMuteslimit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyGraphGetMutes [
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.graph.getMutes' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getMutes' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphMuteActoractor: actor [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'app.bsky.graph.muteActor' withBody: {'actor' -> actor} asDictionary
+	^  (self procedureOn: 'app.bsky.graph.muteActor' withBody: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphUnmuteActoractor: actor [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'app.bsky.graph.unmuteActor' withBody: {'actor' -> actor} asDictionary
+	^  (self procedureOn: 'app.bsky.graph.unmuteActor' withBody: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -113,45 +113,45 @@ GtApGeneratedClient >> appBskyNotificationGetUnreadCountseenAt: seenAt [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationListNotificationslimit: limit cursor: cursor seenAt: seenAt [ 
+GtApGeneratedClient >> appBskyNotificationListNotificationsseenAt: seenAt [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.notification.listNotifications' parameters: {'limit' -> limit. 'cursor' -> cursor. 'seenAt' -> seenAt} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyNotificationListNotificationsNotification fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.notification.listNotifications' parameters: {'seenAt' -> seenAt} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyNotificationUpdateSeenseenAt: seenAt [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'app.bsky.notification.updateSeen' withBody: {'seenAt' -> seenAt} asDictionary
+	^  (self procedureOn: 'app.bsky.notification.updateSeen' withBody: {'seenAt' -> seenAt} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyUnspeccedGetPopularincludeNsfw: includeNsfw limit: limit cursor: cursor [ 
+GtApGeneratedClient >> appBskyUnspeccedGetPopularincludeNsfw: includeNsfw [ 
 	<xrpcQuery>
-	^  (self queryOn: 'app.bsky.unspecced.getPopular' parameters: {'includeNsfw' -> includeNsfw. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyFeedDefsFeedViewPost fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.unspecced.getPopular' parameters: {'includeNsfw' -> includeNsfw} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminDisableAccountInvitesaccount: account [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.disableAccountInvites' withBody: {'account' -> account} asDictionary
+	^  (self procedureOn: 'com.atproto.admin.disableAccountInvites' withBody: {'account' -> account} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminDisableInviteCodescodes: codes accounts: accounts [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.disableInviteCodes' withBody: {'codes' -> codes. 'accounts' -> accounts} asDictionary
+	^  (self procedureOn: 'com.atproto.admin.disableInviteCodes' withBody: {'codes' -> codes. 'accounts' -> accounts} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminEnableAccountInvitesaccount: account [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.enableAccountInvites' withBody: {'account' -> account} asDictionary
+	^  (self procedureOn: 'com.atproto.admin.enableAccountInvites' withBody: {'account' -> account} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetInviteCodessort: sort limit: limit cursor: cursor [ 
+GtApGeneratedClient >> comAtprotoAdminGetInviteCodessort: sort [ 
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.admin.getInviteCodes' parameters: {'sort' -> sort. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoServerDefsInviteCode fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.getInviteCodes' parameters: {'sort' -> sort} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -161,9 +161,9 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationActionid: id [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationActionssubject: subject limit: limit cursor: cursor [ 
+GtApGeneratedClient >> comAtprotoAdminGetModerationActionssubject: subject [ 
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.admin.getModerationActions' parameters: {'subject' -> subject. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoAdminDefsActionView fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.getModerationActions' parameters: {'subject' -> subject} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -173,9 +173,9 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportid: id [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportssubject: subject resolved: resolved limit: limit cursor: cursor [ 
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportssubject: subject resolved: resolved [ 
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.admin.getModerationReports' parameters: {'subject' -> subject. 'resolved' -> resolved. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoAdminDefsReportView fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.getModerationReports' parameters: {'subject' -> subject. 'resolved' -> resolved} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -193,37 +193,37 @@ GtApGeneratedClient >> comAtprotoAdminGetRepodid: did [
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminResolveModerationReportsactionId: actionId reportIds: reportIds createdBy: createdBy [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.resolveModerationReports' withBody: {'actionId' -> actionId. 'reportIds' -> reportIds. 'createdBy' -> createdBy} asDictionary
+	^ ComAtprotoAdminDefsActionView fromRequest:  (self procedureOn: 'com.atproto.admin.resolveModerationReports' withBody: {'actionId' -> actionId. 'reportIds' -> reportIds. 'createdBy' -> createdBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminReverseModerationActionid: id reason: reason createdBy: createdBy [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.reverseModerationAction' withBody: {'id' -> id. 'reason' -> reason. 'createdBy' -> createdBy} asDictionary
+	^ ComAtprotoAdminDefsActionView fromRequest:  (self procedureOn: 'com.atproto.admin.reverseModerationAction' withBody: {'id' -> id. 'reason' -> reason. 'createdBy' -> createdBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminSearchReposterm: term invitedBy: invitedBy limit: limit cursor: cursor [ 
+GtApGeneratedClient >> comAtprotoAdminSearchReposterm: term invitedBy: invitedBy [ 
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.admin.searchRepos' parameters: {'term' -> term. 'invitedBy' -> invitedBy. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoAdminDefsRepoView fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.searchRepos' parameters: {'term' -> term. 'invitedBy' -> invitedBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminTakeModerationActionaction: action subject: subject subjectBlobCids: subjectBlobCids createLabelVals: createLabelVals negateLabelVals: negateLabelVals reason: reason createdBy: createdBy [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.takeModerationAction' withBody: {'action' -> action. 'subject' -> subject. 'subjectBlobCids' -> subjectBlobCids. 'createLabelVals' -> createLabelVals. 'negateLabelVals' -> negateLabelVals. 'reason' -> reason. 'createdBy' -> createdBy} asDictionary
+	^ ComAtprotoAdminDefsActionView fromRequest:  (self procedureOn: 'com.atproto.admin.takeModerationAction' withBody: {'action' -> action. 'subject' -> subject. 'subjectBlobCids' -> subjectBlobCids. 'createLabelVals' -> createLabelVals. 'negateLabelVals' -> negateLabelVals. 'reason' -> reason. 'createdBy' -> createdBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminUpdateAccountEmailaccount: account email: email [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.updateAccountEmail' withBody: {'account' -> account. 'email' -> email} asDictionary
+	^  (self procedureOn: 'com.atproto.admin.updateAccountEmail' withBody: {'account' -> account. 'email' -> email} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminUpdateAccountHandledid: did handle: handle [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.admin.updateAccountHandle' withBody: {'did' -> did. 'handle' -> handle} asDictionary
+	^  (self procedureOn: 'com.atproto.admin.updateAccountHandle' withBody: {'did' -> did. 'handle' -> handle} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -235,37 +235,37 @@ GtApGeneratedClient >> comAtprotoIdentityResolveHandlehandle: handle [
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoIdentityUpdateHandlehandle: handle [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.identity.updateHandle' withBody: {'handle' -> handle} asDictionary
+	^  (self procedureOn: 'com.atproto.identity.updateHandle' withBody: {'handle' -> handle} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoLabelQueryLabelsuriPatterns: uriPatterns sources: sources limit: limit cursor: cursor [ 
+GtApGeneratedClient >> comAtprotoLabelQueryLabelsuriPatterns: uriPatterns sources: sources [ 
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.label.queryLabels' parameters: {'uriPatterns' -> uriPatterns. 'sources' -> sources. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoLabelDefsLabel fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.label.queryLabels' parameters: {'uriPatterns' -> uriPatterns. 'sources' -> sources} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoModerationCreateReportreasonType: reasonType reason: reason subject: subject [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.moderation.createReport' withBody: {'reasonType' -> reasonType. 'reason' -> reason. 'subject' -> subject} asDictionary
+	^  (self procedureOn: 'com.atproto.moderation.createReport' withBody: {'reasonType' -> reasonType. 'reason' -> reason. 'subject' -> subject} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoApplyWritesrepo: repo validate: validate writes: writes swapCommit: swapCommit [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.repo.applyWrites' withBody: {'repo' -> repo. 'validate' -> validate. 'writes' -> writes. 'swapCommit' -> swapCommit} asDictionary
+	^  (self procedureOn: 'com.atproto.repo.applyWrites' withBody: {'repo' -> repo. 'validate' -> validate. 'writes' -> writes. 'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoCreateRecordrepo: repo collection: collection rkey: rkey validate: validate record: record swapCommit: swapCommit [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.repo.createRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'validate' -> validate. 'record' -> record. 'swapCommit' -> swapCommit} asDictionary
+	^  (self procedureOn: 'com.atproto.repo.createRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'validate' -> validate. 'record' -> record. 'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoDeleteRecordrepo: repo collection: collection rkey: rkey swapRecord: swapRecord swapCommit: swapCommit [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.repo.deleteRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'swapRecord' -> swapRecord. 'swapCommit' -> swapCommit} asDictionary
+	^  (self procedureOn: 'com.atproto.repo.deleteRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'swapRecord' -> swapRecord. 'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -281,69 +281,69 @@ GtApGeneratedClient >> comAtprotoRepoGetRecordrepo: repo collection: collection 
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoListRecordsrepo: repo collection: collection limit: limit cursor: cursor rkeyStart: rkeyStart rkeyEnd: rkeyEnd reverse: reverse [ 
+GtApGeneratedClient >> comAtprotoRepoListRecordsrepo: repo collection: collection rkeyStart: rkeyStart rkeyEnd: rkeyEnd reverse: reverse [ 
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.repo.listRecords' parameters: {'repo' -> repo. 'collection' -> collection. 'limit' -> limit. 'cursor' -> cursor. 'rkeyStart' -> rkeyStart. 'rkeyEnd' -> rkeyEnd. 'reverse' -> reverse} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoRepoListRecordsRecord fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.repo.listRecords' parameters: {'repo' -> repo. 'collection' -> collection. 'rkeyStart' -> rkeyStart. 'rkeyEnd' -> rkeyEnd. 'reverse' -> reverse} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoPutRecordrepo: repo collection: collection rkey: rkey validate: validate record: record swapRecord: swapRecord swapCommit: swapCommit [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.repo.putRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'validate' -> validate. 'record' -> record. 'swapRecord' -> swapRecord. 'swapCommit' -> swapCommit} asDictionary
+	^  (self procedureOn: 'com.atproto.repo.putRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'validate' -> validate. 'record' -> record. 'swapRecord' -> swapRecord. 'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoRebaseReporepo: repo swapCommit: swapCommit [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.repo.rebaseRepo' withBody: {'repo' -> repo. 'swapCommit' -> swapCommit} asDictionary
+	^  (self procedureOn: 'com.atproto.repo.rebaseRepo' withBody: {'repo' -> repo. 'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoUploadBlob [
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.repo.uploadBlob' withBody: {} asDictionary
+	^  (self procedureOn: 'com.atproto.repo.uploadBlob' withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerCreateAccountemail: email handle: handle inviteCode: inviteCode password: password recoveryKey: recoveryKey [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.createAccount' withBody: {'email' -> email. 'handle' -> handle. 'inviteCode' -> inviteCode. 'password' -> password. 'recoveryKey' -> recoveryKey} asDictionary
+	^  (self procedureOn: 'com.atproto.server.createAccount' withBody: {'email' -> email. 'handle' -> handle. 'inviteCode' -> inviteCode. 'password' -> password. 'recoveryKey' -> recoveryKey} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerCreateAppPasswordname: name [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.createAppPassword' withBody: {'name' -> name} asDictionary
+	^ ComAtprotoServerCreateAppPasswordAppPassword fromRequest:  (self procedureOn: 'com.atproto.server.createAppPassword' withBody: {'name' -> name} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerCreateInviteCodescodeCount: codeCount useCount: useCount forAccounts: forAccounts [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.createInviteCodes' withBody: {'codeCount' -> codeCount. 'useCount' -> useCount. 'forAccounts' -> forAccounts} asDictionary
+	^  (self procedureOn: 'com.atproto.server.createInviteCodes' withBody: {'codeCount' -> codeCount. 'useCount' -> useCount. 'forAccounts' -> forAccounts} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerCreateInviteCodeuseCount: useCount forAccount: forAccount [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.createInviteCode' withBody: {'useCount' -> useCount. 'forAccount' -> forAccount} asDictionary
+	^  (self procedureOn: 'com.atproto.server.createInviteCode' withBody: {'useCount' -> useCount. 'forAccount' -> forAccount} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerCreateSessionidentifier: identifier password: password [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.createSession' withBody: {'identifier' -> identifier. 'password' -> password} asDictionary
+	^  (self procedureOn: 'com.atproto.server.createSession' withBody: {'identifier' -> identifier. 'password' -> password} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDeleteAccountdid: did password: password token: token [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.deleteAccount' withBody: {'did' -> did. 'password' -> password. 'token' -> token} asDictionary
+	^  (self procedureOn: 'com.atproto.server.deleteAccount' withBody: {'did' -> did. 'password' -> password. 'token' -> token} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDeleteSession [
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.deleteSession' withBody: {} asDictionary
+	^  (self procedureOn: 'com.atproto.server.deleteSession' withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -373,31 +373,31 @@ GtApGeneratedClient >> comAtprotoServerListAppPasswords [
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRefreshSession [
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.refreshSession' withBody: {} asDictionary
+	^  (self procedureOn: 'com.atproto.server.refreshSession' withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRequestAccountDelete [
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.requestAccountDelete' withBody: {} asDictionary
+	^  (self procedureOn: 'com.atproto.server.requestAccountDelete' withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRequestPasswordResetemail: email [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.requestPasswordReset' withBody: {'email' -> email} asDictionary
+	^  (self procedureOn: 'com.atproto.server.requestPasswordReset' withBody: {'email' -> email} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerResetPasswordtoken: token password: password [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.resetPassword' withBody: {'token' -> token. 'password' -> password} asDictionary
+	^  (self procedureOn: 'com.atproto.server.resetPassword' withBody: {'token' -> token. 'password' -> password} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRevokeAppPasswordname: name [ 
 	<xrpcProcedure>
-	^ self procedureOn: 'com.atproto.server.revokeAppPassword' withBody: {'name' -> name} asDictionary
+	^  (self procedureOn: 'com.atproto.server.revokeAppPassword' withBody: {'name' -> name} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -449,9 +449,9 @@ GtApGeneratedClient >> comAtprotoSyncListBlobsdid: did latest: latest earliest: 
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncListReposlimit: limit cursor: cursor [ 
+GtApGeneratedClient >> comAtprotoSyncListRepos [
 	<xrpcQuery>
-	^  (self queryOn: 'com.atproto.sync.listRepos' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
+	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoSyncListReposRepo fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.sync.listRepos' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }

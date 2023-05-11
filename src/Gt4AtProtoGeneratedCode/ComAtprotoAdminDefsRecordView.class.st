@@ -20,8 +20,8 @@ ComAtprotoAdminDefsRecordView class >> fromRequest: aRequest [
 		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
 		atProtoBlobCids: (aRequest at: 'blobCids' ifAbsent: [ nil ]); 
 		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoModeration: (ComAtprotoAdminDefsModeration fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ])); 
-		atProtoRepo: (ComAtprotoAdminDefsRepoView fromRequest: (aRequest at: 'repo' ifAbsent: [ nil ]))
+		atProtoModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atProtoRepo: (aRequest at: 'repo' ifPresent: [:aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

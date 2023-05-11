@@ -10,7 +10,7 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordWithMediaMain class >> fromRequest: aRequest [
-	^ self new atProtoRecord: (AppBskyEmbedRecordMain fromRequest: (aRequest at: 'record' ifAbsent: [ nil ])); 
+	^ self new atProtoRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordMain fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoMedia: (aRequest at: 'media' ifAbsent: [ nil ])
 ]
 

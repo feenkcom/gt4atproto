@@ -9,7 +9,7 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordMain class >> fromRequest: aRequest [
-	^ self new atProtoRecord: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'record' ifAbsent: [ nil ]))
+	^ self new atProtoRecord: (aRequest at: 'record' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

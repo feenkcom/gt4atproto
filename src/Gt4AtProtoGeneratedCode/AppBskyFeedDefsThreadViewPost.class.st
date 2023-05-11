@@ -11,7 +11,7 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
-	^ self new atProtoPost: (AppBskyFeedDefsPostView fromRequest: (aRequest at: 'post' ifAbsent: [ nil ])); 
+	^ self new atProtoPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoParent: (aRequest at: 'parent' ifAbsent: [ nil ]); 
 		atProtoReplies: (aRequest at: 'replies' ifAbsent: [ nil ])
 ]

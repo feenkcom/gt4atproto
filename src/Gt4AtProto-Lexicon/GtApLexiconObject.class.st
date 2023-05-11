@@ -44,7 +44,25 @@ GtApLexiconObject >> asObject [
 
 { #category : #accessing }
 GtApLexiconObject >> generateDeserialization [
-	^ self hasId ifTrue: [ self asClassName , ' fromRequest: ' ] ifFalse: [ '' ]
+	self hasId ifTrue: [ ^ self asClassName , ' fromRequest: ' ].	
+	
+	"we only treat this if we have only one other property"
+	(self properties includesKey: 'cursor')
+		ifTrue: [ | filteredProperties propertyKey property |
+			filteredProperties := self properties keys
+					reject: [ :aKey | 
+						{'limit'.
+							'cursor'} includes: aKey ].
+
+			filteredProperties size > 1 ifTrue: [ ^ '' ].
+
+			propertyKey := filteredProperties anyOne.
+			property := self properties at: propertyKey.
+
+			^ 'AsyncMapStream mapBlock: [:aDictionary | '
+				, property items generateDeserialization , ' aDictionary ] stream: ' ].
+
+	^ ''
 ]
 
 { #category : #'gt - extensions' }

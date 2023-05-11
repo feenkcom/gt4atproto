@@ -19,7 +19,7 @@ Class {
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
 	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoAuthor: (AppBskyActorDefsProfileView fromRequest: (aRequest at: 'author' ifAbsent: [ nil ])); 
+		atProtoAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atProtoReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]); 
 		atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 

@@ -19,7 +19,7 @@ ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 		atProtoSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
 		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
 		atProtoDetails: (aRequest at: 'details' ifAbsent: [ nil ]); 
-		atProtoModeration: (ComAtprotoAdminDefsModeration fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ]))
+		atProtoModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

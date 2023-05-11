@@ -10,8 +10,8 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
-	^ self new atProtoRoot: (AppBskyFeedDefsPostView fromRequest: (aRequest at: 'root' ifAbsent: [ nil ])); 
-		atProtoParent: (AppBskyFeedDefsPostView fromRequest: (aRequest at: 'parent' ifAbsent: [ nil ]))
+	^ self new atProtoRoot: (aRequest at: 'root' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atProtoParent: (aRequest at: 'parent' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

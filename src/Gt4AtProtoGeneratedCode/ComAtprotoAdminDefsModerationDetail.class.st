@@ -11,7 +11,7 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
-	^ self new atProtoCurrentAction: (ComAtprotoAdminDefsActionViewCurrent fromRequest: (aRequest at: 'currentAction' ifAbsent: [ nil ])); 
+	^ self new atProtoCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoActions: (aRequest at: 'actions' ifAbsent: [ nil ]); 
 		atProtoReports: (aRequest at: 'reports' ifAbsent: [ nil ])
 ]

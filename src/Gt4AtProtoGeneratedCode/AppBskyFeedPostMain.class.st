@@ -17,7 +17,7 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 	^ self new atProtoText: (aRequest at: 'text' ifAbsent: [ nil ]); 
 		atProtoEntities: (aRequest at: 'entities' ifAbsent: [ nil ]); 
 		atProtoFacets: (aRequest at: 'facets' ifAbsent: [ nil ]); 
-		atProtoReply: (AppBskyFeedPostReplyRef fromRequest: (aRequest at: 'reply' ifAbsent: [ nil ])); 
+		atProtoReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedPostReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
 		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

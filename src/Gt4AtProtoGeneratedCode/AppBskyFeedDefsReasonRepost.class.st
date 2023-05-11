@@ -10,7 +10,7 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
-	^ self new atProtoBy: (AppBskyActorDefsProfileViewBasic fromRequest: (aRequest at: 'by' ifAbsent: [ nil ])); 
+	^ self new atProtoBy: (aRequest at: 'by' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 

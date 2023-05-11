@@ -11,7 +11,7 @@ Class {
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
 	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoAction: (String fromRequest: (aRequest at: 'action' ifAbsent: [ nil ]))
+		atProtoAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

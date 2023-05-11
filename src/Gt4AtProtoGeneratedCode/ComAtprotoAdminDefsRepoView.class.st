@@ -21,8 +21,8 @@ ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 		atProtoEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
 		atProtoRelatedRecords: (aRequest at: 'relatedRecords' ifAbsent: [ nil ]); 
 		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoModeration: (ComAtprotoAdminDefsModeration fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ])); 
-		atProtoInvitedBy: (ComAtprotoServerDefsInviteCode fromRequest: (aRequest at: 'invitedBy' ifAbsent: [ nil ])); 
+		atProtoModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atProtoInvitedBy: (aRequest at: 'invitedBy' ifPresent: [:aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atProtoInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
 ]
 

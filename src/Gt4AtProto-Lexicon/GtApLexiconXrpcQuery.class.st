@@ -19,8 +19,12 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	| methodName |
 	methodName := self methodName: aName.
 
+	"pagination is handled elsewhere and shouldn’t be exposed to the user"
 	self parameters properties
-		keysDo: [ :anInputName | methodName := methodName , anInputName , ': ' , anInputName , ' ' ].
+		keysDo: [ :anInputName | 
+			({'limit'.
+				'cursor'} includes: anInputName)
+				ifFalse: [ methodName := methodName , anInputName , ': ' , anInputName , ' ' ] ].
 
 	^ methodName
 		, '
@@ -57,5 +61,8 @@ GtApLexiconXrpcQuery >> initializeFromRawData: aSchemaData usingImporter: anImpo
 { #category : #accessing }
 GtApLexiconXrpcQuery >> xrpcRequestParameterAssociations [
 	^ self parameters properties keys
-		collect: [ :anInputName | '''' , anInputName , ''' -> ' , anInputName ]
+		reject: [ :anInputName | 
+			{'limit'.
+				'cursor'} includes: anInputName ]
+		thenCollect: [ :anInputName | '''' , anInputName , ''' -> ' , anInputName ]
 ]
