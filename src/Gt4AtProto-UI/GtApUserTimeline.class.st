@@ -15,15 +15,14 @@ GtApUserTimeline class >> forPosts: aCollection [
 { #category : #accessing }
 GtApUserTimeline >> gtViewPostsSummaryUIFor: aView [
 	<gtView>
-
-	^ aView list
+	^ aView explicit
 		title: 'Posts';
 		priority: 1;
-		items: [ posts ];
-		itemStencil: [ 
-			GtApPostSummaryListContainerElement new ];
-		itemDataBinder: [ :aPostElement :aPost | 
-			aPostElement post: aPost ].
+		stencil: [  
+			BrSimpleList new
+				stream: self posts;
+				itemStencil: [ GtApPostSummaryListContainerElement new ];
+				itemDataBinder: [ :aPostElement :aPost | aPostElement post: aPost; when: BlClickEvent do: [ :e | e target phlow spawnObject: aPost ] ] ]
 ]
 
 { #category : #accessing }

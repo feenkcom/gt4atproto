@@ -10,17 +10,17 @@ Class {
 { #category : #initialization }
 GtApPostSummaryListContainerElement >> initialize [
 	super initialize.
-	
-	self 
+
+	self
 		hMatchParent;
 		vFitContent;
 		alignCenter.
-	
-	self addChild: (postSummaryElement := GtApPostSummaryElement new).
-	self addChild: (BrFrame new 
-		hExact: 450;
-		vExact: 1;
-		background: Color veryLightGray  muchLighter )
+
+	self
+		addChild: (postSummaryElement := GtApPostSummaryElement new
+					addAptitude: BrShadowAptitude;
+					background: Color white;
+					margin: (BlInsets all: 10))
 ]
 
 { #category : #accessing }
