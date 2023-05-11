@@ -2,110 +2,110 @@ Class {
 	#name : #AppBskyActorDefsProfileView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoDid',
-		'atProtoHandle',
-		'atProtoDisplayName',
-		'atProtoDescription',
-		'atProtoAvatar',
-		'atProtoIndexedAt',
-		'atProtoViewer',
-		'atProtoLabels'
+		'atpDid',
+		'atpHandle',
+		'atpDisplayName',
+		'atpDescription',
+		'atpAvatar',
+		'atpIndexedAt',
+		'atpViewer',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyActorDefsProfileView class >> fromRequest: aRequest [
-	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atProtoDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
-		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atProtoAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoAvatar [
-	^ atProtoAvatar
+AppBskyActorDefsProfileView >> atpAvatar [
+	^ atpAvatar
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoAvatar: anObject [
-	atProtoAvatar := anObject
+AppBskyActorDefsProfileView >> atpAvatar: anObject [
+	atpAvatar := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoDescription [
-	^ atProtoDescription
+AppBskyActorDefsProfileView >> atpDescription [
+	^ atpDescription
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoDescription: anObject [
-	atProtoDescription := anObject
+AppBskyActorDefsProfileView >> atpDescription: anObject [
+	atpDescription := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoDid [
-	^ atProtoDid
+AppBskyActorDefsProfileView >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoDid: anObject [
-	atProtoDid := anObject
+AppBskyActorDefsProfileView >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoDisplayName [
-	^ atProtoDisplayName
+AppBskyActorDefsProfileView >> atpDisplayName [
+	^ atpDisplayName
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoDisplayName: anObject [
-	atProtoDisplayName := anObject
+AppBskyActorDefsProfileView >> atpDisplayName: anObject [
+	atpDisplayName := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoHandle [
-	^ atProtoHandle
+AppBskyActorDefsProfileView >> atpHandle [
+	^ atpHandle
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoHandle: anObject [
-	atProtoHandle := anObject
+AppBskyActorDefsProfileView >> atpHandle: anObject [
+	atpHandle := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+AppBskyActorDefsProfileView >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+AppBskyActorDefsProfileView >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoLabels [
-	^ atProtoLabels
+AppBskyActorDefsProfileView >> atpLabels [
+	^ atpLabels
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoLabels: anObject [
-	atProtoLabels := anObject
+AppBskyActorDefsProfileView >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoViewer [
+AppBskyActorDefsProfileView >> atpViewer [
 	<referenceTo:'#viewerState'>
-	^ atProtoViewer
+	^ atpViewer
 ]
 
 { #category : #accessing }
-AppBskyActorDefsProfileView >> atProtoViewer: anObject [
+AppBskyActorDefsProfileView >> atpViewer: anObject [
 	<referenceTo:'#viewerState'>
-	atProtoViewer := anObject
+	atpViewer := anObject
 ]
 
 { #category : #magritte }
@@ -113,7 +113,7 @@ AppBskyActorDefsProfileView >> avatarDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Avatar';
-		accessor: #atProtoAvatar
+		accessor: #atpAvatar
 ]
 
 { #category : #magritte }
@@ -121,7 +121,7 @@ AppBskyActorDefsProfileView >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Description';
-		accessor: #atProtoDescription
+		accessor: #atpDescription
 ]
 
 { #category : #magritte }
@@ -129,7 +129,7 @@ AppBskyActorDefsProfileView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]
 
@@ -138,7 +138,7 @@ AppBskyActorDefsProfileView >> displayNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'DisplayName';
-		accessor: #atProtoDisplayName
+		accessor: #atpDisplayName
 ]
 
 { #category : #magritte }
@@ -146,7 +146,7 @@ AppBskyActorDefsProfileView >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Handle';
-		accessor: #atProtoHandle;
+		accessor: #atpHandle;
 	beRequired
 ]
 
@@ -155,7 +155,7 @@ AppBskyActorDefsProfileView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt
+		accessor: #atpIndexedAt
 ]
 
 { #category : #magritte }
@@ -164,7 +164,7 @@ AppBskyActorDefsProfileView >> labelsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
-		accessor: #atProtoLabels
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }
@@ -172,5 +172,5 @@ AppBskyActorDefsProfileView >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Viewer';
-		accessor: #atProtoViewer
+		accessor: #atpViewer
 ]

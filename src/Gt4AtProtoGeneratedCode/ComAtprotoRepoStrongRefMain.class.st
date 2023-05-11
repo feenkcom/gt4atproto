@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoRepoStrongRefMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoCid'
+		'atpUri',
+		'atpCid'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoRepoStrongRefMain >> atProtoCid [
-	^ atProtoCid
+ComAtprotoRepoStrongRefMain >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-ComAtprotoRepoStrongRefMain >> atProtoCid: anObject [
-	atProtoCid := anObject
+ComAtprotoRepoStrongRefMain >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoRepoStrongRefMain >> atProtoUri [
-	^ atProtoUri
+ComAtprotoRepoStrongRefMain >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-ComAtprotoRepoStrongRefMain >> atProtoUri: anObject [
-	atProtoUri := anObject
+ComAtprotoRepoStrongRefMain >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoRepoStrongRefMain >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ ComAtprotoRepoStrongRefMain >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

@@ -2,16 +2,16 @@ Class {
 	#name : #ComAtprotoAdminDefsActionViewCurrent,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoId',
-		'atProtoAction'
+		'atpId',
+		'atpAction'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
-	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -19,30 +19,30 @@ ComAtprotoAdminDefsActionViewCurrent >> actionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Action';
-		accessor: #atProtoAction;
+		accessor: #atpAction;
 		beRequired
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionViewCurrent >> atProtoAction [
+ComAtprotoAdminDefsActionViewCurrent >> atpAction [
 	<referenceTo:'#actionType'>
-	^ atProtoAction
+	^ atpAction
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionViewCurrent >> atProtoAction: anObject [
+ComAtprotoAdminDefsActionViewCurrent >> atpAction: anObject [
 	<referenceTo:'#actionType'>
-	atProtoAction := anObject
+	atpAction := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionViewCurrent >> atProtoId [
-	^ atProtoId
+ComAtprotoAdminDefsActionViewCurrent >> atpId [
+	^ atpId
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionViewCurrent >> atProtoId: anObject [
-	atProtoId := anObject
+ComAtprotoAdminDefsActionViewCurrent >> atpId: anObject [
+	atpId := anObject
 ]
 
 { #category : #magritte }
@@ -50,6 +50,6 @@ ComAtprotoAdminDefsActionViewCurrent >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Id';
-		accessor: #atProtoId;
+		accessor: #atpId;
 	beRequired
 ]

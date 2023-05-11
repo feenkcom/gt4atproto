@@ -2,16 +2,16 @@ Class {
 	#name : #AppBskyEmbedImagesImage,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoImage',
-		'atProtoAlt'
+		'atpImage',
+		'atpAlt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedImagesImage class >> fromRequest: aRequest [
-	^ self new atProtoImage: (aRequest at: 'image' ifAbsent: [ nil ]); 
-		atProtoAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
+	^ self new atpImage: (aRequest at: 'image' ifAbsent: [ nil ]); 
+		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -19,28 +19,28 @@ AppBskyEmbedImagesImage >> altDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Alt';
-		accessor: #atProtoAlt;
+		accessor: #atpAlt;
 	beRequired
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesImage >> atProtoAlt [
-	^ atProtoAlt
+AppBskyEmbedImagesImage >> atpAlt [
+	^ atpAlt
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesImage >> atProtoAlt: anObject [
-	atProtoAlt := anObject
+AppBskyEmbedImagesImage >> atpAlt: anObject [
+	atpAlt := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesImage >> atProtoImage [
-	^ atProtoImage
+AppBskyEmbedImagesImage >> atpImage [
+	^ atpImage
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesImage >> atProtoImage: anObject [
-	atProtoImage := anObject
+AppBskyEmbedImagesImage >> atpImage: anObject [
+	atpImage := anObject
 ]
 
 { #category : #magritte }
@@ -48,6 +48,6 @@ AppBskyEmbedImagesImage >> imageDescription [
 	<magritteDescription>
 	^ MAFileDescription new
 		label: 'Image';
-		accessor: #atProtoImage;
+		accessor: #atpImage;
 	beRequired
 ]

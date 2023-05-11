@@ -2,72 +2,72 @@ Class {
 	#name : #AppBskyActorDefsViewerState,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoMuted',
-		'atProtoBlockedBy',
-		'atProtoBlocking',
-		'atProtoFollowing',
-		'atProtoFollowedBy'
+		'atpMuted',
+		'atpBlockedBy',
+		'atpBlocking',
+		'atpFollowing',
+		'atpFollowedBy'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyActorDefsViewerState class >> fromRequest: aRequest [
-	^ self new atProtoMuted: (aRequest at: 'muted' ifAbsent: [ nil ]); 
-		atProtoBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]); 
-		atProtoBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]); 
-		atProtoFollowing: (aRequest at: 'following' ifAbsent: [ nil ]); 
-		atProtoFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ])
+	^ self new atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]); 
+		atpBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]); 
+		atpBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]); 
+		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]); 
+		atpFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoBlockedBy [
-	^ atProtoBlockedBy
+AppBskyActorDefsViewerState >> atpBlockedBy [
+	^ atpBlockedBy
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoBlockedBy: anObject [
-	atProtoBlockedBy := anObject
+AppBskyActorDefsViewerState >> atpBlockedBy: anObject [
+	atpBlockedBy := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoBlocking [
-	^ atProtoBlocking
+AppBskyActorDefsViewerState >> atpBlocking [
+	^ atpBlocking
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoBlocking: anObject [
-	atProtoBlocking := anObject
+AppBskyActorDefsViewerState >> atpBlocking: anObject [
+	atpBlocking := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoFollowedBy [
-	^ atProtoFollowedBy
+AppBskyActorDefsViewerState >> atpFollowedBy [
+	^ atpFollowedBy
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoFollowedBy: anObject [
-	atProtoFollowedBy := anObject
+AppBskyActorDefsViewerState >> atpFollowedBy: anObject [
+	atpFollowedBy := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoFollowing [
-	^ atProtoFollowing
+AppBskyActorDefsViewerState >> atpFollowing [
+	^ atpFollowing
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoFollowing: anObject [
-	atProtoFollowing := anObject
+AppBskyActorDefsViewerState >> atpFollowing: anObject [
+	atpFollowing := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoMuted [
-	^ atProtoMuted
+AppBskyActorDefsViewerState >> atpMuted [
+	^ atpMuted
 ]
 
 { #category : #accessing }
-AppBskyActorDefsViewerState >> atProtoMuted: anObject [
-	atProtoMuted := anObject
+AppBskyActorDefsViewerState >> atpMuted: anObject [
+	atpMuted := anObject
 ]
 
 { #category : #magritte }
@@ -75,7 +75,7 @@ AppBskyActorDefsViewerState >> blockedByDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'BlockedBy';
-		accessor: #atProtoBlockedBy
+		accessor: #atpBlockedBy
 ]
 
 { #category : #magritte }
@@ -83,7 +83,7 @@ AppBskyActorDefsViewerState >> blockingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Blocking';
-		accessor: #atProtoBlocking
+		accessor: #atpBlocking
 ]
 
 { #category : #magritte }
@@ -91,7 +91,7 @@ AppBskyActorDefsViewerState >> followedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'FollowedBy';
-		accessor: #atProtoFollowedBy
+		accessor: #atpFollowedBy
 ]
 
 { #category : #magritte }
@@ -99,7 +99,7 @@ AppBskyActorDefsViewerState >> followingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Following';
-		accessor: #atProtoFollowing
+		accessor: #atpFollowing
 ]
 
 { #category : #magritte }
@@ -107,5 +107,5 @@ AppBskyActorDefsViewerState >> mutedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'Muted';
-		accessor: #atProtoMuted
+		accessor: #atpMuted
 ]

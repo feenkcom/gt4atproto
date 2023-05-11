@@ -2,36 +2,36 @@ Class {
 	#name : #AppBskyFeedPostTextSlice,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoStart',
-		'atProtoEnd'
+		'atpStart',
+		'atpEnd'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
-	^ self new atProtoStart: (aRequest at: 'start' ifAbsent: [ nil ]); 
-		atProtoEnd: (aRequest at: 'end' ifAbsent: [ nil ])
+	^ self new atpStart: (aRequest at: 'start' ifAbsent: [ nil ]); 
+		atpEnd: (aRequest at: 'end' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedPostTextSlice >> atProtoEnd [
-	^ atProtoEnd
+AppBskyFeedPostTextSlice >> atpEnd [
+	^ atpEnd
 ]
 
 { #category : #accessing }
-AppBskyFeedPostTextSlice >> atProtoEnd: anObject [
-	atProtoEnd := anObject
+AppBskyFeedPostTextSlice >> atpEnd: anObject [
+	atpEnd := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostTextSlice >> atProtoStart [
-	^ atProtoStart
+AppBskyFeedPostTextSlice >> atpStart [
+	^ atpStart
 ]
 
 { #category : #accessing }
-AppBskyFeedPostTextSlice >> atProtoStart: anObject [
-	atProtoStart := anObject
+AppBskyFeedPostTextSlice >> atpStart: anObject [
+	atpStart := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ AppBskyFeedPostTextSlice >> endDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'End';
-		accessor: #atProtoEnd;
+		accessor: #atpEnd;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ AppBskyFeedPostTextSlice >> startDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Start';
-		accessor: #atProtoStart;
+		accessor: #atpStart;
 	beRequired
 ]

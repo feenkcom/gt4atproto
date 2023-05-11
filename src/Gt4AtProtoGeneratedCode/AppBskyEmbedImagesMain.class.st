@@ -2,24 +2,24 @@ Class {
 	#name : #AppBskyEmbedImagesMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoImages'
+		'atpImages'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedImagesMain class >> fromRequest: aRequest [
-	^ self new atProtoImages: (aRequest at: 'images' ifAbsent: [ nil ])
+	^ self new atpImages: (aRequest at: 'images' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesMain >> atProtoImages [
-	^ atProtoImages
+AppBskyEmbedImagesMain >> atpImages [
+	^ atpImages
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesMain >> atProtoImages: anObject [
-	atProtoImages := anObject
+AppBskyEmbedImagesMain >> atpImages: anObject [
+	atpImages := anObject
 ]
 
 { #category : #magritte }
@@ -28,6 +28,6 @@ AppBskyEmbedImagesMain >> imagesDescription [
 	^ MAToManyRelationDescription new
 		classes: {AppBskyEmbedImagesImage};
 		label: 'Images';
-		accessor: #atProtoImages;
+		accessor: #atpImages;
 	beRequired
 ]

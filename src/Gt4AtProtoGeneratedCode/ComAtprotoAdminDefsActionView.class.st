@@ -2,34 +2,34 @@ Class {
 	#name : #ComAtprotoAdminDefsActionView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoId',
-		'atProtoAction',
-		'atProtoSubject',
-		'atProtoSubjectBlobCids',
-		'atProtoCreateLabelVals',
-		'atProtoNegateLabelVals',
-		'atProtoReason',
-		'atProtoCreatedBy',
-		'atProtoCreatedAt',
-		'atProtoReversal',
-		'atProtoResolvedReportIds'
+		'atpId',
+		'atpAction',
+		'atpSubject',
+		'atpSubjectBlobCids',
+		'atpCreateLabelVals',
+		'atpNegateLabelVals',
+		'atpReason',
+		'atpCreatedBy',
+		'atpCreatedAt',
+		'atpReversal',
+		'atpResolvedReportIds'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
-	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atProtoSubjectBlobCids: (aRequest at: 'subjectBlobCids' ifAbsent: [ nil ]); 
-		atProtoCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
-		atProtoNegateLabelVals: (aRequest at: 'negateLabelVals' ifAbsent: [ nil ]); 
-		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoReversal: (aRequest at: 'reversal' ifPresent: [:aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoResolvedReportIds: (aRequest at: 'resolvedReportIds' ifAbsent: [ nil ])
+	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpSubjectBlobCids: (aRequest at: 'subjectBlobCids' ifAbsent: [ nil ]); 
+		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
+		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifAbsent: [ nil ]); 
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atpReversal: (aRequest at: 'reversal' ifPresent: [:aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpResolvedReportIds: (aRequest at: 'resolvedReportIds' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -37,122 +37,122 @@ ComAtprotoAdminDefsActionView >> actionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Action';
-		accessor: #atProtoAction;
+		accessor: #atpAction;
 		beRequired
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoAction [
+ComAtprotoAdminDefsActionView >> atpAction [
 	<referenceTo:'#actionType'>
-	^ atProtoAction
+	^ atpAction
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoAction: anObject [
+ComAtprotoAdminDefsActionView >> atpAction: anObject [
 	<referenceTo:'#actionType'>
-	atProtoAction := anObject
+	atpAction := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoCreateLabelVals [
-	^ atProtoCreateLabelVals
+ComAtprotoAdminDefsActionView >> atpCreateLabelVals [
+	^ atpCreateLabelVals
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoCreateLabelVals: anObject [
-	atProtoCreateLabelVals := anObject
+ComAtprotoAdminDefsActionView >> atpCreateLabelVals: anObject [
+	atpCreateLabelVals := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoAdminDefsActionView >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoAdminDefsActionView >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoCreatedBy [
-	^ atProtoCreatedBy
+ComAtprotoAdminDefsActionView >> atpCreatedBy [
+	^ atpCreatedBy
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoCreatedBy: anObject [
-	atProtoCreatedBy := anObject
+ComAtprotoAdminDefsActionView >> atpCreatedBy: anObject [
+	atpCreatedBy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoId [
-	^ atProtoId
+ComAtprotoAdminDefsActionView >> atpId [
+	^ atpId
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoId: anObject [
-	atProtoId := anObject
+ComAtprotoAdminDefsActionView >> atpId: anObject [
+	atpId := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoNegateLabelVals [
-	^ atProtoNegateLabelVals
+ComAtprotoAdminDefsActionView >> atpNegateLabelVals [
+	^ atpNegateLabelVals
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoNegateLabelVals: anObject [
-	atProtoNegateLabelVals := anObject
+ComAtprotoAdminDefsActionView >> atpNegateLabelVals: anObject [
+	atpNegateLabelVals := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoReason [
-	^ atProtoReason
+ComAtprotoAdminDefsActionView >> atpReason [
+	^ atpReason
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoReason: anObject [
-	atProtoReason := anObject
+ComAtprotoAdminDefsActionView >> atpReason: anObject [
+	atpReason := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoResolvedReportIds [
-	^ atProtoResolvedReportIds
+ComAtprotoAdminDefsActionView >> atpResolvedReportIds [
+	^ atpResolvedReportIds
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoResolvedReportIds: anObject [
-	atProtoResolvedReportIds := anObject
+ComAtprotoAdminDefsActionView >> atpResolvedReportIds: anObject [
+	atpResolvedReportIds := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoReversal [
+ComAtprotoAdminDefsActionView >> atpReversal [
 	<referenceTo:'#actionReversal'>
-	^ atProtoReversal
+	^ atpReversal
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoReversal: anObject [
+ComAtprotoAdminDefsActionView >> atpReversal: anObject [
 	<referenceTo:'#actionReversal'>
-	atProtoReversal := anObject
+	atpReversal := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoSubject [
-	^ atProtoSubject
+ComAtprotoAdminDefsActionView >> atpSubject [
+	^ atpSubject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoSubject: anObject [
-	atProtoSubject := anObject
+ComAtprotoAdminDefsActionView >> atpSubject: anObject [
+	atpSubject := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoSubjectBlobCids [
-	^ atProtoSubjectBlobCids
+ComAtprotoAdminDefsActionView >> atpSubjectBlobCids [
+	^ atpSubjectBlobCids
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionView >> atProtoSubjectBlobCids: anObject [
-	atProtoSubjectBlobCids := anObject
+ComAtprotoAdminDefsActionView >> atpSubjectBlobCids: anObject [
+	atpSubjectBlobCids := anObject
 ]
 
 { #category : #magritte }
@@ -161,7 +161,7 @@ ComAtprotoAdminDefsActionView >> createLabelValsDescription [
 	^ MAToManyRelationDescription new
 		classes: {String};
 		label: 'CreateLabelVals';
-		accessor: #atProtoCreateLabelVals
+		accessor: #atpCreateLabelVals
 ]
 
 { #category : #magritte }
@@ -169,7 +169,7 @@ ComAtprotoAdminDefsActionView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -178,7 +178,7 @@ ComAtprotoAdminDefsActionView >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedBy';
-		accessor: #atProtoCreatedBy;
+		accessor: #atpCreatedBy;
 	beRequired
 ]
 
@@ -187,7 +187,7 @@ ComAtprotoAdminDefsActionView >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Id';
-		accessor: #atProtoId;
+		accessor: #atpId;
 	beRequired
 ]
 
@@ -197,7 +197,7 @@ ComAtprotoAdminDefsActionView >> negateLabelValsDescription [
 	^ MAToManyRelationDescription new
 		classes: {String};
 		label: 'NegateLabelVals';
-		accessor: #atProtoNegateLabelVals
+		accessor: #atpNegateLabelVals
 ]
 
 { #category : #magritte }
@@ -205,7 +205,7 @@ ComAtprotoAdminDefsActionView >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Reason';
-		accessor: #atProtoReason;
+		accessor: #atpReason;
 	beRequired
 ]
 
@@ -215,7 +215,7 @@ ComAtprotoAdminDefsActionView >> resolvedReportIdsDescription [
 	^ MAToManyRelationDescription new
 		classes: {Number};
 		label: 'ResolvedReportIds';
-		accessor: #atProtoResolvedReportIds;
+		accessor: #atpResolvedReportIds;
 	beRequired
 ]
 
@@ -224,7 +224,7 @@ ComAtprotoAdminDefsActionView >> reversalDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Reversal';
-		accessor: #atProtoReversal
+		accessor: #atpReversal
 ]
 
 { #category : #magritte }
@@ -233,7 +233,7 @@ ComAtprotoAdminDefsActionView >> subjectBlobCidsDescription [
 	^ MAToManyRelationDescription new
 		classes: {String};
 		label: 'SubjectBlobCids';
-		accessor: #atProtoSubjectBlobCids;
+		accessor: #atpSubjectBlobCids;
 	beRequired
 ]
 
@@ -243,6 +243,6 @@ ComAtprotoAdminDefsActionView >> subjectDescription [
 	^ MASingleOptionDescription new
 		options: {'#repoRef'. 'com.atproto.repo.strongRef'};
 		label: 'Subject';
-		accessor: #atProtoSubject;
+		accessor: #atpSubject;
 		beRequired
 ]

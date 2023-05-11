@@ -4,60 +4,60 @@ Class {
 	#traits : 'TAppBskyActorProfileMain',
 	#classTraits : 'TAppBskyActorProfileMain classTrait',
 	#instVars : [
-		'atProtoDisplayName',
-		'atProtoDescription',
-		'atProtoAvatar',
-		'atProtoBanner'
+		'atpDisplayName',
+		'atpDescription',
+		'atpAvatar',
+		'atpBanner'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyActorProfileMain class >> fromRequest: aRequest [
-	^ self new atProtoDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
-		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atProtoAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atProtoBanner: (aRequest at: 'banner' ifAbsent: [ nil ])
+	^ self new atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoAvatar [
-	^ atProtoAvatar
+AppBskyActorProfileMain >> atpAvatar [
+	^ atpAvatar
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoAvatar: anObject [
-	atProtoAvatar := anObject
+AppBskyActorProfileMain >> atpAvatar: anObject [
+	atpAvatar := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoBanner [
-	^ atProtoBanner
+AppBskyActorProfileMain >> atpBanner [
+	^ atpBanner
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoBanner: anObject [
-	atProtoBanner := anObject
+AppBskyActorProfileMain >> atpBanner: anObject [
+	atpBanner := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoDescription [
-	^ atProtoDescription
+AppBskyActorProfileMain >> atpDescription [
+	^ atpDescription
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoDescription: anObject [
-	atProtoDescription := anObject
+AppBskyActorProfileMain >> atpDescription: anObject [
+	atpDescription := anObject
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoDisplayName [
-	^ atProtoDisplayName
+AppBskyActorProfileMain >> atpDisplayName [
+	^ atpDisplayName
 ]
 
 { #category : #accessing }
-AppBskyActorProfileMain >> atProtoDisplayName: anObject [
-	atProtoDisplayName := anObject
+AppBskyActorProfileMain >> atpDisplayName: anObject [
+	atpDisplayName := anObject
 ]
 
 { #category : #magritte }
@@ -65,7 +65,7 @@ AppBskyActorProfileMain >> avatarDescription [
 	<magritteDescription>
 	^ MAFileDescription new
 		label: 'Avatar';
-		accessor: #atProtoAvatar
+		accessor: #atpAvatar
 ]
 
 { #category : #magritte }
@@ -73,7 +73,7 @@ AppBskyActorProfileMain >> bannerDescription [
 	<magritteDescription>
 	^ MAFileDescription new
 		label: 'Banner';
-		accessor: #atProtoBanner
+		accessor: #atpBanner
 ]
 
 { #category : #magritte }
@@ -81,7 +81,7 @@ AppBskyActorProfileMain >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Description';
-		accessor: #atProtoDescription
+		accessor: #atpDescription
 ]
 
 { #category : #magritte }
@@ -89,5 +89,5 @@ AppBskyActorProfileMain >> displayNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'DisplayName';
-		accessor: #atProtoDisplayName
+		accessor: #atpDisplayName
 ]

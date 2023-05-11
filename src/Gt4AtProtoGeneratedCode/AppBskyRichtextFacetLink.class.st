@@ -2,24 +2,24 @@ Class {
 	#name : #AppBskyRichtextFacetLink,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri'
+		'atpUri'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyRichtextFacetLink class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetLink >> atProtoUri [
-	^ atProtoUri
+AppBskyRichtextFacetLink >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetLink >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyRichtextFacetLink >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -27,6 +27,6 @@ AppBskyRichtextFacetLink >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

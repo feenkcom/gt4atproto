@@ -2,24 +2,24 @@ Class {
 	#name : #AppBskyEmbedRecordViewNotFound,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri'
+		'atpUri'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewNotFound >> atProtoUri [
-	^ atProtoUri
+AppBskyEmbedRecordViewNotFound >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewNotFound >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyEmbedRecordViewNotFound >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -27,6 +27,6 @@ AppBskyEmbedRecordViewNotFound >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

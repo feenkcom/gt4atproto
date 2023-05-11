@@ -2,86 +2,86 @@ Class {
 	#name : #ComAtprotoAdminDefsBlobView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoCid',
-		'atProtoMimeType',
-		'atProtoSize',
-		'atProtoCreatedAt',
-		'atProtoDetails',
-		'atProtoModeration'
+		'atpCid',
+		'atpMimeType',
+		'atpSize',
+		'atpCreatedAt',
+		'atpDetails',
+		'atpModeration'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
-	^ self new atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]); 
-		atProtoSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoDetails: (aRequest at: 'details' ifAbsent: [ nil ]); 
-		atProtoModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]); 
+		atpSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atpDetails: (aRequest at: 'details' ifAbsent: [ nil ]); 
+		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoCid [
-	^ atProtoCid
+ComAtprotoAdminDefsBlobView >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoCid: anObject [
-	atProtoCid := anObject
+ComAtprotoAdminDefsBlobView >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoAdminDefsBlobView >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoAdminDefsBlobView >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoDetails [
-	^ atProtoDetails
+ComAtprotoAdminDefsBlobView >> atpDetails [
+	^ atpDetails
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoDetails: anObject [
-	atProtoDetails := anObject
+ComAtprotoAdminDefsBlobView >> atpDetails: anObject [
+	atpDetails := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoMimeType [
-	^ atProtoMimeType
+ComAtprotoAdminDefsBlobView >> atpMimeType [
+	^ atpMimeType
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoMimeType: anObject [
-	atProtoMimeType := anObject
+ComAtprotoAdminDefsBlobView >> atpMimeType: anObject [
+	atpMimeType := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoModeration [
+ComAtprotoAdminDefsBlobView >> atpModeration [
 	<referenceTo:'#moderation'>
-	^ atProtoModeration
+	^ atpModeration
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoModeration: anObject [
+ComAtprotoAdminDefsBlobView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
-	atProtoModeration := anObject
+	atpModeration := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoSize [
-	^ atProtoSize
+ComAtprotoAdminDefsBlobView >> atpSize [
+	^ atpSize
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsBlobView >> atProtoSize: anObject [
-	atProtoSize := anObject
+ComAtprotoAdminDefsBlobView >> atpSize: anObject [
+	atpSize := anObject
 ]
 
 { #category : #magritte }
@@ -89,7 +89,7 @@ ComAtprotoAdminDefsBlobView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -98,7 +98,7 @@ ComAtprotoAdminDefsBlobView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -108,7 +108,7 @@ ComAtprotoAdminDefsBlobView >> detailsDescription [
 	^ MASingleOptionDescription new
 		options: {'#imageDetails'. '#videoDetails'};
 		label: 'Details';
-		accessor: #atProtoDetails
+		accessor: #atpDetails
 ]
 
 { #category : #magritte }
@@ -116,7 +116,7 @@ ComAtprotoAdminDefsBlobView >> mimeTypeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'MimeType';
-		accessor: #atProtoMimeType;
+		accessor: #atpMimeType;
 	beRequired
 ]
 
@@ -125,7 +125,7 @@ ComAtprotoAdminDefsBlobView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Moderation';
-		accessor: #atProtoModeration
+		accessor: #atpModeration
 ]
 
 { #category : #magritte }
@@ -133,6 +133,6 @@ ComAtprotoAdminDefsBlobView >> sizeDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Size';
-		accessor: #atProtoSize;
+		accessor: #atpSize;
 	beRequired
 ]

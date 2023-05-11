@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoServerDefsInviteCodeUse,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUsedBy',
-		'atProtoUsedAt'
+		'atpUsedBy',
+		'atpUsedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
-	^ self new atProtoUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]); 
-		atProtoUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])
+	^ self new atpUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]); 
+		atpUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCodeUse >> atProtoUsedAt [
-	^ atProtoUsedAt
+ComAtprotoServerDefsInviteCodeUse >> atpUsedAt [
+	^ atpUsedAt
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCodeUse >> atProtoUsedAt: anObject [
-	atProtoUsedAt := anObject
+ComAtprotoServerDefsInviteCodeUse >> atpUsedAt: anObject [
+	atpUsedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCodeUse >> atProtoUsedBy [
-	^ atProtoUsedBy
+ComAtprotoServerDefsInviteCodeUse >> atpUsedBy [
+	^ atpUsedBy
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCodeUse >> atProtoUsedBy: anObject [
-	atProtoUsedBy := anObject
+ComAtprotoServerDefsInviteCodeUse >> atpUsedBy: anObject [
+	atpUsedBy := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoServerDefsInviteCodeUse >> usedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'UsedAt';
-		accessor: #atProtoUsedAt;
+		accessor: #atpUsedAt;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ ComAtprotoServerDefsInviteCodeUse >> usedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'UsedBy';
-		accessor: #atProtoUsedBy;
+		accessor: #atpUsedBy;
 	beRequired
 ]

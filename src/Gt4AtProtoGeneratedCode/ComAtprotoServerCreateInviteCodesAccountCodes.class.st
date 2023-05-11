@@ -2,16 +2,16 @@ Class {
 	#name : #ComAtprotoServerCreateInviteCodesAccountCodes,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoAccount',
-		'atProtoCodes'
+		'atpAccount',
+		'atpCodes'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
-	^ self new atProtoAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
-		atProtoCodes: (aRequest at: 'codes' ifAbsent: [ nil ])
+	^ self new atpAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
+		atpCodes: (aRequest at: 'codes' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -19,28 +19,28 @@ ComAtprotoServerCreateInviteCodesAccountCodes >> accountDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Account';
-		accessor: #atProtoAccount;
+		accessor: #atpAccount;
 	beRequired
 ]
 
 { #category : #accessing }
-ComAtprotoServerCreateInviteCodesAccountCodes >> atProtoAccount [
-	^ atProtoAccount
+ComAtprotoServerCreateInviteCodesAccountCodes >> atpAccount [
+	^ atpAccount
 ]
 
 { #category : #accessing }
-ComAtprotoServerCreateInviteCodesAccountCodes >> atProtoAccount: anObject [
-	atProtoAccount := anObject
+ComAtprotoServerCreateInviteCodesAccountCodes >> atpAccount: anObject [
+	atpAccount := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerCreateInviteCodesAccountCodes >> atProtoCodes [
-	^ atProtoCodes
+ComAtprotoServerCreateInviteCodesAccountCodes >> atpCodes [
+	^ atpCodes
 ]
 
 { #category : #accessing }
-ComAtprotoServerCreateInviteCodesAccountCodes >> atProtoCodes: anObject [
-	atProtoCodes := anObject
+ComAtprotoServerCreateInviteCodesAccountCodes >> atpCodes: anObject [
+	atpCodes := anObject
 ]
 
 { #category : #magritte }
@@ -49,6 +49,6 @@ ComAtprotoServerCreateInviteCodesAccountCodes >> codesDescription [
 	^ MAToManyRelationDescription new
 		classes: {String};
 		label: 'Codes';
-		accessor: #atProtoCodes;
+		accessor: #atpCodes;
 	beRequired
 ]

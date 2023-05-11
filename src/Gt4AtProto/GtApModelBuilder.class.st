@@ -52,7 +52,7 @@ GtApModelBuilder >> defaultClientSuffix [
 { #category : #accessing }
 GtApModelBuilder >> gtViewModelFor: aView [
 	<gtView>
-	^ self model gtChangesFor: aView
+	^ self model gtApplyingChangesFor: aView
 ]
 
 { #category : #accessing }
@@ -119,6 +119,14 @@ GtApModelBuilder >> useDefinitionInstanceVarBuilderWithPrefix: aPrefix [
 { #category : #accessing }
 GtApModelBuilder >> useDefinitionMagritteBuilder [
 	builders add: (GtApDefinitionMagritteBuilder new lexicons: self lexicons)
+]
+
+{ #category : #accessing }
+GtApModelBuilder >> useDefinitionMagritteBuilderWithPrefix: aPrefix [
+	builders
+		add: (GtApDefinitionMagritteBuilder new
+				accessorPrefix: aPrefix;
+				lexicons: self lexicons)
 ]
 
 { #category : #accessing }

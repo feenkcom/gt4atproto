@@ -2,148 +2,148 @@ Class {
 	#name : #AppBskyFeedDefsPostView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoCid',
-		'atProtoAuthor',
-		'atProtoRecord',
-		'atProtoEmbed',
-		'atProtoReplyCount',
-		'atProtoRepostCount',
-		'atProtoLikeCount',
-		'atProtoIndexedAt',
-		'atProtoViewer',
-		'atProtoLabels'
+		'atpUri',
+		'atpCid',
+		'atpAuthor',
+		'atpRecord',
+		'atpEmbed',
+		'atpReplyCount',
+		'atpRepostCount',
+		'atpLikeCount',
+		'atpIndexedAt',
+		'atpViewer',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedDefsPostView class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
-		atProtoEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
-		atProtoReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]); 
-		atProtoRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]); 
-		atProtoLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyFeedDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
+		atpEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
+		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]); 
+		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]); 
+		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyFeedDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoAuthor [
+AppBskyFeedDefsPostView >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
-	^ atProtoAuthor
+	^ atpAuthor
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoAuthor: anObject [
+AppBskyFeedDefsPostView >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
-	atProtoAuthor := anObject
+	atpAuthor := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoCid [
-	^ atProtoCid
+AppBskyFeedDefsPostView >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoCid: anObject [
-	atProtoCid := anObject
+AppBskyFeedDefsPostView >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoEmbed [
-	^ atProtoEmbed
+AppBskyFeedDefsPostView >> atpEmbed [
+	^ atpEmbed
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoEmbed: anObject [
-	atProtoEmbed := anObject
+AppBskyFeedDefsPostView >> atpEmbed: anObject [
+	atpEmbed := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+AppBskyFeedDefsPostView >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+AppBskyFeedDefsPostView >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoLabels [
-	^ atProtoLabels
+AppBskyFeedDefsPostView >> atpLabels [
+	^ atpLabels
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoLabels: anObject [
-	atProtoLabels := anObject
+AppBskyFeedDefsPostView >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoLikeCount [
-	^ atProtoLikeCount
+AppBskyFeedDefsPostView >> atpLikeCount [
+	^ atpLikeCount
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoLikeCount: anObject [
-	atProtoLikeCount := anObject
+AppBskyFeedDefsPostView >> atpLikeCount: anObject [
+	atpLikeCount := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoRecord [
-	^ atProtoRecord
+AppBskyFeedDefsPostView >> atpRecord [
+	^ atpRecord
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoRecord: anObject [
-	atProtoRecord := anObject
+AppBskyFeedDefsPostView >> atpRecord: anObject [
+	atpRecord := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoReplyCount [
-	^ atProtoReplyCount
+AppBskyFeedDefsPostView >> atpReplyCount [
+	^ atpReplyCount
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoReplyCount: anObject [
-	atProtoReplyCount := anObject
+AppBskyFeedDefsPostView >> atpReplyCount: anObject [
+	atpReplyCount := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoRepostCount [
-	^ atProtoRepostCount
+AppBskyFeedDefsPostView >> atpRepostCount [
+	^ atpRepostCount
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoRepostCount: anObject [
-	atProtoRepostCount := anObject
+AppBskyFeedDefsPostView >> atpRepostCount: anObject [
+	atpRepostCount := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoUri [
-	^ atProtoUri
+AppBskyFeedDefsPostView >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyFeedDefsPostView >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoViewer [
+AppBskyFeedDefsPostView >> atpViewer [
 	<referenceTo:'#viewerState'>
-	^ atProtoViewer
+	^ atpViewer
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsPostView >> atProtoViewer: anObject [
+AppBskyFeedDefsPostView >> atpViewer: anObject [
 	<referenceTo:'#viewerState'>
-	atProtoViewer := anObject
+	atpViewer := anObject
 ]
 
 { #category : #magritte }
@@ -151,7 +151,7 @@ AppBskyFeedDefsPostView >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Author';
-		accessor: #atProtoAuthor;
+		accessor: #atpAuthor;
 		beRequired
 ]
 
@@ -160,7 +160,7 @@ AppBskyFeedDefsPostView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -170,7 +170,7 @@ AppBskyFeedDefsPostView >> embedDescription [
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images#view'. 'app.bsky.embed.external#view'. 'app.bsky.embed.record#view'. 'app.bsky.embed.recordWithMedia#view'};
 		label: 'Embed';
-		accessor: #atProtoEmbed
+		accessor: #atpEmbed
 ]
 
 { #category : #magritte }
@@ -178,7 +178,7 @@ AppBskyFeedDefsPostView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]
 
@@ -188,7 +188,7 @@ AppBskyFeedDefsPostView >> labelsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
-		accessor: #atProtoLabels
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }
@@ -196,7 +196,7 @@ AppBskyFeedDefsPostView >> likeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'LikeCount';
-		accessor: #atProtoLikeCount
+		accessor: #atpLikeCount
 ]
 
 { #category : #magritte }
@@ -204,7 +204,7 @@ AppBskyFeedDefsPostView >> recordDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Record';
-		accessor: #atProtoRecord;
+		accessor: #atpRecord;
 	beRequired
 ]
 
@@ -213,7 +213,7 @@ AppBskyFeedDefsPostView >> replyCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'ReplyCount';
-		accessor: #atProtoReplyCount
+		accessor: #atpReplyCount
 ]
 
 { #category : #magritte }
@@ -221,7 +221,7 @@ AppBskyFeedDefsPostView >> repostCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'RepostCount';
-		accessor: #atProtoRepostCount
+		accessor: #atpRepostCount
 ]
 
 { #category : #magritte }
@@ -229,7 +229,7 @@ AppBskyFeedDefsPostView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]
 
@@ -238,5 +238,5 @@ AppBskyFeedDefsPostView >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Viewer';
-		accessor: #atProtoViewer
+		accessor: #atpViewer
 ]

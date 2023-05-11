@@ -2,36 +2,36 @@ Class {
 	#name : #AppBskyFeedDefsNotFoundPost,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoNotFound'
+		'atpUri',
+		'atpNotFound'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsNotFoundPost >> atProtoNotFound [
-	^ atProtoNotFound
+AppBskyFeedDefsNotFoundPost >> atpNotFound [
+	^ atpNotFound
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsNotFoundPost >> atProtoNotFound: anObject [
-	atProtoNotFound := anObject
+AppBskyFeedDefsNotFoundPost >> atpNotFound: anObject [
+	atpNotFound := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsNotFoundPost >> atProtoUri [
-	^ atProtoUri
+AppBskyFeedDefsNotFoundPost >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsNotFoundPost >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyFeedDefsNotFoundPost >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ AppBskyFeedDefsNotFoundPost >> notFoundDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'NotFound';
-		accessor: #atProtoNotFound;
+		accessor: #atpNotFound;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ AppBskyFeedDefsNotFoundPost >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

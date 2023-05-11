@@ -29,14 +29,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-11T19:50:25.274599+02:00"
+						"dateAndTimeString" : "2023-05-11T23:05:08.151268+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "ET5HfM63DQCMhmGIDYDWkw=="
 				},
-				"code" : "GtApLoginForm new\r\tclientClass: GtApGeneratedClient;\r\tclientCallback: [ :aClient :anElement | anElement phlow spawnObject: aClient ]"
+				"code" : "GtApLoginForm new\r\tclientClass: GtApGeneratedClient;\r\tclientCallback: [ :aClient :anElement | \r\t\tanElement phlow\r\t\t\tspawnObject: ((aClient appBskyActorGetProfileactor: aClient context handle) client: aClient) ]"
 			}
 		]
 	},

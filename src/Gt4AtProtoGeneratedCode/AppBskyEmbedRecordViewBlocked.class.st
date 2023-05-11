@@ -2,24 +2,24 @@ Class {
 	#name : #AppBskyEmbedRecordViewBlocked,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri'
+		'atpUri'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewBlocked >> atProtoUri [
-	^ atProtoUri
+AppBskyEmbedRecordViewBlocked >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewBlocked >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyEmbedRecordViewBlocked >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -27,6 +27,6 @@ AppBskyEmbedRecordViewBlocked >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

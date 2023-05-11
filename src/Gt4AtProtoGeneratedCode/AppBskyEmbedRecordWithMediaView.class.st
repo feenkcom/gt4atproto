@@ -2,38 +2,38 @@ Class {
 	#name : #AppBskyEmbedRecordWithMediaView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoRecord',
-		'atProtoMedia'
+		'atpRecord',
+		'atpMedia'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
-	^ self new atProtoRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoMedia: (aRequest at: 'media' ifAbsent: [ nil ])
+	^ self new atpRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordView fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpMedia: (aRequest at: 'media' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaView >> atProtoMedia [
-	^ atProtoMedia
+AppBskyEmbedRecordWithMediaView >> atpMedia [
+	^ atpMedia
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaView >> atProtoMedia: anObject [
-	atProtoMedia := anObject
+AppBskyEmbedRecordWithMediaView >> atpMedia: anObject [
+	atpMedia := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaView >> atProtoRecord [
+AppBskyEmbedRecordWithMediaView >> atpRecord [
 	<referenceTo:'app.bsky.embed.record#view'>
-	^ atProtoRecord
+	^ atpRecord
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaView >> atProtoRecord: anObject [
+AppBskyEmbedRecordWithMediaView >> atpRecord: anObject [
 	<referenceTo:'app.bsky.embed.record#view'>
-	atProtoRecord := anObject
+	atpRecord := anObject
 ]
 
 { #category : #magritte }
@@ -42,7 +42,7 @@ AppBskyEmbedRecordWithMediaView >> mediaDescription [
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images#view'. 'app.bsky.embed.external#view'};
 		label: 'Media';
-		accessor: #atProtoMedia;
+		accessor: #atpMedia;
 		beRequired
 ]
 
@@ -51,6 +51,6 @@ AppBskyEmbedRecordWithMediaView >> recordDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Record';
-		accessor: #atProtoRecord;
+		accessor: #atpRecord;
 		beRequired
 ]

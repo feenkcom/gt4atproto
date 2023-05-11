@@ -2,36 +2,36 @@ Class {
 	#name : #AppBskyGraphFollowMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSubject',
-		'atProtoCreatedAt'
+		'atpSubject',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyGraphFollowMain class >> fromRequest: aRequest [
-	^ self new atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+	^ self new atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyGraphFollowMain >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+AppBskyGraphFollowMain >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-AppBskyGraphFollowMain >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+AppBskyGraphFollowMain >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyGraphFollowMain >> atProtoSubject [
-	^ atProtoSubject
+AppBskyGraphFollowMain >> atpSubject [
+	^ atpSubject
 ]
 
 { #category : #accessing }
-AppBskyGraphFollowMain >> atProtoSubject: anObject [
-	atProtoSubject := anObject
+AppBskyGraphFollowMain >> atpSubject: anObject [
+	atpSubject := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ AppBskyGraphFollowMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ AppBskyGraphFollowMain >> subjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Subject';
-		accessor: #atProtoSubject;
+		accessor: #atpSubject;
 	beRequired
 ]

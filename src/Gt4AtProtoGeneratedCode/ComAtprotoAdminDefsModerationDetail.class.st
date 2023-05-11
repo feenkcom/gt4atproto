@@ -2,18 +2,18 @@ Class {
 	#name : #ComAtprotoAdminDefsModerationDetail,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoCurrentAction',
-		'atProtoActions',
-		'atProtoReports'
+		'atpCurrentAction',
+		'atpActions',
+		'atpReports'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
-	^ self new atProtoCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoActions: (aRequest at: 'actions' ifAbsent: [ nil ]); 
-		atProtoReports: (aRequest at: 'reports' ifAbsent: [ nil ])
+	^ self new atpCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpActions: (aRequest at: 'actions' ifAbsent: [ nil ]); 
+		atpReports: (aRequest at: 'reports' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -22,40 +22,40 @@ ComAtprotoAdminDefsModerationDetail >> actionsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoAdminDefsActionView};
 		label: 'Actions';
-		accessor: #atProtoActions;
+		accessor: #atpActions;
 	beRequired
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsModerationDetail >> atProtoActions [
-	^ atProtoActions
+ComAtprotoAdminDefsModerationDetail >> atpActions [
+	^ atpActions
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsModerationDetail >> atProtoActions: anObject [
-	atProtoActions := anObject
+ComAtprotoAdminDefsModerationDetail >> atpActions: anObject [
+	atpActions := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsModerationDetail >> atProtoCurrentAction [
+ComAtprotoAdminDefsModerationDetail >> atpCurrentAction [
 	<referenceTo:'#actionViewCurrent'>
-	^ atProtoCurrentAction
+	^ atpCurrentAction
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsModerationDetail >> atProtoCurrentAction: anObject [
+ComAtprotoAdminDefsModerationDetail >> atpCurrentAction: anObject [
 	<referenceTo:'#actionViewCurrent'>
-	atProtoCurrentAction := anObject
+	atpCurrentAction := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsModerationDetail >> atProtoReports [
-	^ atProtoReports
+ComAtprotoAdminDefsModerationDetail >> atpReports [
+	^ atpReports
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsModerationDetail >> atProtoReports: anObject [
-	atProtoReports := anObject
+ComAtprotoAdminDefsModerationDetail >> atpReports: anObject [
+	atpReports := anObject
 ]
 
 { #category : #magritte }
@@ -63,7 +63,7 @@ ComAtprotoAdminDefsModerationDetail >> currentActionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'CurrentAction';
-		accessor: #atProtoCurrentAction
+		accessor: #atpCurrentAction
 ]
 
 { #category : #magritte }
@@ -72,6 +72,6 @@ ComAtprotoAdminDefsModerationDetail >> reportsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoAdminDefsReportView};
 		label: 'Reports';
-		accessor: #atProtoReports;
+		accessor: #atpReports;
 	beRequired
 ]

@@ -2,36 +2,36 @@ Class {
 	#name : #AppBskyGraphBlockMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSubject',
-		'atProtoCreatedAt'
+		'atpSubject',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyGraphBlockMain class >> fromRequest: aRequest [
-	^ self new atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+	^ self new atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyGraphBlockMain >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+AppBskyGraphBlockMain >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-AppBskyGraphBlockMain >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+AppBskyGraphBlockMain >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyGraphBlockMain >> atProtoSubject [
-	^ atProtoSubject
+AppBskyGraphBlockMain >> atpSubject [
+	^ atpSubject
 ]
 
 { #category : #accessing }
-AppBskyGraphBlockMain >> atProtoSubject: anObject [
-	atProtoSubject := anObject
+AppBskyGraphBlockMain >> atpSubject: anObject [
+	atpSubject := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ AppBskyGraphBlockMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ AppBskyGraphBlockMain >> subjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Subject';
-		accessor: #atProtoSubject;
+		accessor: #atpSubject;
 	beRequired
 ]

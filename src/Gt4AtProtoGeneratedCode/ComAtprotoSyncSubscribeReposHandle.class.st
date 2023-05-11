@@ -2,60 +2,60 @@ Class {
 	#name : #ComAtprotoSyncSubscribeReposHandle,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSeq',
-		'atProtoDid',
-		'atProtoHandle',
-		'atProtoTime'
+		'atpSeq',
+		'atpDid',
+		'atpHandle',
+		'atpTime'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest [
-	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoDid [
-	^ atProtoDid
+ComAtprotoSyncSubscribeReposHandle >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoDid: anObject [
-	atProtoDid := anObject
+ComAtprotoSyncSubscribeReposHandle >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoHandle [
-	^ atProtoHandle
+ComAtprotoSyncSubscribeReposHandle >> atpHandle [
+	^ atpHandle
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoHandle: anObject [
-	atProtoHandle := anObject
+ComAtprotoSyncSubscribeReposHandle >> atpHandle: anObject [
+	atpHandle := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoSeq [
-	^ atProtoSeq
+ComAtprotoSyncSubscribeReposHandle >> atpSeq [
+	^ atpSeq
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoSeq: anObject [
-	atProtoSeq := anObject
+ComAtprotoSyncSubscribeReposHandle >> atpSeq: anObject [
+	atpSeq := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoTime [
-	^ atProtoTime
+ComAtprotoSyncSubscribeReposHandle >> atpTime [
+	^ atpTime
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposHandle >> atProtoTime: anObject [
-	atProtoTime := anObject
+ComAtprotoSyncSubscribeReposHandle >> atpTime: anObject [
+	atpTime := anObject
 ]
 
 { #category : #magritte }
@@ -63,7 +63,7 @@ ComAtprotoSyncSubscribeReposHandle >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]
 
@@ -72,7 +72,7 @@ ComAtprotoSyncSubscribeReposHandle >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Handle';
-		accessor: #atProtoHandle;
+		accessor: #atpHandle;
 	beRequired
 ]
 
@@ -81,7 +81,7 @@ ComAtprotoSyncSubscribeReposHandle >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Seq';
-		accessor: #atProtoSeq;
+		accessor: #atpSeq;
 	beRequired
 ]
 
@@ -90,6 +90,6 @@ ComAtprotoSyncSubscribeReposHandle >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Time';
-		accessor: #atProtoTime;
+		accessor: #atpTime;
 	beRequired
 ]

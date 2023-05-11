@@ -1,53 +1,55 @@
 Class {
 	#name : #AppBskyFeedDefsFeedViewPost,
 	#superclass : #Object,
+	#traits : 'TAppBskyFeedDefsFeedViewPost',
+	#classTraits : 'TAppBskyFeedDefsFeedViewPost classTrait',
 	#instVars : [
-		'atProtoPost',
-		'atProtoReply',
-		'atProtoReason'
+		'atpPost',
+		'atpReply',
+		'atpReason'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
-	^ self new atProtoPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ])
+	^ self new atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> atProtoPost [
+AppBskyFeedDefsFeedViewPost >> atpPost [
 	<referenceTo:'app.bsky.feed.defs#postView'>
-	^ atProtoPost
+	^ atpPost
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> atProtoPost: anObject [
+AppBskyFeedDefsFeedViewPost >> atpPost: anObject [
 	<referenceTo:'app.bsky.feed.defs#postView'>
-	atProtoPost := anObject
+	atpPost := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> atProtoReason [
-	^ atProtoReason
+AppBskyFeedDefsFeedViewPost >> atpReason [
+	^ atpReason
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> atProtoReason: anObject [
-	atProtoReason := anObject
+AppBskyFeedDefsFeedViewPost >> atpReason: anObject [
+	atpReason := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> atProtoReply [
+AppBskyFeedDefsFeedViewPost >> atpReply [
 	<referenceTo:'#replyRef'>
-	^ atProtoReply
+	^ atpReply
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> atProtoReply: anObject [
+AppBskyFeedDefsFeedViewPost >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
-	atProtoReply := anObject
+	atpReply := anObject
 ]
 
 { #category : #magritte }
@@ -55,7 +57,7 @@ AppBskyFeedDefsFeedViewPost >> postDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Post';
-		accessor: #atProtoPost;
+		accessor: #atpPost;
 		beRequired
 ]
 
@@ -65,7 +67,7 @@ AppBskyFeedDefsFeedViewPost >> reasonDescription [
 	^ MASingleOptionDescription new
 		options: {'#reasonRepost'};
 		label: 'Reason';
-		accessor: #atProtoReason
+		accessor: #atpReason
 ]
 
 { #category : #magritte }
@@ -73,5 +75,5 @@ AppBskyFeedDefsFeedViewPost >> replyDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Reply';
-		accessor: #atProtoReply
+		accessor: #atpReply
 ]

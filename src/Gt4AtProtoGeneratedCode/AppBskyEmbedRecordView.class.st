@@ -2,24 +2,24 @@ Class {
 	#name : #AppBskyEmbedRecordView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoRecord'
+		'atpRecord'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordView class >> fromRequest: aRequest [
-	^ self new atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ])
+	^ self new atpRecord: (aRequest at: 'record' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordView >> atProtoRecord [
-	^ atProtoRecord
+AppBskyEmbedRecordView >> atpRecord [
+	^ atpRecord
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordView >> atProtoRecord: anObject [
-	atProtoRecord := anObject
+AppBskyEmbedRecordView >> atpRecord: anObject [
+	atpRecord := anObject
 ]
 
 { #category : #magritte }
@@ -28,6 +28,6 @@ AppBskyEmbedRecordView >> recordDescription [
 	^ MASingleOptionDescription new
 		options: {'#viewRecord'. '#viewNotFound'. '#viewBlocked'};
 		label: 'Record';
-		accessor: #atProtoRecord;
+		accessor: #atpRecord;
 		beRequired
 ]

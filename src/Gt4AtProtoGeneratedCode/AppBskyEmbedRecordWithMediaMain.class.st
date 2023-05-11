@@ -2,38 +2,38 @@ Class {
 	#name : #AppBskyEmbedRecordWithMediaMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoRecord',
-		'atProtoMedia'
+		'atpRecord',
+		'atpMedia'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordWithMediaMain class >> fromRequest: aRequest [
-	^ self new atProtoRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordMain fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoMedia: (aRequest at: 'media' ifAbsent: [ nil ])
+	^ self new atpRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordMain fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpMedia: (aRequest at: 'media' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaMain >> atProtoMedia [
-	^ atProtoMedia
+AppBskyEmbedRecordWithMediaMain >> atpMedia [
+	^ atpMedia
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaMain >> atProtoMedia: anObject [
-	atProtoMedia := anObject
+AppBskyEmbedRecordWithMediaMain >> atpMedia: anObject [
+	atpMedia := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaMain >> atProtoRecord [
+AppBskyEmbedRecordWithMediaMain >> atpRecord [
 	<referenceTo:'app.bsky.embed.record'>
-	^ atProtoRecord
+	^ atpRecord
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordWithMediaMain >> atProtoRecord: anObject [
+AppBskyEmbedRecordWithMediaMain >> atpRecord: anObject [
 	<referenceTo:'app.bsky.embed.record'>
-	atProtoRecord := anObject
+	atpRecord := anObject
 ]
 
 { #category : #magritte }
@@ -42,7 +42,7 @@ AppBskyEmbedRecordWithMediaMain >> mediaDescription [
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images'. 'app.bsky.embed.external'};
 		label: 'Media';
-		accessor: #atProtoMedia;
+		accessor: #atpMedia;
 		beRequired
 ]
 
@@ -51,6 +51,6 @@ AppBskyEmbedRecordWithMediaMain >> recordDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Record';
-		accessor: #atProtoRecord;
+		accessor: #atpRecord;
 		beRequired
 ]

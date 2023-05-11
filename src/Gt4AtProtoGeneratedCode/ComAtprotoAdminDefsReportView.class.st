@@ -2,98 +2,98 @@ Class {
 	#name : #ComAtprotoAdminDefsReportView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoId',
-		'atProtoReasonType',
-		'atProtoReason',
-		'atProtoSubject',
-		'atProtoReportedBy',
-		'atProtoCreatedAt',
-		'atProtoResolvedByActionIds'
+		'atpId',
+		'atpReasonType',
+		'atpReason',
+		'atpSubject',
+		'atpReportedBy',
+		'atpCreatedAt',
+		'atpResolvedByActionIds'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
-	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atProtoReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoResolvedByActionIds: (aRequest at: 'resolvedByActionIds' ifAbsent: [ nil ])
+	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atpReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atpResolvedByActionIds: (aRequest at: 'resolvedByActionIds' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoAdminDefsReportView >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoAdminDefsReportView >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoId [
-	^ atProtoId
+ComAtprotoAdminDefsReportView >> atpId [
+	^ atpId
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoId: anObject [
-	atProtoId := anObject
+ComAtprotoAdminDefsReportView >> atpId: anObject [
+	atpId := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoReason [
-	^ atProtoReason
+ComAtprotoAdminDefsReportView >> atpReason [
+	^ atpReason
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoReason: anObject [
-	atProtoReason := anObject
+ComAtprotoAdminDefsReportView >> atpReason: anObject [
+	atpReason := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoReasonType [
+ComAtprotoAdminDefsReportView >> atpReasonType [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
-	^ atProtoReasonType
+	^ atpReasonType
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoReasonType: anObject [
+ComAtprotoAdminDefsReportView >> atpReasonType: anObject [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
-	atProtoReasonType := anObject
+	atpReasonType := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoReportedBy [
-	^ atProtoReportedBy
+ComAtprotoAdminDefsReportView >> atpReportedBy [
+	^ atpReportedBy
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoReportedBy: anObject [
-	atProtoReportedBy := anObject
+ComAtprotoAdminDefsReportView >> atpReportedBy: anObject [
+	atpReportedBy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoResolvedByActionIds [
-	^ atProtoResolvedByActionIds
+ComAtprotoAdminDefsReportView >> atpResolvedByActionIds [
+	^ atpResolvedByActionIds
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoResolvedByActionIds: anObject [
-	atProtoResolvedByActionIds := anObject
+ComAtprotoAdminDefsReportView >> atpResolvedByActionIds: anObject [
+	atpResolvedByActionIds := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoSubject [
-	^ atProtoSubject
+ComAtprotoAdminDefsReportView >> atpSubject [
+	^ atpSubject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportView >> atProtoSubject: anObject [
-	atProtoSubject := anObject
+ComAtprotoAdminDefsReportView >> atpSubject: anObject [
+	atpSubject := anObject
 ]
 
 { #category : #magritte }
@@ -101,7 +101,7 @@ ComAtprotoAdminDefsReportView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -110,7 +110,7 @@ ComAtprotoAdminDefsReportView >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Id';
-		accessor: #atProtoId;
+		accessor: #atpId;
 	beRequired
 ]
 
@@ -119,7 +119,7 @@ ComAtprotoAdminDefsReportView >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Reason';
-		accessor: #atProtoReason
+		accessor: #atpReason
 ]
 
 { #category : #magritte }
@@ -127,7 +127,7 @@ ComAtprotoAdminDefsReportView >> reasonTypeDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'ReasonType';
-		accessor: #atProtoReasonType;
+		accessor: #atpReasonType;
 		beRequired
 ]
 
@@ -136,7 +136,7 @@ ComAtprotoAdminDefsReportView >> reportedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'ReportedBy';
-		accessor: #atProtoReportedBy;
+		accessor: #atpReportedBy;
 	beRequired
 ]
 
@@ -146,7 +146,7 @@ ComAtprotoAdminDefsReportView >> resolvedByActionIdsDescription [
 	^ MAToManyRelationDescription new
 		classes: {Number};
 		label: 'ResolvedByActionIds';
-		accessor: #atProtoResolvedByActionIds;
+		accessor: #atpResolvedByActionIds;
 	beRequired
 ]
 
@@ -156,6 +156,6 @@ ComAtprotoAdminDefsReportView >> subjectDescription [
 	^ MASingleOptionDescription new
 		options: {'#repoRef'. 'com.atproto.repo.strongRef'};
 		label: 'Subject';
-		accessor: #atProtoSubject;
+		accessor: #atpSubject;
 		beRequired
 ]

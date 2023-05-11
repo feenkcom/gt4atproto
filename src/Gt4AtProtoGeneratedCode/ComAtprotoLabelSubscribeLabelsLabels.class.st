@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoLabelSubscribeLabelsLabels,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSeq',
-		'atProtoLabels'
+		'atpSeq',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
-	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoLabelSubscribeLabelsLabels >> atProtoLabels [
-	^ atProtoLabels
+ComAtprotoLabelSubscribeLabelsLabels >> atpLabels [
+	^ atpLabels
 ]
 
 { #category : #accessing }
-ComAtprotoLabelSubscribeLabelsLabels >> atProtoLabels: anObject [
-	atProtoLabels := anObject
+ComAtprotoLabelSubscribeLabelsLabels >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoLabelSubscribeLabelsLabels >> atProtoSeq [
-	^ atProtoSeq
+ComAtprotoLabelSubscribeLabelsLabels >> atpSeq [
+	^ atpSeq
 ]
 
 { #category : #accessing }
-ComAtprotoLabelSubscribeLabelsLabels >> atProtoSeq: anObject [
-	atProtoSeq := anObject
+ComAtprotoLabelSubscribeLabelsLabels >> atpSeq: anObject [
+	atpSeq := anObject
 ]
 
 { #category : #magritte }
@@ -40,7 +40,7 @@ ComAtprotoLabelSubscribeLabelsLabels >> labelsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
-		accessor: #atProtoLabels;
+		accessor: #atpLabels;
 	beRequired
 ]
 
@@ -49,6 +49,6 @@ ComAtprotoLabelSubscribeLabelsLabels >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Seq';
-		accessor: #atProtoSeq;
+		accessor: #atpSeq;
 	beRequired
 ]

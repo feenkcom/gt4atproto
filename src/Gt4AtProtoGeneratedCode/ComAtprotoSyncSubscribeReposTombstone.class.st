@@ -2,48 +2,48 @@ Class {
 	#name : #ComAtprotoSyncSubscribeReposTombstone,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSeq',
-		'atProtoDid',
-		'atProtoTime'
+		'atpSeq',
+		'atpDid',
+		'atpTime'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest [
-	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposTombstone >> atProtoDid [
-	^ atProtoDid
+ComAtprotoSyncSubscribeReposTombstone >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposTombstone >> atProtoDid: anObject [
-	atProtoDid := anObject
+ComAtprotoSyncSubscribeReposTombstone >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposTombstone >> atProtoSeq [
-	^ atProtoSeq
+ComAtprotoSyncSubscribeReposTombstone >> atpSeq [
+	^ atpSeq
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposTombstone >> atProtoSeq: anObject [
-	atProtoSeq := anObject
+ComAtprotoSyncSubscribeReposTombstone >> atpSeq: anObject [
+	atpSeq := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposTombstone >> atProtoTime [
-	^ atProtoTime
+ComAtprotoSyncSubscribeReposTombstone >> atpTime [
+	^ atpTime
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposTombstone >> atProtoTime: anObject [
-	atProtoTime := anObject
+ComAtprotoSyncSubscribeReposTombstone >> atpTime: anObject [
+	atpTime := anObject
 ]
 
 { #category : #magritte }
@@ -51,7 +51,7 @@ ComAtprotoSyncSubscribeReposTombstone >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]
 
@@ -60,7 +60,7 @@ ComAtprotoSyncSubscribeReposTombstone >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Seq';
-		accessor: #atProtoSeq;
+		accessor: #atpSeq;
 	beRequired
 ]
 
@@ -69,6 +69,6 @@ ComAtprotoSyncSubscribeReposTombstone >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Time';
-		accessor: #atProtoTime;
+		accessor: #atpTime;
 	beRequired
 ]

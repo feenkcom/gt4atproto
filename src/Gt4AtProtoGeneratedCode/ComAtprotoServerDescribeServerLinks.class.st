@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoServerDescribeServerLinks,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoPrivacyPolicy',
-		'atProtoTermsOfService'
+		'atpPrivacyPolicy',
+		'atpTermsOfService'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
-	^ self new atProtoPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]); 
-		atProtoTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])
+	^ self new atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]); 
+		atpTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoServerDescribeServerLinks >> atProtoPrivacyPolicy [
-	^ atProtoPrivacyPolicy
+ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy [
+	^ atpPrivacyPolicy
 ]
 
 { #category : #accessing }
-ComAtprotoServerDescribeServerLinks >> atProtoPrivacyPolicy: anObject [
-	atProtoPrivacyPolicy := anObject
+ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy: anObject [
+	atpPrivacyPolicy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDescribeServerLinks >> atProtoTermsOfService [
-	^ atProtoTermsOfService
+ComAtprotoServerDescribeServerLinks >> atpTermsOfService [
+	^ atpTermsOfService
 ]
 
 { #category : #accessing }
-ComAtprotoServerDescribeServerLinks >> atProtoTermsOfService: anObject [
-	atProtoTermsOfService := anObject
+ComAtprotoServerDescribeServerLinks >> atpTermsOfService: anObject [
+	atpTermsOfService := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoServerDescribeServerLinks >> privacyPolicyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'PrivacyPolicy';
-		accessor: #atProtoPrivacyPolicy
+		accessor: #atpPrivacyPolicy
 ]
 
 { #category : #magritte }
@@ -47,5 +47,5 @@ ComAtprotoServerDescribeServerLinks >> termsOfServiceDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'TermsOfService';
-		accessor: #atProtoTermsOfService
+		accessor: #atpTermsOfService
 ]

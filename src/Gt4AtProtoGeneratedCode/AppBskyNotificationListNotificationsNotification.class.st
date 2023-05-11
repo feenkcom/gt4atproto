@@ -2,122 +2,122 @@ Class {
 	#name : #AppBskyNotificationListNotificationsNotification,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoCid',
-		'atProtoAuthor',
-		'atProtoReason',
-		'atProtoReasonSubject',
-		'atProtoRecord',
-		'atProtoIsRead',
-		'atProtoIndexedAt',
-		'atProtoLabels'
+		'atpUri',
+		'atpCid',
+		'atpAuthor',
+		'atpReason',
+		'atpReasonSubject',
+		'atpRecord',
+		'atpIsRead',
+		'atpIndexedAt',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atProtoReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]); 
-		atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
-		atProtoIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atpReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]); 
+		atpRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
+		atpIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoAuthor [
+AppBskyNotificationListNotificationsNotification >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
-	^ atProtoAuthor
+	^ atpAuthor
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoAuthor: anObject [
+AppBskyNotificationListNotificationsNotification >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
-	atProtoAuthor := anObject
+	atpAuthor := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoCid [
-	^ atProtoCid
+AppBskyNotificationListNotificationsNotification >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoCid: anObject [
-	atProtoCid := anObject
+AppBskyNotificationListNotificationsNotification >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+AppBskyNotificationListNotificationsNotification >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+AppBskyNotificationListNotificationsNotification >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoIsRead [
-	^ atProtoIsRead
+AppBskyNotificationListNotificationsNotification >> atpIsRead [
+	^ atpIsRead
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoIsRead: anObject [
-	atProtoIsRead := anObject
+AppBskyNotificationListNotificationsNotification >> atpIsRead: anObject [
+	atpIsRead := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoLabels [
-	^ atProtoLabels
+AppBskyNotificationListNotificationsNotification >> atpLabels [
+	^ atpLabels
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoLabels: anObject [
-	atProtoLabels := anObject
+AppBskyNotificationListNotificationsNotification >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoReason [
-	^ atProtoReason
+AppBskyNotificationListNotificationsNotification >> atpReason [
+	^ atpReason
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoReason: anObject [
-	atProtoReason := anObject
+AppBskyNotificationListNotificationsNotification >> atpReason: anObject [
+	atpReason := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoReasonSubject [
-	^ atProtoReasonSubject
+AppBskyNotificationListNotificationsNotification >> atpReasonSubject [
+	^ atpReasonSubject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoReasonSubject: anObject [
-	atProtoReasonSubject := anObject
+AppBskyNotificationListNotificationsNotification >> atpReasonSubject: anObject [
+	atpReasonSubject := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoRecord [
-	^ atProtoRecord
+AppBskyNotificationListNotificationsNotification >> atpRecord [
+	^ atpRecord
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoRecord: anObject [
-	atProtoRecord := anObject
+AppBskyNotificationListNotificationsNotification >> atpRecord: anObject [
+	atpRecord := anObject
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoUri [
-	^ atProtoUri
+AppBskyNotificationListNotificationsNotification >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyNotificationListNotificationsNotification >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyNotificationListNotificationsNotification >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -125,7 +125,7 @@ AppBskyNotificationListNotificationsNotification >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Author';
-		accessor: #atProtoAuthor;
+		accessor: #atpAuthor;
 		beRequired
 ]
 
@@ -134,7 +134,7 @@ AppBskyNotificationListNotificationsNotification >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -143,7 +143,7 @@ AppBskyNotificationListNotificationsNotification >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]
 
@@ -152,7 +152,7 @@ AppBskyNotificationListNotificationsNotification >> isReadDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'IsRead';
-		accessor: #atProtoIsRead;
+		accessor: #atpIsRead;
 	beRequired
 ]
 
@@ -162,7 +162,7 @@ AppBskyNotificationListNotificationsNotification >> labelsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
-		accessor: #atProtoLabels
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }
@@ -170,7 +170,7 @@ AppBskyNotificationListNotificationsNotification >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Reason';
-		accessor: #atProtoReason;
+		accessor: #atpReason;
 	beRequired
 ]
 
@@ -179,7 +179,7 @@ AppBskyNotificationListNotificationsNotification >> reasonSubjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'ReasonSubject';
-		accessor: #atProtoReasonSubject
+		accessor: #atpReasonSubject
 ]
 
 { #category : #magritte }
@@ -187,7 +187,7 @@ AppBskyNotificationListNotificationsNotification >> recordDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Record';
-		accessor: #atProtoRecord;
+		accessor: #atpRecord;
 	beRequired
 ]
 
@@ -196,6 +196,6 @@ AppBskyNotificationListNotificationsNotification >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

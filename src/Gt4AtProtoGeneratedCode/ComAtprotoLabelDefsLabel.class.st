@@ -2,84 +2,84 @@ Class {
 	#name : #ComAtprotoLabelDefsLabel,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSrc',
-		'atProtoUri',
-		'atProtoCid',
-		'atProtoVal',
-		'atProtoNeg',
-		'atProtoCts'
+		'atpSrc',
+		'atpUri',
+		'atpCid',
+		'atpVal',
+		'atpNeg',
+		'atpCts'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
-	^ self new atProtoSrc: (aRequest at: 'src' ifAbsent: [ nil ]); 
-		atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoVal: (aRequest at: 'val' ifAbsent: [ nil ]); 
-		atProtoNeg: (aRequest at: 'neg' ifAbsent: [ nil ]); 
-		atProtoCts: (aRequest at: 'cts' ifAbsent: [ nil ])
+	^ self new atpSrc: (aRequest at: 'src' ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpVal: (aRequest at: 'val' ifAbsent: [ nil ]); 
+		atpNeg: (aRequest at: 'neg' ifAbsent: [ nil ]); 
+		atpCts: (aRequest at: 'cts' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoCid [
-	^ atProtoCid
+ComAtprotoLabelDefsLabel >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoCid: anObject [
-	atProtoCid := anObject
+ComAtprotoLabelDefsLabel >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoCts [
-	^ atProtoCts
+ComAtprotoLabelDefsLabel >> atpCts [
+	^ atpCts
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoCts: anObject [
-	atProtoCts := anObject
+ComAtprotoLabelDefsLabel >> atpCts: anObject [
+	atpCts := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoNeg [
-	^ atProtoNeg
+ComAtprotoLabelDefsLabel >> atpNeg [
+	^ atpNeg
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoNeg: anObject [
-	atProtoNeg := anObject
+ComAtprotoLabelDefsLabel >> atpNeg: anObject [
+	atpNeg := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoSrc [
-	^ atProtoSrc
+ComAtprotoLabelDefsLabel >> atpSrc [
+	^ atpSrc
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoSrc: anObject [
-	atProtoSrc := anObject
+ComAtprotoLabelDefsLabel >> atpSrc: anObject [
+	atpSrc := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoUri [
-	^ atProtoUri
+ComAtprotoLabelDefsLabel >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoUri: anObject [
-	atProtoUri := anObject
+ComAtprotoLabelDefsLabel >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoVal [
-	^ atProtoVal
+ComAtprotoLabelDefsLabel >> atpVal [
+	^ atpVal
 ]
 
 { #category : #accessing }
-ComAtprotoLabelDefsLabel >> atProtoVal: anObject [
-	atProtoVal := anObject
+ComAtprotoLabelDefsLabel >> atpVal: anObject [
+	atpVal := anObject
 ]
 
 { #category : #magritte }
@@ -87,7 +87,7 @@ ComAtprotoLabelDefsLabel >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid
+		accessor: #atpCid
 ]
 
 { #category : #magritte }
@@ -95,7 +95,7 @@ ComAtprotoLabelDefsLabel >> ctsDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cts';
-		accessor: #atProtoCts;
+		accessor: #atpCts;
 	beRequired
 ]
 
@@ -104,7 +104,7 @@ ComAtprotoLabelDefsLabel >> negDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'Neg';
-		accessor: #atProtoNeg
+		accessor: #atpNeg
 ]
 
 { #category : #magritte }
@@ -112,7 +112,7 @@ ComAtprotoLabelDefsLabel >> srcDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Src';
-		accessor: #atProtoSrc;
+		accessor: #atpSrc;
 	beRequired
 ]
 
@@ -121,7 +121,7 @@ ComAtprotoLabelDefsLabel >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]
 
@@ -130,6 +130,6 @@ ComAtprotoLabelDefsLabel >> valDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Val';
-		accessor: #atProtoVal;
+		accessor: #atpVal;
 	beRequired
 ]

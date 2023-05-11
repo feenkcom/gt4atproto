@@ -2,18 +2,18 @@ Class {
 	#name : #AppBskyEmbedImagesViewImage,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoThumb',
-		'atProtoFullsize',
-		'atProtoAlt'
+		'atpThumb',
+		'atpFullsize',
+		'atpAlt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
-	^ self new atProtoThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]); 
-		atProtoFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]); 
-		atProtoAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
+	^ self new atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]); 
+		atpFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]); 
+		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -21,38 +21,38 @@ AppBskyEmbedImagesViewImage >> altDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Alt';
-		accessor: #atProtoAlt;
+		accessor: #atpAlt;
 	beRequired
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesViewImage >> atProtoAlt [
-	^ atProtoAlt
+AppBskyEmbedImagesViewImage >> atpAlt [
+	^ atpAlt
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesViewImage >> atProtoAlt: anObject [
-	atProtoAlt := anObject
+AppBskyEmbedImagesViewImage >> atpAlt: anObject [
+	atpAlt := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesViewImage >> atProtoFullsize [
-	^ atProtoFullsize
+AppBskyEmbedImagesViewImage >> atpFullsize [
+	^ atpFullsize
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesViewImage >> atProtoFullsize: anObject [
-	atProtoFullsize := anObject
+AppBskyEmbedImagesViewImage >> atpFullsize: anObject [
+	atpFullsize := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesViewImage >> atProtoThumb [
-	^ atProtoThumb
+AppBskyEmbedImagesViewImage >> atpThumb [
+	^ atpThumb
 ]
 
 { #category : #accessing }
-AppBskyEmbedImagesViewImage >> atProtoThumb: anObject [
-	atProtoThumb := anObject
+AppBskyEmbedImagesViewImage >> atpThumb: anObject [
+	atpThumb := anObject
 ]
 
 { #category : #magritte }
@@ -60,7 +60,7 @@ AppBskyEmbedImagesViewImage >> fullsizeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Fullsize';
-		accessor: #atProtoFullsize;
+		accessor: #atpFullsize;
 	beRequired
 ]
 
@@ -69,6 +69,6 @@ AppBskyEmbedImagesViewImage >> thumbDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Thumb';
-		accessor: #atProtoThumb;
+		accessor: #atpThumb;
 	beRequired
 ]

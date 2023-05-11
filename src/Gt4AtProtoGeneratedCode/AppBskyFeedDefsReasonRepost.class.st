@@ -2,38 +2,38 @@ Class {
 	#name : #AppBskyFeedDefsReasonRepost,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoBy',
-		'atProtoIndexedAt'
+		'atpBy',
+		'atpIndexedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
-	^ self new atProtoBy: (aRequest at: 'by' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
+	^ self new atpBy: (aRequest at: 'by' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsReasonRepost >> atProtoBy [
+AppBskyFeedDefsReasonRepost >> atpBy [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
-	^ atProtoBy
+	^ atpBy
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsReasonRepost >> atProtoBy: anObject [
+AppBskyFeedDefsReasonRepost >> atpBy: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
-	atProtoBy := anObject
+	atpBy := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsReasonRepost >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+AppBskyFeedDefsReasonRepost >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsReasonRepost >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+AppBskyFeedDefsReasonRepost >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #magritte }
@@ -41,7 +41,7 @@ AppBskyFeedDefsReasonRepost >> byDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'By';
-		accessor: #atProtoBy;
+		accessor: #atpBy;
 		beRequired
 ]
 
@@ -50,6 +50,6 @@ AppBskyFeedDefsReasonRepost >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]

@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoRepoApplyWritesDelete,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoCollection',
-		'atProtoRkey'
+		'atpCollection',
+		'atpRkey'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
-	^ self new atProtoCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
-		atProtoRkey: (aRequest at: 'rkey' ifAbsent: [ nil ])
+	^ self new atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
+		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesDelete >> atProtoCollection [
-	^ atProtoCollection
+ComAtprotoRepoApplyWritesDelete >> atpCollection [
+	^ atpCollection
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesDelete >> atProtoCollection: anObject [
-	atProtoCollection := anObject
+ComAtprotoRepoApplyWritesDelete >> atpCollection: anObject [
+	atpCollection := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesDelete >> atProtoRkey [
-	^ atProtoRkey
+ComAtprotoRepoApplyWritesDelete >> atpRkey [
+	^ atpRkey
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesDelete >> atProtoRkey: anObject [
-	atProtoRkey := anObject
+ComAtprotoRepoApplyWritesDelete >> atpRkey: anObject [
+	atpRkey := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoRepoApplyWritesDelete >> collectionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Collection';
-		accessor: #atProtoCollection;
+		accessor: #atpCollection;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ ComAtprotoRepoApplyWritesDelete >> rkeyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Rkey';
-		accessor: #atProtoRkey;
+		accessor: #atpRkey;
 	beRequired
 ]

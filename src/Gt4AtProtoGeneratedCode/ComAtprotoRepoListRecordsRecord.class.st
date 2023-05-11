@@ -2,48 +2,48 @@ Class {
 	#name : #ComAtprotoRepoListRecordsRecord,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoCid',
-		'atProtoValue'
+		'atpUri',
+		'atpCid',
+		'atpValue'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoRepoListRecordsRecord >> atProtoCid [
-	^ atProtoCid
+ComAtprotoRepoListRecordsRecord >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-ComAtprotoRepoListRecordsRecord >> atProtoCid: anObject [
-	atProtoCid := anObject
+ComAtprotoRepoListRecordsRecord >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoRepoListRecordsRecord >> atProtoUri [
-	^ atProtoUri
+ComAtprotoRepoListRecordsRecord >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-ComAtprotoRepoListRecordsRecord >> atProtoUri: anObject [
-	atProtoUri := anObject
+ComAtprotoRepoListRecordsRecord >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoRepoListRecordsRecord >> atProtoValue [
-	^ atProtoValue
+ComAtprotoRepoListRecordsRecord >> atpValue [
+	^ atpValue
 ]
 
 { #category : #accessing }
-ComAtprotoRepoListRecordsRecord >> atProtoValue: anObject [
-	atProtoValue := anObject
+ComAtprotoRepoListRecordsRecord >> atpValue: anObject [
+	atpValue := anObject
 ]
 
 { #category : #magritte }
@@ -51,7 +51,7 @@ ComAtprotoRepoListRecordsRecord >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -60,7 +60,7 @@ ComAtprotoRepoListRecordsRecord >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]
 
@@ -69,6 +69,6 @@ ComAtprotoRepoListRecordsRecord >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Value';
-		accessor: #atProtoValue;
+		accessor: #atpValue;
 	beRequired
 ]

@@ -2,112 +2,112 @@ Class {
 	#name : #ComAtprotoAdminDefsRecordViewDetail,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoCid',
-		'atProtoValue',
-		'atProtoBlobs',
-		'atProtoLabels',
-		'atProtoIndexedAt',
-		'atProtoModeration',
-		'atProtoRepo'
+		'atpUri',
+		'atpCid',
+		'atpValue',
+		'atpBlobs',
+		'atpLabels',
+		'atpIndexedAt',
+		'atpModeration',
+		'atpRepo'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsRecordViewDetail class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
-		atProtoBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
-		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModerationDetail fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoRepo: (aRequest at: 'repo' ifPresent: [:aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
+		atpBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModerationDetail fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpRepo: (aRequest at: 'repo' ifPresent: [:aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoBlobs [
-	^ atProtoBlobs
+ComAtprotoAdminDefsRecordViewDetail >> atpBlobs [
+	^ atpBlobs
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoBlobs: anObject [
-	atProtoBlobs := anObject
+ComAtprotoAdminDefsRecordViewDetail >> atpBlobs: anObject [
+	atpBlobs := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoCid [
-	^ atProtoCid
+ComAtprotoAdminDefsRecordViewDetail >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoCid: anObject [
-	atProtoCid := anObject
+ComAtprotoAdminDefsRecordViewDetail >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoLabels [
-	^ atProtoLabels
+ComAtprotoAdminDefsRecordViewDetail >> atpLabels [
+	^ atpLabels
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoLabels: anObject [
-	atProtoLabels := anObject
+ComAtprotoAdminDefsRecordViewDetail >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoModeration [
+ComAtprotoAdminDefsRecordViewDetail >> atpModeration [
 	<referenceTo:'#moderationDetail'>
-	^ atProtoModeration
+	^ atpModeration
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoModeration: anObject [
+ComAtprotoAdminDefsRecordViewDetail >> atpModeration: anObject [
 	<referenceTo:'#moderationDetail'>
-	atProtoModeration := anObject
+	atpModeration := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoRepo [
+ComAtprotoAdminDefsRecordViewDetail >> atpRepo [
 	<referenceTo:'#repoView'>
-	^ atProtoRepo
+	^ atpRepo
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoRepo: anObject [
+ComAtprotoAdminDefsRecordViewDetail >> atpRepo: anObject [
 	<referenceTo:'#repoView'>
-	atProtoRepo := anObject
+	atpRepo := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoUri [
-	^ atProtoUri
+ComAtprotoAdminDefsRecordViewDetail >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoUri: anObject [
-	atProtoUri := anObject
+ComAtprotoAdminDefsRecordViewDetail >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoValue [
-	^ atProtoValue
+ComAtprotoAdminDefsRecordViewDetail >> atpValue [
+	^ atpValue
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRecordViewDetail >> atProtoValue: anObject [
-	atProtoValue := anObject
+ComAtprotoAdminDefsRecordViewDetail >> atpValue: anObject [
+	atpValue := anObject
 ]
 
 { #category : #magritte }
@@ -116,7 +116,7 @@ ComAtprotoAdminDefsRecordViewDetail >> blobsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoAdminDefsBlobView};
 		label: 'Blobs';
-		accessor: #atProtoBlobs;
+		accessor: #atpBlobs;
 	beRequired
 ]
 
@@ -125,7 +125,7 @@ ComAtprotoAdminDefsRecordViewDetail >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -134,7 +134,7 @@ ComAtprotoAdminDefsRecordViewDetail >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]
 
@@ -144,7 +144,7 @@ ComAtprotoAdminDefsRecordViewDetail >> labelsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
-		accessor: #atProtoLabels
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }
@@ -152,7 +152,7 @@ ComAtprotoAdminDefsRecordViewDetail >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Moderation';
-		accessor: #atProtoModeration;
+		accessor: #atpModeration;
 		beRequired
 ]
 
@@ -161,7 +161,7 @@ ComAtprotoAdminDefsRecordViewDetail >> repoDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Repo';
-		accessor: #atProtoRepo;
+		accessor: #atpRepo;
 		beRequired
 ]
 
@@ -170,7 +170,7 @@ ComAtprotoAdminDefsRecordViewDetail >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]
 
@@ -179,6 +179,6 @@ ComAtprotoAdminDefsRecordViewDetail >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Value';
-		accessor: #atProtoValue;
+		accessor: #atpValue;
 	beRequired
 ]

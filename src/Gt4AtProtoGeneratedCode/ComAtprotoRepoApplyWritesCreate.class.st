@@ -2,48 +2,48 @@ Class {
 	#name : #ComAtprotoRepoApplyWritesCreate,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoCollection',
-		'atProtoRkey',
-		'atProtoValue'
+		'atpCollection',
+		'atpRkey',
+		'atpValue'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoRepoApplyWritesCreate class >> fromRequest: aRequest [
-	^ self new atProtoCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
-		atProtoRkey: (aRequest at: 'rkey' ifAbsent: [ nil ]); 
-		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ])
+	^ self new atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
+		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ]); 
+		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesCreate >> atProtoCollection [
-	^ atProtoCollection
+ComAtprotoRepoApplyWritesCreate >> atpCollection [
+	^ atpCollection
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesCreate >> atProtoCollection: anObject [
-	atProtoCollection := anObject
+ComAtprotoRepoApplyWritesCreate >> atpCollection: anObject [
+	atpCollection := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesCreate >> atProtoRkey [
-	^ atProtoRkey
+ComAtprotoRepoApplyWritesCreate >> atpRkey [
+	^ atpRkey
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesCreate >> atProtoRkey: anObject [
-	atProtoRkey := anObject
+ComAtprotoRepoApplyWritesCreate >> atpRkey: anObject [
+	atpRkey := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesCreate >> atProtoValue [
-	^ atProtoValue
+ComAtprotoRepoApplyWritesCreate >> atpValue [
+	^ atpValue
 ]
 
 { #category : #accessing }
-ComAtprotoRepoApplyWritesCreate >> atProtoValue: anObject [
-	atProtoValue := anObject
+ComAtprotoRepoApplyWritesCreate >> atpValue: anObject [
+	atpValue := anObject
 ]
 
 { #category : #magritte }
@@ -51,7 +51,7 @@ ComAtprotoRepoApplyWritesCreate >> collectionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Collection';
-		accessor: #atProtoCollection;
+		accessor: #atpCollection;
 	beRequired
 ]
 
@@ -60,7 +60,7 @@ ComAtprotoRepoApplyWritesCreate >> rkeyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Rkey';
-		accessor: #atProtoRkey
+		accessor: #atpRkey
 ]
 
 { #category : #magritte }
@@ -68,6 +68,6 @@ ComAtprotoRepoApplyWritesCreate >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Value';
-		accessor: #atProtoValue;
+		accessor: #atpValue;
 	beRequired
 ]

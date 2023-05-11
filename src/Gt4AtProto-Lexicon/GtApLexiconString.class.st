@@ -20,7 +20,7 @@ GtApLexiconString >> asClassName [
 ]
 
 { #category : #accessing }
-GtApLexiconString >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconString >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
 			, 'Description
@@ -28,7 +28,7 @@ GtApLexiconString >> generateDescriptorFor: aString isRequired: aBoolean [
 	^ MAStringDescription new
 		label: ''' , aString capitalized
 			, ''';
-		accessor: #atProto' , aString asCamelCase.
+		accessor: #' , aPrefix , aString asCamelCase.
 
 	aBoolean
 		ifTrue: [ source := source

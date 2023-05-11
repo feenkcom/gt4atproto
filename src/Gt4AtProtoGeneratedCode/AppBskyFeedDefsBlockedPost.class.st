@@ -2,36 +2,36 @@ Class {
 	#name : #AppBskyFeedDefsBlockedPost,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoBlocked'
+		'atpUri',
+		'atpBlocked'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsBlockedPost >> atProtoBlocked [
-	^ atProtoBlocked
+AppBskyFeedDefsBlockedPost >> atpBlocked [
+	^ atpBlocked
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsBlockedPost >> atProtoBlocked: anObject [
-	atProtoBlocked := anObject
+AppBskyFeedDefsBlockedPost >> atpBlocked: anObject [
+	atpBlocked := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsBlockedPost >> atProtoUri [
-	^ atProtoUri
+AppBskyFeedDefsBlockedPost >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsBlockedPost >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyFeedDefsBlockedPost >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ AppBskyFeedDefsBlockedPost >> blockedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'Blocked';
-		accessor: #atProtoBlocked;
+		accessor: #atpBlocked;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ AppBskyFeedDefsBlockedPost >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

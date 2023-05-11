@@ -2,36 +2,36 @@ Class {
 	#name : #AppBskyRichtextFacetByteSlice,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoByteStart',
-		'atProtoByteEnd'
+		'atpByteStart',
+		'atpByteEnd'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
-	^ self new atProtoByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]); 
-		atProtoByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])
+	^ self new atpByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]); 
+		atpByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetByteSlice >> atProtoByteEnd [
-	^ atProtoByteEnd
+AppBskyRichtextFacetByteSlice >> atpByteEnd [
+	^ atpByteEnd
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetByteSlice >> atProtoByteEnd: anObject [
-	atProtoByteEnd := anObject
+AppBskyRichtextFacetByteSlice >> atpByteEnd: anObject [
+	atpByteEnd := anObject
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetByteSlice >> atProtoByteStart [
-	^ atProtoByteStart
+AppBskyRichtextFacetByteSlice >> atpByteStart [
+	^ atpByteStart
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetByteSlice >> atProtoByteStart: anObject [
-	atProtoByteStart := anObject
+AppBskyRichtextFacetByteSlice >> atpByteStart: anObject [
+	atpByteStart := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ AppBskyRichtextFacetByteSlice >> byteEndDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'ByteEnd';
-		accessor: #atProtoByteEnd;
+		accessor: #atpByteEnd;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ AppBskyRichtextFacetByteSlice >> byteStartDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'ByteStart';
-		accessor: #atProtoByteStart;
+		accessor: #atpByteStart;
 	beRequired
 ]

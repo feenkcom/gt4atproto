@@ -2,96 +2,96 @@ Class {
 	#name : #ComAtprotoServerDefsInviteCode,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoCode',
-		'atProtoAvailable',
-		'atProtoDisabled',
-		'atProtoForAccount',
-		'atProtoCreatedBy',
-		'atProtoCreatedAt',
-		'atProtoUses'
+		'atpCode',
+		'atpAvailable',
+		'atpDisabled',
+		'atpForAccount',
+		'atpCreatedBy',
+		'atpCreatedAt',
+		'atpUses'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
-	^ self new atProtoCode: (aRequest at: 'code' ifAbsent: [ nil ]); 
-		atProtoAvailable: (aRequest at: 'available' ifAbsent: [ nil ]); 
-		atProtoDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]); 
-		atProtoForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]); 
-		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoUses: (aRequest at: 'uses' ifAbsent: [ nil ])
+	^ self new atpCode: (aRequest at: 'code' ifAbsent: [ nil ]); 
+		atpAvailable: (aRequest at: 'available' ifAbsent: [ nil ]); 
+		atpDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]); 
+		atpForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]); 
+		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atpUses: (aRequest at: 'uses' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoAvailable [
-	^ atProtoAvailable
+ComAtprotoServerDefsInviteCode >> atpAvailable [
+	^ atpAvailable
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoAvailable: anObject [
-	atProtoAvailable := anObject
+ComAtprotoServerDefsInviteCode >> atpAvailable: anObject [
+	atpAvailable := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoCode [
-	^ atProtoCode
+ComAtprotoServerDefsInviteCode >> atpCode [
+	^ atpCode
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoCode: anObject [
-	atProtoCode := anObject
+ComAtprotoServerDefsInviteCode >> atpCode: anObject [
+	atpCode := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoServerDefsInviteCode >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoServerDefsInviteCode >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoCreatedBy [
-	^ atProtoCreatedBy
+ComAtprotoServerDefsInviteCode >> atpCreatedBy [
+	^ atpCreatedBy
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoCreatedBy: anObject [
-	atProtoCreatedBy := anObject
+ComAtprotoServerDefsInviteCode >> atpCreatedBy: anObject [
+	atpCreatedBy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoDisabled [
-	^ atProtoDisabled
+ComAtprotoServerDefsInviteCode >> atpDisabled [
+	^ atpDisabled
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoDisabled: anObject [
-	atProtoDisabled := anObject
+ComAtprotoServerDefsInviteCode >> atpDisabled: anObject [
+	atpDisabled := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoForAccount [
-	^ atProtoForAccount
+ComAtprotoServerDefsInviteCode >> atpForAccount [
+	^ atpForAccount
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoForAccount: anObject [
-	atProtoForAccount := anObject
+ComAtprotoServerDefsInviteCode >> atpForAccount: anObject [
+	atpForAccount := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoUses [
-	^ atProtoUses
+ComAtprotoServerDefsInviteCode >> atpUses [
+	^ atpUses
 ]
 
 { #category : #accessing }
-ComAtprotoServerDefsInviteCode >> atProtoUses: anObject [
-	atProtoUses := anObject
+ComAtprotoServerDefsInviteCode >> atpUses: anObject [
+	atpUses := anObject
 ]
 
 { #category : #magritte }
@@ -99,7 +99,7 @@ ComAtprotoServerDefsInviteCode >> availableDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Available';
-		accessor: #atProtoAvailable;
+		accessor: #atpAvailable;
 	beRequired
 ]
 
@@ -108,7 +108,7 @@ ComAtprotoServerDefsInviteCode >> codeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Code';
-		accessor: #atProtoCode;
+		accessor: #atpCode;
 	beRequired
 ]
 
@@ -117,7 +117,7 @@ ComAtprotoServerDefsInviteCode >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -126,7 +126,7 @@ ComAtprotoServerDefsInviteCode >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedBy';
-		accessor: #atProtoCreatedBy;
+		accessor: #atpCreatedBy;
 	beRequired
 ]
 
@@ -135,7 +135,7 @@ ComAtprotoServerDefsInviteCode >> disabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'Disabled';
-		accessor: #atProtoDisabled;
+		accessor: #atpDisabled;
 	beRequired
 ]
 
@@ -144,7 +144,7 @@ ComAtprotoServerDefsInviteCode >> forAccountDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'ForAccount';
-		accessor: #atProtoForAccount;
+		accessor: #atpForAccount;
 	beRequired
 ]
 
@@ -154,6 +154,6 @@ ComAtprotoServerDefsInviteCode >> usesDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoServerDefsInviteCodeUse};
 		label: 'Uses';
-		accessor: #atProtoUses;
+		accessor: #atpUses;
 	beRequired
 ]

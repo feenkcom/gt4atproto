@@ -2,40 +2,40 @@ Class {
 	#name : #AppBskyFeedPostReplyRef,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoRoot',
-		'atProtoParent'
+		'atpRoot',
+		'atpParent'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedPostReplyRef class >> fromRequest: aRequest [
-	^ self new atProtoRoot: (aRequest at: 'root' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoParent: (aRequest at: 'parent' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpRoot: (aRequest at: 'root' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpParent: (aRequest at: 'parent' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedPostReplyRef >> atProtoParent [
+AppBskyFeedPostReplyRef >> atpParent [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	^ atProtoParent
+	^ atpParent
 ]
 
 { #category : #accessing }
-AppBskyFeedPostReplyRef >> atProtoParent: anObject [
+AppBskyFeedPostReplyRef >> atpParent: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	atProtoParent := anObject
+	atpParent := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostReplyRef >> atProtoRoot [
+AppBskyFeedPostReplyRef >> atpRoot [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	^ atProtoRoot
+	^ atpRoot
 ]
 
 { #category : #accessing }
-AppBskyFeedPostReplyRef >> atProtoRoot: anObject [
+AppBskyFeedPostReplyRef >> atpRoot: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	atProtoRoot := anObject
+	atpRoot := anObject
 ]
 
 { #category : #magritte }
@@ -43,7 +43,7 @@ AppBskyFeedPostReplyRef >> parentDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Parent';
-		accessor: #atProtoParent;
+		accessor: #atpParent;
 		beRequired
 ]
 
@@ -52,6 +52,6 @@ AppBskyFeedPostReplyRef >> rootDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Root';
-		accessor: #atProtoRoot;
+		accessor: #atpRoot;
 		beRequired
 ]

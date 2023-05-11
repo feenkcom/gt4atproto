@@ -2,48 +2,48 @@ Class {
 	#name : #ComAtprotoAdminDefsActionReversal,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoReason',
-		'atProtoCreatedBy',
-		'atProtoCreatedAt'
+		'atpReason',
+		'atpCreatedBy',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
-	^ self new atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+	^ self new atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionReversal >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoAdminDefsActionReversal >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionReversal >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoAdminDefsActionReversal >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionReversal >> atProtoCreatedBy [
-	^ atProtoCreatedBy
+ComAtprotoAdminDefsActionReversal >> atpCreatedBy [
+	^ atpCreatedBy
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionReversal >> atProtoCreatedBy: anObject [
-	atProtoCreatedBy := anObject
+ComAtprotoAdminDefsActionReversal >> atpCreatedBy: anObject [
+	atpCreatedBy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionReversal >> atProtoReason [
-	^ atProtoReason
+ComAtprotoAdminDefsActionReversal >> atpReason [
+	^ atpReason
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsActionReversal >> atProtoReason: anObject [
-	atProtoReason := anObject
+ComAtprotoAdminDefsActionReversal >> atpReason: anObject [
+	atpReason := anObject
 ]
 
 { #category : #magritte }
@@ -51,7 +51,7 @@ ComAtprotoAdminDefsActionReversal >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -60,7 +60,7 @@ ComAtprotoAdminDefsActionReversal >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedBy';
-		accessor: #atProtoCreatedBy;
+		accessor: #atpCreatedBy;
 	beRequired
 ]
 
@@ -69,6 +69,6 @@ ComAtprotoAdminDefsActionReversal >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Reason';
-		accessor: #atProtoReason;
+		accessor: #atpReason;
 	beRequired
 ]

@@ -2,98 +2,98 @@ Class {
 	#name : #ComAtprotoAdminDefsReportViewDetail,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoId',
-		'atProtoReasonType',
-		'atProtoReason',
-		'atProtoSubject',
-		'atProtoReportedBy',
-		'atProtoCreatedAt',
-		'atProtoResolvedByActions'
+		'atpId',
+		'atpReasonType',
+		'atpReason',
+		'atpSubject',
+		'atpReportedBy',
+		'atpCreatedAt',
+		'atpResolvedByActions'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsReportViewDetail class >> fromRequest: aRequest [
-	^ self new atProtoId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atProtoReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atProtoSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atProtoReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoResolvedByActions: (aRequest at: 'resolvedByActions' ifAbsent: [ nil ])
+	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+		atpReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atpResolvedByActions: (aRequest at: 'resolvedByActions' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoAdminDefsReportViewDetail >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoAdminDefsReportViewDetail >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoId [
-	^ atProtoId
+ComAtprotoAdminDefsReportViewDetail >> atpId [
+	^ atpId
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoId: anObject [
-	atProtoId := anObject
+ComAtprotoAdminDefsReportViewDetail >> atpId: anObject [
+	atpId := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoReason [
-	^ atProtoReason
+ComAtprotoAdminDefsReportViewDetail >> atpReason [
+	^ atpReason
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoReason: anObject [
-	atProtoReason := anObject
+ComAtprotoAdminDefsReportViewDetail >> atpReason: anObject [
+	atpReason := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoReasonType [
+ComAtprotoAdminDefsReportViewDetail >> atpReasonType [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
-	^ atProtoReasonType
+	^ atpReasonType
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoReasonType: anObject [
+ComAtprotoAdminDefsReportViewDetail >> atpReasonType: anObject [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
-	atProtoReasonType := anObject
+	atpReasonType := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoReportedBy [
-	^ atProtoReportedBy
+ComAtprotoAdminDefsReportViewDetail >> atpReportedBy [
+	^ atpReportedBy
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoReportedBy: anObject [
-	atProtoReportedBy := anObject
+ComAtprotoAdminDefsReportViewDetail >> atpReportedBy: anObject [
+	atpReportedBy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoResolvedByActions [
-	^ atProtoResolvedByActions
+ComAtprotoAdminDefsReportViewDetail >> atpResolvedByActions [
+	^ atpResolvedByActions
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoResolvedByActions: anObject [
-	atProtoResolvedByActions := anObject
+ComAtprotoAdminDefsReportViewDetail >> atpResolvedByActions: anObject [
+	atpResolvedByActions := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoSubject [
-	^ atProtoSubject
+ComAtprotoAdminDefsReportViewDetail >> atpSubject [
+	^ atpSubject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsReportViewDetail >> atProtoSubject: anObject [
-	atProtoSubject := anObject
+ComAtprotoAdminDefsReportViewDetail >> atpSubject: anObject [
+	atpSubject := anObject
 ]
 
 { #category : #magritte }
@@ -101,7 +101,7 @@ ComAtprotoAdminDefsReportViewDetail >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -110,7 +110,7 @@ ComAtprotoAdminDefsReportViewDetail >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Id';
-		accessor: #atProtoId;
+		accessor: #atpId;
 	beRequired
 ]
 
@@ -119,7 +119,7 @@ ComAtprotoAdminDefsReportViewDetail >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Reason';
-		accessor: #atProtoReason
+		accessor: #atpReason
 ]
 
 { #category : #magritte }
@@ -127,7 +127,7 @@ ComAtprotoAdminDefsReportViewDetail >> reasonTypeDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'ReasonType';
-		accessor: #atProtoReasonType;
+		accessor: #atpReasonType;
 		beRequired
 ]
 
@@ -136,7 +136,7 @@ ComAtprotoAdminDefsReportViewDetail >> reportedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'ReportedBy';
-		accessor: #atProtoReportedBy;
+		accessor: #atpReportedBy;
 	beRequired
 ]
 
@@ -146,7 +146,7 @@ ComAtprotoAdminDefsReportViewDetail >> resolvedByActionsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoAdminDefsActionView};
 		label: 'ResolvedByActions';
-		accessor: #atProtoResolvedByActions;
+		accessor: #atpResolvedByActions;
 	beRequired
 ]
 
@@ -156,6 +156,6 @@ ComAtprotoAdminDefsReportViewDetail >> subjectDescription [
 	^ MASingleOptionDescription new
 		options: {'#repoView'. '#recordView'};
 		label: 'Subject';
-		accessor: #atProtoSubject;
+		accessor: #atpSubject;
 		beRequired
 ]

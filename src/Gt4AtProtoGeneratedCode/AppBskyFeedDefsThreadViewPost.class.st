@@ -2,50 +2,50 @@ Class {
 	#name : #AppBskyFeedDefsThreadViewPost,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoPost',
-		'atProtoParent',
-		'atProtoReplies'
+		'atpPost',
+		'atpParent',
+		'atpReplies'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
-	^ self new atProtoPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoParent: (aRequest at: 'parent' ifAbsent: [ nil ]); 
-		atProtoReplies: (aRequest at: 'replies' ifAbsent: [ nil ])
+	^ self new atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpParent: (aRequest at: 'parent' ifAbsent: [ nil ]); 
+		atpReplies: (aRequest at: 'replies' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsThreadViewPost >> atProtoParent [
-	^ atProtoParent
+AppBskyFeedDefsThreadViewPost >> atpParent [
+	^ atpParent
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsThreadViewPost >> atProtoParent: anObject [
-	atProtoParent := anObject
+AppBskyFeedDefsThreadViewPost >> atpParent: anObject [
+	atpParent := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsThreadViewPost >> atProtoPost [
+AppBskyFeedDefsThreadViewPost >> atpPost [
 	<referenceTo:'#postView'>
-	^ atProtoPost
+	^ atpPost
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsThreadViewPost >> atProtoPost: anObject [
+AppBskyFeedDefsThreadViewPost >> atpPost: anObject [
 	<referenceTo:'#postView'>
-	atProtoPost := anObject
+	atpPost := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsThreadViewPost >> atProtoReplies [
-	^ atProtoReplies
+AppBskyFeedDefsThreadViewPost >> atpReplies [
+	^ atpReplies
 ]
 
 { #category : #accessing }
-AppBskyFeedDefsThreadViewPost >> atProtoReplies: anObject [
-	atProtoReplies := anObject
+AppBskyFeedDefsThreadViewPost >> atpReplies: anObject [
+	atpReplies := anObject
 ]
 
 { #category : #magritte }
@@ -54,7 +54,7 @@ AppBskyFeedDefsThreadViewPost >> parentDescription [
 	^ MASingleOptionDescription new
 		options: {'#threadViewPost'. '#notFoundPost'. '#blockedPost'};
 		label: 'Parent';
-		accessor: #atProtoParent
+		accessor: #atpParent
 ]
 
 { #category : #magritte }
@@ -62,7 +62,7 @@ AppBskyFeedDefsThreadViewPost >> postDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Post';
-		accessor: #atProtoPost;
+		accessor: #atpPost;
 		beRequired
 ]
 
@@ -72,5 +72,5 @@ AppBskyFeedDefsThreadViewPost >> repliesDescription [
 	^ MAToManyRelationDescription new
 		classes: {ThreadViewPost. NotFoundPost. BlockedPost};
 		label: 'Replies';
-		accessor: #atProtoReplies
+		accessor: #atpReplies
 ]

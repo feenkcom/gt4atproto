@@ -2,18 +2,18 @@ Class {
 	#name : #ComAtprotoSyncSubscribeReposRepoOp,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoAction',
-		'atProtoPath',
-		'atProtoCid'
+		'atpAction',
+		'atpPath',
+		'atpCid'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest [
-	^ self new atProtoAction: (aRequest at: 'action' ifAbsent: [ nil ]); 
-		atProtoPath: (aRequest at: 'path' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ])
+	^ self new atpAction: (aRequest at: 'action' ifAbsent: [ nil ]); 
+		atpPath: (aRequest at: 'path' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -21,38 +21,38 @@ ComAtprotoSyncSubscribeReposRepoOp >> actionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Action';
-		accessor: #atProtoAction;
+		accessor: #atpAction;
 	beRequired
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposRepoOp >> atProtoAction [
-	^ atProtoAction
+ComAtprotoSyncSubscribeReposRepoOp >> atpAction [
+	^ atpAction
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposRepoOp >> atProtoAction: anObject [
-	atProtoAction := anObject
+ComAtprotoSyncSubscribeReposRepoOp >> atpAction: anObject [
+	atpAction := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposRepoOp >> atProtoCid [
-	^ atProtoCid
+ComAtprotoSyncSubscribeReposRepoOp >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposRepoOp >> atProtoCid: anObject [
-	atProtoCid := anObject
+ComAtprotoSyncSubscribeReposRepoOp >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposRepoOp >> atProtoPath [
-	^ atProtoPath
+ComAtprotoSyncSubscribeReposRepoOp >> atpPath [
+	^ atpPath
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposRepoOp >> atProtoPath: anObject [
-	atProtoPath := anObject
+ComAtprotoSyncSubscribeReposRepoOp >> atpPath: anObject [
+	atpPath := anObject
 ]
 
 { #category : #magritte }
@@ -60,7 +60,7 @@ ComAtprotoSyncSubscribeReposRepoOp >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -69,6 +69,6 @@ ComAtprotoSyncSubscribeReposRepoOp >> pathDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Path';
-		accessor: #atProtoPath;
+		accessor: #atpPath;
 	beRequired
 ]

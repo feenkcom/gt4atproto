@@ -2,18 +2,18 @@ Class {
 	#name : #AppBskyFeedGetLikesLike,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoIndexedAt',
-		'atProtoCreatedAt',
-		'atProtoActor'
+		'atpIndexedAt',
+		'atpCreatedAt',
+		'atpActor'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
-	^ self new atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atProtoActor: (aRequest at: 'actor' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atpActor: (aRequest at: 'actor' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -21,40 +21,40 @@ AppBskyFeedGetLikesLike >> actorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Actor';
-		accessor: #atProtoActor;
+		accessor: #atpActor;
 		beRequired
 ]
 
 { #category : #accessing }
-AppBskyFeedGetLikesLike >> atProtoActor [
+AppBskyFeedGetLikesLike >> atpActor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
-	^ atProtoActor
+	^ atpActor
 ]
 
 { #category : #accessing }
-AppBskyFeedGetLikesLike >> atProtoActor: anObject [
+AppBskyFeedGetLikesLike >> atpActor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
-	atProtoActor := anObject
+	atpActor := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedGetLikesLike >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+AppBskyFeedGetLikesLike >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-AppBskyFeedGetLikesLike >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+AppBskyFeedGetLikesLike >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedGetLikesLike >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+AppBskyFeedGetLikesLike >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-AppBskyFeedGetLikesLike >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+AppBskyFeedGetLikesLike >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #magritte }
@@ -62,7 +62,7 @@ AppBskyFeedGetLikesLike >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -71,6 +71,6 @@ AppBskyFeedGetLikesLike >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]

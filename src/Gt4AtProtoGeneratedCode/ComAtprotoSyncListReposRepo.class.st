@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoSyncListReposRepo,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoDid',
-		'atProtoHead'
+		'atpDid',
+		'atpHead'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
-	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atProtoHead: (aRequest at: 'head' ifAbsent: [ nil ])
+	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpHead: (aRequest at: 'head' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoSyncListReposRepo >> atProtoDid [
-	^ atProtoDid
+ComAtprotoSyncListReposRepo >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-ComAtprotoSyncListReposRepo >> atProtoDid: anObject [
-	atProtoDid := anObject
+ComAtprotoSyncListReposRepo >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncListReposRepo >> atProtoHead [
-	^ atProtoHead
+ComAtprotoSyncListReposRepo >> atpHead [
+	^ atpHead
 ]
 
 { #category : #accessing }
-ComAtprotoSyncListReposRepo >> atProtoHead: anObject [
-	atProtoHead := anObject
+ComAtprotoSyncListReposRepo >> atpHead: anObject [
+	atpHead := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoSyncListReposRepo >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ ComAtprotoSyncListReposRepo >> headDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Head';
-		accessor: #atProtoHead;
+		accessor: #atpHead;
 	beRequired
 ]

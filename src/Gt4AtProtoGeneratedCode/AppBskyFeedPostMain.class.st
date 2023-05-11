@@ -2,86 +2,86 @@ Class {
 	#name : #AppBskyFeedPostMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoText',
-		'atProtoEntities',
-		'atProtoFacets',
-		'atProtoReply',
-		'atProtoEmbed',
-		'atProtoCreatedAt'
+		'atpText',
+		'atpEntities',
+		'atpFacets',
+		'atpReply',
+		'atpEmbed',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedPostMain class >> fromRequest: aRequest [
-	^ self new atProtoText: (aRequest at: 'text' ifAbsent: [ nil ]); 
-		atProtoEntities: (aRequest at: 'entities' ifAbsent: [ nil ]); 
-		atProtoFacets: (aRequest at: 'facets' ifAbsent: [ nil ]); 
-		atProtoReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedPostReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+	^ self new atpText: (aRequest at: 'text' ifAbsent: [ nil ]); 
+		atpEntities: (aRequest at: 'entities' ifAbsent: [ nil ]); 
+		atpFacets: (aRequest at: 'facets' ifAbsent: [ nil ]); 
+		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedPostReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+AppBskyFeedPostMain >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+AppBskyFeedPostMain >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoEmbed [
-	^ atProtoEmbed
+AppBskyFeedPostMain >> atpEmbed [
+	^ atpEmbed
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoEmbed: anObject [
-	atProtoEmbed := anObject
+AppBskyFeedPostMain >> atpEmbed: anObject [
+	atpEmbed := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoEntities [
-	^ atProtoEntities
+AppBskyFeedPostMain >> atpEntities [
+	^ atpEntities
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoEntities: anObject [
-	atProtoEntities := anObject
+AppBskyFeedPostMain >> atpEntities: anObject [
+	atpEntities := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoFacets [
-	^ atProtoFacets
+AppBskyFeedPostMain >> atpFacets [
+	^ atpFacets
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoFacets: anObject [
-	atProtoFacets := anObject
+AppBskyFeedPostMain >> atpFacets: anObject [
+	atpFacets := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoReply [
+AppBskyFeedPostMain >> atpReply [
 	<referenceTo:'#replyRef'>
-	^ atProtoReply
+	^ atpReply
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoReply: anObject [
+AppBskyFeedPostMain >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
-	atProtoReply := anObject
+	atpReply := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoText [
-	^ atProtoText
+AppBskyFeedPostMain >> atpText [
+	^ atpText
 ]
 
 { #category : #accessing }
-AppBskyFeedPostMain >> atProtoText: anObject [
-	atProtoText := anObject
+AppBskyFeedPostMain >> atpText: anObject [
+	atpText := anObject
 ]
 
 { #category : #magritte }
@@ -89,7 +89,7 @@ AppBskyFeedPostMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -99,7 +99,7 @@ AppBskyFeedPostMain >> embedDescription [
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images'. 'app.bsky.embed.external'. 'app.bsky.embed.record'. 'app.bsky.embed.recordWithMedia'};
 		label: 'Embed';
-		accessor: #atProtoEmbed
+		accessor: #atpEmbed
 ]
 
 { #category : #magritte }
@@ -108,7 +108,7 @@ AppBskyFeedPostMain >> entitiesDescription [
 	^ MAToManyRelationDescription new
 		classes: {AppBskyFeedPostEntity};
 		label: 'Entities';
-		accessor: #atProtoEntities
+		accessor: #atpEntities
 ]
 
 { #category : #magritte }
@@ -117,7 +117,7 @@ AppBskyFeedPostMain >> facetsDescription [
 	^ MAToManyRelationDescription new
 		classes: {AppBskyRichtextFacetMain};
 		label: 'Facets';
-		accessor: #atProtoFacets
+		accessor: #atpFacets
 ]
 
 { #category : #magritte }
@@ -125,7 +125,7 @@ AppBskyFeedPostMain >> replyDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Reply';
-		accessor: #atProtoReply
+		accessor: #atpReply
 ]
 
 { #category : #magritte }
@@ -133,6 +133,6 @@ AppBskyFeedPostMain >> textDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Text';
-		accessor: #atProtoText;
+		accessor: #atpText;
 	beRequired
 ]

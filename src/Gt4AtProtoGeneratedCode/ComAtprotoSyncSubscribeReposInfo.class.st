@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoSyncSubscribeReposInfo,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoName',
-		'atProtoMessage'
+		'atpName',
+		'atpMessage'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest [
-	^ self new atProtoName: (aRequest at: 'name' ifAbsent: [ nil ]); 
-		atProtoMessage: (aRequest at: 'message' ifAbsent: [ nil ])
+	^ self new atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposInfo >> atProtoMessage [
-	^ atProtoMessage
+ComAtprotoSyncSubscribeReposInfo >> atpMessage [
+	^ atpMessage
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposInfo >> atProtoMessage: anObject [
-	atProtoMessage := anObject
+ComAtprotoSyncSubscribeReposInfo >> atpMessage: anObject [
+	atpMessage := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposInfo >> atProtoName [
-	^ atProtoName
+ComAtprotoSyncSubscribeReposInfo >> atpName [
+	^ atpName
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposInfo >> atProtoName: anObject [
-	atProtoName := anObject
+ComAtprotoSyncSubscribeReposInfo >> atpName: anObject [
+	atpName := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoSyncSubscribeReposInfo >> messageDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Message';
-		accessor: #atProtoMessage
+		accessor: #atpMessage
 ]
 
 { #category : #magritte }
@@ -47,6 +47,6 @@ ComAtprotoSyncSubscribeReposInfo >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Name';
-		accessor: #atProtoName;
+		accessor: #atpName;
 	beRequired
 ]

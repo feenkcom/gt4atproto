@@ -2,24 +2,24 @@ Class {
 	#name : #ComAtprotoAdminDefsRepoRef,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoDid'
+		'atpDid'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest [
-	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ])
+	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoRef >> atProtoDid [
-	^ atProtoDid
+ComAtprotoAdminDefsRepoRef >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoRef >> atProtoDid: anObject [
-	atProtoDid := anObject
+ComAtprotoAdminDefsRepoRef >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #magritte }
@@ -27,6 +27,6 @@ ComAtprotoAdminDefsRepoRef >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]

@@ -2,38 +2,38 @@ Class {
 	#name : #AppBskyRichtextFacetMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoIndex',
-		'atProtoFeatures'
+		'atpIndex',
+		'atpFeatures'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyRichtextFacetMain class >> fromRequest: aRequest [
-	^ self new atProtoIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoFeatures: (aRequest at: 'features' ifAbsent: [ nil ])
+	^ self new atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpFeatures: (aRequest at: 'features' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetMain >> atProtoFeatures [
-	^ atProtoFeatures
+AppBskyRichtextFacetMain >> atpFeatures [
+	^ atpFeatures
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetMain >> atProtoFeatures: anObject [
-	atProtoFeatures := anObject
+AppBskyRichtextFacetMain >> atpFeatures: anObject [
+	atpFeatures := anObject
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetMain >> atProtoIndex [
+AppBskyRichtextFacetMain >> atpIndex [
 	<referenceTo:'#byteSlice'>
-	^ atProtoIndex
+	^ atpIndex
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetMain >> atProtoIndex: anObject [
+AppBskyRichtextFacetMain >> atpIndex: anObject [
 	<referenceTo:'#byteSlice'>
-	atProtoIndex := anObject
+	atpIndex := anObject
 ]
 
 { #category : #magritte }
@@ -42,7 +42,7 @@ AppBskyRichtextFacetMain >> featuresDescription [
 	^ MAToManyRelationDescription new
 		classes: {Mention. Link};
 		label: 'Features';
-		accessor: #atProtoFeatures;
+		accessor: #atpFeatures;
 	beRequired
 ]
 
@@ -51,6 +51,6 @@ AppBskyRichtextFacetMain >> indexDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Index';
-		accessor: #atProtoIndex;
+		accessor: #atpIndex;
 		beRequired
 ]

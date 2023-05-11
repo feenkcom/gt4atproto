@@ -18,7 +18,7 @@ GtApLexiconBytes >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
-GtApLexiconBytes >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconBytes >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
 			, 'Description
@@ -26,7 +26,7 @@ GtApLexiconBytes >> generateDescriptorFor: aString isRequired: aBoolean [
 	^ MAFileDescription new
 		label: ''' , aString capitalized
 			, ''';
-		accessor: #atProto' , aString asCamelCase.
+		accessor: #' , aPrefix, aString asCamelCase.
 
 	aBoolean
 		ifTrue: [ source := source

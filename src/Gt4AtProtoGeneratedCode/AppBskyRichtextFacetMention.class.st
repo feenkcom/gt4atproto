@@ -2,24 +2,24 @@ Class {
 	#name : #AppBskyRichtextFacetMention,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoDid'
+		'atpDid'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyRichtextFacetMention class >> fromRequest: aRequest [
-	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ])
+	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetMention >> atProtoDid [
-	^ atProtoDid
+AppBskyRichtextFacetMention >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-AppBskyRichtextFacetMention >> atProtoDid: anObject [
-	atProtoDid := anObject
+AppBskyRichtextFacetMention >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #magritte }
@@ -27,6 +27,6 @@ AppBskyRichtextFacetMention >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]

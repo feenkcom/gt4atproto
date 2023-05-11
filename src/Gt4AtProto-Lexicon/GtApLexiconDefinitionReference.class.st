@@ -34,14 +34,14 @@ GtApLexiconDefinitionReference >> descriptionOn: aStream [
 ]
 
 { #category : #accessing }
-GtApLexiconDefinitionReference >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconDefinitionReference >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	^ aString
 		, 'Description
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: ''' , aString capitalized
 		, ''';
-		accessor: #atProto' , aString asCamelCase
+		accessor: #' , aPrefix , aString asCamelCase
 		, (aBoolean
 				ifTrue: [ ';
 		beRequired' ]

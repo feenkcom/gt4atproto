@@ -31,7 +31,7 @@ GtApLexiconUnion >> description [
 ]
 
 { #category : #accessing }
-GtApLexiconUnion >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
 			, 'Description
@@ -41,7 +41,7 @@ GtApLexiconUnion >> generateDescriptorFor: aString isRequired: aBoolean [
 			, '};
 		label: ''' , aString capitalized
 			, ''';
-		accessor: #atProto' , aString asCamelCase.
+		accessor: #' , aPrefix, aString asCamelCase.
 
 	aBoolean
 		ifTrue: [ source := source

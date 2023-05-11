@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoAdminDefsImageDetails,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoWidth',
-		'atProtoHeight'
+		'atpWidth',
+		'atpHeight'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
-	^ self new atProtoWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
-		atProtoHeight: (aRequest at: 'height' ifAbsent: [ nil ])
+	^ self new atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
+		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsImageDetails >> atProtoHeight [
-	^ atProtoHeight
+ComAtprotoAdminDefsImageDetails >> atpHeight [
+	^ atpHeight
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsImageDetails >> atProtoHeight: anObject [
-	atProtoHeight := anObject
+ComAtprotoAdminDefsImageDetails >> atpHeight: anObject [
+	atpHeight := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsImageDetails >> atProtoWidth [
-	^ atProtoWidth
+ComAtprotoAdminDefsImageDetails >> atpWidth [
+	^ atpWidth
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsImageDetails >> atProtoWidth: anObject [
-	atProtoWidth := anObject
+ComAtprotoAdminDefsImageDetails >> atpWidth: anObject [
+	atpWidth := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoAdminDefsImageDetails >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Height';
-		accessor: #atProtoHeight;
+		accessor: #atpHeight;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ ComAtprotoAdminDefsImageDetails >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Width';
-		accessor: #atProtoWidth;
+		accessor: #atpWidth;
 	beRequired
 ]

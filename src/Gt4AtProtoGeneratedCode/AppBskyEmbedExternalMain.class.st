@@ -2,26 +2,26 @@ Class {
 	#name : #AppBskyEmbedExternalMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoExternal'
+		'atpExternal'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedExternalMain class >> fromRequest: aRequest [
-	^ self new atProtoExternal: (aRequest at: 'external' ifPresent: [:aValue | AppBskyEmbedExternalExternal fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpExternal: (aRequest at: 'external' ifPresent: [:aValue | AppBskyEmbedExternalExternal fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalMain >> atProtoExternal [
+AppBskyEmbedExternalMain >> atpExternal [
 	<referenceTo:'#external'>
-	^ atProtoExternal
+	^ atpExternal
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalMain >> atProtoExternal: anObject [
+AppBskyEmbedExternalMain >> atpExternal: anObject [
 	<referenceTo:'#external'>
-	atProtoExternal := anObject
+	atpExternal := anObject
 ]
 
 { #category : #magritte }
@@ -29,6 +29,6 @@ AppBskyEmbedExternalMain >> externalDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'External';
-		accessor: #atProtoExternal;
+		accessor: #atpExternal;
 		beRequired
 ]

@@ -25,7 +25,7 @@ GtApLexiconUnknownDefinition >> description [
 ]
 
 { #category : #accessing }
-GtApLexiconUnknownDefinition >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconUnknownDefinition >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
 			, 'Description
@@ -33,7 +33,7 @@ GtApLexiconUnknownDefinition >> generateDescriptorFor: aString isRequired: aBool
 	^ MAStringDescription new
 		label: ''' , aString capitalized
 			, ''';
-		accessor: #atProto' , aString asCamelCase.
+		accessor: #' , aPrefix, aString asCamelCase.
 
 	aBoolean
 		ifTrue: [ source := source

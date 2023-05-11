@@ -2,48 +2,48 @@ Class {
 	#name : #ComAtprotoAdminDefsVideoDetails,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoWidth',
-		'atProtoHeight',
-		'atProtoLength'
+		'atpWidth',
+		'atpHeight',
+		'atpLength'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsVideoDetails class >> fromRequest: aRequest [
-	^ self new atProtoWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
-		atProtoHeight: (aRequest at: 'height' ifAbsent: [ nil ]); 
-		atProtoLength: (aRequest at: 'length' ifAbsent: [ nil ])
+	^ self new atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
+		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ]); 
+		atpLength: (aRequest at: 'length' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsVideoDetails >> atProtoHeight [
-	^ atProtoHeight
+ComAtprotoAdminDefsVideoDetails >> atpHeight [
+	^ atpHeight
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsVideoDetails >> atProtoHeight: anObject [
-	atProtoHeight := anObject
+ComAtprotoAdminDefsVideoDetails >> atpHeight: anObject [
+	atpHeight := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsVideoDetails >> atProtoLength [
-	^ atProtoLength
+ComAtprotoAdminDefsVideoDetails >> atpLength [
+	^ atpLength
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsVideoDetails >> atProtoLength: anObject [
-	atProtoLength := anObject
+ComAtprotoAdminDefsVideoDetails >> atpLength: anObject [
+	atpLength := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsVideoDetails >> atProtoWidth [
-	^ atProtoWidth
+ComAtprotoAdminDefsVideoDetails >> atpWidth [
+	^ atpWidth
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsVideoDetails >> atProtoWidth: anObject [
-	atProtoWidth := anObject
+ComAtprotoAdminDefsVideoDetails >> atpWidth: anObject [
+	atpWidth := anObject
 ]
 
 { #category : #magritte }
@@ -51,7 +51,7 @@ ComAtprotoAdminDefsVideoDetails >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Height';
-		accessor: #atProtoHeight;
+		accessor: #atpHeight;
 	beRequired
 ]
 
@@ -60,7 +60,7 @@ ComAtprotoAdminDefsVideoDetails >> lengthDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Length';
-		accessor: #atProtoLength;
+		accessor: #atpLength;
 	beRequired
 ]
 
@@ -69,6 +69,6 @@ ComAtprotoAdminDefsVideoDetails >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Width';
-		accessor: #atProtoWidth;
+		accessor: #atpWidth;
 	beRequired
 ]

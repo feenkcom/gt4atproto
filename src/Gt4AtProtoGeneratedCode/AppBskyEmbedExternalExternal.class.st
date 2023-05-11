@@ -2,60 +2,60 @@ Class {
 	#name : #AppBskyEmbedExternalExternal,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoTitle',
-		'atProtoDescription',
-		'atProtoThumb'
+		'atpUri',
+		'atpTitle',
+		'atpDescription',
+		'atpThumb'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedExternalExternal class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoTitle: (aRequest at: 'title' ifAbsent: [ nil ]); 
-		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atProtoThumb: (aRequest at: 'thumb' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpTitle: (aRequest at: 'title' ifAbsent: [ nil ]); 
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoDescription [
-	^ atProtoDescription
+AppBskyEmbedExternalExternal >> atpDescription [
+	^ atpDescription
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoDescription: anObject [
-	atProtoDescription := anObject
+AppBskyEmbedExternalExternal >> atpDescription: anObject [
+	atpDescription := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoThumb [
-	^ atProtoThumb
+AppBskyEmbedExternalExternal >> atpThumb [
+	^ atpThumb
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoThumb: anObject [
-	atProtoThumb := anObject
+AppBskyEmbedExternalExternal >> atpThumb: anObject [
+	atpThumb := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoTitle [
-	^ atProtoTitle
+AppBskyEmbedExternalExternal >> atpTitle [
+	^ atpTitle
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoTitle: anObject [
-	atProtoTitle := anObject
+AppBskyEmbedExternalExternal >> atpTitle: anObject [
+	atpTitle := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoUri [
-	^ atProtoUri
+AppBskyEmbedExternalExternal >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyEmbedExternalExternal >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyEmbedExternalExternal >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #magritte }
@@ -63,7 +63,7 @@ AppBskyEmbedExternalExternal >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Description';
-		accessor: #atProtoDescription;
+		accessor: #atpDescription;
 	beRequired
 ]
 
@@ -72,7 +72,7 @@ AppBskyEmbedExternalExternal >> thumbDescription [
 	<magritteDescription>
 	^ MAFileDescription new
 		label: 'Thumb';
-		accessor: #atProtoThumb
+		accessor: #atpThumb
 ]
 
 { #category : #magritte }
@@ -80,7 +80,7 @@ AppBskyEmbedExternalExternal >> titleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Title';
-		accessor: #atProtoTitle;
+		accessor: #atpTitle;
 	beRequired
 ]
 
@@ -89,6 +89,6 @@ AppBskyEmbedExternalExternal >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]

@@ -2,132 +2,132 @@ Class {
 	#name : #ComAtprotoSyncSubscribeReposCommit,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSeq',
-		'atProtoRebase',
-		'atProtoTooBig',
-		'atProtoRepo',
-		'atProtoCommit',
-		'atProtoPrev',
-		'atProtoBlocks',
-		'atProtoOps',
-		'atProtoBlobs',
-		'atProtoTime'
+		'atpSeq',
+		'atpRebase',
+		'atpTooBig',
+		'atpRepo',
+		'atpCommit',
+		'atpPrev',
+		'atpBlocks',
+		'atpOps',
+		'atpBlobs',
+		'atpTime'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
-	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atProtoRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]); 
-		atProtoTooBig: (aRequest at: 'tooBig' ifAbsent: [ nil ]); 
-		atProtoRepo: (aRequest at: 'repo' ifAbsent: [ nil ]); 
-		atProtoCommit: (aRequest at: 'commit' ifAbsent: [ nil ]); 
-		atProtoPrev: (aRequest at: 'prev' ifAbsent: [ nil ]); 
-		atProtoBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]); 
-		atProtoOps: (aRequest at: 'ops' ifAbsent: [ nil ]); 
-		atProtoBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
-		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atpRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]); 
+		atpTooBig: (aRequest at: 'tooBig' ifAbsent: [ nil ]); 
+		atpRepo: (aRequest at: 'repo' ifAbsent: [ nil ]); 
+		atpCommit: (aRequest at: 'commit' ifAbsent: [ nil ]); 
+		atpPrev: (aRequest at: 'prev' ifAbsent: [ nil ]); 
+		atpBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]); 
+		atpOps: (aRequest at: 'ops' ifAbsent: [ nil ]); 
+		atpBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
+		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoBlobs [
-	^ atProtoBlobs
+ComAtprotoSyncSubscribeReposCommit >> atpBlobs [
+	^ atpBlobs
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoBlobs: anObject [
-	atProtoBlobs := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpBlobs: anObject [
+	atpBlobs := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoBlocks [
-	^ atProtoBlocks
+ComAtprotoSyncSubscribeReposCommit >> atpBlocks [
+	^ atpBlocks
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoBlocks: anObject [
-	atProtoBlocks := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpBlocks: anObject [
+	atpBlocks := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoCommit [
-	^ atProtoCommit
+ComAtprotoSyncSubscribeReposCommit >> atpCommit [
+	^ atpCommit
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoCommit: anObject [
-	atProtoCommit := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpCommit: anObject [
+	atpCommit := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoOps [
-	^ atProtoOps
+ComAtprotoSyncSubscribeReposCommit >> atpOps [
+	^ atpOps
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoOps: anObject [
-	atProtoOps := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpOps: anObject [
+	atpOps := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoPrev [
-	^ atProtoPrev
+ComAtprotoSyncSubscribeReposCommit >> atpPrev [
+	^ atpPrev
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoPrev: anObject [
-	atProtoPrev := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpPrev: anObject [
+	atpPrev := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoRebase [
-	^ atProtoRebase
+ComAtprotoSyncSubscribeReposCommit >> atpRebase [
+	^ atpRebase
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoRebase: anObject [
-	atProtoRebase := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpRebase: anObject [
+	atpRebase := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoRepo [
-	^ atProtoRepo
+ComAtprotoSyncSubscribeReposCommit >> atpRepo [
+	^ atpRepo
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoRepo: anObject [
-	atProtoRepo := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpRepo: anObject [
+	atpRepo := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoSeq [
-	^ atProtoSeq
+ComAtprotoSyncSubscribeReposCommit >> atpSeq [
+	^ atpSeq
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoSeq: anObject [
-	atProtoSeq := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpSeq: anObject [
+	atpSeq := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoTime [
-	^ atProtoTime
+ComAtprotoSyncSubscribeReposCommit >> atpTime [
+	^ atpTime
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoTime: anObject [
-	atProtoTime := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpTime: anObject [
+	atpTime := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoTooBig [
-	^ atProtoTooBig
+ComAtprotoSyncSubscribeReposCommit >> atpTooBig [
+	^ atpTooBig
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposCommit >> atProtoTooBig: anObject [
-	atProtoTooBig := anObject
+ComAtprotoSyncSubscribeReposCommit >> atpTooBig: anObject [
+	atpTooBig := anObject
 ]
 
 { #category : #magritte }
@@ -136,7 +136,7 @@ ComAtprotoSyncSubscribeReposCommit >> blobsDescription [
 	^ MAToManyRelationDescription new
 		classes: {String};
 		label: 'Blobs';
-		accessor: #atProtoBlobs;
+		accessor: #atpBlobs;
 	beRequired
 ]
 
@@ -145,7 +145,7 @@ ComAtprotoSyncSubscribeReposCommit >> blocksDescription [
 	<magritteDescription>
 	^ MAFileDescription new
 		label: 'Blocks';
-		accessor: #atProtoBlocks;
+		accessor: #atpBlocks;
 	beRequired
 ]
 
@@ -154,7 +154,7 @@ ComAtprotoSyncSubscribeReposCommit >> commitDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Commit';
-		accessor: #atProtoCommit;
+		accessor: #atpCommit;
 	beRequired
 ]
 
@@ -164,7 +164,7 @@ ComAtprotoSyncSubscribeReposCommit >> opsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoSyncSubscribeReposRepoOp};
 		label: 'Ops';
-		accessor: #atProtoOps;
+		accessor: #atpOps;
 	beRequired
 ]
 
@@ -173,7 +173,7 @@ ComAtprotoSyncSubscribeReposCommit >> prevDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Prev';
-		accessor: #atProtoPrev;
+		accessor: #atpPrev;
 	beRequired
 ]
 
@@ -182,7 +182,7 @@ ComAtprotoSyncSubscribeReposCommit >> rebaseDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'Rebase';
-		accessor: #atProtoRebase;
+		accessor: #atpRebase;
 	beRequired
 ]
 
@@ -191,7 +191,7 @@ ComAtprotoSyncSubscribeReposCommit >> repoDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Repo';
-		accessor: #atProtoRepo;
+		accessor: #atpRepo;
 	beRequired
 ]
 
@@ -200,7 +200,7 @@ ComAtprotoSyncSubscribeReposCommit >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Seq';
-		accessor: #atProtoSeq;
+		accessor: #atpSeq;
 	beRequired
 ]
 
@@ -209,7 +209,7 @@ ComAtprotoSyncSubscribeReposCommit >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Time';
-		accessor: #atProtoTime;
+		accessor: #atpTime;
 	beRequired
 ]
 
@@ -218,6 +218,6 @@ ComAtprotoSyncSubscribeReposCommit >> tooBigDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'TooBig';
-		accessor: #atProtoTooBig;
+		accessor: #atpTooBig;
 	beRequired
 ]

@@ -2,38 +2,38 @@ Class {
 	#name : #AppBskyFeedRepostMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSubject',
-		'atProtoCreatedAt'
+		'atpSubject',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyFeedRepostMain class >> fromRequest: aRequest [
-	^ self new atProtoSubject: (aRequest at: 'subject' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+	^ self new atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyFeedRepostMain >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+AppBskyFeedRepostMain >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-AppBskyFeedRepostMain >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+AppBskyFeedRepostMain >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyFeedRepostMain >> atProtoSubject [
+AppBskyFeedRepostMain >> atpSubject [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	^ atProtoSubject
+	^ atpSubject
 ]
 
 { #category : #accessing }
-AppBskyFeedRepostMain >> atProtoSubject: anObject [
+AppBskyFeedRepostMain >> atpSubject: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	atProtoSubject := anObject
+	atpSubject := anObject
 ]
 
 { #category : #magritte }
@@ -41,7 +41,7 @@ AppBskyFeedRepostMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -50,6 +50,6 @@ AppBskyFeedRepostMain >> subjectDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Subject';
-		accessor: #atProtoSubject;
+		accessor: #atpSubject;
 		beRequired
 ]

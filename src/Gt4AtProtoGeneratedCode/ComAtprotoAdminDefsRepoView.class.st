@@ -2,112 +2,112 @@ Class {
 	#name : #ComAtprotoAdminDefsRepoView,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoDid',
-		'atProtoHandle',
-		'atProtoEmail',
-		'atProtoRelatedRecords',
-		'atProtoIndexedAt',
-		'atProtoModeration',
-		'atProtoInvitedBy',
-		'atProtoInvitesDisabled'
+		'atpDid',
+		'atpHandle',
+		'atpEmail',
+		'atpRelatedRecords',
+		'atpIndexedAt',
+		'atpModeration',
+		'atpInvitedBy',
+		'atpInvitesDisabled'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
-	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atProtoEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
-		atProtoRelatedRecords: (aRequest at: 'relatedRecords' ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atProtoModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoInvitedBy: (aRequest at: 'invitedBy' ifPresent: [:aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
+	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
+		atpRelatedRecords: (aRequest at: 'relatedRecords' ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpInvitedBy: (aRequest at: 'invitedBy' ifPresent: [:aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoDid [
-	^ atProtoDid
+ComAtprotoAdminDefsRepoView >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoDid: anObject [
-	atProtoDid := anObject
+ComAtprotoAdminDefsRepoView >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoEmail [
-	^ atProtoEmail
+ComAtprotoAdminDefsRepoView >> atpEmail [
+	^ atpEmail
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoEmail: anObject [
-	atProtoEmail := anObject
+ComAtprotoAdminDefsRepoView >> atpEmail: anObject [
+	atpEmail := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoHandle [
-	^ atProtoHandle
+ComAtprotoAdminDefsRepoView >> atpHandle [
+	^ atpHandle
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoHandle: anObject [
-	atProtoHandle := anObject
+ComAtprotoAdminDefsRepoView >> atpHandle: anObject [
+	atpHandle := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+ComAtprotoAdminDefsRepoView >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+ComAtprotoAdminDefsRepoView >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoInvitedBy [
+ComAtprotoAdminDefsRepoView >> atpInvitedBy [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
-	^ atProtoInvitedBy
+	^ atpInvitedBy
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoInvitedBy: anObject [
+ComAtprotoAdminDefsRepoView >> atpInvitedBy: anObject [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
-	atProtoInvitedBy := anObject
+	atpInvitedBy := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoInvitesDisabled [
-	^ atProtoInvitesDisabled
+ComAtprotoAdminDefsRepoView >> atpInvitesDisabled [
+	^ atpInvitesDisabled
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoInvitesDisabled: anObject [
-	atProtoInvitesDisabled := anObject
+ComAtprotoAdminDefsRepoView >> atpInvitesDisabled: anObject [
+	atpInvitesDisabled := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoModeration [
+ComAtprotoAdminDefsRepoView >> atpModeration [
 	<referenceTo:'#moderation'>
-	^ atProtoModeration
+	^ atpModeration
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoModeration: anObject [
+ComAtprotoAdminDefsRepoView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
-	atProtoModeration := anObject
+	atpModeration := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoRelatedRecords [
-	^ atProtoRelatedRecords
+ComAtprotoAdminDefsRepoView >> atpRelatedRecords [
+	^ atpRelatedRecords
 ]
 
 { #category : #accessing }
-ComAtprotoAdminDefsRepoView >> atProtoRelatedRecords: anObject [
-	atProtoRelatedRecords := anObject
+ComAtprotoAdminDefsRepoView >> atpRelatedRecords: anObject [
+	atpRelatedRecords := anObject
 ]
 
 { #category : #magritte }
@@ -115,7 +115,7 @@ ComAtprotoAdminDefsRepoView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]
 
@@ -124,7 +124,7 @@ ComAtprotoAdminDefsRepoView >> emailDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Email';
-		accessor: #atProtoEmail
+		accessor: #atpEmail
 ]
 
 { #category : #magritte }
@@ -132,7 +132,7 @@ ComAtprotoAdminDefsRepoView >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Handle';
-		accessor: #atProtoHandle;
+		accessor: #atpHandle;
 	beRequired
 ]
 
@@ -141,7 +141,7 @@ ComAtprotoAdminDefsRepoView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]
 
@@ -150,7 +150,7 @@ ComAtprotoAdminDefsRepoView >> invitedByDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'InvitedBy';
-		accessor: #atProtoInvitedBy
+		accessor: #atpInvitedBy
 ]
 
 { #category : #magritte }
@@ -158,7 +158,7 @@ ComAtprotoAdminDefsRepoView >> invitesDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'InvitesDisabled';
-		accessor: #atProtoInvitesDisabled
+		accessor: #atpInvitesDisabled
 ]
 
 { #category : #magritte }
@@ -166,7 +166,7 @@ ComAtprotoAdminDefsRepoView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Moderation';
-		accessor: #atProtoModeration;
+		accessor: #atpModeration;
 		beRequired
 ]
 
@@ -176,6 +176,6 @@ ComAtprotoAdminDefsRepoView >> relatedRecordsDescription [
 	^ MAToManyRelationDescription new
 		classes: {Object};
 		label: 'RelatedRecords';
-		accessor: #atProtoRelatedRecords;
+		accessor: #atpRelatedRecords;
 	beRequired
 ]

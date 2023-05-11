@@ -2,26 +2,26 @@ Class {
 	#name : #AppBskyEmbedRecordMain,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoRecord'
+		'atpRecord'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordMain class >> fromRequest: aRequest [
-	^ self new atProtoRecord: (aRequest at: 'record' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new atpRecord: (aRequest at: 'record' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordMain >> atProtoRecord [
+AppBskyEmbedRecordMain >> atpRecord [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	^ atProtoRecord
+	^ atpRecord
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordMain >> atProtoRecord: anObject [
+AppBskyEmbedRecordMain >> atpRecord: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
-	atProtoRecord := anObject
+	atpRecord := anObject
 ]
 
 { #category : #magritte }
@@ -29,6 +29,6 @@ AppBskyEmbedRecordMain >> recordDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Record';
-		accessor: #atProtoRecord;
+		accessor: #atpRecord;
 		beRequired
 ]

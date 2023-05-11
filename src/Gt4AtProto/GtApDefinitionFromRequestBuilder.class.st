@@ -28,7 +28,7 @@ GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
 							| aKey aChildDefinition |
 							aKey := anAssociation key.
 							aChildDefinition := anAssociation value.
-							self defaultAccessorPrefix , aKey asCamelCase , ': '
+							self accessorPrefix , aKey asCamelCase , ': '
 								, ((({'ref'.
 										'record'} includes: aChildDefinition type)
 										or: [ aChildDefinition type = 'object' and: [ aChildDefinition hasId ] ])

@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #accessing }
-GtApLexiconNumericalPrimitive >> generateDescriptorFor: aString isRequired: aBoolean [
+GtApLexiconNumericalPrimitive >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
 			, 'Description
@@ -13,7 +13,7 @@ GtApLexiconNumericalPrimitive >> generateDescriptorFor: aString isRequired: aBoo
 	^ MANumberDescription new
 		label: ''' , aString capitalized
 			, ''';
-		accessor: #atProto' , aString asCamelCase.
+		accessor: #' , aPrefix, aString asCamelCase.
 
 	aBoolean
 		ifTrue: [ source := source

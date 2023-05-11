@@ -2,36 +2,36 @@ Class {
 	#name : #ComAtprotoServerListAppPasswordsAppPassword,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoName',
-		'atProtoCreatedAt'
+		'atpName',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoServerListAppPasswordsAppPassword class >> fromRequest: aRequest [
-	^ self new atProtoName: (aRequest at: 'name' ifAbsent: [ nil ]); 
-		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+	^ self new atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoServerListAppPasswordsAppPassword >> atProtoCreatedAt [
-	^ atProtoCreatedAt
+ComAtprotoServerListAppPasswordsAppPassword >> atpCreatedAt [
+	^ atpCreatedAt
 ]
 
 { #category : #accessing }
-ComAtprotoServerListAppPasswordsAppPassword >> atProtoCreatedAt: anObject [
-	atProtoCreatedAt := anObject
+ComAtprotoServerListAppPasswordsAppPassword >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoServerListAppPasswordsAppPassword >> atProtoName [
-	^ atProtoName
+ComAtprotoServerListAppPasswordsAppPassword >> atpName [
+	^ atpName
 ]
 
 { #category : #accessing }
-ComAtprotoServerListAppPasswordsAppPassword >> atProtoName: anObject [
-	atProtoName := anObject
+ComAtprotoServerListAppPasswordsAppPassword >> atpName: anObject [
+	atpName := anObject
 ]
 
 { #category : #magritte }
@@ -39,7 +39,7 @@ ComAtprotoServerListAppPasswordsAppPassword >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'CreatedAt';
-		accessor: #atProtoCreatedAt;
+		accessor: #atpCreatedAt;
 	beRequired
 ]
 
@@ -48,6 +48,6 @@ ComAtprotoServerListAppPasswordsAppPassword >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Name';
-		accessor: #atProtoName;
+		accessor: #atpName;
 	beRequired
 ]

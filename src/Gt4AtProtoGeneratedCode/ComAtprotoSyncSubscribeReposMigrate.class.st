@@ -2,60 +2,60 @@ Class {
 	#name : #ComAtprotoSyncSubscribeReposMigrate,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoSeq',
-		'atProtoDid',
-		'atProtoMigrateTo',
-		'atProtoTime'
+		'atpSeq',
+		'atpDid',
+		'atpMigrateTo',
+		'atpTime'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
-	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atProtoMigrateTo: (aRequest at: 'migrateTo' ifAbsent: [ nil ]); 
-		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpMigrateTo: (aRequest at: 'migrateTo' ifAbsent: [ nil ]); 
+		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoDid [
-	^ atProtoDid
+ComAtprotoSyncSubscribeReposMigrate >> atpDid [
+	^ atpDid
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoDid: anObject [
-	atProtoDid := anObject
+ComAtprotoSyncSubscribeReposMigrate >> atpDid: anObject [
+	atpDid := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoMigrateTo [
-	^ atProtoMigrateTo
+ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo [
+	^ atpMigrateTo
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoMigrateTo: anObject [
-	atProtoMigrateTo := anObject
+ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo: anObject [
+	atpMigrateTo := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoSeq [
-	^ atProtoSeq
+ComAtprotoSyncSubscribeReposMigrate >> atpSeq [
+	^ atpSeq
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoSeq: anObject [
-	atProtoSeq := anObject
+ComAtprotoSyncSubscribeReposMigrate >> atpSeq: anObject [
+	atpSeq := anObject
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoTime [
-	^ atProtoTime
+ComAtprotoSyncSubscribeReposMigrate >> atpTime [
+	^ atpTime
 ]
 
 { #category : #accessing }
-ComAtprotoSyncSubscribeReposMigrate >> atProtoTime: anObject [
-	atProtoTime := anObject
+ComAtprotoSyncSubscribeReposMigrate >> atpTime: anObject [
+	atpTime := anObject
 ]
 
 { #category : #magritte }
@@ -63,7 +63,7 @@ ComAtprotoSyncSubscribeReposMigrate >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atProtoDid;
+		accessor: #atpDid;
 	beRequired
 ]
 
@@ -72,7 +72,7 @@ ComAtprotoSyncSubscribeReposMigrate >> migrateToDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'MigrateTo';
-		accessor: #atProtoMigrateTo;
+		accessor: #atpMigrateTo;
 	beRequired
 ]
 
@@ -81,7 +81,7 @@ ComAtprotoSyncSubscribeReposMigrate >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Seq';
-		accessor: #atProtoSeq;
+		accessor: #atpSeq;
 	beRequired
 ]
 
@@ -90,6 +90,6 @@ ComAtprotoSyncSubscribeReposMigrate >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Time';
-		accessor: #atProtoTime;
+		accessor: #atpTime;
 	beRequired
 ]

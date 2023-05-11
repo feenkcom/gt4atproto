@@ -2,98 +2,98 @@ Class {
 	#name : #AppBskyEmbedRecordViewRecord,
 	#superclass : #Object,
 	#instVars : [
-		'atProtoUri',
-		'atProtoCid',
-		'atProtoAuthor',
-		'atProtoValue',
-		'atProtoLabels',
-		'atProtoEmbeds',
-		'atProtoIndexedAt'
+		'atpUri',
+		'atpCid',
+		'atpAuthor',
+		'atpValue',
+		'atpLabels',
+		'atpEmbeds',
+		'atpIndexedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #serialization }
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
-	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atProtoAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
-		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
-		atProtoEmbeds: (aRequest at: 'embeds' ifAbsent: [ nil ]); 
-		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
+	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
+		atpEmbeds: (aRequest at: 'embeds' ifAbsent: [ nil ]); 
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoAuthor [
+AppBskyEmbedRecordViewRecord >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
-	^ atProtoAuthor
+	^ atpAuthor
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoAuthor: anObject [
+AppBskyEmbedRecordViewRecord >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
-	atProtoAuthor := anObject
+	atpAuthor := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoCid [
-	^ atProtoCid
+AppBskyEmbedRecordViewRecord >> atpCid [
+	^ atpCid
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoCid: anObject [
-	atProtoCid := anObject
+AppBskyEmbedRecordViewRecord >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoEmbeds [
-	^ atProtoEmbeds
+AppBskyEmbedRecordViewRecord >> atpEmbeds [
+	^ atpEmbeds
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoEmbeds: anObject [
-	atProtoEmbeds := anObject
+AppBskyEmbedRecordViewRecord >> atpEmbeds: anObject [
+	atpEmbeds := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoIndexedAt [
-	^ atProtoIndexedAt
+AppBskyEmbedRecordViewRecord >> atpIndexedAt [
+	^ atpIndexedAt
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoIndexedAt: anObject [
-	atProtoIndexedAt := anObject
+AppBskyEmbedRecordViewRecord >> atpIndexedAt: anObject [
+	atpIndexedAt := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoLabels [
-	^ atProtoLabels
+AppBskyEmbedRecordViewRecord >> atpLabels [
+	^ atpLabels
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoLabels: anObject [
-	atProtoLabels := anObject
+AppBskyEmbedRecordViewRecord >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoUri [
-	^ atProtoUri
+AppBskyEmbedRecordViewRecord >> atpUri [
+	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoUri: anObject [
-	atProtoUri := anObject
+AppBskyEmbedRecordViewRecord >> atpUri: anObject [
+	atpUri := anObject
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoValue [
-	^ atProtoValue
+AppBskyEmbedRecordViewRecord >> atpValue [
+	^ atpValue
 ]
 
 { #category : #accessing }
-AppBskyEmbedRecordViewRecord >> atProtoValue: anObject [
-	atProtoValue := anObject
+AppBskyEmbedRecordViewRecord >> atpValue: anObject [
+	atpValue := anObject
 ]
 
 { #category : #magritte }
@@ -101,7 +101,7 @@ AppBskyEmbedRecordViewRecord >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Author';
-		accessor: #atProtoAuthor;
+		accessor: #atpAuthor;
 		beRequired
 ]
 
@@ -110,7 +110,7 @@ AppBskyEmbedRecordViewRecord >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Cid';
-		accessor: #atProtoCid;
+		accessor: #atpCid;
 	beRequired
 ]
 
@@ -120,7 +120,7 @@ AppBskyEmbedRecordViewRecord >> embedsDescription [
 	^ MAToManyRelationDescription new
 		classes: {AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView};
 		label: 'Embeds';
-		accessor: #atProtoEmbeds
+		accessor: #atpEmbeds
 ]
 
 { #category : #magritte }
@@ -128,7 +128,7 @@ AppBskyEmbedRecordViewRecord >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'IndexedAt';
-		accessor: #atProtoIndexedAt;
+		accessor: #atpIndexedAt;
 	beRequired
 ]
 
@@ -138,7 +138,7 @@ AppBskyEmbedRecordViewRecord >> labelsDescription [
 	^ MAToManyRelationDescription new
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
-		accessor: #atProtoLabels
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }
@@ -146,7 +146,7 @@ AppBskyEmbedRecordViewRecord >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';
-		accessor: #atProtoUri;
+		accessor: #atpUri;
 	beRequired
 ]
 
@@ -155,6 +155,6 @@ AppBskyEmbedRecordViewRecord >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Value';
-		accessor: #atProtoValue;
+		accessor: #atpValue;
 	beRequired
 ]
