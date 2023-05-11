@@ -24,6 +24,11 @@ GtApPostSummaryListContainerElement >> initialize [
 ]
 
 { #category : #accessing }
+GtApPostSummaryListContainerElement >> post [
+	^ postSummaryElement post
+]
+
+{ #category : #accessing }
 GtApPostSummaryListContainerElement >> post: aPost [
 	postSummaryElement post: aPost
 ]
