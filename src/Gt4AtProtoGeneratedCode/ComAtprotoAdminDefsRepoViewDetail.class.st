@@ -16,6 +16,20 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsRepoViewDetail class >> fromRequest: aRequest [
+	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atProtoEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
+		atProtoRelatedRecords: (aRequest at: 'relatedRecords' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoModeration: (ComAtprotoAdminDefsModerationDetail fromRequest: (aRequest at: 'moderation' ifAbsent: [ nil ])); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
+		atProtoInvitedBy: (ComAtprotoServerDefsInviteCode fromRequest: (aRequest at: 'invitedBy' ifAbsent: [ nil ])); 
+		atProtoInvites: (aRequest at: 'invites' ifAbsent: [ nil ]); 
+		atProtoInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atProtoDid [
 	^ atProtoDid

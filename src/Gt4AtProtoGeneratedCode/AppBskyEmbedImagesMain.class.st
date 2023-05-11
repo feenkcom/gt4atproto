@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedImagesMain class >> fromRequest: aRequest [
+	^ self new atProtoImages: (aRequest at: 'images' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyEmbedImagesMain >> atProtoImages [
 	^ atProtoImages
@@ -21,7 +26,7 @@ AppBskyEmbedImagesMain >> atProtoImages: anObject [
 AppBskyEmbedImagesMain >> imagesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {Image};
+		classes: {AppBskyEmbedImagesImage};
 		label: 'Images';
 		accessor: #atProtoImages;
 	beRequired

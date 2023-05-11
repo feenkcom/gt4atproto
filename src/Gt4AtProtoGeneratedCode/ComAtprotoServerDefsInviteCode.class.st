@@ -13,6 +13,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
+	^ self new atProtoCode: (aRequest at: 'code' ifAbsent: [ nil ]); 
+		atProtoAvailable: (aRequest at: 'available' ifAbsent: [ nil ]); 
+		atProtoDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]); 
+		atProtoForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]); 
+		atProtoCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atProtoUses: (aRequest at: 'uses' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atProtoAvailable [
 	^ atProtoAvailable
@@ -86,7 +97,7 @@ ComAtprotoServerDefsInviteCode >> atProtoUses: anObject [
 { #category : #magritte }
 ComAtprotoServerDefsInviteCode >> availableDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Available';
 		accessor: #atProtoAvailable;
 	beRequired
@@ -141,7 +152,7 @@ ComAtprotoServerDefsInviteCode >> forAccountDescription [
 ComAtprotoServerDefsInviteCode >> usesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {InviteCodeUse};
+		classes: {ComAtprotoServerDefsInviteCodeUse};
 		label: 'Uses';
 		accessor: #atProtoUses;
 	beRequired

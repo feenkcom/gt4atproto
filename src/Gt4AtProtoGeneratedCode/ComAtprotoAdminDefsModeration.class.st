@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsModeration class >> fromRequest: aRequest [
+	^ self new atProtoCurrentAction: (ComAtprotoAdminDefsActionViewCurrent fromRequest: (aRequest at: 'currentAction' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 ComAtprotoAdminDefsModeration >> atProtoCurrentAction [
 	<referenceTo:'#actionViewCurrent'>

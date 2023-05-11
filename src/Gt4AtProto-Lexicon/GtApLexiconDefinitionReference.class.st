@@ -20,7 +20,7 @@ GtApLexiconDefinitionReference >> acceptVisitor: aLexiconVisitor [
 
 { #category : #accessing }
 GtApLexiconDefinitionReference >> asClassName [
-	^ (self referenceString replaceAllRegex: '[.#]' with: ' ') asCamelCase
+	^ self referencedDefinition asClassName
 ]
 
 { #category : #accessing }
@@ -46,6 +46,11 @@ GtApLexiconDefinitionReference >> generateDescriptorFor: aString isRequired: aBo
 				ifTrue: [ ';
 		beRequired' ]
 				ifFalse: [ '' ])
+]
+
+{ #category : #accessing }
+GtApLexiconDefinitionReference >> generateDeserialization [
+	^ self asClassName, ' fromRequest: '
 ]
 
 { #category : #accessing }

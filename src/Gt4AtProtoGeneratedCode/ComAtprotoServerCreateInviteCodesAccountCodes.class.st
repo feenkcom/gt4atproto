@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
+	^ self new atProtoAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
+		atProtoCodes: (aRequest at: 'codes' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 ComAtprotoServerCreateInviteCodesAccountCodes >> accountDescription [
 	<magritteDescription>

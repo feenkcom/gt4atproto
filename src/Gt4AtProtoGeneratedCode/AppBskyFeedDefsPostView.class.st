@@ -17,6 +17,21 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsPostView class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+		atProtoAuthor: (AppBskyActorDefsProfileViewBasic fromRequest: (aRequest at: 'author' ifAbsent: [ nil ])); 
+		atProtoRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
+		atProtoEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
+		atProtoReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]); 
+		atProtoRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]); 
+		atProtoLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoViewer: (AppBskyFeedDefsViewerState fromRequest: (aRequest at: 'viewer' ifAbsent: [ nil ])); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atProtoAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
@@ -179,7 +194,7 @@ AppBskyFeedDefsPostView >> labelsDescription [
 { #category : #magritte }
 AppBskyFeedDefsPostView >> likeCountDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'LikeCount';
 		accessor: #atProtoLikeCount
 ]
@@ -196,7 +211,7 @@ AppBskyFeedDefsPostView >> recordDescription [
 { #category : #magritte }
 AppBskyFeedDefsPostView >> replyCountDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'ReplyCount';
 		accessor: #atProtoReplyCount
 ]
@@ -204,7 +219,7 @@ AppBskyFeedDefsPostView >> replyCountDescription [
 { #category : #magritte }
 AppBskyFeedDefsPostView >> repostCountDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'RepostCount';
 		accessor: #atProtoRepostCount
 ]

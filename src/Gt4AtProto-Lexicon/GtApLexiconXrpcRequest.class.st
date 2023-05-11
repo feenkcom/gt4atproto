@@ -78,7 +78,7 @@ GtApLexiconXrpcRequest >> methodName: aName [
 
 { #category : #accessing }
 GtApLexiconXrpcRequest >> output [
-	^ output
+	^ output ifNil: [ GtApLexiconObject empty ]
 ]
 
 { #category : #accessing }
@@ -88,7 +88,7 @@ GtApLexiconXrpcRequest >> output: anObject [
 
 { #category : #accessing }
 GtApLexiconXrpcRequest >> parameters [
-	^ parameters
+	^ parameters ifNil: [ GtApLexiconObject empty ]
 ]
 
 { #category : #accessing }

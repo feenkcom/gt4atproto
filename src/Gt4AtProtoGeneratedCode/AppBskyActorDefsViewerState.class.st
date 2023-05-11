@@ -11,6 +11,15 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyActorDefsViewerState class >> fromRequest: aRequest [
+	^ self new atProtoMuted: (aRequest at: 'muted' ifAbsent: [ nil ]); 
+		atProtoBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]); 
+		atProtoBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]); 
+		atProtoFollowing: (aRequest at: 'following' ifAbsent: [ nil ]); 
+		atProtoFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atProtoBlockedBy [
 	^ atProtoBlockedBy

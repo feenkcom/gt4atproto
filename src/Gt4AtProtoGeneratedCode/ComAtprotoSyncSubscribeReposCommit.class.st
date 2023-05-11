@@ -16,6 +16,20 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
+	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atProtoRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]); 
+		atProtoTooBig: (aRequest at: 'tooBig' ifAbsent: [ nil ]); 
+		atProtoRepo: (aRequest at: 'repo' ifAbsent: [ nil ]); 
+		atProtoCommit: (aRequest at: 'commit' ifAbsent: [ nil ]); 
+		atProtoPrev: (aRequest at: 'prev' ifAbsent: [ nil ]); 
+		atProtoBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]); 
+		atProtoOps: (aRequest at: 'ops' ifAbsent: [ nil ]); 
+		atProtoBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
+		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atProtoBlobs [
 	^ atProtoBlobs
@@ -148,7 +162,7 @@ ComAtprotoSyncSubscribeReposCommit >> commitDescription [
 ComAtprotoSyncSubscribeReposCommit >> opsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {RepoOp};
+		classes: {ComAtprotoSyncSubscribeReposRepoOp};
 		label: 'Ops';
 		accessor: #atProtoOps;
 	beRequired
@@ -184,7 +198,7 @@ ComAtprotoSyncSubscribeReposCommit >> repoDescription [
 { #category : #magritte }
 ComAtprotoSyncSubscribeReposCommit >> seqDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atProtoSeq;
 	beRequired

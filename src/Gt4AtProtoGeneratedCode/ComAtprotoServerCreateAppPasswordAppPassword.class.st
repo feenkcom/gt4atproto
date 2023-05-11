@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
+	^ self new atProtoName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+		atProtoPassword: (aRequest at: 'password' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atProtoCreatedAt [
 	^ atProtoCreatedAt

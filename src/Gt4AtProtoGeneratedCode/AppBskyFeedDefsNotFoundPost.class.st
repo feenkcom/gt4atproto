@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedDefsNotFoundPost >> atProtoNotFound [
 	^ atProtoNotFound

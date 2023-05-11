@@ -1,93 +1,93 @@
 Extension { #name : #GtApGeneratedClient }
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorGetProfile [
+GtApGeneratedClient >> appBskyActorGetProfileactor: actor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.actor.getProfile'
+	^ AppBskyActorDefsProfileViewDetailed fromRequest:  (self queryOn: 'app.bsky.actor.getProfile' parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorGetProfiles [
+GtApGeneratedClient >> appBskyActorGetProfilesactors: actors [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.actor.getProfiles'
+	^  (self queryOn: 'app.bsky.actor.getProfiles' parameters: {'actors' -> actors} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorGetSuggestions [
+GtApGeneratedClient >> appBskyActorGetSuggestionslimit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.actor.getSuggestions'
+	^  (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActors [
+GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadterm: term limit: limit [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.actor.searchActors'
+	^  (self queryOn: 'app.bsky.actor.searchActorsTypeahead' parameters: {'term' -> term. 'limit' -> limit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsTypeahead [
+GtApGeneratedClient >> appBskyActorSearchActorsterm: term limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.actor.searchActorsTypeahead'
+	^  (self queryOn: 'app.bsky.actor.searchActors' parameters: {'term' -> term. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetAuthorFeed [
+GtApGeneratedClient >> appBskyFeedGetAuthorFeedactor: actor limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.feed.getAuthorFeed'
+	^  (self queryOn: 'app.bsky.feed.getAuthorFeed' parameters: {'actor' -> actor. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetLikes [
+GtApGeneratedClient >> appBskyFeedGetLikesuri: uri cid: cid limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.feed.getLikes'
+	^  (self queryOn: 'app.bsky.feed.getLikes' parameters: {'uri' -> uri. 'cid' -> cid. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetPostThread [
+GtApGeneratedClient >> appBskyFeedGetPostThreaduri: uri depth: depth [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.feed.getPostThread'
+	^  (self queryOn: 'app.bsky.feed.getPostThread' parameters: {'uri' -> uri. 'depth' -> depth} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetPosts [
+GtApGeneratedClient >> appBskyFeedGetPostsuris: uris [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.feed.getPosts'
+	^  (self queryOn: 'app.bsky.feed.getPosts' parameters: {'uris' -> uris} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetRepostedBy [
+GtApGeneratedClient >> appBskyFeedGetRepostedByuri: uri cid: cid limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.feed.getRepostedBy'
+	^  (self queryOn: 'app.bsky.feed.getRepostedBy' parameters: {'uri' -> uri. 'cid' -> cid. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetTimeline [
+GtApGeneratedClient >> appBskyFeedGetTimelinealgorithm: algorithm limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.feed.getTimeline'
+	^  (self queryOn: 'app.bsky.feed.getTimeline' parameters: {'algorithm' -> algorithm. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetBlocks [
+GtApGeneratedClient >> appBskyGraphGetBlockslimit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.graph.getBlocks'
+	^  (self queryOn: 'app.bsky.graph.getBlocks' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetFollowers [
+GtApGeneratedClient >> appBskyGraphGetFollowersactor: actor limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.graph.getFollowers'
+	^  (self queryOn: 'app.bsky.graph.getFollowers' parameters: {'actor' -> actor. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetFollows [
+GtApGeneratedClient >> appBskyGraphGetFollowsactor: actor limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.graph.getFollows'
+	^  (self queryOn: 'app.bsky.graph.getFollows' parameters: {'actor' -> actor. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetMutes [
+GtApGeneratedClient >> appBskyGraphGetMuteslimit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.graph.getMutes'
+	^  (self queryOn: 'app.bsky.graph.getMutes' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -103,15 +103,15 @@ GtApGeneratedClient >> appBskyGraphUnmuteActoractor: actor [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationGetUnreadCount [
+GtApGeneratedClient >> appBskyNotificationGetUnreadCountseenAt: seenAt [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.notification.getUnreadCount'
+	^  (self queryOn: 'app.bsky.notification.getUnreadCount' parameters: {'seenAt' -> seenAt} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationListNotifications [
+GtApGeneratedClient >> appBskyNotificationListNotificationslimit: limit cursor: cursor seenAt: seenAt [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.notification.listNotifications'
+	^  (self queryOn: 'app.bsky.notification.listNotifications' parameters: {'limit' -> limit. 'cursor' -> cursor. 'seenAt' -> seenAt} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -121,9 +121,9 @@ GtApGeneratedClient >> appBskyNotificationUpdateSeenseenAt: seenAt [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyUnspeccedGetPopular [
+GtApGeneratedClient >> appBskyUnspeccedGetPopularincludeNsfw: includeNsfw limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'app.bsky.unspecced.getPopular'
+	^  (self queryOn: 'app.bsky.unspecced.getPopular' parameters: {'includeNsfw' -> includeNsfw. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -145,45 +145,45 @@ GtApGeneratedClient >> comAtprotoAdminEnableAccountInvitesaccount: account [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetInviteCodes [
+GtApGeneratedClient >> comAtprotoAdminGetInviteCodessort: sort limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getInviteCodes'
+	^  (self queryOn: 'com.atproto.admin.getInviteCodes' parameters: {'sort' -> sort. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationAction [
+GtApGeneratedClient >> comAtprotoAdminGetModerationActionid: id [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getModerationAction'
+	^ ComAtprotoAdminDefsActionViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getModerationAction' parameters: {'id' -> id} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationActions [
+GtApGeneratedClient >> comAtprotoAdminGetModerationActionssubject: subject limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getModerationActions'
+	^  (self queryOn: 'com.atproto.admin.getModerationActions' parameters: {'subject' -> subject. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReport [
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportid: id [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getModerationReport'
+	^ ComAtprotoAdminDefsReportViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getModerationReport' parameters: {'id' -> id} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReports [
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportssubject: subject resolved: resolved limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getModerationReports'
+	^  (self queryOn: 'com.atproto.admin.getModerationReports' parameters: {'subject' -> subject. 'resolved' -> resolved. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetRecord [
+GtApGeneratedClient >> comAtprotoAdminGetRecorduri: uri cid: cid [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getRecord'
+	^ ComAtprotoAdminDefsRecordViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getRecord' parameters: {'uri' -> uri. 'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetRepo [
+GtApGeneratedClient >> comAtprotoAdminGetRepodid: did [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.getRepo'
+	^ ComAtprotoAdminDefsRepoViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getRepo' parameters: {'did' -> did} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -199,9 +199,9 @@ GtApGeneratedClient >> comAtprotoAdminReverseModerationActionid: id reason: reas
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminSearchRepos [
+GtApGeneratedClient >> comAtprotoAdminSearchReposterm: term invitedBy: invitedBy limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.admin.searchRepos'
+	^  (self queryOn: 'com.atproto.admin.searchRepos' parameters: {'term' -> term. 'invitedBy' -> invitedBy. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -223,9 +223,9 @@ GtApGeneratedClient >> comAtprotoAdminUpdateAccountHandledid: did handle: handle
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoIdentityResolveHandle [
+GtApGeneratedClient >> comAtprotoIdentityResolveHandlehandle: handle [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.identity.resolveHandle'
+	^  (self queryOn: 'com.atproto.identity.resolveHandle' parameters: {'handle' -> handle} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -235,9 +235,9 @@ GtApGeneratedClient >> comAtprotoIdentityUpdateHandlehandle: handle [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoLabelQueryLabels [
+GtApGeneratedClient >> comAtprotoLabelQueryLabelsuriPatterns: uriPatterns sources: sources limit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.label.queryLabels'
+	^  (self queryOn: 'com.atproto.label.queryLabels' parameters: {'uriPatterns' -> uriPatterns. 'sources' -> sources. 'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -265,21 +265,21 @@ GtApGeneratedClient >> comAtprotoRepoDeleteRecordrepo: repo collection: collecti
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoDescribeRepo [
+GtApGeneratedClient >> comAtprotoRepoDescribeReporepo: repo [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.repo.describeRepo'
+	^  (self queryOn: 'com.atproto.repo.describeRepo' parameters: {'repo' -> repo} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoGetRecord [
+GtApGeneratedClient >> comAtprotoRepoGetRecordrepo: repo collection: collection rkey: rkey cid: cid [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.repo.getRecord'
+	^  (self queryOn: 'com.atproto.repo.getRecord' parameters: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoListRecords [
+GtApGeneratedClient >> comAtprotoRepoListRecordsrepo: repo collection: collection limit: limit cursor: cursor rkeyStart: rkeyStart rkeyEnd: rkeyEnd reverse: reverse [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.repo.listRecords'
+	^  (self queryOn: 'com.atproto.repo.listRecords' parameters: {'repo' -> repo. 'collection' -> collection. 'limit' -> limit. 'cursor' -> cursor. 'rkeyStart' -> rkeyStart. 'rkeyEnd' -> rkeyEnd. 'reverse' -> reverse} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -345,25 +345,25 @@ GtApGeneratedClient >> comAtprotoServerDeleteSession [
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDescribeServer [
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.server.describeServer'
+	^  (self queryOn: 'com.atproto.server.describeServer' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodes [
+GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodesincludeUsed: includeUsed createAvailable: createAvailable [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.server.getAccountInviteCodes'
+	^  (self queryOn: 'com.atproto.server.getAccountInviteCodes' parameters: {'includeUsed' -> includeUsed. 'createAvailable' -> createAvailable} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerGetSession [
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.server.getSession'
+	^  (self queryOn: 'com.atproto.server.getSession' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerListAppPasswords [
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.server.listAppPasswords'
+	^  (self queryOn: 'com.atproto.server.listAppPasswords' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -397,67 +397,67 @@ GtApGeneratedClient >> comAtprotoServerRevokeAppPasswordname: name [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetBlob [
+GtApGeneratedClient >> comAtprotoSyncGetBlobdid: did cid: cid [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getBlob'
+	^  (self queryOn: 'com.atproto.sync.getBlob' parameters: {'did' -> did. 'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetBlocks [
+GtApGeneratedClient >> comAtprotoSyncGetBlocksdid: did cids: cids [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getBlocks'
+	^  (self queryOn: 'com.atproto.sync.getBlocks' parameters: {'did' -> did. 'cids' -> cids} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetCheckout [
+GtApGeneratedClient >> comAtprotoSyncGetCheckoutdid: did commit: commit [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getCheckout'
+	^  (self queryOn: 'com.atproto.sync.getCheckout' parameters: {'did' -> did. 'commit' -> commit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetCommitPath [
+GtApGeneratedClient >> comAtprotoSyncGetCommitPathdid: did latest: latest earliest: earliest [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getCommitPath'
+	^  (self queryOn: 'com.atproto.sync.getCommitPath' parameters: {'did' -> did. 'latest' -> latest. 'earliest' -> earliest} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetHead [
+GtApGeneratedClient >> comAtprotoSyncGetHeaddid: did [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getHead'
+	^  (self queryOn: 'com.atproto.sync.getHead' parameters: {'did' -> did} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetRecord [
+GtApGeneratedClient >> comAtprotoSyncGetRecorddid: did collection: collection rkey: rkey commit: commit [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getRecord'
+	^  (self queryOn: 'com.atproto.sync.getRecord' parameters: {'did' -> did. 'collection' -> collection. 'rkey' -> rkey. 'commit' -> commit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetRepo [
+GtApGeneratedClient >> comAtprotoSyncGetRepodid: did earliest: earliest latest: latest [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.getRepo'
+	^  (self queryOn: 'com.atproto.sync.getRepo' parameters: {'did' -> did. 'earliest' -> earliest. 'latest' -> latest} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncListBlobs [
+GtApGeneratedClient >> comAtprotoSyncListBlobsdid: did latest: latest earliest: earliest [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.listBlobs'
+	^  (self queryOn: 'com.atproto.sync.listBlobs' parameters: {'did' -> did. 'latest' -> latest. 'earliest' -> earliest} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncListRepos [
+GtApGeneratedClient >> comAtprotoSyncListReposlimit: limit cursor: cursor [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.listRepos'
+	^  (self queryOn: 'com.atproto.sync.listRepos' parameters: {'limit' -> limit. 'cursor' -> cursor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdate [
+GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdatehostname: hostname [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.notifyOfUpdate'
+	^  (self queryOn: 'com.atproto.sync.notifyOfUpdate' parameters: {'hostname' -> hostname} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncRequestCrawl [
+GtApGeneratedClient >> comAtprotoSyncRequestCrawlhostname: hostname [ 
 	<xrpcQuery>
-	^ self queryOn: 'com.atproto.sync.requestCrawl'
+	^  (self queryOn: 'com.atproto.sync.requestCrawl' parameters: {'hostname' -> hostname} asDictionary)
 ]

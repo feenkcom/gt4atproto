@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
+	^ self new atProtoUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoRepoStrongRefMain >> atProtoCid [
 	^ atProtoCid

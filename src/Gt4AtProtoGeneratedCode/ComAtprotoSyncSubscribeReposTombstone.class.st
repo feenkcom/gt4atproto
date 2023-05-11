@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest [
+	^ self new atProtoSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+		atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atProtoTime: (aRequest at: 'time' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone >> atProtoDid [
 	^ atProtoDid
@@ -51,7 +58,7 @@ ComAtprotoSyncSubscribeReposTombstone >> didDescription [
 { #category : #magritte }
 ComAtprotoSyncSubscribeReposTombstone >> seqDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atProtoSeq;
 	beRequired

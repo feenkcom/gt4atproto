@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedPostEntity class >> fromRequest: aRequest [
+	^ self new atProtoIndex: (AppBskyFeedPostTextSlice fromRequest: (aRequest at: 'index' ifAbsent: [ nil ])); 
+		atProtoType: (aRequest at: 'type' ifAbsent: [ nil ]); 
+		atProtoValue: (aRequest at: 'value' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyFeedPostEntity >> atProtoIndex [
 	<referenceTo:'#textSlice'>

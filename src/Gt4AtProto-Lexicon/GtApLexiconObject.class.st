@@ -42,6 +42,11 @@ GtApLexiconObject >> asObject [
 	^ self
 ]
 
+{ #category : #accessing }
+GtApLexiconObject >> generateDeserialization [
+	^ self hasId ifTrue: [ self asClassName , ' fromRequest: ' ] ifFalse: [ '' ]
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconObject >> gtViewDefinitionReferencesFor: aView [ 
 	<gtView>

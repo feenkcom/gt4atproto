@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedPostReplyRef class >> fromRequest: aRequest [
+	^ self new atProtoRoot: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'root' ifAbsent: [ nil ])); 
+		atProtoParent: (ComAtprotoRepoStrongRefMain fromRequest: (aRequest at: 'parent' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 AppBskyFeedPostReplyRef >> atProtoParent [
 	<referenceTo:'com.atproto.repo.strongRef'>

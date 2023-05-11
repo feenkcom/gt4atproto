@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
+	^ self new atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
+		atProtoActor: (AppBskyActorDefsProfileView fromRequest: (aRequest at: 'actor' ifAbsent: [ nil ]))
+]
+
 { #category : #magritte }
 AppBskyFeedGetLikesLike >> actorDescription [
 	<magritteDescription>

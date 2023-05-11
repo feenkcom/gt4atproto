@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
+	^ self new atProtoRoot: (AppBskyFeedDefsPostView fromRequest: (aRequest at: 'root' ifAbsent: [ nil ])); 
+		atProtoParent: (AppBskyFeedDefsPostView fromRequest: (aRequest at: 'parent' ifAbsent: [ nil ]))
+]
+
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atProtoParent [
 	<referenceTo:'app.bsky.feed.defs#postView'>

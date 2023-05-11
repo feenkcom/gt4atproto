@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyActorDefsProfileViewDetailed,
 	#superclass : #Object,
+	#traits : 'TAppBskyActorDefsProfileViewDetailed',
+	#classTraits : 'TAppBskyActorDefsProfileViewDetailed classTrait',
 	#instVars : [
 		'atProtoDid',
 		'atProtoHandle',
@@ -17,6 +19,22 @@ Class {
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
+
+{ #category : #serialization }
+AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
+	^ self new atProtoDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atProtoHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atProtoDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
+		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atProtoAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atProtoBanner: (aRequest at: 'banner' ifAbsent: [ nil ]); 
+		atProtoFollowersCount: (aRequest at: 'followersCount' ifAbsent: [ nil ]); 
+		atProtoFollowsCount: (aRequest at: 'followsCount' ifAbsent: [ nil ]); 
+		atProtoPostsCount: (aRequest at: 'postsCount' ifAbsent: [ nil ]); 
+		atProtoIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+		atProtoViewer: (AppBskyActorDefsViewerState fromRequest: (aRequest at: 'viewer' ifAbsent: [ nil ])); 
+		atProtoLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+]
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atProtoAvatar [
@@ -184,7 +202,7 @@ AppBskyActorDefsProfileViewDetailed >> displayNameDescription [
 { #category : #magritte }
 AppBskyActorDefsProfileViewDetailed >> followersCountDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'FollowersCount';
 		accessor: #atProtoFollowersCount
 ]
@@ -192,7 +210,7 @@ AppBskyActorDefsProfileViewDetailed >> followersCountDescription [
 { #category : #magritte }
 AppBskyActorDefsProfileViewDetailed >> followsCountDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'FollowsCount';
 		accessor: #atProtoFollowsCount
 ]
@@ -226,7 +244,7 @@ AppBskyActorDefsProfileViewDetailed >> labelsDescription [
 { #category : #magritte }
 AppBskyActorDefsProfileViewDetailed >> postsCountDescription [
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: 'PostsCount';
 		accessor: #atProtoPostsCount
 ]

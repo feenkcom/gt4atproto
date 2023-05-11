@@ -254,14 +254,14 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-05-11T00:22:29.847379+02:00"
+												"dateAndTimeString" : "2023-05-11T17:57:12.70161+02:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
 											"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
 										},
-										"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #Gt4AtProtoGeneratedCode;\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #Gt4AtProtoGeneratedCode\r\t\t\tinSubclass: #GtApGeneratedClient;\r\t\tbuild"
+										"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #Gt4AtProtoGeneratedCode;\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atProto;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atProto;\r\t\tuseDefinitionFromRequestBuilderWithPrefix: #atProto;\r\t\tuseDefinitionMagritteBuilder;\r\t\tuseDocumentsBuilderInPackage: #Gt4AtProtoGeneratedCode\r\t\t\tinSubclass: #GtApGeneratedClient;\r\t\tbuild"
 									}
 								]
 							},

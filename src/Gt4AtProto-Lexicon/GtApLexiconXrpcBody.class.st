@@ -29,6 +29,11 @@ GtApLexiconXrpcBody >> encoding: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconXrpcBody >> generateDeserialization [
+	^ self schema generateDeserialization
+]
+
+{ #category : #accessing }
 GtApLexiconXrpcBody >> gtViewSchemaPropertiesFor: aView [
 	<gtView>
 	
@@ -41,7 +46,7 @@ GtApLexiconXrpcBody >> gtViewSchemaPropertiesFor: aView [
 
 { #category : #accessing }
 GtApLexiconXrpcBody >> schema [
-	^ schema
+	^ schema ifNil: [ GtApLexiconObject empty ]
 ]
 
 { #category : #accessing }

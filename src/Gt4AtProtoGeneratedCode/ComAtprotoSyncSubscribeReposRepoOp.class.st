@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest [
+	^ self new atProtoAction: (aRequest at: 'action' ifAbsent: [ nil ]); 
+		atProtoPath: (aRequest at: 'path' ifAbsent: [ nil ]); 
+		atProtoCid: (aRequest at: 'cid' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 ComAtprotoSyncSubscribeReposRepoOp >> actionDescription [
 	<magritteDescription>

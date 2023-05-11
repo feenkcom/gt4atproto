@@ -10,7 +10,7 @@ GtApLexiconNumericalPrimitive >> generateDescriptorFor: aString isRequired: aBoo
 	source := aString
 			, 'Description
 	<magritteDescription>
-	^ MABooleanDescription new
+	^ MANumberDescription new
 		label: ''' , aString capitalized
 			, ''';
 		accessor: #atProto' , aString asCamelCase.

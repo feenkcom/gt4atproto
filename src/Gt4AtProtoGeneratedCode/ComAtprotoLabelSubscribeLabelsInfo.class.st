@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest [
+	^ self new atProtoName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+		atProtoMessage: (aRequest at: 'message' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo >> atProtoMessage [
 	^ atProtoMessage

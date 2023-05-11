@@ -12,6 +12,14 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyActorProfileMain class >> fromRequest: aRequest [
+	^ self new atProtoDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
+		atProtoDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atProtoAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atProtoBanner: (aRequest at: 'banner' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyActorProfileMain >> atProtoAvatar [
 	^ atProtoAvatar

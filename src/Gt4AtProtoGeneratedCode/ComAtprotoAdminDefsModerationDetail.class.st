@@ -9,11 +9,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
+	^ self new atProtoCurrentAction: (ComAtprotoAdminDefsActionViewCurrent fromRequest: (aRequest at: 'currentAction' ifAbsent: [ nil ])); 
+		atProtoActions: (aRequest at: 'actions' ifAbsent: [ nil ]); 
+		atProtoReports: (aRequest at: 'reports' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 ComAtprotoAdminDefsModerationDetail >> actionsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {ActionView};
+		classes: {ComAtprotoAdminDefsActionView};
 		label: 'Actions';
 		accessor: #atProtoActions;
 	beRequired
@@ -63,7 +70,7 @@ ComAtprotoAdminDefsModerationDetail >> currentActionDescription [
 ComAtprotoAdminDefsModerationDetail >> reportsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {ReportView};
+		classes: {ComAtprotoAdminDefsReportView};
 		label: 'Reports';
 		accessor: #atProtoReports;
 	beRequired

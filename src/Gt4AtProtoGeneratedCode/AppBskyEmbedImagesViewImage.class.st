@@ -9,6 +9,13 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
+	^ self new atProtoThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]); 
+		atProtoFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]); 
+		atProtoAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
+]
+
 { #category : #magritte }
 AppBskyEmbedImagesViewImage >> altDescription [
 	<magritteDescription>

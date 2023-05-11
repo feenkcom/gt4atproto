@@ -8,6 +8,12 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #serialization }
+AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
+	^ self new atProtoRecord: (AppBskyEmbedRecordView fromRequest: (aRequest at: 'record' ifAbsent: [ nil ])); 
+		atProtoMedia: (aRequest at: 'media' ifAbsent: [ nil ])
+]
+
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView >> atProtoMedia [
 	^ atProtoMedia
