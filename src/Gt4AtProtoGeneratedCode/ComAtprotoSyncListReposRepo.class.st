@@ -18,6 +18,11 @@ ComAtprotoSyncListReposRepo class >> atpRecordName [
  ^ 'com.atproto.sync.listRepos#repo'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo class >> atpSchema [
+ ^ '{"type":"object","required":["did","head"],"properties":{"did":{"type":"string","format":"did"},"head":{"type":"string","format":"cid"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
 	^ self new

@@ -18,6 +18,11 @@ ComAtprotoLabelSubscribeLabelsInfo class >> atpRecordName [
  ^ 'com.atproto.label.subscribeLabels#info'
 ]
 
+{ #category : #accessing }
+ComAtprotoLabelSubscribeLabelsInfo class >> atpSchema [
+ ^ '{"type":"object","required":["name"],"properties":{"name":{"type":"string","knownValues":["OutdatedCursor"]},"message":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest [
 	^ self new

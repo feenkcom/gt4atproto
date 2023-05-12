@@ -26,6 +26,11 @@ ComAtprotoSyncSubscribeReposCommit class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#commit'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit class >> atpSchema [
+ ^ '{"type":"object","required":["seq","rebase","tooBig","repo","commit","prev","blocks","ops","blobs","time"],"nullable":["prev"],"properties":{"seq":{"type":"integer"},"rebase":{"type":"boolean"},"tooBig":{"type":"boolean"},"repo":{"type":"string","format":"did"},"commit":{"type":"cid-link"},"prev":{"type":"cid-link"},"blocks":{"type":"bytes","description":"CAR file containing relevant blocks","maxLength":1000000},"ops":{"type":"array","items":{"type":"ref","ref":"#repoOp"},"maxLength":200},"blobs":{"type":"array","items":{"type":"cid-link"}},"time":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 	^ self new

@@ -19,6 +19,11 @@ ComAtprotoAdminDefsModerationDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#moderationDetail'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsModerationDetail class >> atpSchema [
+ ^ '{"type":"object","required":["actions","reports"],"properties":{"currentAction":{"type":"ref","ref":"#actionViewCurrent"},"actions":{"type":"array","items":{"type":"ref","ref":"#actionView"}},"reports":{"type":"array","items":{"type":"ref","ref":"#reportView"}}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
 	^ self new

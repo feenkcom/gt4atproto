@@ -18,6 +18,11 @@ AppBskyFeedDefsReplyRef class >> atpRecordName [
  ^ 'app.bsky.feed.defs#replyRef'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsReplyRef class >> atpSchema [
+ ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"ref","ref":"app.bsky.feed.defs#postView"},"parent":{"type":"ref","ref":"app.bsky.feed.defs#postView"}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 	^ self new

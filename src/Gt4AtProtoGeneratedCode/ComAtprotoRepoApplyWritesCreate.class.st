@@ -19,6 +19,11 @@ ComAtprotoRepoApplyWritesCreate class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#create'
 ]
 
+{ #category : #accessing }
+ComAtprotoRepoApplyWritesCreate class >> atpSchema [
+ ^ '{"type":"object","description":"Create a new record.","required":["action","collection","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"},"value":{"type":"unknown"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoRepoApplyWritesCreate class >> fromRequest: aRequest [
 	^ self new

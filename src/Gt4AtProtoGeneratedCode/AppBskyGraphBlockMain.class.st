@@ -18,6 +18,11 @@ AppBskyGraphBlockMain class >> atpRecordName [
  ^ 'app.bsky.graph.block'
 ]
 
+{ #category : #accessing }
+AppBskyGraphBlockMain class >> atpSchema [
+ ^ '{"type":"record","description":"A block.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}}'
+]
+
 { #category : #serialization }
 AppBskyGraphBlockMain class >> fromRequest: aRequest [
 	^ self new

@@ -20,6 +20,11 @@ AppBskyEmbedExternalViewExternal class >> atpRecordName [
  ^ 'app.bsky.embed.external#viewExternal'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedExternalViewExternal class >> atpSchema [
+ ^ '{"type":"object","required":["uri","title","description"],"properties":{"uri":{"type":"string","format":"uri"},"title":{"type":"string"},"description":{"type":"string"},"thumb":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedExternalViewExternal class >> fromRequest: aRequest [
 	^ self new

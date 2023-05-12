@@ -25,6 +25,11 @@ AppBskyGraphDefsListView class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listView'
 ]
 
+{ #category : #accessing }
+AppBskyGraphDefsListView class >> atpSchema [
+ ^ '{"type":"object","required":["uri","creator","name","purpose","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 AppBskyGraphDefsListView class >> fromRequest: aRequest [
 	^ self new

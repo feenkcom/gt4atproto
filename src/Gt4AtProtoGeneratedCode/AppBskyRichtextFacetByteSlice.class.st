@@ -18,6 +18,11 @@ AppBskyRichtextFacetByteSlice class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#byteSlice'
 ]
 
+{ #category : #accessing }
+AppBskyRichtextFacetByteSlice class >> atpSchema [
+ ^ '{"type":"object","description":"A text segment. Start is inclusive, end is exclusive. Indices are for utf8-encoded strings.","required":["byteStart","byteEnd"],"properties":{"byteStart":{"type":"integer","minimum":0},"byteEnd":{"type":"integer","minimum":0}}}'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
 	^ self new

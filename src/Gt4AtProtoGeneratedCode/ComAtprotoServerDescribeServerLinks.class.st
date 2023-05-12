@@ -18,6 +18,11 @@ ComAtprotoServerDescribeServerLinks class >> atpRecordName [
  ^ 'com.atproto.server.describeServer#links'
 ]
 
+{ #category : #accessing }
+ComAtprotoServerDescribeServerLinks class >> atpSchema [
+ ^ '{"type":"object","properties":{"privacyPolicy":{"type":"string"},"termsOfService":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
 	^ self new

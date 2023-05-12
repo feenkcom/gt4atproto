@@ -23,6 +23,11 @@ ComAtprotoServerDefsInviteCode class >> atpRecordName [
  ^ 'com.atproto.server.defs#inviteCode'
 ]
 
+{ #category : #accessing }
+ComAtprotoServerDefsInviteCode class >> atpSchema [
+ ^ '{"type":"object","required":["code","available","disabled","forAccount","createdBy","createdAt","uses"],"properties":{"code":{"type":"string"},"available":{"type":"integer"},"disabled":{"type":"boolean"},"forAccount":{"type":"string"},"createdBy":{"type":"string"},"createdAt":{"type":"string","format":"datetime"},"uses":{"type":"array","items":{"type":"ref","ref":"#inviteCodeUse"}}}}'
+]
+
 { #category : #serialization }
 ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
 	^ self new

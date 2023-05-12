@@ -19,6 +19,11 @@ AppBskyEmbedImagesViewImage class >> atpRecordName [
  ^ 'app.bsky.embed.images#viewImage'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedImagesViewImage class >> atpSchema [
+ ^ '{"type":"object","required":["thumb","fullsize","alt"],"properties":{"thumb":{"type":"string"},"fullsize":{"type":"string"},"alt":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
 	^ self new

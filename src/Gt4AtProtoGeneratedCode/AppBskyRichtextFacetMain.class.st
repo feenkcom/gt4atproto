@@ -18,6 +18,11 @@ AppBskyRichtextFacetMain class >> atpRecordName [
  ^ 'app.bsky.richtext.facet'
 ]
 
+{ #category : #accessing }
+AppBskyRichtextFacetMain class >> atpSchema [
+ ^ '{"type":"object","required":["index","features"],"properties":{"index":{"type":"ref","ref":"#byteSlice"},"features":{"type":"array","items":{"type":"union","refs":["#mention","#link"]}}}}'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetMain class >> fromRequest: aRequest [
 	^ self new

@@ -22,6 +22,11 @@ AppBskyActorProfileMain class >> atpRecordName [
  ^ 'app.bsky.actor.profile'
 ]
 
+{ #category : #accessing }
+AppBskyActorProfileMain class >> atpSchema [
+ ^ '{"type":"record","key":"literal:self","record":{"type":"object","properties":{"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000},"banner":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000}}}}'
+]
+
 { #category : #serialization }
 AppBskyActorProfileMain class >> fromRequest: aRequest [
 	^ self new

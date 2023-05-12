@@ -17,6 +17,11 @@ AppBskyEmbedExternalMain class >> atpRecordName [
  ^ 'app.bsky.embed.external'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedExternalMain class >> atpSchema [
+ ^ '{"type":"object","required":["external"],"properties":{"external":{"type":"ref","ref":"#external"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedExternalMain class >> fromRequest: aRequest [
 	^ self new

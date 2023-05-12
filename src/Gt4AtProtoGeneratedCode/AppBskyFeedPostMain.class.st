@@ -22,6 +22,11 @@ AppBskyFeedPostMain class >> atpRecordName [
  ^ 'app.bsky.feed.post'
 ]
 
+{ #category : #accessing }
+AppBskyFeedPostMain class >> atpSchema [
+ ^ '{"type":"record","key":"tid","record":{"type":"object","required":["text","createdAt"],"properties":{"text":{"type":"string","maxLength":3000,"maxGraphemes":300},"entities":{"type":"array","description":"Deprecated: replaced by app.bsky.richtext.facet.","items":{"type":"ref","ref":"#entity"}},"facets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"reply":{"type":"ref","ref":"#replyRef"},"embed":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.external","app.bsky.embed.record","app.bsky.embed.recordWithMedia"]},"createdAt":{"type":"string","format":"datetime"}}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedPostMain class >> fromRequest: aRequest [
 	^ self new

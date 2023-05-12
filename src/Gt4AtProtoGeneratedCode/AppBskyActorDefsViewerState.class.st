@@ -22,6 +22,11 @@ AppBskyActorDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.actor.defs#viewerState'
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsViewerState class >> atpSchema [
+ ^ '{"type":"object","properties":{"muted":{"type":"boolean"},"mutedByList":{"type":"ref","ref":"app.bsky.graph.defs#listViewBasic"},"blockedBy":{"type":"boolean"},"blocking":{"type":"string","format":"at-uri"},"following":{"type":"string","format":"at-uri"},"followedBy":{"type":"string","format":"at-uri"}}}'
+]
+
 { #category : #serialization }
 AppBskyActorDefsViewerState class >> fromRequest: aRequest [
 	^ self new

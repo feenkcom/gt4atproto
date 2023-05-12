@@ -18,6 +18,11 @@ AppBskyGraphFollowMain class >> atpRecordName [
  ^ 'app.bsky.graph.follow'
 ]
 
+{ #category : #accessing }
+AppBskyGraphFollowMain class >> atpSchema [
+ ^ '{"type":"record","description":"A social follow.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}}'
+]
+
 { #category : #serialization }
 AppBskyGraphFollowMain class >> fromRequest: aRequest [
 	^ self new

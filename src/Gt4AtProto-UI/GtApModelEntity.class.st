@@ -16,6 +16,11 @@ GtApModelEntity class >> atpRecordName [
 ]
 
 { #category : #accessing }
+GtApModelEntity class >> atpSchema [
+	^ ''
+]
+
+{ #category : #accessing }
 GtApModelEntity class >> findForRequest: aRequest [
 	| typeName |
 	typeName := aRequest at: '$type' ifAbsent: [ ^ aRequest ].
@@ -63,6 +68,17 @@ GtApModelEntity >> gtRawDataFor: aView [
 						ifTrue: [ each value collectWithIndex: [ :x :i | i -> x ] ]
 						ifFalse: [ #() ] ] ];
 		send: #value
+]
+
+{ #category : #accessing }
+GtApModelEntity >> gtSchemaFor: aView [
+	<gtView>
+	
+	^ aView forward 
+		title: 'Schema';
+		priority: 50;
+		object: [ GtJson forJsonString: self class atpSchema];
+		view: #gtJsonStringFor:
 ]
 
 { #category : #accessing }

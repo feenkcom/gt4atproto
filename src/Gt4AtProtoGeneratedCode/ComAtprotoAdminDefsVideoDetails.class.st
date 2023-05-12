@@ -19,6 +19,11 @@ ComAtprotoAdminDefsVideoDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#videoDetails'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsVideoDetails class >> atpSchema [
+ ^ '{"type":"object","required":["width","height","length"],"properties":{"width":{"type":"integer"},"height":{"type":"integer"},"length":{"type":"integer"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsVideoDetails class >> fromRequest: aRequest [
 	^ self new

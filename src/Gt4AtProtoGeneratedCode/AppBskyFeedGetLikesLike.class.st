@@ -19,6 +19,11 @@ AppBskyFeedGetLikesLike class >> atpRecordName [
  ^ 'app.bsky.feed.getLikes#like'
 ]
 
+{ #category : #accessing }
+AppBskyFeedGetLikesLike class >> atpSchema [
+ ^ '{"type":"object","required":["indexedAt","createdAt","actor"],"properties":{"indexedAt":{"type":"string","format":"datetime"},"createdAt":{"type":"string","format":"datetime"},"actor":{"type":"ref","ref":"app.bsky.actor.defs#profileView"}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
 	^ self new

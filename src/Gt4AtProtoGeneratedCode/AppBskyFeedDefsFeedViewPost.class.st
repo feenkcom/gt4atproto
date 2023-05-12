@@ -21,6 +21,11 @@ AppBskyFeedDefsFeedViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#feedViewPost'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsFeedViewPost class >> atpSchema [
+ ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"app.bsky.feed.defs#postView"},"reply":{"type":"ref","ref":"#replyRef"},"reason":{"type":"union","refs":["#reasonRepost"]}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 	^ self new

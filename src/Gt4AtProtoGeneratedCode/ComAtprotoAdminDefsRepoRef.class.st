@@ -17,6 +17,11 @@ ComAtprotoAdminDefsRepoRef class >> atpRecordName [
  ^ 'com.atproto.admin.defs#repoRef'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsRepoRef class >> atpSchema [
+ ^ '{"type":"object","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest [
 	^ self new

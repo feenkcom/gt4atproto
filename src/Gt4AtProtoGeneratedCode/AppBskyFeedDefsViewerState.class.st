@@ -18,6 +18,11 @@ AppBskyFeedDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.feed.defs#viewerState'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsViewerState class >> atpSchema [
+ ^ '{"type":"object","properties":{"repost":{"type":"string","format":"at-uri"},"like":{"type":"string","format":"at-uri"}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
 	^ self new

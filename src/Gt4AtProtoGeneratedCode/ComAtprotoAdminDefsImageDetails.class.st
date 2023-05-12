@@ -18,6 +18,11 @@ ComAtprotoAdminDefsImageDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#imageDetails'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsImageDetails class >> atpSchema [
+ ^ '{"type":"object","required":["width","height"],"properties":{"width":{"type":"integer"},"height":{"type":"integer"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
 	^ self new

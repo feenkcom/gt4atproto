@@ -17,6 +17,11 @@ AppBskyActorDefsAdultContentPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#adultContentPref'
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsAdultContentPref class >> atpSchema [
+ ^ '{"type":"object","required":["enabled"],"properties":{"enabled":{"type":"boolean","default":false}}}'
+]
+
 { #category : #serialization }
 AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest [
 	^ self new

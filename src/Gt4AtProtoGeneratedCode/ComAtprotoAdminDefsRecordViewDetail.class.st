@@ -24,6 +24,11 @@ ComAtprotoAdminDefsRecordViewDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#recordViewDetail'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsRecordViewDetail class >> atpSchema [
+ ^ '{"type":"object","required":["uri","cid","value","blobs","indexedAt","moderation","repo"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"value":{"type":"unknown"},"blobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderationDetail"},"repo":{"type":"ref","ref":"#repoView"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsRecordViewDetail class >> fromRequest: aRequest [
 	^ self new

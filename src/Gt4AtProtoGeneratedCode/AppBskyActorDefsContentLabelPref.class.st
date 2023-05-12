@@ -18,6 +18,11 @@ AppBskyActorDefsContentLabelPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#contentLabelPref'
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsContentLabelPref class >> atpSchema [
+ ^ '{"type":"object","required":["label","visibility"],"properties":{"label":{"type":"string"},"visibility":{"type":"string","knownValues":["show","warn","hide"]}}}'
+]
+
 { #category : #serialization }
 AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest [
 	^ self new

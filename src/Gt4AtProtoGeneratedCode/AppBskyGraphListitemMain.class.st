@@ -19,6 +19,11 @@ AppBskyGraphListitemMain class >> atpRecordName [
  ^ 'app.bsky.graph.listitem'
 ]
 
+{ #category : #accessing }
+AppBskyGraphListitemMain class >> atpSchema [
+ ^ '{"type":"record","description":"An item under a declared list of actors","key":"tid","record":{"type":"object","required":["subject","list","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"list":{"type":"string","format":"at-uri"},"createdAt":{"type":"string","format":"datetime"}}}}'
+]
+
 { #category : #serialization }
 AppBskyGraphListitemMain class >> fromRequest: aRequest [
 	^ self new

@@ -18,6 +18,11 @@ ComAtprotoLabelSubscribeLabelsLabels class >> atpRecordName [
  ^ 'com.atproto.label.subscribeLabels#labels'
 ]
 
+{ #category : #accessing }
+ComAtprotoLabelSubscribeLabelsLabels class >> atpSchema [
+ ^ '{"type":"object","required":["seq","labels"],"properties":{"seq":{"type":"integer"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+]
+
 { #category : #serialization }
 ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
 	^ self new

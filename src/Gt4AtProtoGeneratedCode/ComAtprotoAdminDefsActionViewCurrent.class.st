@@ -18,6 +18,11 @@ ComAtprotoAdminDefsActionViewCurrent class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionViewCurrent'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionViewCurrent class >> atpSchema [
+ ^ '{"type":"object","required":["id","action"],"properties":{"id":{"type":"integer"},"action":{"type":"ref","ref":"#actionType"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
 	^ self new

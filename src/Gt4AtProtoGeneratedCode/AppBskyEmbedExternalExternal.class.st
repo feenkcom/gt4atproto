@@ -20,6 +20,11 @@ AppBskyEmbedExternalExternal class >> atpRecordName [
  ^ 'app.bsky.embed.external#external'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedExternalExternal class >> atpSchema [
+ ^ '{"type":"object","required":["uri","title","description"],"properties":{"uri":{"type":"string","format":"uri"},"title":{"type":"string"},"description":{"type":"string"},"thumb":{"type":"blob","accept":["image/*"],"maxSize":1000000}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedExternalExternal class >> fromRequest: aRequest [
 	^ self new

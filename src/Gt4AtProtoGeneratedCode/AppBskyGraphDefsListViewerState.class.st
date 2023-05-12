@@ -17,6 +17,11 @@ AppBskyGraphDefsListViewerState class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listViewerState'
 ]
 
+{ #category : #accessing }
+AppBskyGraphDefsListViewerState class >> atpSchema [
+ ^ '{"type":"object","properties":{"muted":{"type":"boolean"}}}'
+]
+
 { #category : #serialization }
 AppBskyGraphDefsListViewerState class >> fromRequest: aRequest [
 	^ self new

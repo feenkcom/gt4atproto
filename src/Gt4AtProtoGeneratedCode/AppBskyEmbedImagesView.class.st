@@ -19,6 +19,11 @@ AppBskyEmbedImagesView class >> atpRecordName [
  ^ 'app.bsky.embed.images#view'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedImagesView class >> atpSchema [
+ ^ '{"type":"object","required":["images"],"properties":{"images":{"type":"array","items":{"type":"ref","ref":"#viewImage"},"maxLength":4}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedImagesView class >> fromRequest: aRequest [
 	^ self new

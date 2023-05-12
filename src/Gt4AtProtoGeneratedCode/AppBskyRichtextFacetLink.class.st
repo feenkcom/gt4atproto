@@ -17,6 +17,11 @@ AppBskyRichtextFacetLink class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#link'
 ]
 
+{ #category : #accessing }
+AppBskyRichtextFacetLink class >> atpSchema [
+ ^ '{"type":"object","description":"A facet feature for links.","required":["uri"],"properties":{"uri":{"type":"string","format":"uri"}}}'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetLink class >> fromRequest: aRequest [
 	^ self new

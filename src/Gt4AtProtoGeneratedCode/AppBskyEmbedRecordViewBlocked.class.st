@@ -17,6 +17,11 @@ AppBskyEmbedRecordViewBlocked class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewBlocked'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedRecordViewBlocked class >> atpSchema [
+ ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest [
 	^ self new

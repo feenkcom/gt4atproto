@@ -25,6 +25,11 @@ AppBskyNotificationListNotificationsNotification class >> atpRecordName [
  ^ 'app.bsky.notification.listNotifications#notification'
 ]
 
+{ #category : #accessing }
+AppBskyNotificationListNotificationsNotification class >> atpSchema [
+ ^ '{"type":"object","required":["uri","cid","author","reason","record","isRead","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"reason":{"type":"string","description":"Expected values are ''like'', ''repost'', ''follow'', ''mention'', ''reply'', and ''quote''.","knownValues":["like","repost","follow","mention","reply","quote"]},"reasonSubject":{"type":"string","format":"at-uri"},"record":{"type":"unknown"},"isRead":{"type":"boolean"},"indexedAt":{"type":"string","format":"datetime"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+]
+
 { #category : #serialization }
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
 	^ self new

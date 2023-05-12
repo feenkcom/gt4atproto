@@ -18,6 +18,11 @@ ComAtprotoServerCreateInviteCodesAccountCodes class >> atpRecordName [
  ^ 'com.atproto.server.createInviteCodes#accountCodes'
 ]
 
+{ #category : #accessing }
+ComAtprotoServerCreateInviteCodesAccountCodes class >> atpSchema [
+ ^ '{"type":"object","required":["account","codes"],"properties":{"account":{"type":"string"},"codes":{"type":"array","items":{"type":"string"}}}}'
+]
+
 { #category : #serialization }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
 	^ self new

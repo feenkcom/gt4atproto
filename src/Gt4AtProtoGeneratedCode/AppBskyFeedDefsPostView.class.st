@@ -27,6 +27,11 @@ AppBskyFeedDefsPostView class >> atpRecordName [
  ^ 'app.bsky.feed.defs#postView'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsPostView class >> atpSchema [
+ ^ '{"type":"object","required":["uri","cid","author","record","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"record":{"type":"unknown"},"embed":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]},"replyCount":{"type":"integer"},"repostCount":{"type":"integer"},"likeCount":{"type":"integer"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 	^ self new

@@ -18,6 +18,11 @@ AppBskyFeedDefsNotFoundPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#notFoundPost'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsNotFoundPost class >> atpSchema [
+ ^ '{"type":"object","required":["uri","notFound"],"properties":{"uri":{"type":"string","format":"at-uri"},"notFound":{"type":"boolean","const":true}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
 	^ self new

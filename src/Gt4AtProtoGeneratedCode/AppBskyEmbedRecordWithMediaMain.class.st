@@ -18,6 +18,11 @@ AppBskyEmbedRecordWithMediaMain class >> atpRecordName [
  ^ 'app.bsky.embed.recordWithMedia'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedRecordWithMediaMain class >> atpSchema [
+ ^ '{"type":"object","required":["record","media"],"properties":{"record":{"type":"ref","ref":"app.bsky.embed.record"},"media":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.external"]}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordWithMediaMain class >> fromRequest: aRequest [
 	^ self new

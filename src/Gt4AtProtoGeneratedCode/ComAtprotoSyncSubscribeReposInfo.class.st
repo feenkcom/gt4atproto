@@ -18,6 +18,11 @@ ComAtprotoSyncSubscribeReposInfo class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#info'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposInfo class >> atpSchema [
+ ^ '{"type":"object","required":["name"],"properties":{"name":{"type":"string","knownValues":["OutdatedCursor"]},"message":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest [
 	^ self new

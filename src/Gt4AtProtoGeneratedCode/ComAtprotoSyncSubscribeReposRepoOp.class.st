@@ -19,6 +19,11 @@ ComAtprotoSyncSubscribeReposRepoOp class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#repoOp'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposRepoOp class >> atpSchema [
+ ^ '{"type":"object","required":["action","path","cid"],"nullable":["cid"],"properties":{"action":{"type":"string","knownValues":["create","update","delete"]},"path":{"type":"string"},"cid":{"type":"cid-link"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest [
 	^ self new

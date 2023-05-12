@@ -17,6 +17,11 @@ AppBskyEmbedRecordViewNotFound class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewNotFound'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedRecordViewNotFound class >> atpSchema [
+ ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
 	^ self new

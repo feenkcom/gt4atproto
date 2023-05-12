@@ -18,6 +18,11 @@ ComAtprotoRepoApplyWritesDelete class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#delete'
 ]
 
+{ #category : #accessing }
+ComAtprotoRepoApplyWritesDelete class >> atpSchema [
+ ^ '{"type":"object","description":"Delete an existing record.","required":["action","collection","rkey"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
 	^ self new

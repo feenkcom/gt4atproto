@@ -24,6 +24,11 @@ AppBskyActorDefsProfileView class >> atpRecordName [
  ^ 'app.bsky.actor.defs#profileView'
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsProfileView class >> atpSchema [
+ ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"string"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+]
+
 { #category : #serialization }
 AppBskyActorDefsProfileView class >> fromRequest: aRequest [
 	^ self new

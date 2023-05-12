@@ -19,6 +19,11 @@ ComAtprotoSyncSubscribeReposTombstone class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#tombstone'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposTombstone class >> atpSchema [
+ ^ '{"type":"object","required":["seq","did","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"time":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest [
 	^ self new

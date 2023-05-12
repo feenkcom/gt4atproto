@@ -19,6 +19,11 @@ AppBskyEmbedRecordView class >> atpRecordName [
  ^ 'app.bsky.embed.record#view'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedRecordView class >> atpSchema [
+ ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"union","refs":["#viewRecord","#viewNotFound","#viewBlocked"]}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordView class >> fromRequest: aRequest [
 	^ self new

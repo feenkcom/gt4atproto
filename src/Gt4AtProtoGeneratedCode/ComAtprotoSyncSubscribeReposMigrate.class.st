@@ -20,6 +20,11 @@ ComAtprotoSyncSubscribeReposMigrate class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#migrate'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposMigrate class >> atpSchema [
+ ^ '{"type":"object","required":["seq","did","migrateTo","time"],"nullable":["migrateTo"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"migrateTo":{"type":"string"},"time":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
 	^ self new

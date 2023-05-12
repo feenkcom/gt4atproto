@@ -22,6 +22,11 @@ ComAtprotoAdminDefsBlobView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#blobView'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsBlobView class >> atpSchema [
+ ^ '{"type":"object","required":["cid","mimeType","size","createdAt"],"properties":{"cid":{"type":"string","format":"cid"},"mimeType":{"type":"string"},"size":{"type":"integer"},"createdAt":{"type":"string","format":"datetime"},"details":{"type":"union","refs":["#imageDetails","#videoDetails"]},"moderation":{"type":"ref","ref":"#moderation"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 	^ self new

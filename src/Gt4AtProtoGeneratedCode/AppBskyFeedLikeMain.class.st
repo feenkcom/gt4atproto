@@ -18,6 +18,11 @@ AppBskyFeedLikeMain class >> atpRecordName [
  ^ 'app.bsky.feed.like'
 ]
 
+{ #category : #accessing }
+AppBskyFeedLikeMain class >> atpSchema [
+ ^ '{"type":"record","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"ref","ref":"com.atproto.repo.strongRef"},"createdAt":{"type":"string","format":"datetime"}}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedLikeMain class >> fromRequest: aRequest [
 	^ self new

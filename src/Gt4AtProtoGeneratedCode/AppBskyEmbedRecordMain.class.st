@@ -17,6 +17,11 @@ AppBskyEmbedRecordMain class >> atpRecordName [
  ^ 'app.bsky.embed.record'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedRecordMain class >> atpSchema [
+ ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"ref","ref":"com.atproto.repo.strongRef"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordMain class >> fromRequest: aRequest [
 	^ self new

@@ -18,6 +18,11 @@ ComAtprotoServerDefsInviteCodeUse class >> atpRecordName [
  ^ 'com.atproto.server.defs#inviteCodeUse'
 ]
 
+{ #category : #accessing }
+ComAtprotoServerDefsInviteCodeUse class >> atpSchema [
+ ^ '{"type":"object","required":["usedBy","usedAt"],"properties":{"usedBy":{"type":"string","format":"did"},"usedAt":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
 	^ self new

@@ -18,6 +18,11 @@ AppBskyFeedPostTextSlice class >> atpRecordName [
  ^ 'app.bsky.feed.post#textSlice'
 ]
 
+{ #category : #accessing }
+AppBskyFeedPostTextSlice class >> atpSchema [
+ ^ '{"type":"object","description":"Deprecated. Use app.bsky.richtext instead -- A text segment. Start is inclusive, end is exclusive. Indices are for utf16-encoded strings.","required":["start","end"],"properties":{"start":{"type":"integer","minimum":0},"end":{"type":"integer","minimum":0}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
 	^ self new

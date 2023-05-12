@@ -19,6 +19,11 @@ AppBskyFeedDefsThreadViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#threadViewPost'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsThreadViewPost class >> atpSchema [
+ ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"#postView"},"parent":{"type":"union","refs":["#threadViewPost","#notFoundPost","#blockedPost"]},"replies":{"type":"array","items":{"type":"union","refs":["#threadViewPost","#notFoundPost","#blockedPost"]}}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
 	^ self new

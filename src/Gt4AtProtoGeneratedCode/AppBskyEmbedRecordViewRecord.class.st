@@ -23,6 +23,11 @@ AppBskyEmbedRecordViewRecord class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewRecord'
 ]
 
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord class >> atpSchema [
+ ^ '{"type":"object","required":["uri","cid","author","value","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"value":{"type":"unknown"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"embeds":{"type":"array","items":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]}},"indexedAt":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 	^ self new

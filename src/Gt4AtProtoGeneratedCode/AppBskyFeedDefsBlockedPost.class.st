@@ -18,6 +18,11 @@ AppBskyFeedDefsBlockedPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#blockedPost'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsBlockedPost class >> atpSchema [
+ ^ '{"type":"object","required":["uri","blocked"],"properties":{"uri":{"type":"string","format":"at-uri"},"blocked":{"type":"boolean","const":true}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
 	^ self new

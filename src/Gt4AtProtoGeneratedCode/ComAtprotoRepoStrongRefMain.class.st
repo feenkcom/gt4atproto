@@ -18,6 +18,11 @@ ComAtprotoRepoStrongRefMain class >> atpRecordName [
  ^ 'com.atproto.repo.strongRef'
 ]
 
+{ #category : #accessing }
+ComAtprotoRepoStrongRefMain class >> atpSchema [
+ ^ '{"type":"object","required":["uri","cid"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
 	^ self new

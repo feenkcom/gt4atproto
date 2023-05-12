@@ -27,6 +27,11 @@ ComAtprotoAdminDefsActionViewDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionViewDetail'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionViewDetail class >> atpSchema [
+ ^ '{"type":"object","required":["id","action","subject","subjectBlobs","reason","createdBy","createdAt","resolvedReports"],"properties":{"id":{"type":"integer"},"action":{"type":"ref","ref":"#actionType"},"subject":{"type":"union","refs":["#repoView","#recordView"]},"subjectBlobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"createLabelVals":{"type":"array","items":{"type":"string"}},"negateLabelVals":{"type":"array","items":{"type":"string"}},"reason":{"type":"string"},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"reversal":{"type":"ref","ref":"#actionReversal"},"resolvedReports":{"type":"array","items":{"type":"ref","ref":"#reportView"}}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
 	^ self new

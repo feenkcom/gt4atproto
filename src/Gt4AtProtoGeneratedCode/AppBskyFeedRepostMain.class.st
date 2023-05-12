@@ -18,6 +18,11 @@ AppBskyFeedRepostMain class >> atpRecordName [
  ^ 'app.bsky.feed.repost'
 ]
 
+{ #category : #accessing }
+AppBskyFeedRepostMain class >> atpSchema [
+ ^ '{"type":"record","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"ref","ref":"com.atproto.repo.strongRef"},"createdAt":{"type":"string","format":"datetime"}}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedRepostMain class >> fromRequest: aRequest [
 	^ self new

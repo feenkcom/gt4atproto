@@ -19,6 +19,11 @@ ComAtprotoServerCreateAppPasswordAppPassword class >> atpRecordName [
  ^ 'com.atproto.server.createAppPassword#appPassword'
 ]
 
+{ #category : #accessing }
+ComAtprotoServerCreateAppPasswordAppPassword class >> atpSchema [
+ ^ '{"type":"object","required":["name","password","createdAt"],"properties":{"name":{"type":"string"},"password":{"type":"string"},"createdAt":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
 	^ self new

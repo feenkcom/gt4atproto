@@ -17,6 +17,11 @@ AppBskyRichtextFacetMention class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#mention'
 ]
 
+{ #category : #accessing }
+AppBskyRichtextFacetMention class >> atpSchema [
+ ^ '{"type":"object","description":"A facet feature for actor mentions.","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetMention class >> fromRequest: aRequest [
 	^ self new

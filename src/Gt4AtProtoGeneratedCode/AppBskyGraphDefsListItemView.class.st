@@ -17,6 +17,11 @@ AppBskyGraphDefsListItemView class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listItemView'
 ]
 
+{ #category : #accessing }
+AppBskyGraphDefsListItemView class >> atpSchema [
+ ^ '{"type":"object","required":["subject"],"properties":{"subject":{"type":"ref","ref":"app.bsky.actor.defs#profileView"}}}'
+]
+
 { #category : #serialization }
 AppBskyGraphDefsListItemView class >> fromRequest: aRequest [
 	^ self new

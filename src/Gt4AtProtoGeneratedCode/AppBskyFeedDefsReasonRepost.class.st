@@ -18,6 +18,11 @@ AppBskyFeedDefsReasonRepost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#reasonRepost'
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsReasonRepost class >> atpSchema [
+ ^ '{"type":"object","required":["by","indexedAt"],"properties":{"by":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"indexedAt":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
 	^ self new

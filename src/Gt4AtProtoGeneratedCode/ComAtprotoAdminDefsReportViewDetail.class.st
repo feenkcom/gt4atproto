@@ -23,6 +23,11 @@ ComAtprotoAdminDefsReportViewDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#reportViewDetail'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsReportViewDetail class >> atpSchema [
+ ^ '{"type":"object","required":["id","reasonType","subject","reportedBy","createdAt","resolvedByActions"],"properties":{"id":{"type":"integer"},"reasonType":{"type":"ref","ref":"com.atproto.moderation.defs#reasonType"},"reason":{"type":"string"},"subject":{"type":"union","refs":["#repoView","#recordView"]},"reportedBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"resolvedByActions":{"type":"array","items":{"type":"ref","ref":"com.atproto.admin.defs#actionView"}}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsReportViewDetail class >> fromRequest: aRequest [
 	^ self new

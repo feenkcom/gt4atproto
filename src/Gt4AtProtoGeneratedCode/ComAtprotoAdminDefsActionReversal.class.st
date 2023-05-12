@@ -19,6 +19,11 @@ ComAtprotoAdminDefsActionReversal class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionReversal'
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionReversal class >> atpSchema [
+ ^ '{"type":"object","required":["reason","createdBy","createdAt"],"properties":{"reason":{"type":"string"},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
 	^ self new

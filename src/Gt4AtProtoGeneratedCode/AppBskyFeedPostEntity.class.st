@@ -19,6 +19,11 @@ AppBskyFeedPostEntity class >> atpRecordName [
  ^ 'app.bsky.feed.post#entity'
 ]
 
+{ #category : #accessing }
+AppBskyFeedPostEntity class >> atpSchema [
+ ^ '{"type":"object","description":"Deprecated: use facets instead.","required":["index","type","value"],"properties":{"index":{"type":"ref","ref":"#textSlice"},"type":{"type":"string","description":"Expected values are ''mention'' and ''link''."},"value":{"type":"string"}}}'
+]
+
 { #category : #serialization }
 AppBskyFeedPostEntity class >> fromRequest: aRequest [
 	^ self new

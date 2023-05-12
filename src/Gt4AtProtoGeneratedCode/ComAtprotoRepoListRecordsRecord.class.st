@@ -19,6 +19,11 @@ ComAtprotoRepoListRecordsRecord class >> atpRecordName [
  ^ 'com.atproto.repo.listRecords#record'
 ]
 
+{ #category : #accessing }
+ComAtprotoRepoListRecordsRecord class >> atpSchema [
+ ^ '{"type":"object","required":["uri","cid","value"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"value":{"type":"unknown"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
 	^ self new

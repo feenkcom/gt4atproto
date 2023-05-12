@@ -20,6 +20,11 @@ ComAtprotoSyncSubscribeReposHandle class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#handle'
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposHandle class >> atpSchema [
+ ^ '{"type":"object","required":["seq","did","handle","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"time":{"type":"string","format":"datetime"}}}'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest [
 	^ self new
