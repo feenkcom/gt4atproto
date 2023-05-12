@@ -18,7 +18,7 @@ GtApModelEntity class >> atpRecordName [
 { #category : #accessing }
 GtApModelEntity class >> findForRequest: aRequest [
 	| typeName |
-	typeName := aRequest at: '$type' ifAbsent: [ ^ nil ].
+	typeName := aRequest at: '$type' ifAbsent: [ ^ aRequest ].
 	self
 		allSubclassesDo: [ :aModelEntityClass | 
 			aModelEntityClass atpRecordName = typeName
