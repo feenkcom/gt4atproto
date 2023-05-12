@@ -1,41 +1,39 @@
 Trait {
-	#name : #TAppBskyFeedDefsFeedViewPost,
+	#name : #TAppBskyFeedDefsThreadViewPost,
 	#instVars : [
-		'',
 		'replies'
 	],
 	#category : #'Gt4AtProto-Extensions-Traits'
 }
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> author [
+TAppBskyFeedDefsThreadViewPost >> author [
 	^ self atpPost atpAuthor
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> createdAt [
+TAppBskyFeedDefsThreadViewPost >> createdAt [
 	^ self atpPost atpRecord atpCreatedAt
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> createdAtTimestamp [
+TAppBskyFeedDefsThreadViewPost >> createdAtTimestamp [
 	^ DateAndTime fromString: self createdAt
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> embed [
+TAppBskyFeedDefsThreadViewPost >> embed [
 	^ self atpPost atpEmbed
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> getReplies [
-	^ (((self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
-		at: 'thread') at: 'replies')
-		collect: [ :aDictionary | (GtApModelEntity findForRequest: aDictionary) client: self client ]
+TAppBskyFeedDefsThreadViewPost >> getReplies [
+	^ (self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
+		collect: [ :aDictionary | GtApModelEntity findForRequest: aDictionary ]
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
+TAppBskyFeedDefsThreadViewPost >> gtCardFor: aView [
 	<gtView>
 	
 	^ aView explicit
@@ -50,7 +48,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> gtThreadFor: aView [
+TAppBskyFeedDefsThreadViewPost >> gtThreadFor: aView [
 	<gtView>
 	^ aView tree
 		title: 'Thread';
@@ -62,16 +60,16 @@ TAppBskyFeedDefsFeedViewPost >> gtThreadFor: aView [
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> hasEmbed [
+TAppBskyFeedDefsThreadViewPost >> hasEmbed [
 	^ self embed isNotNil
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> recordText [
+TAppBskyFeedDefsThreadViewPost >> recordText [
 	^ self atpPost atpRecord atpText
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> replies [
+TAppBskyFeedDefsThreadViewPost >> replies [
 	^ replies ifNil: [ replies := self getReplies ]
 ]

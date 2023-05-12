@@ -8,7 +8,8 @@ Trait {
 
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadPosts [
-	^ self client appBskyFeedGetAuthorFeedactor: self atpHandle
+	^ (self client appBskyFeedGetAuthorFeedactor: self atpHandle)
+		collect: [ :aPost | aPost client: self client ]
 ]
 
 { #category : #accessing }
