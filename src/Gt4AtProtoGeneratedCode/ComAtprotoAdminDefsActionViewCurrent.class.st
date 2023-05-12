@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoAdminDefsActionViewCurrent class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsActionViewCurrent class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionViewCurrent'
 ]

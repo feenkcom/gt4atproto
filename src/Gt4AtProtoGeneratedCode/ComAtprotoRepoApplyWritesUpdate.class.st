@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoRepoApplyWritesUpdate class >> atpDescription [
+ ^ 'Update an existing record.'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoApplyWritesUpdate class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#update'
 ]

@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoAdminDefsModeration class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsModeration class >> atpRecordName [
  ^ 'com.atproto.admin.defs#moderation'
 ]

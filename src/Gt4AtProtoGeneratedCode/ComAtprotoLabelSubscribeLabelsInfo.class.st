@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoLabelSubscribeLabelsInfo class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo class >> atpRecordName [
  ^ 'com.atproto.label.subscribeLabels#info'
 ]

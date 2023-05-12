@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsThreadViewPost class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsThreadViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#threadViewPost'
 ]

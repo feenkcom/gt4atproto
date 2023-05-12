@@ -1,7 +1,6 @@
 Trait {
 	#name : #TAppBskyActorDefsProfileViewDetailed,
 	#instVars : [
-		'',
 		'posts'
 	],
 	#category : #'Gt4AtProto-Extensions-Traits'

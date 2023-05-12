@@ -11,6 +11,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposMigrate class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#migrate'
 ]

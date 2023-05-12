@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyGraphFollowMain class >> atpDescription [
+ ^ 'A social follow.'
+]
+
+{ #category : #accessing }
 AppBskyGraphFollowMain class >> atpRecordName [
  ^ 'app.bsky.graph.follow'
 ]

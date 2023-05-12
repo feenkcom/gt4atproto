@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsBlockedPost class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsBlockedPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#blockedPost'
 ]

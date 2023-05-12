@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsViewerState class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.feed.defs#viewerState'
 ]

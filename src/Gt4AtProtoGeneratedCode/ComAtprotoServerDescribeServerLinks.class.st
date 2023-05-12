@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoServerDescribeServerLinks class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoServerDescribeServerLinks class >> atpRecordName [
  ^ 'com.atproto.server.describeServer#links'
 ]

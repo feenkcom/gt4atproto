@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApBuilder,
 	#instVars : [
 		'packageName',
-		'modelSuperClass'
+		'modelSuperClass',
+		'prefix'
 	],
 	#category : #'Gt4AtProto-Code Generation'
 }
@@ -25,8 +26,17 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 
 					(GtRBSilentlyAddMethodRefactoring
 						model: aModel
-						addMethod: 'atpRecordName
+						addMethod: self prefix
+								, 'RecordName
  ^ ''' , (aKey removeSuffix: '#main') , ''''
+						toClass: (aModel classNamed: className asSymbol) classSide
+						inProtocols: {'accessing'}) primitiveExecute.
+
+					(GtRBSilentlyAddMethodRefactoring
+						model: aModel
+						addMethod: self prefix
+								, 'Description
+ ^ ''' , (aDefinition description ifNil: [ '' ]) , ''''
 						toClass: (aModel classNamed: className asSymbol) classSide
 						inProtocols: {'accessing'}) primitiveExecute.
 
@@ -47,9 +57,15 @@ GtApDefinitionsBuilder >> defaultPackageName [
 ]
 
 { #category : #accessing }
+GtApDefinitionsBuilder >> defaultPrefix [
+	^ #atProto
+]
+
+{ #category : #accessing }
 GtApDefinitionsBuilder >> initialize [
 	packageName := self defaultPackageName.
-	modelSuperClass := self defaultModelSuperClass
+	modelSuperClass := self defaultModelSuperClass.
+	prefix := self defaultPrefix
 ]
 
 { #category : #accessing }
@@ -70,6 +86,16 @@ GtApDefinitionsBuilder >> packageName [
 { #category : #accessing }
 GtApDefinitionsBuilder >> packageName: anObject [
 	packageName := anObject
+]
+
+{ #category : #accessing }
+GtApDefinitionsBuilder >> prefix [
+	^ prefix
+]
+
+{ #category : #accessing }
+GtApDefinitionsBuilder >> prefix: anObject [
+	prefix := anObject
 ]
 
 { #category : #accessing }

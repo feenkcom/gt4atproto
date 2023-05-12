@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposRepoOp class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#repoOp'
 ]

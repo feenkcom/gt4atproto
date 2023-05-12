@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyGraphDefsListViewerState class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyGraphDefsListViewerState class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listViewerState'
 ]

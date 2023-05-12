@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoAdminDefsBlobView class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsBlobView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#blobView'
 ]

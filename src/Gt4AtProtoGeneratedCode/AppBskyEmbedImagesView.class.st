@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyEmbedImagesView class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyEmbedImagesView class >> atpRecordName [
  ^ 'app.bsky.embed.images#view'
 ]

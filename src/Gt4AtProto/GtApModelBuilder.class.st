@@ -135,11 +135,12 @@ GtApModelBuilder >> useDefinitionsBuilder [
 ]
 
 { #category : #accessing }
-GtApModelBuilder >> useDefinitionsBuilderInPackage: aPackageName [
+GtApModelBuilder >> useDefinitionsBuilderInPackage: aPackageName withPrefix: aPrefix [
 	builders
 		add: (GtApDefinitionsBuilder new
 				packageName: aPackageName;
-				lexicons: self lexicons)
+				lexicons: self lexicons;
+				prefix: aPrefix)
 ]
 
 { #category : #accessing }

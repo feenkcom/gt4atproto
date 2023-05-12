@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyRichtextFacetMain class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetMain class >> atpRecordName [
  ^ 'app.bsky.richtext.facet'
 ]

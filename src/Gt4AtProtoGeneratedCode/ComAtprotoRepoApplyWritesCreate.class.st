@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoRepoApplyWritesCreate class >> atpDescription [
+ ^ 'Create a new record.'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoApplyWritesCreate class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#create'
 ]

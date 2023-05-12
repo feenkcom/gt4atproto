@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedPostTextSlice class >> atpDescription [
+ ^ 'Deprecated. Use app.bsky.richtext instead -- A text segment. Start is inclusive, end is exclusive. Indices are for utf16-encoded strings.'
+]
+
+{ #category : #accessing }
 AppBskyFeedPostTextSlice class >> atpRecordName [
  ^ 'app.bsky.feed.post#textSlice'
 ]

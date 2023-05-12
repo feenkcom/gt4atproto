@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsNotFoundPost class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsNotFoundPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#notFoundPost'
 ]

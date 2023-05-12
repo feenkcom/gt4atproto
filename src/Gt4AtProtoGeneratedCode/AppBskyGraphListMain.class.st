@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyGraphListMain class >> atpDescription [
+ ^ 'A declaration of a list of actors.'
+]
+
+{ #category : #accessing }
 AppBskyGraphListMain class >> atpRecordName [
  ^ 'app.bsky.graph.list'
 ]

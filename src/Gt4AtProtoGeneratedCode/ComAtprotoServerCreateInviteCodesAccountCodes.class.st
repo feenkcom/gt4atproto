@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoServerCreateInviteCodesAccountCodes class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpRecordName [
  ^ 'com.atproto.server.createInviteCodes#accountCodes'
 ]

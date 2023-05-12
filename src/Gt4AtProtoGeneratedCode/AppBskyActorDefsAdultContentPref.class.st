@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyActorDefsAdultContentPref class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyActorDefsAdultContentPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#adultContentPref'
 ]

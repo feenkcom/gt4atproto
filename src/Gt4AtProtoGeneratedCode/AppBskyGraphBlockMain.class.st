@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyGraphBlockMain class >> atpDescription [
+ ^ 'A block.'
+]
+
+{ #category : #accessing }
 AppBskyGraphBlockMain class >> atpRecordName [
  ^ 'app.bsky.graph.block'
 ]

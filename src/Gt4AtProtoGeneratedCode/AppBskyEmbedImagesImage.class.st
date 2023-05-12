@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyEmbedImagesImage class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyEmbedImagesImage class >> atpRecordName [
  ^ 'app.bsky.embed.images#image'
 ]

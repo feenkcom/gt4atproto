@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoServerCreateAppPasswordAppPassword class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword class >> atpRecordName [
  ^ 'com.atproto.server.createAppPassword#appPassword'
 ]

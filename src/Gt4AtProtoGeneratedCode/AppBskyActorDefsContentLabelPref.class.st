@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyActorDefsContentLabelPref class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyActorDefsContentLabelPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#contentLabelPref'
 ]

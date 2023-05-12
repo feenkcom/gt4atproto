@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyRichtextFacetMention class >> atpDescription [
+ ^ 'A facet feature for actor mentions.'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetMention class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#mention'
 ]

@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyEmbedRecordViewNotFound class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordViewNotFound class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewNotFound'
 ]

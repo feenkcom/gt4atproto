@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyEmbedRecordWithMediaMain class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordWithMediaMain class >> atpRecordName [
  ^ 'app.bsky.embed.recordWithMedia'
 ]

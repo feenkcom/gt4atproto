@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsReplyRef class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsReplyRef class >> atpRecordName [
  ^ 'app.bsky.feed.defs#replyRef'
 ]

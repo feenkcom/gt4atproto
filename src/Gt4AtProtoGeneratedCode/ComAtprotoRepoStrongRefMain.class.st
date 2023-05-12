@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoRepoStrongRefMain class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoRepoStrongRefMain class >> atpRecordName [
  ^ 'com.atproto.repo.strongRef'
 ]

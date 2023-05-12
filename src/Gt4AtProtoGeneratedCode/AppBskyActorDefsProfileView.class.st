@@ -15,6 +15,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyActorDefsProfileView class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyActorDefsProfileView class >> atpRecordName [
  ^ 'app.bsky.actor.defs#profileView'
 ]

@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyGraphListitemMain class >> atpDescription [
+ ^ 'An item under a declared list of actors'
+]
+
+{ #category : #accessing }
 AppBskyGraphListitemMain class >> atpRecordName [
  ^ 'app.bsky.graph.listitem'
 ]

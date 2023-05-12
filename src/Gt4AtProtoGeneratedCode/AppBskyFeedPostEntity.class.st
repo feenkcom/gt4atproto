@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedPostEntity class >> atpDescription [
+ ^ 'Deprecated: use facets instead.'
+]
+
+{ #category : #accessing }
 AppBskyFeedPostEntity class >> atpRecordName [
  ^ 'app.bsky.feed.post#entity'
 ]

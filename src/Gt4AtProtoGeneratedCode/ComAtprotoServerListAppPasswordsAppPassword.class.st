@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoServerListAppPasswordsAppPassword class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoServerListAppPasswordsAppPassword class >> atpRecordName [
  ^ 'com.atproto.server.listAppPasswords#appPassword'
 ]

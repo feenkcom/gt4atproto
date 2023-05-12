@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoRepoApplyWritesDelete class >> atpDescription [
+ ^ 'Delete an existing record.'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoApplyWritesDelete class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#delete'
 ]

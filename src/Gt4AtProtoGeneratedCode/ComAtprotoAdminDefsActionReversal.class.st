@@ -10,6 +10,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoAdminDefsActionReversal class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsActionReversal class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionReversal'
 ]

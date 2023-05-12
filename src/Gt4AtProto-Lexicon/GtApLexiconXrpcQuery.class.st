@@ -17,9 +17,7 @@ GtApLexiconXrpcQuery >> acceptVisitor: aLexiconVisitor [
 { #category : #accessing }
 GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	| methodName |
-	methodName := self methodName: aName.
-
-	"pagination is handled elsewhere and shouldn’t be exposed to the user"
+	methodName := self methodName: aName.	"pagination is handled elsewhere and shouldn’t be exposed to the user"
 	self parameters properties
 		keysDo: [ :anInputName | 
 			({'limit'.
@@ -29,6 +27,8 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	^ methodName
 		, '
 	<xrpcQuery>
+	"' , (self description ifNil: [ '' ])
+		, '"
 	^ ' , self output generateDeserialization , ' (self queryOn: ''' , aName
 		, ''' parameters: {' , ('. ' join: self xrpcRequestParameterAssociations)
 		, '} asDictionary)'

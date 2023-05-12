@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyRichtextFacetLink class >> atpDescription [
+ ^ 'A facet feature for links.'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetLink class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#link'
 ]

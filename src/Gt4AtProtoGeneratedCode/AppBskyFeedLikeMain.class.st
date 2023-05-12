@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedLikeMain class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedLikeMain class >> atpRecordName [
  ^ 'app.bsky.feed.like'
 ]

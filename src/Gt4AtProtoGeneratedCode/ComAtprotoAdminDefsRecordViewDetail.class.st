@@ -15,6 +15,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoAdminDefsRecordViewDetail class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#recordViewDetail'
 ]

@@ -17,6 +17,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#commit'
 ]

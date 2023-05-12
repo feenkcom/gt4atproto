@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedPostMain class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedPostMain class >> atpRecordName [
  ^ 'app.bsky.feed.post'
 ]

@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyRichtextFacetByteSlice class >> atpDescription [
+ ^ 'A text segment. Start is inclusive, end is exclusive. Indices are for utf8-encoded strings.'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetByteSlice class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#byteSlice'
 ]

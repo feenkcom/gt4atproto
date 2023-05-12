@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyActorDefsViewerState class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyActorDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.actor.defs#viewerState'
 ]

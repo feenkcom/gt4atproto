@@ -12,6 +12,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsFeedViewPost class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsFeedViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#feedViewPost'
 ]

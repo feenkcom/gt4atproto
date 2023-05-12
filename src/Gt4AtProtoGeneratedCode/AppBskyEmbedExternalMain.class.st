@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyEmbedExternalMain class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyEmbedExternalMain class >> atpRecordName [
  ^ 'app.bsky.embed.external'
 ]

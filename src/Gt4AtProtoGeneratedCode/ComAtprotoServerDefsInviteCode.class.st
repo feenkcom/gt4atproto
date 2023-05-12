@@ -14,6 +14,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoServerDefsInviteCode class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoServerDefsInviteCode class >> atpRecordName [
  ^ 'com.atproto.server.defs#inviteCode'
 ]

@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoAdminDefsImageDetails class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsImageDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#imageDetails'
 ]

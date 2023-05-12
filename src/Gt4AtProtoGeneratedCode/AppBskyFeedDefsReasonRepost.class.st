@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+AppBskyFeedDefsReasonRepost class >> atpDescription [
+ ^ ''
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsReasonRepost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#reasonRepost'
 ]

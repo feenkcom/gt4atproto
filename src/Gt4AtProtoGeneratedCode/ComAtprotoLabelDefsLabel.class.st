@@ -13,6 +13,11 @@ Class {
 }
 
 { #category : #accessing }
+ComAtprotoLabelDefsLabel class >> atpDescription [
+ ^ 'Metadata tag on an atproto resource (eg, repo or record)'
+]
+
+{ #category : #accessing }
 ComAtprotoLabelDefsLabel class >> atpRecordName [
  ^ 'com.atproto.label.defs#label'
 ]
