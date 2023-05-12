@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedGetLikesLike class >> atpRecordName [
+ ^ 'app.bsky.feed.getLikes#like'
+]
+
 { #category : #serialization }
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
 	^ self new

@@ -13,3 +13,8 @@ GtApLexiconBlob class >> typeName [
 GtApLexiconBlob >> acceptVisitor: aLexiconVisitor [
 	^ aLexiconVisitor visitLexiconBlob: self
 ]
+
+{ #category : #accessing }
+GtApLexiconBlob >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifAbsent: [ nil ]'
+]

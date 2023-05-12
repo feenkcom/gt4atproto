@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedDefsReplyRef class >> atpRecordName [
+ ^ 'app.bsky.feed.defs#replyRef'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 	^ self new

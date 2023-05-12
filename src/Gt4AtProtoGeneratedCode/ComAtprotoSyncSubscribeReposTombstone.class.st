@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposTombstone class >> atpRecordName [
+ ^ 'com.atproto.sync.subscribeRepos#tombstone'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest [
 	^ self new

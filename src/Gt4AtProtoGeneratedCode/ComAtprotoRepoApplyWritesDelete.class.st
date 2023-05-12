@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoRepoApplyWritesDelete class >> atpRecordName [
+ ^ 'com.atproto.repo.applyWrites#delete'
+]
+
 { #category : #serialization }
 ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
 	^ self new

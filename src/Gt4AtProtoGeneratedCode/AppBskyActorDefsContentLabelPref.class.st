@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyActorDefsContentLabelPref class >> atpRecordName [
+ ^ 'app.bsky.actor.defs#contentLabelPref'
+]
+
 { #category : #serialization }
 AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest [
 	^ self new

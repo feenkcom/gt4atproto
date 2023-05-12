@@ -12,15 +12,20 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedPostMain class >> atpRecordName [
+ ^ 'app.bsky.feed.post'
+]
+
 { #category : #serialization }
 AppBskyFeedPostMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpText: (aRequest at: 'text' ifAbsent: [ nil ]); 
-		atpEntities: (aRequest at: 'entities' ifAbsent: [ nil ]); 
-		atpFacets: (aRequest at: 'facets' ifAbsent: [ nil ]); 
+		atpEntities: (aRequest at: 'entities' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyFeedPostEntity fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpFacets: (aRequest at: 'facets' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyRichtextFacetMain fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedPostReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
+		atpEmbed: (aRequest at: 'embed' ifPresent: [:aValue | ({'app.bsky.embed.images' -> AppBskyEmbedImagesMain. 'app.bsky.embed.external' -> AppBskyEmbedExternalMain. 'app.bsky.embed.record' -> AppBskyEmbedRecordMain. 'app.bsky.embed.recordWithMedia' -> AppBskyEmbedRecordWithMediaMain} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 

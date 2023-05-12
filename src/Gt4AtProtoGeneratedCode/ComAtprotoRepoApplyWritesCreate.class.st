@@ -9,13 +9,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoRepoApplyWritesCreate class >> atpRecordName [
+ ^ 'com.atproto.repo.applyWrites#create'
+]
+
 { #category : #serialization }
 ComAtprotoRepoApplyWritesCreate class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
 		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
+		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

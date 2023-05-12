@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #accessing }
+GtApLexiconPrimitive >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconPrimitive >> description [
 	^ description
 ]

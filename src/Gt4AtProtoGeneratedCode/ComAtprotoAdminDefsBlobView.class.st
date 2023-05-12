@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsBlobView class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#blobView'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 	^ self new
@@ -20,7 +25,7 @@ ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 		atpMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]); 
 		atpSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpDetails: (aRequest at: 'details' ifAbsent: [ nil ]); 
+		atpDetails: (aRequest at: 'details' ifPresent: [:aValue | ({'com.atproto.admin.defs#imageDetails' -> ComAtprotoAdminDefsImageDetails. 'com.atproto.admin.defs#videoDetails' -> ComAtprotoAdminDefsVideoDetails} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
 		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 

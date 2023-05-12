@@ -15,6 +15,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphDefsListView class >> atpRecordName [
+ ^ 'app.bsky.graph.defs#listView'
+]
+
 { #category : #serialization }
 AppBskyGraphDefsListView class >> fromRequest: aRequest [
 	^ self new
@@ -24,7 +29,7 @@ AppBskyGraphDefsListView class >> fromRequest: aRequest [
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
 		atpPurpose: (aRequest at: 'purpose' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpDescriptionFacets: (aRequest at: 'descriptionFacets' ifAbsent: [ nil ]); 
+		atpDescriptionFacets: (aRequest at: 'descriptionFacets' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyRichtextFacetMain fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
 		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])

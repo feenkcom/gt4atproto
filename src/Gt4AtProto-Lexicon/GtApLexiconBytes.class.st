@@ -18,6 +18,11 @@ GtApLexiconBytes >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconBytes >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconBytes >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString

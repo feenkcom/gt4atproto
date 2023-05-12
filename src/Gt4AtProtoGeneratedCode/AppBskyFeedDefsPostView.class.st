@@ -17,6 +17,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedDefsPostView class >> atpRecordName [
+ ^ 'app.bsky.feed.defs#postView'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 	^ self new
@@ -24,14 +29,14 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
-		atpEmbed: (aRequest at: 'embed' ifAbsent: [ nil ]); 
+		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
+		atpEmbed: (aRequest at: 'embed' ifPresent: [:aValue | ({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView. 'app.bsky.embed.external#view' -> AppBskyEmbedExternalView. 'app.bsky.embed.record#view' -> AppBskyEmbedRecordView. 'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
 		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]); 
 		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]); 
 		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
 		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyFeedDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

@@ -13,6 +13,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsReportViewDetail class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#reportViewDetail'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsReportViewDetail class >> fromRequest: aRequest [
 	^ self new
@@ -20,10 +25,10 @@ ComAtprotoAdminDefsReportViewDetail class >> fromRequest: aRequest [
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
 		atpReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView. 'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
 		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpResolvedByActions: (aRequest at: 'resolvedByActions' ifAbsent: [ nil ])
+		atpResolvedByActions: (aRequest at: 'resolvedByActions' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsActionView fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

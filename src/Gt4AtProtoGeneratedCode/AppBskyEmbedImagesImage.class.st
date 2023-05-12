@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedImagesImage class >> atpRecordName [
+ ^ 'app.bsky.embed.images#image'
+]
+
 { #category : #serialization }
 AppBskyEmbedImagesImage class >> fromRequest: aRequest [
 	^ self new

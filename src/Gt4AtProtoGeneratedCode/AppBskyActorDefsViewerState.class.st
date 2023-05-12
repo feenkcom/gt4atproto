@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyActorDefsViewerState class >> atpRecordName [
+ ^ 'app.bsky.actor.defs#viewerState'
+]
+
 { #category : #serialization }
 AppBskyActorDefsViewerState class >> fromRequest: aRequest [
 	^ self new

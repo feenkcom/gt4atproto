@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoServerDescribeServerLinks class >> atpRecordName [
+ ^ 'com.atproto.server.describeServer#links'
+]
+
 { #category : #serialization }
 ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
 	^ self new

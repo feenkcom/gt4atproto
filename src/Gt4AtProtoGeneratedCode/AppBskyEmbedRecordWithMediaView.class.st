@@ -8,12 +8,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedRecordWithMediaView class >> atpRecordName [
+ ^ 'app.bsky.embed.recordWithMedia#view'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpMedia: (aRequest at: 'media' ifAbsent: [ nil ])
+		atpMedia: (aRequest at: 'media' ifPresent: [:aValue | ({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView. 'app.bsky.embed.external#view' -> AppBskyEmbedExternalView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

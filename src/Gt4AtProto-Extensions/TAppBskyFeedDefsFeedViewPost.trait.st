@@ -13,7 +13,7 @@ TAppBskyFeedDefsFeedViewPost >> author [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> createdAt [
-	^ (self atpPost atpRecord at: 'createdAt')
+	^ self atpPost atpRecord atpCreatedAt
 ]
 
 { #category : #accessing }
@@ -43,5 +43,5 @@ TAppBskyFeedDefsFeedViewPost >> hasPhotos [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> recordText [
-	^ self atpPost atpRecord at: 'text'
+	^ self atpPost atpRecord atpText
 ]

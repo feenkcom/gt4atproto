@@ -18,6 +18,11 @@ GtApLexiconDefinition >> acceptVisitor: aLexiconVisitor [
 	self subclassResponsibility
 ]
 
+{ #category : #accessing }
+GtApLexiconDefinition >> buildFromRequestWithKey: aKey [
+	^ self subclassResponsibility
+]
+
 { #category : #printing }
 GtApLexiconDefinition >> descriptionOn: aStream [ 
 ]

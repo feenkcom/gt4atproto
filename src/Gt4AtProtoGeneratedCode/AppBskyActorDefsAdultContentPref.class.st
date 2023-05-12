@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyActorDefsAdultContentPref class >> atpRecordName [
+ ^ 'app.bsky.actor.defs#adultContentPref'
+]
+
 { #category : #serialization }
 AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest [
 	^ self new

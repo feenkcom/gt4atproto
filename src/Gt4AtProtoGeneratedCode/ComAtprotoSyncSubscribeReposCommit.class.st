@@ -16,6 +16,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit class >> atpRecordName [
+ ^ 'com.atproto.sync.subscribeRepos#commit'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 	^ self new
@@ -27,8 +32,8 @@ ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 		atpCommit: (aRequest at: 'commit' ifAbsent: [ nil ]); 
 		atpPrev: (aRequest at: 'prev' ifAbsent: [ nil ]); 
 		atpBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]); 
-		atpOps: (aRequest at: 'ops' ifAbsent: [ nil ]); 
-		atpBlobs: (aRequest at: 'blobs' ifAbsent: [ nil ]); 
+		atpOps: (aRequest at: 'ops' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoSyncSubscribeReposRepoOp fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpBlobs: (aRequest at: 'blobs' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 

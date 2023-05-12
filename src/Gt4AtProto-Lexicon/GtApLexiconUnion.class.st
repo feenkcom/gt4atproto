@@ -26,6 +26,15 @@ GtApLexiconUnion >> asClassName [
 ]
 
 { #category : #accessing }
+GtApLexiconUnion >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | ({'
+		, ('. '
+				join: (self referencedDefinitions
+						collect: [ :anObject | '''' , (anObject id removeSuffix: '#main') , ''' -> ' , anObject asClassName ]))
+		, '} asDictionary at: (aValue at: ''$type'')) fromRequest: aValue] ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconUnion >> description [
 	^ nil
 ]

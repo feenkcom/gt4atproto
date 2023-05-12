@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposInfo class >> atpRecordName [
+ ^ 'com.atproto.sync.subscribeRepos#info'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest [
 	^ self new

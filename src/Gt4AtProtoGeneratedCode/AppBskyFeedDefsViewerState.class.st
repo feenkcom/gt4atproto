@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedDefsViewerState class >> atpRecordName [
+ ^ 'app.bsky.feed.defs#viewerState'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
 	^ self new

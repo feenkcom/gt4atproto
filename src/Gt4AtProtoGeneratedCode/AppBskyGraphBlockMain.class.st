@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphBlockMain class >> atpRecordName [
+ ^ 'app.bsky.graph.block'
+]
+
 { #category : #serialization }
 AppBskyGraphBlockMain class >> fromRequest: aRequest [
 	^ self new

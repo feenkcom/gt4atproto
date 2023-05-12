@@ -8,12 +8,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyRichtextFacetMain class >> atpRecordName [
+ ^ 'app.bsky.richtext.facet'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpFeatures: (aRequest at: 'features' ifAbsent: [ nil ])
+		atpFeatures: (aRequest at: 'features' ifPresent: [:anArray | anArray collect: [:aValue |Mention. Link fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

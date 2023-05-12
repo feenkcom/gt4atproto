@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyActorProfileMain class >> atpRecordName [
+ ^ 'app.bsky.actor.profile'
+]
+
 { #category : #serialization }
 AppBskyActorProfileMain class >> fromRequest: aRequest [
 	^ self new

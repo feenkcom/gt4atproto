@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphListMain class >> atpRecordName [
+ ^ 'app.bsky.graph.list'
+]
+
 { #category : #serialization }
 AppBskyGraphListMain class >> fromRequest: aRequest [
 	^ self new
@@ -19,7 +24,7 @@ AppBskyGraphListMain class >> fromRequest: aRequest [
 		atpPurpose: (aRequest at: 'purpose' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpDescriptionFacets: (aRequest at: 'descriptionFacets' ifAbsent: [ nil ]); 
+		atpDescriptionFacets: (aRequest at: 'descriptionFacets' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyRichtextFacetMain fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

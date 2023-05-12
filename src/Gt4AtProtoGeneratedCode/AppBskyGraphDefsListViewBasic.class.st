@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphDefsListViewBasic class >> atpRecordName [
+ ^ 'app.bsky.graph.defs#listViewBasic'
+]
+
 { #category : #serialization }
 AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 	^ self new

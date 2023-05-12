@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoLabelSubscribeLabelsInfo class >> atpRecordName [
+ ^ 'com.atproto.label.subscribeLabels#info'
+]
+
 { #category : #serialization }
 ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest [
 	^ self new

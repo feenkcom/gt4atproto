@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedDefsNotFoundPost class >> atpRecordName [
+ ^ 'app.bsky.feed.defs#notFoundPost'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
 	^ self new

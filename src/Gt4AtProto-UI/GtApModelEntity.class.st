@@ -11,6 +11,22 @@ Class {
 }
 
 { #category : #accessing }
+GtApModelEntity class >> atpRecordName [
+	^ ''
+]
+
+{ #category : #accessing }
+GtApModelEntity class >> findForRequest: aRequest [
+	| typeName |
+	typeName := aRequest at: '$type' ifAbsent: [ ^ nil ].
+	self
+		allSubclassesDo: [ :aModelEntityClass | 
+			aModelEntityClass atpRecordName = typeName
+				ifTrue: [ ^ aModelEntityClass fromRequest: aRequest ] ].
+	^ aRequest
+]
+
+{ #category : #accessing }
 GtApModelEntity class >> fromRawData: aDictionary [
 	^ self new 
 		rawData: aDictionary

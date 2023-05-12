@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoRepoStrongRefMain class >> atpRecordName [
+ ^ 'com.atproto.repo.strongRef'
+]
+
 { #category : #serialization }
 ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
 	^ self new

@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoServerDefsInviteCodeUse class >> atpRecordName [
+ ^ 'com.atproto.server.defs#inviteCodeUse'
+]
+
 { #category : #serialization }
 ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
 	^ self new

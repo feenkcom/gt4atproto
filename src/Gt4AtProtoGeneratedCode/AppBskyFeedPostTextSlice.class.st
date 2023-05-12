@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedPostTextSlice class >> atpRecordName [
+ ^ 'app.bsky.feed.post#textSlice'
+]
+
 { #category : #serialization }
 AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
 	^ self new

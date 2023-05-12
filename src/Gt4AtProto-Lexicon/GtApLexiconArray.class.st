@@ -21,6 +21,13 @@ GtApLexiconArray >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconArray >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey
+		, ''' ifPresent: [:anArray | anArray collect: [:aValue |'
+		, self items asClassName , ' fromRequest: aValue ] ] ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconArray >> description [
 	^ description
 ]

@@ -23,6 +23,13 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 						subclasses: #()
 						category: self packageName) primitiveExecute.
 
+					(GtRBSilentlyAddMethodRefactoring
+						model: aModel
+						addMethod: 'atpRecordName
+ ^ ''' , (aKey removeSuffix: '#main') , ''''
+						toClass: (aModel classNamed: className asSymbol) classSide
+						inProtocols: {'accessing'}) primitiveExecute.
+
 					traitName
 						asClassIfPresent: [ ((GtRBAddTraitUsageToClassByNameRefactoring
 								traitName: traitName

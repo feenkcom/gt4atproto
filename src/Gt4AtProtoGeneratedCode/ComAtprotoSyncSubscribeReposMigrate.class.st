@@ -10,6 +10,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposMigrate class >> atpRecordName [
+ ^ 'com.atproto.sync.subscribeRepos#migrate'
+]
+
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
 	^ self new

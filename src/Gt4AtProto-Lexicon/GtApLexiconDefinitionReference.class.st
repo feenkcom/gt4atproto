@@ -24,6 +24,12 @@ GtApLexiconDefinitionReference >> asClassName [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinitionReference >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | ' , self asClassName
+		, ' fromRequest: aValue ] ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconDefinitionReference >> description [
 	^ nil
 ]

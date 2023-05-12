@@ -20,6 +20,11 @@ GtApLexiconUnknownDefinition >> asClassName [
 ]
 
 { #category : #accessing }
+GtApLexiconUnknownDefinition >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconUnknownDefinition >> description [
 	^ nil
 ]

@@ -13,6 +13,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoServerDefsInviteCode class >> atpRecordName [
+ ^ 'com.atproto.server.defs#inviteCode'
+]
+
 { #category : #serialization }
 ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
 	^ self new
@@ -23,7 +28,7 @@ ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
 		atpForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]); 
 		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpUses: (aRequest at: 'uses' ifAbsent: [ nil ])
+		atpUses: (aRequest at: 'uses' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoServerDefsInviteCodeUse fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

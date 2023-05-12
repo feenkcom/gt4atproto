@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionReversal class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#actionReversal'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
 	^ self new

@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedPostEntity class >> atpRecordName [
+ ^ 'app.bsky.feed.post#entity'
+]
+
 { #category : #serialization }
 AppBskyFeedPostEntity class >> fromRequest: aRequest [
 	^ self new

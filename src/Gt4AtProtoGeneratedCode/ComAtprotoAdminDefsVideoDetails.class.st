@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsVideoDetails class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#videoDetails'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsVideoDetails class >> fromRequest: aRequest [
 	^ self new

@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphListitemMain class >> atpRecordName [
+ ^ 'app.bsky.graph.listitem'
+]
+
 { #category : #serialization }
 AppBskyGraphListitemMain class >> fromRequest: aRequest [
 	^ self new

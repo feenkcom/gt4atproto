@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedRecordViewBlocked class >> atpRecordName [
+ ^ 'app.bsky.embed.record#viewBlocked'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest [
 	^ self new

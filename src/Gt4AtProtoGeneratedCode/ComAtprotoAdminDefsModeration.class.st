@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsModeration class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#moderation'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsModeration class >> fromRequest: aRequest [
 	^ self new

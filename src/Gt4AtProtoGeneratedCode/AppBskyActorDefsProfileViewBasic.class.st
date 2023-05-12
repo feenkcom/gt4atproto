@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyActorDefsProfileViewBasic class >> atpRecordName [
+ ^ 'app.bsky.actor.defs#profileViewBasic'
+]
+
 { #category : #serialization }
 AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 	^ self new
@@ -21,7 +26,7 @@ AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
 		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

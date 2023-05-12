@@ -13,6 +13,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord class >> atpRecordName [
+ ^ 'app.bsky.embed.record#viewRecord'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 	^ self new
@@ -20,9 +25,9 @@ AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ]); 
-		atpEmbeds: (aRequest at: 'embeds' ifAbsent: [ nil ]); 
+		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
+		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpEmbeds: (aRequest at: 'embeds' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 

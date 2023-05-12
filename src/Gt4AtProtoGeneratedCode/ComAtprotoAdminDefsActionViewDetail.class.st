@@ -17,21 +17,26 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionViewDetail class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#actionViewDetail'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
 		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atpSubjectBlobs: (aRequest at: 'subjectBlobs' ifAbsent: [ nil ]); 
-		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
-		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView. 'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
+		atpSubjectBlobs: (aRequest at: 'subjectBlobs' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsBlobView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
 		atpReversal: (aRequest at: 'reversal' ifPresent: [:aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpResolvedReports: (aRequest at: 'resolvedReports' ifAbsent: [ nil ])
+		atpResolvedReports: (aRequest at: 'resolvedReports' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsReportView fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

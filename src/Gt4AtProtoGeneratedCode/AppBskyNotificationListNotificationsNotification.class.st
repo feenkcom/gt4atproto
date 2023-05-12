@@ -15,6 +15,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyNotificationListNotificationsNotification class >> atpRecordName [
+ ^ 'app.bsky.notification.listNotifications#notification'
+]
+
 { #category : #serialization }
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
 	^ self new
@@ -24,10 +29,10 @@ AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest 
 		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atpReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]); 
-		atpRecord: (aRequest at: 'record' ifAbsent: [ nil ]); 
+		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
 		atpIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

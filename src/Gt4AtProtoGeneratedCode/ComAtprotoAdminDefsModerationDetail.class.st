@@ -9,13 +9,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsModerationDetail class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#moderationDetail'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpActions: (aRequest at: 'actions' ifAbsent: [ nil ]); 
-		atpReports: (aRequest at: 'reports' ifAbsent: [ nil ])
+		atpActions: (aRequest at: 'actions' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsActionView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpReports: (aRequest at: 'reports' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsReportView fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

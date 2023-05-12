@@ -8,12 +8,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoServerCreateInviteCodesAccountCodes class >> atpRecordName [
+ ^ 'com.atproto.server.createInviteCodes#accountCodes'
+]
+
 { #category : #serialization }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
-		atpCodes: (aRequest at: 'codes' ifAbsent: [ nil ])
+		atpCodes: (aRequest at: 'codes' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedExternalView class >> atpRecordName [
+ ^ 'app.bsky.embed.external#view'
+]
+
 { #category : #serialization }
 AppBskyEmbedExternalView class >> fromRequest: aRequest [
 	^ self new

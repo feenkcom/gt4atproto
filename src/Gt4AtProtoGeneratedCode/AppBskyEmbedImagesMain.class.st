@@ -7,11 +7,16 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedImagesMain class >> atpRecordName [
+ ^ 'app.bsky.embed.images'
+]
+
 { #category : #serialization }
 AppBskyEmbedImagesMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpImages: (aRequest at: 'images' ifAbsent: [ nil ])
+		atpImages: (aRequest at: 'images' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyEmbedImagesImage fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

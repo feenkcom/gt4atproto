@@ -12,6 +12,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoLabelDefsLabel class >> atpRecordName [
+ ^ 'com.atproto.label.defs#label'
+]
+
 { #category : #serialization }
 ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
 	^ self new

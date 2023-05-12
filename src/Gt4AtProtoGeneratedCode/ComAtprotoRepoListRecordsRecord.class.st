@@ -9,13 +9,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoRepoListRecordsRecord class >> atpRecordName [
+ ^ 'com.atproto.repo.listRecords#record'
+]
+
 { #category : #serialization }
 ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
+		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

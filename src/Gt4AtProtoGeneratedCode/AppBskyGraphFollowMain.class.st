@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphFollowMain class >> atpRecordName [
+ ^ 'app.bsky.graph.follow'
+]
+
 { #category : #serialization }
 AppBskyGraphFollowMain class >> fromRequest: aRequest [
 	^ self new

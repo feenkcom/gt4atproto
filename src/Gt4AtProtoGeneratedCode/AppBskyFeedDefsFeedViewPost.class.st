@@ -11,13 +11,18 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedDefsFeedViewPost class >> atpRecordName [
+ ^ 'app.bsky.feed.defs#feedViewPost'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ])
+		atpReason: (aRequest at: 'reason' ifPresent: [:aValue | ({'app.bsky.feed.defs#reasonRepost' -> AppBskyFeedDefsReasonRepost} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

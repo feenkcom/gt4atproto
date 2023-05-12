@@ -8,12 +8,17 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoLabelSubscribeLabelsLabels class >> atpRecordName [
+ ^ 'com.atproto.label.subscribeLabels#labels'
+]
+
 { #category : #serialization }
 ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
+		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

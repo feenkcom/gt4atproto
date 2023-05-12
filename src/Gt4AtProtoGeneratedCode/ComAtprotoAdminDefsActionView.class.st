@@ -17,21 +17,26 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionView class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#actionView'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
 		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atpSubjectBlobCids: (aRequest at: 'subjectBlobCids' ifAbsent: [ nil ]); 
-		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifAbsent: [ nil ]); 
-		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef. 'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
+		atpSubjectBlobCids: (aRequest at: 'subjectBlobCids' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
 		atpReversal: (aRequest at: 'reversal' ifPresent: [:aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpResolvedReportIds: (aRequest at: 'resolvedReportIds' ifAbsent: [ nil ])
+		atpResolvedReportIds: (aRequest at: 'resolvedReportIds' ifPresent: [:anArray | anArray collect: [:aValue |Number fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyFeedDefsBlockedPost class >> atpRecordName [
+ ^ 'app.bsky.feed.defs#blockedPost'
+]
+
 { #category : #serialization }
 AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
 	^ self new

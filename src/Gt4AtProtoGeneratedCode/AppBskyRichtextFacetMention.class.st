@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyRichtextFacetMention class >> atpRecordName [
+ ^ 'app.bsky.richtext.facet#mention'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetMention class >> fromRequest: aRequest [
 	^ self new

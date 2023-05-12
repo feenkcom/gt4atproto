@@ -20,6 +20,11 @@ GtApLexiconCidLink >> asClassName [
 ]
 
 { #category : #accessing }
+GtApLexiconCidLink >> buildFromRequestWithKey: aKey [
+	^ 'aRequest at: ''' , aKey , ''' ifAbsent: [ nil ]'
+]
+
+{ #category : #accessing }
 GtApLexiconCidLink >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString

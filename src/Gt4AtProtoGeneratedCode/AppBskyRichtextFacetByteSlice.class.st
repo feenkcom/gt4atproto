@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyRichtextFacetByteSlice class >> atpRecordName [
+ ^ 'app.bsky.richtext.facet#byteSlice'
+]
+
 { #category : #serialization }
 AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
 	^ self new

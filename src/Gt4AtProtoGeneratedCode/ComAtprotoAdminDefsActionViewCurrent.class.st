@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsActionViewCurrent class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#actionViewCurrent'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
 	^ self new

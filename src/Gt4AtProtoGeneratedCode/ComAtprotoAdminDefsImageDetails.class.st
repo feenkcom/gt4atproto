@@ -8,6 +8,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsImageDetails class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#imageDetails'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
 	^ self new

@@ -14,6 +14,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoAdminDefsRepoView class >> atpRecordName [
+ ^ 'com.atproto.admin.defs#repoView'
+]
+
 { #category : #serialization }
 ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 	^ self new
@@ -21,7 +26,7 @@ ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
 		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
-		atpRelatedRecords: (aRequest at: 'relatedRecords' ifAbsent: [ nil ]); 
+		atpRelatedRecords: (aRequest at: 'relatedRecords' ifPresent: [:anArray | anArray collect: [:aValue |Object fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
 		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpInvitedBy: (aRequest at: 'invitedBy' ifPresent: [:aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ifAbsent: [ nil ]); 

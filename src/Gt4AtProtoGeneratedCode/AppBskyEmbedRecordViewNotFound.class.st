@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedRecordViewNotFound class >> atpRecordName [
+ ^ 'app.bsky.embed.record#viewNotFound'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
 	^ self new

@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyGraphDefsListItemView class >> atpRecordName [
+ ^ 'app.bsky.graph.defs#listItemView'
+]
+
 { #category : #serialization }
 AppBskyGraphDefsListItemView class >> fromRequest: aRequest [
 	^ self new

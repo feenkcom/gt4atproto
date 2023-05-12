@@ -9,6 +9,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+ComAtprotoServerCreateAppPasswordAppPassword class >> atpRecordName [
+ ^ 'com.atproto.server.createAppPassword#appPassword'
+]
+
 { #category : #serialization }
 ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
 	^ self new

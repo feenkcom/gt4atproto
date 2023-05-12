@@ -7,6 +7,11 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedRecordMain class >> atpRecordName [
+ ^ 'app.bsky.embed.record'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordMain class >> fromRequest: aRequest [
 	^ self new

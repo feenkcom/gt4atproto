@@ -7,11 +7,16 @@ Class {
 	#category : #Gt4AtProtoGeneratedCode
 }
 
+{ #category : #accessing }
+AppBskyEmbedRecordView class >> atpRecordName [
+ ^ 'app.bsky.embed.record#view'
+]
+
 { #category : #serialization }
 AppBskyEmbedRecordView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpRecord: (aRequest at: 'record' ifAbsent: [ nil ])
+		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | ({'app.bsky.embed.record#viewRecord' -> AppBskyEmbedRecordViewRecord. 'app.bsky.embed.record#viewNotFound' -> AppBskyEmbedRecordViewNotFound. 'app.bsky.embed.record#viewBlocked' -> AppBskyEmbedRecordViewBlocked} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
