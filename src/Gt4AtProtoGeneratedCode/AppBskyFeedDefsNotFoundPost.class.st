@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsNotFoundPost,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
 		'atpNotFound'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
-	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 

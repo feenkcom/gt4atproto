@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedRecordViewRecord,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -15,7 +15,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
-	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ]); 

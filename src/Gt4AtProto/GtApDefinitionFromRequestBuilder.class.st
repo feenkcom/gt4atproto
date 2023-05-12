@@ -20,7 +20,9 @@ GtApDefinitionFromRequestBuilder >> accessorPrefix: anObject [
 { #category : #accessing }
 GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
 	^ 'fromRequest: aRequest
-	^ self new '
+	^ self new
+		rawData: aRequest;
+		'
 		, ('; 
 		'
 				join: (aDefinition properties associations

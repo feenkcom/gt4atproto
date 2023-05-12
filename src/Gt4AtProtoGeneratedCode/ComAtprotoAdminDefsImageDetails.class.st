@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsImageDetails,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpWidth',
 		'atpHeight'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
-	^ self new atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])
 ]
 

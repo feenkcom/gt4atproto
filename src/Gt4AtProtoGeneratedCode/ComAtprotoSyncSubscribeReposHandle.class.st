@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoSyncSubscribeReposHandle,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSeq',
 		'atpDid',
@@ -12,7 +12,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest [
-	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])

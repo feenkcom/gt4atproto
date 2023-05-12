@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoSyncSubscribeReposRepoOp,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpAction',
 		'atpPath',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest [
-	^ self new atpAction: (aRequest at: 'action' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpAction: (aRequest at: 'action' ifAbsent: [ nil ]); 
 		atpPath: (aRequest at: 'path' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ])
 ]

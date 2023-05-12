@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyRichtextFacetByteSlice,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpByteStart',
 		'atpByteEnd'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
-	^ self new atpByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]); 
 		atpByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])
 ]
 

@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoSyncSubscribeReposMigrate,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSeq',
 		'atpDid',
@@ -12,7 +12,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
-	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
 		atpMigrateTo: (aRequest at: 'migrateTo' ifAbsent: [ nil ]); 
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])

@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsReportView,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpId',
 		'atpReasonType',
@@ -15,7 +15,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
-	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
 		atpReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 

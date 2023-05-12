@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedRecordView,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRecord'
 	],
@@ -9,7 +9,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordView class >> fromRequest: aRequest [
-	^ self new atpRecord: (aRequest at: 'record' ifAbsent: [ nil ])
+	^ self new
+		rawData: aRequest;
+		atpRecord: (aRequest at: 'record' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

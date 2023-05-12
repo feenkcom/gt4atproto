@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoServerDescribeServerLinks,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpPrivacyPolicy',
 		'atpTermsOfService'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
-	^ self new atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]); 
 		atpTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])
 ]
 

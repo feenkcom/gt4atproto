@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsActionReversal,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpReason',
 		'atpCreatedBy',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
-	^ self new atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

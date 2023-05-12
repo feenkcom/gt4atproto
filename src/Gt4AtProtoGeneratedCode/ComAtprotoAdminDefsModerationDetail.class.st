@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsModerationDetail,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpCurrentAction',
 		'atpActions',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
-	^ self new atpCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpActions: (aRequest at: 'actions' ifAbsent: [ nil ]); 
 		atpReports: (aRequest at: 'reports' ifAbsent: [ nil ])
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedLikeMain,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSubject',
 		'atpCreatedAt'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedLikeMain class >> fromRequest: aRequest [
-	^ self new atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 

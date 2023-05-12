@@ -1,6 +1,12 @@
 Extension { #name : #GtApGeneratedClient }
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyActorGetPreferences [
+	<xrpcQuery>
+	^  (self queryOn: 'app.bsky.actor.getPreferences' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetProfileactor: actor [ 
 	<xrpcQuery>
 	^ AppBskyActorDefsProfileViewDetailed fromRequest:  (self queryOn: 'app.bsky.actor.getProfile' parameters: {'actor' -> actor} asDictionary)
@@ -16,6 +22,12 @@ GtApGeneratedClient >> appBskyActorGetProfilesactors: actors [
 GtApGeneratedClient >> appBskyActorGetSuggestions [
 	<xrpcQuery>
 	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyActorPutPreferencespreferences: preferences [ 
+	<xrpcProcedure>
+	^  (self procedureOn: 'app.bsky.actor.putPreferences' withBody: {'preferences' -> preferences} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -85,15 +97,45 @@ GtApGeneratedClient >> appBskyGraphGetFollowsactor: actor [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetListMutes [
+	<xrpcQuery>
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyGraphDefsListView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getListMutes' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetListlist: list [ 
+	<xrpcQuery>
+	^  (self queryOn: 'app.bsky.graph.getList' parameters: {'list' -> list} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetListsactor: actor [ 
+	<xrpcQuery>
+	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyGraphDefsListView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getLists' parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetMutes [
 	<xrpcQuery>
 	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getMutes' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphMuteActorListlist: list [ 
+	<xrpcProcedure>
+	^  (self procedureOn: 'app.bsky.graph.muteActorList' withBody: {'list' -> list} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphMuteActoractor: actor [ 
 	<xrpcProcedure>
 	^  (self procedureOn: 'app.bsky.graph.muteActor' withBody: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphUnmuteActorListlist: list [ 
+	<xrpcProcedure>
+	^  (self procedureOn: 'app.bsky.graph.unmuteActorList' withBody: {'list' -> list} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }

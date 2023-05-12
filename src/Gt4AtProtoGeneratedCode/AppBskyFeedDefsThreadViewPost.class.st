@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsThreadViewPost,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpPost',
 		'atpParent',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
-	^ self new atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpParent: (aRequest at: 'parent' ifAbsent: [ nil ]); 
 		atpReplies: (aRequest at: 'replies' ifAbsent: [ nil ])
 ]

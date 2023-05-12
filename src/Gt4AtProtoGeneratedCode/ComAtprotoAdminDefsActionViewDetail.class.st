@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsActionViewDetail,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpId',
 		'atpAction',
@@ -19,7 +19,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
-	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
 		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
 		atpSubjectBlobs: (aRequest at: 'subjectBlobs' ifAbsent: [ nil ]); 

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyRichtextFacetMain,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpIndex',
 		'atpFeatures'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyRichtextFacetMain class >> fromRequest: aRequest [
-	^ self new atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpFeatures: (aRequest at: 'features' ifAbsent: [ nil ])
 ]
 

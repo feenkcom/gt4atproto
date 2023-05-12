@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsBlobView,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpCid',
 		'atpMimeType',
@@ -14,7 +14,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
-	^ self new atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]); 
 		atpSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 

@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoServerDefsInviteCodeUse,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUsedBy',
 		'atpUsedAt'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
-	^ self new atpUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]); 
 		atpUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])
 ]
 

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsReplyRef,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRoot',
 		'atpParent'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
-	^ self new atpRoot: (aRequest at: 'root' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpRoot: (aRequest at: 'root' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpParent: (aRequest at: 'parent' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 

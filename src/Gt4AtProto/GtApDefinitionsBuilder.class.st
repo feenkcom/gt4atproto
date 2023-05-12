@@ -2,7 +2,8 @@ Class {
 	#name : #GtApDefinitionsBuilder,
 	#superclass : #GtApBuilder,
 	#instVars : [
-		'packageName'
+		'packageName',
+		'modelSuperClass'
 	],
 	#category : #'Gt4AtProto-Code Generation'
 }
@@ -18,7 +19,7 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 					(RBAddClassRefactoring
 						model: aModel
 						addClass: className
-						superclass: Object
+						superclass: self modelSuperClass
 						subclasses: #()
 						category: self packageName) primitiveExecute.
 
@@ -29,13 +30,29 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 ]
 
 { #category : #accessing }
+GtApDefinitionsBuilder >> defaultModelSuperClass [
+	^ GtApModelEntity
+]
+
+{ #category : #accessing }
 GtApDefinitionsBuilder >> defaultPackageName [
 	^ #'Gt4AtProto-Generated'
 ]
 
 { #category : #accessing }
 GtApDefinitionsBuilder >> initialize [
-	packageName := self defaultPackageName
+	packageName := self defaultPackageName.
+	modelSuperClass := self defaultModelSuperClass
+]
+
+{ #category : #accessing }
+GtApDefinitionsBuilder >> modelSuperClass [
+	^ modelSuperClass
+]
+
+{ #category : #accessing }
+GtApDefinitionsBuilder >> modelSuperClass: anObject [
+	modelSuperClass := anObject
 ]
 
 { #category : #accessing }
@@ -55,6 +72,7 @@ GtApDefinitionsBuilder >> removeUsing: aModel [
 			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
 				ifTrue: [ | className |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
-					(GtRBRemoveClassRefactoring model: aModel classNames: {className asSymbol})
-						primitiveExecute ] ]
+					className
+						asClassIfPresent: [ (GtRBRemoveClassRefactoring model: aModel classNames: {className asSymbol})
+								primitiveExecute ] ] ]
 ]

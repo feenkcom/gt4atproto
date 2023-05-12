@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoServerCreateInviteCodesAccountCodes,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpAccount',
 		'atpCodes'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
-	^ self new atpAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
 		atpCodes: (aRequest at: 'codes' ifAbsent: [ nil ])
 ]
 

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsFeedViewPost,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#traits : 'TAppBskyFeedDefsFeedViewPost',
 	#classTraits : 'TAppBskyFeedDefsFeedViewPost classTrait',
 	#instVars : [
@@ -13,7 +13,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
-	^ self new atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ])
 ]

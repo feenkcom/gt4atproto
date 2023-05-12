@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsViewerState,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRepost',
 		'atpLike'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
-	^ self new atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ]); 
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
 ]
 

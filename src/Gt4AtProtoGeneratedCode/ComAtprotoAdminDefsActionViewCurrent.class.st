@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsActionViewCurrent,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpId',
 		'atpAction'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
-	^ self new atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
 		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 

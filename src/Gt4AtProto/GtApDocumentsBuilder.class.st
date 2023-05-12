@@ -66,6 +66,7 @@ GtApDocumentsBuilder >> packageName: anObject [
 
 { #category : #accessing }
 GtApDocumentsBuilder >> removeUsing: aModel [
-	(GtRBRemoveClassRefactoring model: aModel classNames: {self clientClass})
-		primitiveExecute
+	self clientClass
+		asClassIfPresent: [ (GtRBRemoveClassRefactoring model: aModel classNames: {self clientClass})
+				primitiveExecute ]
 ]

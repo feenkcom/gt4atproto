@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedImagesMain,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpImages'
 	],
@@ -9,7 +9,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedImagesMain class >> fromRequest: aRequest [
-	^ self new atpImages: (aRequest at: 'images' ifAbsent: [ nil ])
+	^ self new
+		rawData: aRequest;
+		atpImages: (aRequest at: 'images' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedImagesViewImage,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpThumb',
 		'atpFullsize',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
-	^ self new atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]); 
 		atpFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]); 
 		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
 ]

@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoLabelSubscribeLabelsLabels,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSeq',
 		'atpLabels'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
-	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
 		atpLabels: (aRequest at: 'labels' ifAbsent: [ nil ])
 ]
 

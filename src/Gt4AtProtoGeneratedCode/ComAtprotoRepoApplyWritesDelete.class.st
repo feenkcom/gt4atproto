@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoRepoApplyWritesDelete,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpCollection',
 		'atpRkey'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
-	^ self new atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
 		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ])
 ]
 

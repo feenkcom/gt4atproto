@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedRecordWithMediaView,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRecord',
 		'atpMedia'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
-	^ self new atpRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordView fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpMedia: (aRequest at: 'media' ifAbsent: [ nil ])
 ]
 

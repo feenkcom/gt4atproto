@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoAdminDefsRepoView,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpDid',
 		'atpHandle',
@@ -16,7 +16,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
-	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
 		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
 		atpRelatedRecords: (aRequest at: 'relatedRecords' ifAbsent: [ nil ]); 

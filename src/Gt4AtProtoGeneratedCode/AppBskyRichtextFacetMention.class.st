@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyRichtextFacetMention,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpDid'
 	],
@@ -9,7 +9,9 @@ Class {
 
 { #category : #serialization }
 AppBskyRichtextFacetMention class >> fromRequest: aRequest [
-	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
+	^ self new
+		rawData: aRequest;
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

@@ -1,21 +1,11 @@
 Trait {
 	#name : #TAppBskyActorDefsProfileViewDetailed,
 	#instVars : [
-		'client',
+		'',
 		'posts'
 	],
 	#category : #'Gt4AtProto-Extensions-Traits'
 }
-
-{ #category : #accessing }
-TAppBskyActorDefsProfileViewDetailed >> client [
-	^ client
-]
-
-{ #category : #accessing }
-TAppBskyActorDefsProfileViewDetailed >> client: anObject [
-	client := anObject
-]
 
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadPosts [

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedPostTextSlice,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpStart',
 		'atpEnd'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
-	^ self new atpStart: (aRequest at: 'start' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpStart: (aRequest at: 'start' ifAbsent: [ nil ]); 
 		atpEnd: (aRequest at: 'end' ifAbsent: [ nil ])
 ]
 

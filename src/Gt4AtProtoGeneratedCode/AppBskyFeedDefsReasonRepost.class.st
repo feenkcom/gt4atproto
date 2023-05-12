@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsReasonRepost,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpBy',
 		'atpIndexedAt'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
-	^ self new atpBy: (aRequest at: 'by' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpBy: (aRequest at: 'by' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 

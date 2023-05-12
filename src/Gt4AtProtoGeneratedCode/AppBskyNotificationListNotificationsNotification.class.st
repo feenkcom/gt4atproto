@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyNotificationListNotificationsNotification,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -17,7 +17,9 @@ Class {
 
 { #category : #serialization }
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
-	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 

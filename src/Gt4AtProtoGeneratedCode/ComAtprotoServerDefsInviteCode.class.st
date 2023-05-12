@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoServerDefsInviteCode,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpCode',
 		'atpAvailable',
@@ -15,7 +15,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
-	^ self new atpCode: (aRequest at: 'code' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpCode: (aRequest at: 'code' ifAbsent: [ nil ]); 
 		atpAvailable: (aRequest at: 'available' ifAbsent: [ nil ]); 
 		atpDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]); 
 		atpForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]); 

@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoServerCreateAppPasswordAppPassword,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpName',
 		'atpPassword',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
-	^ self new atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
 		atpPassword: (aRequest at: 'password' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

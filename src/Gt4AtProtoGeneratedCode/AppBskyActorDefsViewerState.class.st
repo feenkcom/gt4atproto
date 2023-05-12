@@ -1,8 +1,9 @@
 Class {
 	#name : #AppBskyActorDefsViewerState,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpMuted',
+		'atpMutedByList',
 		'atpBlockedBy',
 		'atpBlocking',
 		'atpFollowing',
@@ -13,7 +14,10 @@ Class {
 
 { #category : #serialization }
 AppBskyActorDefsViewerState class >> fromRequest: aRequest [
-	^ self new atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]); 
+		atpMutedByList: (aRequest at: 'mutedByList' ifPresent: [:aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]); 
 		atpBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]); 
 		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]); 
@@ -70,6 +74,18 @@ AppBskyActorDefsViewerState >> atpMuted: anObject [
 	atpMuted := anObject
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsViewerState >> atpMutedByList [
+	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
+	^ atpMutedByList
+]
+
+{ #category : #accessing }
+AppBskyActorDefsViewerState >> atpMutedByList: anObject [
+	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
+	atpMutedByList := anObject
+]
+
 { #category : #magritte }
 AppBskyActorDefsViewerState >> blockedByDescription [
 	<magritteDescription>
@@ -100,6 +116,14 @@ AppBskyActorDefsViewerState >> followingDescription [
 	^ MAStringDescription new
 		label: 'Following';
 		accessor: #atpFollowing
+]
+
+{ #category : #magritte }
+AppBskyActorDefsViewerState >> mutedByListDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'MutedByList';
+		accessor: #atpMutedByList
 ]
 
 { #category : #magritte }

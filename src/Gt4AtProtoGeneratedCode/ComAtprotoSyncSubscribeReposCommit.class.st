@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoSyncSubscribeReposCommit,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSeq',
 		'atpRebase',
@@ -18,7 +18,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
-	^ self new atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
 		atpRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]); 
 		atpTooBig: (aRequest at: 'tooBig' ifAbsent: [ nil ]); 
 		atpRepo: (aRequest at: 'repo' ifAbsent: [ nil ]); 

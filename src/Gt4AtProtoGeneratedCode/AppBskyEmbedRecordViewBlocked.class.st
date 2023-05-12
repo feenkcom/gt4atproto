@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedRecordViewBlocked,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri'
 	],
@@ -9,7 +9,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest [
-	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+	^ self new
+		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

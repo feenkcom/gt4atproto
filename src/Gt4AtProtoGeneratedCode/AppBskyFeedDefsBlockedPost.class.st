@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedDefsBlockedPost,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
 		'atpBlocked'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
-	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
 ]
 

@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyActorDefsProfileViewDetailed,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#traits : 'TAppBskyActorDefsProfileViewDetailed',
 	#classTraits : 'TAppBskyActorDefsProfileViewDetailed classTrait',
 	#instVars : [
@@ -22,7 +22,9 @@ Class {
 
 { #category : #serialization }
 AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
-	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 

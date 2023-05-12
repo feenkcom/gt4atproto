@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedGetLikesLike,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpIndexedAt',
 		'atpCreatedAt',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
-	^ self new atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
 		atpActor: (aRequest at: 'actor' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ])
 ]

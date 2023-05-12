@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedPostReplyRef,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRoot',
 		'atpParent'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedPostReplyRef class >> fromRequest: aRequest [
-	^ self new atpRoot: (aRequest at: 'root' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpRoot: (aRequest at: 'root' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpParent: (aRequest at: 'parent' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 

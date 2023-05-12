@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedExternalViewExternal,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
 		'atpTitle',
@@ -12,7 +12,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedExternalViewExternal class >> fromRequest: aRequest [
-	^ self new atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpTitle: (aRequest at: 'title' ifAbsent: [ nil ]); 
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
 		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ])

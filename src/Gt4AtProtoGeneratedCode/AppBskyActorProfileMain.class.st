@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyActorProfileMain,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#traits : 'TAppBskyActorProfileMain',
 	#classTraits : 'TAppBskyActorProfileMain classTrait',
 	#instVars : [
@@ -14,7 +14,9 @@ Class {
 
 { #category : #serialization }
 AppBskyActorProfileMain class >> fromRequest: aRequest [
-	^ self new atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
 		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ])

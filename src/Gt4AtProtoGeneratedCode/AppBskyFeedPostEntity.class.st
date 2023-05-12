@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyFeedPostEntity,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpIndex',
 		'atpType',
@@ -11,7 +11,9 @@ Class {
 
 { #category : #serialization }
 AppBskyFeedPostEntity class >> fromRequest: aRequest [
-	^ self new atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyFeedPostTextSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyFeedPostTextSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpType: (aRequest at: 'type' ifAbsent: [ nil ]); 
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]

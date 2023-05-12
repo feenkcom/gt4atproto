@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoSyncListReposRepo,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpDid',
 		'atpHead'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
-	^ self new atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
 		atpHead: (aRequest at: 'head' ifAbsent: [ nil ])
 ]
 

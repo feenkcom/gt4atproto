@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyGraphBlockMain,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSubject',
 		'atpCreatedAt'
@@ -10,7 +10,9 @@ Class {
 
 { #category : #serialization }
 AppBskyGraphBlockMain class >> fromRequest: aRequest [
-	^ self new atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 

@@ -1,6 +1,6 @@
 Class {
 	#name : #ComAtprotoLabelDefsLabel,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpSrc',
 		'atpUri',
@@ -14,7 +14,9 @@ Class {
 
 { #category : #serialization }
 ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
-	^ self new atpSrc: (aRequest at: 'src' ifAbsent: [ nil ]); 
+	^ self new
+		rawData: aRequest;
+		atpSrc: (aRequest at: 'src' ifAbsent: [ nil ]); 
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpVal: (aRequest at: 'val' ifAbsent: [ nil ]); 

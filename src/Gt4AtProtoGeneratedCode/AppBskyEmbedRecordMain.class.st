@@ -1,6 +1,6 @@
 Class {
 	#name : #AppBskyEmbedRecordMain,
-	#superclass : #Object,
+	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRecord'
 	],
@@ -9,7 +9,9 @@ Class {
 
 { #category : #serialization }
 AppBskyEmbedRecordMain class >> fromRequest: aRequest [
-	^ self new atpRecord: (aRequest at: 'record' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
+	^ self new
+		rawData: aRequest;
+		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
