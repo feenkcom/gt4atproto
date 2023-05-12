@@ -20,6 +20,11 @@ GtApLexiconCidLink >> asClassName [
 ]
 
 { #category : #accessing }
+GtApLexiconCidLink >> buildFromRequestOn: aKey [
+	^ aKey
+]
+
+{ #category : #accessing }
 GtApLexiconCidLink >> buildFromRequestWithKey: aKey [
 	^ 'aRequest at: ''' , aKey , ''' ifAbsent: [ nil ]'
 ]

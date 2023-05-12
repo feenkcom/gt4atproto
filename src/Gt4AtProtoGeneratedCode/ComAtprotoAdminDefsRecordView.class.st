@@ -25,7 +25,7 @@ ComAtprotoAdminDefsRecordView class >> fromRequest: aRequest [
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
 		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
-		atpBlobCids: (aRequest at: 'blobCids' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpBlobCids: (aRequest at: 'blobCids' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
 		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpRepo: (aRequest at: 'repo' ifPresent: [:aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ] ifAbsent: [ nil ])

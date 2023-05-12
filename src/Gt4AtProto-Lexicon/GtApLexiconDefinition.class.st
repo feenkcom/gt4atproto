@@ -19,6 +19,16 @@ GtApLexiconDefinition >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinition >> asClassName [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> asClassNames [
+	^ self asClassName
+]
+
+{ #category : #accessing }
 GtApLexiconDefinition >> buildFromRequestWithKey: aKey [
 	^ self subclassResponsibility
 ]

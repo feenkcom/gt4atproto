@@ -18,7 +18,7 @@ ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpAccount: (aRequest at: 'account' ifAbsent: [ nil ]); 
-		atpCodes: (aRequest at: 'codes' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpCodes: (aRequest at: 'codes' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

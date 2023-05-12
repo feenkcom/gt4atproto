@@ -3,7 +3,7 @@ Trait {
 	#instVars : [
 		'profilePictureForm'
 	],
-	#category : #'Gt4AtProto-Extensions'
+	#category : #'Gt4AtProto-Extensions-Traits'
 }
 
 { #category : #accessing }
@@ -22,6 +22,11 @@ TAppBskyFeedDefsFeedViewPost >> createdAtTimestamp [
 ]
 
 { #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> embed [
+	^ self atpPost atpEmbed
+]
+
+{ #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 	<gtView>
 	
@@ -37,8 +42,8 @@ TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> hasPhotos [
-	^ self atpPost atpEmbed isNotNil
+TAppBskyFeedDefsFeedViewPost >> hasEmbed [
+	^ self embed isNotNil
 ]
 
 { #category : #accessing }

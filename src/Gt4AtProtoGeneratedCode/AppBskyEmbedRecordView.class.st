@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyEmbedRecordView,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyEmbedRecordView',
+	#classTraits : 'TAppBskyEmbedRecordView classTrait',
 	#instVars : [
 		'atpRecord'
 	],

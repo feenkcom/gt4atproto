@@ -33,7 +33,7 @@ ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 		atpPrev: (aRequest at: 'prev' ifAbsent: [ nil ]); 
 		atpBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]); 
 		atpOps: (aRequest at: 'ops' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoSyncSubscribeReposRepoOp fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpBlobs: (aRequest at: 'blobs' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpBlobs: (aRequest at: 'blobs' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 

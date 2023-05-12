@@ -24,7 +24,7 @@ GtApLexiconArray >> acceptVisitor: aLexiconVisitor [
 GtApLexiconArray >> buildFromRequestWithKey: aKey [
 	^ 'aRequest at: ''' , aKey
 		, ''' ifPresent: [:anArray | anArray collect: [:aValue |'
-		, self items asClassName , ' fromRequest: aValue ] ] ifAbsent: [ nil ]'
+		, (self items buildFromRequestOn: 'aValue'), ' ] ] ifAbsent: [ nil ]'
 ]
 
 { #category : #accessing }
@@ -44,7 +44,7 @@ GtApLexiconArray >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 			, 'Description
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {' , (self items) asClassName
+		classes: {' , (self items) asClassNames
 					, '};
 		label: ''' , aString capitalized , ''';
 		accessor: #', aPrefix, aString asCamelCase.

@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyEmbedExternalView,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyEmbedExternalView',
+	#classTraits : 'TAppBskyEmbedExternalView classTrait',
 	#instVars : [
 		'atpExternal'
 	],

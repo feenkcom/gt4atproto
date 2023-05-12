@@ -27,7 +27,7 @@ AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
 		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpEmbeds: (aRequest at: 'embeds' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpEmbeds: (aRequest at: 'embeds' ifPresent: [:anArray | anArray collect: [:aValue |({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView. 'app.bsky.embed.external#view' -> AppBskyEmbedExternalView. 'app.bsky.embed.record#view' -> AppBskyEmbedRecordView. 'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView} asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ] ifAbsent: [ nil ]); 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 

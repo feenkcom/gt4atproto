@@ -20,9 +20,21 @@ GtApLexiconUnion >> acceptVisitor: aLexiconVisitor [
 
 { #category : #accessing }
 GtApLexiconUnion >> asClassName [
-	^ '. '
-		join: (self refs
-				collect: [ :aClassName | (aClassName replaceAllRegex: '[.#]' with: ' ') asCamelCase ])
+	^ self shouldNotImplement
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> asClassNames [
+	^ '. ' join: (self referencedDefinitions collect: #asClassNames)
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> buildFromRequestOn: aName [
+	^ '({'
+		, ('. '
+				join: (self referencedDefinitions
+						collect: [ :anObject | '''' , (anObject id removeSuffix: '#main') , ''' -> ' , anObject asClassName ]))
+		, '} asDictionary at: (' , aName , ' at: ''$type'')) fromRequest: ' , aName
 ]
 
 { #category : #accessing }

@@ -18,7 +18,7 @@ AppBskyRichtextFacetMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpFeatures: (aRequest at: 'features' ifPresent: [:anArray | anArray collect: [:aValue |Mention. Link fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpFeatures: (aRequest at: 'features' ifPresent: [:anArray | anArray collect: [:aValue |({'app.bsky.richtext.facet#mention' -> AppBskyRichtextFacetMention. 'app.bsky.richtext.facet#link' -> AppBskyRichtextFacetLink} asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -47,7 +47,7 @@ AppBskyRichtextFacetMain >> atpIndex: anObject [
 AppBskyRichtextFacetMain >> featuresDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {Mention. Link};
+		classes: {AppBskyRichtextFacetMention. AppBskyRichtextFacetLink};
 		label: 'Features';
 		accessor: #atpFeatures;
 	beRequired

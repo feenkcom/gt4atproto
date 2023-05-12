@@ -1,8 +1,7 @@
 Class {
-	#name : #GtApFeedPostSummaryElement,
+	#name : #GtApFeedEmbeddedPostSummaryElement,
 	#superclass : #BrVerticalPane,
 	#instVars : [
-		'likesCountLabel',
 		'tweetDateLabel',
 		'authorNameLabel',
 		'authorHandleLabel',
@@ -10,22 +9,20 @@ Class {
 		'mediaContainer',
 		'post',
 		'postTextEditor',
-		'repostsCountLabel',
-		'dateLabel',
-		'repliesCountLabel'
+		'dateLabel'
 	],
 	#category : #'Gt4AtProto-UI'
 }
 
 { #category : #'building widgets' }
-GtApFeedPostSummaryElement >> buildGrayLabel [
+GtApFeedEmbeddedPostSummaryElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
 			foreground:  Color lightGray)
 ]
 
 { #category : #initialization }
-GtApFeedPostSummaryElement >> buildPostContentElement [
+GtApFeedEmbeddedPostSummaryElement >> buildPostContentElement [
 	^ (postTextEditor := BrEditor new
 		beReadOnlyWithoutSelection;
 		aptitude: BrGlamorousRegularEditorAptitude;
@@ -35,37 +32,18 @@ GtApFeedPostSummaryElement >> buildPostContentElement [
 ]
 
 { #category : #'building widgets' }
-GtApFeedPostSummaryElement >> buildPostDetailsElement [
-	| detailsElement|
-	
-	detailsElement := BrHorizontalPane new
-		hMatchParent;
-		vFitContent;
-		margin: (BlInsets left: 3).
-	
-	detailsElement 
-		addChild: (repliesCountLabel := self buildGrayLabel);
-		addChild: (repostsCountLabel := self buildGrayLabel);
-		addChild: (likesCountLabel := self buildGrayLabel).
-		
-	repostsCountLabel margin: (BlInsets left: 10 right: 10).
-	
-	^ detailsElement
-]
-
-{ #category : #'building widgets' }
-GtApFeedPostSummaryElement >> buildPostMediaElement [
-	^ (mediaContainer := BrHorizontalPane new hMatchParent; vFitContent)
+GtApFeedEmbeddedPostSummaryElement >> buildPostMediaElement [
+	^ (mediaContainer := BrHorizontalPane new hMatchParent vFitContent)
 ]
 
 { #category : #accessing }
-GtApFeedPostSummaryElement >> buildProfilePictureElement [
+GtApFeedEmbeddedPostSummaryElement >> buildProfilePictureElement [
 	^ pictureElement := GtApFeedUserPictureElement new
 		margin: (BlInsets right: 10)
 ]
 
 { #category : #'building widgets' }
-GtApFeedPostSummaryElement >> buildUserHeaderElement [
+GtApFeedEmbeddedPostSummaryElement >> buildUserHeaderElement [
 	| headerElement|
 	
 	headerElement := BrHorizontalPane new
@@ -83,13 +61,13 @@ GtApFeedPostSummaryElement >> buildUserHeaderElement [
 ]
 
 { #category : #initialization }
-GtApFeedPostSummaryElement >> initialize [
+GtApFeedEmbeddedPostSummaryElement >> initialize [
 	| mainContainer contentContainer |
 	
 	super initialize.
 	
 	self 
-		hExact: 400;
+		hMatchParent;
 		vFitContent;
 		padding: (BlInsets all: 10).
 		
@@ -106,26 +84,25 @@ GtApFeedPostSummaryElement >> initialize [
 	contentContainer addChild: self buildUserHeaderElement.
 	contentContainer addChild: self buildPostContentElement.
 	contentContainer addChild: self buildPostMediaElement.
-	contentContainer addChild: self buildPostDetailsElement.
 	
 	mainContainer addChild: contentContainer.
 	self addChild:  mainContainer.
 ]
 
 { #category : #accessing }
-GtApFeedPostSummaryElement >> post [
+GtApFeedEmbeddedPostSummaryElement >> post [
 	^ post
 ]
 
 { #category : #accessing }
-GtApFeedPostSummaryElement >> post: aTweet [
+GtApFeedEmbeddedPostSummaryElement >> post: aTweet [
 	post := aTweet.
 	
 	self updateContent
 ]
 
 { #category : #accessing }
-GtApFeedPostSummaryElement >> updateAuthorDetails [
+GtApFeedEmbeddedPostSummaryElement >> updateAuthorDetails [
 	self post author ifNil: [
 		authorNameLabel text: '<missing>'.
 		authorHandleLabel text: ''.
@@ -136,25 +113,24 @@ GtApFeedPostSummaryElement >> updateAuthorDetails [
 ]
 
 { #category : #accessing }
-GtApFeedPostSummaryElement >> updateContent [
+GtApFeedEmbeddedPostSummaryElement >> updateContent [
 	pictureElement user: self post author.
 	self updateAuthorDetails.
 	postTextEditor text: self post recordText.
 	dateLabel text: ' at ', self post createdAtTimestamp printToMinute.
-	self updateMedia.
-	repliesCountLabel text: self post atpPost atpReplyCount asString , ' Replies'.
-	likesCountLabel text: self post atpPost atpLikeCount asString , ' Likes'.
-	repostsCountLabel text: self post atpPost atpRepostCount asString , ' Reposts'
+	self updateMedia
 ]
 
 { #category : #accessing }
-GtApFeedPostSummaryElement >> updateMedia [
-	self post hasEmbed
+GtApFeedEmbeddedPostSummaryElement >> updateMedia [
+	self post hasPhotos
 		ifFalse: [ mediaContainer visibility: BlVisibility gone ]
 		ifTrue: [ mediaContainer visibility: BlVisibility visible ].
 
 	mediaContainer removeChildren.
 
-	self post hasEmbed
-		ifTrue: [ mediaContainer addChild: self post embed asEmbeddedElement ]
+	"self post photos
+		do: [ :each | 
+			mediaContainer
+				addChild: (BrAsyncFileWidget new url: (each at: 'fullsize')) matchParent ]"
 ]

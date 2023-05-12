@@ -20,7 +20,7 @@ AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
 		rawData: aRequest;
 		atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpParent: (aRequest at: 'parent' ifPresent: [:aValue | ({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost. 'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost. 'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpReplies: (aRequest at: 'replies' ifPresent: [:anArray | anArray collect: [:aValue |ThreadViewPost. NotFoundPost. BlockedPost fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpReplies: (aRequest at: 'replies' ifPresent: [:anArray | anArray collect: [:aValue |({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost. 'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost. 'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost} asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -77,7 +77,7 @@ AppBskyFeedDefsThreadViewPost >> postDescription [
 AppBskyFeedDefsThreadViewPost >> repliesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {ThreadViewPost. NotFoundPost. BlockedPost};
+		classes: {AppBskyFeedDefsThreadViewPost. AppBskyFeedDefsNotFoundPost. AppBskyFeedDefsBlockedPost};
 		label: 'Replies';
 		accessor: #atpReplies
 ]

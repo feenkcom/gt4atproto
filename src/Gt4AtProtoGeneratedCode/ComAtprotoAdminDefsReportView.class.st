@@ -28,7 +28,7 @@ ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef. 'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
 		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpResolvedByActionIds: (aRequest at: 'resolvedByActionIds' ifPresent: [:anArray | anArray collect: [:aValue |Number fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpResolvedByActionIds: (aRequest at: 'resolvedByActionIds' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

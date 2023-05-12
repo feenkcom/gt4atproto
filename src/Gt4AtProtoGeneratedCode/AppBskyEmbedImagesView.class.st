@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyEmbedImagesView,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyEmbedImagesView',
+	#classTraits : 'TAppBskyEmbedImagesView classTrait',
 	#instVars : [
 		'atpImages'
 	],

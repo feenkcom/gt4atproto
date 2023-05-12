@@ -30,8 +30,8 @@ ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
 		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
 		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView. 'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
 		atpSubjectBlobs: (aRequest at: 'subjectBlobs' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsBlobView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |String fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
+		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
 		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
