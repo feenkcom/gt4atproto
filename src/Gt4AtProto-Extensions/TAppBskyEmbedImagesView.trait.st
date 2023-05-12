@@ -7,5 +7,5 @@ Trait {
 TAppBskyEmbedImagesView >> asEmbeddedElement [
 	^ BrVerticalPane new matchParent
 		addChildren: (self atpImages
-				collect: [ :anImage | BrAsyncFileWidget new matchParent url: anImage atpFullsize ])
+				collect: [ :anImage | BrAsyncFileWidget new hMatchParent vExact: 200; url: anImage atpFullsize ])
 ]

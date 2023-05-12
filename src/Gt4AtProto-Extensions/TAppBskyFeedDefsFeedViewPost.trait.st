@@ -36,8 +36,12 @@ TAppBskyFeedDefsFeedViewPost >> getReplies [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> getRoot [
-	^ (self client appBskyFeedGetPostThreaduri: self atpReply atpRoot atpUri depth: nil)
-		collect: [ :aDictionary | (GtApModelEntity findForRequest: aDictionary) client: self client ]
+	self atpReply ifNil: [ ^ self ].
+
+	^ (GtApModelEntity
+		findForRequest: ((self client
+				appBskyFeedGetPostThreaduri: self atpReply atpRoot atpUri
+				depth: nil) at: 'thread')) client: self client
 ]
 
 { #category : #accessing }
@@ -61,7 +65,7 @@ TAppBskyFeedDefsFeedViewPost >> gtThreadFor: aView [
 	^ aView tree
 		title: 'Thread';
 		priority: 0;
-		items: [ self getRoot ];
+		items: [ {self getRoot} ];
 		children: #replies;
 		stencil: [ :aPost | GtApFeedPostSummaryElement new post: aPost ];
 		expandOneLevel

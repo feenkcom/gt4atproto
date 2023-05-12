@@ -63,8 +63,9 @@ GtApFeedUserPictureElement >> initialize [
 
 { #category : #updating }
 GtApFeedUserPictureElement >> updateContentForUser: aUser [
-	pictureElement
-		url: aUser atpAvatar.
+	aUser atpAvatar ifNil: [ ^ self ].
+
+	pictureElement url: aUser atpAvatar.
 
 	self
 		removeEventHandlersSuchThat: [ :aHandler | aHandler wantsEvent: BlClickEvent new ].
