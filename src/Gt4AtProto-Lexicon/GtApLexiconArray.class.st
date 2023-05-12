@@ -50,6 +50,17 @@ GtApLexiconArray >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 ]
 
 { #category : #accessing }
+GtApLexiconArray >> gtItemsFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Items';
+		priority: 1;
+		object: [ GtApLexiconDefinitionsGroup
+				withAll: (self referencedDefinitions collect: #targetDefinition) ];
+		view: #gtItemsFor:
+]
+
+{ #category : #accessing }
 GtApLexiconArray >> isArrayDefinition [
 	^ true
 ]

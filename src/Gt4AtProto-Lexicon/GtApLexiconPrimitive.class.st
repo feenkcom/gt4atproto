@@ -2,8 +2,7 @@ Class {
 	#name : #GtApLexiconPrimitive,
 	#superclass : #GtApLexiconDefinition,
 	#instVars : [
-		'description',
-		'id'
+		'description'
 	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
@@ -16,14 +15,4 @@ GtApLexiconPrimitive >> description [
 { #category : #accessing }
 GtApLexiconPrimitive >> description: anObject [
 	description := anObject
-]
-
-{ #category : #accessing }
-GtApLexiconPrimitive >> id [
-	^ id
-]
-
-{ #category : #accessing }
-GtApLexiconPrimitive >> id: anObject [
-	id := anObject
 ]

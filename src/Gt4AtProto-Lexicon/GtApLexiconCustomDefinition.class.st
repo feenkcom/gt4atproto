@@ -2,8 +2,7 @@ Class {
 	#name : #GtApLexiconCustomDefinition,
 	#superclass : #GtApLexiconDefinition,
 	#instVars : [
-		'description',
-		'id'
+		'description'
 	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
@@ -23,14 +22,4 @@ GtApLexiconCustomDefinition >> descriptionOn: aStream [
 	
 	self id ifNotNil: [
 		aStream << self id ]
-]
-
-{ #category : #accessing }
-GtApLexiconCustomDefinition >> id [
-	^ id
-]
-
-{ #category : #accessing }
-GtApLexiconCustomDefinition >> id: anObject [
-	id := anObject
 ]

@@ -51,18 +51,15 @@ GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 ]
 
 { #category : #accessing }
-GtApLexiconUnion >> gtViewResolvedDefinitionsFor: aView [ 
+GtApLexiconUnion >> gtViewResolvedDefinitionsFor: aView [
 	<gtView>
-	resolvedDefinitions  ifNil: [ ^ aView empty ].
-	
-	^ aView columnedList 
-		title: 'References';
-		priority: 10;
-		items: [ resolvedDefinitions ];
-		column: 'Id' text: [ :aDefinition |
-			aDefinition id ];
-		column: 'Type' text: [ :aDefinition |
-			aDefinition type ]
+	resolvedDefinitions ifNil: [ ^ aView empty ].
+
+	^ aView forward
+		title: 'Items';
+		priority: 1;
+		object: [ GtApLexiconDefinitionsGroup withAll: resolvedDefinitions ];
+		view: #gtItemsFor:
 ]
 
 { #category : #accessing }

@@ -2,7 +2,8 @@ Class {
 	#name : #GtApLexiconDefinition,
 	#superclass : #Object,
 	#instVars : [
-		'rawData'
+		'rawData',
+		'id'
 	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
@@ -61,6 +62,16 @@ GtApLexiconDefinition >> gtJsonStringFor: aView [
 		priority: 50;
 		object: [ GtJson forJsonObject: rawData];
 		view: #gtJsonStringFor:
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> id [
+	^ id
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> id: anId [
+	id := anId
 ]
 
 { #category : #testing }
