@@ -35,6 +35,19 @@ TAppBskyActorDefsProfileViewDetailed >> follows [
 ]
 
 { #category : #accessing }
+TAppBskyActorDefsProfileViewDetailed >> gtCreatePostFor: aView [
+	<gtView>
+	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
+
+	^ aView explicit
+		title: 'Create Post';
+		priority: 20;
+		stencil: [ GtApCreatePostForm new
+				client: self client;
+				actor: self ]
+]
+
+{ #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> gtViewFollowersFor: aView [
 	<gtView>
 	

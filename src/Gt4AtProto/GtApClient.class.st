@@ -112,8 +112,9 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 
 { #category : #accessing }
 GtApClient >> procedureOn: aMethodId withBody: aBodyDictionary [
-	^ (self clientFor: aMethodId body: (STONJSON toString: aBodyDictionary))
-		procedure
+	^ (self
+		clientFor: aMethodId
+		body: (STONJSON toString: (aBodyDictionary select: #isNotNil))) procedure
 ]
 
 { #category : #accessing }
