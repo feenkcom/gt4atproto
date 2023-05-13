@@ -44,6 +44,11 @@ GtApLexiconDefinition >> directlyReferencedDefinitionsDo: aBlock [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinition >> generateDeserialization [
+	^ ''
+]
+
+{ #category : #accessing }
 GtApLexiconDefinition >> generateGetterAs: aString [
 	^ aString
 		, '
@@ -77,6 +82,11 @@ GtApLexiconDefinition >> gtJsonStringFor: aView [
 		priority: 50;
 		object: [ GtJson forJsonObject: rawData];
 		view: #gtJsonStringFor:
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> hasId [
+	^ id isNotNil
 ]
 
 { #category : #accessing }

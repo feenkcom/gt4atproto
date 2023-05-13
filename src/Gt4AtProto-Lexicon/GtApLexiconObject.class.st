@@ -44,9 +44,7 @@ GtApLexiconObject >> asObject [
 
 { #category : #accessing }
 GtApLexiconObject >> generateDeserialization [
-	self hasId ifTrue: [ ^ self asClassName , ' fromRequest: ' ].	
-	
-	"we only treat this if we have only one other property"
+	self hasId ifTrue: [ ^ self asClassName , ' fromRequest: ' ].	"we only treat this if we have only one other property"
 	(self properties includesKey: 'cursor')
 		ifTrue: [ | filteredProperties propertyKey property |
 			filteredProperties := self properties keys
@@ -54,7 +52,24 @@ GtApLexiconObject >> generateDeserialization [
 						{'limit'.
 							'cursor'} includes: aKey ].
 
-			filteredProperties size > 1 ifTrue: [ ^ '' ].
+			filteredProperties size > 1
+				ifTrue: [ | rightKey |
+					rightKey := self properties keys
+							detect: [ :aKey | 
+								('cursor' = aKey) not
+									and: [ (self properties at: aKey) isKindOf: GtApLexiconArray ] ]
+							ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
+					^ 'GtApRequestResolver from: {''' , rightKey
+						, ''' -> (GtApRequestStreamResolver new block: [:aDictionary | '
+						, (self properties at: rightKey) items generateDeserialization
+						, ' aDictionary ]). '
+						, ('. '
+								join: (self properties associations
+										select: [ :anAssociation | (anAssociation key = rightKey) not ]
+										thenCollect: [ :anAssociation | 
+											'''' , anAssociation key , ''' -> [:aValue |'
+												, anAssociation value generateDeserialization , ' aValue]' ]))
+						, '} asDictionary andRequest: ' ].
 
 			propertyKey := filteredProperties anyOne.
 			property := self properties at: propertyKey.
@@ -62,7 +77,13 @@ GtApLexiconObject >> generateDeserialization [
 			^ 'AsyncMapStream mapBlock: [:aDictionary | '
 				, property items generateDeserialization , ' aDictionary ] stream: ' ].
 
-	^ ''
+	^ 'GtApRequestResolver from: {'
+		, ('. '
+				join: (self properties associations
+						collect: [ :anAssociation | 
+							'''' , anAssociation key , ''' -> [:aValue |'
+								, anAssociation value generateDeserialization , ' aValue]' ]))
+		, '} asDictionary andRequest: '
 ]
 
 { #category : #'gt - extensions' }
@@ -118,11 +139,6 @@ GtApLexiconObject >> gtViewPropertiesFor: aView [
 			assoc value isReference
 				ifTrue: [ assoc value referencedDefinition ifNil: [ assoc value ] ] 
 				ifFalse: [ assoc value ] ]
-]
-
-{ #category : #accessing }
-GtApLexiconObject >> hasId [
-	^ id isNotNil
 ]
 
 { #category : #testing }

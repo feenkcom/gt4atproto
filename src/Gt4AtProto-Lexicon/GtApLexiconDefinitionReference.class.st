@@ -61,7 +61,7 @@ GtApLexiconDefinitionReference >> generateDescriptorFor: aString usingPrefix: aP
 
 { #category : #accessing }
 GtApLexiconDefinitionReference >> generateDeserialization [
-	^ self asClassName, ' fromRequest: '
+	^ self referencedDefinition generateDeserialization
 ]
 
 { #category : #accessing }
@@ -80,6 +80,11 @@ GtApLexiconDefinitionReference >> generateSetterAs: aString [
 	<referenceTo:''' , self referenceString
 		, '''>
 	', aString, ' := anObject'
+]
+
+{ #category : #accessing }
+GtApLexiconDefinitionReference >> hasId [
+	^ self referencedDefinition hasId
 ]
 
 { #category : #accessing }

@@ -1,8 +1,8 @@
 Class {
 	#name : #AppBskyFeedDefsThreadViewPost,
 	#superclass : #GtApModelEntity,
-	#traits : 'TAppBskyFeedDefsFeedViewPost',
-	#classTraits : 'TAppBskyFeedDefsFeedViewPost classTrait',
+	#traits : 'TAppBskyFeedDefsThreadViewPost',
+	#classTraits : 'TAppBskyFeedDefsThreadViewPost classTrait',
 	#instVars : [
 		'atpPost',
 		'atpParent',

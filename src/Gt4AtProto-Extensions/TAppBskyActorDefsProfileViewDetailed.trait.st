@@ -11,13 +11,11 @@ Trait {
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadFollowers [
 	^ ((self client appBskyGraphGetFollowersactor: self atpHandle) at: 'followers')
-		collect: [ :aDict | AppBskyActorDefsProfileView fromRequest: aDict ]
 ]
 
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadFollows [
-	^ ((self client appBskyGraphGetFollowsactor: self atpHandle) at: 'follows')
-		collect: [ :aDict | AppBskyActorDefsProfileView fromRequest: aDict ]
+	^ (self client appBskyGraphGetFollowsactor: self atpHandle) at: 'follows'
 ]
 
 { #category : #accessing }
