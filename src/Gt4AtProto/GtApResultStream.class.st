@@ -20,6 +20,26 @@ GtApResultStream >> client: aClient [
 ]
 
 { #category : #accessing }
+GtApResultStream >> cursor [
+	^ cursor
+]
+
+{ #category : #accessing }
+GtApResultStream >> cursor: anObject [
+	^ cursor := anObject
+]
+
+{ #category : #accessing }
+GtApResultStream >> key [
+	^ key
+]
+
+{ #category : #accessing }
+GtApResultStream >> key: anObject [
+	key := anObject
+]
+
+{ #category : #accessing }
 GtApResultStream >> method: aMethodId [
 	method := aMethodId
 ]
@@ -47,10 +67,12 @@ GtApResultStream >> pollNext: anAsynchronousContext [
 		ifEmpty: [ | res |
 			cursor
 				ifNil: [ ^ AsyncPollReady value: AsyncOptionalValue none ]
-				ifNotNil: [ res := (client clientFor: method parameters: ({'cursor' -> cursor} asDictionary union: self parameters))
+				ifNotNil: [ res := (client
+							clientFor: method
+							parameters: ({'cursor' -> cursor} asDictionary union: self parameters))
 							query.
 					resultsList := (res at: key) asOrderedCollection.
-					cursor := res at: 'cursor' ] ].
+					cursor := res at: 'cursor' ifAbsent: [ nil ] ] ].
 	^ AsyncPollReady value: (AsyncOptionalValue some: resultsList removeFirst)
 ]
 
@@ -61,4 +83,14 @@ GtApResultStream >> result: aQueryResult [
 			remove: 'cursor';
 			yourself) first.
 	resultsList := (aQueryResult at: key) asOrderedCollection
+]
+
+{ #category : #accessing }
+GtApResultStream >> resultsList [
+	^ resultsList
+]
+
+{ #category : #accessing }
+GtApResultStream >> resultsList: anObject [
+	resultsList := anObject
 ]

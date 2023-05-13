@@ -1,7 +1,6 @@
 Trait {
 	#name : #TAppBskyFeedDefsFeedViewPost,
 	#instVars : [
-		'',
 		'replies'
 	],
 	#category : #'Gt4AtProto-Extensions-Traits'

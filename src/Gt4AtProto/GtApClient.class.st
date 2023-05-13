@@ -128,10 +128,26 @@ GtApClient >> queries [
 
 { #category : #accessing }
 GtApClient >> queryOn: aMethodId [
-	| res |
+	| res filteredProperties |
 	res := (self clientFor: aMethodId) query.
 
 	(res includesKey: 'cursor') ifFalse: [ ^ res ].
+
+	filteredProperties := res keys reject: [ :aKey | aKey = 'cursor' ].
+
+	filteredProperties size > 1
+		ifTrue: [ | rightKey |
+			rightKey := res keys
+					detect: [ :aKey | ('cursor' = aKey) not and: [ (res at: aKey) isKindOf: Array ] ]
+					ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
+			^ res
+				at: rightKey
+				put: (GtApResultStream new
+						cursor: (res removeKey: 'cursor');
+						key: rightKey;
+						resultsList: (res removeKey: rightKey) asOrderedCollection;
+						method: aMethodId;
+						client: self) ].
 
 	^ GtApResultStream new
 		result: res;
@@ -141,10 +157,28 @@ GtApClient >> queryOn: aMethodId [
 
 { #category : #accessing }
 GtApClient >> queryOn: aMethodId parameters: aDictionary [
-	| res |
+	| res filteredProperties |
 	res := (self clientFor: aMethodId parameters: aDictionary) query.
 
 	(res includesKey: 'cursor') ifFalse: [ ^ res ].
+
+	filteredProperties := res keys reject: [ :aKey | aKey = 'cursor' ].
+
+	filteredProperties size > 1
+		ifTrue: [ | rightKey |
+			rightKey := res keys
+					detect: [ :aKey | ('cursor' = aKey) not and: [ (res at: aKey) isKindOf: Array ] ]
+					ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
+			res
+				at: rightKey
+				put: (GtApResultStream new
+						cursor: (res removeKey: 'cursor');
+						key: rightKey;
+						resultsList: (res removeKey: rightKey) asOrderedCollection;
+						method: aMethodId;
+						parameters: aDictionary;
+						client: self).
+			^ res ].
 
 	^ GtApResultStream new
 		result: res;
