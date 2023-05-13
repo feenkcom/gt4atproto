@@ -76,43 +76,6 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T20:32:06.710225+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-11T07:02:57.127143+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "Asbjxge3DQCbdNrjACuSBg=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "[[Glamorous Toolkit for AT Protocol]]"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "pharoSnippet",
@@ -363,40 +326,6 @@
 								"uidString" : "YSCFcQS3DQCyeX4PACuSBg=="
 							},
 							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client query"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-08T23:37:12.715335+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-09T17:47:18.513577+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "AJu/LZe3DQCDGjm6CCHVSw=="
-							},
-							"code" : "client := GtApClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rGtApUser new client: client"
 						}
 					]
 				},
@@ -495,14 +424,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-10T22:48:28.971987+02:00"
+									"dateAndTimeString" : "2023-05-13T15:30:12.566764+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "t38eX1e3DQCOiLZDC/wKlw=="
 							},
-							"code" : "client := GtApGeneratedClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient appBskyFeedGetTimeline."
+							"code" : "client := GtApGeneratedClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient appBskyFeedGetTimelinealgorithm: nil"
 						},
 						{
 							"__type" : "pharoSnippet",

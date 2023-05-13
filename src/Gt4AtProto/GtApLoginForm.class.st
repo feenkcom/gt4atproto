@@ -53,7 +53,7 @@ GtApLoginForm >> initialize [
 	username := ''.
 	password := ''.
 	server := self defaultServer.
-	clientClass := GtApClient
+	clientClass := GtApGeneratedClient
 ]
 
 { #category : #accessing }
