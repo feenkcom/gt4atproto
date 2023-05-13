@@ -28,19 +28,17 @@ TAppBskyFeedDefsFeedViewPost >> embed [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> getReplies [
-	^ (((self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
-		at: 'thread') at: 'replies')
-		collect: [ :aDictionary | (GtApModelEntity findForRequest: aDictionary) client: self client ]
+	^ ((self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
+		at: 'thread') atpReplies
 ]
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> getRoot [
 	self atpReply ifNil: [ ^ self ].
 
-	^ (GtApModelEntity
-		findForRequest: ((self client
-				appBskyFeedGetPostThreaduri: self atpReply atpRoot atpUri
-				depth: nil) at: 'thread')) client: self client
+	^ ((self client
+		appBskyFeedGetPostThreaduri: self atpReply atpRoot atpUri
+		depth: nil) at: 'thread') client: self client
 ]
 
 { #category : #accessing }

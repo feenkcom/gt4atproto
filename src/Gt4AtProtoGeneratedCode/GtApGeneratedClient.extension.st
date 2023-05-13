@@ -67,7 +67,7 @@ GtApGeneratedClient >> appBskyFeedGetLikesuri: uri cid: cid [
 GtApGeneratedClient >> appBskyFeedGetPostThreaduri: uri depth: depth [ 
 	<xrpcQuery>
 	""
-	^ GtApRequestResolver from: {'thread' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.feed.getPostThread' parameters: {'uri' -> uri. 'depth' -> depth} asDictionary)
+	^ GtApRequestResolver from: {'thread' -> [:aValue |GtApModelEntity findForRequest:  aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.feed.getPostThread' parameters: {'uri' -> uri. 'depth' -> depth} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -333,7 +333,7 @@ GtApGeneratedClient >> comAtprotoLabelQueryLabelsuriPatterns: uriPatterns source
 GtApGeneratedClient >> comAtprotoModerationCreateReportreasonType: reasonType reason: reason subject: subject [ 
 	<xrpcProcedure>
 	"Report a repo or a record."
-	^ GtApRequestResolver from: {'id' -> [:aValue | aValue]. 'reasonType' -> [:aValue | aValue]. 'reason' -> [:aValue | aValue]. 'subject' -> [:aValue | aValue]. 'reportedBy' -> [:aValue | aValue]. 'createdAt' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.moderation.createReport' withBody: {'reasonType' -> reasonType. 'reason' -> reason. 'subject' -> subject} asDictionary)
+	^ GtApRequestResolver from: {'id' -> [:aValue | aValue]. 'reasonType' -> [:aValue | aValue]. 'reason' -> [:aValue | aValue]. 'subject' -> [:aValue |GtApModelEntity findForRequest:  aValue]. 'reportedBy' -> [:aValue | aValue]. 'createdAt' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.moderation.createReport' withBody: {'reasonType' -> reasonType. 'reason' -> reason. 'subject' -> subject} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -361,14 +361,14 @@ GtApGeneratedClient >> comAtprotoRepoDeleteRecordrepo: repo collection: collecti
 GtApGeneratedClient >> comAtprotoRepoDescribeReporepo: repo [ 
 	<xrpcQuery>
 	"Get information about the repo, including the list of collections."
-	^ GtApRequestResolver from: {'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]. 'didDoc' -> [:aValue | aValue]. 'collections' -> [:aValue | aValue]. 'handleIsCorrect' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.repo.describeRepo' parameters: {'repo' -> repo} asDictionary)
+	^ GtApRequestResolver from: {'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]. 'didDoc' -> [:aValue |GtApModelEntity findForRequest:  aValue]. 'collections' -> [:aValue | aValue]. 'handleIsCorrect' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.repo.describeRepo' parameters: {'repo' -> repo} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoGetRecordrepo: repo collection: collection rkey: rkey cid: cid [ 
 	<xrpcQuery>
 	"Get a record."
-	^ GtApRequestResolver from: {'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]. 'value' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.repo.getRecord' parameters: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'cid' -> cid} asDictionary)
+	^ GtApRequestResolver from: {'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]. 'value' -> [:aValue |GtApModelEntity findForRequest:  aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.repo.getRecord' parameters: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }

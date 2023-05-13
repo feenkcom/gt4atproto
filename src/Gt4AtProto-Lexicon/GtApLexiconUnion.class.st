@@ -72,6 +72,11 @@ GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 ]
 
 { #category : #accessing }
+GtApLexiconUnion >> generateDeserialization [
+	^ 'GtApModelEntity findForRequest: '
+]
+
+{ #category : #accessing }
 GtApLexiconUnion >> gtViewResolvedDefinitionsFor: aView [
 	<gtView>
 	resolvedDefinitions ifNil: [ ^ aView empty ].

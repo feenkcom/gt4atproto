@@ -28,9 +28,8 @@ TAppBskyFeedDefsThreadViewPost >> embed [
 
 { #category : #accessing }
 TAppBskyFeedDefsThreadViewPost >> getReplies [
-	^ (((self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
-		at: 'thread') at: 'replies')
-		collect: [ :aDictionary | (GtApModelEntity findForRequest: aDictionary) client: self client ]
+	^ ((self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
+		at: 'thread') atpReplies
 ]
 
 { #category : #accessing }

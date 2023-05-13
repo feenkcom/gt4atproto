@@ -51,3 +51,8 @@ GtApLexiconUnknownDefinition >> generateDescriptorFor: aString usingPrefix: aPre
 	beRequired' ].
 	^ source
 ]
+
+{ #category : #accessing }
+GtApLexiconUnknownDefinition >> generateDeserialization [
+	^ 'GtApModelEntity findForRequest: '
+]
