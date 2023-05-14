@@ -50,13 +50,27 @@ TAppBskyFeedDefsThreadViewPost >> gtCardFor: aView [
 { #category : #accessing }
 TAppBskyFeedDefsThreadViewPost >> gtThreadFor: aView [
 	<gtView>
-	^ aView tree
+	^ aView explicit
 		title: 'Thread';
 		priority: 0;
-		items: [ {self} ];
-		children: #replies;
-		stencil: [ :aPost | GtApFeedPostSummaryElement new post: aPost ];
-		expandOneLevel
+		stencil: [ BrSimpleTree new
+				nodeStencil: [ GtApFeedPostSummaryElement new
+						addAptitude: BrShadowAptitude;
+						background: Color white;
+						margin: (BlInsets all: 10) ];
+				nodeDataBinder: [ :aPostElement :aPost | 
+					aPostElement
+						post: aPost;
+						addAptitude: (BrStyleCommonAptitude new
+								default: [ :s | s background: Color white ];
+								hovered: [ :s | s background: Color veryVeryLightGray ];
+								pressed: [ :s | s background: Color veryLightGray ]);
+						when: BlClickEvent
+							do: [ :e | 
+								e consumed: true.
+								e target phlow spawnObject: aPostElement post ] ];
+				items: {self} lazy: [ :each | each replies ];
+				expandOneLevel ]
 ]
 
 { #category : #accessing }

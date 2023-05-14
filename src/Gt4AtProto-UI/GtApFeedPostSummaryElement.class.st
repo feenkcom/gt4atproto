@@ -27,7 +27,7 @@ GtApFeedPostSummaryElement >> buildGrayLabel [
 { #category : #initialization }
 GtApFeedPostSummaryElement >> buildPostContentElement [
 	^ (postTextEditor := BrEditor new
-		beReadOnlyWithoutSelection;
+		beReadOnlyWithSelection;
 		aptitude: BrGlamorousRegularEditorAptitude;
 		hMatchParent;
 		vFitContent;
@@ -157,4 +157,16 @@ GtApFeedPostSummaryElement >> updateMedia [
 
 	self post hasEmbed
 		ifTrue: [ mediaContainer addChild: self post embed asEmbeddedElement ]
+]
+
+{ #category : #accessing }
+GtApFeedPostSummaryElement >> withShadowAndHighlighting [
+	self
+		aptitude: BrShadowAptitude
+				+ (BrStyleCommonAptitude new
+						default: [ :s | s background: Color white ];
+						hovered: [ :s | s background: Color veryVeryLightGray ];
+						pressed: [ :s | s background: Color veryLightGray ]);
+		background: Color white;
+		margin: (BlInsets all: 10)
 ]

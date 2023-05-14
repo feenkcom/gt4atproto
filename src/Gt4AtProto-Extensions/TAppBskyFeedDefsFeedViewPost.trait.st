@@ -51,21 +51,27 @@ TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 		stencil: [ 
 			GtApFeedPostSummaryElement new
 				post: self;
-				addAptitude: BrShadowAptitude;
-				background: Color white;
-				margin: (BlInsets all: 10) ]
+				withShadowAndHighlighting ]
 ]
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> gtThreadFor: aView [
 	<gtView>
-	^ aView tree
+	^ aView explicit
 		title: 'Thread';
 		priority: 0;
-		items: [ {self getRoot} ];
-		children: #replies;
-		stencil: [ :aPost | GtApFeedPostSummaryElement new post: aPost ];
-		expandOneLevel
+		stencil: [ BrSimpleTree new
+				nodeStencil: [ GtApFeedPostSummaryElement new
+						withShadowAndHighlighting ];
+				nodeDataBinder: [ :aPostElement :aPost | 
+					aPostElement
+						post: aPost;
+						when: BlClickEvent
+							do: [ :e | 
+								e consumed: true.
+								e target phlow spawnObject: aPostElement post ] ];
+				items: {self getRoot} lazy: [ :each | each replies ];
+				expandOneLevel ]
 ]
 
 { #category : #accessing }
