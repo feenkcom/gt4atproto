@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-10T19:08:47.751518+02:00"
+						"dateAndTimeString" : "2023-05-13T15:28:29.890053+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "zoF+j6a3DQCwN1BjDuRBkQ=="
 				},
-				"code" : "GtApLoginForm new\r\tclientCallback: [ :aClient :anElement | \r\t\tanElement phlow spawnObject: \r\t\t\t(GtApUser new client: aClient) ]"
+				"code" : "GtApLoginForm new\r\tclientCallback: [ :aClient :anElement |\r\t\tanElement phlow\r\t\t\tspawnObject: ((aClient appBskyActorGetProfileactor: aClient context handle) client: aClient)  ]"
 			}
 		]
 	},
