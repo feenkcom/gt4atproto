@@ -60,6 +60,7 @@ GtApLoginForm >> initialize [
 GtApLoginForm >> magritteAcceptAction [
 	<magritteActionDescription>
 	^ super magritteAcceptAction
+		beEnabledOnValidOverallStatus;
 		onSuccessCallback: (GtMagritteCallback new
 				action: [ :aModel :aButton :aMemento :aDescription | 
 					self clientCallback
