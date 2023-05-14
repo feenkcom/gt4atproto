@@ -32,5 +32,6 @@ BaselineOfGt4AtProto >> baseline: spec [
 			spec package: 'Gt4AtProto-Lexicon' with: [ spec requires: 'JSONSchema' ].
 			spec package: 'Gt4AtProto-UI'.
 			spec package: 'Gt4AtProto-Extensions'.
-			spec package: 'Gt4AtProtoGeneratedCode' with: [ spec requires: 'Gt4AtProto-Extensions' ] ]
+			spec package: 'Gt4AtProtoGeneratedCode' with: [ spec requires: 'Gt4AtProto-Extensions' ].
+			spec package: 'Gt4AtProto-Lepiter' with: [ spec requires: 'Gt4AtProtoGeneratedCode' ] ]
 ]
