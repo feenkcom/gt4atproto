@@ -10,7 +10,16 @@ Trait {
 TAppBskyEmbedImagesView >> asEmbeddedElement [
 	^ BrVerticalPane new matchParent
 		addChildren: (self atpImages
-				collect: [ :anImage | BrAsyncFileWidget new hMatchParent vExact: 200; url: anImage atpFullsize ])
+				collect: [ :anImage | anImage asImageElement ])
+]
+
+{ #category : #accessing }
+TAppBskyEmbedImagesView >> gtImagesFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Images';
+		priority: 10;
+		stencil: [ self asEmbeddedElement ]
 ]
 
 { #category : #accessing }

@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyEmbedImagesViewImage,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyEmbedImagesViewImage',
+	#classTraits : 'TAppBskyEmbedImagesViewImage classTrait',
 	#instVars : [
 		'atpThumb',
 		'atpFullsize',
