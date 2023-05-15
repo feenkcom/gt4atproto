@@ -48,7 +48,7 @@ TAppBskyFeedDefsThreadViewPost >> gtCardFor: aView [
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsThreadViewPost >> gtThreadFor: aView [
+TAppBskyFeedDefsThreadViewPost >> gtCardsThreadFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Thread';

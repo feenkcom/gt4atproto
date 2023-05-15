@@ -28,6 +28,11 @@ TAppBskyEmbedRecordView >> createdAtTimestamp [
 ]
 
 { #category : #accessing }
+TAppBskyEmbedRecordView >> hasMedia [
+	^ self hasPhotos
+]
+
+{ #category : #accessing }
 TAppBskyEmbedRecordView >> hasPhotos [
 	^ self atpRecord atpEmbeds isNotNil
 ]

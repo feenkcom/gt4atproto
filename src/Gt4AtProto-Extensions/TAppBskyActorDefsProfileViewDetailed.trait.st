@@ -1,3 +1,6 @@
+"
+This trait is meant to work only with {{gtClass:AppBskyActorDefsProfileViewDetailed}}.
+"
 Trait {
 	#name : #TAppBskyActorDefsProfileViewDetailed,
 	#instVars : [
@@ -48,6 +51,59 @@ TAppBskyActorDefsProfileViewDetailed >> gtCreatePostFor: aView [
 ]
 
 { #category : #accessing }
+TAppBskyActorDefsProfileViewDetailed >> gtDisplayOn: stream [
+	stream
+		nextPutAll: self atpDisplayName;
+		space;
+		nextPut: $@;
+		nextPutAll: self atpHandle
+]
+
+{ #category : #accessing }
+TAppBskyActorDefsProfileViewDetailed >> gtViewCardPostsFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Post cards';
+		priority: 1;
+		stencil: [ BrSimpleList new
+				stream: self posts;
+				itemStencil: [ GtApFeedPostSummaryElement new
+						addAptitude: BrShadowAptitude;
+						background: Color white;
+						margin: (BlInsets all: 10) ];
+				itemDataBinder: [ :aPostElement :aPost | 
+					aPostElement
+						post: aPost;
+						addAptitude: (BrStyleCommonAptitude new
+								default: [ :s | s background: Color white ];
+								hovered: [ :s | s background: Color veryVeryLightGray ];
+								pressed: [ :s | s background: Color veryLightGray ]);
+						when: BlClickEvent
+							do: [ :e | 
+								e consumed: true.
+								e target phlow spawnObject: aPostElement post ] ] ]
+]
+
+{ #category : #accessing }
+TAppBskyActorDefsProfileViewDetailed >> gtViewCompactPostsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Compact posts';
+		priority: 1;
+		items: [ self posts ];
+		column: 'Name'
+			text: [ :each | each atpPost atpAuthor atpDisplayName ]
+			width: 150;
+		column: 'Text' text: [ :each | each atpPost atpRecord atpText ];
+		column: 'Is reply' text: [ :each | each isReply ifFalse: [''] ifTrue: [ 'yes' ]] width: 50;
+		column: 'Embed' text: [ :each | each hasEmbed ifFalse: [''] ifTrue: [ 'yes' ] ] width: 50;
+		column: 'Media' text: [ :each | each hasMedia ifFalse: [''] ifTrue: [ 'yes' ] ] width: 50;
+		column: 'Created at'
+			text: [ :each | each atpPost atpRecord createdAtTimestamp printToSeconds ]
+			width: 150
+]
+
+{ #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> gtViewFollowersFor: aView [
 	<gtView>
 	
@@ -73,31 +129,6 @@ TAppBskyActorDefsProfileViewDetailed >> gtViewFollowingFor: aView [
 			GtApFeedUserSummaryListContainerElement new ];
 		itemDataBinder: [ :aUserElement :aUser | 
 			aUserElement user: aUser ].
-]
-
-{ #category : #accessing }
-TAppBskyActorDefsProfileViewDetailed >> gtViewPostsTimelineFor: aView [
-	<gtView>
-	^ aView explicit
-		title: 'Posts';
-		priority: 1;
-		stencil: [ BrSimpleList new
-				stream: self posts;
-				itemStencil: [ GtApFeedPostSummaryElement new
-						addAptitude: BrShadowAptitude;
-						background: Color white;
-						margin: (BlInsets all: 10) ];
-				itemDataBinder: [ :aPostElement :aPost | 
-					aPostElement
-						post: aPost;
-						addAptitude: (BrStyleCommonAptitude new
-								default: [ :s | s background: Color white ];
-								hovered: [ :s | s background: Color veryVeryLightGray ];
-								pressed: [ :s | s background: Color veryLightGray ]);
-						when: BlClickEvent
-							do: [ :e | 
-								e consumed: true.
-								e target phlow spawnObject: aPostElement post ] ] ]
 ]
 
 { #category : #accessing }

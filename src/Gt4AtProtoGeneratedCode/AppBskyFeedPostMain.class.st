@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyFeedPostMain,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyFeedPostMain',
+	#classTraits : 'TAppBskyFeedPostMain classTrait',
 	#instVars : [
 		'atpText',
 		'atpEntities',

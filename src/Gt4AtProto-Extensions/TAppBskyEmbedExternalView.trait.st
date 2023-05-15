@@ -7,3 +7,9 @@ Trait {
 TAppBskyEmbedExternalView >> asEmbeddedElement [
 	^ GtApExternalElement new external: self
 ]
+
+{ #category : #accessing }
+TAppBskyEmbedExternalView >> hasMedia [
+	"external embeds do not have attached media"
+	^ false
+]

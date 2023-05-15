@@ -55,7 +55,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 ]
 
 { #category : #accessing }
-TAppBskyFeedDefsFeedViewPost >> gtThreadFor: aView [
+TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Thread';
@@ -77,6 +77,16 @@ TAppBskyFeedDefsFeedViewPost >> gtThreadFor: aView [
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 	^ self embed isNotNil
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> hasMedia [
+	^ self hasEmbed and: [ self embed hasMedia ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> isReply [
+	^ self atpReply notNil
 ]
 
 { #category : #accessing }
