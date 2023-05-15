@@ -1,5 +1,5 @@
 Class {
-	#name : #GtApContext,
+	#name : #GtApXRPCContext,
 	#superclass : #Object,
 	#instVars : [
 		'server',
@@ -7,16 +7,16 @@ Class {
 		'loginInformation',
 		'requestHistory'
 	],
-	#category : #Gt4AtProto
+	#category : #'Gt4AtProto-XRPC'
 }
 
 { #category : #accessing }
-GtApContext >> addRequest: aRequest [
+GtApXRPCContext >> addRequest: aRequest [
 	requestHistory add: aRequest
 ]
 
 { #category : #accessing }
-GtApContext >> gtRequestHistoryFor: aView [
+GtApXRPCContext >> gtRequestHistoryFor: aView [
 	<gtView>
 	^ aView list
 		title: 'Request History';
@@ -25,51 +25,51 @@ GtApContext >> gtRequestHistoryFor: aView [
 ]
 
 { #category : #accessing }
-GtApContext >> handle [
+GtApXRPCContext >> handle [
 	^ handle
 ]
 
 { #category : #accessing }
-GtApContext >> handle: anObject [
+GtApXRPCContext >> handle: anObject [
 	handle := anObject
 ]
 
 { #category : #accessing }
-GtApContext >> initialize [
+GtApXRPCContext >> initialize [
 	requestHistory := OrderedCollection new
 ]
 
 { #category : #accessing }
-GtApContext >> isLoggedIn [
+GtApXRPCContext >> isLoggedIn [
 	^ server isNotNil and: [ handle isNotNil and: [ loginInformation isNotNil ] ]
 ]
 
 { #category : #accessing }
-GtApContext >> jwtAccess [
+GtApXRPCContext >> jwtAccess [
 	^ loginInformation at: 'accessJwt'
 ]
 
 { #category : #accessing }
-GtApContext >> loginInformation [
+GtApXRPCContext >> loginInformation [
 	^ loginInformation
 ]
 
 { #category : #accessing }
-GtApContext >> loginInformation: anObject [
+GtApXRPCContext >> loginInformation: anObject [
 	loginInformation := anObject
 ]
 
 { #category : #accessing }
-GtApContext >> requestHistory [
+GtApXRPCContext >> requestHistory [
 	^ requestHistory
 ]
 
 { #category : #accessing }
-GtApContext >> server [
+GtApXRPCContext >> server [
 	^ server
 ]
 
 { #category : #accessing }
-GtApContext >> server: anObject [
+GtApXRPCContext >> server: anObject [
 	server := anObject
 ]

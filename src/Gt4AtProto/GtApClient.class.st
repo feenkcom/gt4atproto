@@ -89,7 +89,7 @@ GtApClient >> handle [
 
 { #category : #accessing }
 GtApClient >> initialize [
-	context := GtApContext new
+	context := GtApXRPCContext new
 ]
 
 { #category : #accessing }
