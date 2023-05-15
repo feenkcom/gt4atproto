@@ -16,6 +16,11 @@ ComAtprotoSyncSubscribeReposMigrate class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposMigrate class >> atpFile [
+ ^ 'com/atproto/sync/subscribeRepos.json'
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#migrate'
 ]

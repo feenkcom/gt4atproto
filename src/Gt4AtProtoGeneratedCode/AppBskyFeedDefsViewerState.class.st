@@ -14,6 +14,11 @@ AppBskyFeedDefsViewerState class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsViewerState class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.feed.defs#viewerState'
 ]

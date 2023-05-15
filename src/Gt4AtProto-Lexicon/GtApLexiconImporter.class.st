@@ -52,10 +52,9 @@ GtApLexiconImporter >> importLexiconDocumentFromDefinition: aSchemaDefinition [
 ]
 
 { #category : #accessing }
-GtApLexiconImporter >> importLexiconDocumentFromStream: aStream [ 
+GtApLexiconImporter >> importLexiconDocumentFromStream: aStream [
 	| schemaDefinition |
-	
-	schemaDefinition := GtApLexiconNeoJsonObject  fromStream:  aStream.
+	schemaDefinition := GtApLexiconNeoJsonObject fromStream: aStream.
 	^ self importLexiconDocumentFromDefinition: schemaDefinition
 ]
 
@@ -70,16 +69,16 @@ GtApLexiconImporter >> importLexiconSchemaFrom: aSchemaData [
 GtApLexiconImporter >> importLexiconsFromDirectory: aDirectory [
 	| lexicons |
 	lexicons := GtApLexicons new.
-	
-	(aDirectory allChildrenMatching: '*.json') do: [ :aLexiconFile |
-		| document | 
-		document := aLexiconFile readStreamDo: [ :aStream |
-			self importLexiconDocumentFromStream:  aStream ].
-		lexicons addLexiconDocument:  document ].
-		
-	GtApLexiconReferencesRevolver new 
-		resolveLexicon: lexicons.
-	
+
+	(aDirectory allChildrenMatching: '*.json')
+		do: [ :aLexiconFile | 
+			| document |
+			document := aLexiconFile
+					readStreamDo: [ :aStream | self importLexiconDocumentFromStream: aStream ].
+			lexicons addLexiconDocument: (document documentsDirectory: aDirectory; documentFile: aLexiconFile) ].
+
+	GtApLexiconReferencesRevolver new resolveLexicon: lexicons.
+
 	^ lexicons
 ]
 

@@ -14,6 +14,11 @@ AppBskyFeedPostTextSlice class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedPostTextSlice class >> atpFile [
+ ^ 'app/bsky/feed/post.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedPostTextSlice class >> atpRecordName [
  ^ 'app.bsky.feed.post#textSlice'
 ]

@@ -15,6 +15,11 @@ AppBskyFeedGetLikesLike class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedGetLikesLike class >> atpFile [
+ ^ 'app/bsky/feed/getLikes.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedGetLikesLike class >> atpRecordName [
  ^ 'app.bsky.feed.getLikes#like'
 ]

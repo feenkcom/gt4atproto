@@ -13,6 +13,11 @@ AppBskyEmbedImagesMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedImagesMain class >> atpFile [
+ ^ 'app/bsky/embed/images.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedImagesMain class >> atpRecordName [
  ^ 'app.bsky.embed.images'
 ]

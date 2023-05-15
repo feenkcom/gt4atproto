@@ -14,6 +14,11 @@ ComAtprotoRepoStrongRefMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoRepoStrongRefMain class >> atpFile [
+ ^ 'com/atproto/repo/strongRef.json'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoStrongRefMain class >> atpRecordName [
  ^ 'com.atproto.repo.strongRef'
 ]

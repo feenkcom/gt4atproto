@@ -13,6 +13,11 @@ AppBskyEmbedRecordViewBlocked class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordViewBlocked class >> atpFile [
+ ^ 'app/bsky/embed/record.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordViewBlocked class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewBlocked'
 ]

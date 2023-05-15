@@ -23,6 +23,11 @@ ComAtprotoAdminDefsActionView class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsActionView class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsActionView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionView'
 ]

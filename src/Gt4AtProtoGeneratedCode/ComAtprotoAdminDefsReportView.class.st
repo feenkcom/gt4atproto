@@ -19,6 +19,11 @@ ComAtprotoAdminDefsReportView class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsReportView class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsReportView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#reportView'
 ]

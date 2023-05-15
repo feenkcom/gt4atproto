@@ -17,6 +17,11 @@ AppBskyFeedDefsThreadViewPost class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsThreadViewPost class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsThreadViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#threadViewPost'
 ]

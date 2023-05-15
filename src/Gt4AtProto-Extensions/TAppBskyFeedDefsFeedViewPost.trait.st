@@ -75,6 +75,19 @@ TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 ]
 
 { #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
+	<gtView>
+	^ aView columnedTree
+		title: 'Compact thread';
+		priority: 0;
+		items: [ {self getRoot} ];
+		children: [ :each | each replies ];
+		column: 'Author' text: [ :each | each author atpDisplayName ];
+		column: 'Text' text: [ :each | each atpPost atpRecord atpText ];
+		column: 'Created at' text: [ :each | each atpPost atpRecord createdAtTimestamp ]
+]
+
+{ #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 	^ self embed isNotNil
 ]

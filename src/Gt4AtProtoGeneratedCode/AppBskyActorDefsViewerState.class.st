@@ -18,6 +18,11 @@ AppBskyActorDefsViewerState class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsViewerState class >> atpFile [
+ ^ 'app/bsky/actor/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyActorDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.actor.defs#viewerState'
 ]

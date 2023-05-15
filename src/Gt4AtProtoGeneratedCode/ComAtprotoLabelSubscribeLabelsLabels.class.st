@@ -14,6 +14,11 @@ ComAtprotoLabelSubscribeLabelsLabels class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoLabelSubscribeLabelsLabels class >> atpFile [
+ ^ 'com/atproto/label/subscribeLabels.json'
+]
+
+{ #category : #accessing }
 ComAtprotoLabelSubscribeLabelsLabels class >> atpRecordName [
  ^ 'com.atproto.label.subscribeLabels#labels'
 ]

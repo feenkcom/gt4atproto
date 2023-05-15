@@ -13,6 +13,11 @@ AppBskyEmbedRecordMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordMain class >> atpFile [
+ ^ 'app/bsky/embed/record.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordMain class >> atpRecordName [
  ^ 'app.bsky.embed.record'
 ]

@@ -13,6 +13,11 @@ AppBskyActorDefsAdultContentPref class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsAdultContentPref class >> atpFile [
+ ^ 'app/bsky/actor/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyActorDefsAdultContentPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#adultContentPref'
 ]

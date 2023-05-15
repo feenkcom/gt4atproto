@@ -16,6 +16,11 @@ AppBskyEmbedExternalViewExternal class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedExternalViewExternal class >> atpFile [
+ ^ 'app/bsky/embed/external.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedExternalViewExternal class >> atpRecordName [
  ^ 'app.bsky.embed.external#viewExternal'
 ]

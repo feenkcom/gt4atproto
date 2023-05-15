@@ -14,6 +14,11 @@ AppBskyFeedDefsReplyRef class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsReplyRef class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsReplyRef class >> atpRecordName [
  ^ 'app.bsky.feed.defs#replyRef'
 ]

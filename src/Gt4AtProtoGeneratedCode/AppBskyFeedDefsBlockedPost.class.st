@@ -14,6 +14,11 @@ AppBskyFeedDefsBlockedPost class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsBlockedPost class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsBlockedPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#blockedPost'
 ]

@@ -14,6 +14,11 @@ ComAtprotoRepoApplyWritesDelete class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoRepoApplyWritesDelete class >> atpFile [
+ ^ 'com/atproto/repo/applyWrites.json'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoApplyWritesDelete class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#delete'
 ]

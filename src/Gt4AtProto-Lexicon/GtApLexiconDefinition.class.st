@@ -3,7 +3,9 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'rawData',
-		'id'
+		'id',
+		'documentsDirectory',
+		'documentFile'
 	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
@@ -41,6 +43,26 @@ GtApLexiconDefinition >> descriptionOn: aStream [
 GtApLexiconDefinition >> directlyReferencedDefinitionsDo: aBlock [
 	self referencedDefinitions do: [ :aDefinition |
 		aBlock cull: aDefinition ]
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> documentFile [
+	^ documentFile
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> documentFile: anObject [
+	documentFile := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> documentsDirectory [
+	^ documentsDirectory
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> documentsDirectory: anObject [
+	documentsDirectory := anObject
 ]
 
 { #category : #accessing }

@@ -15,6 +15,11 @@ ComAtprotoSyncSubscribeReposTombstone class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposTombstone class >> atpFile [
+ ^ 'com/atproto/sync/subscribeRepos.json'
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#tombstone'
 ]

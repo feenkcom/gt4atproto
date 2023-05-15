@@ -14,6 +14,11 @@ AppBskyRichtextFacetByteSlice class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyRichtextFacetByteSlice class >> atpFile [
+ ^ 'app/bsky/richtext/facet.json'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetByteSlice class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#byteSlice'
 ]

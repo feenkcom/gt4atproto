@@ -18,6 +18,11 @@ AppBskyGraphListMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyGraphListMain class >> atpFile [
+ ^ 'app/bsky/graph/list.json'
+]
+
+{ #category : #accessing }
 AppBskyGraphListMain class >> atpRecordName [
  ^ 'app.bsky.graph.list'
 ]

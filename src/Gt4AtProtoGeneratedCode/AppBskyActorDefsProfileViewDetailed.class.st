@@ -26,6 +26,11 @@ AppBskyActorDefsProfileViewDetailed class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsProfileViewDetailed class >> atpFile [
+ ^ 'app/bsky/actor/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyActorDefsProfileViewDetailed class >> atpRecordName [
  ^ 'app.bsky.actor.defs#profileViewDetailed'
 ]

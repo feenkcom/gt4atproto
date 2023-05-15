@@ -14,6 +14,11 @@ AppBskyFeedRepostMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedRepostMain class >> atpFile [
+ ^ 'app/bsky/feed/repost.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedRepostMain class >> atpRecordName [
  ^ 'app.bsky.feed.repost'
 ]

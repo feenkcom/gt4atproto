@@ -15,6 +15,11 @@ ComAtprotoRepoApplyWritesCreate class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoRepoApplyWritesCreate class >> atpFile [
+ ^ 'com/atproto/repo/applyWrites.json'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoApplyWritesCreate class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#create'
 ]

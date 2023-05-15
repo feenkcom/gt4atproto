@@ -14,6 +14,11 @@ ComAtprotoSyncListReposRepo class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoSyncListReposRepo class >> atpFile [
+ ^ 'com/atproto/sync/listRepos.json'
+]
+
+{ #category : #accessing }
 ComAtprotoSyncListReposRepo class >> atpRecordName [
  ^ 'com.atproto.sync.listRepos#repo'
 ]

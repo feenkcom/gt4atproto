@@ -20,6 +20,11 @@ AppBskyFeedPostMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedPostMain class >> atpFile [
+ ^ 'app/bsky/feed/post.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedPostMain class >> atpRecordName [
  ^ 'app.bsky.feed.post'
 ]

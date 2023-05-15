@@ -7,7 +7,9 @@ Class {
 		'id',
 		'revision',
 		'description',
-		'definitions'
+		'definitions',
+		'documentFile',
+		'documentsDirectory'
 	],
 	#category : #'Gt4AtProto-Lexicon-Documents'
 }
@@ -37,17 +39,46 @@ GtApLexiconDocument >> description: anObject [
 	description := anObject
 ]
 
+{ #category : #accessing }
+GtApLexiconDocument >> documentFile [
+	^ documentFile
+]
+
+{ #category : #accessing }
+GtApLexiconDocument >> documentFile: anObject [
+	documentFile := anObject.
+	self definitions do: [ :aDefinition | aDefinition documentFile: anObject ]
+]
+
+{ #category : #accessing }
+GtApLexiconDocument >> documentsDirectory: anObject [
+	documentsDirectory := anObject.
+	self definitions do: [ :aDefinition | aDefinition documentsDirectory: anObject ]
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconDocument >> gtViewDefinitionsFor: aView [
 	<gtView>
 	
 	^ aView columnedList
+		priority: 1;
 		title: 'Definitions';
 		items: [ self definitions associations ];
 		column: 'Name' text: [ :assoc | assoc key ];
 		column: 'Type' text: [ :assoc | assoc value type ];
 		column: 'Description' text: [ :assoc | assoc value description ifNil: [''] ];
 		send: #value
+]
+
+{ #category : #'gt - extensions' }
+GtApLexiconDocument >> gtViewDocumentFileFor: aView [
+	<gtView>
+	
+	^ aView forward
+		priority: 2;
+		title: 'Document File';
+		object: [ documentFile ];
+		view: #gtJsonFor:
 ]
 
 { #category : #testing }

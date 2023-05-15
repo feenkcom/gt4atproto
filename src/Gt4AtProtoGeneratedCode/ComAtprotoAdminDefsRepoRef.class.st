@@ -13,6 +13,11 @@ ComAtprotoAdminDefsRepoRef class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsRepoRef class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsRepoRef class >> atpRecordName [
  ^ 'com.atproto.admin.defs#repoRef'
 ]

@@ -14,6 +14,11 @@ AppBskyActorDefsContentLabelPref class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsContentLabelPref class >> atpFile [
+ ^ 'app/bsky/actor/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyActorDefsContentLabelPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#contentLabelPref'
 ]

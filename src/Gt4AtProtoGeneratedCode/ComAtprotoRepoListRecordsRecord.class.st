@@ -15,6 +15,11 @@ ComAtprotoRepoListRecordsRecord class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoRepoListRecordsRecord class >> atpFile [
+ ^ 'com/atproto/repo/listRecords.json'
+]
+
+{ #category : #accessing }
 ComAtprotoRepoListRecordsRecord class >> atpRecordName [
  ^ 'com.atproto.repo.listRecords#record'
 ]

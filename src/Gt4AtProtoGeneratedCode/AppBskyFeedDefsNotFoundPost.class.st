@@ -14,6 +14,11 @@ AppBskyFeedDefsNotFoundPost class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsNotFoundPost class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsNotFoundPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#notFoundPost'
 ]

@@ -13,6 +13,11 @@ AppBskyEmbedExternalMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedExternalMain class >> atpFile [
+ ^ 'app/bsky/embed/external.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedExternalMain class >> atpRecordName [
  ^ 'app.bsky.embed.external'
 ]

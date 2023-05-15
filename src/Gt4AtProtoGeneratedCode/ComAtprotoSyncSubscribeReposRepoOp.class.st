@@ -15,6 +15,11 @@ ComAtprotoSyncSubscribeReposRepoOp class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposRepoOp class >> atpFile [
+ ^ 'com/atproto/sync/subscribeRepos.json'
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#repoOp'
 ]

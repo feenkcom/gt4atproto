@@ -18,6 +18,11 @@ AppBskyActorProfileMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyActorProfileMain class >> atpFile [
+ ^ 'app/bsky/actor/profile.json'
+]
+
+{ #category : #accessing }
 AppBskyActorProfileMain class >> atpRecordName [
  ^ 'app.bsky.actor.profile'
 ]

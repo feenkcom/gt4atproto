@@ -16,6 +16,11 @@ ComAtprotoSyncSubscribeReposHandle class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposHandle class >> atpFile [
+ ^ 'com/atproto/sync/subscribeRepos.json'
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#handle'
 ]

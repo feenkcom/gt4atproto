@@ -15,6 +15,11 @@ AppBskyFeedPostEntity class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedPostEntity class >> atpFile [
+ ^ 'app/bsky/feed/post.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedPostEntity class >> atpRecordName [
  ^ 'app.bsky.feed.post#entity'
 ]

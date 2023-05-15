@@ -14,6 +14,11 @@ ComAtprotoServerCreateInviteCodesAccountCodes class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoServerCreateInviteCodesAccountCodes class >> atpFile [
+ ^ 'com/atproto/server/createInviteCodes.json'
+]
+
+{ #category : #accessing }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpRecordName [
  ^ 'com.atproto.server.createInviteCodes#accountCodes'
 ]

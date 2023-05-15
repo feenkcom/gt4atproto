@@ -14,6 +14,11 @@ AppBskyFeedDefsReasonRepost class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsReasonRepost class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsReasonRepost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#reasonRepost'
 ]

@@ -13,6 +13,11 @@ AppBskyRichtextFacetMention class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyRichtextFacetMention class >> atpFile [
+ ^ 'app/bsky/richtext/facet.json'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetMention class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#mention'
 ]

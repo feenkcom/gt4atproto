@@ -13,6 +13,11 @@ AppBskyGraphDefsListViewerState class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyGraphDefsListViewerState class >> atpFile [
+ ^ 'app/bsky/graph/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyGraphDefsListViewerState class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listViewerState'
 ]

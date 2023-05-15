@@ -14,6 +14,11 @@ AppBskyEmbedRecordWithMediaView class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordWithMediaView class >> atpFile [
+ ^ 'app/bsky/embed/recordWithMedia.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordWithMediaView class >> atpRecordName [
  ^ 'app.bsky.embed.recordWithMedia#view'
 ]

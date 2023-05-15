@@ -15,6 +15,11 @@ ComAtprotoServerCreateAppPasswordAppPassword class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoServerCreateAppPasswordAppPassword class >> atpFile [
+ ^ 'com/atproto/server/createAppPassword.json'
+]
+
+{ #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword class >> atpRecordName [
  ^ 'com.atproto.server.createAppPassword#appPassword'
 ]

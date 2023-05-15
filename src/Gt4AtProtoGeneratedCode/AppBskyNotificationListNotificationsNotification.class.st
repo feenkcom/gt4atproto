@@ -21,6 +21,11 @@ AppBskyNotificationListNotificationsNotification class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyNotificationListNotificationsNotification class >> atpFile [
+ ^ 'app/bsky/notification/listNotifications.json'
+]
+
+{ #category : #accessing }
 AppBskyNotificationListNotificationsNotification class >> atpRecordName [
  ^ 'app.bsky.notification.listNotifications#notification'
 ]

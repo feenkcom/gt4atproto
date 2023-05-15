@@ -14,6 +14,11 @@ ComAtprotoAdminDefsImageDetails class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsImageDetails class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsImageDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#imageDetails'
 ]

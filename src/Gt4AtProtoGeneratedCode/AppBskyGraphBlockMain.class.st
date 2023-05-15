@@ -14,6 +14,11 @@ AppBskyGraphBlockMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyGraphBlockMain class >> atpFile [
+ ^ 'app/bsky/graph/block.json'
+]
+
+{ #category : #accessing }
 AppBskyGraphBlockMain class >> atpRecordName [
  ^ 'app.bsky.graph.block'
 ]

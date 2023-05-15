@@ -13,6 +13,11 @@ AppBskyEmbedRecordViewNotFound class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordViewNotFound class >> atpFile [
+ ^ 'app/bsky/embed/record.json'
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordViewNotFound class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewNotFound'
 ]

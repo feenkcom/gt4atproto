@@ -14,6 +14,11 @@ AppBskyRichtextFacetMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyRichtextFacetMain class >> atpFile [
+ ^ 'app/bsky/richtext/facet.json'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetMain class >> atpRecordName [
  ^ 'app.bsky.richtext.facet'
 ]

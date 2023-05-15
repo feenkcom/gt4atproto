@@ -21,6 +21,11 @@ AppBskyGraphDefsListView class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyGraphDefsListView class >> atpFile [
+ ^ 'app/bsky/graph/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyGraphDefsListView class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listView'
 ]

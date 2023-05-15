@@ -15,6 +15,11 @@ ComAtprotoAdminDefsActionReversal class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsActionReversal class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsActionReversal class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionReversal'
 ]

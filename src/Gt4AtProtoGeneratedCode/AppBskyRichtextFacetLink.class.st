@@ -13,6 +13,11 @@ AppBskyRichtextFacetLink class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyRichtextFacetLink class >> atpFile [
+ ^ 'app/bsky/richtext/facet.json'
+]
+
+{ #category : #accessing }
 AppBskyRichtextFacetLink class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#link'
 ]

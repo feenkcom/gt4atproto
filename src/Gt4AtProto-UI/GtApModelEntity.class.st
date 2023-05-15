@@ -11,13 +11,18 @@ Class {
 }
 
 { #category : #accessing }
+GtApModelEntity class >> atpFile [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 GtApModelEntity class >> atpRecordName [
-	^ ''
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
 GtApModelEntity class >> atpSchema [
-	^ ''
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
@@ -51,6 +56,15 @@ GtApModelEntity >> client [
 GtApModelEntity >> client: anObject [
 	client := anObject.
 	self onClientChanged
+]
+
+{ #category : #accessing }
+GtApModelEntity >> gtFileNameFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'File Name';
+		priority: 51;
+		text: [ self class atpFile ]
 ]
 
 { #category : #accessing }

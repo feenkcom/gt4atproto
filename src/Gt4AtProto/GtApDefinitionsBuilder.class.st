@@ -48,6 +48,16 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 						toClass: (aModel classNamed: className asSymbol) classSide
 						inProtocols: {'accessing'}) primitiveExecute.
 
+					(GtRBSilentlyAddMethodRefactoring
+						model: aModel
+						addMethod: self prefix
+								, 'File
+ ^ '''
+								, (aDefinition documentFile relativeTo: aDefinition documentsDirectory absolutePath) pathString
+								, ''''
+						toClass: (aModel classNamed: className asSymbol) classSide
+						inProtocols: {'accessing'}) primitiveExecute.
+
 					traitName
 						asClassIfPresent: [ ((GtRBAddTraitUsageToClassByNameRefactoring
 								traitName: traitName

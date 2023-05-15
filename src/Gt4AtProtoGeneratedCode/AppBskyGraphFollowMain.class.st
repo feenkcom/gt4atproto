@@ -14,6 +14,11 @@ AppBskyGraphFollowMain class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyGraphFollowMain class >> atpFile [
+ ^ 'app/bsky/graph/follow.json'
+]
+
+{ #category : #accessing }
 AppBskyGraphFollowMain class >> atpRecordName [
  ^ 'app.bsky.graph.follow'
 ]

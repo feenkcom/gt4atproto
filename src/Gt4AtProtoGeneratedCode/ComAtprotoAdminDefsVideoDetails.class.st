@@ -15,6 +15,11 @@ ComAtprotoAdminDefsVideoDetails class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsVideoDetails class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsVideoDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#videoDetails'
 ]

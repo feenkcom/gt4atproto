@@ -13,6 +13,11 @@ ComAtprotoAdminDefsModeration class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsModeration class >> atpFile [
+ ^ 'com/atproto/admin/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsModeration class >> atpRecordName [
  ^ 'com.atproto.admin.defs#moderation'
 ]

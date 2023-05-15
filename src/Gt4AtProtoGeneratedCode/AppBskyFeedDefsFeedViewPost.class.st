@@ -17,6 +17,11 @@ AppBskyFeedDefsFeedViewPost class >> atpDescription [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsFeedViewPost class >> atpFile [
+ ^ 'app/bsky/feed/defs.json'
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsFeedViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#feedViewPost'
 ]
@@ -67,39 +72,6 @@ AppBskyFeedDefsFeedViewPost >> atpReply [
 AppBskyFeedDefsFeedViewPost >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
 	atpReply := anObject
-]
-
-{ #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
-	<gtView>
-	^ aView explicit
-		title: 'Thread';
-		priority: 0;
-		stencil: [ BrSimpleTree new
-				nodeStencil: [ GtApFeedPostSummaryElement new
-						withShadowAndHighlighting ];
-				nodeDataBinder: [ :aPostElement :aPost | 
-					aPostElement
-						post: aPost;
-						when: BlClickEvent
-							do: [ :e | 
-								e consumed: true.
-								e target phlow spawnObject: aPostElement post ] ];
-				items: {self getRoot} lazy: [ :each | each replies ];
-				expandOneLevel ]
-]
-
-{ #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
-	<gtView>
-	^ aView columnedTree
-		title: 'Compact thread';
-		priority: 0;
-		items: [ {self getRoot} ];
-		children: [ :each | each replies ];
-		column: 'Author' text: [ :each | each author atpDisplayName ];
-		column: 'Text' text: [ :each | each atpPost atpRecord atpText ];
-		column: 'Created at' text: [ :each | each atpPost atpRecord createdAtTimestamp ]
 ]
 
 { #category : #magritte }

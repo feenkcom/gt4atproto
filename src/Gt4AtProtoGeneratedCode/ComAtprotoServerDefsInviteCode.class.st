@@ -19,6 +19,11 @@ ComAtprotoServerDefsInviteCode class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoServerDefsInviteCode class >> atpFile [
+ ^ 'com/atproto/server/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoServerDefsInviteCode class >> atpRecordName [
  ^ 'com.atproto.server.defs#inviteCode'
 ]

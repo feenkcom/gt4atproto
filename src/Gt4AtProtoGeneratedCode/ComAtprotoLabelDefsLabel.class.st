@@ -18,6 +18,11 @@ ComAtprotoLabelDefsLabel class >> atpDescription [
 ]
 
 { #category : #accessing }
+ComAtprotoLabelDefsLabel class >> atpFile [
+ ^ 'com/atproto/label/defs.json'
+]
+
+{ #category : #accessing }
 ComAtprotoLabelDefsLabel class >> atpRecordName [
  ^ 'com.atproto.label.defs#label'
 ]
