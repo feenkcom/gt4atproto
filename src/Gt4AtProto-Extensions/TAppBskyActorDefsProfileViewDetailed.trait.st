@@ -71,7 +71,12 @@ TAppBskyActorDefsProfileViewDetailed >> gtViewCardPostsFor: aView [
 				itemDataBinder: [ :aPostElement :aPost | 
 					aPostElement
 						post: aPost;
-						withSpawnHandlers ] ]
+						withSpawnHandlers ] ];
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+			tooltip: 'Update'
+			action: [ :aButton :aTab | 
+				self posts: self downloadPosts.
+				aTab viewContentElement phlow update ]
 ]
 
 { #category : #accessing }
@@ -85,12 +90,23 @@ TAppBskyActorDefsProfileViewDetailed >> gtViewCompactPostsFor: aView [
 			text: [ :each | each atpPost atpAuthor atpDisplayName ]
 			width: 150;
 		column: 'Text' text: [ :each | each atpPost atpRecord atpText ];
-		column: 'Is reply' text: [ :each | each isReply ifFalse: [''] ifTrue: [ 'yes' ]] width: 50;
-		column: 'Embed' text: [ :each | each hasEmbed ifFalse: [''] ifTrue: [ 'yes' ] ] width: 50;
-		column: 'Media' text: [ :each | each hasMedia ifFalse: [''] ifTrue: [ 'yes' ] ] width: 50;
+		column: 'Is reply'
+			text: [ :each | each isReply ifFalse: [ '' ] ifTrue: [ 'yes' ] ]
+			width: 50;
+		column: 'Embed'
+			text: [ :each | each hasEmbed ifFalse: [ '' ] ifTrue: [ 'yes' ] ]
+			width: 50;
+		column: 'Media'
+			text: [ :each | each hasMedia ifFalse: [ '' ] ifTrue: [ 'yes' ] ]
+			width: 50;
 		column: 'Created at'
 			text: [ :each | each atpPost atpRecord createdAtTimestamp printToSeconds ]
-			width: 150
+			width: 150;
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+			tooltip: 'Update'
+			action: [ :aButton :aTab | 
+				self posts: self downloadPosts.
+				aTab viewContentElement phlow update ]
 ]
 
 { #category : #accessing }
@@ -124,4 +140,9 @@ TAppBskyActorDefsProfileViewDetailed >> gtViewFollowingFor: aView [
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> posts [
 	^ posts ifNil: [  posts := self downloadPosts ]
+]
+
+{ #category : #accessing }
+TAppBskyActorDefsProfileViewDetailed >> posts: aListOfPosts [
+	posts := aListOfPosts
 ]

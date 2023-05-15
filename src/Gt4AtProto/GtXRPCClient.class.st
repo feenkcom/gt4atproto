@@ -78,14 +78,14 @@ GtXRPCClient >> printOn: aStream [
 GtXRPCClient >> procedure [
 	request := self client request.
 	response := self client post.
-	
+
 	historicalRequests
 		do: [ :aRequest | 
 			aRequest
 				request: request;
 				response: response ].
-	
-	^ STONJSON fromString: response
+
+	^ response ifNil: [ response ] ifNotNil: [ STONJSON fromString: response ]
 ]
 
 { #category : #accessing }

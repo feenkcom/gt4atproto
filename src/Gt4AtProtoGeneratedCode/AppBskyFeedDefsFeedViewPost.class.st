@@ -74,6 +74,20 @@ AppBskyFeedDefsFeedViewPost >> atpReply: anObject [
 	atpReply := anObject
 ]
 
+{ #category : #accessing }
+AppBskyFeedDefsFeedViewPost >> gtDeleteActionFor: anAction [
+	<gtAction>
+	^ anAction button
+		icon: BrGlamorousVectorIcons close;
+		label: 'Delete';
+		action: [ self client
+				comAtprotoRepoDeleteRecordrepo: self atpPost atpAuthor atpDid
+				collection: AppBskyFeedPostMain atpRecordName
+				rkey: (#/ split: self atpPost atpUri) last
+				swapRecord: nil
+				swapCommit: nil ]
+]
+
 { #category : #magritte }
 AppBskyFeedDefsFeedViewPost >> postDescription [
 	<magritteDescription>

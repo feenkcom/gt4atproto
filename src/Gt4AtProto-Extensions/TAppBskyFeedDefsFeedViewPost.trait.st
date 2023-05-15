@@ -88,6 +88,19 @@ TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
 ]
 
 { #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> gtCreatePostFor: aView [
+	<gtView>
+
+	^ aView explicit
+		title: 'Reply';
+		priority: 20;
+		stencil: [ GtApCreatePostForm new
+				client: self client;
+				post: self;
+				actor: (self client appBskyActorGetProfileactor: self client handle) ]
+]
+
+{ #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 	^ self embed isNotNil
 ]

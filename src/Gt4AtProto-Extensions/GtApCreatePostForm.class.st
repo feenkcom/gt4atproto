@@ -8,7 +8,8 @@ Class {
 		'actor',
 		'files',
 		'fileRecords',
-		'addFileButton'
+		'addFileButton',
+		'post'
 	],
 	#category : #'Gt4AtProto-Extensions'
 }
@@ -42,18 +43,30 @@ GtApCreatePostForm >> createAcceptButton [
 			action: [ | record |
 				self uploadFiles.
 				record := {'$type' -> AppBskyFeedPostMain atpRecordName.
-							'createdAt' -> DateAndTime now printString.
-							'text' -> editorElement text asString} asDictionary.
-				self fileRecords ifNotEmpty: [
-					record at: 'embed' put: self filesToEmbed.
-				].
-				self phlow spawnObject: (self client
-					comAtprotoRepoCreateRecordrepo: self actor atpDid
-					collection: AppBskyFeedPostMain atpRecordName
-					rkey: nil
-					validate: nil
-					record: record
-					swapCommit: nil) ]
+						'createdAt' -> DateAndTime now printString.
+						'text' -> editorElement text asString} asDictionary.
+				self fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+
+				self hasPost
+					ifTrue: [ | root |
+						root := self post getRoot.
+						record
+							at: 'reply'
+							put: {'parent'
+										-> {'uri' -> self post atpPost atpUri.
+												'cid' -> self post atpPost atpCid} asDictionary.
+									'root'
+										-> {'uri' -> root atpPost atpUri.
+												'cid' -> root atpPost atpCid} asDictionary} asDictionary ].
+
+				self phlow
+					spawnObject: (self client
+							comAtprotoRepoCreateRecordrepo: self actor atpDid
+							collection: AppBskyFeedPostMain atpRecordName
+							rkey: nil
+							validate: nil
+							record: record
+							swapCommit: nil) ]
 ]
 
 { #category : #accessing }
@@ -125,6 +138,11 @@ GtApCreatePostForm >> filesToEmbed [
 ]
 
 { #category : #accessing }
+GtApCreatePostForm >> hasPost [
+	^ self post isNotNil
+]
+
+{ #category : #accessing }
 GtApCreatePostForm >> initialize [
 	super initialize.
 	
@@ -136,6 +154,16 @@ GtApCreatePostForm >> initialize [
 
 	self addChild: self createEditor.
 	self addChild: self createButtonToolbar
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> post [
+	^ post
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> post: anObject [
+	post := anObject
 ]
 
 { #category : #accessing }
