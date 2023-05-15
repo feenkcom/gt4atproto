@@ -36,7 +36,7 @@ GtApCreatePostForm >> client: anObject [
 
 { #category : #accessing }
 GtApCreatePostForm >> createAcceptButton [
-	^ acceptButton := BrButton new
+	^ acceptButton := BrButton new beSmallSize
 			aptitude: BrGlamorousButtonWithIconAptitude;
 			icon: BrGlamorousVectorIcons accept;
 			label: 'Publish';
@@ -71,8 +71,7 @@ GtApCreatePostForm >> createAcceptButton [
 
 { #category : #accessing }
 GtApCreatePostForm >> createAddFileButton [
-	^ addFileButton := BrButton new
-			beSmallSize;
+	^ addFileButton := BrButton new beSmallSize
 			aptitude: BrGlamorousButtonWithIconAptitude new
 					+ (BrGlamorousWithDropdownAptitude
 							handle: [ BrButton new
