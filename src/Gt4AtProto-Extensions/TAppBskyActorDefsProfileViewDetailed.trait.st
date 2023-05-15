@@ -67,21 +67,11 @@ TAppBskyActorDefsProfileViewDetailed >> gtViewCardPostsFor: aView [
 		priority: 1;
 		stencil: [ BrSimpleList new
 				stream: self posts;
-				itemStencil: [ GtApFeedPostSummaryElement new
-						addAptitude: BrShadowAptitude;
-						background: Color white;
-						margin: (BlInsets all: 10) ];
+				itemStencil: [ GtApFeedPostSummaryElement new withShadowAndHighlighting ];
 				itemDataBinder: [ :aPostElement :aPost | 
 					aPostElement
 						post: aPost;
-						addAptitude: (BrStyleCommonAptitude new
-								default: [ :s | s background: Color white ];
-								hovered: [ :s | s background: Color veryVeryLightGray ];
-								pressed: [ :s | s background: Color veryLightGray ]);
-						when: BlClickEvent
-							do: [ :e | 
-								e consumed: true.
-								e target phlow spawnObject: aPostElement post ] ] ]
+						withSpawnHandlers ] ]
 ]
 
 { #category : #accessing }

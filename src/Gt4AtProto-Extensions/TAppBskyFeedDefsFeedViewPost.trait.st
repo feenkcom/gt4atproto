@@ -58,7 +58,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 	<gtView>
 	^ aView explicit
-		title: 'Thread';
+		title: 'Thread cards';
 		priority: 0;
 		stencil: [ BrSimpleTree new
 				nodeStencil: [ GtApFeedPostSummaryElement new

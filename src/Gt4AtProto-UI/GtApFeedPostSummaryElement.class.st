@@ -170,3 +170,20 @@ GtApFeedPostSummaryElement >> withShadowAndHighlighting [
 		background: Color white;
 		margin: (BlInsets all: 10)
 ]
+
+{ #category : #accessing }
+GtApFeedPostSummaryElement >> withSpawnHandlers [
+	self
+		when: BlClickEvent
+		do: [ :e | 
+			e consumed: true.
+			e target phlow spawnObject: self post ].
+	pictureElement when: BlClickEvent
+		do: [ :e | 
+			e consumed: true.
+			e target phlow spawnObject: self post author ].
+	mediaContainer when: BlClickEvent
+		do: [ :e | 
+			e consumed: true.
+			e target phlow spawnObject: self post embed ].
+]
