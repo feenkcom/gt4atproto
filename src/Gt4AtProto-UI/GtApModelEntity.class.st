@@ -62,9 +62,14 @@ GtApModelEntity >> client: anObject [
 GtApModelEntity >> gtFileNameFor: aView [
 	<gtView>
 	^ aView textEditor
-		title: 'File Name';
-		priority: 51;
-		text: [ self class atpFile ]
+		title: 'Schema file';
+		priority: 52;
+		text: [ self class atpFile ];
+		actionButtonIcon: BrGlamorousVectorIcons note
+			tooltip: 'Browse schema file'
+			action: [ :aButton | 
+				aButton phlow
+					spawnObject: 'atproto' asFileReference / 'lexicons' / self class atpFile ]
 ]
 
 { #category : #accessing }
@@ -87,12 +92,16 @@ GtApModelEntity >> gtRawDataFor: aView [
 { #category : #accessing }
 GtApModelEntity >> gtSchemaFor: aView [
 	<gtView>
-	
-	^ aView forward 
+	^ aView forward
 		title: 'Schema';
-		priority: 50;
-		object: [ GtJson forJsonString: self class atpSchema];
-		view: #gtJsonStringFor:
+		priority: 51;
+		object: [ GtJson forJsonString: self class atpSchema ];
+		view: #gtJsonStringFor:;
+		actionButtonIcon: BrGlamorousVectorIcons note
+			tooltip: 'Browse schema file'
+			action: [ :aButton | 
+				aButton phlow
+					spawnObject: 'atproto' asFileReference / 'lexicons' / self class atpFile ]
 ]
 
 { #category : #accessing }
