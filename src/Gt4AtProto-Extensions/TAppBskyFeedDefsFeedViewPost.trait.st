@@ -79,7 +79,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
 	<gtView>
 	^ aView columnedTree
 		title: 'Compact thread';
-		priority: 0;
+		priority: 9;
 		items: [ {self getRoot} ];
 		children: [ :each | each replies ];
 		column: 'Author' text: [ :each | each author atpDisplayName ];
