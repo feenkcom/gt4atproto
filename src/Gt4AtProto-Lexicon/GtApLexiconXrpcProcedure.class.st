@@ -31,6 +31,15 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 	methodName := (aName replaceAllRegex: '[.#]' with: ' ') asCamelCase
 			uncapitalized.
 
+	self input encoding = '*/*'
+		ifTrue: [ ^ methodName
+				, 'File: aFile
+	<xrpcProcedure>
+	"' , (self description ifNil: [ '' ])
+				, '"
+	^ ' , self output generateDeserialization , ' (self procedureOn: ''' , aName
+				, ''' withFile: aFile)' ].
+
 	self schema properties
 		keysDo: [ :anInputName | methodName := methodName , anInputName , ': ' , anInputName , ' ' ].
 
@@ -59,7 +68,7 @@ GtApLexiconXrpcProcedure >> gtViewInputPropertiesFor: aView [
 
 { #category : #accessing }
 GtApLexiconXrpcProcedure >> input [
-	^ input
+	^ input ifNil: [ GtApLexiconXrpcBody new ]
 ]
 
 { #category : #accessing }

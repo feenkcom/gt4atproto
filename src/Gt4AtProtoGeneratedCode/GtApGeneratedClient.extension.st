@@ -393,10 +393,10 @@ GtApGeneratedClient >> comAtprotoRepoRebaseReporepo: repo swapCommit: swapCommit
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoUploadBlob [
+GtApGeneratedClient >> comAtprotoRepoUploadBlobFile: aFile [
 	<xrpcProcedure>
 	"Upload a new blob to be added to repo in a later request."
-	^ GtApRequestResolver from: {'blob' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.uploadBlob' withBody: {} asDictionary)
+	^ GtApRequestResolver from: {'blob' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.uploadBlob' withFile: aFile)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }

@@ -42,6 +42,11 @@ GtXRPCClient >> client: anObject [
 ]
 
 { #category : #accessing }
+GtXRPCClient >> contentType: aContentType [
+	self client contentType: aContentType
+]
+
+{ #category : #accessing }
 GtXRPCClient >> initialize [
 	historicalRequests := OrderedCollection new
 ]
