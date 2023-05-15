@@ -77,6 +77,7 @@ GtApModelEntity >> gtRawDataFor: aView [
 	<gtView>
 	^ aView columnedTree
 		title: 'Raw data';
+		priority: 40;
 		items: [ rawData associations ];
 		column: 'Property' text: #key;
 		column: 'Value' text: #value;

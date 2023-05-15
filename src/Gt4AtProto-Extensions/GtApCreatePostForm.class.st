@@ -36,6 +36,7 @@ GtApCreatePostForm >> client: anObject [
 { #category : #accessing }
 GtApCreatePostForm >> createAcceptButton [
 	^ acceptButton := BrButton new
+			beSmallSize;
 			aptitude: BrGlamorousButtonWithIconAptitude;
 			icon: BrGlamorousVectorIcons accept;
 			label: 'Publish';
@@ -59,9 +60,11 @@ GtApCreatePostForm >> createAcceptButton [
 { #category : #accessing }
 GtApCreatePostForm >> createAddFileButton [
 	^ addFileButton := BrButton new
+			beSmallSize;
 			aptitude: BrGlamorousButtonWithIconAptitude new
 					+ (BrGlamorousWithDropdownAptitude
 							handle: [ BrButton new
+									beSmallSize;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonWithLabelTooltipAptitude
 											- BrGlamorousButtonExteriorAptitude;
 									icon: BrGlamorousVectorIcons add ]
@@ -91,7 +94,7 @@ GtApCreatePostForm >> createButtonToolbar [
 
 { #category : #accessing }
 GtApCreatePostForm >> createEditor [
-	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousEditorAptitude
+	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousRegularEditorAptitude
 ]
 
 { #category : #accessing }
@@ -131,7 +134,8 @@ GtApCreatePostForm >> initialize [
 	files := OrderedCollection new.
 	fileRecords := OrderedCollection new.
 
-	self matchParent.
+	self hMatchParent.
+	self vFitContentLimited.
 	self padding: (BlInsets all: 8).
 
 	self addChild: self createEditor.
