@@ -6,7 +6,9 @@ Class {
 		'acceptButton',
 		'client',
 		'actor',
-		'files'
+		'files',
+		'fileRecords',
+		'addFileButton'
 	],
 	#category : #'Gt4AtProto-Extensions'
 }
@@ -42,7 +44,7 @@ GtApCreatePostForm >> createAcceptButton [
 				record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 							'createdAt' -> DateAndTime now printString.
 							'text' -> editorElement text asString} asDictionary.
-				self files ifNotEmpty: [
+				self fileRecords ifNotEmpty: [
 					record at: 'embed' put: self filesToEmbed.
 				].
 				self phlow spawnObject: (self client
@@ -50,15 +52,56 @@ GtApCreatePostForm >> createAcceptButton [
 					collection: AppBskyFeedPostMain atpRecordName
 					rkey: nil
 					validate: nil
-					record: {'$type' -> AppBskyFeedPostMain atpRecordName.
-							'createdAt' -> DateAndTime now printString.
-							'text' -> editorElement text asString} asDictionary
+					record: record
 					swapCommit: nil) ]
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> createAddFileButton [
+	^ addFileButton := BrButton new
+			aptitude: BrGlamorousButtonWithIconAptitude new
+					+ (BrGlamorousWithDropdownAptitude
+							handle: [ BrButton new
+									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonWithLabelTooltipAptitude
+											- BrGlamorousButtonExteriorAptitude;
+									icon: BrGlamorousVectorIcons add ]
+							content: [ BrFileSelector new
+									vExact: 250;
+									hExact: 400;
+									folder: FileLocator home;
+									padding: (BlInsets all: 8);
+									fileFilterBlock: [ :aFileReference | 
+										aFileReference isDirectory not
+											and: [ (FileSystemDirectoryEntry reference: aFileReference) isHidden not ] ];
+									okAction: [ :aFile | 
+										self files add: aFile.
+										addFileButton
+											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new ] ] ]);
+			icon: BrGlamorousVectorIcons add;
+			label: 'Add File'
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> createButtonToolbar [
+	^ BrToolbar new
+		aptitude: BrGlamorousToolbarAptitude new;
+		addItem: self createAddFileButton;
+		addItem: self createAcceptButton
 ]
 
 { #category : #accessing }
 GtApCreatePostForm >> createEditor [
 	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousEditorAptitude
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> fileRecords [
+	^ fileRecords
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> fileRecords: anObject [
+	fileRecords := anObject
 ]
 
 { #category : #accessing }
@@ -72,21 +115,30 @@ GtApCreatePostForm >> files: anObject [
 ]
 
 { #category : #accessing }
+GtApCreatePostForm >> filesToEmbed [
+	^ {'$type' -> 'app.bsky.embed.images'.
+		'images'
+			-> (self fileRecords
+					collect: [ :aRecord | 
+						{'image' -> (aRecord at: 'blob').
+							'alt' -> ''} asDictionary ]) asArray} asDictionary
+]
+
+{ #category : #accessing }
 GtApCreatePostForm >> initialize [
 	super initialize.
 	
 	files := OrderedCollection new.
+	fileRecords := OrderedCollection new.
 
 	self matchParent.
 	self padding: (BlInsets all: 8).
 
 	self addChild: self createEditor.
-	self addChild: self createAcceptButton
+	self addChild: self createButtonToolbar
 ]
 
 { #category : #accessing }
 GtApCreatePostForm >> uploadFiles [
-	self files do: [:aFile |
-		self client comAtprotoRepoUploadBlob": aFile contents"
-	]
+	self files do: [ :aFile | self fileRecords add: (self client comAtprotoRepoUploadBlobFile: aFile) ]
 ]

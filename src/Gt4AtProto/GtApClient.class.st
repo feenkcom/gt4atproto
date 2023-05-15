@@ -111,10 +111,23 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 ]
 
 { #category : #accessing }
+GtApClient >> procedureOn: aMethodId withBinary: anObject [
+	^ (self
+		clientFor: aMethodId
+		body: anObject readStream) procedure
+]
+
+{ #category : #accessing }
 GtApClient >> procedureOn: aMethodId withBody: aBodyDictionary [
 	^ (self
 		clientFor: aMethodId
 		body: (STONJSON toString: (aBodyDictionary select: #isNotNil))) procedure
+]
+
+{ #category : #accessing }
+GtApClient >> procedureOn: aMethodId withFile: aFile [
+	^ ((self clientFor: aMethodId body: aFile gtBinaryContents)
+		contentType: (ZnMimeType forFilenameExtension: aFile extension)) procedure
 ]
 
 { #category : #accessing }
