@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T12:05:10.295521+02:00"
+						"dateAndTimeString" : "2023-05-16T14:23:21.534292+02:00"
 					}
 				},
 				"uid" : {
@@ -77,40 +77,6 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Let's explore these possibilities through a couple of examples. First, please initialize these variables with your preferred coordinates:"
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T11:47:54.733257+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:16:27.918084+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "iVTTMy64DQCHzaKYBR1CCw=="
-				},
-				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'tudorgirba.com'.\rpassword := Clipboard clipboardText asString \"app password\""
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -268,6 +234,43 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T14:23:26.943286+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T14:23:43.694681+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "C4wRYDC4DQCj2FUKBR1CCw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The query above is nice but it depends on strings and it returns generic dictionaries. You can do much better.  {{gtClass:GtApGeneratedClient}}  provides higher level query API. This client was generated as described in [[Importing lexicons and generating code]]."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
 						"dateAndTimeString" : "2023-05-16T12:08:25.585758+02:00"
 					}
 				},
@@ -279,7 +282,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:01:10.529122+02:00"
+						"dateAndTimeString" : "2023-05-16T14:23:26.947834+02:00"
 					}
 				},
 				"uid" : {
@@ -289,7 +292,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The query above is nice but it depends on strings and it returns generic dictionaries. You can do much better.  {{gtClass:GtApGeneratedClient}}  provides higher level query API. Inspect the client to see the list of available queries and procedures:"
+				"string" : "Inspect the client to see the list of available queries and procedures:"
 			},
 			{
 				"__type" : "pharoSnippet",
