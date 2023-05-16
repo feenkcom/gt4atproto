@@ -1,5 +1,5 @@
 Class {
-	#name : #LeApSnippetViewModel,
+	#name : #LeApLoginSnippetViewModel,
 	#superclass : #LeSnippetViewModel,
 	#instVars : [
 		'blueskySnippet'
@@ -8,21 +8,21 @@ Class {
 }
 
 { #category : #accessing }
-LeApSnippetViewModel >> apSnippetModel: aSnippet [
+LeApLoginSnippetViewModel >> apSnippetModel: aSnippet [
 	blueskySnippet := aSnippet
 ]
 
 { #category : #accessing }
-LeApSnippetViewModel >> initialize [
+LeApLoginSnippetViewModel >> initialize [
 	super initialize.
 ]
 
 { #category : #accessing }
-LeApSnippetViewModel >> snippetElementClass [
-	^ LeApSnippetElement
+LeApLoginSnippetViewModel >> snippetElementClass [
+	^ LeApLoginSnippetElement
 ]
 
 { #category : #accessing }
-LeApSnippetViewModel >> snippetModel [
+LeApLoginSnippetViewModel >> snippetModel [
 	^ blueskySnippet 
 ]

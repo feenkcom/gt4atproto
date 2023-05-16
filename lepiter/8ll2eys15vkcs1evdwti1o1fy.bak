@@ -42,7 +42,7 @@
 				"string" : "A user's timeline can be inspected after logging in using this snippet:"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "atprotoLoginSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T17:58:17.125284+02:00"
+						"dateAndTimeString" : "2023-05-14T21:45:11.068498+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,14 +66,13 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-13T15:28:29.890053+02:00"
+						"dateAndTimeString" : "2023-05-14T21:45:11.068498+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "zoF+j6a3DQCwN1BjDuRBkQ=="
-				},
-				"code" : "GtApLoginForm new\r\tclientCallback: [ :aClient :anElement |\r\t\tanElement phlow\r\t\t\tspawnObject: ((aClient appBskyActorGetProfileactor: aClient context handle) client: aClient)  ]"
+					"uidString" : "GKonUA64DQCiafTdC53D2Q=="
+				}
 			}
 		]
 	},

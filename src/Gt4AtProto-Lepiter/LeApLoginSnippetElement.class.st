@@ -1,5 +1,5 @@
 Class {
-	#name : #LeApSnippetElement,
+	#name : #LeApLoginSnippetElement,
 	#superclass : #LeSnippetElement,
 	#instVars : [
 		'formElement'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-LeApSnippetElement >> initialize [
+LeApLoginSnippetElement >> initialize [
 	| form |
 	super initialize.
 	form := GtApLoginForm new
@@ -20,11 +20,11 @@ LeApSnippetElement >> initialize [
 ]
 
 { #category : #accessing }
-LeApSnippetElement >> snippetContent [
+LeApLoginSnippetElement >> snippetContent [
 	^ formElement
 ]
 
 { #category : #accessing }
-LeApSnippetElement >> snippetToolbar [
+LeApLoginSnippetElement >> snippetToolbar [
 	^ nil
 ]
