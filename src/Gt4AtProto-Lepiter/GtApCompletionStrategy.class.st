@@ -1,6 +1,9 @@
 Class {
 	#name : #GtApCompletionStrategy,
 	#superclass : #GtJSONCompletionStrategy,
+	#instVars : [
+		'lexicons'
+	],
 	#classVars : [
 		'Encodings'
 	],
@@ -15,10 +18,53 @@ GtApCompletionStrategy class >> encodings [
 ]
 
 { #category : #initialization }
+GtApCompletionStrategy >> completeEncodings: str at: position [
+	(str beginsWith: '"') ifFalse: [ ^ #() ].
+	^ (self class encodings asyncStreamStartingWith: str allButFirst)
+		collect: [ :each | 
+			| new |
+			new := '"' , each , '"'.
+			GtInsertTextCompletionAction
+				labeled: (GtJSONCompleter labelFor: new withSearch: str)
+				completion: (new allButFirst: str size)
+				position: position
+				from: position - str size + 1 ]
+]
+
+{ #category : #initialization }
+GtApCompletionStrategy >> completeReference: str at: position [
+	(str beginsWith: '"') ifFalse: [ ^ #() ].
+	^ (self referencesStartingWith: str)
+		collect: [ :each | 
+			| new |
+			new := '"' , each , '"'.
+			GtInsertTextCompletionAction
+				labeled: (GtJSONCompleter labelFor: new withSearch: str)
+				completion: (new allButFirst: str size)
+				position: position
+				from: position - str size + 1 ]
+]
+
+{ #category : #initialization }
+GtApCompletionStrategy >> completeRequired: str at: position [
+	(str beginsWith: '"') ifFalse: [ ^ #() ].
+	^ (self requiredStartingWith: str)
+		collect: [ :each | 
+			| new |
+			new := '"' , each , '"'.
+			GtInsertTextCompletionAction
+				labeled: (GtJSONCompleter labelFor: new withSearch: str)
+				completion: (new allButFirst: str size)
+				position: position
+				from: position - str size + 1 ]
+]
+
+{ #category : #initialization }
 GtApCompletionStrategy >> initialize [
-	| ref doc userType token object record xrpcQuery xrpcProcedure xrpcBody xrpcError blob image video audio array primitive boolean number integer string userUnion primitiveUnion booleanValues encodings |
+	| ref refs doc userType token object record xrpcQuery xrpcProcedure xrpcBody xrpcError blob image video audio array primitive boolean number integer string userUnion primitiveUnion booleanValues encodings refBlock refUnion required |
 	super initialize.
-	ref := GtJSONEmptyCompleter instance.
+	ref := GtJSONObjectCompleter new.
+	refs := GtJSONObjectCompleter new.
 	doc := GtJSONObjectCompleter new.
 	userType := GtJSONObjectCompleter new.
 	token := GtJSONObjectCompleter new.
@@ -44,18 +90,7 @@ GtApCompletionStrategy >> initialize [
 			addValues: #('"true"' '"false"');
 			yourself.
 	encodings := GtJSONBlockCompleter new
-			block: [ :str :position | 
-				(str beginsWith: '"')
-					ifTrue: [ (self class encodings asyncStreamStartingWith: str allButFirst)
-							collect: [ :each | 
-								| new |
-								new := '"' , each , '"'.
-								GtInsertTextCompletionAction
-									labeled: (GtJSONCompleter labelFor: new withSearch: str)
-									completion: (new allButFirst: str size)
-									position: position
-									from: position - str size + 1 ] ]
-					ifFalse: [ #() ] ].
+			block: [ :str :position | self completeEncodings: str at: position ].
 	userUnion
 		addCompleter: userType;
 		addCompleter: token;
@@ -74,6 +109,24 @@ GtApCompletionStrategy >> initialize [
 		addCompleter: number;
 		addCompleter: integer;
 		addCompleter: string.
+	refBlock := GtJSONBlockCompleter new
+			block: [ :str :pos | self completeReference: str at: pos ].
+	required := GtJSONBlockCompleter new
+			block: [ :str :pos | self completeRequired: str at: pos ].
+	refUnion := GtJSONUnionCompleter new
+			addCompleter: ref;
+			addCompleter: refs;
+			addCompleter: refBlock;
+			yourself.
+	ref
+		addCheck: 'type' withValue: '"ref"';
+		addKey: 'ref' withValue: refBlock.
+	refs
+		addCheck: 'type' withValue: '"union"';
+		addKey: 'refs'
+			withValue: (GtJSONListCompleter new
+					itemCompleter: refBlock;
+					yourself).
 	doc
 		addKeys: #('lexicon' 'id' 'revision' 'description');
 		addKey: 'defs'
@@ -82,9 +135,8 @@ GtApCompletionStrategy >> initialize [
 							addCompleter: userUnion;
 							addCompleter: array;
 							addCompleter: primitiveUnion;
-							addCompleter: (GtJSONListCompleter new
-									itemCompleter: ref;
-									yourself));
+							addCompleter: refUnion;
+							yourself);
 					yourself).
 	userType
 		addKey: 'type'
@@ -94,16 +146,16 @@ GtApCompletionStrategy >> initialize [
 	token addCheck: 'type' withValue: '"token"'.
 	object
 		addCheck: 'type' withValue: '"object"';
-		addKey: 'required';
+		addKey: 'required'
+			withValue: (GtJSONListCompleter new
+					itemCompleter: required;
+					yourself);
 		addKey: 'properties'
 			withValue: (GtJSONObjectCompleter new
 					valueCompleter: (GtJSONUnionCompleter new
-							addCompleter: ref;
+							addCompleter: refUnion;
 							addCompleter: array;
 							addCompleter: primitive;
-							addCompleter: (GtJSONListCompleter new
-									itemCompleter: ref;
-									yourself);
 							yourself);
 					yourself).
 	record
@@ -132,7 +184,11 @@ GtApCompletionStrategy >> initialize [
 	xrpcBody
 		addKey: 'description';
 		addKey: 'encoding' withValue: encodings;
-		addKey: 'schema' withValue: object.
+		addKey: 'schema'
+			withValue: (GtJSONUnionCompleter new
+					addCompleter: refUnion;
+					addCompleter: object;
+					yourself).
 	xrpcError addKeys: #('name' 'description').
 	blob
 		addCheck: 'type' withValue: '"blob"';
@@ -151,11 +207,8 @@ GtApCompletionStrategy >> initialize [
 		addKeys: #('description' 'minLength' 'maxLength');
 		addKey: 'items'
 			withValue: (GtJSONUnionCompleter new
-					addCompleter: ref;
+					addCompleter: refUnion;
 					addCompleter: primitiveUnion;
-					addCompleter: (GtJSONListCompleter new
-							itemCompleter: ref;
-							yourself);
 					yourself).
 	primitive
 		addKey: 'type'
@@ -177,4 +230,44 @@ GtApCompletionStrategy >> initialize [
 		addCheck: 'type' withValue: '"number"';
 		addKeys: #('default' 'minLength' 'maxLength' 'enum' 'const' 'knownValues').
 	self completer: doc
+]
+
+{ #category : #accessing }
+GtApCompletionStrategy >> lexicons [
+	^ lexicons
+]
+
+{ #category : #accessing }
+GtApCompletionStrategy >> lexicons: anObject [
+	lexicons := anObject
+]
+
+{ #category : #initialization }
+GtApCompletionStrategy >> referencesStartingWith: aString [
+	| stream |
+	stream := #() asAsyncStream.
+	((aString beginsWith: '"#') or: [ aString = '"' ])
+		ifTrue: [ | key |
+			key := aString allButFirst.
+			stream := stream
+					merge: (((((ast / JSONMemberNode) @ #name <- '"defs"') / JSONObjectNode
+							/ JSONMemberNode) asOrderedCollection
+							collect: [ :each | '#' , each name source allButFirst allButLast ])
+							select: [ :each | key isEmpty or: [ each beginsWith: key ] ])
+							asAsyncStream ].
+	lexicons
+		ifNotNil: [ | key |
+			key := aString allButFirst.
+			stream := stream
+					merge: (lexicons definitions keys
+							select: [ :each | key isEmpty or: [ each beginsWith: key ] ])
+							asAsyncStream ].
+	^ stream
+]
+
+{ #category : #initialization }
+GtApCompletionStrategy >> requiredStartingWith: aString [
+	^ ((((node \\ JSONObjectNode / JSONMemberNode) @ 'name' <- '"properties"')
+		/ JSONObjectNode / JSONMemberNode collect: [ :each | each name source ])
+		select: [ :each | each beginsWith: aString ]) asSortedCollection
 ]
