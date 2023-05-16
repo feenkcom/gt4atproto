@@ -33,9 +33,18 @@ ComAtprotoAdminDefsModerationDetail class >> atpSchema [
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpActions: (aRequest at: 'actions' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsActionView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpReports: (aRequest at: 'reports' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsReportView fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpCurrentAction: (aRequest
+				at: 'currentAction'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpActions: (aRequest
+				at: 'actions'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoAdminDefsActionView fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpReports: (aRequest
+				at: 'reports'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoAdminDefsReportView fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -45,11 +54,13 @@ ComAtprotoAdminDefsModerationDetail >> actionsDescription [
 		classes: {ComAtprotoAdminDefsActionView};
 		label: 'Actions';
 		accessor: #atpActions;
-	beRequired
+		beRequired
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsModerationDetail >> atpActions [
+	<atpType:#ComAtprotoAdminDefsActionView format:nil>
+	<atpCollection>
 	^ atpActions
 ]
 
@@ -72,6 +83,8 @@ ComAtprotoAdminDefsModerationDetail >> atpCurrentAction: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsModerationDetail >> atpReports [
+	<atpType:#ComAtprotoAdminDefsReportView format:nil>
+	<atpCollection>
 	^ atpReports
 ]
 
@@ -95,5 +108,5 @@ ComAtprotoAdminDefsModerationDetail >> reportsDescription [
 		classes: {ComAtprotoAdminDefsReportView};
 		label: 'Reports';
 		accessor: #atpReports;
-	beRequired
+		beRequired
 ]

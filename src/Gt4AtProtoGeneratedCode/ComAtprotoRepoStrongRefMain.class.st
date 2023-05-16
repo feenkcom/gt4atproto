@@ -32,12 +32,13 @@ ComAtprotoRepoStrongRefMain class >> atpSchema [
 ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoRepoStrongRefMain >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoRepoStrongRefMain >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoStrongRefMain >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -62,7 +64,7 @@ ComAtprotoRepoStrongRefMain >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ ComAtprotoRepoStrongRefMain >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

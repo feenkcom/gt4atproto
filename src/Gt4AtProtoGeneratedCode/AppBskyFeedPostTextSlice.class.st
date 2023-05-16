@@ -32,12 +32,13 @@ AppBskyFeedPostTextSlice class >> atpSchema [
 AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpStart: (aRequest at: 'start' ifAbsent: [ nil ]); 
+		atpStart: (aRequest at: 'start' ifAbsent: [ nil ]);
 		atpEnd: (aRequest at: 'end' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedPostTextSlice >> atpEnd [
+	<atpType:#Number format:nil>
 	^ atpEnd
 ]
 
@@ -48,6 +49,7 @@ AppBskyFeedPostTextSlice >> atpEnd: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostTextSlice >> atpStart [
+	<atpType:#Number format:nil>
 	^ atpStart
 ]
 
@@ -62,7 +64,7 @@ AppBskyFeedPostTextSlice >> endDescription [
 	^ MANumberDescription new
 		label: 'End';
 		accessor: #atpEnd;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyFeedPostTextSlice >> startDescription [
 	^ MANumberDescription new
 		label: 'Start';
 		accessor: #atpStart;
-	beRequired
+		beRequired
 ]

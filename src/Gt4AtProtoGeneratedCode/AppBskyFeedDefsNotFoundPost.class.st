@@ -32,12 +32,13 @@ AppBskyFeedDefsNotFoundPost class >> atpSchema [
 AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsNotFoundPost >> atpNotFound [
+	<atpType:#Boolean format:nil>
 	^ atpNotFound
 ]
 
@@ -48,6 +49,7 @@ AppBskyFeedDefsNotFoundPost >> atpNotFound: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsNotFoundPost >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -62,7 +64,7 @@ AppBskyFeedDefsNotFoundPost >> notFoundDescription [
 	^ MABooleanDescription new
 		label: 'NotFound';
 		accessor: #atpNotFound;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyFeedDefsNotFoundPost >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

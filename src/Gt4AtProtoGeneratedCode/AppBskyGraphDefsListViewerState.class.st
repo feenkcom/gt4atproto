@@ -36,6 +36,7 @@ AppBskyGraphDefsListViewerState class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewerState >> atpMuted [
+	<atpType:#Boolean format:nil>
 	^ atpMuted
 ]
 

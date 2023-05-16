@@ -32,12 +32,13 @@ ComAtprotoSyncSubscribeReposInfo class >> atpSchema [
 ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposInfo >> atpMessage [
+	<atpType:'string' format:nil>
 	^ atpMessage
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoSyncSubscribeReposInfo >> atpMessage: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposInfo >> atpName [
+	<atpType:'string' format:nil>
 	^ atpName
 ]
 
@@ -70,5 +72,5 @@ ComAtprotoSyncSubscribeReposInfo >> nameDescription [
 	^ MAStringDescription new
 		label: 'Name';
 		accessor: #atpName;
-	beRequired
+		beRequired
 ]

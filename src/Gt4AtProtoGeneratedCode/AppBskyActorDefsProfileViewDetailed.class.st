@@ -44,22 +44,29 @@ AppBskyActorDefsProfileViewDetailed class >> atpSchema [
 AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
-		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ]); 
-		atpFollowersCount: (aRequest at: 'followersCount' ifAbsent: [ nil ]); 
-		atpFollowsCount: (aRequest at: 'followsCount' ifAbsent: [ nil ]); 
-		atpPostsCount: (aRequest at: 'postsCount' ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
+		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ]);
+		atpFollowersCount: (aRequest at: 'followersCount' ifAbsent: [ nil ]);
+		atpFollowsCount: (aRequest at: 'followsCount' ifAbsent: [ nil ]);
+		atpPostsCount: (aRequest at: 'postsCount' ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpViewer: (aRequest
+				at: 'viewer'
+				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpAvatar [
+	<atpType:'string' format:nil>
 	^ atpAvatar
 ]
 
@@ -70,6 +77,7 @@ AppBskyActorDefsProfileViewDetailed >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpBanner [
+	<atpType:'string' format:nil>
 	^ atpBanner
 ]
 
@@ -80,6 +88,7 @@ AppBskyActorDefsProfileViewDetailed >> atpBanner: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpDescription [
+	<atpType:'string' format:nil>
 	^ atpDescription
 ]
 
@@ -90,6 +99,7 @@ AppBskyActorDefsProfileViewDetailed >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -100,6 +110,7 @@ AppBskyActorDefsProfileViewDetailed >> atpDid: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpDisplayName [
+	<atpType:'string' format:nil>
 	^ atpDisplayName
 ]
 
@@ -110,6 +121,7 @@ AppBskyActorDefsProfileViewDetailed >> atpDisplayName: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpFollowersCount [
+	<atpType:#Number format:nil>
 	^ atpFollowersCount
 ]
 
@@ -120,6 +132,7 @@ AppBskyActorDefsProfileViewDetailed >> atpFollowersCount: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpFollowsCount [
+	<atpType:#Number format:nil>
 	^ atpFollowsCount
 ]
 
@@ -130,6 +143,7 @@ AppBskyActorDefsProfileViewDetailed >> atpFollowsCount: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpHandle [
+	<atpType:'string' format:'handle'>
 	^ atpHandle
 ]
 
@@ -140,6 +154,7 @@ AppBskyActorDefsProfileViewDetailed >> atpHandle: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -150,6 +165,8 @@ AppBskyActorDefsProfileViewDetailed >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -160,6 +177,7 @@ AppBskyActorDefsProfileViewDetailed >> atpLabels: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpPostsCount [
+	<atpType:#Number format:nil>
 	^ atpPostsCount
 ]
 
@@ -210,7 +228,7 @@ AppBskyActorDefsProfileViewDetailed >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -243,7 +261,7 @@ AppBskyActorDefsProfileViewDetailed >> handleDescription [
 	^ MAStringDescription new
 		label: 'Handle';
 		accessor: #atpHandle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

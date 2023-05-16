@@ -35,13 +35,33 @@ AppBskyFeedDefsThreadViewPost class >> atpSchema [
 AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpParent: (aRequest at: 'parent' ifPresent: [:aValue | ({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost. 'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost. 'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpReplies: (aRequest at: 'replies' ifPresent: [:anArray | anArray collect: [:aValue |({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost. 'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost. 'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost} asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpPost: (aRequest
+				at: 'post'
+				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpParent: (aRequest
+				at: 'parent'
+				ifPresent: [ :aValue | 
+					({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost.
+						'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
+						'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReplies: (aRequest
+				at: 'replies'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | 
+							({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost.
+								'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
+								'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
+								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost >> atpParent [
+	<atpType:#(AppBskyFeedDefsThreadViewPost. AppBskyFeedDefsNotFoundPost. AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpParent
 ]
 
@@ -64,6 +84,8 @@ AppBskyFeedDefsThreadViewPost >> atpPost: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost >> atpReplies [
+	<atpType:#(AppBskyFeedDefsThreadViewPost. AppBskyFeedDefsNotFoundPost. AppBskyFeedDefsBlockedPost) format:nil>
+	<atpCollection>
 	^ atpReplies
 ]
 
@@ -76,7 +98,9 @@ AppBskyFeedDefsThreadViewPost >> atpReplies: anObject [
 AppBskyFeedDefsThreadViewPost >> parentDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#threadViewPost'. '#notFoundPost'. '#blockedPost'};
+		options: {'#threadViewPost'.
+				'#notFoundPost'.
+				'#blockedPost'};
 		label: 'Parent';
 		accessor: #atpParent
 ]
@@ -94,7 +118,9 @@ AppBskyFeedDefsThreadViewPost >> postDescription [
 AppBskyFeedDefsThreadViewPost >> repliesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyFeedDefsThreadViewPost. AppBskyFeedDefsNotFoundPost. AppBskyFeedDefsBlockedPost};
+		classes: {AppBskyFeedDefsThreadViewPost.
+				AppBskyFeedDefsNotFoundPost.
+				AppBskyFeedDefsBlockedPost};
 		label: 'Replies';
 		accessor: #atpReplies
 ]

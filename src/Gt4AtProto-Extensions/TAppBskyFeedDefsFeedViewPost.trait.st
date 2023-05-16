@@ -28,7 +28,7 @@ TAppBskyFeedDefsFeedViewPost >> embed [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> getReplies [
-	^ ((self client appBskyFeedGetPostThreaduri: self atpPost atpUri depth: nil)
+	^ ((self client appBskyFeedGetPostThreadUri: self atpPost atpUri depth: nil)
 		at: 'thread') atpReplies collect: [ :aReply | aReply client: self client ]
 ]
 
@@ -37,7 +37,7 @@ TAppBskyFeedDefsFeedViewPost >> getRoot [
 	self atpReply ifNil: [ ^ self ].
 
 	^ ((self client
-		appBskyFeedGetPostThreaduri: self atpReply atpRoot atpUri
+		appBskyFeedGetPostThreadUri: self atpReply atpRoot atpUri
 		depth: nil) at: 'thread') client: self client
 ]
 
@@ -97,7 +97,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCreatePostFor: aView [
 		stencil: [ GtApCreatePostForm new
 				client: self client;
 				post: self;
-				actor: (self client appBskyActorGetProfileactor: self client handle) ]
+				actor: (self client appBskyActorGetProfileActor: self client handle) ]
 ]
 
 { #category : #accessing }

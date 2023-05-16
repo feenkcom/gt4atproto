@@ -32,12 +32,13 @@ AppBskyRichtextFacetByteSlice class >> atpSchema [
 AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]); 
+		atpByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]);
 		atpByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyRichtextFacetByteSlice >> atpByteEnd [
+	<atpType:#Number format:nil>
 	^ atpByteEnd
 ]
 
@@ -48,6 +49,7 @@ AppBskyRichtextFacetByteSlice >> atpByteEnd: anObject [
 
 { #category : #accessing }
 AppBskyRichtextFacetByteSlice >> atpByteStart [
+	<atpType:#Number format:nil>
 	^ atpByteStart
 ]
 
@@ -62,7 +64,7 @@ AppBskyRichtextFacetByteSlice >> byteEndDescription [
 	^ MANumberDescription new
 		label: 'ByteEnd';
 		accessor: #atpByteEnd;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyRichtextFacetByteSlice >> byteStartDescription [
 	^ MANumberDescription new
 		label: 'ByteStart';
 		accessor: #atpByteStart;
-	beRequired
+		beRequired
 ]

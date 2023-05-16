@@ -38,18 +38,25 @@ AppBskyActorDefsProfileView class >> atpSchema [
 AppBskyActorDefsProfileView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
-		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
+		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpViewer: (aRequest
+				at: 'viewer'
+				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpAvatar [
+	<atpType:'string' format:nil>
 	^ atpAvatar
 ]
 
@@ -60,6 +67,7 @@ AppBskyActorDefsProfileView >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpDescription [
+	<atpType:'string' format:nil>
 	^ atpDescription
 ]
 
@@ -70,6 +78,7 @@ AppBskyActorDefsProfileView >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -80,6 +89,7 @@ AppBskyActorDefsProfileView >> atpDid: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpDisplayName [
+	<atpType:'string' format:nil>
 	^ atpDisplayName
 ]
 
@@ -90,6 +100,7 @@ AppBskyActorDefsProfileView >> atpDisplayName: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpHandle [
+	<atpType:'string' format:'handle'>
 	^ atpHandle
 ]
 
@@ -100,6 +111,7 @@ AppBskyActorDefsProfileView >> atpHandle: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -110,6 +122,8 @@ AppBskyActorDefsProfileView >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -152,7 +166,7 @@ AppBskyActorDefsProfileView >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -169,7 +183,7 @@ AppBskyActorDefsProfileView >> handleDescription [
 	^ MAStringDescription new
 		label: 'Handle';
 		accessor: #atpHandle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

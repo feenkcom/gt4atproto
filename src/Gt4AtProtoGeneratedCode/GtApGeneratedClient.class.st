@@ -6,588 +6,1108 @@ Class {
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetPreferences [
-	<xrpcQuery>
 	"Get private preferences attached to the account."
-	^ GtApRequestResolver from: {'preferences' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.actor.getPreferences' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'preferences' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self queryOn: 'app.bsky.actor.getPreferences' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorGetProfileactor: actor [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyActorGetProfileActor: actor [
 	""
-	^ AppBskyActorDefsProfileViewDetailed fromRequest:  (self queryOn: 'app.bsky.actor.getProfile' parameters: {'actor' -> actor} asDictionary)
+
+	<xrpcQuery>
+	^ AppBskyActorDefsProfileViewDetailed
+		fromRequest: (self
+				queryOn: 'app.bsky.actor.getProfile'
+				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorGetProfilesactors: actors [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyActorGetProfilesActors: actors [
 	""
-	^ GtApRequestResolver from: {'profiles' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.actor.getProfiles' parameters: {'actors' -> actors} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'profiles' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.actor.getProfiles'
+				parameters: {'actors' -> actors} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetSuggestions [
-	<xrpcQuery>
 	"Get a list of actors suggested for following. Used in discovery UIs."
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
+		stream: (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorPutPreferencespreferences: preferences [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> appBskyActorPutPreferencesPreferences: preferences [
 	"Sets the private preferences attached to the account."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'app.bsky.actor.putPreferences' withBody: {'preferences' -> preferences} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.actor.putPreferences'
+				withBody: {'preferences' -> preferences} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadterm: term [ 
-	<xrpcQuery>
-	"Find actor suggestions for a search term."
-	^ GtApRequestResolver from: {'actors' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.actor.searchActorsTypeahead' parameters: {'term' -> term} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsterm: term [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyActorSearchActorsTerm: term [
 	"Find actors matching search criteria."
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.actor.searchActors' parameters: {'term' -> term} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.actor.searchActors'
+				parameters: {'term' -> term} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetAuthorFeedactor: actor [ 
+GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadTerm: term [
+	"Find actor suggestions for a search term."
+
 	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'actors' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.actor.searchActorsTypeahead'
+				parameters: {'term' -> term} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetAuthorFeedActor: actor [
 	"A view of an actor's feed."
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyFeedDefsFeedViewPost fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.feed.getAuthorFeed' parameters: {'actor' -> actor} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.feed.getAuthorFeed'
+				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetLikesuri: uri cid: cid [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyFeedGetLikesUri: uri cid: cid [
 	""
-	^ GtApRequestResolver from: {'likes' -> (GtApRequestStreamResolver new block: [:aDictionary | AppBskyFeedGetLikesLike fromRequest:  aDictionary ]). 'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]. 'cursor' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.feed.getLikes' parameters: {'uri' -> uri. 'cid' -> cid} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'likes'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyFeedGetLikesLike fromRequest: aDictionary ]).
+				'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.getLikes'
+				parameters: {'uri' -> uri.
+						'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetPostThreaduri: uri depth: depth [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth [
 	""
-	^ GtApRequestResolver from: {'thread' -> [:aValue |GtApModelEntity findForRequest:  aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.feed.getPostThread' parameters: {'uri' -> uri. 'depth' -> depth} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'thread' -> [ :aValue | GtApModelEntity findForRequest: aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.getPostThread'
+				parameters: {'uri' -> uri.
+						'depth' -> depth} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetPostsuris: uris [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyFeedGetPostsUris: uris [
 	"A view of an actor's feed."
-	^ GtApRequestResolver from: {'posts' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.feed.getPosts' parameters: {'uris' -> uris} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'posts' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.getPosts'
+				parameters: {'uris' -> uris} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetRepostedByuri: uri cid: cid [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyFeedGetRepostedByUri: uri cid: cid [
 	""
-	^ GtApRequestResolver from: {'repostedBy' -> (GtApRequestStreamResolver new block: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ]). 'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]. 'cursor' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.feed.getRepostedBy' parameters: {'uri' -> uri. 'cid' -> cid} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'repostedBy'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]).
+				'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.getRepostedBy'
+				parameters: {'uri' -> uri.
+						'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetTimelinealgorithm: algorithm [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyFeedGetTimelineAlgorithm: algorithm [
 	"A view of the user's home timeline."
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyFeedDefsFeedViewPost fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.feed.getTimeline' parameters: {'algorithm' -> algorithm} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.feed.getTimeline'
+				parameters: {'algorithm' -> algorithm} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetBlocks [
-	<xrpcQuery>
 	"Who is the requester's account blocking?"
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getBlocks' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
+		stream: (self queryOn: 'app.bsky.graph.getBlocks' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetFollowersactor: actor [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyGraphGetFollowersActor: actor [
 	"Who is following an actor?"
-	^ GtApRequestResolver from: {'followers' -> (GtApRequestStreamResolver new block: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ]). 'subject' -> [:aValue |AppBskyActorDefsProfileView fromRequest:  aValue]. 'cursor' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.graph.getFollowers' parameters: {'actor' -> actor} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'followers'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]).
+				'subject' -> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getFollowers'
+				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetFollowsactor: actor [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyGraphGetFollowsActor: actor [
 	"Who is an actor following?"
-	^ GtApRequestResolver from: {'follows' -> (GtApRequestStreamResolver new block: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ]). 'subject' -> [:aValue |AppBskyActorDefsProfileView fromRequest:  aValue]. 'cursor' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.graph.getFollows' parameters: {'actor' -> actor} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'follows'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]).
+				'subject' -> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getFollows'
+				parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetListList: list [
+	"Fetch a list of actors"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'items'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyGraphDefsListItemView fromRequest: aDictionary ]).
+				'cursor' -> [ :aValue | aValue ].
+				'list' -> [ :aValue | AppBskyGraphDefsListView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getList'
+				parameters: {'list' -> list} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetListMutes [
-	<xrpcQuery>
 	"Which lists is the requester's account muting?"
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyGraphDefsListView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getListMutes' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyGraphDefsListView fromRequest: aDictionary ]
+		stream: (self queryOn: 'app.bsky.graph.getListMutes' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetListlist: list [ 
-	<xrpcQuery>
-	"Fetch a list of actors"
-	^ GtApRequestResolver from: {'items' -> (GtApRequestStreamResolver new block: [:aDictionary | AppBskyGraphDefsListItemView fromRequest:  aDictionary ]). 'cursor' -> [:aValue | aValue]. 'list' -> [:aValue |AppBskyGraphDefsListView fromRequest:  aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.graph.getList' parameters: {'list' -> list} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetListsactor: actor [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyGraphGetListsActor: actor [
 	"Fetch a list of lists that belong to an actor"
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyGraphDefsListView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getLists' parameters: {'actor' -> actor} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyGraphDefsListView fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.graph.getLists'
+				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetMutes [
-	<xrpcQuery>
 	"Who does the viewer mute?"
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyActorDefsProfileView fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.graph.getMutes' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
+		stream: (self queryOn: 'app.bsky.graph.getMutes' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphMuteActorListlist: list [ 
-	<xrpcProcedure>
-	"Mute a list of actors."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'app.bsky.graph.muteActorList' withBody: {'list' -> list} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphMuteActoractor: actor [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> appBskyGraphMuteActorActor: actor [
 	"Mute an actor by did or handle."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'app.bsky.graph.muteActor' withBody: {'actor' -> actor} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.graph.muteActor'
+				withBody: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphUnmuteActorListlist: list [ 
+GtApGeneratedClient >> appBskyGraphMuteActorListList: list [
+	"Mute a list of actors."
+
 	<xrpcProcedure>
-	"Unmute a list of actors."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'app.bsky.graph.unmuteActorList' withBody: {'list' -> list} asDictionary)
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.graph.muteActorList'
+				withBody: {'list' -> list} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphUnmuteActoractor: actor [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> appBskyGraphUnmuteActorActor: actor [
 	"Unmute an actor by did or handle."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'app.bsky.graph.unmuteActor' withBody: {'actor' -> actor} asDictionary)
-]
 
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationGetUnreadCountseenAt: seenAt [ 
-	<xrpcQuery>
-	""
-	^ GtApRequestResolver from: {'count' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'app.bsky.notification.getUnreadCount' parameters: {'seenAt' -> seenAt} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationListNotificationsseenAt: seenAt [ 
-	<xrpcQuery>
-	""
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyNotificationListNotificationsNotification fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.notification.listNotifications' parameters: {'seenAt' -> seenAt} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationUpdateSeenseenAt: seenAt [ 
 	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.graph.unmuteActor'
+				withBody: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphUnmuteActorListList: list [
+	"Unmute a list of actors."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.graph.unmuteActorList'
+				withBody: {'list' -> list} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyNotificationGetUnreadCountSeenAt: seenAt [
+	""
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'count' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.notification.getUnreadCount'
+				parameters: {'seenAt' -> seenAt} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyNotificationListNotificationsseenAt: seenAt [
+	""
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyNotificationListNotificationsNotification fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.notification.listNotifications'
+				parameters: {'seenAt' -> seenAt} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyNotificationUpdateSeenSeenAt: seenAt [
 	"Notify server that the user has seen notifications."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'app.bsky.notification.updateSeen' withBody: {'seenAt' -> seenAt} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.notification.updateSeen'
+				withBody: {'seenAt' -> seenAt} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyUnspeccedGetPopularincludeNsfw: includeNsfw [ 
-	<xrpcQuery>
+GtApGeneratedClient >> appBskyUnspeccedGetPopularIncludeNsfw: includeNsfw [
 	"An unspecced view of globally popular items"
-	^ AsyncMapStream mapBlock: [:aDictionary | AppBskyFeedDefsFeedViewPost fromRequest:  aDictionary ] stream:  (self queryOn: 'app.bsky.unspecced.getPopular' parameters: {'includeNsfw' -> includeNsfw} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.unspecced.getPopular'
+				parameters: {'includeNsfw' -> includeNsfw} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminDisableAccountInvitesaccount: account [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminDisableAccountInvitesAccount: account [
 	"Disable an account from receiving new invite codes, but does not invalidate existing codes"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.admin.disableAccountInvites' withBody: {'account' -> account} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.disableAccountInvites'
+				withBody: {'account' -> account} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminDisableInviteCodescodes: codes accounts: accounts [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminDisableInviteCodesCodes: codes accounts: accounts [
 	"Disable some set of codes and/or all codes associated with a set of users"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.admin.disableInviteCodes' withBody: {'codes' -> codes. 'accounts' -> accounts} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.disableInviteCodes'
+				withBody: {'codes' -> codes.
+						'accounts' -> accounts} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminEnableAccountInvitesaccount: account [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminEnableAccountInvitesAccount: account [
 	"Re-enable an accounts ability to receive invite codes"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.admin.enableAccountInvites' withBody: {'account' -> account} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.enableAccountInvites'
+				withBody: {'account' -> account} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetInviteCodessort: sort [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetInviteCodesSort: sort [
 	"Admin view of invite codes"
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoServerDefsInviteCode fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.getInviteCodes' parameters: {'sort' -> sort} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoServerDefsInviteCode fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'com.atproto.admin.getInviteCodes'
+				parameters: {'sort' -> sort} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationActionid: id [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetModerationActionId: id [
 	"View details about a moderation action."
-	^ ComAtprotoAdminDefsActionViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getModerationAction' parameters: {'id' -> id} asDictionary)
+
+	<xrpcQuery>
+	^ ComAtprotoAdminDefsActionViewDetail
+		fromRequest: (self
+				queryOn: 'com.atproto.admin.getModerationAction'
+				parameters: {'id' -> id} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationActionssubject: subject [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetModerationActionsSubject: subject [
 	"List moderation actions related to a subject."
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoAdminDefsActionView fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.getModerationActions' parameters: {'subject' -> subject} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoAdminDefsActionView fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'com.atproto.admin.getModerationActions'
+				parameters: {'subject' -> subject} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportid: id [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportId: id [
 	"View details about a moderation report."
-	^ ComAtprotoAdminDefsReportViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getModerationReport' parameters: {'id' -> id} asDictionary)
+
+	<xrpcQuery>
+	^ ComAtprotoAdminDefsReportViewDetail
+		fromRequest: (self
+				queryOn: 'com.atproto.admin.getModerationReport'
+				parameters: {'id' -> id} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportssubject: subject resolved: resolved actionType: actionType [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject resolved: resolved actionType: actionType [
 	"List moderation reports related to a subject."
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoAdminDefsReportView fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.getModerationReports' parameters: {'subject' -> subject. 'resolved' -> resolved. 'actionType' -> actionType} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoAdminDefsReportView fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'com.atproto.admin.getModerationReports'
+				parameters: {'subject' -> subject.
+						'resolved' -> resolved.
+						'actionType' -> actionType} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetRecorduri: uri cid: cid [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetRecordUri: uri cid: cid [
 	"View details about a record."
-	^ ComAtprotoAdminDefsRecordViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getRecord' parameters: {'uri' -> uri. 'cid' -> cid} asDictionary)
+
+	<xrpcQuery>
+	^ ComAtprotoAdminDefsRecordViewDetail
+		fromRequest: (self
+				queryOn: 'com.atproto.admin.getRecord'
+				parameters: {'uri' -> uri.
+						'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetRepodid: did [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminGetRepoDid: did [
 	"View details about a repository."
-	^ ComAtprotoAdminDefsRepoViewDetail fromRequest:  (self queryOn: 'com.atproto.admin.getRepo' parameters: {'did' -> did} asDictionary)
+
+	<xrpcQuery>
+	^ ComAtprotoAdminDefsRepoViewDetail
+		fromRequest: (self
+				queryOn: 'com.atproto.admin.getRepo'
+				parameters: {'did' -> did} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminResolveModerationReportsactionId: actionId reportIds: reportIds createdBy: createdBy [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminResolveModerationReportsActionId: actionId reportIds: reportIds createdBy: createdBy [
 	"Resolve moderation reports by an action."
-	^ ComAtprotoAdminDefsActionView fromRequest:  (self procedureOn: 'com.atproto.admin.resolveModerationReports' withBody: {'actionId' -> actionId. 'reportIds' -> reportIds. 'createdBy' -> createdBy} asDictionary)
+
+	<xrpcProcedure>
+	^ ComAtprotoAdminDefsActionView
+		fromRequest: (self
+				procedureOn: 'com.atproto.admin.resolveModerationReports'
+				withBody: {'actionId' -> actionId.
+						'reportIds' -> reportIds.
+						'createdBy' -> createdBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminReverseModerationActionid: id reason: reason createdBy: createdBy [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminReverseModerationActionId: id reason: reason createdBy: createdBy [
 	"Reverse a moderation action."
-	^ ComAtprotoAdminDefsActionView fromRequest:  (self procedureOn: 'com.atproto.admin.reverseModerationAction' withBody: {'id' -> id. 'reason' -> reason. 'createdBy' -> createdBy} asDictionary)
+
+	<xrpcProcedure>
+	^ ComAtprotoAdminDefsActionView
+		fromRequest: (self
+				procedureOn: 'com.atproto.admin.reverseModerationAction'
+				withBody: {'id' -> id.
+						'reason' -> reason.
+						'createdBy' -> createdBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminSearchReposterm: term invitedBy: invitedBy [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoAdminSearchReposTerm: term invitedBy: invitedBy [
 	"Find repositories based on a search term."
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoAdminDefsRepoView fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.admin.searchRepos' parameters: {'term' -> term. 'invitedBy' -> invitedBy} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoAdminDefsRepoView fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'com.atproto.admin.searchRepos'
+				parameters: {'term' -> term.
+						'invitedBy' -> invitedBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminTakeModerationActionaction: action subject: subject subjectBlobCids: subjectBlobCids createLabelVals: createLabelVals negateLabelVals: negateLabelVals reason: reason createdBy: createdBy [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminTakeModerationActionAction: action subject: subject subjectBlobCids: subjectBlobCids createLabelVals: createLabelVals negateLabelVals: negateLabelVals reason: reason createdBy: createdBy [
 	"Take a moderation action on a repo."
-	^ ComAtprotoAdminDefsActionView fromRequest:  (self procedureOn: 'com.atproto.admin.takeModerationAction' withBody: {'action' -> action. 'subject' -> subject. 'subjectBlobCids' -> subjectBlobCids. 'createLabelVals' -> createLabelVals. 'negateLabelVals' -> negateLabelVals. 'reason' -> reason. 'createdBy' -> createdBy} asDictionary)
+
+	<xrpcProcedure>
+	^ ComAtprotoAdminDefsActionView
+		fromRequest: (self
+				procedureOn: 'com.atproto.admin.takeModerationAction'
+				withBody: {'action' -> action.
+						'subject' -> subject.
+						'subjectBlobCids' -> subjectBlobCids.
+						'createLabelVals' -> createLabelVals.
+						'negateLabelVals' -> negateLabelVals.
+						'reason' -> reason.
+						'createdBy' -> createdBy} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminUpdateAccountEmailaccount: account email: email [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminUpdateAccountEmailAccount: account email: email [
 	"Administrative action to update an account's email"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.admin.updateAccountEmail' withBody: {'account' -> account. 'email' -> email} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.updateAccountEmail'
+				withBody: {'account' -> account.
+						'email' -> email} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminUpdateAccountHandledid: did handle: handle [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoAdminUpdateAccountHandleDid: did handle: handle [
 	"Administrative action to update an account's handle"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.admin.updateAccountHandle' withBody: {'did' -> did. 'handle' -> handle} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.updateAccountHandle'
+				withBody: {'did' -> did.
+						'handle' -> handle} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoIdentityResolveHandlehandle: handle [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoIdentityResolveHandleHandle: handle [
 	"Provides the DID of a repo."
-	^ GtApRequestResolver from: {'did' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.identity.resolveHandle' parameters: {'handle' -> handle} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'did' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.identity.resolveHandle'
+				parameters: {'handle' -> handle} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoIdentityUpdateHandlehandle: handle [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoIdentityUpdateHandleHandle: handle [
 	"Updates the handle of the account"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.identity.updateHandle' withBody: {'handle' -> handle} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.identity.updateHandle'
+				withBody: {'handle' -> handle} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoLabelQueryLabelsuriPatterns: uriPatterns sources: sources [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoLabelQueryLabelsUriPatterns: uriPatterns sources: sources [
 	"Find labels relevant to the provided URI patterns."
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoLabelDefsLabel fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.label.queryLabels' parameters: {'uriPatterns' -> uriPatterns. 'sources' -> sources} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoLabelDefsLabel fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'com.atproto.label.queryLabels'
+				parameters: {'uriPatterns' -> uriPatterns.
+						'sources' -> sources} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoModerationCreateReportreasonType: reasonType reason: reason subject: subject [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoModerationCreateReportReasonType: reasonType reason: reason subject: subject [
 	"Report a repo or a record."
-	^ GtApRequestResolver from: {'id' -> [:aValue | aValue]. 'reasonType' -> [:aValue | aValue]. 'reason' -> [:aValue | aValue]. 'subject' -> [:aValue |GtApModelEntity findForRequest:  aValue]. 'reportedBy' -> [:aValue | aValue]. 'createdAt' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.moderation.createReport' withBody: {'reasonType' -> reasonType. 'reason' -> reason. 'subject' -> subject} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'id' -> [ :aValue | aValue ].
+				'reasonType' -> [ :aValue | aValue ].
+				'reason' -> [ :aValue | aValue ].
+				'subject' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'reportedBy' -> [ :aValue | aValue ].
+				'createdAt' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.moderation.createReport'
+				withBody: {'reasonType' -> reasonType.
+						'reason' -> reason.
+						'subject' -> subject} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoApplyWritesrepo: repo validate: validate writes: writes swapCommit: swapCommit [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoRepoApplyWritesRepo: repo validate: validate writes: writes swapCommit: swapCommit [
 	"Apply a batch transaction of creates, updates, and deletes."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.applyWrites' withBody: {'repo' -> repo. 'validate' -> validate. 'writes' -> writes. 'swapCommit' -> swapCommit} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.repo.applyWrites'
+				withBody: {'repo' -> repo.
+						'validate' -> validate.
+						'writes' -> writes.
+						'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoCreateRecordrepo: repo collection: collection rkey: rkey validate: validate record: record swapCommit: swapCommit [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoRepoCreateRecordRepo: repo collection: collection rkey: rkey validate: validate record: record swapCommit: swapCommit [
 	"Create a new record."
-	^ GtApRequestResolver from: {'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.createRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'validate' -> validate. 'record' -> record. 'swapCommit' -> swapCommit} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.repo.createRecord'
+				withBody: {'repo' -> repo.
+						'collection' -> collection.
+						'rkey' -> rkey.
+						'validate' -> validate.
+						'record' -> record.
+						'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoDeleteRecordrepo: repo collection: collection rkey: rkey swapRecord: swapRecord swapCommit: swapCommit [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoRepoDeleteRecordRepo: repo collection: collection rkey: rkey swapRecord: swapRecord swapCommit: swapCommit [
 	"Delete a record, or ensure it doesn't exist."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.deleteRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'swapRecord' -> swapRecord. 'swapCommit' -> swapCommit} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.repo.deleteRecord'
+				withBody: {'repo' -> repo.
+						'collection' -> collection.
+						'rkey' -> rkey.
+						'swapRecord' -> swapRecord.
+						'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoDescribeReporepo: repo [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoRepoDescribeRepoRepo: repo [
 	"Get information about the repo, including the list of collections."
-	^ GtApRequestResolver from: {'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]. 'didDoc' -> [:aValue |GtApModelEntity findForRequest:  aValue]. 'collections' -> [:aValue | aValue]. 'handleIsCorrect' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.repo.describeRepo' parameters: {'repo' -> repo} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
+				'didDoc' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'collections' -> [ :aValue | aValue ].
+				'handleIsCorrect' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.repo.describeRepo'
+				parameters: {'repo' -> repo} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoGetRecordrepo: repo collection: collection rkey: rkey cid: cid [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoRepoGetRecordRepo: repo collection: collection rkey: rkey cid: cid [
 	"Get a record."
-	^ GtApRequestResolver from: {'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]. 'value' -> [:aValue |GtApModelEntity findForRequest:  aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.repo.getRecord' parameters: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'cid' -> cid} asDictionary)
-]
 
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoListRecordsrepo: repo collection: collection rkeyStart: rkeyStart rkeyEnd: rkeyEnd reverse: reverse [ 
 	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'value' -> [ :aValue | GtApModelEntity findForRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.repo.getRecord'
+				parameters: {'repo' -> repo.
+						'collection' -> collection.
+						'rkey' -> rkey.
+						'cid' -> cid} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoRepoListRecordsRepo: repo collection: collection rkeyStart: rkeyStart rkeyEnd: rkeyEnd reverse: reverse [
 	"List a range of records in a collection."
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoRepoListRecordsRecord fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.repo.listRecords' parameters: {'repo' -> repo. 'collection' -> collection. 'rkeyStart' -> rkeyStart. 'rkeyEnd' -> rkeyEnd. 'reverse' -> reverse} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoRepoListRecordsRecord fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'com.atproto.repo.listRecords'
+				parameters: {'repo' -> repo.
+						'collection' -> collection.
+						'rkeyStart' -> rkeyStart.
+						'rkeyEnd' -> rkeyEnd.
+						'reverse' -> reverse} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoPutRecordrepo: repo collection: collection rkey: rkey validate: validate record: record swapRecord: swapRecord swapCommit: swapCommit [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoRepoPutRecordRepo: repo collection: collection rkey: rkey validate: validate record: record swapRecord: swapRecord swapCommit: swapCommit [
 	"Write a record, creating or updating it as needed."
-	^ GtApRequestResolver from: {'uri' -> [:aValue | aValue]. 'cid' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.putRecord' withBody: {'repo' -> repo. 'collection' -> collection. 'rkey' -> rkey. 'validate' -> validate. 'record' -> record. 'swapRecord' -> swapRecord. 'swapCommit' -> swapCommit} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.repo.putRecord'
+				withBody: {'repo' -> repo.
+						'collection' -> collection.
+						'rkey' -> rkey.
+						'validate' -> validate.
+						'record' -> record.
+						'swapRecord' -> swapRecord.
+						'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoRebaseReporepo: repo swapCommit: swapCommit [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoRepoRebaseRepoRepo: repo swapCommit: swapCommit [
 	"Simple rebase of repo that deletes history"
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.rebaseRepo' withBody: {'repo' -> repo. 'swapCommit' -> swapCommit} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.repo.rebaseRepo'
+				withBody: {'repo' -> repo.
+						'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoUploadBlobFile: aFile [
-	<xrpcProcedure>
 	"Upload a new blob to be added to repo in a later request."
-	^ GtApRequestResolver from: {'blob' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.repo.uploadBlob' withFile: aFile)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'blob' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self procedureOn: 'com.atproto.repo.uploadBlob' withFile: aFile)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateAccountemail: email handle: handle did: did inviteCode: inviteCode password: password recoveryKey: recoveryKey [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerCreateAccountEmail: email handle: handle did: did inviteCode: inviteCode password: password recoveryKey: recoveryKey [
 	"Create an account."
-	^ GtApRequestResolver from: {'accessJwt' -> [:aValue | aValue]. 'refreshJwt' -> [:aValue | aValue]. 'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.createAccount' withBody: {'email' -> email. 'handle' -> handle. 'did' -> did. 'inviteCode' -> inviteCode. 'password' -> password. 'recoveryKey' -> recoveryKey} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'accessJwt' -> [ :aValue | aValue ].
+				'refreshJwt' -> [ :aValue | aValue ].
+				'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.createAccount'
+				withBody: {'email' -> email.
+						'handle' -> handle.
+						'did' -> did.
+						'inviteCode' -> inviteCode.
+						'password' -> password.
+						'recoveryKey' -> recoveryKey} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateAppPasswordname: name [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerCreateAppPasswordName: name [
 	"Create an app-specific password."
-	^ ComAtprotoServerCreateAppPasswordAppPassword fromRequest:  (self procedureOn: 'com.atproto.server.createAppPassword' withBody: {'name' -> name} asDictionary)
+
+	<xrpcProcedure>
+	^ ComAtprotoServerCreateAppPasswordAppPassword
+		fromRequest: (self
+				procedureOn: 'com.atproto.server.createAppPassword'
+				withBody: {'name' -> name} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateInviteCodescodeCount: codeCount useCount: useCount forAccounts: forAccounts [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerCreateInviteCodeUseCount: useCount forAccount: forAccount [
 	"Create an invite code."
-	^ GtApRequestResolver from: {'codes' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.createInviteCodes' withBody: {'codeCount' -> codeCount. 'useCount' -> useCount. 'forAccounts' -> forAccounts} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'code' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.createInviteCode'
+				withBody: {'useCount' -> useCount.
+						'forAccount' -> forAccount} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateInviteCodeuseCount: useCount forAccount: forAccount [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerCreateInviteCodesCodeCount: codeCount useCount: useCount forAccounts: forAccounts [
 	"Create an invite code."
-	^ GtApRequestResolver from: {'code' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.createInviteCode' withBody: {'useCount' -> useCount. 'forAccount' -> forAccount} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'codes' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.createInviteCodes'
+				withBody: {'codeCount' -> codeCount.
+						'useCount' -> useCount.
+						'forAccounts' -> forAccounts} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateSessionidentifier: identifier password: password [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerCreateSessionIdentifier: identifier password: password [
 	"Create an authentication session."
-	^ GtApRequestResolver from: {'accessJwt' -> [:aValue | aValue]. 'refreshJwt' -> [:aValue | aValue]. 'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]. 'email' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.createSession' withBody: {'identifier' -> identifier. 'password' -> password} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'accessJwt' -> [ :aValue | aValue ].
+				'refreshJwt' -> [ :aValue | aValue ].
+				'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
+				'email' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.createSession'
+				withBody: {'identifier' -> identifier.
+						'password' -> password} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerDeleteAccountdid: did password: password token: token [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerDeleteAccountDid: did password: password token: token [
 	"Delete a user account with a token and password."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.deleteAccount' withBody: {'did' -> did. 'password' -> password. 'token' -> token} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.deleteAccount'
+				withBody: {'did' -> did.
+						'password' -> password.
+						'token' -> token} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDeleteSession [
-	<xrpcProcedure>
 	"Delete the current session."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.deleteSession' withBody: {} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self procedureOn: 'com.atproto.server.deleteSession' withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDescribeServer [
-	<xrpcQuery>
 	"Get a document describing the service's accounts configuration."
-	^ GtApRequestResolver from: {'inviteCodeRequired' -> [:aValue | aValue]. 'availableUserDomains' -> [:aValue | aValue]. 'links' -> [:aValue |ComAtprotoServerDescribeServerLinks fromRequest:  aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.server.describeServer' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'inviteCodeRequired' -> [ :aValue | aValue ].
+				'availableUserDomains' -> [ :aValue | aValue ].
+				'links'
+					-> [ :aValue | ComAtprotoServerDescribeServerLinks fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.server.describeServer'
+				parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodesincludeUsed: includeUsed createAvailable: createAvailable [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodesIncludeUsed: includeUsed createAvailable: createAvailable [
 	"Get all invite codes for a given account"
-	^ GtApRequestResolver from: {'codes' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.server.getAccountInviteCodes' parameters: {'includeUsed' -> includeUsed. 'createAvailable' -> createAvailable} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'codes' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.server.getAccountInviteCodes'
+				parameters: {'includeUsed' -> includeUsed.
+						'createAvailable' -> createAvailable} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerGetSession [
-	<xrpcQuery>
 	"Get information about the current session."
-	^ GtApRequestResolver from: {'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]. 'email' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.server.getSession' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
+				'email' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.server.getSession'
+				parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerListAppPasswords [
-	<xrpcQuery>
 	"List all app-specific passwords."
-	^ GtApRequestResolver from: {'passwords' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.server.listAppPasswords' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'passwords' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self queryOn: 'com.atproto.server.listAppPasswords' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRefreshSession [
-	<xrpcProcedure>
 	"Refresh an authentication session."
-	^ GtApRequestResolver from: {'accessJwt' -> [:aValue | aValue]. 'refreshJwt' -> [:aValue | aValue]. 'handle' -> [:aValue | aValue]. 'did' -> [:aValue | aValue]} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.refreshSession' withBody: {} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'accessJwt' -> [ :aValue | aValue ].
+				'refreshJwt' -> [ :aValue | aValue ].
+				'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.refreshSession'
+				withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRequestAccountDelete [
-	<xrpcProcedure>
 	"Initiate a user account deletion via email."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.requestAccountDelete' withBody: {} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.requestAccountDelete'
+				withBody: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerRequestPasswordResetemail: email [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerRequestPasswordResetEmail: email [
 	"Initiate a user account password reset via email."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.requestPasswordReset' withBody: {'email' -> email} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.requestPasswordReset'
+				withBody: {'email' -> email} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerResetPasswordtoken: token password: password [ 
-	<xrpcProcedure>
+GtApGeneratedClient >> comAtprotoServerResetPasswordToken: token password: password [
 	"Reset a user account password using a token."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.resetPassword' withBody: {'token' -> token. 'password' -> password} asDictionary)
-]
 
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerRevokeAppPasswordname: name [ 
 	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.resetPassword'
+				withBody: {'token' -> token.
+						'password' -> password} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerRevokeAppPasswordName: name [
 	"Revoke an app-specific password by name."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self procedureOn: 'com.atproto.server.revokeAppPassword' withBody: {'name' -> name} asDictionary)
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.revokeAppPassword'
+				withBody: {'name' -> name} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetBlobdid: did cid: cid [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetBlobDid: did cid: cid [
 	"Get a blob associated with a given repo."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getBlob' parameters: {'did' -> did. 'cid' -> cid} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getBlob'
+				parameters: {'did' -> did.
+						'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetBlocksdid: did cids: cids [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetBlocksDid: did cids: cids [
 	"Gets blocks from a given repo."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getBlocks' parameters: {'did' -> did. 'cids' -> cids} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getBlocks'
+				parameters: {'did' -> did.
+						'cids' -> cids} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetCheckoutdid: did commit: commit [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetCheckoutDid: did commit: commit [
 	"Gets the repo state."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getCheckout' parameters: {'did' -> did. 'commit' -> commit} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getCheckout'
+				parameters: {'did' -> did.
+						'commit' -> commit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetCommitPathdid: did latest: latest earliest: earliest [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetCommitPathDid: did latest: latest earliest: earliest [
 	"Gets the path of repo commits"
-	^ GtApRequestResolver from: {'commits' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getCommitPath' parameters: {'did' -> did. 'latest' -> latest. 'earliest' -> earliest} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'commits' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getCommitPath'
+				parameters: {'did' -> did.
+						'latest' -> latest.
+						'earliest' -> earliest} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetHeaddid: did [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetHeadDid: did [
 	"Gets the current HEAD CID of a repo."
-	^ GtApRequestResolver from: {'root' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getHead' parameters: {'did' -> did} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'root' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getHead'
+				parameters: {'did' -> did} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetRecorddid: did collection: collection rkey: rkey commit: commit [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetRecordDid: did collection: collection rkey: rkey commit: commit [
 	"Gets blocks needed for existence or non-existence of record."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getRecord' parameters: {'did' -> did. 'collection' -> collection. 'rkey' -> rkey. 'commit' -> commit} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getRecord'
+				parameters: {'did' -> did.
+						'collection' -> collection.
+						'rkey' -> rkey.
+						'commit' -> commit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetRepodid: did earliest: earliest latest: latest [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncGetRepoDid: did earliest: earliest latest: latest [
 	"Gets the repo state."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.getRepo' parameters: {'did' -> did. 'earliest' -> earliest. 'latest' -> latest} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getRepo'
+				parameters: {'did' -> did.
+						'earliest' -> earliest.
+						'latest' -> latest} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncListBlobsdid: did latest: latest earliest: earliest [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncListBlobsDid: did latest: latest earliest: earliest [
 	"List blob cids for some range of commits"
-	^ GtApRequestResolver from: {'cids' -> [:aValue | aValue]} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.listBlobs' parameters: {'did' -> did. 'latest' -> latest. 'earliest' -> earliest} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'cids' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.listBlobs'
+				parameters: {'did' -> did.
+						'latest' -> latest.
+						'earliest' -> earliest} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncListRepos [
-	<xrpcQuery>
 	"List dids and root cids of hosted repos"
-	^ AsyncMapStream mapBlock: [:aDictionary | ComAtprotoSyncListReposRepo fromRequest:  aDictionary ] stream:  (self queryOn: 'com.atproto.sync.listRepos' parameters: {} asDictionary)
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoSyncListReposRepo fromRequest: aDictionary ]
+		stream: (self queryOn: 'com.atproto.sync.listRepos' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdatehostname: hostname [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdateHostname: hostname [
 	"Notify a crawling service of a recent update. Often when a long break between updates causes the connection with the crawling service to break."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.notifyOfUpdate' parameters: {'hostname' -> hostname} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.notifyOfUpdate'
+				parameters: {'hostname' -> hostname} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncRequestCrawlhostname: hostname [ 
-	<xrpcQuery>
+GtApGeneratedClient >> comAtprotoSyncRequestCrawlHostname: hostname [
 	"Request a service to persistently crawl hosted repos."
-	^ GtApRequestResolver from: {} asDictionary andRequest:  (self queryOn: 'com.atproto.sync.requestCrawl' parameters: {'hostname' -> hostname} asDictionary)
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.requestCrawl'
+				parameters: {'hostname' -> hostname} asDictionary)
 ]

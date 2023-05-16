@@ -33,11 +33,19 @@ AppBskyEmbedRecordView class >> atpSchema [
 AppBskyEmbedRecordView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | ({'app.bsky.embed.record#viewRecord' -> AppBskyEmbedRecordViewRecord. 'app.bsky.embed.record#viewNotFound' -> AppBskyEmbedRecordViewNotFound. 'app.bsky.embed.record#viewBlocked' -> AppBskyEmbedRecordViewBlocked} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ])
+		atpRecord: (aRequest
+				at: 'record'
+				ifPresent: [ :aValue | 
+					({'app.bsky.embed.record#viewRecord' -> AppBskyEmbedRecordViewRecord.
+						'app.bsky.embed.record#viewNotFound' -> AppBskyEmbedRecordViewNotFound.
+						'app.bsky.embed.record#viewBlocked' -> AppBskyEmbedRecordViewBlocked}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyEmbedRecordView >> atpRecord [
+	<atpType:#(AppBskyEmbedRecordViewRecord. AppBskyEmbedRecordViewNotFound. AppBskyEmbedRecordViewBlocked) format:nil>
 	^ atpRecord
 ]
 
@@ -50,7 +58,9 @@ AppBskyEmbedRecordView >> atpRecord: anObject [
 AppBskyEmbedRecordView >> recordDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#viewRecord'. '#viewNotFound'. '#viewBlocked'};
+		options: {'#viewRecord'.
+				'#viewNotFound'.
+				'#viewBlocked'};
 		label: 'Record';
 		accessor: #atpRecord;
 		beRequired

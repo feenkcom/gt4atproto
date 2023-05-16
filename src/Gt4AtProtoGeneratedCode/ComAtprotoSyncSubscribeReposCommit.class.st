@@ -40,20 +40,30 @@ ComAtprotoSyncSubscribeReposCommit class >> atpSchema [
 ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atpRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]); 
-		atpTooBig: (aRequest at: 'tooBig' ifAbsent: [ nil ]); 
-		atpRepo: (aRequest at: 'repo' ifAbsent: [ nil ]); 
-		atpCommit: (aRequest at: 'commit' ifAbsent: [ nil ]); 
-		atpPrev: (aRequest at: 'prev' ifAbsent: [ nil ]); 
-		atpBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]); 
-		atpOps: (aRequest at: 'ops' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoSyncSubscribeReposRepoOp fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpBlobs: (aRequest at: 'blobs' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
+		atpRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]);
+		atpTooBig: (aRequest at: 'tooBig' ifAbsent: [ nil ]);
+		atpRepo: (aRequest at: 'repo' ifAbsent: [ nil ]);
+		atpCommit: (aRequest at: 'commit' ifAbsent: [ nil ]);
+		atpPrev: (aRequest at: 'prev' ifAbsent: [ nil ]);
+		atpBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]);
+		atpOps: (aRequest
+				at: 'ops'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoSyncSubscribeReposRepoOp fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpBlobs: (aRequest
+				at: 'blobs'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ]);
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpBlobs [
+	<atpType:#String format:nil>
+	<atpCollection>
 	^ atpBlobs
 ]
 
@@ -64,6 +74,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpBlobs: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpBlocks [
+	<atpType:#ByteArray format:nil>
 	^ atpBlocks
 ]
 
@@ -74,6 +85,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpBlocks: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpCommit [
+	<atpType:#String format:nil>
 	^ atpCommit
 ]
 
@@ -84,6 +96,8 @@ ComAtprotoSyncSubscribeReposCommit >> atpCommit: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpOps [
+	<atpType:#ComAtprotoSyncSubscribeReposRepoOp format:nil>
+	<atpCollection>
 	^ atpOps
 ]
 
@@ -94,6 +108,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpOps: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpPrev [
+	<atpType:#String format:nil>
 	^ atpPrev
 ]
 
@@ -104,6 +119,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpPrev: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpRebase [
+	<atpType:#Boolean format:nil>
 	^ atpRebase
 ]
 
@@ -114,6 +130,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpRebase: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpRepo [
+	<atpType:'string' format:'did'>
 	^ atpRepo
 ]
 
@@ -124,6 +141,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpRepo: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpSeq [
+	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
@@ -134,6 +152,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpTime [
+	<atpType:'string' format:'datetime'>
 	^ atpTime
 ]
 
@@ -144,6 +163,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpTime: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpTooBig [
+	<atpType:#Boolean format:nil>
 	^ atpTooBig
 ]
 
@@ -159,7 +179,7 @@ ComAtprotoSyncSubscribeReposCommit >> blobsDescription [
 		classes: {String};
 		label: 'Blobs';
 		accessor: #atpBlobs;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -168,7 +188,7 @@ ComAtprotoSyncSubscribeReposCommit >> blocksDescription [
 	^ MAFileDescription new
 		label: 'Blocks';
 		accessor: #atpBlocks;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -177,7 +197,7 @@ ComAtprotoSyncSubscribeReposCommit >> commitDescription [
 	^ MAStringDescription new
 		label: 'Commit';
 		accessor: #atpCommit;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -187,7 +207,7 @@ ComAtprotoSyncSubscribeReposCommit >> opsDescription [
 		classes: {ComAtprotoSyncSubscribeReposRepoOp};
 		label: 'Ops';
 		accessor: #atpOps;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -196,7 +216,7 @@ ComAtprotoSyncSubscribeReposCommit >> prevDescription [
 	^ MAStringDescription new
 		label: 'Prev';
 		accessor: #atpPrev;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -205,7 +225,7 @@ ComAtprotoSyncSubscribeReposCommit >> rebaseDescription [
 	^ MABooleanDescription new
 		label: 'Rebase';
 		accessor: #atpRebase;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -214,7 +234,7 @@ ComAtprotoSyncSubscribeReposCommit >> repoDescription [
 	^ MAStringDescription new
 		label: 'Repo';
 		accessor: #atpRepo;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -223,7 +243,7 @@ ComAtprotoSyncSubscribeReposCommit >> seqDescription [
 	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atpSeq;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -232,7 +252,7 @@ ComAtprotoSyncSubscribeReposCommit >> timeDescription [
 	^ MAStringDescription new
 		label: 'Time';
 		accessor: #atpTime;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -241,5 +261,5 @@ ComAtprotoSyncSubscribeReposCommit >> tooBigDescription [
 	^ MABooleanDescription new
 		label: 'TooBig';
 		accessor: #atpTooBig;
-	beRequired
+		beRequired
 ]

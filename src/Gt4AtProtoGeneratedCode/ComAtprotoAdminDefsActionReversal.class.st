@@ -33,13 +33,14 @@ ComAtprotoAdminDefsActionReversal class >> atpSchema [
 ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
+		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -50,6 +51,7 @@ ComAtprotoAdminDefsActionReversal >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atpCreatedBy [
+	<atpType:'string' format:'did'>
 	^ atpCreatedBy
 ]
 
@@ -60,6 +62,7 @@ ComAtprotoAdminDefsActionReversal >> atpCreatedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atpReason [
+	<atpType:'string' format:nil>
 	^ atpReason
 ]
 
@@ -74,7 +77,7 @@ ComAtprotoAdminDefsActionReversal >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -83,7 +86,7 @@ ComAtprotoAdminDefsActionReversal >> createdByDescription [
 	^ MAStringDescription new
 		label: 'CreatedBy';
 		accessor: #atpCreatedBy;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +95,5 @@ ComAtprotoAdminDefsActionReversal >> reasonDescription [
 	^ MAStringDescription new
 		label: 'Reason';
 		accessor: #atpReason;
-	beRequired
+		beRequired
 ]

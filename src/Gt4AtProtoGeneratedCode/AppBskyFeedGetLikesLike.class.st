@@ -33,9 +33,12 @@ AppBskyFeedGetLikesLike class >> atpSchema [
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpActor: (aRequest at: 'actor' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ])
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpActor: (aRequest
+				at: 'actor'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -61,6 +64,7 @@ AppBskyFeedGetLikesLike >> atpActor: anObject [
 
 { #category : #accessing }
 AppBskyFeedGetLikesLike >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -71,6 +75,7 @@ AppBskyFeedGetLikesLike >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyFeedGetLikesLike >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -85,7 +90,7 @@ AppBskyFeedGetLikesLike >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -94,5 +99,5 @@ AppBskyFeedGetLikesLike >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]

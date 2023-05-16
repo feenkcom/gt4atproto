@@ -32,12 +32,13 @@ AppBskyFeedDefsBlockedPost class >> atpSchema [
 AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost >> atpBlocked [
+	<atpType:#Boolean format:nil>
 	^ atpBlocked
 ]
 
@@ -48,6 +49,7 @@ AppBskyFeedDefsBlockedPost >> atpBlocked: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -62,7 +64,7 @@ AppBskyFeedDefsBlockedPost >> blockedDescription [
 	^ MABooleanDescription new
 		label: 'Blocked';
 		accessor: #atpBlocked;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyFeedDefsBlockedPost >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

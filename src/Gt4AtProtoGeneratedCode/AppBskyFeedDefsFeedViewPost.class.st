@@ -35,9 +35,20 @@ AppBskyFeedDefsFeedViewPost class >> atpSchema [
 AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpPost: (aRequest at: 'post' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpReason: (aRequest at: 'reason' ifPresent: [:aValue | ({'app.bsky.feed.defs#reasonRepost' -> AppBskyFeedDefsReasonRepost} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ])
+		atpPost: (aRequest
+				at: 'post'
+				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReply: (aRequest
+				at: 'reply'
+				ifPresent: [ :aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReason: (aRequest
+				at: 'reason'
+				ifPresent: [ :aValue | 
+					({'app.bsky.feed.defs#reasonRepost' -> AppBskyFeedDefsReasonRepost} asDictionary
+						at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -54,6 +65,7 @@ AppBskyFeedDefsFeedViewPost >> atpPost: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpReason [
+	<atpType:#(AppBskyFeedDefsReasonRepost) format:nil>
 	^ atpReason
 ]
 
@@ -72,20 +84,6 @@ AppBskyFeedDefsFeedViewPost >> atpReply [
 AppBskyFeedDefsFeedViewPost >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
 	atpReply := anObject
-]
-
-{ #category : #accessing }
-AppBskyFeedDefsFeedViewPost >> gtDeleteActionFor: anAction [
-	<gtAction>
-	^ anAction button
-		icon: BrGlamorousVectorIcons close;
-		label: 'Delete';
-		action: [ self client
-				comAtprotoRepoDeleteRecordrepo: self atpPost atpAuthor atpDid
-				collection: AppBskyFeedPostMain atpRecordName
-				rkey: (#/ split: self atpPost atpUri) last
-				swapRecord: nil
-				swapCommit: nil ]
 ]
 
 { #category : #magritte }

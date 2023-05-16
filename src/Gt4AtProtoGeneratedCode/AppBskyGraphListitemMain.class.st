@@ -33,13 +33,14 @@ AppBskyGraphListitemMain class >> atpSchema [
 AppBskyGraphListitemMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
-		atpList: (aRequest at: 'list' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]);
+		atpList: (aRequest at: 'list' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyGraphListitemMain >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -50,6 +51,7 @@ AppBskyGraphListitemMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphListitemMain >> atpList [
+	<atpType:'string' format:'at-uri'>
 	^ atpList
 ]
 
@@ -60,6 +62,7 @@ AppBskyGraphListitemMain >> atpList: anObject [
 
 { #category : #accessing }
 AppBskyGraphListitemMain >> atpSubject [
+	<atpType:'string' format:'did'>
 	^ atpSubject
 ]
 
@@ -74,7 +77,7 @@ AppBskyGraphListitemMain >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -83,7 +86,7 @@ AppBskyGraphListitemMain >> listDescription [
 	^ MAStringDescription new
 		label: 'List';
 		accessor: #atpList;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +95,5 @@ AppBskyGraphListitemMain >> subjectDescription [
 	^ MAStringDescription new
 		label: 'Subject';
 		accessor: #atpSubject;
-	beRequired
+		beRequired
 ]

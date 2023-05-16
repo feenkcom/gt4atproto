@@ -23,7 +23,8 @@ GtApDocumentsBuilder >> buildUsing: aModel [
 				keysAndValuesDo: [ :aName :aMethod | 
 					(RBAddMethodRefactoring
 						model: aModel
-						addMethod: (aMethod asXRPCMethodNamed: aKey)
+						addMethod: (RBParser parseMethod: (aMethod asXRPCMethodNamed: aKey))
+								formattedCode
 						toClass: self clientClass
 						inProtocols: {#* , self packageName}) primitiveExecute ] ]
 ]

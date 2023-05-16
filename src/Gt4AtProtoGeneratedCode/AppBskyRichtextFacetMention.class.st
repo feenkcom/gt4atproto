@@ -36,6 +36,7 @@ AppBskyRichtextFacetMention class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyRichtextFacetMention >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -50,5 +51,5 @@ AppBskyRichtextFacetMention >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]

@@ -39,19 +39,32 @@ AppBskyGraphDefsListView class >> atpSchema [
 AppBskyGraphDefsListView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCreator: (aRequest at: 'creator' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
-		atpPurpose: (aRequest at: 'purpose' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpDescriptionFacets: (aRequest at: 'descriptionFacets' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyRichtextFacetMain fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCreator: (aRequest
+				at: 'creator'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
+		atpPurpose: (aRequest
+				at: 'purpose'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
+		atpDescriptionFacets: (aRequest
+				at: 'descriptionFacets'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpViewer: (aRequest
+				at: 'viewer'
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpAvatar [
+	<atpType:'string' format:nil>
 	^ atpAvatar
 ]
 
@@ -74,6 +87,7 @@ AppBskyGraphDefsListView >> atpCreator: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpDescription [
+	<atpType:'string' format:nil>
 	^ atpDescription
 ]
 
@@ -84,6 +98,8 @@ AppBskyGraphDefsListView >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpDescriptionFacets [
+	<atpType:#AppBskyRichtextFacetMain format:nil>
+	<atpCollection>
 	^ atpDescriptionFacets
 ]
 
@@ -94,6 +110,7 @@ AppBskyGraphDefsListView >> atpDescriptionFacets: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -104,6 +121,7 @@ AppBskyGraphDefsListView >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpName [
+	<atpType:'string' format:nil>
 	^ atpName
 ]
 
@@ -126,6 +144,7 @@ AppBskyGraphDefsListView >> atpPurpose: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -186,7 +205,7 @@ AppBskyGraphDefsListView >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -195,7 +214,7 @@ AppBskyGraphDefsListView >> nameDescription [
 	^ MAStringDescription new
 		label: 'Name';
 		accessor: #atpName;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -213,7 +232,7 @@ AppBskyGraphDefsListView >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

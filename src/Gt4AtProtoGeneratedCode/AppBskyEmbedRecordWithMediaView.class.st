@@ -32,12 +32,22 @@ AppBskyEmbedRecordWithMediaView class >> atpSchema [
 AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | AppBskyEmbedRecordView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpMedia: (aRequest at: 'media' ifPresent: [:aValue | ({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView. 'app.bsky.embed.external#view' -> AppBskyEmbedExternalView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ])
+		atpRecord: (aRequest
+				at: 'record'
+				ifPresent: [ :aValue | AppBskyEmbedRecordView fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpMedia: (aRequest
+				at: 'media'
+				ifPresent: [ :aValue | 
+					({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView.
+						'app.bsky.embed.external#view' -> AppBskyEmbedExternalView} asDictionary
+						at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView >> atpMedia [
+	<atpType:#(AppBskyEmbedImagesView. AppBskyEmbedExternalView) format:nil>
 	^ atpMedia
 ]
 
@@ -62,7 +72,8 @@ AppBskyEmbedRecordWithMediaView >> atpRecord: anObject [
 AppBskyEmbedRecordWithMediaView >> mediaDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'app.bsky.embed.images#view'. 'app.bsky.embed.external#view'};
+		options: {'app.bsky.embed.images#view'.
+				'app.bsky.embed.external#view'};
 		label: 'Media';
 		accessor: #atpMedia;
 		beRequired

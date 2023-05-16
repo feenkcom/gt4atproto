@@ -38,18 +38,35 @@ ComAtprotoAdminDefsRecordViewDetail class >> atpSchema [
 ComAtprotoAdminDefsRecordViewDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
-		atpBlobs: (aRequest at: 'blobs' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsBlobView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModerationDetail fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpRepo: (aRequest at: 'repo' ifPresent: [:aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ] ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpValue: (aRequest
+				at: 'value'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpBlobs: (aRequest
+				at: 'blobs'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoAdminDefsBlobView fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpModeration: (aRequest
+				at: 'moderation'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsModerationDetail fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpRepo: (aRequest
+				at: 'repo'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpBlobs [
+	<atpType:#ComAtprotoAdminDefsBlobView format:nil>
+	<atpCollection>
 	^ atpBlobs
 ]
 
@@ -60,6 +77,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpBlobs: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -70,6 +88,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -80,6 +99,8 @@ ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -114,6 +135,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpRepo: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -124,6 +146,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpUri: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpValue [
+	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
@@ -139,7 +162,7 @@ ComAtprotoAdminDefsRecordViewDetail >> blobsDescription [
 		classes: {ComAtprotoAdminDefsBlobView};
 		label: 'Blobs';
 		accessor: #atpBlobs;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -148,7 +171,7 @@ ComAtprotoAdminDefsRecordViewDetail >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -157,7 +180,7 @@ ComAtprotoAdminDefsRecordViewDetail >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -193,7 +216,7 @@ ComAtprotoAdminDefsRecordViewDetail >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -202,5 +225,5 @@ ComAtprotoAdminDefsRecordViewDetail >> valueDescription [
 	^ MAStringDescription new
 		label: 'Value';
 		accessor: #atpValue;
-	beRequired
+		beRequired
 ]

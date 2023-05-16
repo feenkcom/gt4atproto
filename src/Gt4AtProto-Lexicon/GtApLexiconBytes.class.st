@@ -18,6 +18,11 @@ GtApLexiconBytes >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconBytes >> asClassName [
+	^ 'ByteArray'
+]
+
+{ #category : #accessing }
 GtApLexiconBytes >> buildFromRequestWithKey: aKey [
 	^ 'aRequest at: ''' , aKey , ''' ifAbsent: [ nil ]'
 ]

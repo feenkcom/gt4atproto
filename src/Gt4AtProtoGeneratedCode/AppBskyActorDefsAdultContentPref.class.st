@@ -36,6 +36,7 @@ AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyActorDefsAdultContentPref >> atpEnabled [
+	<atpType:#Boolean format:nil>
 	^ atpEnabled
 ]
 
@@ -50,5 +51,5 @@ AppBskyActorDefsAdultContentPref >> enabledDescription [
 	^ MABooleanDescription new
 		label: 'Enabled';
 		accessor: #atpEnabled;
-	beRequired
+		beRequired
 ]

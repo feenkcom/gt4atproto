@@ -34,14 +34,15 @@ ComAtprotoSyncSubscribeReposHandle class >> atpSchema [
 ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -52,6 +53,7 @@ ComAtprotoSyncSubscribeReposHandle >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpHandle [
+	<atpType:'string' format:'handle'>
 	^ atpHandle
 ]
 
@@ -62,6 +64,7 @@ ComAtprotoSyncSubscribeReposHandle >> atpHandle: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpSeq [
+	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
@@ -72,6 +75,7 @@ ComAtprotoSyncSubscribeReposHandle >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpTime [
+	<atpType:'string' format:'datetime'>
 	^ atpTime
 ]
 
@@ -86,7 +90,7 @@ ComAtprotoSyncSubscribeReposHandle >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -95,7 +99,7 @@ ComAtprotoSyncSubscribeReposHandle >> handleDescription [
 	^ MAStringDescription new
 		label: 'Handle';
 		accessor: #atpHandle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -104,7 +108,7 @@ ComAtprotoSyncSubscribeReposHandle >> seqDescription [
 	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atpSeq;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -113,5 +117,5 @@ ComAtprotoSyncSubscribeReposHandle >> timeDescription [
 	^ MAStringDescription new
 		label: 'Time';
 		accessor: #atpTime;
-	beRequired
+		beRequired
 ]

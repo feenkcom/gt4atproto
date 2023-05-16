@@ -13,17 +13,17 @@ Trait {
 
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadFollowers [
-	^ ((self client appBskyGraphGetFollowersactor: self atpHandle) at: 'followers')
+	^ ((self client appBskyGraphGetFollowersActor: self atpHandle) at: 'followers')
 ]
 
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadFollows [
-	^ (self client appBskyGraphGetFollowsactor: self atpHandle) at: 'follows'
+	^ (self client appBskyGraphGetFollowsActor: self atpHandle) at: 'follows'
 ]
 
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> downloadPosts [
-	^ (self client appBskyFeedGetAuthorFeedactor: self atpHandle)
+	^ (self client appBskyFeedGetAuthorFeedActor: self atpHandle)
 		collect: [ :aPost | aPost client: self client ]
 ]
 

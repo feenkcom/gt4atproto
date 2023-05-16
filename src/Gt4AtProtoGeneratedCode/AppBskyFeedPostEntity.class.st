@@ -33,8 +33,11 @@ AppBskyFeedPostEntity class >> atpSchema [
 AppBskyFeedPostEntity class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpIndex: (aRequest at: 'index' ifPresent: [:aValue | AppBskyFeedPostTextSlice fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpType: (aRequest at: 'type' ifAbsent: [ nil ]); 
+		atpIndex: (aRequest
+				at: 'index'
+				ifPresent: [ :aValue | AppBskyFeedPostTextSlice fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpType: (aRequest at: 'type' ifAbsent: [ nil ]);
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]
 
@@ -52,6 +55,7 @@ AppBskyFeedPostEntity >> atpIndex: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostEntity >> atpType [
+	<atpType:'string' format:nil>
 	^ atpType
 ]
 
@@ -62,6 +66,7 @@ AppBskyFeedPostEntity >> atpType: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostEntity >> atpValue [
+	<atpType:'string' format:nil>
 	^ atpValue
 ]
 
@@ -85,7 +90,7 @@ AppBskyFeedPostEntity >> typeDescription [
 	^ MAStringDescription new
 		label: 'Type';
 		accessor: #atpType;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -94,5 +99,5 @@ AppBskyFeedPostEntity >> valueDescription [
 	^ MAStringDescription new
 		label: 'Value';
 		accessor: #atpValue;
-	beRequired
+		beRequired
 ]

@@ -38,18 +38,28 @@ ComAtprotoAdminDefsRepoView class >> atpSchema [
 ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
-		atpRelatedRecords: (aRequest at: 'relatedRecords' ifPresent: [:anArray | anArray collect: [:aValue |GtApModelEntity findForRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpInvitedBy: (aRequest at: 'invitedBy' ifPresent: [:aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
+		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]);
+		atpRelatedRecords: (aRequest
+				at: 'relatedRecords'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | GtApModelEntity findForRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpModeration: (aRequest
+				at: 'moderation'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpInvitedBy: (aRequest
+				at: 'invitedBy'
+				ifPresent: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -60,6 +70,7 @@ ComAtprotoAdminDefsRepoView >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpEmail [
+	<atpType:'string' format:nil>
 	^ atpEmail
 ]
 
@@ -70,6 +81,7 @@ ComAtprotoAdminDefsRepoView >> atpEmail: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpHandle [
+	<atpType:'string' format:'handle'>
 	^ atpHandle
 ]
 
@@ -80,6 +92,7 @@ ComAtprotoAdminDefsRepoView >> atpHandle: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -102,6 +115,7 @@ ComAtprotoAdminDefsRepoView >> atpInvitedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpInvitesDisabled [
+	<atpType:#Boolean format:nil>
 	^ atpInvitesDisabled
 ]
 
@@ -124,6 +138,8 @@ ComAtprotoAdminDefsRepoView >> atpModeration: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpRelatedRecords [
+	<atpType:#Object format:nil>
+	<atpCollection>
 	^ atpRelatedRecords
 ]
 
@@ -138,7 +154,7 @@ ComAtprotoAdminDefsRepoView >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -155,7 +171,7 @@ ComAtprotoAdminDefsRepoView >> handleDescription [
 	^ MAStringDescription new
 		label: 'Handle';
 		accessor: #atpHandle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -164,7 +180,7 @@ ComAtprotoAdminDefsRepoView >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -199,5 +215,5 @@ ComAtprotoAdminDefsRepoView >> relatedRecordsDescription [
 		classes: {Object};
 		label: 'RelatedRecords';
 		accessor: #atpRelatedRecords;
-	beRequired
+		beRequired
 ]

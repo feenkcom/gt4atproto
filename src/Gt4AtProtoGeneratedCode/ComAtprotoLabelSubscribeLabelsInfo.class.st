@@ -32,12 +32,13 @@ ComAtprotoLabelSubscribeLabelsInfo class >> atpSchema [
 ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo >> atpMessage [
+	<atpType:'string' format:nil>
 	^ atpMessage
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoLabelSubscribeLabelsInfo >> atpMessage: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo >> atpName [
+	<atpType:'string' format:nil>
 	^ atpName
 ]
 
@@ -70,5 +72,5 @@ ComAtprotoLabelSubscribeLabelsInfo >> nameDescription [
 	^ MAStringDescription new
 		label: 'Name';
 		accessor: #atpName;
-	beRequired
+		beRequired
 ]

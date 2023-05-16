@@ -52,6 +52,11 @@ GtApLexiconUnion >> description [
 ]
 
 { #category : #accessing }
+GtApLexiconUnion >> embeddedPragmaType [
+	^ '#(', self asClassNames,')'
+]
+
+{ #category : #accessing }
 GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
@@ -135,4 +140,9 @@ GtApLexiconUnion >> typeDescription [
 		s << 'union('.
 		self refs asStringOn: s delimiter: '|'.
 		s << ')']
+]
+
+{ #category : #accessing }
+GtApLexiconUnion >> typePragma [
+	^ '<atpType:#(', self asClassNames,') format:nil>'
 ]

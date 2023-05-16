@@ -32,8 +32,11 @@ ComAtprotoAdminDefsActionViewCurrent class >> atpSchema [
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ])
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
+		atpAction: (aRequest
+				at: 'action'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -59,6 +62,7 @@ ComAtprotoAdminDefsActionViewCurrent >> atpAction: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewCurrent >> atpId [
+	<atpType:#Number format:nil>
 	^ atpId
 ]
 
@@ -73,5 +77,5 @@ ComAtprotoAdminDefsActionViewCurrent >> idDescription [
 	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atpId;
-	beRequired
+		beRequired
 ]

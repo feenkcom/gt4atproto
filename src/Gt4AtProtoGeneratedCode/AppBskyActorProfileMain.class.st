@@ -36,14 +36,15 @@ AppBskyActorProfileMain class >> atpSchema [
 AppBskyActorProfileMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
-		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyActorProfileMain >> atpAvatar [
+	<atpType:#ByteArray format:nil>
 	^ atpAvatar
 ]
 
@@ -54,6 +55,7 @@ AppBskyActorProfileMain >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorProfileMain >> atpBanner [
+	<atpType:#ByteArray format:nil>
 	^ atpBanner
 ]
 
@@ -64,6 +66,7 @@ AppBskyActorProfileMain >> atpBanner: anObject [
 
 { #category : #accessing }
 AppBskyActorProfileMain >> atpDescription [
+	<atpType:'string' format:nil>
 	^ atpDescription
 ]
 
@@ -74,6 +77,7 @@ AppBskyActorProfileMain >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyActorProfileMain >> atpDisplayName [
+	<atpType:'string' format:nil>
 	^ atpDisplayName
 ]
 

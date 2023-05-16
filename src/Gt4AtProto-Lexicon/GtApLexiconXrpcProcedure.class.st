@@ -40,8 +40,11 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 	^ ' , self output generateDeserialization , ' (self procedureOn: ''' , aName
 				, ''' withFile: aFile)' ].
 
-	self schema properties
-		keysDo: [ :anInputName | methodName := methodName , anInputName , ': ' , anInputName , ' ' ].
+	self schema properties keys
+		withIndexDo: [ :anInputName :anIndex | 
+			methodName := methodName
+					, (anIndex = 1 ifTrue: [ anInputName capitalized ] ifFalse: [ anInputName ])
+					, ': ' , anInputName , ' ' ].
 
 	^ methodName
 		, '

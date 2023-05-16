@@ -41,17 +41,37 @@ AppBskyFeedDefsPostView class >> atpSchema [
 AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
-		atpEmbed: (aRequest at: 'embed' ifPresent: [:aValue | ({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView. 'app.bsky.embed.external#view' -> AppBskyEmbedExternalView. 'app.bsky.embed.record#view' -> AppBskyEmbedRecordView. 'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]); 
-		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]); 
-		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyFeedDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpAuthor: (aRequest
+				at: 'author'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpRecord: (aRequest
+				at: 'record'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpEmbed: (aRequest
+				at: 'embed'
+				ifPresent: [ :aValue | 
+					({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView.
+						'app.bsky.embed.external#view' -> AppBskyEmbedExternalView.
+						'app.bsky.embed.record#view' -> AppBskyEmbedRecordView.
+						'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]);
+		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]);
+		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpViewer: (aRequest
+				at: 'viewer'
+				ifPresent: [ :aValue | AppBskyFeedDefsViewerState fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -68,6 +88,7 @@ AppBskyFeedDefsPostView >> atpAuthor: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -78,6 +99,7 @@ AppBskyFeedDefsPostView >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpEmbed [
+	<atpType:#(AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView) format:nil>
 	^ atpEmbed
 ]
 
@@ -88,6 +110,7 @@ AppBskyFeedDefsPostView >> atpEmbed: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -98,6 +121,8 @@ AppBskyFeedDefsPostView >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -108,6 +133,7 @@ AppBskyFeedDefsPostView >> atpLabels: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpLikeCount [
+	<atpType:#Number format:nil>
 	^ atpLikeCount
 ]
 
@@ -118,6 +144,7 @@ AppBskyFeedDefsPostView >> atpLikeCount: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpRecord [
+	<atpType:#Object format:nil>
 	^ atpRecord
 ]
 
@@ -128,6 +155,7 @@ AppBskyFeedDefsPostView >> atpRecord: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpReplyCount [
+	<atpType:#Number format:nil>
 	^ atpReplyCount
 ]
 
@@ -138,6 +166,7 @@ AppBskyFeedDefsPostView >> atpReplyCount: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpRepostCount [
+	<atpType:#Number format:nil>
 	^ atpRepostCount
 ]
 
@@ -148,6 +177,7 @@ AppBskyFeedDefsPostView >> atpRepostCount: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -183,14 +213,17 @@ AppBskyFeedDefsPostView >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 AppBskyFeedDefsPostView >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'app.bsky.embed.images#view'. 'app.bsky.embed.external#view'. 'app.bsky.embed.record#view'. 'app.bsky.embed.recordWithMedia#view'};
+		options: {'app.bsky.embed.images#view'.
+				'app.bsky.embed.external#view'.
+				'app.bsky.embed.record#view'.
+				'app.bsky.embed.recordWithMedia#view'};
 		label: 'Embed';
 		accessor: #atpEmbed
 ]
@@ -201,7 +234,7 @@ AppBskyFeedDefsPostView >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -227,7 +260,7 @@ AppBskyFeedDefsPostView >> recordDescription [
 	^ MAStringDescription new
 		label: 'Record';
 		accessor: #atpRecord;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -252,7 +285,7 @@ AppBskyFeedDefsPostView >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

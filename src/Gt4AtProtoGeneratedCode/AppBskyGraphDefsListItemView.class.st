@@ -31,7 +31,10 @@ AppBskyGraphDefsListItemView class >> atpSchema [
 AppBskyGraphDefsListItemView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ])
+		atpSubject: (aRequest
+				at: 'subject'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

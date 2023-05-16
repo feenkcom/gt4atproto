@@ -19,6 +19,11 @@ GtApLexiconData >> accept: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconData >> asClassName [
+	^ 'ByteArray'
+]
+
+{ #category : #accessing }
 GtApLexiconData >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString

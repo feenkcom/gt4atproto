@@ -36,6 +36,7 @@ ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoRef >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -50,5 +51,5 @@ ComAtprotoAdminDefsRepoRef >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]

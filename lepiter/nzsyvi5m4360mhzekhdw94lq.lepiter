@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T15:18:24.623201+02:00"
+						"dateAndTimeString" : "2023-05-16T23:01:16.974754+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aUNIzjC4DQCnftJKBR1CCw=="
 				},
-				"code" : "(generatedClient appBskyActorGetProfileactor: handle) client: generatedClient"
+				"code" : "(generatedClient appBskyActorGetProfileActor: handle) client: generatedClient"
 			}
 		]
 	},

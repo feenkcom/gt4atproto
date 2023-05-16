@@ -32,12 +32,13 @@ AppBskyFeedDefsViewerState class >> atpSchema [
 AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ]); 
+		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ]);
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsViewerState >> atpLike [
+	<atpType:'string' format:'at-uri'>
 	^ atpLike
 ]
 
@@ -48,6 +49,7 @@ AppBskyFeedDefsViewerState >> atpLike: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsViewerState >> atpRepost [
+	<atpType:'string' format:'at-uri'>
 	^ atpRepost
 ]
 

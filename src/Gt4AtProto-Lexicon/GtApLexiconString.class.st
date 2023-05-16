@@ -36,3 +36,12 @@ GtApLexiconString >> generateDescriptorFor: aString usingPrefix: aPrefix isRequi
 	beRequired' ].
 	^ source
 ]
+
+{ #category : #accessing }
+GtApLexiconString >> typePragma [
+	^ '<atpType:''string'' format:'
+		, (self rawData
+				at: 'format'
+				ifPresent: [ :aFormat | '''' , aFormat , '''' ]
+				ifAbsent: [ 'nil' ]) , '>'
+]

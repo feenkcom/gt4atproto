@@ -66,6 +66,11 @@ GtApLexiconDefinition >> documentsDirectory: anObject [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinition >> embeddedPragmaType [
+	^ '#', self asClassName
+]
+
+{ #category : #accessing }
 GtApLexiconDefinition >> generateDeserialization [
 	^ ''
 ]
@@ -74,6 +79,7 @@ GtApLexiconDefinition >> generateDeserialization [
 GtApLexiconDefinition >> generateGetterAs: aString [
 	^ aString
 		, '
+	', self typePragma, '
 	^ ', aString
 ]
 
@@ -193,6 +199,11 @@ GtApLexiconDefinition >> type [
 { #category : #accessing }
 GtApLexiconDefinition >> typeDescription [
 	^ self type
+]
+
+{ #category : #accessing }
+GtApLexiconDefinition >> typePragma [
+	^ '<atpType:#' , self asClassName , ' format:nil>'
 ]
 
 { #category : #traversing }

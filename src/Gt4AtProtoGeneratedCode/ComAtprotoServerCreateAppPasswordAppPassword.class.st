@@ -33,13 +33,14 @@ ComAtprotoServerCreateAppPasswordAppPassword class >> atpSchema [
 ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
-		atpPassword: (aRequest at: 'password' ifAbsent: [ nil ]); 
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
+		atpPassword: (aRequest at: 'password' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -50,6 +51,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpName [
+	<atpType:'string' format:nil>
 	^ atpName
 ]
 
@@ -60,6 +62,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> atpName: anObject [
 
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpPassword [
+	<atpType:'string' format:nil>
 	^ atpPassword
 ]
 
@@ -74,7 +77,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -83,7 +86,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> nameDescription [
 	^ MAStringDescription new
 		label: 'Name';
 		accessor: #atpName;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +95,5 @@ ComAtprotoServerCreateAppPasswordAppPassword >> passwordDescription [
 	^ MAStringDescription new
 		label: 'Password';
 		accessor: #atpPassword;
-	beRequired
+		beRequired
 ]

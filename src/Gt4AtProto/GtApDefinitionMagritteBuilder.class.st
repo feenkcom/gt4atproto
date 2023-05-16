@@ -21,10 +21,11 @@ GtApDefinitionMagritteBuilder >> accessorPrefix: anObject [
 GtApDefinitionMagritteBuilder >> buildPropertyInClass: className forObject: anApObject inModel: aModel usingPropertyKey: aPropertyKey andProperty: aProperty [
 	(RBAddMethodRefactoring
 		model: aModel
-		addMethod: (aProperty
-				generateDescriptorFor: aPropertyKey
-				usingPrefix: self accessorPrefix
-				isRequired: (anApObject isPropertyRequired: aPropertyKey))
+		addMethod: (RBParser
+				parseMethod: (aProperty
+						generateDescriptorFor: aPropertyKey
+						usingPrefix: self accessorPrefix
+						isRequired: (anApObject isPropertyRequired: aPropertyKey))) formattedCode
 		toClass: className
 		inProtocols: #magritte) primitiveExecute
 ]

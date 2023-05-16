@@ -36,16 +36,17 @@ ComAtprotoLabelDefsLabel class >> atpSchema [
 ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSrc: (aRequest at: 'src' ifAbsent: [ nil ]); 
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpVal: (aRequest at: 'val' ifAbsent: [ nil ]); 
-		atpNeg: (aRequest at: 'neg' ifAbsent: [ nil ]); 
+		atpSrc: (aRequest at: 'src' ifAbsent: [ nil ]);
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpVal: (aRequest at: 'val' ifAbsent: [ nil ]);
+		atpNeg: (aRequest at: 'neg' ifAbsent: [ nil ]);
 		atpCts: (aRequest at: 'cts' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -56,6 +57,7 @@ ComAtprotoLabelDefsLabel >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpCts [
+	<atpType:'string' format:'datetime'>
 	^ atpCts
 ]
 
@@ -66,6 +68,7 @@ ComAtprotoLabelDefsLabel >> atpCts: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpNeg [
+	<atpType:#Boolean format:nil>
 	^ atpNeg
 ]
 
@@ -76,6 +79,7 @@ ComAtprotoLabelDefsLabel >> atpNeg: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpSrc [
+	<atpType:'string' format:'did'>
 	^ atpSrc
 ]
 
@@ -86,6 +90,7 @@ ComAtprotoLabelDefsLabel >> atpSrc: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpUri [
+	<atpType:'string' format:'uri'>
 	^ atpUri
 ]
 
@@ -96,6 +101,7 @@ ComAtprotoLabelDefsLabel >> atpUri: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpVal [
+	<atpType:'string' format:nil>
 	^ atpVal
 ]
 
@@ -118,7 +124,7 @@ ComAtprotoLabelDefsLabel >> ctsDescription [
 	^ MAStringDescription new
 		label: 'Cts';
 		accessor: #atpCts;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -135,7 +141,7 @@ ComAtprotoLabelDefsLabel >> srcDescription [
 	^ MAStringDescription new
 		label: 'Src';
 		accessor: #atpSrc;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -144,7 +150,7 @@ ComAtprotoLabelDefsLabel >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -153,5 +159,5 @@ ComAtprotoLabelDefsLabel >> valDescription [
 	^ MAStringDescription new
 		label: 'Val';
 		accessor: #atpVal;
-	beRequired
+		beRequired
 ]

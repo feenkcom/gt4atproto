@@ -32,8 +32,14 @@ AppBskyFeedDefsReplyRef class >> atpSchema [
 AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpRoot: (aRequest at: 'root' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpParent: (aRequest at: 'parent' ifPresent: [:aValue | AppBskyFeedDefsPostView fromRequest: aValue ] ifAbsent: [ nil ])
+		atpRoot: (aRequest
+				at: 'root'
+				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpParent: (aRequest
+				at: 'parent'
+				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

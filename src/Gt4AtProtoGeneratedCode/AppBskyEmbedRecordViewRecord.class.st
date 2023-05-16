@@ -37,12 +37,31 @@ AppBskyEmbedRecordViewRecord class >> atpSchema [
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpEmbeds: (aRequest at: 'embeds' ifPresent: [:anArray | anArray collect: [:aValue |({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView. 'app.bsky.embed.external#view' -> AppBskyEmbedExternalView. 'app.bsky.embed.record#view' -> AppBskyEmbedRecordView. 'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView} asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpAuthor: (aRequest
+				at: 'author'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpValue: (aRequest
+				at: 'value'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpEmbeds: (aRequest
+				at: 'embeds'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | 
+							({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView.
+								'app.bsky.embed.external#view' -> AppBskyEmbedExternalView.
+								'app.bsky.embed.record#view' -> AppBskyEmbedRecordView.
+								'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView}
+								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
@@ -60,6 +79,7 @@ AppBskyEmbedRecordViewRecord >> atpAuthor: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -70,6 +90,8 @@ AppBskyEmbedRecordViewRecord >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpEmbeds [
+	<atpType:#(AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView) format:nil>
+	<atpCollection>
 	^ atpEmbeds
 ]
 
@@ -80,6 +102,7 @@ AppBskyEmbedRecordViewRecord >> atpEmbeds: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -90,6 +113,8 @@ AppBskyEmbedRecordViewRecord >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -100,6 +125,7 @@ AppBskyEmbedRecordViewRecord >> atpLabels: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -110,6 +136,7 @@ AppBskyEmbedRecordViewRecord >> atpUri: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpValue [
+	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
@@ -133,14 +160,17 @@ AppBskyEmbedRecordViewRecord >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 AppBskyEmbedRecordViewRecord >> embedsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView};
+		classes: {AppBskyEmbedImagesView.
+				AppBskyEmbedExternalView.
+				AppBskyEmbedRecordView.
+				AppBskyEmbedRecordWithMediaView};
 		label: 'Embeds';
 		accessor: #atpEmbeds
 ]
@@ -151,7 +181,7 @@ AppBskyEmbedRecordViewRecord >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -169,7 +199,7 @@ AppBskyEmbedRecordViewRecord >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -178,5 +208,5 @@ AppBskyEmbedRecordViewRecord >> valueDescription [
 	^ MAStringDescription new
 		label: 'Value';
 		accessor: #atpValue;
-	beRequired
+		beRequired
 ]

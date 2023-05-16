@@ -32,12 +32,13 @@ AppBskyGraphBlockMain class >> atpSchema [
 AppBskyGraphBlockMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyGraphBlockMain >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -48,6 +49,7 @@ AppBskyGraphBlockMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphBlockMain >> atpSubject [
+	<atpType:'string' format:'did'>
 	^ atpSubject
 ]
 
@@ -62,7 +64,7 @@ AppBskyGraphBlockMain >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyGraphBlockMain >> subjectDescription [
 	^ MAStringDescription new
 		label: 'Subject';
 		accessor: #atpSubject;
-	beRequired
+		beRequired
 ]

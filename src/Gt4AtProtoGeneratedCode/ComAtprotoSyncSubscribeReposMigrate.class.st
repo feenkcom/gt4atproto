@@ -34,14 +34,15 @@ ComAtprotoSyncSubscribeReposMigrate class >> atpSchema [
 ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpMigrateTo: (aRequest at: 'migrateTo' ifAbsent: [ nil ]); 
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpMigrateTo: (aRequest at: 'migrateTo' ifAbsent: [ nil ]);
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -52,6 +53,7 @@ ComAtprotoSyncSubscribeReposMigrate >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo [
+	<atpType:'string' format:nil>
 	^ atpMigrateTo
 ]
 
@@ -62,6 +64,7 @@ ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpSeq [
+	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
@@ -72,6 +75,7 @@ ComAtprotoSyncSubscribeReposMigrate >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpTime [
+	<atpType:'string' format:'datetime'>
 	^ atpTime
 ]
 
@@ -86,7 +90,7 @@ ComAtprotoSyncSubscribeReposMigrate >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -95,7 +99,7 @@ ComAtprotoSyncSubscribeReposMigrate >> migrateToDescription [
 	^ MAStringDescription new
 		label: 'MigrateTo';
 		accessor: #atpMigrateTo;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -104,7 +108,7 @@ ComAtprotoSyncSubscribeReposMigrate >> seqDescription [
 	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atpSeq;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -113,5 +117,5 @@ ComAtprotoSyncSubscribeReposMigrate >> timeDescription [
 	^ MAStringDescription new
 		label: 'Time';
 		accessor: #atpTime;
-	beRequired
+		beRequired
 ]

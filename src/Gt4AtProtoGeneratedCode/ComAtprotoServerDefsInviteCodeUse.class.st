@@ -32,12 +32,13 @@ ComAtprotoServerDefsInviteCodeUse class >> atpSchema [
 ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]); 
+		atpUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]);
 		atpUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpUsedAt
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoServerDefsInviteCodeUse >> atpUsedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedBy [
+	<atpType:'string' format:'did'>
 	^ atpUsedBy
 ]
 
@@ -62,7 +64,7 @@ ComAtprotoServerDefsInviteCodeUse >> usedAtDescription [
 	^ MAStringDescription new
 		label: 'UsedAt';
 		accessor: #atpUsedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ ComAtprotoServerDefsInviteCodeUse >> usedByDescription [
 	^ MAStringDescription new
 		label: 'UsedBy';
 		accessor: #atpUsedBy;
-	beRequired
+		beRequired
 ]

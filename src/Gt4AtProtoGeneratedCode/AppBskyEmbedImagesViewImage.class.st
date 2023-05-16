@@ -35,8 +35,8 @@ AppBskyEmbedImagesViewImage class >> atpSchema [
 AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]); 
-		atpFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]); 
+		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]);
+		atpFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]);
 		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
 ]
 
@@ -46,11 +46,12 @@ AppBskyEmbedImagesViewImage >> altDescription [
 	^ MAStringDescription new
 		label: 'Alt';
 		accessor: #atpAlt;
-	beRequired
+		beRequired
 ]
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpAlt [
+	<atpType:'string' format:nil>
 	^ atpAlt
 ]
 
@@ -61,6 +62,7 @@ AppBskyEmbedImagesViewImage >> atpAlt: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpFullsize [
+	<atpType:'string' format:nil>
 	^ atpFullsize
 ]
 
@@ -71,6 +73,7 @@ AppBskyEmbedImagesViewImage >> atpFullsize: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpThumb [
+	<atpType:'string' format:nil>
 	^ atpThumb
 ]
 
@@ -85,7 +88,7 @@ AppBskyEmbedImagesViewImage >> fullsizeDescription [
 	^ MAStringDescription new
 		label: 'Fullsize';
 		accessor: #atpFullsize;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -94,5 +97,5 @@ AppBskyEmbedImagesViewImage >> thumbDescription [
 	^ MAStringDescription new
 		label: 'Thumb';
 		accessor: #atpThumb;
-	beRequired
+		beRequired
 ]

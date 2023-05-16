@@ -32,12 +32,13 @@ AppBskyActorDefsContentLabelPref class >> atpSchema [
 AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpLabel: (aRequest at: 'label' ifAbsent: [ nil ]); 
+		atpLabel: (aRequest at: 'label' ifAbsent: [ nil ]);
 		atpVisibility: (aRequest at: 'visibility' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyActorDefsContentLabelPref >> atpLabel [
+	<atpType:'string' format:nil>
 	^ atpLabel
 ]
 
@@ -48,6 +49,7 @@ AppBskyActorDefsContentLabelPref >> atpLabel: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsContentLabelPref >> atpVisibility [
+	<atpType:'string' format:nil>
 	^ atpVisibility
 ]
 
@@ -62,7 +64,7 @@ AppBskyActorDefsContentLabelPref >> labelDescription [
 	^ MAStringDescription new
 		label: 'Label';
 		accessor: #atpLabel;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyActorDefsContentLabelPref >> visibilityDescription [
 	^ MAStringDescription new
 		label: 'Visibility';
 		accessor: #atpVisibility;
-	beRequired
+		beRequired
 ]

@@ -36,16 +36,23 @@ AppBskyGraphDefsListViewBasic class >> atpSchema [
 AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
-		atpPurpose: (aRequest at: 'purpose' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
+		atpPurpose: (aRequest
+				at: 'purpose'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpViewer: (aRequest
+				at: 'viewer'
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpAvatar [
+	<atpType:'string' format:nil>
 	^ atpAvatar
 ]
 
@@ -56,6 +63,7 @@ AppBskyGraphDefsListViewBasic >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -66,6 +74,7 @@ AppBskyGraphDefsListViewBasic >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpName [
+	<atpType:'string' format:nil>
 	^ atpName
 ]
 
@@ -88,6 +97,7 @@ AppBskyGraphDefsListViewBasic >> atpPurpose: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -130,7 +140,7 @@ AppBskyGraphDefsListViewBasic >> nameDescription [
 	^ MAStringDescription new
 		label: 'Name';
 		accessor: #atpName;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -148,7 +158,7 @@ AppBskyGraphDefsListViewBasic >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

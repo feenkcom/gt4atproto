@@ -36,16 +36,23 @@ AppBskyGraphListMain class >> atpSchema [
 AppBskyGraphListMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpPurpose: (aRequest at: 'purpose' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpName: (aRequest at: 'name' ifAbsent: [ nil ]); 
-		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
-		atpDescriptionFacets: (aRequest at: 'descriptionFacets' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyRichtextFacetMain fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
+		atpPurpose: (aRequest
+				at: 'purpose'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
+		atpDescriptionFacets: (aRequest
+				at: 'descriptionFacets'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpAvatar [
+	<atpType:#ByteArray format:nil>
 	^ atpAvatar
 ]
 
@@ -56,6 +63,7 @@ AppBskyGraphListMain >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -66,6 +74,7 @@ AppBskyGraphListMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpDescription [
+	<atpType:'string' format:nil>
 	^ atpDescription
 ]
 
@@ -76,6 +85,8 @@ AppBskyGraphListMain >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpDescriptionFacets [
+	<atpType:#AppBskyRichtextFacetMain format:nil>
+	<atpCollection>
 	^ atpDescriptionFacets
 ]
 
@@ -86,6 +97,7 @@ AppBskyGraphListMain >> atpDescriptionFacets: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpName [
+	<atpType:'string' format:nil>
 	^ atpName
 ]
 
@@ -120,7 +132,7 @@ AppBskyGraphListMain >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -146,7 +158,7 @@ AppBskyGraphListMain >> nameDescription [
 	^ MAStringDescription new
 		label: 'Name';
 		accessor: #atpName;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

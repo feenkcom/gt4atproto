@@ -34,14 +34,15 @@ AppBskyEmbedExternalViewExternal class >> atpSchema [
 AppBskyEmbedExternalViewExternal class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpTitle: (aRequest at: 'title' ifAbsent: [ nil ]); 
-		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]); 
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpTitle: (aRequest at: 'title' ifAbsent: [ nil ]);
+		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpDescription [
+	<atpType:'string' format:nil>
 	^ atpDescription
 ]
 
@@ -52,6 +53,7 @@ AppBskyEmbedExternalViewExternal >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpThumb [
+	<atpType:'string' format:nil>
 	^ atpThumb
 ]
 
@@ -62,6 +64,7 @@ AppBskyEmbedExternalViewExternal >> atpThumb: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpTitle [
+	<atpType:'string' format:nil>
 	^ atpTitle
 ]
 
@@ -72,6 +75,7 @@ AppBskyEmbedExternalViewExternal >> atpTitle: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpUri [
+	<atpType:'string' format:'uri'>
 	^ atpUri
 ]
 
@@ -86,7 +90,7 @@ AppBskyEmbedExternalViewExternal >> descriptionDescription [
 	^ MAStringDescription new
 		label: 'Description';
 		accessor: #atpDescription;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -103,7 +107,7 @@ AppBskyEmbedExternalViewExternal >> titleDescription [
 	^ MAStringDescription new
 		label: 'Title';
 		accessor: #atpTitle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -112,5 +116,5 @@ AppBskyEmbedExternalViewExternal >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

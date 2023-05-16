@@ -390,14 +390,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T12:50:01.1574+02:00"
+						"dateAndTimeString" : "2023-05-16T23:01:27.881988+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "lQGDKy64DQCGAfpZBR1CCw=="
 				},
-				"code" : "generatedClient appBskyFeedGetTimelinealgorithm: nil"
+				"code" : "generatedClient appBskyFeedGetTimelineAlgorithm: nil"
 			},
 			{
 				"__type" : "textSnippet",
@@ -498,14 +498,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:02:24.850969+02:00"
+						"dateAndTimeString" : "2023-05-16T23:01:29.449807+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "PmbvLi64DQCGtWcoBR1CCw=="
 				},
-				"code" : "generatedClient appBskyFeedGetAuthorFeedactor: handle"
+				"code" : "generatedClient appBskyFeedGetAuthorFeedActor: handle"
 			}
 		]
 	},

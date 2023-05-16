@@ -32,12 +32,13 @@ AppBskyGraphFollowMain class >> atpSchema [
 AppBskyGraphFollowMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]); 
+		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyGraphFollowMain >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -48,6 +49,7 @@ AppBskyGraphFollowMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphFollowMain >> atpSubject [
+	<atpType:'string' format:'did'>
 	^ atpSubject
 ]
 
@@ -62,7 +64,7 @@ AppBskyGraphFollowMain >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ AppBskyGraphFollowMain >> subjectDescription [
 	^ MAStringDescription new
 		label: 'Subject';
 		accessor: #atpSubject;
-	beRequired
+		beRequired
 ]

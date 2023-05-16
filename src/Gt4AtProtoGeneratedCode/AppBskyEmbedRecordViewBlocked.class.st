@@ -36,6 +36,7 @@ AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewBlocked >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -50,5 +51,5 @@ AppBskyEmbedRecordViewBlocked >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

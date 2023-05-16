@@ -40,20 +40,38 @@ ComAtprotoAdminDefsRepoViewDetail class >> atpSchema [
 ComAtprotoAdminDefsRepoViewDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]); 
-		atpRelatedRecords: (aRequest at: 'relatedRecords' ifPresent: [:anArray | anArray collect: [:aValue |GtApModelEntity findForRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModerationDetail fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpInvitedBy: (aRequest at: 'invitedBy' ifPresent: [:aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpInvites: (aRequest at: 'invites' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoServerDefsInviteCode fromRequest: aValue ] ] ifAbsent: [ nil ]); 
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
+		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]);
+		atpRelatedRecords: (aRequest
+				at: 'relatedRecords'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | GtApModelEntity findForRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpModeration: (aRequest
+				at: 'moderation'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsModerationDetail fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpInvitedBy: (aRequest
+				at: 'invitedBy'
+				ifPresent: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpInvites: (aRequest
+				at: 'invites'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -64,6 +82,7 @@ ComAtprotoAdminDefsRepoViewDetail >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpEmail [
+	<atpType:'string' format:nil>
 	^ atpEmail
 ]
 
@@ -74,6 +93,7 @@ ComAtprotoAdminDefsRepoViewDetail >> atpEmail: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpHandle [
+	<atpType:'string' format:'handle'>
 	^ atpHandle
 ]
 
@@ -84,6 +104,7 @@ ComAtprotoAdminDefsRepoViewDetail >> atpHandle: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -106,6 +127,8 @@ ComAtprotoAdminDefsRepoViewDetail >> atpInvitedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpInvites [
+	<atpType:#ComAtprotoServerDefsInviteCode format:nil>
+	<atpCollection>
 	^ atpInvites
 ]
 
@@ -116,6 +139,7 @@ ComAtprotoAdminDefsRepoViewDetail >> atpInvites: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpInvitesDisabled [
+	<atpType:#Boolean format:nil>
 	^ atpInvitesDisabled
 ]
 
@@ -126,6 +150,8 @@ ComAtprotoAdminDefsRepoViewDetail >> atpInvitesDisabled: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -148,6 +174,8 @@ ComAtprotoAdminDefsRepoViewDetail >> atpModeration: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpRelatedRecords [
+	<atpType:#Object format:nil>
+	<atpCollection>
 	^ atpRelatedRecords
 ]
 
@@ -162,7 +190,7 @@ ComAtprotoAdminDefsRepoViewDetail >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -179,7 +207,7 @@ ComAtprotoAdminDefsRepoViewDetail >> handleDescription [
 	^ MAStringDescription new
 		label: 'Handle';
 		accessor: #atpHandle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -188,7 +216,7 @@ ComAtprotoAdminDefsRepoViewDetail >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -241,5 +269,5 @@ ComAtprotoAdminDefsRepoViewDetail >> relatedRecordsDescription [
 		classes: {Object};
 		label: 'RelatedRecords';
 		accessor: #atpRelatedRecords;
-	beRequired
+		beRequired
 ]

@@ -32,12 +32,13 @@ ComAtprotoServerDescribeServerLinks class >> atpSchema [
 ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]); 
+		atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]);
 		atpTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy [
+	<atpType:'string' format:nil>
 	^ atpPrivacyPolicy
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atpTermsOfService [
+	<atpType:'string' format:nil>
 	^ atpTermsOfService
 ]
 

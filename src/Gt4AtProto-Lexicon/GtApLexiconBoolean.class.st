@@ -15,6 +15,11 @@ GtApLexiconBoolean >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconBoolean >> asClassName [
+	^ 'Boolean'
+]
+
+{ #category : #accessing }
 GtApLexiconBoolean >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString

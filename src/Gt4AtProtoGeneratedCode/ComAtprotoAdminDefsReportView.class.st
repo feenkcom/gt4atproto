@@ -37,17 +37,30 @@ ComAtprotoAdminDefsReportView class >> atpSchema [
 ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atpReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef. 'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpResolvedByActionIds: (aRequest at: 'resolvedByActionIds' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ])
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
+		atpReasonType: (aRequest
+				at: 'reasonType'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
+		atpSubject: (aRequest
+				at: 'subject'
+				ifPresent: [ :aValue | 
+					({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef.
+						'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary
+						at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpResolvedByActionIds: (aRequest
+				at: 'resolvedByActionIds'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -58,6 +71,7 @@ ComAtprotoAdminDefsReportView >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpId [
+	<atpType:#Number format:nil>
 	^ atpId
 ]
 
@@ -68,6 +82,7 @@ ComAtprotoAdminDefsReportView >> atpId: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpReason [
+	<atpType:'string' format:nil>
 	^ atpReason
 ]
 
@@ -90,6 +105,7 @@ ComAtprotoAdminDefsReportView >> atpReasonType: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpReportedBy [
+	<atpType:'string' format:'did'>
 	^ atpReportedBy
 ]
 
@@ -100,6 +116,8 @@ ComAtprotoAdminDefsReportView >> atpReportedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpResolvedByActionIds [
+	<atpType:#Number format:nil>
+	<atpCollection>
 	^ atpResolvedByActionIds
 ]
 
@@ -110,6 +128,7 @@ ComAtprotoAdminDefsReportView >> atpResolvedByActionIds: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpSubject [
+	<atpType:#(ComAtprotoAdminDefsRepoRef. ComAtprotoRepoStrongRefMain) format:nil>
 	^ atpSubject
 ]
 
@@ -124,7 +143,7 @@ ComAtprotoAdminDefsReportView >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -133,7 +152,7 @@ ComAtprotoAdminDefsReportView >> idDescription [
 	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atpId;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -159,7 +178,7 @@ ComAtprotoAdminDefsReportView >> reportedByDescription [
 	^ MAStringDescription new
 		label: 'ReportedBy';
 		accessor: #atpReportedBy;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -169,14 +188,15 @@ ComAtprotoAdminDefsReportView >> resolvedByActionIdsDescription [
 		classes: {Number};
 		label: 'ResolvedByActionIds';
 		accessor: #atpResolvedByActionIds;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 ComAtprotoAdminDefsReportView >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#repoRef'. 'com.atproto.repo.strongRef'};
+		options: {'#repoRef'.
+				'com.atproto.repo.strongRef'};
 		label: 'Subject';
 		accessor: #atpSubject;
 		beRequired

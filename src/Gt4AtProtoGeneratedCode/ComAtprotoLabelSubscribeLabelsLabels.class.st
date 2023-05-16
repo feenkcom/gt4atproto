@@ -32,12 +32,17 @@ ComAtprotoLabelSubscribeLabelsLabels class >> atpSchema [
 ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsLabels >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -48,6 +53,7 @@ ComAtprotoLabelSubscribeLabelsLabels >> atpLabels: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsLabels >> atpSeq [
+	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
@@ -63,7 +69,7 @@ ComAtprotoLabelSubscribeLabelsLabels >> labelsDescription [
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
 		accessor: #atpLabels;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -72,5 +78,5 @@ ComAtprotoLabelSubscribeLabelsLabels >> seqDescription [
 	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atpSeq;
-	beRequired
+		beRequired
 ]

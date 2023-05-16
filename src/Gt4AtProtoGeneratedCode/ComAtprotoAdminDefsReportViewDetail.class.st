@@ -37,17 +37,30 @@ ComAtprotoAdminDefsReportViewDetail class >> atpSchema [
 ComAtprotoAdminDefsReportViewDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atpReasonType: (aRequest at: 'reasonType' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView. 'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]); 
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpResolvedByActions: (aRequest at: 'resolvedByActions' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsActionView fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
+		atpReasonType: (aRequest
+				at: 'reasonType'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
+		atpSubject: (aRequest
+				at: 'subject'
+				ifPresent: [ :aValue | 
+					({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView.
+						'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReportedBy: (aRequest at: 'reportedBy' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpResolvedByActions: (aRequest
+				at: 'resolvedByActions'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoAdminDefsActionView fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -58,6 +71,7 @@ ComAtprotoAdminDefsReportViewDetail >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atpId [
+	<atpType:#Number format:nil>
 	^ atpId
 ]
 
@@ -68,6 +82,7 @@ ComAtprotoAdminDefsReportViewDetail >> atpId: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atpReason [
+	<atpType:'string' format:nil>
 	^ atpReason
 ]
 
@@ -90,6 +105,7 @@ ComAtprotoAdminDefsReportViewDetail >> atpReasonType: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atpReportedBy [
+	<atpType:'string' format:'did'>
 	^ atpReportedBy
 ]
 
@@ -100,6 +116,8 @@ ComAtprotoAdminDefsReportViewDetail >> atpReportedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atpResolvedByActions [
+	<atpType:#ComAtprotoAdminDefsActionView format:nil>
+	<atpCollection>
 	^ atpResolvedByActions
 ]
 
@@ -110,6 +128,7 @@ ComAtprotoAdminDefsReportViewDetail >> atpResolvedByActions: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportViewDetail >> atpSubject [
+	<atpType:#(ComAtprotoAdminDefsRepoView. ComAtprotoAdminDefsRecordView) format:nil>
 	^ atpSubject
 ]
 
@@ -124,7 +143,7 @@ ComAtprotoAdminDefsReportViewDetail >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -133,7 +152,7 @@ ComAtprotoAdminDefsReportViewDetail >> idDescription [
 	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atpId;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -159,7 +178,7 @@ ComAtprotoAdminDefsReportViewDetail >> reportedByDescription [
 	^ MAStringDescription new
 		label: 'ReportedBy';
 		accessor: #atpReportedBy;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -169,14 +188,15 @@ ComAtprotoAdminDefsReportViewDetail >> resolvedByActionsDescription [
 		classes: {ComAtprotoAdminDefsActionView};
 		label: 'ResolvedByActions';
 		accessor: #atpResolvedByActions;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 ComAtprotoAdminDefsReportViewDetail >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#repoView'. '#recordView'};
+		options: {'#repoView'.
+				'#recordView'};
 		label: 'Subject';
 		accessor: #atpSubject;
 		beRequired

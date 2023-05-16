@@ -33,13 +33,17 @@ ComAtprotoRepoListRecordsRecord class >> atpSchema [
 ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpValue: (aRequest
+				at: 'value'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -50,6 +54,7 @@ ComAtprotoRepoListRecordsRecord >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -60,6 +65,7 @@ ComAtprotoRepoListRecordsRecord >> atpUri: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord >> atpValue [
+	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
@@ -74,7 +80,7 @@ ComAtprotoRepoListRecordsRecord >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -83,7 +89,7 @@ ComAtprotoRepoListRecordsRecord >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +98,5 @@ ComAtprotoRepoListRecordsRecord >> valueDescription [
 	^ MAStringDescription new
 		label: 'Value';
 		accessor: #atpValue;
-	beRequired
+		beRequired
 ]

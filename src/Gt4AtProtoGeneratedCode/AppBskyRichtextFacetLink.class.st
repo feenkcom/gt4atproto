@@ -36,6 +36,7 @@ AppBskyRichtextFacetLink class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyRichtextFacetLink >> atpUri [
+	<atpType:'string' format:'uri'>
 	^ atpUri
 ]
 
@@ -50,5 +51,5 @@ AppBskyRichtextFacetLink >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

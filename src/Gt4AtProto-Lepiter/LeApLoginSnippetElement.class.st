@@ -15,7 +15,7 @@ LeApLoginSnippetElement >> initialize [
 			clientCallback: [" :aClient :anElement | anElement phlow spawnObject: (GtApUser new client: aClient) "
 			 :aClient :anElement |
 		anElement phlow
-			spawnObject: ((aClient appBskyActorGetProfileactor: aClient context handle) client: aClient)  ].
+			spawnObject: ((aClient appBskyActorGetProfileActor: aClient context handle) client: aClient)  ].
 	formElement := form asGtMagritteViewModel asElement margin: (BlInsets all: 10).
 ]
 

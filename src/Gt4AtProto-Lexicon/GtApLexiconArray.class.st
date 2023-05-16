@@ -119,3 +119,9 @@ GtApLexiconArray >> resolvedReferencedDefinitions [
 GtApLexiconArray >> typeDescription [
 	^ super typeDescription, ' of ', self items typeDescription
 ]
+
+{ #category : #accessing }
+GtApLexiconArray >> typePragma [
+	^ '<atpType:' , self referencedDefinitions first embeddedPragmaType , ' format:nil>
+	<atpCollection>'
+]

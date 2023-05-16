@@ -37,17 +37,23 @@ ComAtprotoServerDefsInviteCode class >> atpSchema [
 ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpCode: (aRequest at: 'code' ifAbsent: [ nil ]); 
-		atpAvailable: (aRequest at: 'available' ifAbsent: [ nil ]); 
-		atpDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]); 
-		atpForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]); 
-		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpUses: (aRequest at: 'uses' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoServerDefsInviteCodeUse fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpCode: (aRequest at: 'code' ifAbsent: [ nil ]);
+		atpAvailable: (aRequest at: 'available' ifAbsent: [ nil ]);
+		atpDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]);
+		atpForAccount: (aRequest at: 'forAccount' ifAbsent: [ nil ]);
+		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpUses: (aRequest
+				at: 'uses'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoServerDefsInviteCodeUse fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpAvailable [
+	<atpType:#Number format:nil>
 	^ atpAvailable
 ]
 
@@ -58,6 +64,7 @@ ComAtprotoServerDefsInviteCode >> atpAvailable: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpCode [
+	<atpType:'string' format:nil>
 	^ atpCode
 ]
 
@@ -68,6 +75,7 @@ ComAtprotoServerDefsInviteCode >> atpCode: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -78,6 +86,7 @@ ComAtprotoServerDefsInviteCode >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpCreatedBy [
+	<atpType:'string' format:nil>
 	^ atpCreatedBy
 ]
 
@@ -88,6 +97,7 @@ ComAtprotoServerDefsInviteCode >> atpCreatedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpDisabled [
+	<atpType:#Boolean format:nil>
 	^ atpDisabled
 ]
 
@@ -98,6 +108,7 @@ ComAtprotoServerDefsInviteCode >> atpDisabled: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpForAccount [
+	<atpType:'string' format:nil>
 	^ atpForAccount
 ]
 
@@ -108,6 +119,8 @@ ComAtprotoServerDefsInviteCode >> atpForAccount: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpUses [
+	<atpType:#ComAtprotoServerDefsInviteCodeUse format:nil>
+	<atpCollection>
 	^ atpUses
 ]
 
@@ -122,7 +135,7 @@ ComAtprotoServerDefsInviteCode >> availableDescription [
 	^ MANumberDescription new
 		label: 'Available';
 		accessor: #atpAvailable;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -131,7 +144,7 @@ ComAtprotoServerDefsInviteCode >> codeDescription [
 	^ MAStringDescription new
 		label: 'Code';
 		accessor: #atpCode;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -140,7 +153,7 @@ ComAtprotoServerDefsInviteCode >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -149,7 +162,7 @@ ComAtprotoServerDefsInviteCode >> createdByDescription [
 	^ MAStringDescription new
 		label: 'CreatedBy';
 		accessor: #atpCreatedBy;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -158,7 +171,7 @@ ComAtprotoServerDefsInviteCode >> disabledDescription [
 	^ MABooleanDescription new
 		label: 'Disabled';
 		accessor: #atpDisabled;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -167,7 +180,7 @@ ComAtprotoServerDefsInviteCode >> forAccountDescription [
 	^ MAStringDescription new
 		label: 'ForAccount';
 		accessor: #atpForAccount;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -177,5 +190,5 @@ ComAtprotoServerDefsInviteCode >> usesDescription [
 		classes: {ComAtprotoServerDefsInviteCodeUse};
 		label: 'Uses';
 		accessor: #atpUses;
-	beRequired
+		beRequired
 ]

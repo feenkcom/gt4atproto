@@ -62,7 +62,7 @@ GtApCreatePostForm >> createAcceptButton [
 
 				self phlow
 					spawnObject: (self client
-							comAtprotoRepoCreateRecordrepo: self actor atpDid
+							comAtprotoRepoCreateRecordRepo: self actor atpDid
 							collection: AppBskyFeedPostMain atpRecordName
 							rkey: nil
 							validate: nil

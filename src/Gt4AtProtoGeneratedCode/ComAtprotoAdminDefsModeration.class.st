@@ -31,7 +31,10 @@ ComAtprotoAdminDefsModeration class >> atpSchema [
 ComAtprotoAdminDefsModeration class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpCurrentAction: (aRequest at: 'currentAction' ifPresent: [:aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ] ifAbsent: [ nil ])
+		atpCurrentAction: (aRequest
+				at: 'currentAction'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsActionViewCurrent fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

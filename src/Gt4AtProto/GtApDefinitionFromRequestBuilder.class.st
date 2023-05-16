@@ -43,7 +43,8 @@ GtApDefinitionFromRequestBuilder >> buildUsing: aModel [
 					traitName := 'T' , className.
 					(RBAddMethodRefactoring
 						model: aModel
-						addMethod: (self buildFromRequestFor: aDefinition)
+						addMethod: (RBParser parseMethod: (self buildFromRequestFor: aDefinition))
+								formattedCode
 						toClass: (aModel classNamed: className asSymbol) classSide
 						inProtocols: #('serialization')) primitiveExecute ] ]
 ]

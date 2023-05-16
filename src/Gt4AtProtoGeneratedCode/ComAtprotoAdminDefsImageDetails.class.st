@@ -32,12 +32,13 @@ ComAtprotoAdminDefsImageDetails class >> atpSchema [
 ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
+		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]);
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsImageDetails >> atpHeight [
+	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoAdminDefsImageDetails >> atpHeight: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsImageDetails >> atpWidth [
+	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
@@ -62,7 +64,7 @@ ComAtprotoAdminDefsImageDetails >> heightDescription [
 	^ MANumberDescription new
 		label: 'Height';
 		accessor: #atpHeight;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ ComAtprotoAdminDefsImageDetails >> widthDescription [
 	^ MANumberDescription new
 		label: 'Width';
 		accessor: #atpWidth;
-	beRequired
+		beRequired
 ]

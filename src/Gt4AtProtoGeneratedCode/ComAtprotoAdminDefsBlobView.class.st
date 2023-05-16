@@ -36,16 +36,26 @@ ComAtprotoAdminDefsBlobView class >> atpSchema [
 ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]); 
-		atpSize: (aRequest at: 'size' ifAbsent: [ nil ]); 
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpDetails: (aRequest at: 'details' ifPresent: [:aValue | ({'com.atproto.admin.defs#imageDetails' -> ComAtprotoAdminDefsImageDetails. 'com.atproto.admin.defs#videoDetails' -> ComAtprotoAdminDefsVideoDetails} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ])
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]);
+		atpSize: (aRequest at: 'size' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpDetails: (aRequest
+				at: 'details'
+				ifPresent: [ :aValue | 
+					({'com.atproto.admin.defs#imageDetails' -> ComAtprotoAdminDefsImageDetails.
+						'com.atproto.admin.defs#videoDetails' -> ComAtprotoAdminDefsVideoDetails}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpModeration: (aRequest
+				at: 'moderation'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -56,6 +66,7 @@ ComAtprotoAdminDefsBlobView >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -66,6 +77,7 @@ ComAtprotoAdminDefsBlobView >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpDetails [
+	<atpType:#(ComAtprotoAdminDefsImageDetails. ComAtprotoAdminDefsVideoDetails) format:nil>
 	^ atpDetails
 ]
 
@@ -76,6 +88,7 @@ ComAtprotoAdminDefsBlobView >> atpDetails: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpMimeType [
+	<atpType:'string' format:nil>
 	^ atpMimeType
 ]
 
@@ -98,6 +111,7 @@ ComAtprotoAdminDefsBlobView >> atpModeration: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpSize [
+	<atpType:#Number format:nil>
 	^ atpSize
 ]
 
@@ -112,7 +126,7 @@ ComAtprotoAdminDefsBlobView >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -121,14 +135,15 @@ ComAtprotoAdminDefsBlobView >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 ComAtprotoAdminDefsBlobView >> detailsDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#imageDetails'. '#videoDetails'};
+		options: {'#imageDetails'.
+				'#videoDetails'};
 		label: 'Details';
 		accessor: #atpDetails
 ]
@@ -139,7 +154,7 @@ ComAtprotoAdminDefsBlobView >> mimeTypeDescription [
 	^ MAStringDescription new
 		label: 'MimeType';
 		accessor: #atpMimeType;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -156,5 +171,5 @@ ComAtprotoAdminDefsBlobView >> sizeDescription [
 	^ MANumberDescription new
 		label: 'Size';
 		accessor: #atpSize;
-	beRequired
+		beRequired
 ]

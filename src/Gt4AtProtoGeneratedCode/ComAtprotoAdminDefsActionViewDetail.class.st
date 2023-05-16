@@ -41,17 +41,41 @@ ComAtprotoAdminDefsActionViewDetail class >> atpSchema [
 ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpId: (aRequest at: 'id' ifAbsent: [ nil ]); 
-		atpAction: (aRequest at: 'action' ifPresent: [:aValue | String fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpSubject: (aRequest at: 'subject' ifPresent: [:aValue | ({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView. 'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
-		atpSubjectBlobs: (aRequest at: 'subjectBlobs' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsBlobView fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpCreateLabelVals: (aRequest at: 'createLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
-		atpNegateLabelVals: (aRequest at: 'negateLabelVals' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
-		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]); 
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]); 
-		atpReversal: (aRequest at: 'reversal' ifPresent: [:aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpResolvedReports: (aRequest at: 'resolvedReports' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoAdminDefsReportView fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
+		atpAction: (aRequest
+				at: 'action'
+				ifPresent: [ :aValue | String fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpSubject: (aRequest
+				at: 'subject'
+				ifPresent: [ :aValue | 
+					({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView.
+						'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpSubjectBlobs: (aRequest
+				at: 'subjectBlobs'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoAdminDefsBlobView fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpCreateLabelVals: (aRequest
+				at: 'createLabelVals'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ]);
+		atpNegateLabelVals: (aRequest
+				at: 'negateLabelVals'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ]);
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
+		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpReversal: (aRequest
+				at: 'reversal'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsActionReversal fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpResolvedReports: (aRequest
+				at: 'resolvedReports'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoAdminDefsReportView fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -77,6 +101,8 @@ ComAtprotoAdminDefsActionViewDetail >> atpAction: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpCreateLabelVals [
+	<atpType:#String format:nil>
+	<atpCollection>
 	^ atpCreateLabelVals
 ]
 
@@ -87,6 +113,7 @@ ComAtprotoAdminDefsActionViewDetail >> atpCreateLabelVals: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -97,6 +124,7 @@ ComAtprotoAdminDefsActionViewDetail >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpCreatedBy [
+	<atpType:'string' format:'did'>
 	^ atpCreatedBy
 ]
 
@@ -107,6 +135,7 @@ ComAtprotoAdminDefsActionViewDetail >> atpCreatedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpId [
+	<atpType:#Number format:nil>
 	^ atpId
 ]
 
@@ -117,6 +146,8 @@ ComAtprotoAdminDefsActionViewDetail >> atpId: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpNegateLabelVals [
+	<atpType:#String format:nil>
+	<atpCollection>
 	^ atpNegateLabelVals
 ]
 
@@ -127,6 +158,7 @@ ComAtprotoAdminDefsActionViewDetail >> atpNegateLabelVals: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpReason [
+	<atpType:'string' format:nil>
 	^ atpReason
 ]
 
@@ -137,6 +169,8 @@ ComAtprotoAdminDefsActionViewDetail >> atpReason: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpResolvedReports [
+	<atpType:#ComAtprotoAdminDefsReportView format:nil>
+	<atpCollection>
 	^ atpResolvedReports
 ]
 
@@ -159,6 +193,7 @@ ComAtprotoAdminDefsActionViewDetail >> atpReversal: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpSubject [
+	<atpType:#(ComAtprotoAdminDefsRepoView. ComAtprotoAdminDefsRecordView) format:nil>
 	^ atpSubject
 ]
 
@@ -169,6 +204,8 @@ ComAtprotoAdminDefsActionViewDetail >> atpSubject: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpSubjectBlobs [
+	<atpType:#ComAtprotoAdminDefsBlobView format:nil>
+	<atpCollection>
 	^ atpSubjectBlobs
 ]
 
@@ -192,7 +229,7 @@ ComAtprotoAdminDefsActionViewDetail >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -201,7 +238,7 @@ ComAtprotoAdminDefsActionViewDetail >> createdByDescription [
 	^ MAStringDescription new
 		label: 'CreatedBy';
 		accessor: #atpCreatedBy;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -210,7 +247,7 @@ ComAtprotoAdminDefsActionViewDetail >> idDescription [
 	^ MANumberDescription new
 		label: 'Id';
 		accessor: #atpId;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -228,7 +265,7 @@ ComAtprotoAdminDefsActionViewDetail >> reasonDescription [
 	^ MAStringDescription new
 		label: 'Reason';
 		accessor: #atpReason;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -238,7 +275,7 @@ ComAtprotoAdminDefsActionViewDetail >> resolvedReportsDescription [
 		classes: {ComAtprotoAdminDefsReportView};
 		label: 'ResolvedReports';
 		accessor: #atpResolvedReports;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -256,14 +293,15 @@ ComAtprotoAdminDefsActionViewDetail >> subjectBlobsDescription [
 		classes: {ComAtprotoAdminDefsBlobView};
 		label: 'SubjectBlobs';
 		accessor: #atpSubjectBlobs;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 ComAtprotoAdminDefsActionViewDetail >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#repoView'. '#recordView'};
+		options: {'#repoView'.
+				'#recordView'};
 		label: 'Subject';
 		accessor: #atpSubject;
 		beRequired

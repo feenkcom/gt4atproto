@@ -38,16 +38,34 @@ AppBskyFeedPostMain class >> atpSchema [
 AppBskyFeedPostMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpText: (aRequest at: 'text' ifAbsent: [ nil ]); 
-		atpEntities: (aRequest at: 'entities' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyFeedPostEntity fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpFacets: (aRequest at: 'facets' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyRichtextFacetMain fromRequest: aValue ] ] ifAbsent: [ nil ]); 
-		atpReply: (aRequest at: 'reply' ifPresent: [:aValue | AppBskyFeedPostReplyRef fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpEmbed: (aRequest at: 'embed' ifPresent: [:aValue | ({'app.bsky.embed.images' -> AppBskyEmbedImagesMain. 'app.bsky.embed.external' -> AppBskyEmbedExternalMain. 'app.bsky.embed.record' -> AppBskyEmbedRecordMain. 'app.bsky.embed.recordWithMedia' -> AppBskyEmbedRecordWithMediaMain} asDictionary at: (aValue at: '$type')) fromRequest: aValue] ifAbsent: [ nil ]); 
+		atpText: (aRequest at: 'text' ifAbsent: [ nil ]);
+		atpEntities: (aRequest
+				at: 'entities'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyFeedPostEntity fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpFacets: (aRequest
+				at: 'facets'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpReply: (aRequest
+				at: 'reply'
+				ifPresent: [ :aValue | AppBskyFeedPostReplyRef fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpEmbed: (aRequest
+				at: 'embed'
+				ifPresent: [ :aValue | 
+					({'app.bsky.embed.images' -> AppBskyEmbedImagesMain.
+						'app.bsky.embed.external' -> AppBskyEmbedExternalMain.
+						'app.bsky.embed.record' -> AppBskyEmbedRecordMain.
+						'app.bsky.embed.recordWithMedia' -> AppBskyEmbedRecordWithMediaMain}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpCreatedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -58,6 +76,7 @@ AppBskyFeedPostMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpEmbed [
+	<atpType:#(AppBskyEmbedImagesMain. AppBskyEmbedExternalMain. AppBskyEmbedRecordMain. AppBskyEmbedRecordWithMediaMain) format:nil>
 	^ atpEmbed
 ]
 
@@ -68,6 +87,8 @@ AppBskyFeedPostMain >> atpEmbed: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpEntities [
+	<atpType:#AppBskyFeedPostEntity format:nil>
+	<atpCollection>
 	^ atpEntities
 ]
 
@@ -78,6 +99,8 @@ AppBskyFeedPostMain >> atpEntities: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpFacets [
+	<atpType:#AppBskyRichtextFacetMain format:nil>
+	<atpCollection>
 	^ atpFacets
 ]
 
@@ -100,6 +123,7 @@ AppBskyFeedPostMain >> atpReply: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpText [
+	<atpType:'string' format:nil>
 	^ atpText
 ]
 
@@ -114,14 +138,17 @@ AppBskyFeedPostMain >> createdAtDescription [
 	^ MAStringDescription new
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
 AppBskyFeedPostMain >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'app.bsky.embed.images'. 'app.bsky.embed.external'. 'app.bsky.embed.record'. 'app.bsky.embed.recordWithMedia'};
+		options: {'app.bsky.embed.images'.
+				'app.bsky.embed.external'.
+				'app.bsky.embed.record'.
+				'app.bsky.embed.recordWithMedia'};
 		label: 'Embed';
 		accessor: #atpEmbed
 ]
@@ -158,5 +185,5 @@ AppBskyFeedPostMain >> textDescription [
 	^ MAStringDescription new
 		label: 'Text';
 		accessor: #atpText;
-	beRequired
+		beRequired
 ]

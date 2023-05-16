@@ -37,17 +37,31 @@ ComAtprotoAdminDefsRecordView class >> atpSchema [
 ComAtprotoAdminDefsRecordView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
-		atpBlobCids: (aRequest at: 'blobCids' ifPresent: [:anArray | anArray collect: [:aValue |aValue ] ] ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpModeration: (aRequest at: 'moderation' ifPresent: [:aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpRepo: (aRequest at: 'repo' ifPresent: [:aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ] ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpValue: (aRequest
+				at: 'value'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpBlobCids: (aRequest
+				at: 'blobCids'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpModeration: (aRequest
+				at: 'moderation'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsModeration fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpRepo: (aRequest
+				at: 'repo'
+				ifPresent: [ :aValue | ComAtprotoAdminDefsRepoView fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordView >> atpBlobCids [
+	<atpType:#String format:nil>
+	<atpCollection>
 	^ atpBlobCids
 ]
 
@@ -58,6 +72,7 @@ ComAtprotoAdminDefsRecordView >> atpBlobCids: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordView >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -68,6 +83,7 @@ ComAtprotoAdminDefsRecordView >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordView >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -102,6 +118,7 @@ ComAtprotoAdminDefsRecordView >> atpRepo: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordView >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -112,6 +129,7 @@ ComAtprotoAdminDefsRecordView >> atpUri: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordView >> atpValue [
+	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
@@ -127,7 +145,7 @@ ComAtprotoAdminDefsRecordView >> blobCidsDescription [
 		classes: {String};
 		label: 'BlobCids';
 		accessor: #atpBlobCids;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -136,7 +154,7 @@ ComAtprotoAdminDefsRecordView >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -145,7 +163,7 @@ ComAtprotoAdminDefsRecordView >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -172,7 +190,7 @@ ComAtprotoAdminDefsRecordView >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -181,5 +199,5 @@ ComAtprotoAdminDefsRecordView >> valueDescription [
 	^ MAStringDescription new
 		label: 'Value';
 		accessor: #atpValue;
-	beRequired
+		beRequired
 ]

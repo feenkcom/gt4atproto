@@ -134,7 +134,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T20:01:01.423623+02:00"
+						"dateAndTimeString" : "2023-05-16T20:01:11.991352+02:00"
 					}
 				},
 				"uid" : {
@@ -144,7 +144,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Then query the act"
+				"string" : "Then query your handle's profile:"
 			},
 			{
 				"__type" : "pharoSnippet",

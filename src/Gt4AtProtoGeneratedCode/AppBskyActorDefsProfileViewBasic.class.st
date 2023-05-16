@@ -36,16 +36,23 @@ AppBskyActorDefsProfileViewBasic class >> atpSchema [
 AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
-		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]); 
-		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]); 
-		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]); 
-		atpViewer: (aRequest at: 'viewer' ifPresent: [:aValue | AppBskyActorDefsViewerState fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
+		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
+		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
+		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpViewer: (aRequest
+				at: 'viewer'
+				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpAvatar [
+	<atpType:'string' format:nil>
 	^ atpAvatar
 ]
 
@@ -56,6 +63,7 @@ AppBskyActorDefsProfileViewBasic >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -66,6 +74,7 @@ AppBskyActorDefsProfileViewBasic >> atpDid: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpDisplayName [
+	<atpType:'string' format:nil>
 	^ atpDisplayName
 ]
 
@@ -76,6 +85,7 @@ AppBskyActorDefsProfileViewBasic >> atpDisplayName: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpHandle [
+	<atpType:'string' format:'handle'>
 	^ atpHandle
 ]
 
@@ -86,6 +96,8 @@ AppBskyActorDefsProfileViewBasic >> atpHandle: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -120,7 +132,7 @@ AppBskyActorDefsProfileViewBasic >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -137,7 +149,7 @@ AppBskyActorDefsProfileViewBasic >> handleDescription [
 	^ MAStringDescription new
 		label: 'Handle';
 		accessor: #atpHandle;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }

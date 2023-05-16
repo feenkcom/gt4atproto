@@ -39,15 +39,24 @@ AppBskyNotificationListNotificationsNotification class >> atpSchema [
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]); 
-		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]); 
-		atpAuthor: (aRequest at: 'author' ifPresent: [:aValue | AppBskyActorDefsProfileView fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]); 
-		atpReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]); 
-		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]); 
-		atpIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]); 
-		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]); 
-		atpLabels: (aRequest at: 'labels' ifPresent: [:anArray | anArray collect: [:aValue |ComAtprotoLabelDefsLabel fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
+		atpAuthor: (aRequest
+				at: 'author'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
+		atpReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]);
+		atpRecord: (aRequest
+				at: 'record'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]);
+		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -64,6 +73,7 @@ AppBskyNotificationListNotificationsNotification >> atpAuthor: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpCid [
+	<atpType:'string' format:'cid'>
 	^ atpCid
 ]
 
@@ -74,6 +84,7 @@ AppBskyNotificationListNotificationsNotification >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -84,6 +95,7 @@ AppBskyNotificationListNotificationsNotification >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpIsRead [
+	<atpType:#Boolean format:nil>
 	^ atpIsRead
 ]
 
@@ -94,6 +106,8 @@ AppBskyNotificationListNotificationsNotification >> atpIsRead: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
 	^ atpLabels
 ]
 
@@ -104,6 +118,7 @@ AppBskyNotificationListNotificationsNotification >> atpLabels: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpReason [
+	<atpType:'string' format:nil>
 	^ atpReason
 ]
 
@@ -114,6 +129,7 @@ AppBskyNotificationListNotificationsNotification >> atpReason: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpReasonSubject [
+	<atpType:'string' format:'at-uri'>
 	^ atpReasonSubject
 ]
 
@@ -124,6 +140,7 @@ AppBskyNotificationListNotificationsNotification >> atpReasonSubject: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpRecord [
+	<atpType:#Object format:nil>
 	^ atpRecord
 ]
 
@@ -134,6 +151,7 @@ AppBskyNotificationListNotificationsNotification >> atpRecord: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -157,7 +175,7 @@ AppBskyNotificationListNotificationsNotification >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -166,7 +184,7 @@ AppBskyNotificationListNotificationsNotification >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -175,7 +193,7 @@ AppBskyNotificationListNotificationsNotification >> isReadDescription [
 	^ MABooleanDescription new
 		label: 'IsRead';
 		accessor: #atpIsRead;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -193,7 +211,7 @@ AppBskyNotificationListNotificationsNotification >> reasonDescription [
 	^ MAStringDescription new
 		label: 'Reason';
 		accessor: #atpReason;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -210,7 +228,7 @@ AppBskyNotificationListNotificationsNotification >> recordDescription [
 	^ MAStringDescription new
 		label: 'Record';
 		accessor: #atpRecord;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -219,5 +237,5 @@ AppBskyNotificationListNotificationsNotification >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

@@ -36,16 +36,20 @@ AppBskyActorDefsViewerState class >> atpSchema [
 AppBskyActorDefsViewerState class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]); 
-		atpMutedByList: (aRequest at: 'mutedByList' ifPresent: [:aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
-		atpBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]); 
-		atpBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]); 
-		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]); 
+		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]);
+		atpMutedByList: (aRequest
+				at: 'mutedByList'
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]);
+		atpBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]);
+		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]);
 		atpFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpBlockedBy [
+	<atpType:#Boolean format:nil>
 	^ atpBlockedBy
 ]
 
@@ -56,6 +60,7 @@ AppBskyActorDefsViewerState >> atpBlockedBy: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpBlocking [
+	<atpType:'string' format:'at-uri'>
 	^ atpBlocking
 ]
 
@@ -66,6 +71,7 @@ AppBskyActorDefsViewerState >> atpBlocking: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpFollowedBy [
+	<atpType:'string' format:'at-uri'>
 	^ atpFollowedBy
 ]
 
@@ -76,6 +82,7 @@ AppBskyActorDefsViewerState >> atpFollowedBy: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpFollowing [
+	<atpType:'string' format:'at-uri'>
 	^ atpFollowing
 ]
 
@@ -86,6 +93,7 @@ AppBskyActorDefsViewerState >> atpFollowing: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpMuted [
+	<atpType:#Boolean format:nil>
 	^ atpMuted
 ]
 

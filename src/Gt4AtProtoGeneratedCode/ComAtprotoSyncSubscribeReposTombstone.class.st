@@ -33,13 +33,14 @@ ComAtprotoSyncSubscribeReposTombstone class >> atpSchema [
 ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]); 
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -50,6 +51,7 @@ ComAtprotoSyncSubscribeReposTombstone >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone >> atpSeq [
+	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
@@ -60,6 +62,7 @@ ComAtprotoSyncSubscribeReposTombstone >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone >> atpTime [
+	<atpType:'string' format:'datetime'>
 	^ atpTime
 ]
 
@@ -74,7 +77,7 @@ ComAtprotoSyncSubscribeReposTombstone >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -83,7 +86,7 @@ ComAtprotoSyncSubscribeReposTombstone >> seqDescription [
 	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atpSeq;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +95,5 @@ ComAtprotoSyncSubscribeReposTombstone >> timeDescription [
 	^ MAStringDescription new
 		label: 'Time';
 		accessor: #atpTime;
-	beRequired
+		beRequired
 ]

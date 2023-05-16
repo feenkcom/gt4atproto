@@ -31,7 +31,10 @@ AppBskyEmbedRecordMain class >> atpSchema [
 AppBskyEmbedRecordMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpRecord: (aRequest at: 'record' ifPresent: [:aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ] ifAbsent: [ nil ])
+		atpRecord: (aRequest
+				at: 'record'
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

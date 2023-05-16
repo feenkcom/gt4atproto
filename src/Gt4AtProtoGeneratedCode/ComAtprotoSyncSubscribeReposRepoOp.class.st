@@ -33,8 +33,8 @@ ComAtprotoSyncSubscribeReposRepoOp class >> atpSchema [
 ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpAction: (aRequest at: 'action' ifAbsent: [ nil ]); 
-		atpPath: (aRequest at: 'path' ifAbsent: [ nil ]); 
+		atpAction: (aRequest at: 'action' ifAbsent: [ nil ]);
+		atpPath: (aRequest at: 'path' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ])
 ]
 
@@ -44,11 +44,12 @@ ComAtprotoSyncSubscribeReposRepoOp >> actionDescription [
 	^ MAStringDescription new
 		label: 'Action';
 		accessor: #atpAction;
-	beRequired
+		beRequired
 ]
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp >> atpAction [
+	<atpType:'string' format:nil>
 	^ atpAction
 ]
 
@@ -59,6 +60,7 @@ ComAtprotoSyncSubscribeReposRepoOp >> atpAction: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp >> atpCid [
+	<atpType:#String format:nil>
 	^ atpCid
 ]
 
@@ -69,6 +71,7 @@ ComAtprotoSyncSubscribeReposRepoOp >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp >> atpPath [
+	<atpType:'string' format:nil>
 	^ atpPath
 ]
 
@@ -83,7 +86,7 @@ ComAtprotoSyncSubscribeReposRepoOp >> cidDescription [
 	^ MAStringDescription new
 		label: 'Cid';
 		accessor: #atpCid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +95,5 @@ ComAtprotoSyncSubscribeReposRepoOp >> pathDescription [
 	^ MAStringDescription new
 		label: 'Path';
 		accessor: #atpPath;
-	beRequired
+		beRequired
 ]

@@ -33,13 +33,17 @@ ComAtprotoRepoApplyWritesCreate class >> atpSchema [
 ComAtprotoRepoApplyWritesCreate class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
-		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ]); 
-		atpValue: (aRequest at: 'value' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ])
+		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]);
+		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ]);
+		atpValue: (aRequest
+				at: 'value'
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesCreate >> atpCollection [
+	<atpType:'string' format:'nsid'>
 	^ atpCollection
 ]
 
@@ -50,6 +54,7 @@ ComAtprotoRepoApplyWritesCreate >> atpCollection: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesCreate >> atpRkey [
+	<atpType:'string' format:nil>
 	^ atpRkey
 ]
 
@@ -60,6 +65,7 @@ ComAtprotoRepoApplyWritesCreate >> atpRkey: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesCreate >> atpValue [
+	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
@@ -74,7 +80,7 @@ ComAtprotoRepoApplyWritesCreate >> collectionDescription [
 	^ MAStringDescription new
 		label: 'Collection';
 		accessor: #atpCollection;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -91,5 +97,5 @@ ComAtprotoRepoApplyWritesCreate >> valueDescription [
 	^ MAStringDescription new
 		label: 'Value';
 		accessor: #atpValue;
-	beRequired
+		beRequired
 ]

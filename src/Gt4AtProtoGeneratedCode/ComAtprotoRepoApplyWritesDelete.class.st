@@ -32,12 +32,13 @@ ComAtprotoRepoApplyWritesDelete class >> atpSchema [
 ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]); 
+		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]);
 		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete >> atpCollection [
+	<atpType:'string' format:'nsid'>
 	^ atpCollection
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoRepoApplyWritesDelete >> atpCollection: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete >> atpRkey [
+	<atpType:'string' format:nil>
 	^ atpRkey
 ]
 
@@ -62,7 +64,7 @@ ComAtprotoRepoApplyWritesDelete >> collectionDescription [
 	^ MAStringDescription new
 		label: 'Collection';
 		accessor: #atpCollection;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ ComAtprotoRepoApplyWritesDelete >> rkeyDescription [
 	^ MAStringDescription new
 		label: 'Rkey';
 		accessor: #atpRkey;
-	beRequired
+		beRequired
 ]

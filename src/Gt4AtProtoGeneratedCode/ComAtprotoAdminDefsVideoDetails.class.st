@@ -33,13 +33,14 @@ ComAtprotoAdminDefsVideoDetails class >> atpSchema [
 ComAtprotoAdminDefsVideoDetails class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]); 
-		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ]); 
+		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]);
+		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ]);
 		atpLength: (aRequest at: 'length' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoAdminDefsVideoDetails >> atpHeight [
+	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
@@ -50,6 +51,7 @@ ComAtprotoAdminDefsVideoDetails >> atpHeight: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsVideoDetails >> atpLength [
+	<atpType:#Number format:nil>
 	^ atpLength
 ]
 
@@ -60,6 +62,7 @@ ComAtprotoAdminDefsVideoDetails >> atpLength: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsVideoDetails >> atpWidth [
+	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
@@ -74,7 +77,7 @@ ComAtprotoAdminDefsVideoDetails >> heightDescription [
 	^ MANumberDescription new
 		label: 'Height';
 		accessor: #atpHeight;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -83,7 +86,7 @@ ComAtprotoAdminDefsVideoDetails >> lengthDescription [
 	^ MANumberDescription new
 		label: 'Length';
 		accessor: #atpLength;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -92,5 +95,5 @@ ComAtprotoAdminDefsVideoDetails >> widthDescription [
 	^ MANumberDescription new
 		label: 'Width';
 		accessor: #atpWidth;
-	beRequired
+		beRequired
 ]

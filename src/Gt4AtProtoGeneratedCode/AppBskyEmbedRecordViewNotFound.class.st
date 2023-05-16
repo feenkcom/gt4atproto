@@ -36,6 +36,7 @@ AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewNotFound >> atpUri [
+	<atpType:'string' format:'at-uri'>
 	^ atpUri
 ]
 
@@ -50,5 +51,5 @@ AppBskyEmbedRecordViewNotFound >> uriDescription [
 	^ MAStringDescription new
 		label: 'Uri';
 		accessor: #atpUri;
-	beRequired
+		beRequired
 ]

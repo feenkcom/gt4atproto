@@ -32,7 +32,10 @@ AppBskyFeedDefsReasonRepost class >> atpSchema [
 AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpBy: (aRequest at: 'by' ifPresent: [:aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ifAbsent: [ nil ]); 
+		atpBy: (aRequest
+				at: 'by'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
@@ -50,6 +53,7 @@ AppBskyFeedDefsReasonRepost >> atpBy: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsReasonRepost >> atpIndexedAt [
+	<atpType:'string' format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -73,5 +77,5 @@ AppBskyFeedDefsReasonRepost >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
-	beRequired
+		beRequired
 ]

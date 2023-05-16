@@ -32,12 +32,13 @@ ComAtprotoSyncListReposRepo class >> atpSchema [
 ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]); 
+		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpHead: (aRequest at: 'head' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 ComAtprotoSyncListReposRepo >> atpDid [
+	<atpType:'string' format:'did'>
 	^ atpDid
 ]
 
@@ -48,6 +49,7 @@ ComAtprotoSyncListReposRepo >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncListReposRepo >> atpHead [
+	<atpType:'string' format:'cid'>
 	^ atpHead
 ]
 
@@ -62,7 +64,7 @@ ComAtprotoSyncListReposRepo >> didDescription [
 	^ MAStringDescription new
 		label: 'Did';
 		accessor: #atpDid;
-	beRequired
+		beRequired
 ]
 
 { #category : #magritte }
@@ -71,5 +73,5 @@ ComAtprotoSyncListReposRepo >> headDescription [
 	^ MAStringDescription new
 		label: 'Head';
 		accessor: #atpHead;
-	beRequired
+		beRequired
 ]

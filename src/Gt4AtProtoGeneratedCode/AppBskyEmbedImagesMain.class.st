@@ -31,11 +31,16 @@ AppBskyEmbedImagesMain class >> atpSchema [
 AppBskyEmbedImagesMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpImages: (aRequest at: 'images' ifPresent: [:anArray | anArray collect: [:aValue |AppBskyEmbedImagesImage fromRequest: aValue ] ] ifAbsent: [ nil ])
+		atpImages: (aRequest
+				at: 'images'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyEmbedImagesImage fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyEmbedImagesMain >> atpImages [
+	<atpType:#AppBskyEmbedImagesImage format:nil>
+	<atpCollection>
 	^ atpImages
 ]
 
@@ -51,5 +56,5 @@ AppBskyEmbedImagesMain >> imagesDescription [
 		classes: {AppBskyEmbedImagesImage};
 		label: 'Images';
 		accessor: #atpImages;
-	beRequired
+		beRequired
 ]

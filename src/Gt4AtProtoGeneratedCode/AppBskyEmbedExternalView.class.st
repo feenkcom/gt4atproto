@@ -33,7 +33,10 @@ AppBskyEmbedExternalView class >> atpSchema [
 AppBskyEmbedExternalView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpExternal: (aRequest at: 'external' ifPresent: [:aValue | AppBskyEmbedExternalViewExternal fromRequest: aValue ] ifAbsent: [ nil ])
+		atpExternal: (aRequest
+				at: 'external'
+				ifPresent: [ :aValue | AppBskyEmbedExternalViewExternal fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
