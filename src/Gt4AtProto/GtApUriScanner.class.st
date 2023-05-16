@@ -6,12 +6,12 @@ Class {
 
 { #category : #generated }
 GtApUriScanner >> emptySymbolTokenId [
-	^ 20
+	^ 19
 ]
 
 { #category : #generated }
 GtApUriScanner >> errorTokenId [
-	^ 21
+	^ 20
 ]
 
 { #category : #generated }

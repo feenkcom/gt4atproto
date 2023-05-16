@@ -2,7 +2,8 @@ Class {
 	#name : #GtApUriNsIdNode,
 	#superclass : #GtApUriRootNode,
 	#instVars : [
-		'segments'
+		'segment',
+		'child'
 	],
 	#category : #'Gt4AtProto-URI'
 }
@@ -13,22 +14,33 @@ GtApUriNsIdNode >> acceptVisitor: aRootVisitor [
 ]
 
 { #category : #generated }
-GtApUriNsIdNode >> compositeTokenVariables [
-	^ #(#segments)
-]
-
-{ #category : #'generated-initialize-release' }
-GtApUriNsIdNode >> initialize [
-	super initialize.
-	segments := OrderedCollection new: 2.
+GtApUriNsIdNode >> child [
+	^ child
 ]
 
 { #category : #generated }
-GtApUriNsIdNode >> segments [
-	^ segments
+GtApUriNsIdNode >> child: aGtApUriNsIdNode [
+	self child notNil ifTrue: [ self child parent: nil ].
+	child := aGtApUriNsIdNode.
+	self child notNil ifTrue: [ self child parent: self ]
 ]
 
 { #category : #generated }
-GtApUriNsIdNode >> segments: anOrderedCollection [
-	segments := anOrderedCollection
+GtApUriNsIdNode >> nodeVariables [
+	^ #(#child #authority #path)
+]
+
+{ #category : #generated }
+GtApUriNsIdNode >> segment [
+	^ segment
+]
+
+{ #category : #generated }
+GtApUriNsIdNode >> segment: aSmaCCToken [
+	segment := aSmaCCToken
+]
+
+{ #category : #generated }
+GtApUriNsIdNode >> tokenVariables [
+	^ #(#segment)
 ]
