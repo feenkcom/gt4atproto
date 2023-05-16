@@ -358,7 +358,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T13:57:15.975777+02:00"
+									"dateAndTimeString" : "2023-05-16T13:57:27.124025+02:00"
 								}
 							},
 							"uid" : {
@@ -368,7 +368,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Lexicons describe the procedures, queries and record types. This means we can generate code . Based on the imported model We can use the imported model to generate code. The code generation can be parameterized in several ways through a `builder`:"
+							"string" : "Lexicons describe the procedures, queries and record types. This means we can generate code based on the imported model. The code generation can be parameterized in several ways through a `builder`:"
 						},
 						{
 							"__type" : "textSnippet",

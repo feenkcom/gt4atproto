@@ -82,43 +82,6 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T10:34:22.075313+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T10:34:28.094574+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "toHPLC24DQC3b4CuBR1CCw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "The AT Protocol is a generic form of "
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "textSnippet",
@@ -134,7 +97,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T10:00:21.430695+02:00"
+									"dateAndTimeString" : "2023-05-16T22:18:03.126229+02:00"
 								}
 							},
 							"editEmail" : {
@@ -145,17 +108,91 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T10:00:21.434114+02:00"
+									"dateAndTimeString" : "2023-05-16T22:18:22.549676+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "ifFxGSu4DQC01TakBR1CCw=="
+								"uidString" : "m51hATe4DQC1RNlkBR1CCw=="
 							},
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Importing lexicons and generating code]]"
+							"string" : "If you are interested in what you can do with a server that relies on AT Protocol, start with [[Working with the API through the generated client]]. "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T21:22:15.814466+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T22:18:38.26424+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "abLdOTa4DQCwNTUnBR1CCw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If you want to browse data from a server like [[Bluesky]], look at [[Browsing a user from a dedicated snippet]]."
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T22:18:39.96152+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T22:20:53.135597+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "X6+TAze4DQC25jeRBR1CCw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If you are more inclined to explore technical details, you can start from the [[Importing lexicons and generating code]] to learn about the code generation mechanism that goes from a [[Lexicon]] to "
 						}
 					]
 				},
@@ -167,7 +204,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T08:05:43.500979+02:00"
+						"dateAndTimeString" : "2023-05-16T22:17:59.89719+02:00"
 					}
 				},
 				"editEmail" : {
@@ -178,17 +215,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T08:05:46.958314+02:00"
+						"dateAndTimeString" : "2023-05-16T22:19:09.344938+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "MH/Q6yq4DQC0K6m7BR1CCw=="
+					"uidString" : "fVcwATe4DQC1Nx9DBR1CCw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "It covers:"
+				"string" : "It covers several things at different levels of abstraction."
 			}
 		]
 	},
@@ -211,12 +248,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-11T07:03:17.004726+02:00"
+			"dateAndTimeString" : "2023-05-16T21:21:18.816362+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "About this project"
+		"title" : "About Glamorous Toolkit for AT Protocol"
 	},
 	"uid" : {
 		"__type" : "uuid",
