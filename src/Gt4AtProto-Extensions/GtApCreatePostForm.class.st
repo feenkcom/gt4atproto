@@ -9,7 +9,8 @@ Class {
 		'files',
 		'fileRecords',
 		'addFileButton',
-		'post'
+		'post',
+		'imageContainer'
 	],
 	#category : #'Gt4AtProto-Extensions'
 }
@@ -90,7 +91,8 @@ GtApCreatePostForm >> createAddFileButton [
 									okAction: [ :aFile | 
 										self files add: aFile.
 										addFileButton
-											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new ] ] ]);
+											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new.
+										self updateFileContainer ] ] ]);
 			icon: BrGlamorousVectorIcons add;
 			label: 'Add File'
 ]
@@ -106,6 +108,11 @@ GtApCreatePostForm >> createButtonToolbar [
 { #category : #accessing }
 GtApCreatePostForm >> createEditor [
 	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousRegularEditorAptitude
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> createImageContainer [
+	^ imageContainer := BrHorizontalPane new hMatchParent vExact: 200
 ]
 
 { #category : #accessing }
@@ -155,6 +162,7 @@ GtApCreatePostForm >> initialize [
 	self padding: (BlInsets all: 8).
 
 	self addChild: self createEditor.
+	self addChild: self createImageContainer.
 	self addChild: self createButtonToolbar
 ]
 
@@ -166,6 +174,19 @@ GtApCreatePostForm >> post [
 { #category : #accessing }
 GtApCreatePostForm >> post: anObject [
 	post := anObject
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> updateFileContainer [
+	imageContainer removeChildren.
+
+	self files
+		do: [ :aFile | 
+			imageContainer
+				addChild: (BrAsyncFileWidget new
+						vExact: 200;
+						hExact: 200;
+						file: aFile) ]
 ]
 
 { #category : #accessing }
