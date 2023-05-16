@@ -65,14 +65,14 @@ GtApClient >> gtQueriesFor: aView [
 		title: 'Queries';
 		priority: 1;
 		items: [ self queries ];
-		column: 'Name' text: [:aPragma | aPragma method selector ];
+		column: 'Name' text: [:aPragma | aPragma method selector ]";
 		column: 'Play'
 			stencil: [ :aPragma | 
 				BrButton new
 					aptitude: BrGlamorousButtonWithIconAptitude;
 					label: 'Send Query';
 					icon: BrGlamorousVectorIcons play;
-					action: [ :aButton | aButton phlow spawnObject: (self perform: aPragma method selector) ] ]
+					action: [ :aButton | aButton phlow spawnObject: (self perform: aPragma method selector) ] ]"
 ]
 
 { #category : #accessing }

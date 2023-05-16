@@ -59,7 +59,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Thread cards';
-		priority: 0;
+		priority: 10;
 		stencil: [ BrSimpleTree new
 				nodeStencil: [ GtApFeedPostSummaryElement new
 						withShadowAndHighlighting ];
@@ -98,6 +98,14 @@ TAppBskyFeedDefsFeedViewPost >> gtCreatePostFor: aView [
 				client: self client;
 				post: self;
 				actor: (self client appBskyActorGetProfileactor: self client handle) ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> gtDisplayOn: aStream [
+	aStream 
+		nextPutAll: self author atpDisplayName;
+		nextPutAll: ': ';
+		nextPutAll: self recordText
 ]
 
 { #category : #accessing }

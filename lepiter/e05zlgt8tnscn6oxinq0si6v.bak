@@ -5,6 +5,80 @@
 		"__type" : "snippets",
 		"items" : [
 			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T11:42:27.811642+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T11:43:50.375088+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Z+lWIC64DQCArHICBR1CCw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The [[AT Protocol]] relies on [[XRPC]] as a low level communication protocol. You can interact with a server through XRPC using {{gtClass:GtXRPCClient}}."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T11:58:34.745644+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T11:59:55.660999+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ODqeWS64DQCLBIQuBR1CCw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Let's look at a few examples. Initialize these variables with your preferred coordinates and then evaluate the below snippets:"
+			},
+			{
 				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
@@ -29,120 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T17:15:43.44215+02:00"
+						"dateAndTimeString" : "2023-05-16T11:58:24.872785+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "kor8wQO3DQCsv8cMACuSBg=="
 				},
-				"code" : "pdsUrl := 'https://bsky.social'."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T15:43:34.70711+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T20:30:33.6018+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "IpYDvwO3DQCsLmWyACuSBg=="
-				},
-				"code" : "handle := 'tudorgirba.com'.\nemail := 'tudor@tudorgirba.com'.\npassword := Clipboard clipboardText asString \"app password\""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-01T15:43:25.356648+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-04T10:56:34.094175+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "qup0vgO3DQCrrwQjACuSBg=="
-							},
-							"code" : "client := XRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createAccount';\r\tbody: (STONJSON toString: {\r\t\t'handle' -> handle.\r\t\t'email' -> email.\r\t\t'password' -> password } asDictionary).\r\t\rcreateData := client procedure"
-						}
-					]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T20:28:57.647541+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-01T20:29:01.239343+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "E+aeuwe3DQCaRwVQACuSBg=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "#Create a new account"
+				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'YOUR HANDLE'.\npassword := Clipboard clipboardText asString \"app password\""
 			},
 			{
 				"__type" : "textSnippet",
@@ -174,14 +142,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-09T08:34:48.936026+02:00"
+									"dateAndTimeString" : "2023-05-16T11:59:16.28054+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "o2t9YgS3DQCw9EjpACuSBg=="
 							},
-							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\r\t\rloginData := client procedure"
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createSession';\r\tbody: (STONJSON toString: {\r\t\t'identifier' -> handle.\r\t\t'password' -> password } asDictionary).\rloginData := client procedure"
 						}
 					]
 				},
@@ -246,14 +214,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-08T23:48:24.407045+02:00"
+									"dateAndTimeString" : "2023-05-16T11:59:20.018841+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "FzbeLJe3DQCCjm/vCCHVSw=="
 							},
-							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.actor.getProfile';\r\tsetAuthentication: (loginData at: 'accessJwt');\r\tqueryAddAll: {'actor' -> 'tudorgirba.com'} asDictionary.\r\t\rprofileResult := client query."
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.actor.getProfile';\r\tsetAuthentication: (loginData at: 'accessJwt');\r\tqueryAddAll: {'actor' -> 'tudorgirba.com'} asDictionary.\rprofileResult := client query."
 						}
 					]
 				},
@@ -276,7 +244,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-08T23:26:22.913039+02:00"
+						"dateAndTimeString" : "2023-05-16T11:59:03.159979+02:00"
 					}
 				},
 				"uid" : {
@@ -286,7 +254,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "#GetProfile"
+				"string" : "#Get the data of a profile"
 			},
 			{
 				"__type" : "textSnippet",
@@ -318,14 +286,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-09T13:04:52.278839+02:00"
+									"dateAndTimeString" : "2023-05-16T11:59:21.49764+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "YSCFcQS3DQCyeX4PACuSBg=="
 							},
-							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\r\t\rtimelineResult := client query"
+							"code" : "client := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'app.bsky.feed.getTimeline';\r\tsetAuthentication: (loginData at: 'accessJwt').\rtimelineResult := client query"
 						}
 					]
 				},
@@ -379,6 +347,78 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-01T15:43:25.356648+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T11:47:15.063803+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "qup0vgO3DQCrrwQjACuSBg=="
+							},
+							"code" : "email := 'YOUR EMAIL'.\rclient := GtXRPCClient new \r\tserver: pdsUrl;\r\tmethodId: 'com.atproto.server.createAccount';\r\tbody: (STONJSON toString: {\r\t\t'handle' -> handle.\r\t\t'email' -> email.\r\t\t'password' -> password } asDictionary).\rcreateData := client procedure"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-01T20:28:57.647541+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-01T20:29:01.239343+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "E+aeuwe3DQCaRwVQACuSBg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Create a new account"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2023-05-05T15:18:15.270757+02:00"
 								}
 							},
@@ -390,82 +430,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-09T12:58:37.15658+02:00"
+									"dateAndTimeString" : "2023-05-16T12:00:05.743618+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "zkzQ21O3DQC6E8pEB1tzrA=="
 							},
-							"code" : "client := GtApClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient queryOn: 'app.bsky.feed.getTimeline'."
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-05T19:29:43.111583+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-13T15:30:12.566764+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "t38eX1e3DQCOiLZDC/wKlw=="
-							},
-							"code" : "client := GtApGeneratedClient onServer: pdsUrl.\r\rclient loginUser: handle withPass: password.\r\rclient appBskyFeedGetTimelinealgorithm: nil"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-10T22:48:29.214739+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-10T22:48:30.709318+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "YkUtu763DQCTVWRYBH44Jw=="
-							},
-							"code" : "client appBskyFeedGetAuthorFeed"
+							"code" : "client := GtApClient onServer: pdsUrl.\rclient loginUser: handle withPass: password.\rclient queryOn: 'app.bsky.feed.getTimeline'."
 						}
 					]
 				},
@@ -521,12 +493,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-01T20:31:59.342297+02:00"
+			"dateAndTimeString" : "2023-05-16T11:41:22.20615+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Basic API requests"
+		"title" : "Basic API requests using XRPC"
 	},
 	"uid" : {
 		"__type" : "uuid",
