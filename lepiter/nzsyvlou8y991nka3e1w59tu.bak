@@ -458,7 +458,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:02:46.830716+02:00"
+						"dateAndTimeString" : "2023-05-16T13:02:49.890307+02:00"
 					}
 				},
 				"uid" : {
@@ -468,7 +468,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Now try the same by getting the posts from your user:"
+				"string" : "Now try the same with the posts from your user:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -503,43 +503,6 @@
 					"uidString" : "PmbvLi64DQCGtWcoBR1CCw=="
 				},
 				"code" : "generatedClient appBskyFeedGetAuthorFeedactor: handle"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:02:41.17324+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:02:41.17324+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "4sJSPi+4DQC8TJJ4BR1CCw=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : ""
 			}
 		]
 	},
