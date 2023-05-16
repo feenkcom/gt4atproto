@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T17:58:26.749809+02:00"
+						"dateAndTimeString" : "2023-05-16T12:08:51.439906+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,20 +29,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-09T17:58:51.417257+02:00"
+						"dateAndTimeString" : "2023-05-16T12:09:48.189964+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "o10RkKa3DQCwQeVkDuRBkQ=="
+					"uidString" : "OCm7fi64DQCmicSmBR1CCw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "A user's timeline can be inspected after logging in using this snippet:"
+				"string" : "Lexicon is a schema document format used to define [[XRPC]] queries, procedures and record types."
 			},
 			{
-				"__type" : "atprotoLoginSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-14T21:45:11.068498+02:00"
+						"dateAndTimeString" : "2023-05-16T12:09:58.046765+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,13 +66,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-14T21:45:11.068498+02:00"
+						"dateAndTimeString" : "2023-05-16T12:09:59.62175+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "GKonUA64DQCiafTdC53D2Q=="
-				}
+					"uidString" : "bXmzgi64DQCnWwYFBR1CCw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[](https://atproto.com/specs/lexicon)"
 			}
 		]
 	},
@@ -84,7 +88,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-09T17:58:13.09157+02:00"
+			"dateAndTimeString" : "2023-05-16T12:08:51.394053+02:00"
 		}
 	},
 	"editEmail" : {
@@ -95,15 +99,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-11T00:24:18.630249+02:00"
+			"dateAndTimeString" : "2023-05-16T12:08:51.394053+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Browsing a user"
+		"title" : "Lexicon"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "4e16408e-a6b7-0d00-b035-20b10ee44191"
+		"uuid" : "2475ba7e-2eb8-0d00-a688-8a02051d420b"
 	}
 }

@@ -59,7 +59,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Thread cards';
-		priority: 0;
+		priority: 10;
 		stencil: [ BrSimpleTree new
 				nodeStencil: [ GtApFeedPostSummaryElement new
 						withShadowAndHighlighting ];
@@ -79,12 +79,33 @@ TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
 	<gtView>
 	^ aView columnedTree
 		title: 'Compact thread';
-		priority: 0;
+		priority: 9;
 		items: [ {self getRoot} ];
 		children: [ :each | each replies ];
 		column: 'Author' text: [ :each | each author atpDisplayName ];
 		column: 'Text' text: [ :each | each atpPost atpRecord atpText ];
 		column: 'Created at' text: [ :each | each atpPost atpRecord createdAtTimestamp ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> gtCreatePostFor: aView [
+	<gtView>
+
+	^ aView explicit
+		title: 'Reply';
+		priority: 20;
+		stencil: [ GtApCreatePostForm new
+				client: self client;
+				post: self;
+				actor: (self client appBskyActorGetProfileactor: self client handle) ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> gtDisplayOn: aStream [
+	aStream 
+		nextPutAll: self author atpDisplayName;
+		nextPutAll: ': ';
+		nextPutAll: self recordText
 ]
 
 { #category : #accessing }

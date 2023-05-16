@@ -45,41 +45,44 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T13:27:14.632373+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T13:38:06.11318+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "HxDdli+4DQCBYo1SBR1CCw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "To work with [[Bluesky]] we need the [[Lexicon]]s defined in the [[AT Protocol]] implementation from [github.com/bluesky-social/atproto](https://github.com/bluesky-social/atproto)."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-02T23:14:51.04652+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-11T00:21:34.104088+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "SRy7Kh63DQC0HnSDBU+hHw=="
-							},
-							"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
-						},
 						{
 							"__type" : "pharoSnippet",
 							"children" : {
@@ -135,7 +138,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-02T19:27:32.513952+02:00"
+						"dateAndTimeString" : "2023-05-16T13:39:45.06383+02:00"
 					}
 				},
 				"uid" : {
@@ -145,13 +148,47 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The repo [https://github.com/bluesky-social/atproto](https://github.com/bluesky-social/atproto) should be cloned locally."
+				"string" : "The repo be cloned locally in an `atproto` directory:"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T13:40:03.547378+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T13:40:04.226172+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8+LkxC+4DQCHHm7IBR1CCw=="
+							},
+							"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
+						},
 						{
 							"__type" : "pharoSnippet",
 							"children" : {
@@ -207,7 +244,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-11T00:21:28.636885+02:00"
+						"dateAndTimeString" : "2023-05-16T13:39:21.701075+02:00"
 					}
 				},
 				"uid" : {
@@ -217,7 +254,44 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Once the repository exists, simply import the lexicons into a model:"
+				"string" : "Once the repository exists, import the lexicons into a model:"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T13:40:37.21321+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-16T13:49:49.05221+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "wpTmxi+4DQCHT/4MBR1CCw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Inspecting the lexicons shows a browser of the different documents and the definitions."
 			},
 			{
 				"__type" : "textSnippet",
@@ -254,7 +328,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-05-15T12:18:38.611754+02:00"
+												"dateAndTimeString" : "2023-05-15T17:07:04.036008+02:00"
 											}
 										},
 										"uid" : {
@@ -284,7 +358,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-11T00:23:15.514082+02:00"
+									"dateAndTimeString" : "2023-05-16T13:57:15.975777+02:00"
 								}
 							},
 							"uid" : {
@@ -294,7 +368,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "We can use the imported model to generate code. The code generation can be parameterized in several ways through a `builder`:"
+							"string" : "Lexicons describe the procedures, queries and record types. This means we can generate code . Based on the imported model We can use the imported model to generate code. The code generation can be parameterized in several ways through a `builder`:"
 						},
 						{
 							"__type" : "textSnippet",

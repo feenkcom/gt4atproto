@@ -8,7 +8,8 @@ Class {
 		'actor',
 		'files',
 		'fileRecords',
-		'addFileButton'
+		'addFileButton',
+		'post'
 	],
 	#category : #'Gt4AtProto-Extensions'
 }
@@ -35,33 +36,46 @@ GtApCreatePostForm >> client: anObject [
 
 { #category : #accessing }
 GtApCreatePostForm >> createAcceptButton [
-	^ acceptButton := BrButton new
+	^ acceptButton := BrButton new beSmallSize
 			aptitude: BrGlamorousButtonWithIconAptitude;
 			icon: BrGlamorousVectorIcons accept;
 			label: 'Publish';
 			action: [ | record |
 				self uploadFiles.
 				record := {'$type' -> AppBskyFeedPostMain atpRecordName.
-							'createdAt' -> DateAndTime now printString.
-							'text' -> editorElement text asString} asDictionary.
-				self fileRecords ifNotEmpty: [
-					record at: 'embed' put: self filesToEmbed.
-				].
-				self phlow spawnObject: (self client
-					comAtprotoRepoCreateRecordrepo: self actor atpDid
-					collection: AppBskyFeedPostMain atpRecordName
-					rkey: nil
-					validate: nil
-					record: record
-					swapCommit: nil) ]
+						'createdAt' -> DateAndTime now printString.
+						'text' -> editorElement text asString} asDictionary.
+				self fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+
+				self hasPost
+					ifTrue: [ | root |
+						root := self post getRoot.
+						record
+							at: 'reply'
+							put: {'parent'
+										-> {'uri' -> self post atpPost atpUri.
+												'cid' -> self post atpPost atpCid} asDictionary.
+									'root'
+										-> {'uri' -> root atpPost atpUri.
+												'cid' -> root atpPost atpCid} asDictionary} asDictionary ].
+
+				self phlow
+					spawnObject: (self client
+							comAtprotoRepoCreateRecordrepo: self actor atpDid
+							collection: AppBskyFeedPostMain atpRecordName
+							rkey: nil
+							validate: nil
+							record: record
+							swapCommit: nil) ]
 ]
 
 { #category : #accessing }
 GtApCreatePostForm >> createAddFileButton [
-	^ addFileButton := BrButton new
+	^ addFileButton := BrButton new beSmallSize
 			aptitude: BrGlamorousButtonWithIconAptitude new
 					+ (BrGlamorousWithDropdownAptitude
 							handle: [ BrButton new
+									beSmallSize;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonWithLabelTooltipAptitude
 											- BrGlamorousButtonExteriorAptitude;
 									icon: BrGlamorousVectorIcons add ]
@@ -91,7 +105,7 @@ GtApCreatePostForm >> createButtonToolbar [
 
 { #category : #accessing }
 GtApCreatePostForm >> createEditor [
-	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousEditorAptitude
+	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousRegularEditorAptitude
 ]
 
 { #category : #accessing }
@@ -125,17 +139,33 @@ GtApCreatePostForm >> filesToEmbed [
 ]
 
 { #category : #accessing }
+GtApCreatePostForm >> hasPost [
+	^ self post isNotNil
+]
+
+{ #category : #accessing }
 GtApCreatePostForm >> initialize [
 	super initialize.
 	
 	files := OrderedCollection new.
 	fileRecords := OrderedCollection new.
 
-	self matchParent.
+	self hMatchParent.
+	self vFitContentLimited.
 	self padding: (BlInsets all: 8).
 
 	self addChild: self createEditor.
 	self addChild: self createButtonToolbar
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> post [
+	^ post
+]
+
+{ #category : #accessing }
+GtApCreatePostForm >> post: anObject [
+	post := anObject
 ]
 
 { #category : #accessing }

@@ -95,12 +95,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-11T00:24:18.630249+02:00"
+			"dateAndTimeString" : "2023-05-16T14:02:48.904455+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Browsing a user"
+		"title" : "Browsing a user from a dedicated snippet"
 	},
 	"uid" : {
 		"__type" : "uuid",
