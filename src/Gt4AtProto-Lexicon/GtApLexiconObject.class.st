@@ -91,7 +91,7 @@ GtApLexiconObject >> gtViewDefinitionReferencesFor: aView [
 	<gtView>
 	
 	^ aView mondrian
-		title: 'Definition References';
+		title: 'Definition references';
 		priority: 15;
 		painting: [ :view | 
 			self 

@@ -89,7 +89,7 @@ GtApLexiconDefinition >> gtJsonObjectFor: aView context: aContext [
 	<gtView>
 	
 	^ aView forward 
-		title: 'Raw Data';
+		title: 'Raw data';
 		priority: 40;
 		object: [ GtJson forJsonObject: rawData];
 		view: #gtJsonObjectFor:context:
@@ -100,7 +100,7 @@ GtApLexiconDefinition >> gtJsonStringFor: aView [
 	<gtView>
 	
 	^ aView forward 
-		title: 'JSON String';
+		title: 'JSON string';
 		priority: 50;
 		object: [ GtJson forJsonObject: rawData];
 		view: #gtJsonStringFor:

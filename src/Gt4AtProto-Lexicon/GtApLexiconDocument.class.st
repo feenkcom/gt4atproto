@@ -76,7 +76,7 @@ GtApLexiconDocument >> gtViewDocumentFileFor: aView [
 	
 	^ aView forward
 		priority: 2;
-		title: 'Document File';
+		title: 'Document file';
 		object: [ documentFile ];
 		view: #gtJsonFor:
 ]

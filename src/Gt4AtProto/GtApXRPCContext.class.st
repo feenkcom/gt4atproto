@@ -19,7 +19,7 @@ GtApXRPCContext >> addRequest: aRequest [
 GtApXRPCContext >> gtRequestHistoryFor: aView [
 	<gtView>
 	^ aView list
-		title: 'Request History';
+		title: 'Request history';
 		priority: 10;
 		items: [ self requestHistory ]
 ]
