@@ -53,7 +53,7 @@ TAppBskyActorDefsProfileViewDetailed >> gtCreatePostFor: aView [
 { #category : #accessing }
 TAppBskyActorDefsProfileViewDetailed >> gtDisplayOn: stream [
 	stream
-		nextPutAll: self atpDisplayName;
+		nextPutAll: (self atpDisplayName ifNil: ['']);
 		space;
 		nextPut: $@;
 		nextPutAll: self atpHandle

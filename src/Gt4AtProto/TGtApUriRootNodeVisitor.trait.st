@@ -16,11 +16,6 @@ TGtApUriRootNodeVisitor >> visitFragment: aFragment [
 ]
 
 { #category : #generated }
-TGtApUriRootNodeVisitor >> visitNsAuthority: aNsAuthority [
-	^ self visitRoot: aNsAuthority
-]
-
-{ #category : #generated }
 TGtApUriRootNodeVisitor >> visitNsId: aNsId [
 	^ self visitRoot: aNsId
 ]
