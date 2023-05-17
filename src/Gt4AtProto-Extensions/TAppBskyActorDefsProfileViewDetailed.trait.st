@@ -43,7 +43,7 @@ TAppBskyActorDefsProfileViewDetailed >> gtCreatePostFor: aView [
 	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
 
 	^ aView explicit
-		title: 'Create Post';
+		title: 'Create post';
 		priority: 20;
 		stencil: [ GtApCreatePostForm new
 				client: self client;

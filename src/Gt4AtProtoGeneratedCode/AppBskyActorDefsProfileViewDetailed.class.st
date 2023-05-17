@@ -255,6 +255,19 @@ AppBskyActorDefsProfileViewDetailed >> followsCountDescription [
 		accessor: #atpFollowsCount
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> gtCreatePostFor: aView [
+	<gtView>
+	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
+
+	^ aView explicit
+		title: 'Create post';
+		priority: 20;
+		stencil: [ GtApCreatePostForm new
+				client: self client;
+				actor: self ]
+]
+
 { #category : #magritte }
 AppBskyActorDefsProfileViewDetailed >> handleDescription [
 	<magritteDescription>
