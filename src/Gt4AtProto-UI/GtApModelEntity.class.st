@@ -11,6 +11,12 @@ Class {
 }
 
 { #category : #accessing }
+GtApModelEntity class >> allReferences [
+	^ (Pragma allNamed: 'atpType:format:' in: self)
+		collect: [ :aPragma | (aPragma argumentNamed: #atpType:) asClass ]
+]
+
+{ #category : #accessing }
 GtApModelEntity class >> atpFile [
 	^ self subclassResponsibility
 ]
@@ -23,6 +29,11 @@ GtApModelEntity class >> atpRecordName [
 { #category : #accessing }
 GtApModelEntity class >> atpSchema [
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtApModelEntity class >> customReferences [
+	^ self allReferences select: [ :aClass | aClass inheritsFrom: GtApModelEntity ]
 ]
 
 { #category : #accessing }
@@ -43,8 +54,83 @@ GtApModelEntity class >> fromRawData: aDictionary [
 ]
 
 { #category : #accessing }
+GtApModelEntity class >> gtViewDefinitionReferencesFor: aView [ 
+	<gtView>
+	<gtClassView>
+	
+	^ aView mondrian
+		title: 'Definition references';
+		priority: 15;
+		painting: [ :view | 
+			self 
+				paintDefinitionReferences: self withAllCustomReferences 
+				on: view ]
+]
+
+{ #category : #accessing }
 GtApModelEntity class >> methodId [
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtApModelEntity class >> paintDefinitionReferences: aCollectionOfDefinitions on: aView [
+	aView nodes
+		stencil: [ :aDefinition | 
+			| string container |
+			string := aDefinition atpRecordName.
+			container := BrVerticalPane new
+					fitContent;
+					margin: (BlInsets all: 10);
+					aptitude: BrShadowAptitude;
+					padding: (BlInsets all: 5);
+					background: (aDefinition == self
+							ifTrue: [ Color blue muchLighter ]
+							ifFalse: [ Color white ]).
+			(string findTokens: '#')
+				do: [ :token | 
+					container
+						addChild: (BrLabel new
+								aptitude: BrGlamorousLabelAptitude new;
+								text: token) ].
+			container ];
+		with: aCollectionOfDefinitions.
+
+	aView edges
+		stencil: [ :aDefinition :fromElement :toElement | 
+			| lineColor |
+			lineColor := Color gray alpha: 0.2.
+			fromElement = toElement
+				ifFalse: [ BlLineElement new
+						border: lineColor;
+						toHead: (BlArrowheadSimpleArrow new border: lineColor) ]
+				ifTrue: [ BlParabollaArcElement new
+						zIndex: 0;
+						curvatureFraction: 0.5;
+						border: lineColor;
+						toHead: (BlArrowheadSimpleArrow new border: lineColor) ] ];
+		connectToAll: [ :aDefinition | aDefinition customReferences ].
+
+	aView layout horizontalTree levelDistance: 30; nodeDistance: 10.
+
+	aView
+]
+
+{ #category : #accessing }
+GtApModelEntity class >> withAllCustomReferences [
+	| referencedObjects |
+	referencedObjects := OrderedCollection new.
+	self
+		withAllCustomReferencesDo: [ :aDefiniton | 
+			(referencedObjects includes: aDefiniton)
+				ifFalse: [ referencedObjects add: aDefiniton ] ].
+	^ referencedObjects
+]
+
+{ #category : #accessing }
+GtApModelEntity class >> withAllCustomReferencesDo: aBlock [
+	^ self 
+		withDeep: [ :aDefinition | aDefinition customReferences ] 
+		do: aBlock
 ]
 
 { #category : #accessing }
@@ -103,6 +189,13 @@ GtApModelEntity >> gtSchemaFor: aView [
 			action: [ :aButton | 
 				aButton phlow
 					spawnObject: 'atproto' asFileReference / 'lexicons' / self class atpFile ]
+]
+
+{ #category : #accessing }
+GtApModelEntity >> gtViewDefinitionReferencesFor: aView [ 
+	<gtView>
+	
+	^ self class gtViewDefinitionReferencesFor: aView
 ]
 
 { #category : #accessing }

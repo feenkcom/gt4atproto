@@ -40,7 +40,7 @@ ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -51,7 +51,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpName
 ]
 
@@ -62,7 +62,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> atpName: anObject [
 
 { #category : #accessing }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpPassword [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpPassword
 ]
 

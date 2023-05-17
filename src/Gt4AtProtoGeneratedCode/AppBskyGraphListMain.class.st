@@ -63,7 +63,7 @@ AppBskyGraphListMain >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -74,7 +74,7 @@ AppBskyGraphListMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpDescription [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
@@ -97,7 +97,7 @@ AppBskyGraphListMain >> atpDescriptionFacets: anObject [
 
 { #category : #accessing }
 AppBskyGraphListMain >> atpName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpName
 ]
 
@@ -109,6 +109,7 @@ AppBskyGraphListMain >> atpName: anObject [
 { #category : #accessing }
 AppBskyGraphListMain >> atpPurpose [
 	<referenceTo:'app.bsky.graph.defs#listPurpose'>
+	<atpType:#String format:nil>
 	^ atpPurpose
 ]
 

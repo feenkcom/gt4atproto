@@ -77,7 +77,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpBlobs: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -88,7 +88,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -112,6 +112,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpLabels: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpModeration [
 	<referenceTo:'#moderationDetail'>
+	<atpType:#ComAtprotoAdminDefsModerationDetail format:nil>
 	^ atpModeration
 ]
 
@@ -124,6 +125,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpModeration: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpRepo [
 	<referenceTo:'#repoView'>
+	<atpType:#ComAtprotoAdminDefsRepoView format:nil>
 	^ atpRepo
 ]
 
@@ -135,7 +137,7 @@ ComAtprotoAdminDefsRecordViewDetail >> atpRepo: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRecordViewDetail >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 

@@ -62,6 +62,7 @@ AppBskyRichtextFacetMain >> atpFeatures: anObject [
 { #category : #accessing }
 AppBskyRichtextFacetMain >> atpIndex [
 	<referenceTo:'#byteSlice'>
+	<atpType:#AppBskyRichtextFacetByteSlice format:nil>
 	^ atpIndex
 ]
 

@@ -47,7 +47,7 @@ AppBskyEmbedImagesImage >> altDescription [
 
 { #category : #accessing }
 AppBskyEmbedImagesImage >> atpAlt [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAlt
 ]
 

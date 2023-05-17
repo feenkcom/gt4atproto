@@ -70,7 +70,9 @@ GtApLexiconDefinitionReference >> generateGetterAs: aString [
 		, '
 	<referenceTo:''' , self referenceString
 		, '''>
-	^ ', aString
+	' , self typePragma
+		, '
+	^ ' , aString
 ]
 
 { #category : #accessing }

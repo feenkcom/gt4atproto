@@ -38,7 +38,7 @@ ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoRepoStrongRefMain >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoRepoStrongRefMain >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoStrongRefMain >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 

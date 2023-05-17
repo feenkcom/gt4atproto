@@ -42,7 +42,7 @@ ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -53,7 +53,7 @@ ComAtprotoSyncSubscribeReposMigrate >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpMigrateTo
 ]
 
@@ -75,7 +75,7 @@ ComAtprotoSyncSubscribeReposMigrate >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate >> atpTime [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 

@@ -49,7 +49,7 @@ ComAtprotoSyncSubscribeReposRepoOp >> actionDescription [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp >> atpAction [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAction
 ]
 
@@ -71,7 +71,7 @@ ComAtprotoSyncSubscribeReposRepoOp >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp >> atpPath [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpPath
 ]
 

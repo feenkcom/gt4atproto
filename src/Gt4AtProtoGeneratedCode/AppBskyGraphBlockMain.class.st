@@ -38,7 +38,7 @@ AppBskyGraphBlockMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyGraphBlockMain >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -49,7 +49,7 @@ AppBskyGraphBlockMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphBlockMain >> atpSubject [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpSubject
 ]
 

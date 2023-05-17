@@ -64,7 +64,7 @@ ComAtprotoServerDefsInviteCode >> atpAvailable: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpCode [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpCode
 ]
 
@@ -75,7 +75,7 @@ ComAtprotoServerDefsInviteCode >> atpCode: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -86,7 +86,7 @@ ComAtprotoServerDefsInviteCode >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpCreatedBy [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpCreatedBy
 ]
 
@@ -108,7 +108,7 @@ ComAtprotoServerDefsInviteCode >> atpDisabled: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode >> atpForAccount [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpForAccount
 ]
 

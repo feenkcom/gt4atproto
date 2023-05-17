@@ -38,7 +38,7 @@ ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposInfo >> atpMessage [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpMessage
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoSyncSubscribeReposInfo >> atpMessage: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposInfo >> atpName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpName
 ]
 

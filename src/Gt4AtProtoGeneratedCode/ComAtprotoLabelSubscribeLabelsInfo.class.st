@@ -38,7 +38,7 @@ ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo >> atpMessage [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpMessage
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoLabelSubscribeLabelsInfo >> atpMessage: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo >> atpName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpName
 ]
 

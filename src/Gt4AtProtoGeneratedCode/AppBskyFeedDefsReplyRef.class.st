@@ -45,6 +45,7 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpParent [
 	<referenceTo:'app.bsky.feed.defs#postView'>
+	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpParent
 ]
 
@@ -57,6 +58,7 @@ AppBskyFeedDefsReplyRef >> atpParent: anObject [
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpRoot [
 	<referenceTo:'app.bsky.feed.defs#postView'>
+	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpRoot
 ]
 

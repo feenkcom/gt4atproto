@@ -52,7 +52,7 @@ AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpAvatar [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAvatar
 ]
 
@@ -63,7 +63,7 @@ AppBskyActorDefsProfileViewBasic >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -74,7 +74,7 @@ AppBskyActorDefsProfileViewBasic >> atpDid: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpDisplayName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 
@@ -85,7 +85,7 @@ AppBskyActorDefsProfileViewBasic >> atpDisplayName: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpHandle [
-	<atpType:'string' format:'handle'>
+	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
@@ -109,6 +109,7 @@ AppBskyActorDefsProfileViewBasic >> atpLabels: anObject [
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpViewer [
 	<referenceTo:'#viewerState'>
+	<atpType:#AppBskyActorDefsViewerState format:nil>
 	^ atpViewer
 ]
 

@@ -40,7 +40,7 @@ ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -51,7 +51,7 @@ ComAtprotoAdminDefsActionReversal >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atpCreatedBy [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
@@ -62,7 +62,7 @@ ComAtprotoAdminDefsActionReversal >> atpCreatedBy: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionReversal >> atpReason [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpReason
 ]
 

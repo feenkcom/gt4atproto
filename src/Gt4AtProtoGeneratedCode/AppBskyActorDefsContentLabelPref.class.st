@@ -38,7 +38,7 @@ AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyActorDefsContentLabelPref >> atpLabel [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpLabel
 ]
 
@@ -49,7 +49,7 @@ AppBskyActorDefsContentLabelPref >> atpLabel: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsContentLabelPref >> atpVisibility [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpVisibility
 ]
 

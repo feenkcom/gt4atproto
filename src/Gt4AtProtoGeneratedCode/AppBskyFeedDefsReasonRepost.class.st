@@ -42,6 +42,7 @@ AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyFeedDefsReasonRepost >> atpBy [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
+	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpBy
 ]
 
@@ -53,7 +54,7 @@ AppBskyFeedDefsReasonRepost >> atpBy: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsReasonRepost >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 

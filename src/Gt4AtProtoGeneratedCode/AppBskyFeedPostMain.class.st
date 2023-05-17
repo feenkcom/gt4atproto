@@ -65,7 +65,7 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -112,6 +112,7 @@ AppBskyFeedPostMain >> atpFacets: anObject [
 { #category : #accessing }
 AppBskyFeedPostMain >> atpReply [
 	<referenceTo:'#replyRef'>
+	<atpType:#AppBskyFeedPostReplyRef format:nil>
 	^ atpReply
 ]
 
@@ -123,7 +124,7 @@ AppBskyFeedPostMain >> atpReply: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpText [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpText
 ]
 

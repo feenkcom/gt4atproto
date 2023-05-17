@@ -51,6 +51,7 @@ ComAtprotoAdminDefsActionViewCurrent >> actionDescription [
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewCurrent >> atpAction [
 	<referenceTo:'#actionType'>
+	<atpType:#String format:nil>
 	^ atpAction
 ]
 

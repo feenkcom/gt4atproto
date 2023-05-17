@@ -73,6 +73,7 @@ AppBskyFeedDefsThreadViewPost >> atpParent: anObject [
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost >> atpPost [
 	<referenceTo:'#postView'>
+	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpPost
 ]
 

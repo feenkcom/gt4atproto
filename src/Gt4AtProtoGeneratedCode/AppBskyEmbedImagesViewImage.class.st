@@ -51,7 +51,7 @@ AppBskyEmbedImagesViewImage >> altDescription [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpAlt [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAlt
 ]
 
@@ -62,7 +62,7 @@ AppBskyEmbedImagesViewImage >> atpAlt: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpFullsize [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpFullsize
 ]
 
@@ -73,7 +73,7 @@ AppBskyEmbedImagesViewImage >> atpFullsize: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpThumb [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpThumb
 ]
 

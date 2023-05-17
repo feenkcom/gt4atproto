@@ -90,6 +90,7 @@ ComAtprotoAdminDefsActionView >> actionDescription [
 { #category : #accessing }
 ComAtprotoAdminDefsActionView >> atpAction [
 	<referenceTo:'#actionType'>
+	<atpType:#String format:nil>
 	^ atpAction
 ]
 
@@ -113,7 +114,7 @@ ComAtprotoAdminDefsActionView >> atpCreateLabelVals: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionView >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -124,7 +125,7 @@ ComAtprotoAdminDefsActionView >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionView >> atpCreatedBy [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
@@ -158,7 +159,7 @@ ComAtprotoAdminDefsActionView >> atpNegateLabelVals: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionView >> atpReason [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpReason
 ]
 
@@ -182,6 +183,7 @@ ComAtprotoAdminDefsActionView >> atpResolvedReportIds: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsActionView >> atpReversal [
 	<referenceTo:'#actionReversal'>
+	<atpType:#ComAtprotoAdminDefsActionReversal format:nil>
 	^ atpReversal
 ]
 

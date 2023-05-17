@@ -60,7 +60,7 @@ ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -82,7 +82,7 @@ ComAtprotoAdminDefsReportView >> atpId: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpReason [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpReason
 ]
 
@@ -94,6 +94,7 @@ ComAtprotoAdminDefsReportView >> atpReason: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpReasonType [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
+	<atpType:#String format:nil>
 	^ atpReasonType
 ]
 
@@ -105,7 +106,7 @@ ComAtprotoAdminDefsReportView >> atpReasonType: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpReportedBy [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpReportedBy
 ]
 

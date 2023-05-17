@@ -40,6 +40,7 @@ ComAtprotoAdminDefsModeration class >> fromRequest: aRequest [
 { #category : #accessing }
 ComAtprotoAdminDefsModeration >> atpCurrentAction [
 	<referenceTo:'#actionViewCurrent'>
+	<atpType:#ComAtprotoAdminDefsActionViewCurrent format:nil>
 	^ atpCurrentAction
 ]
 

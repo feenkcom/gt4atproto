@@ -43,7 +43,7 @@ ComAtprotoRepoApplyWritesUpdate class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesUpdate >> atpCollection [
-	<atpType:'string' format:'nsid'>
+	<atpType:#String format:'nsid'>
 	^ atpCollection
 ]
 
@@ -54,7 +54,7 @@ ComAtprotoRepoApplyWritesUpdate >> atpCollection: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesUpdate >> atpRkey [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpRkey
 ]
 

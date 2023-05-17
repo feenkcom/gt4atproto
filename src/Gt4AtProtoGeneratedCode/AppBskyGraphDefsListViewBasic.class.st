@@ -52,7 +52,7 @@ AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpAvatar [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAvatar
 ]
 
@@ -63,7 +63,7 @@ AppBskyGraphDefsListViewBasic >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -74,7 +74,7 @@ AppBskyGraphDefsListViewBasic >> atpIndexedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpName
 ]
 
@@ -86,6 +86,7 @@ AppBskyGraphDefsListViewBasic >> atpName: anObject [
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpPurpose [
 	<referenceTo:'#listPurpose'>
+	<atpType:#String format:nil>
 	^ atpPurpose
 ]
 
@@ -97,7 +98,7 @@ AppBskyGraphDefsListViewBasic >> atpPurpose: anObject [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
@@ -109,6 +110,7 @@ AppBskyGraphDefsListViewBasic >> atpUri: anObject [
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpViewer [
 	<referenceTo:'#listViewerState'>
+	<atpType:#AppBskyGraphDefsListViewerState format:nil>
 	^ atpViewer
 ]
 

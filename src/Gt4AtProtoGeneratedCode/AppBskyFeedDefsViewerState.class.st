@@ -38,7 +38,7 @@ AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedDefsViewerState >> atpLike [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpLike
 ]
 
@@ -49,7 +49,7 @@ AppBskyFeedDefsViewerState >> atpLike: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsViewerState >> atpRepost [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpRepost
 ]
 

@@ -43,7 +43,7 @@ ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -54,7 +54,7 @@ ComAtprotoRepoListRecordsRecord >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 

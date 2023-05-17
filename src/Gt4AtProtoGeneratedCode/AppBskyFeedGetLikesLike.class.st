@@ -53,6 +53,7 @@ AppBskyFeedGetLikesLike >> actorDescription [
 { #category : #accessing }
 AppBskyFeedGetLikesLike >> atpActor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
+	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpActor
 ]
 
@@ -64,7 +65,7 @@ AppBskyFeedGetLikesLike >> atpActor: anObject [
 
 { #category : #accessing }
 AppBskyFeedGetLikesLike >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -75,7 +76,7 @@ AppBskyFeedGetLikesLike >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyFeedGetLikesLike >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 

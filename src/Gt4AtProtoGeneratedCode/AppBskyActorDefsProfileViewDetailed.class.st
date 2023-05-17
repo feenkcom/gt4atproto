@@ -66,7 +66,7 @@ AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpAvatar [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAvatar
 ]
 
@@ -77,7 +77,7 @@ AppBskyActorDefsProfileViewDetailed >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpBanner [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpBanner
 ]
 
@@ -88,7 +88,7 @@ AppBskyActorDefsProfileViewDetailed >> atpBanner: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpDescription [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
@@ -99,7 +99,7 @@ AppBskyActorDefsProfileViewDetailed >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -110,7 +110,7 @@ AppBskyActorDefsProfileViewDetailed >> atpDid: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpDisplayName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 
@@ -143,7 +143,7 @@ AppBskyActorDefsProfileViewDetailed >> atpFollowsCount: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpHandle [
-	<atpType:'string' format:'handle'>
+	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
@@ -154,7 +154,7 @@ AppBskyActorDefsProfileViewDetailed >> atpHandle: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -189,6 +189,7 @@ AppBskyActorDefsProfileViewDetailed >> atpPostsCount: anObject [
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpViewer [
 	<referenceTo:'#viewerState'>
+	<atpType:#AppBskyActorDefsViewerState format:nil>
 	^ atpViewer
 ]
 
@@ -253,19 +254,6 @@ AppBskyActorDefsProfileViewDetailed >> followsCountDescription [
 	^ MANumberDescription new
 		label: 'FollowsCount';
 		accessor: #atpFollowsCount
-]
-
-{ #category : #accessing }
-AppBskyActorDefsProfileViewDetailed >> gtCreatePostFor: aView [
-	<gtView>
-	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
-
-	^ aView explicit
-		title: 'Create post';
-		priority: 20;
-		stencil: [ GtApCreatePostForm new
-				client: self client;
-				actor: self ]
 ]
 
 { #category : #magritte }

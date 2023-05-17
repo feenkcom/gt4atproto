@@ -44,6 +44,7 @@ AppBskyFeedPostEntity class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyFeedPostEntity >> atpIndex [
 	<referenceTo:'#textSlice'>
+	<atpType:#AppBskyFeedPostTextSlice format:nil>
 	^ atpIndex
 ]
 
@@ -55,7 +56,7 @@ AppBskyFeedPostEntity >> atpIndex: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostEntity >> atpType [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpType
 ]
 
@@ -66,7 +67,7 @@ AppBskyFeedPostEntity >> atpType: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostEntity >> atpValue [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpValue
 ]
 

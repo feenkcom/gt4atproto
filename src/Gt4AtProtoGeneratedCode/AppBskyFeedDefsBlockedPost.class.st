@@ -49,7 +49,7 @@ AppBskyFeedDefsBlockedPost >> atpBlocked: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 

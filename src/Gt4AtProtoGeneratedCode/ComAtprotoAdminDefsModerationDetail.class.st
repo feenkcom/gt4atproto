@@ -72,6 +72,7 @@ ComAtprotoAdminDefsModerationDetail >> atpActions: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsModerationDetail >> atpCurrentAction [
 	<referenceTo:'#actionViewCurrent'>
+	<atpType:#ComAtprotoAdminDefsActionViewCurrent format:nil>
 	^ atpCurrentAction
 ]
 

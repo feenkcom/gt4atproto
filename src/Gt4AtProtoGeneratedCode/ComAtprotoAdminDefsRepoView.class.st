@@ -59,7 +59,7 @@ ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -70,7 +70,7 @@ ComAtprotoAdminDefsRepoView >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpEmail [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpEmail
 ]
 
@@ -81,7 +81,7 @@ ComAtprotoAdminDefsRepoView >> atpEmail: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpHandle [
-	<atpType:'string' format:'handle'>
+	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
@@ -92,7 +92,7 @@ ComAtprotoAdminDefsRepoView >> atpHandle: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -104,6 +104,7 @@ ComAtprotoAdminDefsRepoView >> atpIndexedAt: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpInvitedBy [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
+	<atpType:#ComAtprotoServerDefsInviteCode format:nil>
 	^ atpInvitedBy
 ]
 
@@ -127,6 +128,7 @@ ComAtprotoAdminDefsRepoView >> atpInvitesDisabled: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsRepoView >> atpModeration [
 	<referenceTo:'#moderation'>
+	<atpType:#ComAtprotoAdminDefsModeration format:nil>
 	^ atpModeration
 ]
 

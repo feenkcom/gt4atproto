@@ -40,6 +40,7 @@ AppBskyEmbedRecordMain class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyEmbedRecordMain >> atpRecord [
 	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpRecord
 ]
 

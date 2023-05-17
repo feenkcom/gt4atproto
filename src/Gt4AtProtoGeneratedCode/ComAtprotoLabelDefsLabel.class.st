@@ -46,7 +46,7 @@ ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -57,7 +57,7 @@ ComAtprotoLabelDefsLabel >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpCts [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCts
 ]
 
@@ -79,7 +79,7 @@ ComAtprotoLabelDefsLabel >> atpNeg: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpSrc [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpSrc
 ]
 
@@ -90,7 +90,7 @@ ComAtprotoLabelDefsLabel >> atpSrc: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpUri [
-	<atpType:'string' format:'uri'>
+	<atpType:#String format:'uri'>
 	^ atpUri
 ]
 
@@ -101,7 +101,7 @@ ComAtprotoLabelDefsLabel >> atpUri: anObject [
 
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpVal [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpVal
 ]
 

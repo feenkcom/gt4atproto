@@ -45,6 +45,7 @@ AppBskyFeedPostReplyRef class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyFeedPostReplyRef >> atpParent [
 	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpParent
 ]
 
@@ -57,6 +58,7 @@ AppBskyFeedPostReplyRef >> atpParent: anObject [
 { #category : #accessing }
 AppBskyFeedPostReplyRef >> atpRoot [
 	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpRoot
 ]
 

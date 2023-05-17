@@ -68,6 +68,7 @@ AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
+	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpAuthor
 ]
 
@@ -79,7 +80,7 @@ AppBskyEmbedRecordViewRecord >> atpAuthor: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -102,7 +103,7 @@ AppBskyEmbedRecordViewRecord >> atpEmbeds: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -125,7 +126,7 @@ AppBskyEmbedRecordViewRecord >> atpLabels: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 

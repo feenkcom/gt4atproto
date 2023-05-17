@@ -56,7 +56,7 @@ AppBskyActorDefsProfileView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpAvatar [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAvatar
 ]
 
@@ -67,7 +67,7 @@ AppBskyActorDefsProfileView >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpDescription [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
@@ -78,7 +78,7 @@ AppBskyActorDefsProfileView >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -89,7 +89,7 @@ AppBskyActorDefsProfileView >> atpDid: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpDisplayName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 
@@ -100,7 +100,7 @@ AppBskyActorDefsProfileView >> atpDisplayName: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpHandle [
-	<atpType:'string' format:'handle'>
+	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
@@ -111,7 +111,7 @@ AppBskyActorDefsProfileView >> atpHandle: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -135,6 +135,7 @@ AppBskyActorDefsProfileView >> atpLabels: anObject [
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpViewer [
 	<referenceTo:'#viewerState'>
+	<atpType:#AppBskyActorDefsViewerState format:nil>
 	^ atpViewer
 ]
 

@@ -38,7 +38,7 @@ ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpUsedAt
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoServerDefsInviteCodeUse >> atpUsedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedBy [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpUsedBy
 ]
 

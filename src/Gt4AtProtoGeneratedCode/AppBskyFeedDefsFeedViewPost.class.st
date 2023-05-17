@@ -54,6 +54,7 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpPost [
 	<referenceTo:'app.bsky.feed.defs#postView'>
+	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpPost
 ]
 
@@ -77,6 +78,7 @@ AppBskyFeedDefsFeedViewPost >> atpReason: anObject [
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpReply [
 	<referenceTo:'#replyRef'>
+	<atpType:#AppBskyFeedDefsReplyRef format:nil>
 	^ atpReply
 ]
 

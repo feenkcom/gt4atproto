@@ -60,7 +60,7 @@ AppBskyActorDefsViewerState >> atpBlockedBy: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpBlocking [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpBlocking
 ]
 
@@ -71,7 +71,7 @@ AppBskyActorDefsViewerState >> atpBlocking: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpFollowedBy [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpFollowedBy
 ]
 
@@ -82,7 +82,7 @@ AppBskyActorDefsViewerState >> atpFollowedBy: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpFollowing [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpFollowing
 ]
 
@@ -105,6 +105,7 @@ AppBskyActorDefsViewerState >> atpMuted: anObject [
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpMutedByList [
 	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
+	<atpType:#AppBskyGraphDefsListViewBasic format:nil>
 	^ atpMutedByList
 ]
 

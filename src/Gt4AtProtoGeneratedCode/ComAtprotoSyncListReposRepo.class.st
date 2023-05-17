@@ -38,7 +38,7 @@ ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoSyncListReposRepo >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoSyncListReposRepo >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncListReposRepo >> atpHead [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpHead
 ]
 

@@ -42,7 +42,7 @@ ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -53,7 +53,7 @@ ComAtprotoSyncSubscribeReposHandle >> atpDid: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpHandle [
-	<atpType:'string' format:'handle'>
+	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
@@ -75,7 +75,7 @@ ComAtprotoSyncSubscribeReposHandle >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposHandle >> atpTime [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 

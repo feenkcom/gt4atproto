@@ -38,7 +38,7 @@ ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete >> atpCollection [
-	<atpType:'string' format:'nsid'>
+	<atpType:#String format:'nsid'>
 	^ atpCollection
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoRepoApplyWritesDelete >> atpCollection: anObject [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete >> atpRkey [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpRkey
 ]
 

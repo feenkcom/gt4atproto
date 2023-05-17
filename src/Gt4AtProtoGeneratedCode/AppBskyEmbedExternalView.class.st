@@ -42,6 +42,7 @@ AppBskyEmbedExternalView class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyEmbedExternalView >> atpExternal [
 	<referenceTo:'#viewExternal'>
+	<atpType:#AppBskyEmbedExternalViewExternal format:nil>
 	^ atpExternal
 ]
 

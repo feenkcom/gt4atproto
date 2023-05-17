@@ -42,7 +42,7 @@ AppBskyEmbedExternalViewExternal class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpDescription [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
@@ -53,7 +53,7 @@ AppBskyEmbedExternalViewExternal >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpThumb [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpThumb
 ]
 
@@ -64,7 +64,7 @@ AppBskyEmbedExternalViewExternal >> atpThumb: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpTitle [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpTitle
 ]
 
@@ -75,7 +75,7 @@ AppBskyEmbedExternalViewExternal >> atpTitle: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpUri [
-	<atpType:'string' format:'uri'>
+	<atpType:#String format:'uri'>
 	^ atpUri
 ]
 

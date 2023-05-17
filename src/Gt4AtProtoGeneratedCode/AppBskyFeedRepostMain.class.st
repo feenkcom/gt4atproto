@@ -41,7 +41,7 @@ AppBskyFeedRepostMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedRepostMain >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -53,6 +53,7 @@ AppBskyFeedRepostMain >> atpCreatedAt: anObject [
 { #category : #accessing }
 AppBskyFeedRepostMain >> atpSubject [
 	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpSubject
 ]
 

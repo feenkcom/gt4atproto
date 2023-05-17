@@ -39,7 +39,7 @@ GtApLexiconString >> generateDescriptorFor: aString usingPrefix: aPrefix isRequi
 
 { #category : #accessing }
 GtApLexiconString >> typePragma [
-	^ '<atpType:''string'' format:'
+	^ '<atpType:#String format:'
 		, (self rawData
 				at: 'format'
 				ifPresent: [ :aFormat | '''' , aFormat , '''' ]

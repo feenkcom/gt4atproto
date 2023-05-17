@@ -38,7 +38,7 @@ ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpPrivacyPolicy
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atpTermsOfService [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpTermsOfService
 ]
 

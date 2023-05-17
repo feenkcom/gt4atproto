@@ -59,6 +59,7 @@ AppBskyEmbedRecordWithMediaView >> atpMedia: anObject [
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView >> atpRecord [
 	<referenceTo:'app.bsky.embed.record#view'>
+	<atpType:#AppBskyEmbedRecordView format:nil>
 	^ atpRecord
 ]
 

@@ -41,7 +41,7 @@ AppBskyFeedLikeMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedLikeMain >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -53,6 +53,7 @@ AppBskyFeedLikeMain >> atpCreatedAt: anObject [
 { #category : #accessing }
 AppBskyFeedLikeMain >> atpSubject [
 	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpSubject
 ]
 

@@ -40,6 +40,7 @@ AppBskyGraphDefsListItemView class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyGraphDefsListItemView >> atpSubject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
+	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpSubject
 ]
 

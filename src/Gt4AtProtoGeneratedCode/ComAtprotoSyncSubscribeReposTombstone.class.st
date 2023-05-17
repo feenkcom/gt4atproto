@@ -40,7 +40,7 @@ ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
@@ -62,7 +62,7 @@ ComAtprotoSyncSubscribeReposTombstone >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone >> atpTime [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 

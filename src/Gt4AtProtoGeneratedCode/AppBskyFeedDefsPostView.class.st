@@ -77,6 +77,7 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
+	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpAuthor
 ]
 
@@ -88,7 +89,7 @@ AppBskyFeedDefsPostView >> atpAuthor: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -110,7 +111,7 @@ AppBskyFeedDefsPostView >> atpEmbed: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -177,7 +178,7 @@ AppBskyFeedDefsPostView >> atpRepostCount: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
@@ -189,6 +190,7 @@ AppBskyFeedDefsPostView >> atpUri: anObject [
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpViewer [
 	<referenceTo:'#viewerState'>
+	<atpType:#AppBskyFeedDefsViewerState format:nil>
 	^ atpViewer
 ]
 

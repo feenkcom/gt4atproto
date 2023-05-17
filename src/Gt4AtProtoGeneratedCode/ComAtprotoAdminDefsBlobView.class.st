@@ -55,7 +55,7 @@ ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -66,7 +66,7 @@ ComAtprotoAdminDefsBlobView >> atpCid: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -88,7 +88,7 @@ ComAtprotoAdminDefsBlobView >> atpDetails: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpMimeType [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpMimeType
 ]
 
@@ -100,6 +100,7 @@ ComAtprotoAdminDefsBlobView >> atpMimeType: anObject [
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpModeration [
 	<referenceTo:'#moderation'>
+	<atpType:#ComAtprotoAdminDefsModeration format:nil>
 	^ atpModeration
 ]
 

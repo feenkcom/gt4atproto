@@ -40,7 +40,7 @@ AppBskyGraphListitemMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyGraphListitemMain >> atpCreatedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
@@ -51,7 +51,7 @@ AppBskyGraphListitemMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyGraphListitemMain >> atpList [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpList
 ]
 
@@ -62,7 +62,7 @@ AppBskyGraphListitemMain >> atpList: anObject [
 
 { #category : #accessing }
 AppBskyGraphListitemMain >> atpSubject [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpSubject
 ]
 

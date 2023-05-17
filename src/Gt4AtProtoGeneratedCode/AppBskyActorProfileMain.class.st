@@ -66,7 +66,7 @@ AppBskyActorProfileMain >> atpBanner: anObject [
 
 { #category : #accessing }
 AppBskyActorProfileMain >> atpDescription [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
@@ -77,7 +77,7 @@ AppBskyActorProfileMain >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyActorProfileMain >> atpDisplayName [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 

@@ -36,7 +36,7 @@ AppBskyRichtextFacetMention class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyRichtextFacetMention >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 

@@ -130,7 +130,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpRebase: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpRepo [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpRepo
 ]
 
@@ -152,7 +152,7 @@ ComAtprotoSyncSubscribeReposCommit >> atpSeq: anObject [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpTime [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 

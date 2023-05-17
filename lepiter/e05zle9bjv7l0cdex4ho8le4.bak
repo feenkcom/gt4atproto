@@ -45,7 +45,42 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T13:40:03.547378+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-16T13:40:04.226172+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "8+LkxC+4DQCHHm7IBR1CCw=="
+							},
+							"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -138,7 +173,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T13:39:45.06383+02:00"
+						"dateAndTimeString" : "2023-05-16T23:14:41.475464+02:00"
 					}
 				},
 				"uid" : {
@@ -148,47 +183,13 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The repo be cloned locally in an `atproto` directory:"
+				"string" : "The repo should be cloned locally in an `atproto` directory:"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T13:40:03.547378+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T13:40:04.226172+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "8+LkxC+4DQCHHm7IBR1CCw=="
-							},
-							"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
-						},
 						{
 							"__type" : "pharoSnippet",
 							"children" : {
@@ -328,7 +329,7 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2023-05-16T23:00:16.479058+02:00"
+												"dateAndTimeString" : "2023-05-17T11:19:09.980762+02:00"
 											}
 										},
 										"uid" : {

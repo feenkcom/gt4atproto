@@ -62,6 +62,7 @@ AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
+	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpAuthor
 ]
 
@@ -73,7 +74,7 @@ AppBskyNotificationListNotificationsNotification >> atpAuthor: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpCid [
-	<atpType:'string' format:'cid'>
+	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
@@ -84,7 +85,7 @@ AppBskyNotificationListNotificationsNotification >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpIndexedAt [
-	<atpType:'string' format:'datetime'>
+	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
@@ -118,7 +119,7 @@ AppBskyNotificationListNotificationsNotification >> atpLabels: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpReason [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpReason
 ]
 
@@ -129,7 +130,7 @@ AppBskyNotificationListNotificationsNotification >> atpReason: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpReasonSubject [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpReasonSubject
 ]
 
@@ -151,7 +152,7 @@ AppBskyNotificationListNotificationsNotification >> atpRecord: anObject [
 
 { #category : #accessing }
 AppBskyNotificationListNotificationsNotification >> atpUri [
-	<atpType:'string' format:'at-uri'>
+	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 

@@ -50,7 +50,7 @@ ComAtprotoServerCreateInviteCodesAccountCodes >> accountDescription [
 
 { #category : #accessing }
 ComAtprotoServerCreateInviteCodesAccountCodes >> atpAccount [
-	<atpType:'string' format:nil>
+	<atpType:#String format:nil>
 	^ atpAccount
 ]
 

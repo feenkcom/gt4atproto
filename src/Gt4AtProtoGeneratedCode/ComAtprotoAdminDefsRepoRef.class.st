@@ -36,7 +36,7 @@ ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoRef >> atpDid [
-	<atpType:'string' format:'did'>
+	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
