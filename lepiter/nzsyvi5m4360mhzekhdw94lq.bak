@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T20:00:14.795885+02:00"
+						"dateAndTimeString" : "2023-05-17T05:06:33.212824+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "dVjp0TC4DQCnsDT9BR1CCw=="
 				},
-				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'YOUR HANDLE'.\npassword := Clipboard clipboardText asString \"app password\""
+				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'tudorgirba.com'.\npassword := Clipboard clipboardText asString \"app password\""
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T15:18:24.623201+02:00"
+						"dateAndTimeString" : "2023-05-17T12:43:05.416029+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "aUNIzjC4DQCnftJKBR1CCw=="
 				},
-				"code" : "(generatedClient appBskyActorGetProfileactor: handle) client: generatedClient"
+				"code" : "(generatedClient appBskyActorGetProfileActor: handle) client: generatedClient"
 			}
 		]
 	},

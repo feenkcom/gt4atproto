@@ -54,6 +54,22 @@ GtApModelEntity class >> fromRawData: aDictionary [
 ]
 
 { #category : #accessing }
+GtApModelEntity class >> gtSchemaFor: aView [
+	<gtView>
+	<gtClassView>
+	^ aView forward
+		title: 'Schema';
+		priority: 51;
+		object: [ GtJson forJsonString: self atpSchema ];
+		view: #gtJsonStringFor:;
+		actionButtonIcon: BrGlamorousVectorIcons note
+			tooltip: 'Browse schema file'
+			action: [ :aButton | 
+				aButton phlow
+					spawnObject: 'atproto' asFileReference / 'lexicons' / self atpFile ]
+]
+
+{ #category : #accessing }
 GtApModelEntity class >> gtViewDefinitionReferencesFor: aView [ 
 	<gtView>
 	<gtClassView>
@@ -75,24 +91,26 @@ GtApModelEntity class >> methodId [
 { #category : #accessing }
 GtApModelEntity class >> paintDefinitionReferences: aCollectionOfDefinitions on: aView [
 	aView nodes
-		stencil: [ :aDefinition | 
+		stencil: [ :aClass | 
 			| string container |
-			string := aDefinition atpRecordName.
+			string := aClass atpRecordName.
 			container := BrVerticalPane new
 					fitContent;
 					margin: (BlInsets all: 10);
 					aptitude: BrShadowAptitude;
 					padding: (BlInsets all: 5);
-					background: (aDefinition == self
-							ifTrue: [ Color blue muchLighter ]
-							ifFalse: [ Color white ]).
+					background: (aClass == self ifTrue: [ Color blue muchLighter ] ifFalse: [ Color white ]).
 			(string findTokens: '#')
 				do: [ :token | 
 					container
 						addChild: (BrLabel new
 								aptitude: BrGlamorousLabelAptitude new;
 								text: token) ].
-			container ];
+			container
+				when: BlClickEvent
+				do: [ :e | 
+					e consumed: true.
+					e target phlow spawnTool: (GtClassCoderTool forClass: aClass) ] ];
 		with: aCollectionOfDefinitions.
 
 	aView edges
@@ -110,7 +128,9 @@ GtApModelEntity class >> paintDefinitionReferences: aCollectionOfDefinitions on:
 						toHead: (BlArrowheadSimpleArrow new border: lineColor) ] ];
 		connectToAll: [ :aDefinition | aDefinition customReferences ].
 
-	aView layout horizontalTree levelDistance: 30; nodeDistance: 10.
+	aView layout horizontalTree
+		levelDistance: 30;
+		nodeDistance: 10.
 
 	aView
 ]
@@ -179,16 +199,12 @@ GtApModelEntity >> gtRawDataFor: aView [
 { #category : #accessing }
 GtApModelEntity >> gtSchemaFor: aView [
 	<gtView>
+	<gtClassView>
 	^ aView forward
 		title: 'Schema';
 		priority: 51;
-		object: [ GtJson forJsonString: self class atpSchema ];
-		view: #gtJsonStringFor:;
-		actionButtonIcon: BrGlamorousVectorIcons note
-			tooltip: 'Browse schema file'
-			action: [ :aButton | 
-				aButton phlow
-					spawnObject: 'atproto' asFileReference / 'lexicons' / self class atpFile ]
+		object: [ self class ];
+		view: #gtSchemaFor:
 ]
 
 { #category : #accessing }
