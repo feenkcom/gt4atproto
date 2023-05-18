@@ -107,12 +107,18 @@ GtApCreatePostForm >> createButtonToolbar [
 
 { #category : #accessing }
 GtApCreatePostForm >> createEditor [
-	^ editorElement := BrEditor new matchParent aptitude: BrGlamorousRegularEditorAptitude
+	^ editorElement := BrEditor new
+			hMatchParent;
+			vFitContentLimited;
+			aptitude: BrGlamorousRegularEditorAptitude
 ]
 
 { #category : #accessing }
 GtApCreatePostForm >> createImageContainer [
-	^ imageContainer := BrHorizontalPane new hMatchParent vExact: 200
+	^ imageContainer := BrHorizontalPane new
+			hMatchParent;
+			vExact: 200;
+			visibility: BlVisibility gone
 ]
 
 { #category : #accessing }
@@ -179,7 +185,7 @@ GtApCreatePostForm >> post: anObject [
 { #category : #accessing }
 GtApCreatePostForm >> updateFileContainer [
 	imageContainer removeChildren.
-
+	imageContainer visibility: BlVisibility visible.
 	self files
 		do: [ :aFile | 
 			imageContainer
