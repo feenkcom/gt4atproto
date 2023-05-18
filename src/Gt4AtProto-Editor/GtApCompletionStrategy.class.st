@@ -2,12 +2,12 @@ Class {
 	#name : #GtApCompletionStrategy,
 	#superclass : #GtJSONCompletionStrategy,
 	#instVars : [
-		'lexicons'
+		'lexiconFile'
 	],
 	#classVars : [
 		'Encodings'
 	],
-	#category : #'Gt4AtProto-Lepiter-Completion'
+	#category : #'Gt4AtProto-Editor-Completion'
 }
 
 { #category : #accessing }
@@ -233,13 +233,18 @@ GtApCompletionStrategy >> initialize [
 ]
 
 { #category : #accessing }
-GtApCompletionStrategy >> lexicons [
-	^ lexicons
+GtApCompletionStrategy >> lexiconFile [
+	^ lexiconFile
 ]
 
 { #category : #accessing }
-GtApCompletionStrategy >> lexicons: anObject [
-	lexicons := anObject
+GtApCompletionStrategy >> lexiconFile: anObject [
+	lexiconFile := anObject
+]
+
+{ #category : #accessing }
+GtApCompletionStrategy >> lexicons [
+	^ lexiconFile lexicons
 ]
 
 { #category : #initialization }
@@ -250,16 +255,15 @@ GtApCompletionStrategy >> referencesStartingWith: aString [
 		ifTrue: [ | key |
 			key := aString allButFirst.
 			stream := stream
-					merge: (((((ast / JSONMemberNode) @ #name <- '"defs"') / JSONObjectNode
-							/ JSONMemberNode) asOrderedCollection
+					merge: (((lexiconFile definitionNodesIn: ast) asOrderedCollection
 							collect: [ :each | '#' , each name source allButFirst allButLast ])
 							select: [ :each | key isEmpty or: [ each beginsWith: key ] ])
 							asAsyncStream ].
-	lexicons
+	self lexicons
 		ifNotNil: [ | key |
 			key := aString allButFirst.
 			stream := stream
-					merge: (lexicons definitions keys
+					merge: (self lexicons definitions keys
 							select: [ :each | key isEmpty or: [ each beginsWith: key ] ])
 							asAsyncStream ].
 	^ stream
