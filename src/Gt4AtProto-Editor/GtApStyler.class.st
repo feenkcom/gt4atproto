@@ -24,6 +24,15 @@ GtApStyler >> editorForNode: aNode [
 	^ editor
 ]
 
+{ #category : #private }
+GtApStyler >> highlight: aNodeOrToken in: txt [
+	txt
+		attribute: (BlTextHighlightAttribute new
+				paint: BrGlamorousColors neutralBackgroundColor)
+		from: aNodeOrToken startPosition + 1
+		to: aNodeOrToken stopPosition - 1
+]
+
 { #category : #initialization }
 GtApStyler >> initialize [
 	super initialize.
@@ -54,6 +63,24 @@ GtApStyler >> lexiconFile: anObject [
 { #category : #accessing }
 GtApStyler >> lexicons [
 	^ lexiconFile lexicons
+]
+
+{ #category : #private }
+GtApStyler >> shouldHighlightName: aMemberNode [
+	(aMemberNode parent isKindOf: JSONObjectNode) ifFalse: [ ^ false ].
+	(aMemberNode parent parent isKindOf: JSONMemberNode)
+		ifTrue: [ ^ #('"defs"' '"properties"') includes: aMemberNode parent parent name value ].
+	^ false
+]
+
+{ #category : #private }
+GtApStyler >> shouldHighlightString: aStringNode [
+	(aStringNode parent isKindOf: JSONMemberNode)
+		ifTrue: [ ^ #('"id"') includes: aStringNode parent name value ].
+	((aStringNode parent isKindOf: JSONArrayNode)
+		and: [ aStringNode parent parent isKindOf: JSONMemberNode ])
+		ifTrue: [ ^ #('"required"') includes: aStringNode parent parent name value ].
+	^ false
 ]
 
 { #category : #accessing }
@@ -88,6 +115,7 @@ GtApStyler >> styleReference: aStringNode in: txt [
 	block
 		ifNotNil: [ | position |
 			position := aStringNode stopPosition - 1.
+			self highlight: aStringNode in: txt.
 			txt
 				attribute: (BrTextAdornmentDynamicAttribute new
 						beAppend;
@@ -107,5 +135,11 @@ GtApStyler >> styler [
 		ifNil: [ styler := (GtSmaCCParserStyler forParser: YAMLParser)
 					stylerRules: {GtSmaCCNodeStylerRule
 								nodeClassName: #JSONStringNode
-								styleBlock: [ :styleable :node :txt | self styleReference: node in: txt ]} ]
+								styleBlock: [ :styleable :node :txt | 
+									self styleReference: node in: txt.
+									(self shouldHighlightString: node)
+										ifTrue: [ self highlight: node in: txt ] ].
+							GtSmaCCNodeStylerRule
+								nodeClassName: #JSONMemberNode
+								styleBlock: [ :styleable :node :txt | (self shouldHighlightName: node) ifTrue: [ self highlight: node name in: txt ] ]} ]
 ]
