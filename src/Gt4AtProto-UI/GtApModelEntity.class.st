@@ -76,7 +76,7 @@ GtApModelEntity class >> gtViewDefinitionReferencesFor: aView [
 	
 	^ aView mondrian
 		title: 'Definition references';
-		priority: 15;
+		priority: 45;
 		painting: [ :view | 
 			self 
 				paintDefinitionReferences: self withAllCustomReferences 

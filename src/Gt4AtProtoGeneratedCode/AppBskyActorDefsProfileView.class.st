@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyActorDefsProfileView,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyActorDefsProfileView',
+	#classTraits : 'TAppBskyActorDefsProfileView classTrait',
 	#instVars : [
 		'atpDid',
 		'atpHandle',

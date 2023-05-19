@@ -54,7 +54,7 @@ GtApClient >> gtProceduresFor: aView [
 	^ aView list
 		title: 'Procedures';
 		priority: 2;
-		items: [ self procedures ];
+		items: [ self procedures sorted: [:a :b | a method selector < b method selector ] ];
 		itemText: [:aPragma | aPragma method selector ]
 ]
 
@@ -64,7 +64,7 @@ GtApClient >> gtQueriesFor: aView [
 	^ aView columnedList
 		title: 'Queries';
 		priority: 1;
-		items: [ self queries ];
+		items: [ self queries sorted: [:a :b | a method selector < b method selector ]];
 		column: 'Name' text: [:aPragma | aPragma method selector ]";
 		column: 'Play'
 			stencil: [ :aPragma | 
