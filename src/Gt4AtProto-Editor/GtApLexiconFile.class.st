@@ -29,7 +29,7 @@ GtApLexiconFile >> definitionNamed: aString [
 		ifNotNil: [ :node | 
 			GtApDefinition new
 				lexiconFile: self;
-				node: node;
+				name: aString;
 				yourself ]
 ]
 

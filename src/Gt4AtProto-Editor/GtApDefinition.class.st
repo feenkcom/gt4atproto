@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'lexiconFile',
-		'node'
+		'name'
 	],
 	#category : #'Gt4AtProto-Editor-Model'
 }
@@ -24,9 +24,10 @@ GtApDefinition >> gtSourceFor: aView [
 		stencil: [ editor := lexiconFile editor.
 			editor
 				enqueueTask: [ editor editor
-						moveCursorTo: node value startPosition - 1;
-						select: node value startPosition - 1 to: node value stopPosition.
-					node gtScrollToPosition: node value stopPosition inEditor: editor ]
+						moveCursorTo: self node value startPosition - 1;
+						select: self node value startPosition - 1
+							to: self node value stopPosition.
+					self node gtScrollToPosition: self node value stopPosition inEditor: editor ]
 						asBlTask.
 			editor ];
 		actionButtonIcon: BrGlamorousVectorIcons accept
@@ -38,8 +39,7 @@ GtApDefinition >> gtSourceFor: aView [
 
 { #category : #accessing }
 GtApDefinition >> id [
-	^ lexiconFile id
-		ifNotNil: [ :id | id , '#' , node name source allButFirst allButLast ]
+	^ lexiconFile id ifNotNil: [ :id | id , '#' , name ]
 ]
 
 { #category : #accessing }
@@ -53,11 +53,16 @@ GtApDefinition >> lexiconFile: aGtApLexiconFile [
 ]
 
 { #category : #accessing }
-GtApDefinition >> node [
-	^ node
+GtApDefinition >> name [
+	^ name
 ]
 
 { #category : #accessing }
-GtApDefinition >> node: aJSONMemberNode [
-	node := aJSONMemberNode
+GtApDefinition >> name: aString [
+	name := aString
+]
+
+{ #category : #accessing }
+GtApDefinition >> node [
+	^ lexiconFile findDefinitionNode: name
 ]

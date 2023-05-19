@@ -18,12 +18,12 @@ GtApCompletionStrategy class >> encodings [
 ]
 
 { #category : #initialization }
-GtApCompletionStrategy >> completeEncodings: str at: position [
+GtApCompletionStrategy >> completeEncodings: str at: position hasQuote: aBoolean [
 	(str beginsWith: '"') ifFalse: [ ^ #() ].
 	^ (self class encodings asyncStreamStartingWith: str allButFirst)
 		collect: [ :each | 
 			| new |
-			new := '"' , each , '"'.
+			new := '"' , each , (aBoolean ifTrue: [ '' ] ifFalse: [ '"' ]).
 			GtInsertTextCompletionAction
 				labeled: (GtJSONCompleter labelFor: new withSearch: str)
 				completion: (new allButFirst: str size)
@@ -32,12 +32,12 @@ GtApCompletionStrategy >> completeEncodings: str at: position [
 ]
 
 { #category : #initialization }
-GtApCompletionStrategy >> completeReference: str at: position [
+GtApCompletionStrategy >> completeReference: str at: position hasQuote: aBoolean [
 	(str beginsWith: '"') ifFalse: [ ^ #() ].
 	^ (self referencesStartingWith: str)
 		collect: [ :each | 
 			| new |
-			new := '"' , each , '"'.
+			new := '"' , each , (aBoolean ifTrue: [ '' ] ifFalse: [ '"' ]).
 			GtInsertTextCompletionAction
 				labeled: (GtJSONCompleter labelFor: new withSearch: str)
 				completion: (new allButFirst: str size)
@@ -46,12 +46,13 @@ GtApCompletionStrategy >> completeReference: str at: position [
 ]
 
 { #category : #initialization }
-GtApCompletionStrategy >> completeRequired: str at: position [
+GtApCompletionStrategy >> completeRequired: str at: position hasQuote: aBoolean [
 	(str beginsWith: '"') ifFalse: [ ^ #() ].
 	^ (self requiredStartingWith: str)
 		collect: [ :each | 
 			| new |
-			new := '"' , each , '"'.
+			new := each.
+			(aBoolean and: [ each last = $" ]) ifTrue: [ new := new allButLast ].
 			GtInsertTextCompletionAction
 				labeled: (GtJSONCompleter labelFor: new withSearch: str)
 				completion: (new allButFirst: str size)
@@ -90,7 +91,11 @@ GtApCompletionStrategy >> initialize [
 			addValues: #('"true"' '"false"');
 			yourself.
 	encodings := GtJSONBlockCompleter new
-			block: [ :str :position | self completeEncodings: str at: position ].
+			block: [ :str :position :bool | 
+				self
+					completeEncodings: str
+					at: position
+					hasQuote: bool ].
 	userUnion
 		addCompleter: userType;
 		addCompleter: token;
@@ -110,9 +115,17 @@ GtApCompletionStrategy >> initialize [
 		addCompleter: integer;
 		addCompleter: string.
 	refBlock := GtJSONBlockCompleter new
-			block: [ :str :pos | self completeReference: str at: pos ].
+			block: [ :str :pos :bool | 
+				self
+					completeReference: str
+					at: pos
+					hasQuote: bool ].
 	required := GtJSONBlockCompleter new
-			block: [ :str :pos | self completeRequired: str at: pos ].
+			block: [ :str :pos :bool | 
+				self
+					completeRequired: str
+					at: pos
+					hasQuote: bool ].
 	refUnion := GtJSONUnionCompleter new
 			addCompleter: ref;
 			addCompleter: refs;
