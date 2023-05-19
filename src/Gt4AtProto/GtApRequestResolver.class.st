@@ -6,10 +6,13 @@ Class {
 
 { #category : #accessing }
 GtApRequestResolver class >> from: aDictionary andRequest: aRequest [
+	aRequest ifNil: [ ^ aRequest ].
+
 	aRequest
 		keysAndValuesDo: [ :aKey :aValue | 
 			aDictionary
 				at: aKey
 				ifPresent: [ :aTransformer | aRequest at: aKey put: (aTransformer value: aValue) ] ].
+
 	^ aRequest
 ]
