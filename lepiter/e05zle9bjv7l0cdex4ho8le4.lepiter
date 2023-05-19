@@ -71,14 +71,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T13:40:04.226172+02:00"
+									"dateAndTimeString" : "2023-05-19T18:36:55.517767+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "8+LkxC+4DQCHHm7IBR1CCw=="
 							},
-							"code" : "atprotoRepositoryFolder := 'atproto' asFileReference"
+							"code" : "atprotoDirectory := 'atproto' asFileReference"
 						}
 					]
 				},
@@ -143,14 +143,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-11T00:20:32.610192+02:00"
+									"dateAndTimeString" : "2023-05-19T18:36:55.569481+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "LaVuKx63DQC0Mtl0BU+hHw=="
 							},
-							"code" : "atprotoRepositoryFolder ensureDeleteAll.\rIceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoRepositoryFolder.\ratprotoRepositoryFolder"
+							"code" : "atprotoDirectory ensureDeleteAll.\rIceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoDirectory.\ratprotoDirectory"
 						}
 					]
 				},
@@ -215,14 +215,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-05T16:28:25.663396+02:00"
+									"dateAndTimeString" : "2023-05-19T18:37:05.061781+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "2HECqFS3DQC+95bCB1tzrA=="
 							},
-							"code" : "lexiconsFolder := atprotoRepositoryFolder / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder"
+							"code" : "lexiconsDirectory := atprotoDirectory / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsDirectory"
 						}
 					]
 				},
