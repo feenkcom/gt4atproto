@@ -24,28 +24,21 @@ GtApStyler >> editorForNode: aNode [
 	^ editor
 ]
 
-{ #category : #private }
-GtApStyler >> findReferenceTo: aString in: aNode [
-	^ ((((aNode / JSONMemberNode) @ #name <- '"defs"') / JSONObjectNode
-		/ JSONMemberNode) @ #name <- ('"' , aString , '"')) asOrderedCollection
-		at: 1
-		ifAbsent: [  ]
-]
-
-{ #category : #private }
-GtApStyler >> findReferenceTo: aString inFile: aFilename [
-	| ref ast |
-	ref := aFilename asFileReference.
-	ref exists ifFalse: [ ^ nil ].
-	ast := JSONParser parseFileWithErrors: ref.
-	^ self findReferenceTo: aString in: ast
-]
-
 { #category : #initialization }
 GtApStyler >> initialize [
 	super initialize.
 	self parserClass: JSONParser.
 	self stylers: {JSONParser gtStyler}
+]
+
+{ #category : #testing }
+GtApStyler >> isReference: aStringNode [
+	(aStringNode value source includes: $#) ifTrue: [ ^ true ].
+	((aStringNode parent isKindOf: JSONMemberNode)
+		and: [ aStringNode parent name source = '"ref"' ]) ifTrue: [ ^ true ].
+	^ (aStringNode parent isKindOf: JSONArrayNode)
+		and: [ (aStringNode parent parent isKindOf: JSONMemberNode)
+				and: [ aStringNode parent parent name source = '"refs"' ] ]
 ]
 
 { #category : #accessing }
@@ -71,27 +64,30 @@ GtApStyler >> style: aText ast: anAST [
 ]
 
 { #category : #private }
-GtApStyler >> styleReference: node in: txt [
+GtApStyler >> styleReference: aStringNode in: txt [
 	| source block |
-	source := node value source.
-	(source includes: $#) ifFalse: [ ^ self ].
+	(self isReference: aStringNode) ifFalse: [ ^ self ].
+	source := aStringNode value source.
 	(source beginsWith: '"#')
 		ifTrue: [ (lexiconFile definitionNamed: (source copyFrom: 3 to: source size - 1))
 				ifNotNil: [ :def | block := [ def ] ] ]
 		ifFalse: [ self lexicons
-				ifNotNil: [ self lexicons definitions
-						at: (source copyFrom: 2 to: source size - 1)
-						ifPresent: [ :obj | 
+				ifNotNil: [ (self lexicons
+						definitionWithId: (source copyFrom: 2 to: source size - 1)
+						ifAbsent: [  ])
+						ifNotNil: [ :obj | 
 							block := [ | file |
 								file := GtApLexiconFile new
 										filename: obj documentFile;
 										lexicons: self lexicons;
 										yourself.
 								file
-									definitionNamed: (source copyFrom: (source indexOf: $#) + 1 to: source size - 1) ] ] ] ].
+									definitionNamed: ((source includes: $#)
+											ifTrue: [ source copyFrom: (source indexOf: $#) + 1 to: source size - 1 ]
+											ifFalse: [ 'main' ]) ] ] ] ].
 	block
 		ifNotNil: [ | position |
-			position := node stopPosition.
+			position := aStringNode stopPosition - 1.
 			txt
 				attribute: (BrTextAdornmentDynamicAttribute new
 						beAppend;

@@ -42,6 +42,13 @@ GtApLexicons >> definitionWithId: anId [
 ]
 
 { #category : #accessing }
+GtApLexicons >> definitionWithId: anId ifAbsent: aBlock [
+	^ (anId includesSubstring: '#')
+		ifTrue: [ definitionsById at: anId ifAbsent: aBlock ]
+		ifFalse: [ definitionsById at: anId , '#main' ifAbsent: aBlock ]
+]
+
+{ #category : #accessing }
 GtApLexicons >> definitions [
 	^ definitionsById
 ]
