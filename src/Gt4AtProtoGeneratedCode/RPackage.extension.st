@@ -14,6 +14,7 @@ RPackage >> gtLexiconsFor: aView [
 					BlElement new
 						geometry: BlCircleGeometry new;
 						background: Color black;
+						aptitude: (BrGlamorousWithLabelTooltipAptitude new text: eachClass name);
 						when: BlClickEvent
 							do: [ :e | 
 								e consumed: true.
