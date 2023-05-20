@@ -1,8 +1,9 @@
 Extension { #name : #RPackage }
 
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-RPackage >> gtLexiconsFor: aView [
+{ #category : #'*Gt4AtProto-Extensions' }
+RPackage >> gtAtpLexiconsFor: aView [
 	<gtPackageView>
+	<gtView>
 	self name = #Gt4AtProtoGeneratedCode ifFalse: [ ^ aView empty ].
 	^ aView mondrian
 		title: 'Lexicons';
