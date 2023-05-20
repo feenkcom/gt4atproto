@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T14:55:08.533223+02:00"
+						"dateAndTimeString" : "2023-05-20T22:49:31.640112+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "vQ0MLC64DQCGFbkQBR1CCw=="
 				},
-				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'YOUR HANDLE'.\npassword := Clipboard clipboardText asString \"app password\""
+				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'tudorgirba.com'.\npassword := Clipboard clipboardText asString \"app password\""
 			},
 			{
 				"__type" : "textSnippet",
@@ -506,6 +506,74 @@
 					"uidString" : "PmbvLi64DQCGtWcoBR1CCw=="
 				},
 				"code" : "generatedClient appBskyFeedGetAuthorFeedActor: handle"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T22:52:27.817278+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T22:53:04.887728+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "7cnP84e4DQCK9oPuBpTsrA=="
+				},
+				"code" : "(generatedClient appBskyActorGetProfileActor: generatedClient context handle)\r\tclient: generatedClient"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T22:59:06.156726+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T22:59:47.317974+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "pfyNC4i4DQCLp5WsBpTsrA=="
+				},
+				"code" : "generatedClient appBskyActorGetSuggestions collect: [:each | each client: generatedClient ]"
 			}
 		]
 	},

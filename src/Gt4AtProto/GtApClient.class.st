@@ -83,6 +83,28 @@ GtApClient >> gtRequestHistoryFor: aView [
 ]
 
 { #category : #accessing }
+GtApClient >> gtSpotterProceduresFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		priority: 20;
+		items: [ self procedures sorted: [:a :b | a method selector < b method selector ] ];
+		title: 'Procedures';
+		itemName: [:p | p method selector ];
+		filterBySubstring: [:p | p method selector ]
+]
+
+{ #category : #accessing }
+GtApClient >> gtSpotterQueriesFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		priority: 10;
+		items: [ self queries sorted: [ :a :b | a method selector < b method selector ] ];
+		title: 'Queries';
+		itemName: [ :p | p method selector ];
+		filterBySubstring: [:p | p method selector ]
+]
+
+{ #category : #accessing }
 GtApClient >> handle [
 	^ context handle
 ]
