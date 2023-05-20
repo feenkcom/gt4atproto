@@ -103,7 +103,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-20T11:16:09.467109+02:00"
+						"dateAndTimeString" : "2023-05-20T11:16:27.852327+02:00"
 					}
 				},
 				"uid" : {
@@ -113,7 +113,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "When such a trait exists for given class name, the code generated adds the trait to the class. This allows us to package extensions in traits and reuse them safely acrod"
+				"string" : "When such a trait exists for given class name, the code generated adds the trait to the class. This allows us to package extensions in traits and reuse them safely when we regenerate the code."
 			}
 		]
 	},

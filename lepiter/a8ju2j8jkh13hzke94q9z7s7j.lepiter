@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-20T11:15:12.956444+02:00"
+						"dateAndTimeString" : "2023-05-20T12:42:05.569992+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Let's consider an example. {{gtClass:AppBskyActorDefsProfileViewDetailed}} has many methods starting with `atp`. These are all generated. But it also has methods that do not have that prefix, such as {{gtMethod:AppBskyActorDefsProfileViewDetailed>>posts}}. This method is not defined in the class itself but in a trait that has the same name with a `T` prefix {{gtClass:TAppBskyActorDefsProfileViewDetailed}}."
+				"string" : "Let's consider an example. {{gtClass:AppBskyActorDefsProfileViewDetailed}} has many methods starting with `atp`. These are all generated. But it also has methods that do not have that prefix, such as {{gtMethod:AppBskyActorDefsProfileViewDetailed>>posts|expanded=true}}. This method is not defined in the class itself but in a trait that has the same name with a `T` prefix {{gtClass:TAppBskyActorDefsProfileViewDetailed}}."
 			},
 			{
 				"__type" : "textSnippet",

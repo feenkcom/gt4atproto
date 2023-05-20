@@ -15,12 +15,15 @@ RPackage >> gtAtpLexiconsFor: aView [
 					BlElement new
 						geometry: BlCircleGeometry new;
 						background: Color black;
-						aptitude: (BrGlamorousWithLabelTooltipAptitude new text: eachClass name);
+						aptitude: ((BrGlamorousWithLabelTooltipAptitude new text: eachClass name) + (BrStyleCommonAptitude new
+						default: [ :s | s background: Color black ];
+						hovered: [ :s | s background: Color blue lighter ];
+						pressed: [ :s | s background: Color blue muchLighter ]));
 						when: BlClickEvent
 							do: [ :e | 
 								e consumed: true.
 								e target phlow spawnTool: (GtClassCoderTool forClass: eachClass) ];
-						size: 5 @ 5 ];
+						size: 10 @ 10 ];
 				with: GtApModelEntity allSubclasses.
 			m edges
 				stencil: [ :eachClass | 
@@ -30,6 +33,6 @@ RPackage >> gtAtpLexiconsFor: aView [
 						toHead: (BlArrowheadSimpleArrow new
 								border: (BlBorder paint: (Color lightGray alpha: 0.8))) ];
 				connectToAll: [ :eachClass | eachClass customReferences ].
-			m layout force ];
+			m layout force  charge: -100];
 		actionUpdateButton
 ]
