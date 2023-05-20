@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T07:52:08.228857+02:00"
+						"dateAndTimeString" : "2023-05-20T10:10:40.795468+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This is an environment for [[AT Protocol]] built in {{gtPage:Glamorous Toolkit|db=2j9m7db2i4oz116bexd7wbdxo}} (GT)."
+				"string" : "This is an environment for [[AT Protocol]] built in [[Glamorous Toolkit]] (GT)."
 			},
 			{
 				"__type" : "textSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T07:52:10.251327+02:00"
+						"dateAndTimeString" : "2023-05-20T09:13:13.940331+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,17 +66,128 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T07:52:48.01426+02:00"
+						"dateAndTimeString" : "2023-05-20T09:13:20.405674+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "zgU06Cq4DQCwF+2fBR1CCw=="
+					"uidString" : "TioDgny4DQC4PRoiCEiGqg=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "GT is the moldable development environment through which we can construct dedicated experiences. This specific project offers such a dedicated experience for the AT Protocol."
+				"string" : "#Why a dedicated environment"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:52:42.824338+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:53:11.988869+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "SnY1D324DQCGvq83CEiGqg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "GT is the [[Moldable Development]] environment through which we can construct dedicated experiences. This specific project offers such a dedicated experience for the AT Protocol."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:15:40.109229+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:18:45.494184+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "owwHh3y4DQC5HMvPCEiGqg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "The AT Protocol is meant to offer a prgrammable platform for social media. For example, a key proposition is to enable the individual to control the algorithm of what is being presented. Of course, there is no single algorithm. There can be many. These algorithms require programming. And programming benefits from dedicated environments."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:13:07.745956+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:14:33.811462+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "KaCkgXy4DQC4OJRSCEiGqg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#What this envrionemnt covers"
 			},
 			{
 				"__type" : "textSnippet",
@@ -182,7 +293,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-20T09:05:35.596558+02:00"
+									"dateAndTimeString" : "2023-05-20T09:05:59.627938+02:00"
 								}
 							},
 							"uid" : {
@@ -192,7 +303,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "If it's editing support "
+							"string" : "If it's editing support for lexicons you are looking for, start at [[Editing lexicon files]]."
 						},
 						{
 							"__type" : "textSnippet",
@@ -263,6 +374,80 @@
 					"__type" : "textStyle"
 				},
 				"string" : "It covers several things at different levels of abstraction."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T09:51:33.9886+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T10:14:04.515407+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "AR4bC324DQCGtOwoCEiGqg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Created by feenk under an MIT license"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T10:13:26.093609+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-20T10:14:54.510572+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kT9QWX24DQCKiZ4cCEiGqg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This and environment and the underlying Glamorous Toolkit are developed by [[feenk]], and are born out of a long term effort to make the inside of software systems explainable. In particular, this environment shows how Moldable Development works in practice and how it can "
 			}
 		]
 	},
