@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyEmbedRecordWithMediaView,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyEmbedRecordWithMediaView',
+	#classTraits : 'TAppBskyEmbedRecordWithMediaView classTrait',
 	#instVars : [
 		'atpRecord',
 		'atpMedia'
