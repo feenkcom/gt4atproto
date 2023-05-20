@@ -2,6 +2,14 @@
 
 This is an environment for [AT Protocol](https://atproto.com) built in [Glamorous Toolkit (GT)](https://gtoolkit.com).
 
+GT is the moldable development environment through which we can construct dedicated experiences. This specific project offers such a dedicated experience for the AT Protocol.
+
+It covers several things at different levels of abstraction.
+- Working with a server through AT Protocol
+- Streaming and pagination support out of the box
+- Inspecting and visualizing results
+- Code generation from lexicons to Smalltalk code
+- Dedicated styling and completion support for exploring and editing lexicon JSON files
 
 
 ## Installation

@@ -171,6 +171,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-20T09:05:24.201648+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-20T09:05:35.596558+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "4nQSZXy4DQCxOSdvCEiGqg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If it's editing support "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2023-05-16T22:18:39.96152+02:00"
 								}
 							},
@@ -182,7 +219,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T22:20:53.135597+02:00"
+									"dateAndTimeString" : "2023-05-16T22:21:24.373675+02:00"
 								}
 							},
 							"uid" : {
@@ -192,7 +229,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "If you are more inclined to explore technical details, you can start from the [[Importing lexicons and generating code]] to learn about the code generation mechanism that goes from a [[Lexicon]] to "
+							"string" : "If you are more inclined to explore technical details, you can start from the [[Importing lexicons and generating code]] to learn about the code generation mechanism that goes from a [[Lexicon]] to the detailed object model that is used in this environment."
 						}
 					]
 				},
