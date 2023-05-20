@@ -90,7 +90,7 @@ GtApClient >> gtSpotterProceduresFor: aSearch [
 		items: [ self procedures sorted: [:a :b | a method selector < b method selector ] ];
 		title: 'Procedures';
 		itemName: [:p | p method selector ];
-		filterBySubstring: [:p | p method selector ]
+		filterBySubstring": [:p | p method selector ]"
 ]
 
 { #category : #accessing }
@@ -101,7 +101,7 @@ GtApClient >> gtSpotterQueriesFor: aSearch [
 		items: [ self queries sorted: [ :a :b | a method selector < b method selector ] ];
 		title: 'Queries';
 		itemName: [ :p | p method selector ];
-		filterBySubstring: [:p | p method selector ]
+		filterBySubstring": [:p | p method selector ]"
 ]
 
 { #category : #accessing }
