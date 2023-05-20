@@ -61,7 +61,7 @@ AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost >> atpParent [
-	<atpType:#(AppBskyFeedDefsThreadViewPost. AppBskyFeedDefsNotFoundPost. AppBskyFeedDefsBlockedPost) format:nil>
+	<atpType:#(AppBskyFeedDefsThreadViewPost AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpParent
 ]
 
@@ -85,7 +85,7 @@ AppBskyFeedDefsThreadViewPost >> atpPost: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost >> atpReplies [
-	<atpType:#(AppBskyFeedDefsThreadViewPost. AppBskyFeedDefsNotFoundPost. AppBskyFeedDefsBlockedPost) format:nil>
+	<atpType:#(AppBskyFeedDefsThreadViewPost AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	<atpCollection>
 	^ atpReplies
 ]
@@ -119,9 +119,8 @@ AppBskyFeedDefsThreadViewPost >> postDescription [
 AppBskyFeedDefsThreadViewPost >> repliesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyFeedDefsThreadViewPost.
-				AppBskyFeedDefsNotFoundPost.
-				AppBskyFeedDefsBlockedPost};
+		classes: {AppBskyFeedDefsThreadViewPost AppBskyFeedDefsNotFoundPost
+					AppBskyFeedDefsBlockedPost};
 		label: 'Replies';
 		accessor: #atpReplies
 ]

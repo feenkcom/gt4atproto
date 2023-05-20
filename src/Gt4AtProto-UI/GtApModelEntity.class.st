@@ -12,8 +12,13 @@ Class {
 
 { #category : #accessing }
 GtApModelEntity class >> allReferences [
+	| argument |
 	^ (Pragma allNamed: 'atpType:format:' in: self)
-		collect: [ :aPragma | (aPragma argumentNamed: #atpType:) asClass ]
+		flatCollect: [ :aPragma | 
+			argument := aPragma argumentNamed: #atpType:.
+			argument isSymbol
+				ifFalse: [ argument collect: #asClass ]
+				ifTrue: [ {argument asClass} ] ]
 ]
 
 { #category : #accessing }

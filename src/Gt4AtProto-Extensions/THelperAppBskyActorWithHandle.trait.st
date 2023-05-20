@@ -138,7 +138,7 @@ THelperAppBskyActorWithHandle >> gtViewFollowingFor: aView [
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> posts [
-	^ posts ifNil: [  posts := self downloadPosts ]
+	^ posts ifNil: [  posts := self downloadPosts cached ]
 ]
 
 { #category : #accessing }

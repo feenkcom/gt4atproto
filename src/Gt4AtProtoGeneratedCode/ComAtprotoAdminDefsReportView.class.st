@@ -129,7 +129,7 @@ ComAtprotoAdminDefsReportView >> atpResolvedByActionIds: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView >> atpSubject [
-	<atpType:#(ComAtprotoAdminDefsRepoRef. ComAtprotoRepoStrongRefMain) format:nil>
+	<atpType:#(ComAtprotoAdminDefsRepoRef ComAtprotoRepoStrongRefMain) format:nil>
 	^ atpSubject
 ]
 

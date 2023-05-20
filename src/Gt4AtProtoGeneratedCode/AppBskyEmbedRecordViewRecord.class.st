@@ -91,7 +91,7 @@ AppBskyEmbedRecordViewRecord >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpEmbeds [
-	<atpType:#(AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView) format:nil>
+	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
 	<atpCollection>
 	^ atpEmbeds
 ]
@@ -168,10 +168,8 @@ AppBskyEmbedRecordViewRecord >> cidDescription [
 AppBskyEmbedRecordViewRecord >> embedsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyEmbedImagesView.
-				AppBskyEmbedExternalView.
-				AppBskyEmbedRecordView.
-				AppBskyEmbedRecordWithMediaView};
+		classes: {AppBskyEmbedImagesView AppBskyEmbedExternalView AppBskyEmbedRecordView
+					AppBskyEmbedRecordWithMediaView};
 		label: 'Embeds';
 		accessor: #atpEmbeds
 ]

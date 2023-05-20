@@ -25,7 +25,7 @@ GtApLexiconUnion >> asClassName [
 
 { #category : #accessing }
 GtApLexiconUnion >> asClassNames [
-	^ '. ' join: (self referencedDefinitions collect: #asClassNames)
+	^ String space join: (self referencedDefinitions collect: #asClassNames)
 ]
 
 { #category : #accessing }

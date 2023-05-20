@@ -25,7 +25,7 @@ AppBskyFeedDefsReplyRef class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef class >> atpSchema [
- ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"ref","ref":"app.bsky.feed.defs#postView"},"parent":{"type":"ref","ref":"app.bsky.feed.defs#postView"}}}'
+ ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]},"parent":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]}}}'
 ]
 
 { #category : #serialization }
@@ -34,44 +34,51 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 		rawData: aRequest;
 		atpRoot: (aRequest
 				at: 'root'
-				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifPresent: [ :aValue | 
+					({'app.bsky.feed.defs#postView' -> AppBskyFeedDefsPostView.
+						'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
+						'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpParent: (aRequest
 				at: 'parent'
-				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifPresent: [ :aValue | 
+					({'app.bsky.feed.defs#postView' -> AppBskyFeedDefsPostView.
+						'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
+						'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
+						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpParent [
-	<referenceTo:'app.bsky.feed.defs#postView'>
-	<atpType:#AppBskyFeedDefsPostView format:nil>
+	<atpType:#(AppBskyFeedDefsPostView AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpParent
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpParent: anObject [
-	<referenceTo:'app.bsky.feed.defs#postView'>
 	atpParent := anObject
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpRoot [
-	<referenceTo:'app.bsky.feed.defs#postView'>
-	<atpType:#AppBskyFeedDefsPostView format:nil>
+	<atpType:#(AppBskyFeedDefsPostView AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpRoot
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpRoot: anObject [
-	<referenceTo:'app.bsky.feed.defs#postView'>
 	atpRoot := anObject
 ]
 
 { #category : #magritte }
 AppBskyFeedDefsReplyRef >> parentDescription [
 	<magritteDescription>
-	^ MAToOneRelationDescription new
+	^ MASingleOptionDescription new
+		options: {'#postView'.
+				'#notFoundPost'.
+				'#blockedPost'};
 		label: 'Parent';
 		accessor: #atpParent;
 		beRequired
@@ -80,7 +87,10 @@ AppBskyFeedDefsReplyRef >> parentDescription [
 { #category : #magritte }
 AppBskyFeedDefsReplyRef >> rootDescription [
 	<magritteDescription>
-	^ MAToOneRelationDescription new
+	^ MASingleOptionDescription new
+		options: {'#postView'.
+				'#notFoundPost'.
+				'#blockedPost'};
 		label: 'Root';
 		accessor: #atpRoot;
 		beRequired

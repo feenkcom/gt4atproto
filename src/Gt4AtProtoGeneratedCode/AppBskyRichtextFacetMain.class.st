@@ -49,7 +49,7 @@ AppBskyRichtextFacetMain class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyRichtextFacetMain >> atpFeatures [
-	<atpType:#(AppBskyRichtextFacetMention. AppBskyRichtextFacetLink) format:nil>
+	<atpType:#(AppBskyRichtextFacetMention AppBskyRichtextFacetLink) format:nil>
 	<atpCollection>
 	^ atpFeatures
 ]
@@ -76,8 +76,7 @@ AppBskyRichtextFacetMain >> atpIndex: anObject [
 AppBskyRichtextFacetMain >> featuresDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyRichtextFacetMention.
-				AppBskyRichtextFacetLink};
+		classes: {AppBskyRichtextFacetMention AppBskyRichtextFacetLink};
 		label: 'Features';
 		accessor: #atpFeatures;
 		beRequired

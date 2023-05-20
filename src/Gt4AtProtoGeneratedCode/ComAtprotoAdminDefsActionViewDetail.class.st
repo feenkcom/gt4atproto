@@ -34,7 +34,7 @@ ComAtprotoAdminDefsActionViewDetail class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail class >> atpSchema [
- ^ '{"type":"object","required":["id","action","subject","subjectBlobs","reason","createdBy","createdAt","resolvedReports"],"properties":{"id":{"type":"integer"},"action":{"type":"ref","ref":"#actionType"},"subject":{"type":"union","refs":["#repoView","#recordView"]},"subjectBlobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"createLabelVals":{"type":"array","items":{"type":"string"}},"negateLabelVals":{"type":"array","items":{"type":"string"}},"reason":{"type":"string"},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"reversal":{"type":"ref","ref":"#actionReversal"},"resolvedReports":{"type":"array","items":{"type":"ref","ref":"#reportView"}}}}'
+ ^ '{"type":"object","required":["id","action","subject","subjectBlobs","reason","createdBy","createdAt","resolvedReports"],"properties":{"id":{"type":"integer"},"action":{"type":"ref","ref":"#actionType"},"subject":{"type":"union","refs":["#repoView","#repoViewNotFound","#recordView","#recordViewNotFound"]},"subjectBlobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"createLabelVals":{"type":"array","items":{"type":"string"}},"negateLabelVals":{"type":"array","items":{"type":"string"}},"reason":{"type":"string"},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"reversal":{"type":"ref","ref":"#actionReversal"},"resolvedReports":{"type":"array","items":{"type":"ref","ref":"#reportView"}}}}'
 ]
 
 { #category : #serialization }
@@ -50,8 +50,12 @@ ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
 				at: 'subject'
 				ifPresent: [ :aValue | 
 					({'com.atproto.admin.defs#repoView' -> ComAtprotoAdminDefsRepoView.
-						'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						'com.atproto.admin.defs#repoViewNotFound'
+							-> ComAtprotoAdminDefsRepoViewNotFound.
+						'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView.
+						'com.atproto.admin.defs#recordViewNotFound'
+							-> ComAtprotoAdminDefsRecordViewNotFound} asDictionary
+						at: (aValue at: '$type')) fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpSubjectBlobs: (aRequest
 				at: 'subjectBlobs'
@@ -195,7 +199,7 @@ ComAtprotoAdminDefsActionViewDetail >> atpReversal: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewDetail >> atpSubject [
-	<atpType:#(ComAtprotoAdminDefsRepoView. ComAtprotoAdminDefsRecordView) format:nil>
+	<atpType:#(ComAtprotoAdminDefsRepoView ComAtprotoAdminDefsRepoViewNotFound ComAtprotoAdminDefsRecordView ComAtprotoAdminDefsRecordViewNotFound) format:nil>
 	^ atpSubject
 ]
 
@@ -303,7 +307,9 @@ ComAtprotoAdminDefsActionViewDetail >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
 		options: {'#repoView'.
-				'#recordView'};
+				'#repoViewNotFound'.
+				'#recordView'.
+				'#recordViewNotFound'};
 		label: 'Subject';
 		accessor: #atpSubject;
 		beRequired

@@ -80,6 +80,34 @@ GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadTerm: term [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedDescribeFeedGenerator [
+	"Returns information about a given feed generator including TOS & offered feed URIs"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'did' -> [ :aValue | aValue ].
+				'feeds' -> [ :aValue | aValue ].
+				'links'
+					-> [ :aValue | AppBskyFeedDescribeFeedGeneratorLinks fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.describeFeedGenerator'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetActorFeedsActor: actor [
+	"Retrieve a list of feeds created by a given actor"
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsGeneratorView fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.feed.getActorFeeds'
+				parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetAuthorFeedActor: actor [
 	"A view of an actor's feed."
 
@@ -89,6 +117,54 @@ GtApGeneratedClient >> appBskyFeedGetAuthorFeedActor: actor [
 		stream: (self
 				queryOn: 'app.bsky.feed.getAuthorFeed'
 				parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetFeedFeed: feed [
+	"Compose and hydrate a feed from a user's selected feed generator"
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
+		stream: (self queryOn: 'app.bsky.feed.getFeed' parameters: {'feed' -> feed} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetFeedGeneratorFeed: feed [
+	"Get information about a specific feed offered by a feed generator, such as its online status"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'view' -> [ :aValue | AppBskyFeedDefsGeneratorView fromRequest: aValue ].
+				'isOnline' -> [ :aValue | aValue ].
+				'isValid' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.getFeedGenerator'
+				parameters: {'feed' -> feed} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetFeedGeneratorsFeeds: feeds [
+	"Get information about a list of feed generators"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'feeds' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.feed.getFeedGenerators'
+				parameters: {'feeds' -> feeds} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetFeedSkeletonFeed: feed [
+	"A skeleton of a feed provided by a feed generator"
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsSkeletonFeedPost fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.feed.getFeedSkeleton'
+				parameters: {'feed' -> feed} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }

@@ -76,7 +76,7 @@ AppBskyFeedPostMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpEmbed [
-	<atpType:#(AppBskyEmbedImagesMain. AppBskyEmbedExternalMain. AppBskyEmbedRecordMain. AppBskyEmbedRecordWithMediaMain) format:nil>
+	<atpType:#(AppBskyEmbedImagesMain AppBskyEmbedExternalMain AppBskyEmbedRecordMain AppBskyEmbedRecordWithMediaMain) format:nil>
 	^ atpEmbed
 ]
 

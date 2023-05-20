@@ -77,7 +77,7 @@ ComAtprotoAdminDefsBlobView >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 ComAtprotoAdminDefsBlobView >> atpDetails [
-	<atpType:#(ComAtprotoAdminDefsImageDetails. ComAtprotoAdminDefsVideoDetails) format:nil>
+	<atpType:#(ComAtprotoAdminDefsImageDetails ComAtprotoAdminDefsVideoDetails) format:nil>
 	^ atpDetails
 ]
 

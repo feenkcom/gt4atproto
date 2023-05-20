@@ -28,7 +28,7 @@ AppBskyFeedDefsFeedViewPost class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost class >> atpSchema [
- ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"app.bsky.feed.defs#postView"},"reply":{"type":"ref","ref":"#replyRef"},"reason":{"type":"union","refs":["#reasonRepost"]}}}'
+ ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"#postView"},"reply":{"type":"ref","ref":"#replyRef"},"reason":{"type":"union","refs":["#reasonRepost"]}}}'
 ]
 
 { #category : #serialization }
@@ -53,14 +53,14 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpPost [
-	<referenceTo:'app.bsky.feed.defs#postView'>
+	<referenceTo:'#postView'>
 	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpPost
 ]
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpPost: anObject [
-	<referenceTo:'app.bsky.feed.defs#postView'>
+	<referenceTo:'#postView'>
 	atpPost := anObject
 ]
 

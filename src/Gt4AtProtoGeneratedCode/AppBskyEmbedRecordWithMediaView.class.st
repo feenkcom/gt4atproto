@@ -47,7 +47,7 @@ AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView >> atpMedia [
-	<atpType:#(AppBskyEmbedImagesView. AppBskyEmbedExternalView) format:nil>
+	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedExternalView) format:nil>
 	^ atpMedia
 ]
 

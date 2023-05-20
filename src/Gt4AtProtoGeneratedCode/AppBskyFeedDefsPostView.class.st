@@ -100,7 +100,7 @@ AppBskyFeedDefsPostView >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpEmbed [
-	<atpType:#(AppBskyEmbedImagesView. AppBskyEmbedExternalView. AppBskyEmbedRecordView. AppBskyEmbedRecordWithMediaView) format:nil>
+	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
 	^ atpEmbed
 ]
 
