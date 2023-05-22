@@ -65,6 +65,36 @@ GtApLexicons >> documents [
 	^ documentsById
 ]
 
+{ #category : #accessing }
+GtApLexicons >> gtAtpLexiconsFor: aView [
+	<gtView>
+	^ aView mondrian
+		title: 'Definition references';
+		priority: 1.1;
+		painting: [ :m | 
+			m nodes
+				stencil: [ :eachClass | 
+					BlElement new
+						geometry: BlCircleGeometry new;
+						background: Color black;
+						aptitude: ((BrGlamorousWithLabelTooltipAptitude new text: eachClass id) + (BrStyleCommonAptitude new
+						default: [ :s | s background: Color black ];
+						hovered: [ :s | s background: Color blue lighter ];
+						pressed: [ :s | s background: Color blue muchLighter ]));
+						size: 10 @ 10 ];
+				with: definitionsById values.
+			m edges
+				stencil: [ :eachClass | 
+					BlLineElement new
+						zIndex: -1;
+						border: Color lightGray;
+						toHead: (BlArrowheadSimpleArrow new
+								border: (BlBorder paint: (Color lightGray alpha: 0.8))) ];
+				connectToAll: [ :eachDefinition | eachDefinition resolvedReferencedDefinitions ].
+			m layout force  charge: -100];
+		actionUpdateButton
+]
+
 { #category : #'gt - extensions' }
 GtApLexicons >> gtViewDefinitionsByTypeFor: aView [
 	<gtView>
