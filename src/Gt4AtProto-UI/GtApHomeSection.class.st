@@ -1,7 +1,7 @@
 Class {
 	#name : #GtApHomeSection,
 	#superclass : #GtHomeSection,
-	#category : #'Gt4AtProto-Lepiter'
+	#category : #'Gt4AtProto-UI'
 }
 
 { #category : #accessing }
