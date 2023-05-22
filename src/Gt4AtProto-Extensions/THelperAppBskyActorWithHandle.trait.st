@@ -28,12 +28,12 @@ THelperAppBskyActorWithHandle >> downloadPosts [
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> followers [
-	^ followers ifNil: [ followers := self downloadFollowers ]
+	^ (followers ifNil: [ followers := self downloadFollowers cached ]) asyncSimilarCopy
 ]
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> follows [
-	^ follows ifNil: [ follows := self downloadFollows ]
+	^ (follows ifNil: [ follows := self downloadFollows cached ]) asyncSimilarCopy
 ]
 
 { #category : #accessing }
@@ -74,7 +74,7 @@ THelperAppBskyActorWithHandle >> gtViewCardPostsFor: aView [
 		actionButtonIcon: BrGlamorousVectorIcons refresh
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
-				self posts: self downloadPosts.
+				self posts: self downloadPosts asyncSimilarCopy.
 				aTab viewContentElement phlow update ]
 ]
 
@@ -104,7 +104,7 @@ THelperAppBskyActorWithHandle >> gtViewCompactPostsFor: aView [
 		actionButtonIcon: BrGlamorousVectorIcons refresh
 			tooltip: 'Update'
 			action: [ :aButton :aTab | 
-				self posts: self downloadPosts.
+				self posts: self downloadPosts asyncSimilarCopy.
 				aTab viewContentElement phlow update ]
 ]
 
@@ -138,7 +138,7 @@ THelperAppBskyActorWithHandle >> gtViewFollowingFor: aView [
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> posts [
-	^ posts ifNil: [  posts := self downloadPosts cached ]
+	^ (posts ifNil: [  posts := self downloadPosts cached ]) asyncSimilarCopy
 ]
 
 { #category : #accessing }
