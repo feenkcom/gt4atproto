@@ -72,7 +72,8 @@ GtApResultStream >> pollNext: anAsynchronousContext [
 							parameters: ({'cursor' -> cursor} asDictionary union: self parameters))
 							query.
 					resultsList := (res at: key) asOrderedCollection.
-					cursor := res at: 'cursor' ifAbsent: [ nil ] ] ].
+					cursor := res at: 'cursor' ifAbsent: [ nil ].
+					^ self pollNext: anAsynchronousContext ] ].
 	^ AsyncPollReady value: (AsyncOptionalValue some: resultsList removeFirst)
 ]
 
