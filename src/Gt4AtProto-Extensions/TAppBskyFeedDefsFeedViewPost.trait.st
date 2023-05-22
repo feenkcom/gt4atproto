@@ -84,7 +84,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
 		children: [ :each | each replies ];
 		column: 'Author' text: [ :each | each author atpDisplayName ];
 		column: 'Text' text: [ :each | each atpPost atpRecord atpText ];
-		column: 'Created at' text: [ :each | each atpPost atpRecord createdAtTimestamp ]
+		column: 'Created at' text: [ :each | each atpPost atpRecord createdAtTimestamp printToSeconds ]
 ]
 
 { #category : #accessing }
@@ -130,6 +130,22 @@ TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasMedia [
 	^ self hasEmbed and: [ self embed hasMedia ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> hasReplies [
+	^ self atpPost atpReplyCount > 0
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> hasRepliesFromHandle: aHandle [
+	^ self replies
+		anySatisfy: [ :aPost | aPost author atpHandle = aHandle ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> hasRepliesFromSameHandle [
+	^ self hasRepliesFromHandle: self author atpHandle
 ]
 
 { #category : #accessing }
