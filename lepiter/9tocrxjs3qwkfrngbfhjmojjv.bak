@@ -177,14 +177,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-23T09:47:17.323032-05:00"
+									"dateAndTimeString" : "2023-05-19T19:52:07.361057+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "EFQ272+4DQC6xmd+C+7xpQ=="
 							},
-							"code" : "GtApLexiconDirectoryModel new directory: atprotoDirectory / 'lexicons'."
+							"code" : "lexiconsFolder := atprotoDirectory / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder."
 						}
 					]
 				},
@@ -207,7 +207,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-23T09:54:53.798901-05:00"
+						"dateAndTimeString" : "2023-05-23T12:54:30.819185+02:00"
 					}
 				},
 				"uid" : {
@@ -217,7 +217,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Then create and inspect a model for the editor."
+				"string" : "Then, create a model of the lexicons (more details in [[Generating code from lexicons]])."
 			},
 			{
 				"__type" : "textSnippet",

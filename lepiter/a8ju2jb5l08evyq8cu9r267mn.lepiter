@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-20T11:06:16.305456+02:00"
+						"dateAndTimeString" : "2023-05-23T20:52:51.172514+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The generated code is already available in {{gtPackage:Gt4AtProtoGeneratedCode}}. "
+				"string" : "The generated code is already available in the {{gtPackage:Gt4AtProtoGeneratedCode}} package. "
 			},
 			{
 				"__type" : "textSnippet",
