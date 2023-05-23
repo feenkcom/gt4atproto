@@ -22,8 +22,9 @@ THelperAppBskyActorWithHandle >> downloadFollows [
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadPosts [
-	^ (self client appBskyFeedGetAuthorFeedActor: self atpHandle)
-		collect: [ :aPost | aPost client: self client ]
+	^ GtApPostsStream
+		posts: ((self client appBskyFeedGetAuthorFeedActor: self atpHandle)
+				collect: [ :aPost | aPost client: self client ])
 ]
 
 { #category : #accessing }
