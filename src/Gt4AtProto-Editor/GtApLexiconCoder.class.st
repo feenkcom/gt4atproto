@@ -40,21 +40,7 @@ GtApLexiconCoder >> initializeContent [
 									width: 1 ]);
 			margin: (BlInsets all: 5);
 			hMatchParent;
-			vFitContentLimited.
-	contentElement
-		addEventHandlerOn: BlFocusInEvent
-			do: [ :event | 
-				self
-					childNamed: #bar
-					ifFound: [ :bar | 
-						bar
-							inUIProcessDo: [ bar
-									background: (self theme default primaryBorderColor alpha: 0.4) gtOpaqueColorOnWhite ] ] ];
-		addEventHandlerOn: BlFocusOutEvent
-			do: [ :event | 
-				self
-					childNamed: #bar
-					ifFound: [ :bar | bar inUIProcessDo: [ bar background: self theme default lightBorderColor ] ] ]
+			vFitContentLimited
 ]
 
 { #category : #initialization }
@@ -141,13 +127,6 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	contentElement removeChildren.
 	contentElement
 		addChild: (BlElement new
-				width: 8;
-				background: self theme default lightBorderColor;
-				constraintsDo: [ :c | c vertical matchParent ];
-				yourself)
-		as: #bar.
-	contentElement
-		addChild: (BlElement new
 				width: 5;
 				constraintsDo: [ :c | c vertical matchParent ];
 				yourself)
@@ -160,6 +139,21 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	content := BrVerticalPane new.
 	content hMatchParent.
 	content vFitContentLimited.
+	content
+		addChild: (BrLabel new
+				aptitude: (BrGlamorousLabelAptitude new glamorousRegularFontAndSize
+						foreground: Color gray;
+						fontSize: 12);
+				text: 'Lexicon file';
+				yourself)
+		as: #label.
+	content
+		addChild: (BrLabel new
+				aptitude: (BrGlamorousLabelAptitude new
+						bold;
+						fontSize: 18);
+				text: aLexiconObject lexiconFile filename basename)
+		as: #filename.
 	content addChild: textEditor as: #editor.
 	toolbar := BrToolbar new
 			aptitude: (BrGlamorousToolbarAptitude new spacing: 5);
