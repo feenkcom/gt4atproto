@@ -207,7 +207,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:55.119455+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:30.819185+02:00"
 					}
 				},
 				"uid" : {
@@ -217,7 +217,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Then, create a model of the lexicons (more details in [[Importing lexicons and generating code]])."
+				"string" : "Then, create a model of the lexicons (more details in [[Generating code from lexicons]])."
 			},
 			{
 				"__type" : "textSnippet",
