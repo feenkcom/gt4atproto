@@ -437,7 +437,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-20T10:14:54.510572+02:00"
+						"dateAndTimeString" : "2023-05-20T10:15:19.736057+02:00"
 					}
 				},
 				"uid" : {
@@ -447,7 +447,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This and environment and the underlying Glamorous Toolkit are developed by [[feenk]], and are born out of a long term effort to make the inside of software systems explainable. In particular, this environment shows how Moldable Development works in practice and how it can "
+				"string" : "This and environment and the underlying Glamorous Toolkit are developed by [[feenk]], and are born out of a long term effort to make the inside of software systems explainable. In particular, this environment shows how Moldable Development works in practice and how it can enhance the personal use of social media."
 			}
 		]
 	},

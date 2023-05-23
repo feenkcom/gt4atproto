@@ -245,7 +245,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T14:23:43.694681+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:30.823496+02:00"
 					}
 				},
 				"uid" : {
@@ -255,7 +255,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The query above is nice but it depends on strings and it returns generic dictionaries. You can do much better.  {{gtClass:GtApGeneratedClient}}  provides higher level query API. This client was generated as described in [[Importing lexicons and generating code]]."
+				"string" : "The query above is nice but it depends on strings and it returns generic dictionaries. You can do much better.  {{gtClass:GtApGeneratedClient}}  provides higher level query API. This client was generated as described in [[Generating code from lexicons]]."
 			},
 			{
 				"__type" : "textSnippet",
