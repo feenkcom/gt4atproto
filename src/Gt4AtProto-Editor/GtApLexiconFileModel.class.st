@@ -146,7 +146,8 @@ GtApLexiconFileModel >> saveFile [
 	filename
 		ensureDelete;
 		writeStreamDo: [ :stream | stream nextPutAll: source ].
-	originalSource := self source
+	originalSource := self source.
+	self announce: (GtApLexiconFileSaved new lexiconFile: self)
 ]
 
 { #category : #accessing }

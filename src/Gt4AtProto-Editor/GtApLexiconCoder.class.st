@@ -2,16 +2,16 @@ Class {
 	#name : #GtApLexiconCoder,
 	#superclass : #BrHorizontalPane,
 	#instVars : [
-		'sidebar',
-		'content',
-		'lexiconFile'
+		'lexiconFile',
+		'contentElement',
+		'sidebarElement'
 	],
 	#category : #'Gt4AtProto-Editor-View'
 }
 
 { #category : #accessing }
 GtApLexiconCoder >> editorChanged [
-	content
+	contentElement
 		childNamed: #editor
 		ifFound: [ :editor | lexiconFile source: editor editor text asString ].
 	self updateChangeStatus
@@ -23,28 +23,51 @@ GtApLexiconCoder >> initialize [
 	self matchParent.
 	self initializeSidebar.
 	self initializeContent.
-	self addChild: sidebar as: #sidebar.
-	self addChild: content as: #content
+	self addChild: sidebarElement as: #sidebar.
+	self addChild: contentElement as: #content
 ]
 
 { #category : #initialization }
 GtApLexiconCoder >> initializeContent [
-	content := BrHorizontalPane new
+	contentElement := BrHorizontalPane new
+			background: Color white;
+			aptitude: BrShadowAptitude new
+					+ (BrStyleCommonAptitude new
+							default: [ :aStyle | BlBorder paint: self theme default lightBorderColor width: 1 ];
+							focused: [ :aStyle | 
+								BlBorder
+									paint: (self theme default primaryBorderColor alpha: 0.4) gtOpaqueColorOnWhite
+									width: 1 ]);
+			margin: (BlInsets all: 5);
 			hMatchParent;
-			vFitContentLimited
+			vFitContentLimited.
+	contentElement
+		addEventHandlerOn: BlFocusInEvent
+			do: [ :event | 
+				self
+					childNamed: #bar
+					ifFound: [ :bar | 
+						bar
+							inUIProcessDo: [ bar
+									background: (self theme default primaryBorderColor alpha: 0.4) gtOpaqueColorOnWhite ] ] ];
+		addEventHandlerOn: BlFocusOutEvent
+			do: [ :event | 
+				self
+					childNamed: #bar
+					ifFound: [ :bar | bar inUIProcessDo: [ bar background: self theme default lightBorderColor ] ] ]
 ]
 
 { #category : #initialization }
 GtApLexiconCoder >> initializeSidebar [
-	sidebar := GtPhlowHorizontalSidebarElement new
+	sidebarElement := GtPhlowHorizontalSidebarElement new
 			beLeft;
 			matchParent;
 			background: BrGlamorousColors neutralBackgroundColor.
 	self
 		addAptitude: (GtPhlowToolDetailAptitude new
-				normal: [ :theInstance | sidebar hide ];
-				detailed: [ :theInstance | sidebar show ]).
-	sidebar hide
+				normal: [ :theInstance | sidebarElement hide ];
+				detailed: [ :theInstance | sidebarElement show ]).
+	sidebarElement hide
 ]
 
 { #category : #accessing }
@@ -55,7 +78,7 @@ GtApLexiconCoder >> object: aLexiconModelObject [
 					ifTrue: [ aLexiconModelObject ]
 					ifFalse: [ aLexiconModelObject files first ] ]
 			ifFalse: [ aLexiconModelObject ].
-	sidebar
+	sidebarElement
 		contentStencil: [ | tree |
 			tree := BrSimpleTree new
 					matchParent;
@@ -91,28 +114,39 @@ GtApLexiconCoder >> object: aLexiconModelObject [
 
 { #category : #accessing }
 GtApLexiconCoder >> updateChangeStatus [
-	content
+	contentElement
 		childNamed: #modificationBar
 		ifFound: [ :elmt | 
 			elmt
 				inUIProcessDo: [ elmt
 						background: (lexiconFile isModified
 								ifTrue: [ self theme status changesBackgroundColor ]
-								ifFalse: [ Color transparent ]) ] ]
+								ifFalse: [ Color transparent ]) ] ].
+	contentElement
+		childNamed: #saveButton
+		ifFound: [ :elmt | elmt inUIProcessDo: [ elmt enabled: lexiconFile isModified ] ].
+	contentElement
+		childNamed: #cancelButton
+		ifFound: [ :elmt | elmt inUIProcessDo: [ elmt enabled: lexiconFile isModified ] ]
 ]
 
 { #category : #accessing }
 GtApLexiconCoder >> updateContentsTo: aLexiconObject [
-	| textEditor |
+	| textEditor content toolbar |
 	lexiconFile := aLexiconObject lexiconFile.
-	content removeChildren.
-	content
+	lexiconFile announcer weak
+		when: GtApLexiconFileSaved
+		send: #updateChangeStatus
+		to: self.
+	contentElement removeChildren.
+	contentElement
 		addChild: (BlElement new
 				width: 8;
+				background: self theme default lightBorderColor;
 				constraintsDo: [ :c | c vertical matchParent ];
 				yourself)
 		as: #bar.
-	content
+	contentElement
 		addChild: (BlElement new
 				width: 5;
 				constraintsDo: [ :c | c vertical matchParent ];
@@ -123,6 +157,31 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 		when: BrTextEditorInsertedEvent do: [ :event | self editorChanged ];
 		when: BrTextEditorDeletedEvent do: [ :event | self editorChanged ];
 		when: BlInfiniteDataSourceChanged do: [ :event | self editorChanged ].
+	content := BrVerticalPane new.
+	content hMatchParent.
+	content vFitContentLimited.
 	content addChild: textEditor as: #editor.
+	toolbar := BrToolbar new
+			aptitude: (BrGlamorousToolbarAptitude new spacing: 5);
+			fitContent;
+			margin: (BlInsets bottom: 5).
+	toolbar
+		addChild: (BrButton new
+				aptitude: BrGlamorousButtonWithIconAptitude;
+				beSmallSize;
+				icon: BrGlamorousVectorIcons accept;
+				label: 'Save';
+				action: [ lexiconFile saveFile ])
+		as: #saveButton.
+	toolbar
+		addChild: (BrButton new
+				aptitude: BrGlamorousButtonWithIconAptitude;
+				beSmallSize;
+				icon: BrGlamorousVectorIcons cancel;
+				label: 'Cancel';
+				action: [ lexiconFile cancel ])
+		as: #cancelButton.
+	content addChild: toolbar as: #toolbar.
+	contentElement addChild: content.
 	self updateChangeStatus
 ]
