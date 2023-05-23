@@ -99,22 +99,6 @@ GtApLexiconObject >> gtViewDefinitionReferencesFor: aView [
 				on: view ]
 ]
 
-{ #category : #accessing }
-GtApLexiconObject >> gtViewFormFor: aView [
-	<gtView>
-	| objectClass |
-	self hasId ifFalse: [ ^ aView empty ].
-	
-	objectClass := self asClassName asClassIfAbsent: [ ^ aView empty ].
-	
-	^ aView explicit
-		title: 'Form';
-		priority: 1;
-		stencil: [
-			objectClass new asGtMagritteViewModel
-		]
-]
-
 { #category : #'gt - extensions' }
 GtApLexiconObject >> gtViewPropertiesFor: aView [
 	<gtView>
