@@ -108,15 +108,12 @@ GtApFeedUserSummaryElement >> initialize [
 
 { #category : #updating }
 GtApFeedUserSummaryElement >> updateContent [
-
 	pictureElement user: self user.
 
-	userNameLabel text: self user atpDisplayName.
-	userHandleLabel text: '@', self user atpHandle.
-	
-	self updateUserDescription.
-	
-	"tweetsCountLabel text: self user postCount asString, ' Posts'.
+	userNameLabel text: (self user atpDisplayName ifNil: [ '' ]).
+	userHandleLabel text: '@' , self user atpHandle.
+
+	self updateUserDescription	"tweetsCountLabel text: self user postCount asString, ' Posts'.
 	followingCountLabel text: self user followingCount asString, ' Following'.
 	followersCountLabel text: self user followersCount asString, ' Followers'."
 ]

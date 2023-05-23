@@ -10,14 +10,16 @@ Trait {
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadFollowers [
-	^ ((self client appBskyGraphGetFollowersActor: self atpHandle) at: 'followers')
-		collect: [ :anActor | anActor client: self client ]
+	^ GtApUsersStream
+		users: (((self client appBskyGraphGetFollowersActor: self atpHandle) at: 'followers')
+				collect: [ :anActor | anActor client: self client ])
 ]
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadFollows [
-	^ ((self client appBskyGraphGetFollowsActor: self atpHandle) at: 'follows')
-		collect: [ :anActor | anActor client: self client ]
+	^ GtApUsersStream
+		users: (((self client appBskyGraphGetFollowsActor: self atpHandle) at: 'follows')
+				collect: [ :anActor | anActor client: self client ])
 ]
 
 { #category : #accessing }
