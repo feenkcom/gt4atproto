@@ -103,15 +103,12 @@ GtApStyler >> styleReference: aStringNode in: txt [
 						definitionWithId: (source copyFrom: 2 to: source size - 1)
 						ifAbsent: [  ])
 						ifNotNil: [ :obj | 
-							block := [ | file |
-								file := GtApLexiconFile new
-										filename: obj documentFile;
-										lexicons: self lexicons;
-										yourself.
-								file
-									definitionNamed: ((source includes: $#)
-											ifTrue: [ source copyFrom: (source indexOf: $#) + 1 to: source size - 1 ]
-											ifFalse: [ 'main' ]) ] ] ] ].
+							block := [ (lexiconFile lexiconDirectory fileFor: obj documentFile)
+									ifNotNil: [ :file | 
+										file
+											definitionNamed: ((source includes: $#)
+													ifTrue: [ source copyFrom: (source indexOf: $#) + 1 to: source size - 1 ]
+													ifFalse: [ 'main' ]) ] ] ] ] ].
 	block
 		ifNotNil: [ | position |
 			position := aStringNode stopPosition - 1.
@@ -124,7 +121,13 @@ GtApStyler >> styleReference: aStringNode in: txt [
 								size: 8 @ 8;
 								geometry: BlEllipseGeometry new;
 								margin: (BlInsets left: 2 right: 2);
-								action: [ :button | block value ifNotNil: [ :obj | button phlow spawnObject: obj ] ] ])
+								action: [ :button | 
+									block value
+										ifNotNil: [ :obj | 
+											button phlow
+												spawnTool: (GtPhlowValuableTool new
+														name: obj gtDisplayString;
+														valuable: [ GtApLexiconCoder new object: obj ]) ] ] ])
 				from: position
 				to: position ]
 ]

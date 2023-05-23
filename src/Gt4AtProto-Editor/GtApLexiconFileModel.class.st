@@ -1,82 +1,81 @@
 Class {
-	#name : #GtApLexiconFile,
-	#superclass : #Object,
-	#traits : 'TGtAnnouncer',
-	#classTraits : 'TGtAnnouncer classTrait',
+	#name : #GtApLexiconFileModel,
+	#superclass : #GtApLexiconModel,
 	#instVars : [
 		'filename',
 		'source',
 		'ast',
-		'announcer',
-		'lexicons'
+		'lexiconDirectory',
+		'originalSource'
 	],
 	#category : #'Gt4AtProto-Editor-Model'
 }
 
-{ #category : #announcer }
-GtApLexiconFile >> announcer [
-	^ announcer
-]
-
 { #category : #accessing }
-GtApLexiconFile >> ast [
+GtApLexiconFileModel >> ast [
 	^ ast ifNil: [ ast := JSONParser parseWithErrors: self source ]
 ]
 
+{ #category : #actions }
+GtApLexiconFileModel >> cancel [
+	self isModified ifFalse: [ ^ self ].
+	self source: self originalSource
+]
+
 { #category : #accessing }
-GtApLexiconFile >> definitionNamed: aString [
+GtApLexiconFileModel >> definitionNamed: aString [
 	^ (self findDefinitionNode: aString)
 		ifNotNil: [ :node | 
-			GtApDefinition new
+			GtApLexiconDefinitionModel new
 				lexiconFile: self;
 				name: aString;
 				yourself ]
 ]
 
 { #category : #private }
-GtApLexiconFile >> definitionNodes [
+GtApLexiconFileModel >> definitionNodes [
 	^ self definitionNodesIn: self ast
 ]
 
 { #category : #private }
-GtApLexiconFile >> definitionNodesIn: anAst [
+GtApLexiconFileModel >> definitionNodesIn: anAst [
 	^ ((anAst / JSONMemberNode) @ #name <- '"defs"') / JSONObjectNode
 		/ JSONMemberNode
 ]
 
 { #category : #views }
-GtApLexiconFile >> editor [
+GtApLexiconFileModel >> editor [
 	^ GtApLexiconEditorElement new
 		lexiconFile: self;
 		yourself
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> filename [
+GtApLexiconFileModel >> filename [
 	^ filename
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> filename: aFileReference [
+GtApLexiconFileModel >> filename: aFileReference [
 	filename := aFileReference asFileReference
 ]
 
 { #category : #private }
-GtApLexiconFile >> findDefinitionNode: aString [
+GtApLexiconFileModel >> findDefinitionNode: aString [
 	^ (self definitionNodes @ #name <- ('"' , aString , '"')) asOrderedCollection
 		at: 1
 		ifAbsent: [  ]
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> gtDisplayOn: stream [
+GtApLexiconFileModel >> gtDisplayOn: stream [
 	^ self id
 		ifNil: [ super gtDisplayOn: stream ]
 		ifNotNil: [ :id | stream nextPutAll: id ]
 ]
 
 { #category : #views }
-GtApLexiconFile >> gtSourceFor: aView [
+GtApLexiconFileModel >> gtSourceFor: aView [
 	<gtView>
 	| editor |
 	^ aView explicit
@@ -90,7 +89,7 @@ GtApLexiconFile >> gtSourceFor: aView [
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> id [
+GtApLexiconFileModel >> id [
 	| idNode |
 	idNode := (((self ast / JSONMemberNode) @ #name <- '"id"') /@ #value)
 			asOrderedCollection at: 1 ifAbsent: [  ].
@@ -100,36 +99,65 @@ GtApLexiconFile >> id [
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> initialize [
+GtApLexiconFileModel >> initialize [
 	super initialize.
 	announcer := Announcer new
 ]
 
-{ #category : #accessing }
-GtApLexiconFile >> lexicons [
-	^ lexicons
+{ #category : #testing }
+GtApLexiconFileModel >> isLexiconFile [
+	^ true
+]
+
+{ #category : #testing }
+GtApLexiconFileModel >> isModified [
+	^ self originalSource ~= self source
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> lexicons: anObject [
-	lexicons := anObject
+GtApLexiconFileModel >> lexiconDirectory [
+	^ lexiconDirectory
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> saveFile [
+GtApLexiconFileModel >> lexiconDirectory: anObject [
+	lexiconDirectory := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconFileModel >> lexiconFile [
+	^ self
+]
+
+{ #category : #accessing }
+GtApLexiconFileModel >> lexicons [
+	^ lexiconDirectory ifNotNil: [ lexiconDirectory lexicons ]
+]
+
+{ #category : #accessing }
+GtApLexiconFileModel >> originalSource [
+	^ originalSource
+		ifNil: [ filename ifNotNil: [ originalSource := filename contents ] ]
+]
+
+{ #category : #actions }
+GtApLexiconFileModel >> saveFile [
+	self isModified ifFalse: [ ^ self ].
 	filename
 		ensureDelete;
-		writeStreamDo: [ :stream | stream nextPutAll: source ]
+		writeStreamDo: [ :stream | stream nextPutAll: source ].
+	originalSource := self source
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> source [
-	^ source ifNil: [ filename ifNotNil: [ source := filename contents ] ]
+GtApLexiconFileModel >> source [
+	^ source ifNil: [ source := self originalSource ]
 ]
 
 { #category : #accessing }
-GtApLexiconFile >> source: aString [
+GtApLexiconFileModel >> source: aString [
 	| oldSource |
+	source = aString ifTrue: [ ^ self ].
 	oldSource := source.
 	source := aString.
 	ast := nil.

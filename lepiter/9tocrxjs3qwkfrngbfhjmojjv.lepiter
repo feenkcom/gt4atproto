@@ -177,14 +177,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T19:52:07.361057+02:00"
+									"dateAndTimeString" : "2023-05-23T09:47:17.323032-05:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "EFQ272+4DQC6xmd+C+7xpQ=="
 							},
-							"code" : "lexiconsFolder := atprotoDirectory / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder."
+							"code" : "GtApLexiconDirectoryModel new directory: atprotoDirectory / 'lexicons'."
 						}
 					]
 				},
@@ -207,7 +207,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:55.119455+02:00"
+						"dateAndTimeString" : "2023-05-23T09:55:03.112405-05:00"
 					}
 				},
 				"uid" : {
@@ -217,79 +217,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Then, create a model of the lexicons (more details in [[Importing lexicons and generating code]])."
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:13:17.895043+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:13:18.297481+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "zOSY72+4DQC60FMlC+7xpQ=="
-							},
-							"code" : "GtApLexiconFile new\n\tfilename: lexicons documents anyOne documentFile;\n\tlexicons: lexicons"
-						}
-					]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:52:04.771055+02:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:52:23.536645+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "XdndUHG4DQCDKMCOC+7xpQ=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "And then inspect a document file:"
+				"string" : "Then create and inspect a model for the editor:"
 			}
 		]
 	},
