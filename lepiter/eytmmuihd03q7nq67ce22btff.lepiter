@@ -8,7 +8,42 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [ ]
+					"items" : [
+						{
+							"__type" : "pharoSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-23T12:53:38.658621+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-23T12:53:38.946735+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "bV/K77u4DQCD2yukC9fQ/A=="
+							},
+							"code" : "atprotoDirectory := 'atproto' asFileReference"
+						}
+					]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -18,7 +53,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:05.31439+02:00"
+						"dateAndTimeString" : "2023-05-23T12:53:13.750325+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +64,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:05.31439+02:00"
+						"dateAndTimeString" : "2023-05-23T12:53:33.132809+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "2pxSTXG4DQCAasVAC+7xpQ=="
+					"uidString" : "UmtO7ru4DQCDzrogC9fQ/A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The environment also offers support for editing lexicons that includes styling and completion."
+				"string" : "To work with [[Bluesky]] we need the [[Lexicon]]s defined in the [[AT Protocol]] implementation from [github.com/bluesky-social/atproto](https://github.com/bluesky-social/atproto)."
 			},
 			{
 				"__type" : "textSnippet",
@@ -60,7 +95,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:12:56.188184+02:00"
+									"dateAndTimeString" : "2023-05-23T12:53:40.191286+02:00"
 								}
 							},
 							"editEmail" : {
@@ -71,46 +106,12 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T19:51:23.655791+02:00"
+									"dateAndTimeString" : "2023-05-23T12:53:54.054656+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "i1RN7m+4DQC6sgcrC+7xpQ=="
-							},
-							"code" : "atprotoDirectory := 'atproto' asFileReference"
-						},
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:13:00.943915+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T19:50:11.036203+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "vjyW7m+4DQC6vAQ4C+7xpQ=="
+								"uidString" : "UNrh77u4DQCD6ayuC9fQ/A=="
 							},
 							"code" : "atprotoDirectory ensureDeleteAll.\rIceRepositoryCreator\r\t\tfromUrl: 'git@github.com:bluesky-social/atproto.git'\r\t\tto: atprotoDirectory.\ratprotoDirectory"
 						}
@@ -124,7 +125,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T18:36:17.814026+02:00"
+						"dateAndTimeString" : "2023-05-23T12:53:42.847065+02:00"
 					}
 				},
 				"editEmail" : {
@@ -135,17 +136,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:19.598423+02:00"
+						"dateAndTimeString" : "2023-05-23T12:53:50.265066+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "oLGy7W+4DQC6r1HJC+7xpQ=="
+					"uidString" : "gmAK8Lu4DQCD7mVsC9fQ/A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "To play with, first clone `atproto`:"
+				"string" : "The repo should be cloned locally in an `atproto` directory:"
 			},
 			{
 				"__type" : "textSnippet",
@@ -166,7 +167,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:13:11.434825+02:00"
+									"dateAndTimeString" : "2023-05-23T12:54:00.805997+02:00"
 								}
 							},
 							"editEmail" : {
@@ -177,14 +178,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T19:52:07.361057+02:00"
+									"dateAndTimeString" : "2023-05-23T12:54:11.282924+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
-								"uidString" : "EFQ272+4DQC6xmd+C+7xpQ=="
+								"uidString" : "9Gwc8bu4DQCEBQxPC9fQ/A=="
 							},
-							"code" : "lexiconsFolder := atprotoDirectory / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsFolder."
+							"code" : "lexiconsDirectory := atprotoDirectory / 'lexicons'.\nlexicons := GtApLexiconImporter new \n\timportLexiconsFromDirectory: lexiconsDirectory"
 						}
 					]
 				},
@@ -196,7 +197,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:28.614678+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:03.077124+02:00"
 					}
 				},
 				"editEmail" : {
@@ -207,58 +208,23 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:51:55.119455+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:06.52451+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "riW2TnG4DQCBN+UtC+7xpQ=="
+					"uidString" : "hw4/8bu4DQCECrAzC9fQ/A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Then, create a model of the lexicons (more details in [[Importing lexicons and generating code]])."
+				"string" : "Once the repository exists, import the lexicons into a model:"
 			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
-					"items" : [
-						{
-							"__type" : "pharoSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:13:17.895043+02:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-19T18:13:18.297481+02:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "zOSY72+4DQC60FMlC+7xpQ=="
-							},
-							"code" : "GtApLexiconFile new\n\tfilename: lexicons documents anyOne documentFile;\n\tlexicons: lexicons"
-						}
-					]
+					"items" : [ ]
 				},
 				"createEmail" : {
 					"__type" : "email",
@@ -268,7 +234,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:52:04.771055+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:17.507343+02:00"
 					}
 				},
 				"editEmail" : {
@@ -279,17 +245,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-19T19:52:23.536645+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:18.656788+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "XdndUHG4DQCDKMCOC+7xpQ=="
+					"uidString" : "xUMb8ru4DQCEITFSC9fQ/A=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "And then inspect a document file:"
+				"string" : "Inspecting the lexicons shows a browser of the different documents and the definitions."
 			}
 		]
 	},
@@ -301,7 +267,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-19T18:12:45.873074+02:00"
+			"dateAndTimeString" : "2023-05-23T12:53:13.711807+02:00"
 		}
 	},
 	"editEmail" : {
@@ -312,15 +278,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-05-19T18:12:45.873074+02:00"
+			"dateAndTimeString" : "2023-05-23T12:53:13.711807+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Editing lexicon files"
+		"title" : "Importing lexicons from files"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "fb4ab0ed-6fb8-0d00-baae-4ba90beef1a5"
+		"uuid" : "bbd34dee-bbb8-0d00-83cd-f3e60bd7d0fc"
 	}
 }
