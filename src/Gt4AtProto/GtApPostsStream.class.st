@@ -15,13 +15,18 @@ GtApPostsStream class >> posts: aStream [
 ]
 
 { #category : #accessing }
+GtApPostsStream >> asyncSimilarCopy [
+	^ GtApPostsStream posts: self stream asyncSimilarCopy
+]
+
+{ #category : #accessing }
 GtApPostsStream >> gtViewCardPostsFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Post cards';
 		priority: 1;
 		stencil: [ BrSimpleList new
-				stream: self stream;
+				stream: self stream asyncSimilarCopy;
 				itemStencil: [ GtApFeedPostSummaryElement new withShadowAndHighlighting ];
 				itemDataBinder: [ :aPostElement :aPost | 
 					aPostElement
