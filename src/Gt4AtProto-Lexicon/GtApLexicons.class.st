@@ -69,7 +69,7 @@ GtApLexicons >> documents [
 GtApLexicons >> gtAtpLexiconsFor: aView [
 	<gtView>
 	^ aView mondrian
-		title: 'Definition references';
+		title: 'Object references';
 		priority: 1.1;
 		painting: [ :m | 
 			m nodes
@@ -82,7 +82,7 @@ GtApLexicons >> gtAtpLexiconsFor: aView [
 						hovered: [ :s | s background: Color blue lighter ];
 						pressed: [ :s | s background: Color blue muchLighter ]));
 						size: 10 @ 10 ];
-				with: definitionsById values.
+				with: (definitionsById values select: [:each | each isKindOf: GtApLexiconObject ]).
 			m edges
 				stencil: [ :eachClass | 
 					BlLineElement new
