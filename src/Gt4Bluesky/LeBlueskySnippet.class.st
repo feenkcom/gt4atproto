@@ -1,0 +1,177 @@
+Class {
+	#name : #LeBlueskySnippet,
+	#superclass : #LeTextualSnippet,
+	#instVars : [
+		'text',
+		'client',
+		'actor',
+		'post',
+		'parentPost'
+	],
+	#category : #'Gt4Bluesky-Snippet'
+}
+
+{ #category : #accessing }
+LeBlueskySnippet class >> contextMenuItemSpefication [
+	<leSnippetSpecification>
+	^ LeContextMenuItemSpecification new
+		snippetClass: self;
+		title: 'Bluesky'
+]
+
+{ #category : #accessing }
+LeBlueskySnippet class >> empty [
+	"Return a content (page or block) with empty values (title or text).
+	Required by ${method:LeContent>>#addBlockOfClass:after:}$"
+	^ self new
+]
+
+{ #category : #accessing }
+LeBlueskySnippet class >> leJsonV3AttributeMapping [
+
+	^ super leJsonV3AttributeMapping
+		add: (#post -> #postDict);
+		add: (#parentPost -> #parentPostDict);
+		add: (#text -> #textString);
+		yourself
+]
+
+{ #category : #accessing }
+LeBlueskySnippet class >> leJsonV3Name [
+	^ 'blueskyPostSnippet'
+]
+
+{ #category : #accessing }
+LeBlueskySnippet class >> leJsonV4AttributeMapping [
+
+	^ super leJsonV4AttributeMapping
+		add: (#post -> #postDict);
+		add: (#parentPost -> #parentPostDict);
+		add: (#text -> #textString);
+		yourself
+]
+
+{ #category : #accessing }
+LeBlueskySnippet class >> leJsonV4Name [
+	^ 'blueskyPostSnippet'
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> acceptVisitor: aVisitor [
+	^ aVisitor visitBlueskySnippet: self
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> actor [
+	^ actor ifNil: [ actor := self client appBskyActorGetProfileActor: self client handle ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> asSnippetViewModel [
+	<return: #LeSnippetViewModel>
+	^ LeBlueskySnippetViewModel new snippetModel: self
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> atpParent [
+	| response |
+	self hasParentPost ifFalse: [ ^ nil ].
+	response := self client
+			appBskyFeedGetPostThreadUri: (self parentPost at: 'uri')
+			depth: nil.
+
+	(response includesKey: 'error')
+		ifTrue: [ self parentPost: nil.
+			^ nil ].
+
+	^ response at: 'thread'
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> atpPost [
+	| response |
+	self hasPost ifFalse: [ ^ nil ].
+	response := self client
+			appBskyFeedGetPostThreadUri: (self post at: 'uri')
+			depth: nil.
+
+	(response includesKey: 'error')
+		ifTrue: [ self post: nil.
+			^ nil ].
+
+	^ response at: 'thread'
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> client [
+	^ client
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> client: anObject [
+	client := anObject.
+	self announce: LeBlueskySnippetClientChanged new
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> contentAsString [
+	"Return a content, e.g., title or string.
+	Required by ${method:LePageSummaryCardElement>>#summaryText}$"
+	<return: #String>
+	^ self text
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> hasParentPost [
+	^ self parentPost isNotNil
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> hasPost [
+	^ self post isNotNil
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> initialize [
+	super initialize.
+	text := ''.
+	client := GtApClient new
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> parentPost [
+	^ parentPost
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> parentPost: anObject [
+	parentPost := anObject.
+	self announce: LeBlueskySnippetPostChanged new
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> post [
+	^ post
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> post: anObject [
+	post := anObject.
+	self announce: LeBlueskySnippetPostChanged new
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> text [
+	^ text
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> text: anObject [
+	text := anObject
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> updateFromCommandText: aText source: anObject [
+	self text: aText.
+	self announce: LeBlueskySnippetTextChanged new
+]
