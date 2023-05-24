@@ -148,7 +148,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 		do: [ :anEvent | 
 			writingIndicator
 				text: inputElement text size asString , '/' , self maximumPostSize asString.
-			self snippet text: inputElement text ].
+			self snippet string: inputElement text asString ].
 	inputElement
 		addEditorShortcut: (LeSnippetSplitSnippetShortcut new
 				combination: (self keyboardShortcut: #SplitSnippet)).

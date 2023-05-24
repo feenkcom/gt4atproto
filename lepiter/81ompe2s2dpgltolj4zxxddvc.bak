@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-24T16:55:31.551851+02:00"
+						"dateAndTimeString" : "2023-05-24T16:55:34.038354+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,41 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This page is written in [[Lepiter]], the knowledge management component from [[Glamorous Toolkit]]. Lepiter is ma"
+				"string" : "This page is written in [[Lepiter]], the knowledge management component from [[Glamorous Toolkit]]. Lepiter is made out of snippets."
+			},
+			{
+				"__type" : "blueskyPostSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-24T17:06:01.7835+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-24T17:06:01.7835+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "u5o7lNO4DQCX3c9gCnrrhw=="
+				},
+				"string" : ""
 			}
 		]
 	},
