@@ -361,7 +361,7 @@ LeBlueskySnippetElement >> onInspectAction: aButton [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> onPostChanged [
-	(self snippet post includesKey: 'uri')
+	(self snippet hasPost not or: [ self snippet post includesKey: 'uri' ])
 		ifTrue: [ errorLabelElement text: '' ]
 		ifFalse: [ errorLabelElement text: 'Malformed post in snippet definition'.
 
