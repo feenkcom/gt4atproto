@@ -99,7 +99,7 @@ LeBlueskySnippet >> atpPost [
 		ifTrue: [ self post: nil.
 			^ nil ].
 
-	^ response at: 'thread'
+	^ (response at: 'thread') client: self client
 ]
 
 { #category : #accessing }

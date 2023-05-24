@@ -4,9 +4,7 @@ Class {
 	#instVars : [
 		'contentElement',
 		'inputElement',
-		'viewElement',
 		'toolbarElement',
-		'editUrlButton',
 		'errorLabelElement',
 		'identityElement',
 		'publishButton',
@@ -21,11 +19,9 @@ Class {
 		'files',
 		'fileRecords',
 		'imageContainer',
-		'parentProfilePicture',
-		'parentAuthorNameLabel',
-		'parentAuthorHandleLabel',
-		'parentDateLabel',
-		'parentInfoElement'
+		'parentInfoElement',
+		'inspectButton',
+		'writingIndicator'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -149,7 +145,10 @@ LeBlueskySnippetElement >> initializeContentElement [
 			vExact: 50.
 	inputElement editor
 		when: BrTextEditorModifiedEvent
-		do: [ :anEvent | self snippet text: inputElement text ].
+		do: [ :anEvent | 
+			writingIndicator
+				text: inputElement text size asString , '/' , self maximumPostSize asString.
+			self snippet text: inputElement text ].
 	inputElement
 		addEditorShortcut: (LeSnippetSplitSnippetShortcut new
 				combination: (self keyboardShortcut: #SplitSnippet)).
@@ -228,6 +227,13 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 
 	toolbarElement addItem: self createAddFileButton.
 
+	writingIndicator := BrLabel new
+			beTinySize;
+			aptitude: (BrGlamorousLabelAptitude new foreground: Color lightGray);
+			text: '0/' , self maximumPostSize asString.
+
+	toolbarElement addItem: writingIndicator.
+
 	replyButton := BrButton new
 			beTinySize;
 			aptitude: BrGlamorousButtonWithIconAptitude;
@@ -248,6 +254,16 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 
 	toolbarElement addItem: deleteButton.
 
+	inspectButton := BrButton new
+			beTinySize;
+			aptitude: BrGlamorousButtonWithIconAptitude;
+			icon: BrGlamorousVectorIcons inspect;
+			label: 'Inspect';
+			visibility: BlVisibility gone;
+			action: [ :aButton | self onInspectAction: aButton ].
+
+	toolbarElement addItem: inspectButton.
+
 	errorLabelElement := BrLabel new
 			id: LeGitHubErrorMessageElementId;
 			aptitude: (BrGlamorousLabelAptitude new foreground: BrGlamorousColors errorBackgroundColor);
@@ -259,9 +275,10 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 	toolbarElement addItem: errorLabelElement.
 
 	identityElement := BrButton new
-			label: 'Not logged in';
-			aptitude: BrGlamorousButtonWithLabelAptitude
+			label: 'Login';
+			aptitude: BrGlamorousButtonRectangularAptitude new
 					+ (BrGlamorousButtonExteriorAptitude new borderPaint: Color transparent)
+					+ (BrGlamorousButtonLabelAptitude new defaultColor: Color lightGray)
 					+ (BrGlamorousWithDropdownAptitude
 							handle: [ BrButton new
 									label: 'Login';
@@ -287,6 +304,11 @@ LeBlueskySnippetElement >> inputElement [
 { #category : #accessing }
 LeBlueskySnippetElement >> inputElement: anObject [
 	inputElement := anObject
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> maximumPostSize [
+	^ 300
 ]
 
 { #category : #accessing }
@@ -317,19 +339,28 @@ LeBlueskySnippetElement >> onDeleteAction: aButton [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> onInspectAction: aButton [
+	aButton phlow spawnObject: self snippet atpPost
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> onPostChanged [
 	self updateHeader.
-	
+
 	self snippet hasPost
 		ifTrue: [ publishButton visibility: BlVisibility gone.
 			addFileButton visibility: BlVisibility gone.
+			writingIndicator visibility: BlVisibility gone.
 			replyButton visibility: BlVisibility visible.
 			deleteButton visibility: BlVisibility visible.
+			inspectButton visibility: BlVisibility visible.
 			inputElement beReadOnlyWithSelection ]
 		ifFalse: [ publishButton visibility: BlVisibility visible.
 			addFileButton visibility: BlVisibility visible.
+			writingIndicator visibility: BlVisibility visible.
 			replyButton visibility: BlVisibility gone.
 			deleteButton visibility: BlVisibility gone.
+			inspectButton visibility: BlVisibility gone.
 			inputElement beEditable ]
 ]
 
@@ -385,7 +416,8 @@ LeBlueskySnippetElement >> onSnippetViewModelChanged [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> onTextChanged [
-	inputElement text: self snippet text
+	inputElement text: self snippet text.
+	writingIndicator label: self snippet text size asString, '/', self maximumPostSize asString
 ]
 
 { #category : #accessing }
