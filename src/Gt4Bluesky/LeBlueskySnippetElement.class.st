@@ -329,7 +329,9 @@ LeBlueskySnippetElement >> maximumPostSize [
 LeBlueskySnippetElement >> onClientChanged [
 	(self snippet client isNotNil and: [ self snippet client isLoggedIn ])
 		ifTrue: [ identityElement label: self snippet client handle.
-			publishButton enable ]
+			publishButton enable ].
+			
+	self onPostChanged
 ]
 
 { #category : #accessing }
@@ -359,6 +361,11 @@ LeBlueskySnippetElement >> onInspectAction: aButton [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> onPostChanged [
+	(self snippet post includesKey: 'uri')
+		ifFalse: [ errorLabelElement text: 'Malformed post in snippet definition'.
+
+			^ self ].
+
 	self updateHeader.
 
 	self snippet hasPost
@@ -426,7 +433,6 @@ LeBlueskySnippetElement >> onReplyAction: aButton [
 LeBlueskySnippetElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
 	self onClientChanged.
-	self onPostChanged.
 	inputElement text: self snippet text
 ]
 
