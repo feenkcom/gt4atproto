@@ -203,14 +203,14 @@ LeBlueskySnippetElement >> initializeHeader [
 { #category : #accessing }
 LeBlueskySnippetElement >> initializeParentDropdown [
 	^ parentInfoElement := BrButton new
-			icon: BrGlamorousIcons spawn;
+			icon: BrGlamorousVectorIcons spawn;
 			visibility: BlVisibility gone;
 			label: 'Is Reply';
 			aptitude: BrGlamorousButtonWithIconAptitude
 					+ (BrGlamorousButtonExteriorAptitude new borderPaint: Color transparent)
 					+ (BrGlamorousWithDropdownAptitude
 							handle: [ BrButton new
-									icon: BrGlamorousIcons spawn;
+									icon: BrGlamorousVectorIcons spawn;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonExteriorAptitude ]
 							content: [ GtApFeedPostSummaryElement new post: self snippet atpParent ])
 							beNotResizable
@@ -251,7 +251,7 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 	replyButton := BrButton new
 			beTinySize;
 			aptitude: BrGlamorousButtonWithIconAptitude;
-			icon: BrGlamorousIcons spawn;
+			icon: BrGlamorousVectorIcons spawn;
 			label: 'Reply';
 			visibility: BlVisibility gone;
 			action: [ :aButton | self onReplyAction: aButton ].
