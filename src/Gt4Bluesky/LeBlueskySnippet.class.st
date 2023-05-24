@@ -32,7 +32,7 @@ LeBlueskySnippet class >> leJsonV3AttributeMapping [
 	^ super leJsonV3AttributeMapping
 		add: (#post -> #postDict);
 		add: (#parentPost -> #parentPostDict);
-		add: (#text -> #textString);
+		add: (#string -> #string);
 		yourself
 ]
 
@@ -124,7 +124,7 @@ LeBlueskySnippet >> contentAsString [
 { #category : #accessing }
 LeBlueskySnippet >> enrichPost [
 	| response |
-	self hasPost ifFalse: [ ^ nil ].
+	(self hasPost and: [ self hasClient ]) ifFalse: [ ^ nil ].
 	response := self client
 			appBskyFeedGetPostThreadUri: (self post at: 'uri')
 			depth: nil.
@@ -134,6 +134,11 @@ LeBlueskySnippet >> enrichPost [
 	post at: 'displayName' put: response author atpDisplayName.
 	post at: 'handle' put: response author atpHandle.
 	post at: 'timeStamp' put: response createdAt
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> hasClient [
+	^ client isNotNil
 ]
 
 { #category : #accessing }
@@ -149,8 +154,7 @@ LeBlueskySnippet >> hasPost [
 { #category : #accessing }
 LeBlueskySnippet >> initialize [
 	super initialize.
-	string := ''.
-	client := GtApClient new
+	string := ''
 ]
 
 { #category : #accessing }
