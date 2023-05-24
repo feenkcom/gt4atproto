@@ -2,11 +2,11 @@ Class {
 	#name : #LeBlueskySnippet,
 	#superclass : #LeTextualSnippet,
 	#instVars : [
-		'text',
 		'client',
 		'actor',
 		'post',
-		'parentPost'
+		'parentPost',
+		'string'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -47,7 +47,7 @@ LeBlueskySnippet class >> leJsonV4AttributeMapping [
 	^ super leJsonV4AttributeMapping
 		add: (#post -> #postDict);
 		add: (#parentPost -> #parentPostDict);
-		add: (#text -> #textString);
+		add: (#string -> #string);
 		yourself
 ]
 
@@ -118,7 +118,7 @@ LeBlueskySnippet >> contentAsString [
 	"Return a content, e.g., title or string.
 	Required by ${method:LePageSummaryCardElement>>#summaryText}$"
 	<return: #String>
-	^ self text
+	^ self text asString
 ]
 
 { #category : #accessing }
@@ -134,7 +134,7 @@ LeBlueskySnippet >> hasPost [
 { #category : #accessing }
 LeBlueskySnippet >> initialize [
 	super initialize.
-	text := ''.
+	string := ''.
 	client := GtApClient new
 ]
 
@@ -161,13 +161,18 @@ LeBlueskySnippet >> post: anObject [
 ]
 
 { #category : #accessing }
-LeBlueskySnippet >> text [
-	^ text
+LeBlueskySnippet >> string [
+	^ string asString
 ]
 
 { #category : #accessing }
-LeBlueskySnippet >> text: anObject [
-	text := anObject
+LeBlueskySnippet >> string: aString [
+	string := aString
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> text [
+	^ string asRopedText
 ]
 
 { #category : #accessing }
