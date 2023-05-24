@@ -118,7 +118,7 @@ LeBlueskySnippet >> contentAsString [
 	"Return a content, e.g., title or string.
 	Required by ${method:LePageSummaryCardElement>>#summaryText}$"
 	<return: #String>
-	^ self text
+	^ self text asString
 ]
 
 { #category : #accessing }

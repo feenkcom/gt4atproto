@@ -85,7 +85,14 @@ GtXRPCClient >> procedure [
 				request: request;
 				response: response ].
 
-	^ response ifNil: [ response ] ifNotNil: [ STONJSON fromString: response ]
+	response ifNil: [ ^ response ].
+
+	response := STONJSON fromString: response.
+
+	(response includesKey: 'error')
+		ifTrue: [ GtXRPCError signal: (response at: 'message') ].
+
+	^ response
 ]
 
 { #category : #accessing }
@@ -99,7 +106,12 @@ GtXRPCClient >> query [
 				request: request;
 				response: response ].
 
-	^ STONJSON fromString: response
+	response := STONJSON fromString: response.
+
+	(response includesKey: 'error')
+		ifTrue: [ GtXRPCError signal: (response at: 'message') ].
+
+	^ response
 ]
 
 { #category : #accessing }

@@ -134,15 +134,30 @@ LeBlueskySnippetElement >> initialize [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> initializeContentElement [
-	contentElement := BrVerticalPane new
+	| contentPane contentWrapper |
+	contentElement := BrVerticalPane new vFitContentLimited hMatchParent.
+
+	contentWrapper := BrHorizontalPane new vFitContentLimited hMatchParent.
+
+	contentElement addChild: contentWrapper.
+
+	contentWrapper
+		addChild: (profilePicture := GtApFeedUserPictureElement new
+					visibility: BlVisibility gone;
+					padding: (BlInsets all: 3)).
+
+	contentPane := BrVerticalPane new
 			vFitContentLimited;
 			hMatchParent.
 
-	contentElement addChild: self initializeHeader.
+	contentWrapper addChild: contentPane.
+
+	contentPane addChild: self initializeHeader.
 
 	inputElement := BrEditor new
 			aptitude: BrGlamorousRegularEditorAptitude;
-			vExact: 50.
+			hMatchParent;
+			vFitContent.
 	inputElement editor
 		when: BrTextEditorModifiedEvent
 		do: [ :anEvent | 
@@ -159,9 +174,9 @@ LeBlueskySnippetElement >> initializeContentElement [
 		moveUpAndDown;
 		loseFocus.
 
-	contentElement addChild: inputElement as: #editor.
+	contentPane addChild: inputElement as: #editor.
 
-	contentElement addChild: self createImageContainer.
+	contentPane addChild: self createImageContainer.
 
 	contentElement addChild: self initializeToolbarElement
 ]
@@ -174,7 +189,6 @@ LeBlueskySnippetElement >> initializeHeader [
 			padding: (BlInsets all: 3).
 
 	headerElement
-		addChild: (profilePicture := GtApFeedUserPictureElement new visibility: BlVisibility gone);
 		addChild: (authorNameLabel := BrLabel new
 					aptitude: BrGlamorousLabelAptitude new;
 					visibility: BlVisibility gone);
