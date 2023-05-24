@@ -351,6 +351,7 @@ LeBlueskySnippetElement >> onPostChanged [
 		ifTrue: [ publishButton visibility: BlVisibility gone.
 			addFileButton visibility: BlVisibility gone.
 			writingIndicator visibility: BlVisibility gone.
+			identityElement visibility: BlVisibility gone.
 			replyButton visibility: BlVisibility visible.
 			deleteButton visibility: BlVisibility visible.
 			inspectButton visibility: BlVisibility visible.
@@ -358,6 +359,7 @@ LeBlueskySnippetElement >> onPostChanged [
 		ifFalse: [ publishButton visibility: BlVisibility visible.
 			addFileButton visibility: BlVisibility visible.
 			writingIndicator visibility: BlVisibility visible.
+			identityElement visibility: BlVisibility visible.
 			replyButton visibility: BlVisibility gone.
 			deleteButton visibility: BlVisibility gone.
 			inspectButton visibility: BlVisibility gone.
