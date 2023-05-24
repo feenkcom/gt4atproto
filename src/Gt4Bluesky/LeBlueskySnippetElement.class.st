@@ -362,6 +362,7 @@ LeBlueskySnippetElement >> onInspectAction: aButton [
 { #category : #accessing }
 LeBlueskySnippetElement >> onPostChanged [
 	(self snippet post includesKey: 'uri')
+		ifTrue: [ errorLabelElement text: '' ]
 		ifFalse: [ errorLabelElement text: 'Malformed post in snippet definition'.
 
 			^ self ].
@@ -521,24 +522,20 @@ LeBlueskySnippetElement >> updateFileContainer [
 LeBlueskySnippetElement >> updateHeader [
 	| post |
 	self snippet hasPost
-		ifTrue: [ post := self snippet atpPost.
-			post ifNil: [ ^ self ].
+		ifTrue: [ post := self snippet post.
+			(post at: 'avatar')
+				ifNotNil: [ profilePicture avatar: (post at: 'avatar').
+					profilePicture visibility: BlVisibility visible ].
 
-			post author
-				ifNil: [ authorNameLabel text: '<missing>'.
-					authorNameLabel visibility: BlVisibility visible ]
-				ifNotNil: [ post author atpAvatar
-						ifNotNil: [ profilePicture user: post author.
-							profilePicture visibility: BlVisibility visible ].
+			(post at: 'displayName')
+				ifNotNil: [ authorNameLabel text: (post at: 'displayName').
+					authorNameLabel visibility: BlVisibility visible ].
 
-					post author atpDisplayName
-						ifNotNil: [ authorNameLabel text: post author atpDisplayName.
-							authorNameLabel visibility: BlVisibility visible ].
-
-					authorHandleLabel text: '@' , post author atpHandle.
-					authorHandleLabel visibility: BlVisibility visible.
-					dateLabel text: ' at ' , post createdAtTimestamp printToMinute.
-					dateLabel visibility: BlVisibility visible ] ]
+			authorHandleLabel text: '@' , (post at: 'handle').
+			authorHandleLabel visibility: BlVisibility visible.
+			dateLabel
+				text: ' at ' , (DateAndTime fromString: (post at: 'timeStamp')) printToMinute.
+			dateLabel visibility: BlVisibility visible ]
 		ifFalse: [ authorNameLabel visibility: BlVisibility gone.
 			authorHandleLabel visibility: BlVisibility gone.
 			dateLabel visibility: BlVisibility gone.

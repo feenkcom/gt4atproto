@@ -12,6 +12,14 @@ GtApFeedUserPictureElement >> actOnElementDetached [
 	pictureElement asyncFuture cancelSoft interrupt
 ]
 
+{ #category : #accessing }
+GtApFeedUserPictureElement >> avatar: aUrl [
+	pictureElement url: aUrl.
+
+	self
+		removeEventHandlersSuchThat: [ :aHandler | aHandler wantsEvent: BlClickEvent new ]
+]
+
 { #category : #'building - widgets' }
 GtApFeedUserPictureElement >> buildAsyncPictureElement [
 	^ pictureElement := (BrAsyncFileWidget new )
@@ -63,12 +71,7 @@ GtApFeedUserPictureElement >> initialize [
 
 { #category : #updating }
 GtApFeedUserPictureElement >> updateContentForUser: aUser [
-	aUser atpAvatar ifNil: [ ^ self ].
-
-	pictureElement url: aUser atpAvatar.
-
-	self
-		removeEventHandlersSuchThat: [ :aHandler | aHandler wantsEvent: BlClickEvent new ].
+	aUser atpAvatar ifNotNil: [ self avatar: aUser atpAvatar ].
 
 	self when: BlClickEvent do: [ self phlow spawnObject: aUser ]
 ]

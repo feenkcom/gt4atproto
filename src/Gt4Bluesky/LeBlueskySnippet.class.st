@@ -122,6 +122,21 @@ LeBlueskySnippet >> contentAsString [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet >> enrichPost [
+	| response |
+	self hasPost ifFalse: [ ^ nil ].
+	response := self client
+			appBskyFeedGetPostThreadUri: (self post at: 'uri')
+			depth: nil.
+
+	response := response at: 'thread'.
+	post at: 'avatar' put: response author atpAvatar.
+	post at: 'displayName' put: response author atpDisplayName.
+	post at: 'handle' put: response author atpHandle.
+	post at: 'timeStamp' put: response createdAt
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> hasParentPost [
 	^ self parentPost isNotNil
 ]
@@ -157,6 +172,7 @@ LeBlueskySnippet >> post [
 { #category : #accessing }
 LeBlueskySnippet >> post: anObject [
 	post := anObject.
+	self enrichPost.
 	self announce: LeBlueskySnippetPostChanged new
 ]
 
