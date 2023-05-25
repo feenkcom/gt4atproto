@@ -137,10 +137,17 @@ LeBlueskySnippetElement >> initializeContentElement [
 			writingIndicator
 				text: inputElement text size asString , '/' , self maximumPostSize asString.
 			self snippet string: inputElement text asString ].
+
 	inputElement
 		addEditorShortcut: (LeSnippetSplitSnippetShortcut new
-				combination: (self keyboardShortcut: #SplitSnippet)).
-	inputElement editor addEventHandler: (LeEditorReachedBorderEventHandler new snippetElement: self).
+				combination: (self keyboardShortcut: #SplitSnippet));
+		addEditorShortcut: (LeSnippetDeletePreviousShortcut new
+				combination: (self keyboardShortcut: #DeletePrevious));
+		addEditorShortcut: (LeSnippetDeleteNextShortcut new
+				combination: (self keyboardShortcut: #DeleteNext)).
+
+	inputElement editor
+		addEventHandler: (LeEditorReachedBorderEventHandler new snippetElement: self).
 
 	LeSnippetEditorElementShortcuter new
 		editor: inputElement;

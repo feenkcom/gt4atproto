@@ -61,6 +61,12 @@ LeBlueskySnippet >> addFile: aFile [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet >> appendText: aText source: anObject [
+	self string: self string , aText asString.
+	self announce: LeBlueskySnippetTextChanged new
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> asSnippetViewModel [
 	<return: #LeSnippetViewModel>
 	^ LeBlueskySnippetViewModel new snippetModel: self
@@ -227,6 +233,5 @@ LeBlueskySnippet >> text [
 { #category : #accessing }
 LeBlueskySnippet >> updateFromCommandText: aText source: anObject [
 	self string: aText asString.
-	self announce: LeBlueskySnippetTextChanged new.
-	self announce: LeBlueskySnippetFilesChanged new
+	self announce: LeBlueskySnippetTextChanged new
 ]
