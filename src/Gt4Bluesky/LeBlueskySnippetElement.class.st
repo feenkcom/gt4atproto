@@ -439,8 +439,10 @@ LeBlueskySnippetElement >> onSnippetViewModelChanged [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> onTextChanged [
-	inputElement text: self snippet text.
-	writingIndicator label: self snippet text size asString, '/', self maximumPostSize asString
+	inputElement
+		inUIProcessDo: [ inputElement text: self snippet text.
+			writingIndicator
+				text: self snippet text size asString , '/' , self maximumPostSize asString ]
 ]
 
 { #category : #accessing }

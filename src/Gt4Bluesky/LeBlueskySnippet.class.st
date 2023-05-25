@@ -197,6 +197,6 @@ LeBlueskySnippet >> text [
 
 { #category : #accessing }
 LeBlueskySnippet >> updateFromCommandText: aText source: anObject [
-	self text: aText.
+	self string: aText asString.
 	self announce: LeBlueskySnippetTextChanged new
 ]
