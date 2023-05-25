@@ -43,7 +43,7 @@ GtApPostStyler >> privateStyle: aText [
 	| urls |
 	urls := fuzzyUrlsParser parse: aText asString.
 	urls do: [ :aToken |
-		(aText from: aToken start to: aToken stop) foreground: Color blue
+		(aText from: aToken start to: aToken stop) foreground: BrGlamorousColors linkColor
 	].
 	^ aText
 ]
