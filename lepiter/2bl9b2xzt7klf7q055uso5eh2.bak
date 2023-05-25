@@ -208,6 +208,43 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-24T22:29:01.44713+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-24T22:29:06.417295+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "OcxZF9i4DQCHLHkTCnrrhw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "If you are interested in how "
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
 									"dateAndTimeString" : "2023-05-16T22:18:03.126229+02:00"
 								}
 							},
@@ -330,7 +367,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T22:21:24.373675+02:00"
+									"dateAndTimeString" : "2023-05-23T12:54:30.825981+02:00"
 								}
 							},
 							"uid" : {
@@ -340,7 +377,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "If you are more inclined to explore technical details, you can start from the [[Importing lexicons and generating code]] to learn about the code generation mechanism that goes from a [[Lexicon]] to the detailed object model that is used in this environment."
+							"string" : "If you are more inclined to explore technical details, you can start from the [[Generating code from lexicons]] to learn about the code generation mechanism that goes from a [[Lexicon]] to the detailed object model that is used in this environment."
 						}
 					]
 				},

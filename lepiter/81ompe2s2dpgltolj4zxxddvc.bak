@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-24T20:33:27.548863+02:00"
+						"dateAndTimeString" : "2023-05-24T22:26:21.106353+02:00"
 					}
 				},
 				"uid" : {
@@ -39,10 +39,90 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This page is written in [[Lepiter]], the knowledge management component from [[Glamorous Toolkit]]. Lepiter is made out of snippets."
+				"string" : "This page is written in [[Lepiter]], the knowledge management component from [[Glamorous Toolkit]]. Lepiter is made out of snippets, each of which can define its own langauge and visual appearance."
 			},
 			{
-				"__type" : "blueskyPostSnippet",
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "blueskyPostSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-24T17:06:01.7835+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-05-24T17:06:01.7835+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "u5o7lNO4DQCX3c9gCnrrhw=="
+							},
+							"postDict" : {
+								"avatar" : "https://cdn.bsky.social/imgproxy/V40rFyzqZV440JBp0IXID877Uc8Mfr-G4SQGXxeFJJE/rs:fill:1000:1000:1:0/plain/bafkreierd6txx5zclvpwhcd3rkx5gxakmqttlt3cu6hr6dinltyyvsja4e@jpeg",
+								"cid" : "bafyreif5ju2wkkz5s5kxycdkmvaqh2grisqhlk5qjaiomlofh2oqxbnlz4",
+								"displayName" : null,
+								"handle" : "weaknsmall.bsky.social",
+								"timeStamp" : "2023-05-24T20:25:01.596175+02:00",
+								"uri" : "at://did:plc:7jebnrikkvqis66lqlzllxkp/app.bsky.feed.post/3jwimjow5n22w"
+							},
+							"string" : "This post was authored and posted from Glamorous Toolkit."
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-24T22:26:24.262812+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-05-24T22:26:40.484143+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "xwrdDdi4DQCD0LQNCnrrhw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "gt4atproto adds a Bluesky post snippet. Like the one below."
+			},
+			{
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +135,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-24T17:06:01.7835+02:00"
+						"dateAndTimeString" : "2023-05-24T22:26:48.998785+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,19 +146,48 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-24T17:06:01.7835+02:00"
+						"dateAndTimeString" : "2023-05-24T23:10:54.80709+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "u5o7lNO4DQCX3c9gCnrrhw=="
+					"uidString" : "lst0D9i4DQCFaYsRCnrrhw=="
 				},
-				"postDict" : {
-					"avatar" : "https://cdn.bsky.social/imgproxy/V40rFyzqZV440JBp0IXID877Uc8Mfr-G4SQGXxeFJJE/rs:fill:1000:1000:1:0/plain/bafkreierd6txx5zclvpwhcd3rkx5gxakmqttlt3cu6hr6dinltyyvsja4e@jpeg",
-					"cid" : "bafyreif5ju2wkkz5s5kxycdkmvaqh2grisqhlk5qjaiomlofh2oqxbnlz4",
-					"displayName" : null,
-					"handle" : "weaknsmall.bsky.social",
-					"timeStamp" : "2023-05-24T20:25:01.596175+02:00",
-					"uri" : "at://did:plc:7jebnrikkvqis66lqlzllxkp/app.bsky.feed.post/3jwimjow5n22w"
+				"paragraphStyle" : {
+					"__type" : "textStyle"
 				},
-				"textString" : 
+				"string" : "Through this snippet, you can create posts from within  transform your personal knowledge base into the "
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2023-05-24T16:54:53.447453+02:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2023-05-24T16:54:53.447453+02:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Posting to Bluesky from your knowledge base"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "789c656c-d3b8-0d00-9664-43d30a7aeb87"
+	}
+}

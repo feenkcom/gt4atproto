@@ -391,11 +391,11 @@ LeBlueskySnippetElement >> onPostChanged [
 { #category : #accessing }
 LeBlueskySnippetElement >> onPublishAction: aButton [
 	| record |
-	"self uploadFiles."
+	self uploadFiles.
 	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 			'createdAt' -> DateAndTime now printString.
 			'text' -> inputElement text asString} asDictionary.
-	"self fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ]."
+	self fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
 
 	self snippet hasParentPost
 		ifTrue: [ | root |
