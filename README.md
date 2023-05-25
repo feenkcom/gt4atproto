@@ -12,7 +12,16 @@ It covers several things at different levels of abstraction.
 - Code generation from lexicons to Smalltalk code.
 - Dedicated styling and completion support for exploring and editing lexicon JSON files.
 
+[Read the announcement blog post.](https://lepiter.io/feenk/gt4atproto--a-dedicated-environment-for-at-7kcp8pwy6dcnomlljmtvl3wx2/)
 
 ## Installation
-To install, [download GT](https://gtoolkit.com/download) for your platform, open a playground and execute the following script:```Metacello new	repository: 'github://feenkcom/gt4atproto:main/src';	baseline: 'Gt4AtProto';	load.
-#BaselineOfGt4AtProto asClass loadLepiter```This will load the code specific for AT Protocol, and the associated knowledge base.
+To install, [download GT](https://gtoolkit.com/download) for your platform, open a playground and execute the following script:
+```
+Metacello new
+	repository: 'github://feenkcom/gt4atproto:main/src';
+	baseline: 'Gt4AtProto';
+	load.
+#BaselineOfGt4AtProto asClass loadLepiter
+```
+
+This will load the code specific for AT Protocol, and the associated knowledge base.
