@@ -355,6 +355,7 @@ LeBlueskySnippetElement >> onPostChanged [
 			^ self ].
 
 	self updateHeader.
+	self updateFileContainer.
 
 	self snippet hasPost
 		ifTrue: [ publishButton visibility: BlVisibility gone.
