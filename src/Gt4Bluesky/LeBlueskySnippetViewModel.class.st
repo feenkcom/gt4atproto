@@ -29,6 +29,11 @@ LeBlueskySnippetViewModel >> onSnippetClientChanged: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetViewModel >> onSnippetFilesChanged: anObject [
+	self announce: anObject
+]
+
+{ #category : #accessing }
 LeBlueskySnippetViewModel >> onSnippetPostChanged: anObject [
 	self announce: anObject
 ]
@@ -60,5 +65,10 @@ LeBlueskySnippetViewModel >> subscribeToSnippetModel [
 	self snippetModel weak
 		when: LeBlueskySnippetTextChanged 
 			send: #onSnippetTextChanged: 
+			to: self.
+			
+	self snippetModel weak
+		when: LeBlueskySnippetFilesChanged 
+			send: #onSnippetFilesChanged: 
 			to: self
 ]

@@ -16,8 +16,6 @@ Class {
 		'dateLabel',
 		'profilePicture',
 		'addFileButton',
-		'files',
-		'fileRecords',
 		'imageContainer',
 		'parentInfoElement',
 		'inspectButton',
@@ -58,10 +56,9 @@ LeBlueskySnippetElement >> createAddFileButton [
 										aFileReference isDirectory not
 											and: [ (FileSystemDirectoryEntry reference: aFileReference) isHidden not ] ];
 									okAction: [ :aFile | 
-										self files add: aFile.
+										self snippet addFile: aFile.
 										addFileButton
-											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new.
-												self updateFileContainer ] ] ]);
+											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new ] ] ]);
 			icon: BrGlamorousVectorIcons add;
 			label: 'Add File'
 ]
@@ -82,30 +79,10 @@ LeBlueskySnippetElement >> editor [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> fileRecords [
-	^ fileRecords
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> fileRecords: anObject [
-	fileRecords := anObject
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> files [
-	^ files
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> files: anObject [
-	files := anObject
-]
-
-{ #category : #accessing }
 LeBlueskySnippetElement >> filesToEmbed [
 	^ {'$type' -> 'app.bsky.embed.images'.
 		'images'
-			-> (self fileRecords
+			-> (self snippet fileRecords
 					collect: [ :aRecord | 
 						{'image' -> (aRecord at: 'blob').
 							'alt' -> ''} asDictionary ]) asArray} asDictionary
@@ -114,10 +91,6 @@ LeBlueskySnippetElement >> filesToEmbed [
 { #category : #accessing }
 LeBlueskySnippetElement >> initialize [
 	super initialize.
-
-
-	files := OrderedCollection new.
-	fileRecords := OrderedCollection new.
 
 	self initializeContentElement.
 
@@ -359,6 +332,11 @@ LeBlueskySnippetElement >> onDeleteAction: aButton [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> onFilesChanged [
+	self inUIProcessDo: [ self updateFileContainer ]
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> onInspectAction: aButton [
 	aButton phlow spawnObject: self snippet atpPost
 ]
@@ -399,7 +377,7 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 			'createdAt' -> DateAndTime now printString.
 			'text' -> inputElement text asString} asDictionary.
-	self fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self snippet fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
 
 	self snippet hasParentPost
 		ifTrue: [ | root |
@@ -438,7 +416,8 @@ LeBlueskySnippetElement >> onReplyAction: aButton [
 LeBlueskySnippetElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
 	self onClientChanged.
-	inputElement text: self snippet text
+	inputElement text: self snippet text.
+	self updateFileContainer
 ]
 
 { #category : #accessing }
@@ -492,6 +471,11 @@ LeBlueskySnippetElement >> subscribeToSnippetViewModel [
 	self snippetViewModel
 		when: LeBlueskySnippetCursorChanged
 		send: #onCursorChanged
+		to: self.
+		
+	self snippetViewModel
+		when: LeBlueskySnippetFilesChanged
+		send: #onFilesChanged
 		to: self
 ]
 
@@ -515,7 +499,7 @@ LeBlueskySnippetElement >> transformLaterSnippetsFrom: aSnippet [
 LeBlueskySnippetElement >> updateFileContainer [
 	imageContainer removeChildren.
 	imageContainer visibility: BlVisibility visible.
-	self files
+	self snippet fileReferences
 		do: [ :aFile | 
 			imageContainer
 				addChild: (BrAsyncFileWidget new
@@ -554,5 +538,8 @@ LeBlueskySnippetElement >> updateHeader [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> uploadFiles [
-	self files do: [ :aFile | self fileRecords add: (self snippet client comAtprotoRepoUploadBlobFile: aFile) ]
+	self snippet fileReferences
+		do: [ :aFile | 
+			self snippet fileRecords
+				add: (self snippet client comAtprotoRepoUploadBlobFile: aFile) ]
 ]

@@ -6,7 +6,9 @@ Class {
 		'actor',
 		'post',
 		'parentPost',
-		'string'
+		'string',
+		'files',
+		'fileRecords'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -27,27 +29,13 @@ LeBlueskySnippet class >> empty [
 ]
 
 { #category : #accessing }
-LeBlueskySnippet class >> leJsonV3AttributeMapping [
-
-	^ super leJsonV3AttributeMapping
-		add: (#post -> #postDict);
-		add: (#parentPost -> #parentPostDict);
-		add: (#string -> #string);
-		yourself
-]
-
-{ #category : #accessing }
-LeBlueskySnippet class >> leJsonV3Name [
-	^ 'blueskyPostSnippet'
-]
-
-{ #category : #accessing }
 LeBlueskySnippet class >> leJsonV4AttributeMapping [
 
 	^ super leJsonV4AttributeMapping
 		add: (#post -> #postDict);
 		add: (#parentPost -> #parentPostDict);
 		add: (#string -> #string);
+		add: (#files -> #files);
 		yourself
 ]
 
@@ -64,6 +52,12 @@ LeBlueskySnippet >> acceptVisitor: aVisitor [
 { #category : #accessing }
 LeBlueskySnippet >> actor [
 	^ actor ifNil: [ actor := self client appBskyActorGetProfileActor: self client handle ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> addFile: aFile [
+	self files add: (self database addAttachmentByCopy: aFile).
+	self announce: LeBlueskySnippetFilesChanged new
 ]
 
 { #category : #accessing }
@@ -137,6 +131,32 @@ LeBlueskySnippet >> enrichPost [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet >> fileRecords [
+	^ fileRecords
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> fileRecords: anObject [
+	fileRecords := anObject
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> fileReferences [
+	^ self files collect: [ :aFile | self database localStoreRootDirectory / aFile ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> files [
+	^ files
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> files: anObject [
+	files := anObject asOrderedCollection.
+	self announce: LeBlueskySnippetFilesChanged new
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> hasClient [
 	^ client isNotNil
 ]
@@ -155,6 +175,8 @@ LeBlueskySnippet >> hasPost [
 LeBlueskySnippet >> initialize [
 	super initialize.
 	string := ''.
+	files := OrderedCollection new.
+	fileRecords := OrderedCollection new.
 	
 	self initializeClient
 ]
