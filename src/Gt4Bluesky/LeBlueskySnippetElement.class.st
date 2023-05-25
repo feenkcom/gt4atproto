@@ -313,8 +313,21 @@ LeBlueskySnippetElement >> links [
 			attrs
 				do: [ :each | 
 					(each isKindOf: GtApPostLinkAttribute)
-						ifTrue: [ result add: (text from: from to: to) ] ] ].
+						ifTrue: [ result add: {from. to. (text from: from to: to)} ] ] ].
 	^ result
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> linksToFacets [
+	^ (self links
+		collect: [ :aLinkDefinition | 
+			{'index'
+					-> {'byteStart' -> (aLinkDefinition first - 1).
+							'byteEnd' -> aLinkDefinition second} asDictionary.
+				'features'
+					-> {{'$type' -> 'app.bsky.richtext.facet#link'.
+								'uri' -> aLinkDefinition third asString} asDictionary}} asDictionary ])
+		asArray
 ]
 
 { #category : #accessing }
@@ -398,7 +411,9 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 			'createdAt' -> DateAndTime now printString.
 			'text' -> inputElement text asString} asDictionary.
-	self snippet fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self snippet fileRecords
+		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
 
 	self snippet hasParentPost
 		ifTrue: [ | root |
@@ -420,7 +435,7 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 				validate: nil
 				record: record
 				swapCommit: nil).
-				
+
 	self transformLaterSnippetsFrom: self snippet
 ]
 
