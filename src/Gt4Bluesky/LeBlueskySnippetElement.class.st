@@ -167,6 +167,10 @@ LeBlueskySnippetElement >> initializeContentElement [
 	inputElement
 		addEditorShortcut: (LeSnippetSplitSnippetShortcut new
 				combination: (self keyboardShortcut: #SplitSnippet)).
+	"inputElement navigator
+		whenReachedBoundary: [ :anEvent | 
+			anEvent isTop ifTrue: [ self snippetViewModel focusPreviousSnippet ].
+			anEvent isBottom ifTrue: [ self snippetViewModel focusNextSnippet ] ]."
 
 	LeSnippetEditorElementShortcuter new
 		editor: inputElement;

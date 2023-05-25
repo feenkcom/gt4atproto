@@ -154,7 +154,14 @@ LeBlueskySnippet >> hasPost [
 { #category : #accessing }
 LeBlueskySnippet >> initialize [
 	super initialize.
-	string := ''
+	string := ''.
+	
+	self initializeClient
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> initializeClient [
+	client := LeBlueskyIdentityStore uniqueInstance getFirstOrNil
 ]
 
 { #category : #accessing }

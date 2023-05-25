@@ -25,6 +25,11 @@ LeBlueskyIdentityStore >> getClientFor: aKey [
 ]
 
 { #category : #accessing }
+LeBlueskyIdentityStore >> getFirstOrNil [
+	^ clients ifEmpty: [ nil ] ifNotEmpty: [ clients anyOne ]
+]
+
+{ #category : #accessing }
 LeBlueskyIdentityStore >> initialize [
 	clients := Dictionary new.
 ]
