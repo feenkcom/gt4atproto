@@ -46,6 +46,7 @@ GtApPostStyler >> privateStyle: aText [
 		do: [ :aToken | 
 			(aText from: aToken start to: aToken stop)
 				foreground: BrGlamorousColors linkColor;
+				attribute: GtApPostLinkAttribute new;
 				attribute: (GtPlaygroundEvaluatedCodeButtonAttribute new
 						result: aToken;
 						action: [ aToken inspect ]) ].

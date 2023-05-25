@@ -304,6 +304,20 @@ LeBlueskySnippetElement >> inputElement: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> links [
+	| text result |
+	text := inputElement text.
+	result := OrderedCollection new.
+	text
+		attributeRunsDo: [ :from :to :attrs | 
+			attrs
+				do: [ :each | 
+					(each isKindOf: GtApPostLinkAttribute)
+						ifTrue: [ result add: (text from: from to: to) ] ] ].
+	^ result
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> maximumPostSize [
 	^ 300
 ]
