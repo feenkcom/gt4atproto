@@ -161,7 +161,9 @@ LeBlueskySnippetElement >> initializeContentElement [
 
 	contentPane addChild: self createImageContainer.
 
-	contentElement addChild: self initializeToolbarElement
+	contentElement addChild: self initializeToolbarElement.
+	
+	contentElement addChild: self initializeParentDropdown.
 ]
 
 { #category : #accessing }
@@ -176,9 +178,7 @@ LeBlueskySnippetElement >> initializeHeader [
 					aptitude: BrGlamorousLabelAptitude new;
 					visibility: BlVisibility gone);
 		addChild: (authorHandleLabel := self buildGrayLabel visibility: BlVisibility gone);
-		addChild: (dateLabel := self buildGrayLabel visibility: BlVisibility gone);
-		addChild: BrFrame new matchParent;
-		addChild: self initializeParentDropdown.
+		addChild: (dateLabel := self buildGrayLabel visibility: BlVisibility gone).
 
 	^ headerElement
 ]
@@ -196,7 +196,12 @@ LeBlueskySnippetElement >> initializeParentDropdown [
 									icon: BrGlamorousVectorIcons spawn;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonExteriorAptitude ]
 							content: [ GtApFeedPostSummaryElement new post: self snippet atpParent ])
-							beNotResizable
+							beNotResizable;
+			constraintsDo: [:c |
+				c ignoreByLayout.
+				c ignored horizontal alignRight.
+				c ignored vertical alignTop.
+			]
 ]
 
 { #category : #accessing }
