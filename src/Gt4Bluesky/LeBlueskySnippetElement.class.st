@@ -69,6 +69,7 @@ LeBlueskySnippetElement >> createImageContainer [
 			hMatchParent;
 			vExact: 200;
 			visibility: BlVisibility gone;
+			clipChildren: false;
 			margin: (BlInsets all: 5)
 ]
 
@@ -518,10 +519,12 @@ LeBlueskySnippetElement >> updateFileContainer [
 			fileReferences
 				do: [ :aFile | 
 					imageContainer
-						addChild: (BrAsyncFileWidget new
+						addChild: (LeBlueskyPostFileWidget new
 								vExact: 200;
 								hExact: 200;
-								file: aFile) ] ]
+								file: aFile;
+								isDeletable: self snippet hasPost not;
+								onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]) ] ]
 ]
 
 { #category : #accessing }

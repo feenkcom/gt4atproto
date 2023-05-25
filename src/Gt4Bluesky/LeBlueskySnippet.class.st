@@ -216,6 +216,13 @@ LeBlueskySnippet >> post: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet >> removeFileReference: aFileReference [
+	self files
+		remove: (aFileReference relativeTo: self database localStoreRootDirectory) pathString.
+	self announce: LeBlueskySnippetFilesChanged new
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> string [
 	^ string asString
 ]
