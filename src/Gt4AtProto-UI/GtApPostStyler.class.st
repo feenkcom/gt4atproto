@@ -42,8 +42,12 @@ GtApPostStyler >> initializeFuzzyUrlParser [
 GtApPostStyler >> privateStyle: aText [
 	| urls |
 	urls := fuzzyUrlsParser parse: aText asString.
-	urls do: [ :aToken |
-		(aText from: aToken start to: aToken stop) foreground: BrGlamorousColors linkColor
-	].
+	urls
+		do: [ :aToken | 
+			(aText from: aToken start to: aToken stop)
+				foreground: BrGlamorousColors linkColor;
+				attribute: (GtPlaygroundEvaluatedCodeButtonAttribute new
+						result: aToken;
+						action: [ aToken inspect ]) ].
 	^ aText
 ]
