@@ -140,10 +140,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 	inputElement
 		addEditorShortcut: (LeSnippetSplitSnippetShortcut new
 				combination: (self keyboardShortcut: #SplitSnippet)).
-	"inputElement navigator
-		whenReachedBoundary: [ :anEvent | 
-			anEvent isTop ifTrue: [ self snippetViewModel focusPreviousSnippet ].
-			anEvent isBottom ifTrue: [ self snippetViewModel focusNextSnippet ] ]."
+	inputElement editor addEventHandler: (LeEditorReachedBorderEventHandler new snippetElement: self).
 
 	LeSnippetEditorElementShortcuter new
 		editor: inputElement;
@@ -421,6 +418,15 @@ LeBlueskySnippetElement >> onSnippetViewModelChanged [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> onSnippetViewModelFocused: aBoolean [
+	"Override me to either request or lose focus depending on the boolean"
+
+	aBoolean
+		ifTrue: [ inputElement requestFocus ]
+		ifFalse: [ inputElement loseFocus ]
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> onTextChanged [
 	inputElement
 		inUIProcessDo: [ inputElement text: self snippet text.
@@ -498,14 +504,17 @@ LeBlueskySnippetElement >> transformLaterSnippetsFrom: aSnippet [
 { #category : #accessing }
 LeBlueskySnippetElement >> updateFileContainer [
 	imageContainer removeChildren.
-	imageContainer visibility: BlVisibility visible.
 	self snippet fileReferences
-		do: [ :aFile | 
-			imageContainer
-				addChild: (BrAsyncFileWidget new
-						vExact: 200;
-						hExact: 200;
-						file: aFile) ]
+		ifEmpty: [ imageContainer visibility: BlVisibility gone ]
+		ifNotEmpty: [ :fileReferences | 
+			imageContainer visibility: BlVisibility visible.
+			fileReferences
+				do: [ :aFile | 
+					imageContainer
+						addChild: (BrAsyncFileWidget new
+								vExact: 200;
+								hExact: 200;
+								file: aFile) ] ]
 ]
 
 { #category : #accessing }
