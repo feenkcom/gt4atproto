@@ -131,6 +131,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 	inputElement := BrEditor new
 			aptitude: BrGlamorousRegularEditorAptitude;
 			hMatchParent;
+			styler: GtApPostStyler new;
 			vFitContent.
 	inputElement editor
 		when: BrTextEditorModifiedEvent
