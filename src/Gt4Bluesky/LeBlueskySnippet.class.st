@@ -29,6 +29,25 @@ LeBlueskySnippet class >> empty [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet class >> fromUrl: aUrl [
+	| path handle recordId snippet did post |
+	path := '/' split: (aUrl removePrefix: 'https://bsky.app/').
+	handle := path second.
+	recordId := path last.
+	snippet := LeBlueskySnippet new.
+	snippet client
+		ifNil: [ self error: 'Not logged into Bluesky, cannot retrieve post.' ].
+	did := (snippet client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
+	post := (snippet client
+			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
+			depth: nil) at: 'thread'.
+	^ snippet
+		post: {'uri' -> post atpPost atpUri.
+				'cid' -> post atpPost atpCid} asDictionary;
+		string: post atpPost atpRecord atpText
+]
+
+{ #category : #accessing }
 LeBlueskySnippet class >> leJsonV4AttributeMapping [
 
 	^ super leJsonV4AttributeMapping
