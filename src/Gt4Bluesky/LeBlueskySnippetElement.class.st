@@ -69,6 +69,7 @@ LeBlueskySnippetElement >> createImageContainer [
 			hMatchParent;
 			vExact: 200;
 			visibility: BlVisibility gone;
+			clipChildren: false;
 			margin: (BlInsets all: 5)
 ]
 
@@ -130,6 +131,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 	inputElement := BrEditor new
 			aptitude: BrGlamorousRegularEditorAptitude;
 			hMatchParent;
+			styler: GtApPostStyler new;
 			vFitContent.
 	inputElement editor
 		when: BrTextEditorModifiedEvent
@@ -159,7 +161,9 @@ LeBlueskySnippetElement >> initializeContentElement [
 
 	contentPane addChild: self createImageContainer.
 
-	contentElement addChild: self initializeToolbarElement
+	contentElement addChild: self initializeToolbarElement.
+	
+	contentElement addChild: self initializeParentDropdown.
 ]
 
 { #category : #accessing }
@@ -174,9 +178,7 @@ LeBlueskySnippetElement >> initializeHeader [
 					aptitude: BrGlamorousLabelAptitude new;
 					visibility: BlVisibility gone);
 		addChild: (authorHandleLabel := self buildGrayLabel visibility: BlVisibility gone);
-		addChild: (dateLabel := self buildGrayLabel visibility: BlVisibility gone);
-		addChild: BrFrame new matchParent;
-		addChild: self initializeParentDropdown.
+		addChild: (dateLabel := self buildGrayLabel visibility: BlVisibility gone).
 
 	^ headerElement
 ]
@@ -194,7 +196,12 @@ LeBlueskySnippetElement >> initializeParentDropdown [
 									icon: BrGlamorousVectorIcons spawn;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonExteriorAptitude ]
 							content: [ GtApFeedPostSummaryElement new post: self snippet atpParent ])
-							beNotResizable
+							beNotResizable;
+			constraintsDo: [:c |
+				c ignoreByLayout.
+				c ignored horizontal alignRight.
+				c ignored vertical alignTop.
+			]
 ]
 
 { #category : #accessing }
@@ -302,6 +309,47 @@ LeBlueskySnippetElement >> inputElement: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> linkToFeature: aString [
+	^ (aString beginsWith: '@')
+		ifTrue: [ {'$type' -> 'app.bsky.richtext.facet#mention'.
+				'did' -> (self lookupUserDid: aString allButFirst)} asDictionary ]
+		ifFalse: [ {'$type' -> 'app.bsky.richtext.facet#link'.
+				'uri' -> aString} asDictionary ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> links [
+	| text result |
+	text := inputElement text.
+	result := OrderedCollection new.
+	text
+		attributeRunsDo: [ :from :to :attrs | 
+			attrs
+				do: [ :each | 
+					(each isKindOf: GtApPostLinkAttribute)
+						ifTrue: [ result add: {from. to. (text from: from to: to)} ] ] ].
+	^ result
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> linksToFacets [
+	^ (self links
+		collect: [ :aLinkDefinition | 
+			{'index'
+					-> {'byteStart' -> (aLinkDefinition first - 1).
+							'byteEnd' -> aLinkDefinition second} asDictionary.
+				'features'
+					-> {self linkToFeature: aLinkDefinition third asString}} asDictionary ])
+		asArray
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> lookupUserDid: aHandle [
+	^ (self snippet client comAtprotoIdentityResolveHandleHandle: aHandle)
+		at: 'did'
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> maximumPostSize [
 	^ 300
 ]
@@ -354,6 +402,7 @@ LeBlueskySnippetElement >> onPostChanged [
 			^ self ].
 
 	self updateHeader.
+	self updateFileContainer.
 
 	self snippet hasPost
 		ifTrue: [ publishButton visibility: BlVisibility gone.
@@ -381,7 +430,9 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 			'createdAt' -> DateAndTime now printString.
 			'text' -> inputElement text asString} asDictionary.
-	self snippet fileRecords ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self snippet fileRecords
+		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
 
 	self snippet hasParentPost
 		ifTrue: [ | root |
@@ -403,7 +454,7 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 				validate: nil
 				record: record
 				swapCommit: nil).
-				
+
 	self transformLaterSnippetsFrom: self snippet
 ]
 
@@ -493,6 +544,13 @@ LeBlueskySnippetElement >> subscribeToSnippetViewModel [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> textToLink: aString [
+	^ (aString beginsWith: '@')
+		ifTrue: [ 'https://bsky.app/profile/' , aString allButFirst ]
+		ifFalse: [ aString ]
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> toolbarElement [
 	<return: #BrToolbar>
 	^ toolbarElement
@@ -518,10 +576,12 @@ LeBlueskySnippetElement >> updateFileContainer [
 			fileReferences
 				do: [ :aFile | 
 					imageContainer
-						addChild: (BrAsyncFileWidget new
+						addChild: (LeBlueskyPostFileWidget new
 								vExact: 200;
 								hExact: 200;
-								file: aFile) ] ]
+								file: aFile;
+								isDeletable: self snippet hasPost not;
+								onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]) ] ]
 ]
 
 { #category : #accessing }
