@@ -309,6 +309,15 @@ LeBlueskySnippetElement >> inputElement: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> linkToFeature: aString [
+	^ (aString beginsWith: '@')
+		ifTrue: [ {'$type' -> 'app.bsky.richtext.facet#mention'.
+				'did' -> (self lookupUserDid: aString allButFirst)} asDictionary ]
+		ifFalse: [ {'$type' -> 'app.bsky.richtext.facet#link'.
+				'uri' -> aString} asDictionary ]
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> links [
 	| text result |
 	text := inputElement text.
@@ -330,9 +339,14 @@ LeBlueskySnippetElement >> linksToFacets [
 					-> {'byteStart' -> (aLinkDefinition first - 1).
 							'byteEnd' -> aLinkDefinition second} asDictionary.
 				'features'
-					-> {{'$type' -> 'app.bsky.richtext.facet#link'.
-								'uri' -> aLinkDefinition third asString} asDictionary}} asDictionary ])
+					-> {self linkToFeature: aLinkDefinition third asString}} asDictionary ])
 		asArray
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> lookupUserDid: aHandle [
+	^ (self snippet client comAtprotoIdentityResolveHandleHandle: aHandle)
+		at: 'did'
 ]
 
 { #category : #accessing }
@@ -527,6 +541,13 @@ LeBlueskySnippetElement >> subscribeToSnippetViewModel [
 		when: LeBlueskySnippetFilesChanged
 		send: #onFilesChanged
 		to: self
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> textToLink: aString [
+	^ (aString beginsWith: '@')
+		ifTrue: [ 'https://bsky.app/profile/' , aString allButFirst ]
+		ifFalse: [ aString ]
 ]
 
 { #category : #accessing }
