@@ -43,6 +43,12 @@ GtApLexiconFileModel >> definitionNodesIn: anAst [
 		/ JSONMemberNode
 ]
 
+{ #category : #accessing }
+GtApLexiconFileModel >> definitions [
+	^ self definitionNodes
+		collect: [ :each | self definitionNamed: (each name value copyFrom: 2 to: each name value size - 1) ]
+]
+
 { #category : #views }
 GtApLexiconFileModel >> editor [
 	^ GtApLexiconEditorElement new
@@ -132,6 +138,11 @@ GtApLexiconFileModel >> lexiconFile [
 { #category : #accessing }
 GtApLexiconFileModel >> lexicons [
 	^ lexiconDirectory ifNotNil: [ lexiconDirectory lexicons ]
+]
+
+{ #category : #accessing }
+GtApLexiconFileModel >> name [
+	^ self id
 ]
 
 { #category : #accessing }

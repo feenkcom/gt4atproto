@@ -4,17 +4,120 @@ Class {
 	#instVars : [
 		'lexiconFile',
 		'contentElement',
-		'sidebarElement'
+		'sidebarElement',
+		'modified'
 	],
 	#category : #'Gt4AtProto-Editor-View'
 }
 
 { #category : #accessing }
-GtApLexiconCoder >> editorChanged [
+GtApLexiconCoder >> buildSidebarFor: obj [
+	^ BrTabGroup new
+		aptitude: BrGlamorousTabGroupAptitude;
+		padding: (BlInsets all: 5);
+		addTab: (BrTab new
+				aptitude: BrGlamorousTabAptitude new;
+				label: 'Files';
+				stencil: [ self createFilesTreeFor: obj ]);
+		addTab: (BrTab new
+				aptitude: BrGlamorousTabAptitude new;
+				label: 'Definitions';
+				stencil: [ self createDefinitionsTreeFor: obj ])
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> createDefinitionsTreeFor: obj [
+	| tree |
+	tree := BrSimpleTree new
+			matchParent;
+			rowStencil: BrGlamorousSimpleTreeSelectableRowElementStencilBuilder new;
+			nodeStencil: [ BrLabel new
+					aptitude: BrGlamorousLabelAptitude;
+					fitContent;
+					yourself ];
+			nodeDataBinder: [ :element :each | element text: each name ];
+			items: (obj lexiconDirectory files asSortedCollection: [ :a :b | a name < b name ])
+				lazy: [ :each | 
+					each isLexiconFile
+						ifTrue: [ each definitions asSortedCollection: [ :a :b | a name < b name ] ]
+						ifFalse: [ #() ] ].
+	tree
+		when: BrSelectionChanged
+		do: [ :event | 
+			tree
+				selectedNodeDo: [ :aNode | aNode value ifNotNil: [ :file | self updateContentsTo: file ] ] ].
+	tree id: #definitions.
+	^ tree
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> createFilesTreeFor: obj [
+	| tree |
+	tree := BrSimpleTree new
+			matchParent;
+			rowStencil: BrGlamorousSimpleTreeSelectableRowElementStencilBuilder new;
+			nodeStencil: [ BrHorizontalPane new
+					hMatchParent;
+					vFitContent;
+					addChild: (BrLabel new
+								aptitude: BrGlamorousLabelAptitude;
+								fitContent;
+								yourself)
+						as: #label;
+					addChild: (BrButton new
+								background: self theme status changesBackgroundColor;
+								size: 8 @ 8;
+								geometry: BlEllipseGeometry new;
+								margin: (BlInsets
+										top: 6
+										bottom: 0
+										left: 2
+										right: 2);
+								visibility: BlVisibility gone;
+								yourself)
+						as: #button ];
+			nodeDataBinder: [ :element :each | 
+				element userData at: #lexiconFile put: each last.
+				self updateModifiedIn: element.
+				(element childNamed: #label) text: each first basename ];
+			items: {{obj lexiconDirectory directory absolutePath asFileReference.
+							nil}}
+				lazy: [ :each | 
+					each first isDirectory
+						ifTrue: [ (OrderedCollection
+								withAll: (each first directories
+										collect: [ :dir | 
+											{dir.
+												nil} ]))
+								addAll: ((each first childrenMatching: '*.json')
+										collect: [ :file | 
+											{file.
+												obj lexiconDirectory lexiconFileFor: file} ]);
+								sort: [ :a :b | a first basename < b first basename ];
+								yourself ]
+						ifFalse: [ #() ] ];
+			expandOneLevel.
+	obj isLexiconDirectory
+		ifFalse: [ tree
+				expandSuchThat: [ :each | obj lexiconFile filename isContainedBy: each value first ].
+			tree
+				selectAndScrollTo: {obj lexiconFile filename.
+						obj lexiconFile}.
+			self updateContentsTo: obj ].
+	tree
+		when: BrSelectionChanged
+		do: [ :event | 
+			tree
+				selectedNodeDo: [ :aNode | aNode value last ifNotNil: [ :file | self updateContentsTo: file ] ] ].
+	tree id: #files.
+	^ tree
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> editorChangedTo: aString [
 	contentElement
 		childNamed: #editor
-		ifFound: [ :editor | lexiconFile source: editor editor text asString ].
-	self updateChangeStatus
+		ifFound: [ :editor | lexiconFile source: aString asString ]
 ]
 
 { #category : #initialization }
@@ -57,6 +160,13 @@ GtApLexiconCoder >> initializeSidebar [
 ]
 
 { #category : #accessing }
+GtApLexiconCoder >> modificationColor [
+	^ lexiconFile isModified
+		ifTrue: [ self theme status changesBackgroundColor ]
+		ifFalse: [ Color transparent ]
+]
+
+{ #category : #accessing }
 GtApLexiconCoder >> object: aLexiconModelObject [
 	| obj |
 	obj := aLexiconModelObject isLexiconDirectory
@@ -64,64 +174,41 @@ GtApLexiconCoder >> object: aLexiconModelObject [
 					ifTrue: [ aLexiconModelObject ]
 					ifFalse: [ aLexiconModelObject files first ] ]
 			ifFalse: [ aLexiconModelObject ].
-	sidebarElement
-		contentStencil: [ | tree |
-			tree := BrSimpleTree new
-					matchParent;
-					rowStencil: BrGlamorousSimpleTreeSelectableRowElementStencilBuilder new;
-					nodeStencil: [ BrLabel new
-							aptitude: BrGlamorousLabelAptitude;
-							hMatchParent;
-							vFitContent ];
-					nodeDataBinder: [ :element :each | element text: each basename ];
-					items: {obj lexiconDirectory directory absolutePath asFileReference}
-						lazy: [ :each | 
-							each isDirectory
-								ifTrue: [ (OrderedCollection withAll: each directories)
-										addAll: (each childrenMatching: '*.json');
-										sort: [ :a :b | a basename < b basename ];
-										yourself ]
-								ifFalse: [ #() ] ];
-					expandOneLevel.
-			obj isLexiconDirectory
-				ifFalse: [ tree
-						expandSuchThat: [ :each | obj lexiconFile filename isContainedBy: each value ].
-					tree selectAndScrollTo: obj lexiconFile filename.
-					self updateContentsTo: obj ].
-			tree
-				when: BrSelectionChanged
-				do: [ :event | 
-					tree
-						selectedNodeDo: [ :aNode | 
-							(obj lexiconDirectory lexiconFileFor: aNode value)
-								ifNotNil: [ :file | self updateContentsTo: file ] ] ].
-			tree ]
+	sidebarElement contentStencil: [ self buildSidebarFor: obj ]
 ]
 
 { #category : #accessing }
 GtApLexiconCoder >> updateChangeStatus [
+	modified = lexiconFile isModified ifTrue: [ ^ self ].
+	modified := lexiconFile isModified.
 	contentElement
 		childNamed: #modificationBar
-		ifFound: [ :elmt | 
-			elmt
-				inUIProcessDo: [ elmt
-						background: (lexiconFile isModified
-								ifTrue: [ self theme status changesBackgroundColor ]
-								ifFalse: [ Color transparent ]) ] ].
+		ifFound: [ :elmt | elmt inUIProcessDo: [ elmt background: self modificationColor ] ].
 	contentElement
 		childNamed: #saveButton
 		ifFound: [ :elmt | elmt inUIProcessDo: [ elmt enabled: lexiconFile isModified ] ].
 	contentElement
 		childNamed: #cancelButton
-		ifFound: [ :elmt | elmt inUIProcessDo: [ elmt enabled: lexiconFile isModified ] ]
+		ifFound: [ :elmt | elmt inUIProcessDo: [ elmt enabled: lexiconFile isModified ] ].
+	sidebarElement
+		childNamed: #files
+		ifFound: [ :files | 
+			files
+				allChildrenBreadthFirstDetect: [ :each | (each userData at: #lexiconFile ifAbsent: [  ]) = lexiconFile ]
+				ifFound: [ :elmt | self updateModifiedIn: elmt ] ]
 ]
 
 { #category : #accessing }
 GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	| textEditor content toolbar |
+	modified := nil.
 	lexiconFile := aLexiconObject lexiconFile.
 	lexiconFile announcer weak
 		when: GtApLexiconFileSaved
+		send: #updateChangeStatus
+		to: self.
+	lexiconFile announcer weak
+		when: GtApLexiconFileSourceChanged
 		send: #updateChangeStatus
 		to: self.
 	contentElement removeChildren.
@@ -132,10 +219,17 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 				yourself)
 		as: #modificationBar.
 	textEditor := aLexiconObject editor.
+	textEditor
+		addShortcut: (BlShortcutWithAction new
+				combination: BlKeyCombination primaryS;
+				action: [ lexiconFile saveFile ]).
 	textEditor editor
-		when: BrTextEditorInsertedEvent do: [ :event | self editorChanged ];
-		when: BrTextEditorDeletedEvent do: [ :event | self editorChanged ];
-		when: BlInfiniteDataSourceChanged do: [ :event | self editorChanged ].
+		when: BrTextEditorInsertedEvent
+			do: [ :event | self editorChangedTo: event source text asString ];
+		when: BrTextEditorDeletedEvent
+			do: [ :event | self editorChangedTo: event source text asString ];
+		when: BlInfiniteDataSourceChanged
+			do: [ :event | self editorChangedTo: event source text asString ].
 	content := BrVerticalPane new.
 	content hMatchParent.
 	content vFitContentLimited.
@@ -178,4 +272,14 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	content addChild: toolbar as: #toolbar.
 	contentElement addChild: content.
 	self updateChangeStatus
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> updateModifiedIn: anElement [
+	(anElement childNamed: #button)
+		visibility: (((anElement userData at: #lexiconFile ifAbsent: [  ])
+				ifNil: [ false ]
+				ifNotNil: [ :file | file isModified ])
+				ifTrue: [ BlVisibility visible ]
+				ifFalse: [ BlVisibility gone ])
 ]

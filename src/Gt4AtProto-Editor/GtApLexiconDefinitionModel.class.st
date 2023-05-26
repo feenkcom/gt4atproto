@@ -16,7 +16,7 @@ GtApLexiconDefinitionModel >> editor [
 		enqueueTask: [ editor editor
 				moveCursorTo: self node value startPosition - 1;
 				select: self node value startPosition - 1 to: self node value stopPosition.
-			self node gtScrollToPosition: self node value stopPosition inEditor: editor ]
+			self node gtScrollToPosition: self node value startPosition inEditor: editor ]
 				asBlTask.
 	^ editor
 ]
