@@ -8,7 +8,8 @@ Class {
 		'parentPost',
 		'string',
 		'files',
-		'fileRecords'
+		'fileRecords',
+		'onAddedToDatabaseCallback'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -30,7 +31,7 @@ LeBlueskySnippet class >> empty [
 
 { #category : #accessing }
 LeBlueskySnippet class >> fromUrl: aUrl [
-	| path handle recordId snippet did post |
+	| path handle recordId snippet did aPost |
 	path := '/' split: (aUrl removePrefix: 'https://bsky.app/').
 	handle := path second.
 	recordId := path last.
@@ -38,13 +39,24 @@ LeBlueskySnippet class >> fromUrl: aUrl [
 	snippet client
 		ifNil: [ self error: 'Not logged into Bluesky, cannot retrieve post.' ].
 	did := (snippet client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
-	post := (snippet client
+	aPost := (snippet client
 			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
 			depth: nil) at: 'thread'.
+	snippet
+		onAddedToDatabaseCallback: [ :aSnippet | 
+			aPost atpPost atpEmbed
+				ifNotNil: [ :anImageEmbed | 
+					(anImageEmbed isKindOf: AppBskyEmbedImagesView)
+						ifTrue: [ aSnippet
+								addFiles: (anImageEmbed atpImages
+										collect: [ :anImage | 
+											(FileLocator imageDirectory / 'buesky_download_tempfile') ensureDelete.
+											anImage atpFullsize asZnUrl
+												saveContentsToFile: FileLocator imageDirectory / 'buesky_download_tempfile' ]) ] ] ].
 	^ snippet
-		post: {'uri' -> post atpPost atpUri.
-				'cid' -> post atpPost atpCid} asDictionary;
-		string: post atpPost atpRecord atpText
+		post: {'uri' -> aPost atpPost atpUri.
+				'cid' -> aPost atpPost atpCid} asDictionary;
+		string: aPost atpPost atpRecord atpText
 ]
 
 { #category : #accessing }
@@ -64,6 +76,14 @@ LeBlueskySnippet class >> leJsonV4Name [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet class >> stateAttributes [
+	^ (self leJsonV4AttributeMapping
+		reject: [ :aMapping | aMapping key = #files ]
+		thenCollect: [ :aMapping | LeGenericSnippetStateAttribute named: aMapping key ])
+		, {(LeGenericSnippetStateAttribute named: #onAddedToDatabaseCallback)}
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> acceptVisitor: aVisitor [
 	^ aVisitor visitBlueskySnippet: self
 ]
@@ -76,6 +96,13 @@ LeBlueskySnippet >> actor [
 { #category : #accessing }
 LeBlueskySnippet >> addFile: aFile [
 	self files add: (self database addAttachmentByCopy: aFile).
+	self announce: LeBlueskySnippetFilesChanged new
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> addFiles: aCollectionOfFiles [
+	aCollectionOfFiles
+		do: [ :aFile | self files add: (self database addAttachmentByCopy: aFile) ].
 	self announce: LeBlueskySnippetFilesChanged new
 ]
 
@@ -209,6 +236,23 @@ LeBlueskySnippet >> initialize [
 { #category : #accessing }
 LeBlueskySnippet >> initializeClient [
 	client := LeBlueskyIdentityStore uniqueInstance getFirstOrNil
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> onAddedToDatabase [
+	super onAddedToDatabase.
+
+	self onAddedToDatabaseCallback ifNotNil: [ :aCallback | aCallback value: self ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> onAddedToDatabaseCallback [
+	^ onAddedToDatabaseCallback
+]
+
+{ #category : #accessing }
+LeBlueskySnippet >> onAddedToDatabaseCallback: anObject [
+	onAddedToDatabaseCallback := anObject
 ]
 
 { #category : #accessing }
