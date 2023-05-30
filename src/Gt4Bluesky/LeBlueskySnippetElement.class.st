@@ -569,17 +569,16 @@ LeBlueskySnippetElement >> transformLaterSnippetsFrom: aSnippet [
 { #category : #accessing }
 LeBlueskySnippetElement >> updateFileContainer [
 	imageContainer removeChildren.
-	self snippet fileReferences
+	self snippet files
 		ifEmpty: [ imageContainer visibility: BlVisibility gone ]
-		ifNotEmpty: [ :fileReferences | 
-			imageContainer visibility: BlVisibility visible.
-			fileReferences
-				do: [ :aFile | 
+		ifNotEmpty: [ imageContainer visibility: BlVisibility visible.
+			self snippet
+				fileStreamsDo: [ :aStream | 
 					imageContainer
 						addChild: (LeBlueskyPostFileWidget new
 								vExact: 200;
 								hExact: 200;
-								file: aFile;
+								contents: aStream contents;
 								isDeletable: self snippet hasPost not;
 								onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]) ] ]
 ]
