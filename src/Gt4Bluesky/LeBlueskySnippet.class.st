@@ -198,6 +198,11 @@ LeBlueskySnippet >> fileReferences [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet >> fileStreamsDo: aBlock [
+	^ self files do: [ :aFile | self database attachmentBinaryStream: aFile do: aBlock ]
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> files [
 	^ files
 ]
