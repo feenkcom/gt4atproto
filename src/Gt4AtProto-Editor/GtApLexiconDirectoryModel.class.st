@@ -46,6 +46,46 @@ GtApLexiconDirectoryModel >> gtDefaultInspectorTool [
 ]
 
 { #category : #accessing }
+GtApLexiconDirectoryModel >> gtDefinitionSearch: aSearch [
+	<gtSearch>
+	^ aSearch explicit
+		priority: 20;
+		title: 'Definitions';
+		search: [ :aContext | 
+			| results query |
+			query := aContext searchQuery.
+			results := self files asAsyncStream
+					select: [ :each | 
+						each id notNil
+							and: [ (each id
+									findString: query
+									startingAt: 1
+									caseSensitive: false) > 0 ] ].
+			results
+				merge: (self files asAsyncStream
+						collect: [ :file | 
+							file definitions asOrderedCollection asAsyncStream
+								select: [ :each | 
+									each id notNil
+										and: [ (each id
+												findString: query
+												startingAt: 1
+												caseSensitive: false) > 0 ] ] ]) flatten ];
+		yourself
+]
+
+{ #category : #accessing }
+GtApLexiconDirectoryModel >> gtFileSearch: aSearch [
+	<gtSearch>
+	^ aSearch list
+		priority: 10;
+		title: 'Files';
+		items: [ self files ];
+		itemName: [ :item | item filename basename ];
+		filterBySubstring
+]
+
+{ #category : #accessing }
 GtApLexiconDirectoryModel >> isLexiconDirectory [
 	^ true
 ]

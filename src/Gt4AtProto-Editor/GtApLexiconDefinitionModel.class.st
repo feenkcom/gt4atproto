@@ -8,6 +8,13 @@ Class {
 	#category : #'Gt4AtProto-Editor-Model'
 }
 
+{ #category : #comparing }
+GtApLexiconDefinitionModel >> = anObject [
+	^ self == anObject
+		or: [ self class = anObject class
+				and: [ self id = anObject id and: [ self lexiconFile = anObject lexiconFile ] ] ]
+]
+
 { #category : #accessing }
 GtApLexiconDefinitionModel >> editor [
 	| editor |
@@ -40,6 +47,11 @@ GtApLexiconDefinitionModel >> gtSourceFor: aView [
 			action: [ lexiconFile
 					source: editor editor text asString;
 					saveFile ]
+]
+
+{ #category : #comparing }
+GtApLexiconDefinitionModel >> hash [
+	^ (self class hash bitXor: self id) bitXor: self lexiconFile hash
 ]
 
 { #category : #accessing }

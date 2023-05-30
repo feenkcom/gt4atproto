@@ -6,10 +6,17 @@ Class {
 		'source',
 		'ast',
 		'lexiconDirectory',
-		'originalSource'
+		'originalSource',
+		'id'
 	],
 	#category : #'Gt4AtProto-Editor-Model'
 }
+
+{ #category : #comparing }
+GtApLexiconFileModel >> = anObject [
+	^ self == anObject
+		or: [ self class = anObject class and: [ self filename = anObject filename ] ]
+]
 
 { #category : #accessing }
 GtApLexiconFileModel >> ast [
@@ -94,14 +101,20 @@ GtApLexiconFileModel >> gtSourceFor: aView [
 					saveFile ]
 ]
 
+{ #category : #comparing }
+GtApLexiconFileModel >> hash [
+	^ self class hash bitXor: self filename hash
+]
+
 { #category : #accessing }
 GtApLexiconFileModel >> id [
-	| idNode |
-	idNode := (((self ast / JSONMemberNode) @ #name <- '"id"') /@ #value)
-			asOrderedCollection at: 1 ifAbsent: [  ].
-	^ idNode
-		ifNotNil: [ (idNode isKindOf: JSONStringNode)
-				ifTrue: [ idNode value source allButFirst allButLast ] ]
+	^ id
+		ifNil: [ | idNode |
+			idNode := (((self ast / JSONMemberNode) @ #name <- '"id"') /@ #value)
+					asOrderedCollection at: 1 ifAbsent: [  ].
+			id := idNode
+					ifNotNil: [ (idNode isKindOf: JSONStringNode)
+							ifTrue: [ idNode value source allButFirst allButLast ] ] ]
 ]
 
 { #category : #accessing }

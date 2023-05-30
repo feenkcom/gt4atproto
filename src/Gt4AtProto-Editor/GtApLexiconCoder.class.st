@@ -22,7 +22,11 @@ GtApLexiconCoder >> buildSidebarFor: obj [
 		addTab: (BrTab new
 				aptitude: BrGlamorousTabAptitude new;
 				label: 'Definitions';
-				stencil: [ self createDefinitionsTreeFor: obj ])
+				stencil: [ self createDefinitionsTreeFor: obj ]);
+		actionbarStencil: [ BrToolbar new
+				aptitude: BrGlamorousToolbarAptitude new;
+				addItem: (self searchButtonFor: obj);
+				yourself ]
 ]
 
 { #category : #accessing }
@@ -178,6 +182,19 @@ GtApLexiconCoder >> object: aLexiconModelObject [
 ]
 
 { #category : #accessing }
+GtApLexiconCoder >> searchButtonFor: obj [
+	^ (GtSpotterDropdownButtonStencil new
+		valuable: [ obj lexiconDirectory ];
+		tooltip: 'Search';
+		icon: BrGlamorousVectorIcons search;
+		actOn: [ :anActOnEvent :anItem | 
+			self updateFilesTo: anItem.
+			self updateDefinitionsTo: anItem.
+			self updateContentsTo: anItem.
+			anActOnEvent beActed ]) asElement
+]
+
+{ #category : #accessing }
 GtApLexiconCoder >> updateChangeStatus [
 	modified = lexiconFile isModified ifTrue: [ ^ self ].
 	modified := lexiconFile isModified.
@@ -272,6 +289,28 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	content addChild: toolbar as: #toolbar.
 	contentElement addChild: content.
 	self updateChangeStatus
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> updateDefinitionsTo: obj [
+	self
+		childNamed: #definitions
+		ifFound: [ :tree | 
+			tree
+				expandSuchThat: [ :each | obj lexiconFile = each value or: [ obj = each value ] ].
+			tree selectAndScrollTo: obj ]
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> updateFilesTo: obj [
+	self
+		childNamed: #files
+		ifFound: [ :tree | 
+			tree
+				expandSuchThat: [ :each | obj lexiconFile filename isContainedBy: each value first ].
+			tree
+				selectAndScrollTo: {obj lexiconFile filename.
+						obj lexiconFile} ]
 ]
 
 { #category : #accessing }
