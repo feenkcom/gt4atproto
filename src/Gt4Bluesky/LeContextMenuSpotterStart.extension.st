@@ -4,7 +4,7 @@ Extension { #name : #LeContextMenuSpotterStart }
 LeContextMenuSpotterStart >> gtSpotterForBlueskyFor: aSearch [
 	<gtSearch>
 	^ aSearch explicit
-		title: 'Add bluesky snippet';
+		title: 'Add Bluesky snippet';
 		priority: 2;
 		itemName: #title;
 		search: [ :aContext | 
@@ -15,5 +15,5 @@ LeContextMenuSpotterStart >> gtSpotterForBlueskyFor: aSearch [
 				collect: [ :aUrl | 
 					LeContextMenuItemValuableSpecification new
 						valuable: [ LeBlueskySnippet fromUrl: aUrl ];
-						title: 'Bluesky Post' ] ]
+						title: 'Bluesky post' ] ]
 ]
