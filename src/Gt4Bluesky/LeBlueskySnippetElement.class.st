@@ -19,14 +19,17 @@ Class {
 		'imageContainer',
 		'parentInfoElement',
 		'inspectButton',
-		'writingIndicator'
+		'writingIndicator',
+		'cardContainer'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
 
 { #category : #accessing }
 LeBlueskySnippetElement >> addCard: aCard [
-	self halt.
+	self snippetViewModel addCard: aCard.
+	self updateFileContainer.
+	self updateCardContainer
 ]
 
 { #category : #accessing }
@@ -34,6 +37,16 @@ LeBlueskySnippetElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
 			foreground:  Color lightGray)
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> cardToEmbed [
+	^ {'$type' -> 'app.bsky.embed.external'.
+		'external'
+			-> {'description' -> self snippetViewModel card description.
+					'title' -> self snippetViewModel card title.
+					'uri' -> self snippetViewModel card url".
+					'thumb' -> nil"} asDictionary} asDictionary
 ]
 
 { #category : #accessing }
@@ -62,10 +75,21 @@ LeBlueskySnippetElement >> createAddFileButton [
 											and: [ (FileSystemDirectoryEntry reference: aFileReference) isHidden not ] ];
 									okAction: [ :aFile | 
 										self snippet addFile: aFile.
+										self snippetViewModel removeCard.
 										addFileButton
 											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new ] ] ]);
 			icon: BrGlamorousVectorIcons add;
 			label: 'Add File'
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> createCardContainer [
+	^ cardContainer := BrHorizontalPane new fitContent
+			visibility: BlVisibility gone;
+			clipChildren: false;
+			background: Color white;
+			aptitude: BrShadowAptitude;
+			margin: (BlInsets all: 5)
 ]
 
 { #category : #accessing }
@@ -165,6 +189,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 	contentPane addChild: inputElement as: #editor.
 
 	contentPane addChild: self createImageContainer.
+	contentPane addChild: self createCardContainer.
 
 	contentElement addChild: self initializeToolbarElement.
 
@@ -390,7 +415,7 @@ LeBlueskySnippetElement >> onDeleteAction: aButton [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> onFilesChanged [
-	self inUIProcessDo: [ self updateFileContainer ]
+	self inUIProcessDo: [ self updateFileContainer. self updateCardContainer ]
 ]
 
 { #category : #accessing }
@@ -437,6 +462,8 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 			'text' -> inputElement text asString} asDictionary.
 	self snippet fileRecords
 		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self snippetViewModel card
+		ifNotNil: [ record at: 'embed' put: self cardToEmbed ].
 	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
 
 	self snippet hasParentPost
@@ -477,7 +504,8 @@ LeBlueskySnippetElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
 	self onClientChanged.
 	inputElement text: self snippet text.
-	self updateFileContainer
+	self updateFileContainer.
+	self updateCardContainer
 ]
 
 { #category : #accessing }
@@ -569,6 +597,16 @@ LeBlueskySnippetElement >> transformLaterSnippetsFrom: aSnippet [
 				ifTrue: [ nextSnippet parentPost: self snippet post ].
 			self transformLaterSnippetsFrom: nextSnippet ]
 		ifNone: [  ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> updateCardContainer [
+	cardContainer removeChildren.
+	self snippetViewModel card
+		ifNil: [ cardContainer visibility: BlVisibility gone ]
+		ifNotNil: [ cardContainer visibility: BlVisibility visible.
+			cardContainer
+				addChild: (GtApExternalElement new model: self snippetViewModel card) ]
 ]
 
 { #category : #accessing }
