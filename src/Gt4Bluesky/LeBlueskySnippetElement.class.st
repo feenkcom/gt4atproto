@@ -25,6 +25,11 @@ Class {
 }
 
 { #category : #accessing }
+LeBlueskySnippetElement >> addCard: aCard [
+	self halt.
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
@@ -131,7 +136,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 	inputElement := BrEditor new
 			aptitude: BrGlamorousRegularEditorAptitude;
 			hMatchParent;
-			styler: GtApPostStyler new;
+			styler: (GtApPostStyler new snippetElement: self);
 			vFitContent.
 	inputElement editor
 		when: BrTextEditorModifiedEvent
@@ -162,8 +167,8 @@ LeBlueskySnippetElement >> initializeContentElement [
 	contentPane addChild: self createImageContainer.
 
 	contentElement addChild: self initializeToolbarElement.
-	
-	contentElement addChild: self initializeParentDropdown.
+
+	contentElement addChild: self initializeParentDropdown
 ]
 
 { #category : #accessing }

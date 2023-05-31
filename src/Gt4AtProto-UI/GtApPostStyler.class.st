@@ -3,7 +3,8 @@ Class {
 	#superclass : #BlTextStyler,
 	#instVars : [
 		'fuzzyUrlsParser',
-		'fuzzyUrlParser'
+		'fuzzyUrlParser',
+		'snippetElement'
 	],
 	#category : #'Gt4AtProto-UI'
 }
@@ -48,7 +49,17 @@ GtApPostStyler >> privateStyle: aText [
 				foreground: BrGlamorousColors linkColor;
 				attribute: GtApPostLinkAttribute new;
 				attribute: (GtPlaygroundEvaluatedCodeButtonAttribute new
-						result: aToken;
-						action: [ aToken inspect ]) ].
+						result: [ GtApExternalWebsiteCard fromUrl: aToken value ];
+						action: [ self snippetElement addCard: (GtApExternalWebsiteCard fromUrl: aToken value) ]) ].
 	^ aText
+]
+
+{ #category : #accessing }
+GtApPostStyler >> snippetElement [
+	^ snippetElement
+]
+
+{ #category : #accessing }
+GtApPostStyler >> snippetElement: anObject [
+	snippetElement := anObject
 ]

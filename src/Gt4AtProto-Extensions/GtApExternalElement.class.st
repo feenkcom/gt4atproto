@@ -5,8 +5,7 @@ Class {
 		'titleElement',
 		'thumbElement',
 		'descriptionElement',
-		'urlElement',
-		'external'
+		'urlElement'
 	],
 	#category : #'Gt4AtProto-Extensions'
 }
@@ -44,9 +43,16 @@ GtApExternalElement >> buildUrlElement [
 ]
 
 { #category : #accessing }
+GtApExternalElement >> description: aString [
+	descriptionElement text: aString
+]
+
+{ #category : #accessing }
 GtApExternalElement >> external: anExternalRecord [
-	external := anExternalRecord.
-	self updateContent
+	self title: anExternalRecord atpExternal atpTitle.
+	self thumb: anExternalRecord atpExternal atpThumb.
+	self description: anExternalRecord atpExternal atpDescription.
+	self url: anExternalRecord atpExternal atpUri
 ]
 
 { #category : #accessing }
@@ -73,6 +79,26 @@ GtApExternalElement >> initialize [
 ]
 
 { #category : #accessing }
+GtApExternalElement >> model: aModel [
+	self title: aModel title.
+	self thumb: aModel thumb.
+	self description: aModel description.
+	self url: aModel url
+]
+
+{ #category : #accessing }
+GtApExternalElement >> thumb: anObject [
+	anObject
+		ifNil: [ thumbElement visibility: BlVisibility gone ]
+		ifNotNil: [ :aUrl | thumbElement url: aUrl ]
+]
+
+{ #category : #accessing }
+GtApExternalElement >> title: aString [
+	titleElement text: aString
+]
+
+{ #category : #accessing }
 GtApExternalElement >> updateContent [
 	titleElement text: external atpExternal atpTitle.
 	external atpExternal atpThumb
@@ -80,4 +106,9 @@ GtApExternalElement >> updateContent [
 		ifNotNil: [ :aUrl | thumbElement url: aUrl ].
 	descriptionElement text: external atpExternal atpDescription.
 	urlElement text: external atpExternal atpUri
+]
+
+{ #category : #accessing }
+GtApExternalElement >> url: aString [
+	urlElement text: aString
 ]
