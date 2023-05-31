@@ -64,6 +64,16 @@ GtApLexiconFileModel >> editor [
 ]
 
 { #category : #accessing }
+GtApLexiconFileModel >> fileUpdated [
+	| modified |
+	modified := self isModified.
+	originalSource := nil.
+	ast := nil.
+	modified ifFalse: [ self source: self originalSource ].
+	id := nil
+]
+
+{ #category : #accessing }
 GtApLexiconFileModel >> filename [
 	^ filename
 ]
@@ -115,12 +125,6 @@ GtApLexiconFileModel >> id [
 			id := idNode
 					ifNotNil: [ (idNode isKindOf: JSONStringNode)
 							ifTrue: [ idNode value source allButFirst allButLast ] ] ]
-]
-
-{ #category : #accessing }
-GtApLexiconFileModel >> initialize [
-	super initialize.
-	announcer := Announcer new
 ]
 
 { #category : #testing }

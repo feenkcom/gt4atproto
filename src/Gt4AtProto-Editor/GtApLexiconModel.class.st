@@ -14,6 +14,12 @@ GtApLexiconModel >> announcer [
 	^ announcer
 ]
 
+{ #category : #initialization }
+GtApLexiconModel >> initialize [
+	super initialize.
+	announcer := Announcer new
+]
+
 { #category : #testing }
 GtApLexiconModel >> isLexiconDefinition [
 	^ false

@@ -20,6 +20,7 @@ GtApLexiconEditorElement >> lexiconFile: anObject [
 
 { #category : #private }
 GtApLexiconEditorElement >> updateText: sourceChanged [
-	self editor text asString = sourceChanged lexiconFile source ifTrue: [ ^ self ].
-	self editor text: sourceChanged lexiconFile source asRopedText
+	self
+		inUIProcessDo: [ self editor text asString = sourceChanged lexiconFile source
+				ifFalse: [ self editor text: sourceChanged lexiconFile source asRopedText ] ]
 ]

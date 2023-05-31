@@ -160,3 +160,21 @@ GtApLexicons >> initialize [
 GtApLexicons >> lexiconDocuments [
 	^ GtApLexiconDocumentsGroup withAll: documentsById values
 ]
+
+{ #category : #adding }
+GtApLexicons >> removeLexiconDefinitonWithId: anId [
+	definitionsById removeKey: anId ifAbsent: [  ]
+]
+
+{ #category : #adding }
+GtApLexicons >> removeLexiconDocumentForFile: aFileReference [
+	| document |
+	document := documentsById
+			detect: [ :each | each documentFile = aFileReference ]
+			ifNone: [ ^ self ].
+
+	documentsById removeKey: document id ifAbsent: [  ].
+
+	document definitions
+		keysAndValuesDo: [ :aDefinitionName :aLexiconDefinition | self removeLexiconDefinitonWithId: document id , '#' , aDefinitionName ]
+]

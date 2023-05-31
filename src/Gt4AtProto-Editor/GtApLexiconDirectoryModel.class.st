@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'directory',
 		'lexicons',
-		'files'
+		'files',
+		'fileWatcher'
 	],
 	#category : #'Gt4AtProto-Editor-Model'
 }
@@ -16,9 +17,22 @@ GtApLexiconDirectoryModel >> directory [
 
 { #category : #accessing }
 GtApLexiconDirectoryModel >> directory: aFileReference [
+	self stopFileWatcher.
 	directory := aFileReference asFileReference.
+	self startFileWatcher.
 	lexicons := nil.
 	files := nil
+]
+
+{ #category : #private }
+GtApLexiconDirectoryModel >> fileDeleted: aFileReference [
+	lexicons ifNotNil: [ lexicons removeLexiconDocumentForFile: aFileReference ].
+	files
+		ifNotNil: [ files
+				detect: [ :each | each filename = aFileReference ]
+				ifFound: [ :file | 
+					files remove: file.
+					^ self announce: (GtApLexiconFileDeleted new lexiconFile: file) ] ]
 ]
 
 { #category : #accessing }
@@ -26,11 +40,33 @@ GtApLexiconDirectoryModel >> fileFor: aFileReference [
 	^ files detect: [ :each | each filename = aFileReference ] ifNone: [  ]
 ]
 
+{ #category : #private }
+GtApLexiconDirectoryModel >> fileUpdated: aFileReference [
+	lexicons
+		ifNotNil: [ lexicons removeLexiconDocumentForFile: aFileReference.
+			[ lexicons
+				addLexiconDocument: (aFileReference
+						readStreamDo: [ :stream | GtApLexiconImporter new importLexiconDocumentFromStream: stream ]) ]
+				on: Error
+				do: [ :ex | ex return ] ].
+	files
+		ifNotNil: [ files
+				detect: [ :each | each filename = aFileReference ]
+				ifFound: [ :file | file fileUpdated ]
+				ifNone: [ | file |
+					files
+						add: (file := GtApLexiconFileModel new
+									lexiconDirectory: self;
+									filename: aFileReference;
+									yourself).
+					self announce: (GtApLexiconFileAdded new lexiconFile: file) ] ]
+]
+
 { #category : #accessing }
 GtApLexiconDirectoryModel >> files [
 	^ files
 		ifNil: [ directory
-				ifNotNil: [ files := (directory allChildrenMatching: '*.json')
+				ifNotNil: [ files := (directory allChildrenMatching: '*.json') asOrderedCollection
 							collect: [ :each | 
 								GtApLexiconFileModel new
 									lexiconDirectory: self;
@@ -105,4 +141,31 @@ GtApLexiconDirectoryModel >> lexicons [
 	^ lexicons
 		ifNil: [ directory
 				ifNotNil: [ lexicons := GtApLexiconImporter new importLexiconsFromDirectory: directory ] ]
+]
+
+{ #category : #accessing }
+GtApLexiconDirectoryModel >> startFileWatcher [
+	self stopFileWatcher.
+	fileWatcher := GtFileWatcherEventLoop new.
+	fileWatcher watch: directory.
+	fileWatcher onEvent: [ :anEvent | self updateFileEvent: anEvent ].
+	fileWatcher startLoop
+]
+
+{ #category : #accessing }
+GtApLexiconDirectoryModel >> stopFileWatcher [
+	fileWatcher ifNotNil: [ fileWatcher stopLoop ].
+	fileWatcher := nil
+]
+
+{ #category : #events }
+GtApLexiconDirectoryModel >> updateFileEvent: anEvent [
+	anEvent paths
+		do: [ :each | 
+			| ref |
+			ref := each asFileReference.
+			ref extension = 'json'
+				ifTrue: [ ref exists
+						ifTrue: [ ref isFile ifTrue: [ self fileUpdated: ref ] ]
+						ifFalse: [ self fileDeleted: ref ] ] ]
 ]
