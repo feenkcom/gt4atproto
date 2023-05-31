@@ -2,10 +2,27 @@ Class {
 	#name : #LeBlueskySnippetViewModel,
 	#superclass : #LeTextualSnippetViewModel,
 	#instVars : [
-		'cursor'
+		'cursor',
+		'card'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
+
+{ #category : #accessing }
+LeBlueskySnippetViewModel >> addCard: aCard [
+	card := aCard.
+	self snippetModel files: OrderedCollection new
+]
+
+{ #category : #accessing }
+LeBlueskySnippetViewModel >> card [
+	^ card
+]
+
+{ #category : #accessing }
+LeBlueskySnippetViewModel >> cards [
+	^ cards
+]
 
 { #category : #accessing }
 LeBlueskySnippetViewModel >> cursor [
@@ -41,6 +58,11 @@ LeBlueskySnippetViewModel >> onSnippetPostChanged: anObject [
 { #category : #accessing }
 LeBlueskySnippetViewModel >> onSnippetTextChanged: anObject [
 	self announce: anObject
+]
+
+{ #category : #accessing }
+LeBlueskySnippetViewModel >> removeCard [
+	card := nil
 ]
 
 { #category : #accessing }

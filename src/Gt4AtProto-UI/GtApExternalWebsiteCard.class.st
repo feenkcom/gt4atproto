@@ -38,7 +38,7 @@ GtApExternalWebsiteCard >> descriptionFromMetas: metas [
 { #category : #accessing }
 GtApExternalWebsiteCard >> findInMetas: metas name: aString [
 	^ metas
-		detect: [ :aMeta | aMeta attributeAt: 'name' = aString ]
+		detect: [ :aMeta | (aMeta attributeAt: 'name') = aString ]
 		ifFound: [ :aMeta | aMeta attributeAt: 'content' ]
 		ifNone: [ nil ]
 ]

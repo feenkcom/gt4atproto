@@ -48,7 +48,8 @@ GtApPostStyler >> privateStyle: aText [
 			(aText from: aToken start to: aToken stop)
 				foreground: BrGlamorousColors linkColor;
 				attribute: GtApPostLinkAttribute new;
-				attribute: (GtPlaygroundEvaluatedCodeButtonAttribute new
+				attribute: (GtPlaygroundEvaluatedCodeViewButtonAttribute new
+						view: #gtViewCardFor:;
 						result: [ GtApExternalWebsiteCard fromUrl: aToken value ];
 						action: [ self snippetElement addCard: (GtApExternalWebsiteCard fromUrl: aToken value) ]) ].
 	^ aText

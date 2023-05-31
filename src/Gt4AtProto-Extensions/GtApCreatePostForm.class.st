@@ -92,7 +92,7 @@ GtApCreatePostForm >> createAddFileButton [
 										self files add: aFile.
 										addFileButton
 											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new.
-										self updateFileContainer ] ] ]);
+												self updateFileContainer ] ] ]);
 			icon: BrGlamorousVectorIcons add;
 			label: 'Add File'
 ]
