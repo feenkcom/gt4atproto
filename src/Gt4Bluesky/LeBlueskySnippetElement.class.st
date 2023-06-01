@@ -59,6 +59,7 @@ LeBlueskySnippetElement >> cardToEmbed [
 	self snippetViewModel card thumb
 		ifNotNil: [ thumbUrl := self snippetViewModel card thumb asZnUrl.
 			tempfile := Smalltalk imageDirectory / thumbUrl file.
+			tempfile ensureDelete.
 			fileReference := thumbUrl saveContentsToFile: tempfile.
 			blob := self snippet client comAtprotoRepoUploadBlobFile: fileReference.
 			externalDictionary
