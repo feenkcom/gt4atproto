@@ -41,12 +41,23 @@ LeBlueskySnippetElement >> buildGrayLabel [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> cardToEmbed [
+	| externalDictionary tempfile thumbUrl fileReference blob |
+	externalDictionary := {'description' -> self snippetViewModel card description.
+			'title' -> self snippetViewModel card title.
+			'uri' -> self snippetViewModel card url} asDictionary.
+
+	self snippetViewModel card thumb
+		ifNotNil: [ thumbUrl := self snippetViewModel card thumb asZnUrl.
+			tempfile := Smalltalk imageDirectory / thumbUrl file.
+			fileReference := thumbUrl saveContentsToFile: tempfile.
+			blob := self snippet client comAtprotoRepoUploadBlobFile: fileReference.
+			externalDictionary
+				at: 'thumb'
+				put: ((blob at: 'blob') union: {'$type' -> 'blob'} asDictionary).
+			tempfile ensureDelete ].
+
 	^ {'$type' -> 'app.bsky.embed.external'.
-		'external'
-			-> {'description' -> self snippetViewModel card description.
-					'title' -> self snippetViewModel card title.
-					'uri' -> self snippetViewModel card url".
-					'thumb' -> nil"} asDictionary} asDictionary
+		'external' -> externalDictionary} asDictionary
 ]
 
 { #category : #accessing }
