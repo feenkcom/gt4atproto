@@ -40,6 +40,7 @@ GtApLexiconCoder >> createDefinitionsTreeFor: obj [
 					fitContent;
 					yourself ];
 			nodeDataBinder: [ :element :each | element text: each name ];
+			when: BlElementAddedToSceneGraphEvent do: [ :event | self updateTrees ];
 			yourself.
 	self updateDefinitionsTree: tree.
 	tree
@@ -81,6 +82,7 @@ GtApLexiconCoder >> createFilesTreeFor: obj [
 				element userData at: #lexiconFile put: each last.
 				self updateModifiedIn: element.
 				(element childNamed: #label) text: each first basename ];
+			when: BlElementAddedToSceneGraphEvent do: [ :event | self updateTrees ];
 			yourself.
 	self updateFileTreeItems: tree.
 	obj isLexiconDirectory
@@ -352,6 +354,7 @@ GtApLexiconCoder >> updateModifiedIn: anElement [
 
 { #category : #accessing }
 GtApLexiconCoder >> updateTrees [
+	lexiconObject ifNil: [ ^ self ].
 	self
 		inUIProcessDo: [ self
 				childNamed: #files
