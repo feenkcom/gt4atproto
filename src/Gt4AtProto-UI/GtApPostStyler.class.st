@@ -40,18 +40,43 @@ GtApPostStyler >> initializeFuzzyUrlParser [
 ]
 
 { #category : #accessing }
+GtApPostStyler >> postFromUrl: aUrl [
+	| path handle recordId snippet did |
+	path := '/' split: (aUrl removePrefix: 'https://bsky.app/').
+	handle := path second.
+	recordId := path last.
+	snippet := LeBlueskySnippet new.
+	snippet client
+		ifNil: [ self error: 'Not logged into Bluesky, cannot retrieve post.' ].
+	did := (snippet client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
+	^ (snippet client
+		appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
+		depth: nil) at: 'thread'
+]
+
+{ #category : #accessing }
 GtApPostStyler >> privateStyle: aText [
 	| urls |
 	urls := fuzzyUrlsParser parse: aText asString.
 	urls
 		do: [ :aToken | 
-			(aText from: aToken start to: aToken stop)
+			| aUrlText |
+			aUrlText := aText from: aToken start to: aToken stop.
+			aUrlText
 				foreground: BrGlamorousColors linkColor;
-				attribute: GtApPostLinkAttribute new;
-				attribute: (GtPlaygroundEvaluatedCodeViewButtonAttribute new
-						view: #gtViewCardFor:;
-						result: [ GtApExternalWebsiteCard fromUrl: aToken value ];
-						action: [ self snippetElement addCard: (GtApExternalWebsiteCard fromUrl: aToken value) ]) ].
+				attribute: GtApPostLinkAttribute new.
+			((aToken value beginsWith: 'https://bsky.app/profile/')
+				and: [ aToken value includesSubstring: '/post/' ])
+				ifTrue: [ aUrlText
+						attribute: (GtPlaygroundEvaluatedCodeViewButtonAttribute new
+								view: #gtCardFor:;
+								result: [ self postFromUrl: aToken value ];
+								action: [ self snippetElement addEmbeddedPost: (self postFromUrl: aToken value) ]) ]
+				ifFalse: [ aUrlText
+						attribute: (GtPlaygroundEvaluatedCodeViewButtonAttribute new
+								view: #gtViewCardFor:;
+								result: [ GtApExternalWebsiteCard fromUrl: aToken value ];
+								action: [ self snippetElement addCard: (GtApExternalWebsiteCard fromUrl: aToken value) ]) ] ].
 	^ aText
 ]
 
