@@ -116,10 +116,10 @@ GtApExternalWebsiteCard >> url: aUrl [
 	metas := regex
 			matchesIn: contents
 			collect: [ :aNode | 
-				((aNode endsWith: '/>')
+				[((aNode endsWith: '/>')
 					ifTrue: [ aNode ]
-					ifFalse: [ aNode replaceSuffix: '>' with: '/>' ]) parseXML nodes first ].
-
+					ifFalse: [ aNode replaceSuffix: '>' with: '/>' ]) parseXML nodes first] on: XMLParserException do: [:e | nil ] ].
+	metas := metas reject: #isNil.
 	self titleFromMetas: metas.
 	self thumbFromMetas: metas.
 	self descriptionFromMetas: metas.
