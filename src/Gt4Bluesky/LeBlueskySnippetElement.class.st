@@ -59,6 +59,7 @@ LeBlueskySnippetElement >> cardToEmbed [
 	self snippetViewModel card thumb
 		ifNotNil: [ thumbUrl := self snippetViewModel card thumb asZnUrl.
 			tempfile := Smalltalk imageDirectory / thumbUrl file.
+			tempfile ensureDelete.
 			fileReference := thumbUrl saveContentsToFile: tempfile.
 			blob := self snippet client comAtprotoRepoUploadBlobFile: fileReference.
 			externalDictionary
@@ -377,7 +378,10 @@ LeBlueskySnippetElement >> linkToFeature: aString [
 		ifTrue: [ {'$type' -> 'app.bsky.richtext.facet#mention'.
 				'did' -> (self lookupUserDid: aString allButFirst)} asDictionary ]
 		ifFalse: [ {'$type' -> 'app.bsky.richtext.facet#link'.
-				'uri' -> aString} asDictionary ]
+				'uri'
+					-> ((aString beginsWith: 'http')
+							ifTrue: [ aString ]
+							ifFalse: [ 'https://' , aString ])} asDictionary ]
 ]
 
 { #category : #accessing }

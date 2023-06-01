@@ -123,5 +123,5 @@ GtApExternalWebsiteCard >> url: aUrl [
 	self titleFromMetas: metas.
 	self thumbFromMetas: metas.
 	self descriptionFromMetas: metas.
-	url := aUrl
+	url := aPrefixedUrl
 ]
