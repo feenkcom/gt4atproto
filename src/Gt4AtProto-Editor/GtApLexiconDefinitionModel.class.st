@@ -93,3 +93,26 @@ GtApLexiconDefinitionModel >> name: aString [
 GtApLexiconDefinitionModel >> node [
 	^ lexiconFile findDefinitionNode: name
 ]
+
+{ #category : #accessing }
+GtApLexiconDefinitionModel >> references [
+	| isMain id |
+	isMain := self name = 'main'.
+	id := self id.
+	^ GtApDefinitionReferenceList new
+		stream: (self lexiconDirectory files asAsyncStream
+				collect: [ :each | 
+					(each ast asyncWithAllNodesStream
+						select: [ :node | 
+							(each isReference: node)
+								and: [ | source |
+									source := node value source copyFrom: 2 to: node value source size - 1.
+									(each = self lexiconFile and: [ source = ('#' , self name) ])
+										or: [ source = id or: [ isMain and: [ source = lexiconFile id ] ] ] ] ])
+						collect: [ :node | 
+							GtApDefinitionReference new
+								lexiconDefinition: self;
+								lexiconFile: each;
+								node: node;
+								yourself ] ]) flatten
+]
