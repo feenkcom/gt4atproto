@@ -71,7 +71,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-24T16:09:19.120533+02:00"
+									"dateAndTimeString" : "2023-05-24T16:30:25.416357+02:00"
 								}
 							},
 							"uid" : {
@@ -81,7 +81,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Posting from your knowledge base]]"
+							"string" : "[[Posting to Bluesky from your knowledge base]]"
 						},
 						{
 							"__type" : "textSnippet",
