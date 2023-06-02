@@ -177,7 +177,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-20T09:14:33.811462+02:00"
+						"dateAndTimeString" : "2023-06-02T12:28:11.74099+02:00"
 					}
 				},
 				"uid" : {
@@ -187,7 +187,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "#What this envrionemnt covers"
+				"string" : "#What this envrionment covers"
 			},
 			{
 				"__type" : "textSnippet",

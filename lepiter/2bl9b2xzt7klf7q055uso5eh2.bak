@@ -219,7 +219,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-24T22:29:06.417295+02:00"
+									"dateAndTimeString" : "2023-05-24T22:29:32.962033+02:00"
 								}
 							},
 							"uid" : {
@@ -229,7 +229,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "If you are interested in how "
+							"string" : "If you are interested in managing posts and threads from inside a personal management system, take a look at [[Posting to Bluesky from your knowledge base]]."
 						},
 						{
 							"__type" : "textSnippet",
