@@ -24,5 +24,4 @@ Metacello new
 
 This will load the code specific for AT Protocol, and the associated knowledge base.
 # License
-
 See [LICENSE](LICENSE).
