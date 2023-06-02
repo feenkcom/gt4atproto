@@ -28,7 +28,6 @@ GtApReplyElement >> snippet: anObject [
 
 	atpParent := self snippet atpParent.
 
-	self addChild: (GtApFeedPostSummaryElement new post: atpParent).
 	self
 		addChild: (GtApAddReplyForm new
 				isReadOnly: self snippet hasPost;
@@ -36,5 +35,6 @@ GtApReplyElement >> snippet: anObject [
 						, ('/' split: atpParent atpPost atpUri) last;
 				onAccept: [ :aUrl | 
 					self snippet parentFromUrl: aUrl.
-					self dispatchEvent: BrDropdownHideWish new ]) asElement
+					self dispatchEvent: BrDropdownHideWish new ]) asElement.
+	self addChild: (GtApFeedPostSummaryElement new post: atpParent)
 ]
