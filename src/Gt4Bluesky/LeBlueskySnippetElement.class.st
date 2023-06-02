@@ -250,22 +250,26 @@ LeBlueskySnippetElement >> initializeHeader [
 { #category : #accessing }
 LeBlueskySnippetElement >> initializeParentDropdown [
 	^ parentInfoElement := BrButton new
-			icon: BrGlamorousVectorIcons spawn;
-			visibility: BlVisibility gone;
-			label: 'Is Reply';
+			icon: (BrGlamorousVectorIcons spawn asElement
+					background: BrGlamorousColors disabledButtonTextColor);
+			label: 'Reply Information';
 			aptitude: BrGlamorousButtonWithIconAptitude
 					+ (BrGlamorousButtonExteriorAptitude new borderPaint: Color transparent)
 					+ (BrGlamorousWithDropdownAptitude
 							handle: [ BrButton new
 									icon: BrGlamorousVectorIcons spawn;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonExteriorAptitude ]
-							content: [ GtApFeedPostSummaryElement new post: self snippet atpParent ])
-							beNotResizable;
-			constraintsDo: [:c |
+							content: [ self snippet hasParentPost
+									ifTrue: [ GtApReplyElement new snippet: self snippet ]
+									ifFalse: [ GtApAddReplyForm new
+											isReadOnly: self snippet hasPost;
+											onAccept: [ :aUrl | 
+												self snippet parentFromUrl: aUrl.
+												self dispatchEvent: BrDropdownHideWish new ] ] ]) beNotResizable;
+			constraintsDo: [ :c | 
 				c ignoreByLayout.
 				c ignored horizontal alignRight.
-				c ignored vertical alignTop.
-			]
+				c ignored vertical alignTop ]
 ]
 
 { #category : #accessing }
@@ -710,8 +714,8 @@ LeBlueskySnippetElement >> updateHeader [
 			profilePicture visibility: BlVisibility gone ].
 
 	self snippet hasParentPost
-		ifTrue: [ parentInfoElement visibility: BlVisibility visible ]
-		ifFalse: [ parentInfoElement visibility: BlVisibility gone ]
+		ifTrue: [ parentInfoElement icon background: Color black ]
+		ifFalse: [ parentInfoElement icon background: BrGlamorousColors disabledButtonTextColor ]
 ]
 
 { #category : #accessing }

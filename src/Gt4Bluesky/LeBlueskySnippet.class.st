@@ -261,6 +261,21 @@ LeBlueskySnippet >> onAddedToDatabaseCallback: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippet >> parentFromUrl: aUrl [
+	| path handle recordId did aPost |
+	path := '/' split: (aUrl removePrefix: 'https://bsky.app/').
+	handle := path second.
+	recordId := path last.
+	did := (self client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
+	aPost := (self client
+			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
+			depth: nil) at: 'thread'.
+	self
+		parentPost: {'uri' -> aPost atpPost atpUri.
+				'cid' -> aPost atpPost atpCid} asDictionary
+]
+
+{ #category : #accessing }
 LeBlueskySnippet >> parentPost [
 	^ parentPost
 ]
