@@ -134,22 +134,38 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 
 { #category : #accessing }
 GtApClient >> procedureOn: aMethodId withBinary: anObject [
-	^ (self
-		clientFor: aMethodId
-		body: anObject readStream) procedure
+	[ ^ (self clientFor: aMethodId body: anObject readStream) procedure ]
+		on: GtXRPCError
+		do: [ :anError | 
+			anError errorMessage = 'ExpiredToken'
+				ifTrue: [ self refreshToken.
+					^ self procedureOn: aMethodId withBinary: anObject ]
+				ifFalse: [ anError signal ] ]
 ]
 
 { #category : #accessing }
 GtApClient >> procedureOn: aMethodId withBody: aBodyDictionary [
-	^ (self
+	[ ^ (self
 		clientFor: aMethodId
-		body: (STONJSON toString: (aBodyDictionary select: #isNotNil))) procedure
+		body: (STONJSON toString: (aBodyDictionary select: #isNotNil))) procedure ]
+		on: GtXRPCError
+		do: [ :anError | 
+			anError errorMessage = 'ExpiredToken'
+				ifTrue: [ self refreshToken.
+					^ self procedureOn: aMethodId withBody: aBodyDictionary ]
+				ifFalse: [ anError signal ] ]
 ]
 
 { #category : #accessing }
 GtApClient >> procedureOn: aMethodId withFile: aFile [
-	^ ((self clientFor: aMethodId body: aFile gtBinaryContents)
-		contentType: (ZnMimeType forFilenameExtension: aFile extension)) procedure
+	[ ^ ((self clientFor: aMethodId body: aFile gtBinaryContents)
+		contentType: (ZnMimeType forFilenameExtension: aFile extension)) procedure ]
+		on: GtXRPCError
+		do: [ :anError | 
+			anError errorMessage = 'ExpiredToken'
+				ifTrue: [ self refreshToken.
+					^ self procedureOn: aMethodId withFile: aFile ]
+				ifFalse: [ anError signal ] ]
 ]
 
 { #category : #accessing }
@@ -165,7 +181,13 @@ GtApClient >> queries [
 { #category : #accessing }
 GtApClient >> queryOn: aMethodId [
 	| res filteredProperties |
-	res := (self clientFor: aMethodId) query.
+	[ res := (self clientFor: aMethodId) query ]
+		on: GtXRPCError
+		do: [ :anError | 
+			anError errorMessage = 'ExpiredToken'
+				ifTrue: [ self refreshToken.
+					^ self queryOn: aMethodId ]
+				ifFalse: [ anError signal ] ].
 
 	(res includesKey: 'cursor') ifFalse: [ ^ res ].
 
@@ -194,7 +216,13 @@ GtApClient >> queryOn: aMethodId [
 { #category : #accessing }
 GtApClient >> queryOn: aMethodId parameters: aDictionary [
 	| res filteredProperties |
-	res := (self clientFor: aMethodId parameters: aDictionary) query.
+	res := [ (self clientFor: aMethodId parameters: aDictionary) query ]
+			on: GtXRPCError
+			do: [ :anError | 
+				anError errorMessage = 'ExpiredToken'
+					ifTrue: [ self refreshToken.
+						^ self queryOn: aMethodId parameters: aDictionary ]
+					ifFalse: [ anError signal ] ].
 
 	(res includesKey: 'cursor') ifFalse: [ ^ res ].
 
@@ -221,6 +249,20 @@ GtApClient >> queryOn: aMethodId parameters: aDictionary [
 		method: aMethodId;
 		parameters: aDictionary;
 		client: self
+]
+
+{ #category : #accessing }
+GtApClient >> refreshToken [
+	<xrpcProcedure>
+	| client |
+	client := GtXRPCClient new
+			server: self server;
+			methodId: 'com.atproto.server.refreshSession';
+			setAuthentication: context jwtRefresh.
+
+	context addRequest: client asHistoricalRequest.
+
+	context loginInformation: client procedure
 ]
 
 { #category : #accessing }

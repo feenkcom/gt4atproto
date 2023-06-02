@@ -50,6 +50,11 @@ GtApXRPCContext >> jwtAccess [
 ]
 
 { #category : #accessing }
+GtApXRPCContext >> jwtRefresh [
+	^ loginInformation at: 'refreshJwt'
+]
+
+{ #category : #accessing }
 GtApXRPCContext >> loginInformation [
 	^ loginInformation
 ]

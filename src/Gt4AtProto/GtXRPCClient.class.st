@@ -90,7 +90,7 @@ GtXRPCClient >> procedure [
 	response := STONJSON fromString: response.
 
 	(response includesKey: 'error')
-		ifTrue: [ GtXRPCError signal: (response at: 'message') ].
+		ifTrue: [ (GtXRPCError new errorMessage: (response at: 'error')) signal: (response at: 'message') ].
 
 	^ response
 ]
@@ -109,7 +109,7 @@ GtXRPCClient >> query [
 	response := STONJSON fromString: response.
 
 	(response includesKey: 'error')
-		ifTrue: [ GtXRPCError signal: (response at: 'message') ].
+		ifTrue: [ (GtXRPCError new errorMessage: (response at: 'error')) signal: (response at: 'message') ].
 
 	^ response
 ]
