@@ -30,6 +30,25 @@ GtApLexiconCoder >> buildSidebarFor: obj [
 ]
 
 { #category : #accessing }
+GtApLexiconCoder >> computeReferences: editor [
+	editor editor cursors
+		do: [ :each | 
+			| node parents |
+			node := lexiconObject lexiconFile ast nodeAt: each position.
+			((node isKindOf: JSONMemberNode)
+				and: [ each position between: node name startPosition and: node name stopPosition ])
+				ifTrue: [ parents := node allParents.
+					parents size = 3
+						ifTrue: [ ((parents first isKindOf: JSONObjectNode)
+								and: [ (parents last isKindOf: JSONObjectNode)
+										and: [ (parents second isKindOf: JSONMemberNode)
+												and: [ parents second name source = '"defs"' ] ] ])
+								ifTrue: [ (lexiconObject lexiconFile
+										definitionNamed: (node name source copyFrom: 2 to: node name source size - 1))
+										ifNotNil: [ :def | editor phlow spawnObject: def references ] ] ] ] ]
+]
+
+{ #category : #accessing }
 GtApLexiconCoder >> createDefinitionsTreeFor: obj [
 	| tree |
 	tree := BrSimpleTree new
@@ -40,6 +59,7 @@ GtApLexiconCoder >> createDefinitionsTreeFor: obj [
 					fitContent;
 					yourself ];
 			nodeDataBinder: [ :element :each | element text: each name ];
+			when: BlElementAddedToSceneGraphEvent do: [ :event | self updateTrees ];
 			yourself.
 	self updateDefinitionsTree: tree.
 	tree
@@ -81,6 +101,7 @@ GtApLexiconCoder >> createFilesTreeFor: obj [
 				element userData at: #lexiconFile put: each last.
 				self updateModifiedIn: element.
 				(element childNamed: #label) text: each first basename ];
+			when: BlElementAddedToSceneGraphEvent do: [ :event | self updateTrees ];
 			yourself.
 	self updateFileTreeItems: tree.
 	obj isLexiconDirectory
@@ -233,7 +254,10 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	textEditor
 		addShortcut: (BlShortcutWithAction new
 				combination: BlKeyCombination primaryS;
-				action: [ self lexiconFile saveFile ]).
+				action: [ self lexiconFile saveFile ]);
+		addShortcut: (BlShortcutWithAction new
+				combination: BlKeyCombination primaryN;
+				action: [ :event | self computeReferences: event source ]).
 	textEditor editor
 		when: BrTextEditorInsertedEvent
 			do: [ :event | self editorChangedTo: event source text asString ];
@@ -352,6 +376,7 @@ GtApLexiconCoder >> updateModifiedIn: anElement [
 
 { #category : #accessing }
 GtApLexiconCoder >> updateTrees [
+	lexiconObject ifNil: [ ^ self ].
 	self
 		inUIProcessDo: [ self
 				childNamed: #files

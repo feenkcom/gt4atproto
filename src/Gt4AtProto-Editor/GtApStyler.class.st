@@ -40,16 +40,6 @@ GtApStyler >> initialize [
 	self stylers: {JSONParser gtStyler}
 ]
 
-{ #category : #testing }
-GtApStyler >> isReference: aStringNode [
-	(aStringNode value source includes: $#) ifTrue: [ ^ true ].
-	((aStringNode parent isKindOf: JSONMemberNode)
-		and: [ aStringNode parent name source = '"ref"' ]) ifTrue: [ ^ true ].
-	^ (aStringNode parent isKindOf: JSONArrayNode)
-		and: [ (aStringNode parent parent isKindOf: JSONMemberNode)
-				and: [ aStringNode parent parent name source = '"refs"' ] ]
-]
-
 { #category : #accessing }
 GtApStyler >> lexiconFile [
 	^ lexiconFile
@@ -93,7 +83,7 @@ GtApStyler >> style: aText ast: anAST [
 { #category : #private }
 GtApStyler >> styleReference: aStringNode in: txt [
 	| source block |
-	(self isReference: aStringNode) ifFalse: [ ^ self ].
+	(lexiconFile isReference: aStringNode) ifFalse: [ ^ self ].
 	source := aStringNode value source.
 	(source beginsWith: '"#')
 		ifTrue: [ (lexiconFile definitionNamed: (source copyFrom: 3 to: source size - 1))

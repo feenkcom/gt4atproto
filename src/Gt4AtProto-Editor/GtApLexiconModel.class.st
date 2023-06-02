@@ -11,13 +11,7 @@ Class {
 
 { #category : #announcer }
 GtApLexiconModel >> announcer [
-	^ announcer
-]
-
-{ #category : #initialization }
-GtApLexiconModel >> initialize [
-	super initialize.
-	announcer := Announcer new
+	^ announcer ifNil: [ announcer := Announcer new ]
 ]
 
 { #category : #testing }
@@ -33,6 +27,17 @@ GtApLexiconModel >> isLexiconDirectory [
 { #category : #testing }
 GtApLexiconModel >> isLexiconFile [
 	^ false
+]
+
+{ #category : #testing }
+GtApLexiconModel >> isReference: aStringNode [
+	(aStringNode isKindOf: JSONStringNode) ifFalse: [ ^ false ].
+	(aStringNode value source includes: $#) ifTrue: [ ^ true ].
+	((aStringNode parent isKindOf: JSONMemberNode)
+		and: [ aStringNode parent name source = '"ref"' ]) ifTrue: [ ^ true ].
+	^ (aStringNode parent isKindOf: JSONArrayNode)
+		and: [ (aStringNode parent parent isKindOf: JSONMemberNode)
+				and: [ aStringNode parent parent name source = '"refs"' ] ]
 ]
 
 { #category : #accessing }
