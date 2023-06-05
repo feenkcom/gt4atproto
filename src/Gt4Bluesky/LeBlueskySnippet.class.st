@@ -240,7 +240,9 @@ LeBlueskySnippet >> initialize [
 
 { #category : #accessing }
 LeBlueskySnippet >> initializeClient [
-	client := LeBlueskyIdentityStore uniqueInstance getFirstOrNil
+	client := GtBlueskyIdentity allInstances size = 0
+			ifTrue: [ nil ]
+			ifFalse: [ GtBlueskyIdentity allInstances first createClient ]
 ]
 
 { #category : #accessing }

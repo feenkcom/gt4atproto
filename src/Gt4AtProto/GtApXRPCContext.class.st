@@ -3,7 +3,6 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'server',
-		'handle',
 		'loginInformation',
 		'requestHistory'
 	],
@@ -26,12 +25,7 @@ GtApXRPCContext >> gtRequestHistoryFor: aView [
 
 { #category : #accessing }
 GtApXRPCContext >> handle [
-	^ handle
-]
-
-{ #category : #accessing }
-GtApXRPCContext >> handle: anObject [
-	handle := anObject
+	^ loginInformation handle
 ]
 
 { #category : #accessing }
@@ -41,27 +35,44 @@ GtApXRPCContext >> initialize [
 
 { #category : #accessing }
 GtApXRPCContext >> isLoggedIn [
-	^ server isNotNil and: [ handle isNotNil and: [ loginInformation isNotNil ] ]
+	^ server isNotNil and: [ loginInformation isNotNil ]
 ]
 
 { #category : #accessing }
 GtApXRPCContext >> jwtAccess [
-	^ loginInformation at: 'accessJwt'
+	^ loginInformation accessToken
 ]
 
 { #category : #accessing }
 GtApXRPCContext >> jwtRefresh [
-	^ loginInformation at: 'refreshJwt'
+	^ loginInformation refreshToken
 ]
 
 { #category : #accessing }
-GtApXRPCContext >> loginInformation [
-	^ loginInformation
+GtApXRPCContext >> loginInformation: anObject for: aUserNameString [
+	loginInformation := GtBlueskyIdentity new
+			accessToken: (anObject at: 'accessJwt');
+			refreshToken: (anObject at: 'refreshJwt');
+			handle: aUserNameString.
+			
+	GtIdentityRegistry registry addCredential: loginInformation
 ]
 
 { #category : #accessing }
-GtApXRPCContext >> loginInformation: anObject [
-	loginInformation := anObject
+GtApXRPCContext >> loginInformationRaw: anIdentity [
+	loginInformation := anIdentity
+]
+
+{ #category : #accessing }
+GtApXRPCContext >> replaceLoginInformation: anObject [
+	GtIdentityRegistry registry removeCredential: loginInformation.
+
+	loginInformation := GtBlueskyIdentity new
+			accessToken: (anObject at: 'accessJwt');
+			refreshToken: (anObject at: 'refreshJwt');
+			handle: loginInformation handle.
+
+	GtIdentityRegistry registry addCredential: loginInformation
 ]
 
 { #category : #accessing }

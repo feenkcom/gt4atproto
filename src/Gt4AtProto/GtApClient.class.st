@@ -120,6 +120,11 @@ GtApClient >> isLoggedIn [
 ]
 
 { #category : #accessing }
+GtApClient >> loginInformation: anIdentity [
+	self context loginInformationRaw: anIdentity
+]
+
+{ #category : #accessing }
 GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 	<xrpcProcedure>
 	| result |
@@ -128,8 +133,7 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 			withBody: {'identifier' -> aUserNameString.
 							'password' -> aPasswordString} asDictionary.
 
-	context handle: aUserNameString.
-	context loginInformation: result
+	context loginInformation: result for: aUserNameString
 ]
 
 { #category : #accessing }
@@ -262,7 +266,7 @@ GtApClient >> refreshToken [
 
 	context addRequest: client asHistoricalRequest.
 
-	context loginInformation: client procedure
+	context replaceLoginInformation: client procedure
 ]
 
 { #category : #accessing }
