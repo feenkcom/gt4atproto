@@ -29,7 +29,7 @@ BaselineOfGt4AtProto >> baseline: spec [
 				with: [ spec repository: 'github://feenkcom/JSONSchema/source' ].
 				
 			 spec
-				baseline: 'GtoolkitWorld'
+				baseline: 'GToolkitWorld'
 				with: [ spec repository: 'github://feenkcom/gtoolkit-world/main' ].
 
 			spec package: 'Gt4AtProto'.
