@@ -41,7 +41,9 @@ AppBskyEmbedRecordWithMediaMain class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | 
 					({'app.bsky.embed.images' -> AppBskyEmbedImagesMain.
 						'app.bsky.embed.external' -> AppBskyEmbedExternalMain} asDictionary
-						at: (aValue at: '$type')) fromRequest: aValue ]
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 

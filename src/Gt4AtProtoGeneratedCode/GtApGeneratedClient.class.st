@@ -190,7 +190,7 @@ GtApGeneratedClient >> appBskyFeedGetLikesUri: uri cid: cid [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth [
+GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth parentHeight: parentHeight [
 	""
 
 	<xrpcQuery>
@@ -199,7 +199,8 @@ GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth [
 		andRequest: (self
 				queryOn: 'app.bsky.feed.getPostThread'
 				parameters: {'uri' -> uri.
-						'depth' -> depth} asDictionary)
+						'depth' -> depth.
+						'parentHeight' -> parentHeight} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -420,6 +421,18 @@ GtApGeneratedClient >> appBskyNotificationUpdateSeenSeenAt: seenAt [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyUnspeccedGetPopularFeedGenerators [
+	"An unspecced view of globally popular feed generators"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'feeds' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.unspecced.getPopularFeedGenerators'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyUnspeccedGetPopularIncludeNsfw: includeNsfw [
 	"An unspecced view of globally popular items"
 
@@ -515,7 +528,7 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportId: id [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject resolved: resolved actionType: actionType [
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignoreSubjects: ignoreSubjects resolved: resolved actionType: actionType reverse: reverse [
 	"List moderation reports related to a subject."
 
 	<xrpcQuery>
@@ -524,8 +537,10 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject resol
 		stream: (self
 				queryOn: 'com.atproto.admin.getModerationReports'
 				parameters: {'subject' -> subject.
+						'ignoreSubjects' -> ignoreSubjects.
 						'resolved' -> resolved.
-						'actionType' -> actionType} asDictionary)
+						'actionType' -> actionType.
+						'reverse' -> reverse} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -549,6 +564,19 @@ GtApGeneratedClient >> comAtprotoAdminGetRepoDid: did [
 		fromRequest: (self
 				queryOn: 'com.atproto.admin.getRepo'
 				parameters: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminRebaseRepoRepo: repo swapCommit: swapCommit [
+	"Administrative action to rebase an account's repo"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.rebaseRepo'
+				withBody: {'repo' -> repo.
+						'swapCommit' -> swapCommit} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }

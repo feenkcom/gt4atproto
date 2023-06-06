@@ -58,7 +58,10 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 						'app.bsky.embed.external#view' -> AppBskyEmbedExternalView.
 						'app.bsky.embed.record#view' -> AppBskyEmbedRecordView.
 						'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]);
 		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]);

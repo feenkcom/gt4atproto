@@ -38,7 +38,9 @@ AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | 
 					({'app.bsky.feed.defs#skeletonReasonRepost'
 							-> AppBskyFeedDefsSkeletonReasonRepost} asDictionary
-						at: (aValue at: '$type')) fromRequest: aValue ]
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 

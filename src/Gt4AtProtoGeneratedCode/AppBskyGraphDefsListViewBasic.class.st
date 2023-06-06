@@ -29,7 +29,7 @@ AppBskyGraphDefsListViewBasic class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic class >> atpSchema [
- ^ '{"type":"object","required":["uri","creator","name","purpose"],"properties":{"uri":{"type":"string","format":"at-uri"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","name","purpose"],"properties":{"uri":{"type":"string","format":"at-uri"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }

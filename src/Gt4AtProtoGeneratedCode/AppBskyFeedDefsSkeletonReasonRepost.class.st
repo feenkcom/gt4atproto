@@ -24,7 +24,7 @@ AppBskyFeedDefsSkeletonReasonRepost class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsSkeletonReasonRepost class >> atpSchema [
- ^ '{"type":"object","required":["repost"],"properties":{"repost":{"type":"string","ref":"at-uri"}}}'
+ ^ '{"type":"object","required":["repost"],"properties":{"repost":{"type":"string","format":"at-uri"}}}'
 ]
 
 { #category : #serialization }
@@ -36,7 +36,7 @@ AppBskyFeedDefsSkeletonReasonRepost class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyFeedDefsSkeletonReasonRepost >> atpRepost [
-	<atpType:#String format:nil>
+	<atpType:#String format:'at-uri'>
 	^ atpRepost
 ]
 

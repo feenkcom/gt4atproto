@@ -45,7 +45,10 @@ ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | 
 					({'com.atproto.admin.defs#imageDetails' -> ComAtprotoAdminDefsImageDetails.
 						'com.atproto.admin.defs#videoDetails' -> ComAtprotoAdminDefsVideoDetails}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpModeration: (aRequest
 				at: 'moderation'

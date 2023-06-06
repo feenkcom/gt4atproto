@@ -26,7 +26,7 @@ ComAtprotoRepoApplyWritesUpdate class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesUpdate class >> atpSchema [
- ^ '{"type":"object","description":"Update an existing record.","required":["action","collection","rkey","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"},"value":{"type":"unknown"}}}'
+ ^ '{"type":"object","description":"Update an existing record.","required":["collection","rkey","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"},"value":{"type":"unknown"}}}'
 ]
 
 { #category : #serialization }

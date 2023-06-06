@@ -40,7 +40,10 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest [
 						'app.bsky.embed.record#viewNotFound' -> AppBskyEmbedRecordViewNotFound.
 						'app.bsky.embed.record#viewBlocked' -> AppBskyEmbedRecordViewBlocked.
 						'app.bsky.feed.defs#generatorView' -> AppBskyFeedDefsGeneratorView}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 

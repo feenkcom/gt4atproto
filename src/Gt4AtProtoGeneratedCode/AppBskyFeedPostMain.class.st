@@ -58,7 +58,10 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 						'app.bsky.embed.external' -> AppBskyEmbedExternalMain.
 						'app.bsky.embed.record' -> AppBskyEmbedRecordMain.
 						'app.bsky.embed.recordWithMedia' -> AppBskyEmbedRecordWithMediaMain}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

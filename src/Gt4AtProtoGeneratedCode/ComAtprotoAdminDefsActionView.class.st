@@ -51,7 +51,9 @@ ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | 
 					({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef.
 						'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary
-						at: (aValue at: '$type')) fromRequest: aValue ]
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpSubjectBlobCids: (aRequest
 				at: 'subjectBlobCids'

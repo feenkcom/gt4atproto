@@ -47,7 +47,9 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 				at: 'reason'
 				ifPresent: [ :aValue | 
 					({'app.bsky.feed.defs#reasonRepost' -> AppBskyFeedDefsReasonRepost} asDictionary
-						at: (aValue at: '$type')) fromRequest: aValue ]
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 

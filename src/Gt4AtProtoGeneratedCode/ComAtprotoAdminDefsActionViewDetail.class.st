@@ -55,7 +55,9 @@ ComAtprotoAdminDefsActionViewDetail class >> fromRequest: aRequest [
 						'com.atproto.admin.defs#recordView' -> ComAtprotoAdminDefsRecordView.
 						'com.atproto.admin.defs#recordViewNotFound'
 							-> ComAtprotoAdminDefsRecordViewNotFound} asDictionary
-						at: (aValue at: '$type')) fromRequest: aValue ]
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpSubjectBlobs: (aRequest
 				at: 'subjectBlobs'

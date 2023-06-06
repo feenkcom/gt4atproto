@@ -38,7 +38,10 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 					({'app.bsky.feed.defs#postView' -> AppBskyFeedDefsPostView.
 						'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
 						'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpParent: (aRequest
 				at: 'parent'
@@ -46,7 +49,10 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 					({'app.bsky.feed.defs#postView' -> AppBskyFeedDefsPostView.
 						'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
 						'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
-						asDictionary at: (aValue at: '$type')) fromRequest: aValue ]
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 

@@ -43,7 +43,7 @@ GtApLexiconUnion >> buildFromRequestWithKey: aKey [
 		, ('. '
 				join: (self referencedDefinitions
 						collect: [ :anObject | '''' , (anObject id removeSuffix: '#main') , ''' -> ' , anObject asClassName ]))
-		, '} asDictionary at: (aValue at: ''$type'')) fromRequest: aValue] ifAbsent: [ nil ]'
+		, '} asDictionary at: (aValue at: ''$type'') ifAbsent: [ GtApUnknownRecord new key: (aValue at: ''$type'')]) fromRequest: aValue] ifAbsent: [ nil ]'
 ]
 
 { #category : #accessing }
