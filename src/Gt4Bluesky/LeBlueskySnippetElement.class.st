@@ -357,7 +357,6 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 									currentlySelected: self snippet client;
 									onSelection: [ :aClient | 
 										self snippet client: aClient.
-										LeBlueskyIdentityStore default addClient: aClient.
 										identityElement
 											inUIProcessDo: [ identityElement dispatchEvent: BrDropdownHideWish new ] ] ]).
 

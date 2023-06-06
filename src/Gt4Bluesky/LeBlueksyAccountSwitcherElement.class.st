@@ -38,11 +38,11 @@ LeBlueksyAccountSwitcherElement >> initializeView [
 										hovered: [ :aStyle | aStyle background: BrGlamorousColors hoveredListItemColor ]) ];
 				itemDataBinder: [ :anItemElement :anItemObject :anItemIndex | 
 					anItemElement
-						text: anItemObject;
+						text: anItemObject handle;
 						when: BlClickEvent
-							do: [ :anEvent | onSelection value: (LeBlueskyIdentityStore default getClientFor: anItemObject) ] ];
+							do: [ :anEvent | onSelection value: anItemObject createClient ] ];
 				fitContent;
-				items: LeBlueskyIdentityStore default existingAccounts).
+				items: GtBlueskyIdentity allInstances).
 	self
 		addChild: (BrLabel new fitContent
 				aptitude: BrGlamorousLabelAptitude
