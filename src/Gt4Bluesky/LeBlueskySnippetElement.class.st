@@ -679,15 +679,19 @@ LeBlueskySnippetElement >> updateFileContainer [
 	self snippet files
 		ifEmpty: [ imageContainer visibility: BlVisibility gone ]
 		ifNotEmpty: [ imageContainer visibility: BlVisibility visible.
-			self snippet
-				fileStreamsDo: [ :aStream | 
-					imageContainer
-						addChild: (LeBlueskyPostFileWidget new
-								vExact: 200;
-								hExact: 200;
-								contents: aStream contents;
-								isDeletable: self snippet hasPost not;
-								onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]) ] ]
+			self snippet files
+				do: [ :aFile | 
+					self snippet database
+						attachmentBinaryStream: aFile
+						do: [ :aStream | 
+							imageContainer
+								addChild: (LeBlueskyPostFileWidget new
+										vExact: 200;
+										hExact: 200;
+										contents: aStream contents;
+										isDeletable: self snippet hasPost not;
+										file: (self snippet database resolveDbFile: aFile);
+										onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]) ] ] ]
 ]
 
 { #category : #accessing }
