@@ -500,21 +500,22 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 			'createdAt' -> DateAndTime now printString.
 			'text' -> inputElement text asString} asDictionary.
-			
+
 	self snippet fileRecords
 		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
 	self snippetViewModel card
 		ifNotNil: [ record at: 'embed' put: self cardToEmbed ].
 	self snippetViewModel embeddedPost
 		ifNotNil: [ record at: 'embed' put: self postToEmbed ].
-		
+
 	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
 
 	self snippet hasParentPost
 		ifTrue: [ | root |
 			root := ((self snippet client
 					appBskyFeedGetPostThreadUri: (self snippet parentPost at: 'uri')
-					depth: nil) at: 'thread') client: self snippet client.
+					depth: nil
+					parentHeight: nil) at: 'thread') client: self snippet client.
 			record
 				at: 'reply'
 				put: {'parent' -> self snippet parentPost.

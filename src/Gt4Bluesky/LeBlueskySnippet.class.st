@@ -40,8 +40,10 @@ LeBlueskySnippet class >> fromUrl: aUrl [
 		ifNil: [ self error: 'Not logged into Bluesky, cannot retrieve post.' ].
 	did := (snippet client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
 	aPost := (snippet client
-			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
-			depth: nil) at: 'thread'.
+			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/'
+					, recordId
+			depth: nil
+			parentHeight: nil) at: 'thread'.
 	snippet
 		onAddedToDatabaseCallback: [ :aSnippet | 
 			aPost atpPost atpEmbed
@@ -124,7 +126,8 @@ LeBlueskySnippet >> atpParent [
 	self hasParentPost ifFalse: [ ^ nil ].
 	response := self client
 			appBskyFeedGetPostThreadUri: (self parentPost at: 'uri')
-			depth: nil.
+			depth: nil
+			parentHeight: nil.
 
 	(response includesKey: 'error')
 		ifTrue: [ self parentPost: nil.
@@ -139,7 +142,8 @@ LeBlueskySnippet >> atpPost [
 	self hasPost ifFalse: [ ^ nil ].
 	response := self client
 			appBskyFeedGetPostThreadUri: (self post at: 'uri')
-			depth: nil.
+			depth: nil
+			parentHeight: nil.
 
 	(response includesKey: 'error')
 		ifTrue: [ self post: nil.
@@ -173,7 +177,8 @@ LeBlueskySnippet >> enrichPost [
 	(self hasPost and: [ self hasClient ]) ifFalse: [ ^ nil ].
 	response := self client
 			appBskyFeedGetPostThreadUri: (self post at: 'uri')
-			depth: nil.
+			depth: nil
+			parentHeight: nil.
 
 	response := response at: 'thread'.
 	post at: 'avatar' put: response author atpAvatar.
@@ -270,8 +275,10 @@ LeBlueskySnippet >> parentFromUrl: aUrl [
 	recordId := path last.
 	did := (self client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
 	aPost := (self client
-			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
-			depth: nil) at: 'thread'.
+			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/'
+					, recordId
+			depth: nil
+			parentHeight: nil) at: 'thread'.
 	self
 		parentPost: {'uri' -> aPost atpPost atpUri.
 				'cid' -> aPost atpPost atpCid} asDictionary

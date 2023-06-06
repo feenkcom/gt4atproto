@@ -51,7 +51,8 @@ GtApPostStyler >> postFromUrl: aUrl [
 	did := (snippet client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.
 	^ (snippet client
 		appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
-		depth: nil) at: 'thread'
+		depth: nil
+		parentHeight: nil) at: 'thread'
 ]
 
 { #category : #accessing }
