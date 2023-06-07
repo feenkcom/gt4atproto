@@ -245,7 +245,8 @@ LeBlueskySnippet >> initialize [
 
 { #category : #accessing }
 LeBlueskySnippet >> initializeClient [
-	client := (GtIdentityRegistry uniqueInstance firstOfType: GtBlueskyIdentity) createClient
+	client := (GtIdentityRegistry uniqueInstance firstOfType: GtBlueskyIdentity)
+			ifNotNil: #createClient
 ]
 
 { #category : #accessing }
