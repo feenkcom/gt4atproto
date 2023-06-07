@@ -19,7 +19,7 @@ LeBlueskySnippet class >> contextMenuItemSpefication [
 	<leSnippetSpecification>
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
-		title: 'Bluesky'
+		title: 'Bluesky post'
 ]
 
 { #category : #accessing }

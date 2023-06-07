@@ -1,6 +1,8 @@
 Class {
 	#name : #GtApGeneratedClient,
 	#superclass : #GtApClient,
+	#traits : 'TGtApGeneratedClient',
+	#classTraits : 'TGtApGeneratedClient classTrait',
 	#category : #Gt4AtProtoGeneratedCode
 }
 
