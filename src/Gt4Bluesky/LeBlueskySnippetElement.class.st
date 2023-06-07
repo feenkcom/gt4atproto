@@ -121,8 +121,8 @@ LeBlueskySnippetElement >> createCardContainer [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> createEmbeddedPageContainer [
-	^ embeddedPageContainer := BrHorizontalPane new
-			exact: 200 @ 200;
+	^ embeddedPageContainer := BrHorizontalPane new hMatchParent
+			vExact: 200;
 			visibility: BlVisibility gone;
 			clipChildren: false;
 			background: Color white;
