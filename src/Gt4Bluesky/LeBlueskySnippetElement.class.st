@@ -82,31 +82,23 @@ LeBlueskySnippetElement >> contentElement [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> createAddFileButton [
-	^ addFileButton := BrButton new beTinySize
-			aptitude: BrGlamorousButtonWithIconAptitude new
-					+ (BrGlamorousWithDropdownAptitude
-							handle: [ BrButton new
-									beSmallSize;
-									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonWithLabelTooltipAptitude
-											- BrGlamorousButtonExteriorAptitude;
-									icon: BrGlamorousVectorIcons add ]
-							content: [ BrFileSelector new
-									vExact: 250;
-									hExact: 400;
-									folder: FileLocator home;
-									padding: (BlInsets all: 8);
-									fileFilterBlock: [ :aFileReference | 
-										aFileReference isDirectory not
-											and: [ (FileSystemDirectoryEntry reference: aFileReference) isHidden not ] ];
-									okAction: [ :aFile | 
-										self snippet addFile: aFile.
-										self snippetViewModel removeCard.
-										self snippetViewModel removeEmbeddedPost.
-										self updateEmbeds.
-										addFileButton
-											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new ] ] ]);
+	^ addFileButton := GtSpotterDropdownButtonStencil new beTinySize
+			valuable: LeBlueskySpotterStart new;
+			tooltip: 'Add File or Page';
 			icon: BrGlamorousVectorIcons add;
-			label: 'Add File'
+			actOn: [ :anActOnEvent :anItem :theButton | 
+				((anItem isKindOf: FileReference) and: [ anItem isFile ])
+					ifTrue: [ self snippet addFile: anItem.
+						self snippetViewModel removeCard.
+						self snippetViewModel removeEmbeddedPost.
+						self updateEmbeds.
+						anActOnEvent beActed ].
+
+				(anItem isKindOf: LePage)
+					ifTrue: [ self snippetViewModel addEmbeddedPage: anItem.
+						self updateEmbeds.
+						anActOnEvent beActed ] ];
+			asElement
 ]
 
 { #category : #accessing }
