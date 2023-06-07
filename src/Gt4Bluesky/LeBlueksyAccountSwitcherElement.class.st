@@ -42,7 +42,7 @@ LeBlueksyAccountSwitcherElement >> initializeView [
 						when: BlClickEvent
 							do: [ :anEvent | onSelection value: anItemObject createClient ] ];
 				fitContent;
-				items: GtBlueskyIdentity allInstances).
+				items: (GtIdentityRegistry uniqueInstance allOfType: GtBlueskyIdentity)).
 	self
 		addChild: (BrLabel new fitContent
 				aptitude: BrGlamorousLabelAptitude

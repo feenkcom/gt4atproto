@@ -47,10 +47,10 @@ LeBlueskySnippet class >> fromUrl: aUrl [
 	snippet
 		onAddedToDatabaseCallback: [ :aSnippet | 
 			aPost atpPost atpEmbed
-				ifNotNil: [ :anImageEmbed | 
-					(anImageEmbed isKindOf: AppBskyEmbedImagesView)
+				ifNotNil: [ :anEmbed | 
+					(anEmbed isKindOf: AppBskyEmbedImagesView)
 						ifTrue: [ aSnippet
-								addFiles: (anImageEmbed atpImages
+								addFiles: (anEmbed atpImages
 										collect: [ :anImage | 
 											(FileLocator imageDirectory / 'buesky_download_tempfile') ensureDelete.
 											anImage atpFullsize asZnUrl
@@ -245,9 +245,7 @@ LeBlueskySnippet >> initialize [
 
 { #category : #accessing }
 LeBlueskySnippet >> initializeClient [
-	client := GtBlueskyIdentity allInstances size = 0
-			ifTrue: [ nil ]
-			ifFalse: [ GtBlueskyIdentity allInstances first createClient ]
+	client := (GtIdentityRegistry uniqueInstance firstOfType: GtBlueskyIdentity) createClient
 ]
 
 { #category : #accessing }

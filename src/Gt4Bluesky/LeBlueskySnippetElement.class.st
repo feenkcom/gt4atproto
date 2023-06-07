@@ -21,7 +21,8 @@ Class {
 		'inspectButton',
 		'writingIndicator',
 		'cardContainer',
-		'embeddedPostContainer'
+		'embeddedPostContainer',
+		'embeddedPageContainer'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -29,17 +30,19 @@ Class {
 { #category : #accessing }
 LeBlueskySnippetElement >> addCard: aCard [
 	self snippetViewModel addCard: aCard.
-	self updateFileContainer.
-	self updateCardContainer.
-	self updateEmbeddedPostContainer
+	self updateEmbeds
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> addEmbeddedPage: aPage [
+	self snippetViewModel addEmbeddedPage: aPage.
+	self updateEmbeds
 ]
 
 { #category : #accessing }
 LeBlueskySnippetElement >> addEmbeddedPost: aPost [
 	self snippetViewModel addEmbeddedPost: aPost.
-	self updateFileContainer.
-	self updateCardContainer.
-	self updateEmbeddedPostContainer
+	self updateEmbeds
 ]
 
 { #category : #accessing }
@@ -99,6 +102,7 @@ LeBlueskySnippetElement >> createAddFileButton [
 										self snippet addFile: aFile.
 										self snippetViewModel removeCard.
 										self snippetViewModel removeEmbeddedPost.
+										self updateEmbeds.
 										addFileButton
 											inUIProcessDo: [ addFileButton dispatchEvent: BrDropdownHideWish new ] ] ]);
 			icon: BrGlamorousVectorIcons add;
@@ -108,6 +112,17 @@ LeBlueskySnippetElement >> createAddFileButton [
 { #category : #accessing }
 LeBlueskySnippetElement >> createCardContainer [
 	^ cardContainer := BrHorizontalPane new fitContent
+			visibility: BlVisibility gone;
+			clipChildren: false;
+			background: Color white;
+			aptitude: BrShadowAptitude;
+			margin: (BlInsets all: 5)
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> createEmbeddedPageContainer [
+	^ embeddedPageContainer := BrHorizontalPane new
+			exact: 200 @ 200;
 			visibility: BlVisibility gone;
 			clipChildren: false;
 			background: Color white;
@@ -211,6 +226,9 @@ LeBlueskySnippetElement >> initializeContentElement [
 				combination: (self keyboardShortcut: #DeleteNext)).
 
 	inputElement editor
+		inputFilter: (GtBlueskySnippetPageFilter new snippetElement: self).
+
+	inputElement editor
 		addEventHandler: (LeEditorReachedBorderEventHandler new snippetElement: self).
 
 	LeSnippetEditorElementShortcuter new
@@ -224,6 +242,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 	contentPane addChild: self createImageContainer.
 	contentPane addChild: self createCardContainer.
 	contentPane addChild: self createEmbeddedPostContainer.
+	contentPane addChild: self createEmbeddedPageContainer.
 
 	contentElement addChild: self initializeToolbarElement.
 
@@ -507,6 +526,8 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 		ifNotNil: [ record at: 'embed' put: self cardToEmbed ].
 	self snippetViewModel embeddedPost
 		ifNotNil: [ record at: 'embed' put: self postToEmbed ].
+	self snippetViewModel embeddedPage
+		ifNotNil: [ record at: 'embed' put: self pageToEmbed ].
 
 	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
 
@@ -549,8 +570,7 @@ LeBlueskySnippetElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
 	self onClientChanged.
 	inputElement text: self snippet text.
-	self updateFileContainer.
-	self updateCardContainer
+	self updateEmbeds
 ]
 
 { #category : #accessing }
@@ -568,6 +588,14 @@ LeBlueskySnippetElement >> onTextChanged [
 		inUIProcessDo: [ inputElement text: self snippet text.
 			writingIndicator
 				text: self snippet text size asString , '/' , self maximumPostSize asString ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> pageToEmbed [
+	^ {'$type' -> 'com.gtoolkit.embed.lepiterPage'.
+		'record'
+			-> (LeJsonV4 uniqueInstance serialize: self snippetViewModel embeddedPage)}
+		asDictionary
 ]
 
 { #category : #accessing }
@@ -664,6 +692,16 @@ LeBlueskySnippetElement >> updateCardContainer [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> updateEmbeddedPageContainer [
+	embeddedPageContainer removeChildren.
+	self snippetViewModel embeddedPage
+		ifNil: [ embeddedPageContainer visibility: BlVisibility gone ]
+		ifNotNil: [ embeddedPageContainer visibility: BlVisibility visible.
+			embeddedPageContainer
+				addChild: self snippetViewModel embeddedPage asPreviewElement ]
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> updateEmbeddedPostContainer [
 	embeddedPostContainer removeChildren.
 	self snippetViewModel embeddedPost
@@ -671,6 +709,14 @@ LeBlueskySnippetElement >> updateEmbeddedPostContainer [
 		ifNotNil: [ embeddedPostContainer visibility: BlVisibility visible.
 			embeddedPostContainer
 				addChild: (GtApFeedPostSummaryElement new post: self snippetViewModel embeddedPost) ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> updateEmbeds [
+	self updateFileContainer.
+	self updateCardContainer.
+	self updateEmbeddedPostContainer.
+	self updateEmbeddedPageContainer
 ]
 
 { #category : #accessing }

@@ -1,0 +1,40 @@
+Class {
+	#name : #GtBlueskySnippetPageFilter,
+	#superclass : #BrTextEditorInputFilter,
+	#instVars : [
+		'snippetElement'
+	],
+	#category : #'Gt4Bluesky-Snippet'
+}
+
+{ #category : #accessing }
+GtBlueskySnippetPageFilter >> filter: aString [
+	<return: #String>
+	| pageParser pageData aPage |
+	pageParser := '{{gtPage:id=' asPParser , '|' asPParser negate plus
+			, '|db=' asPParser , '}}' asPParser negate plus , '}}' asPParser.
+	pageParser := (pageParser
+			==> [ :anArray | 
+				{'' join: anArray second.
+					'' join: anArray fourth} ]) optimize.
+	pageData := pageParser
+			parse: aString.
+
+	pageData isPetit2Failure ifTrue: [ ^ aString ].
+
+	aPage := (LeDatabasesRegistry defaultLogicalDatabase
+			databaseWithID: pageData second) pageWithID: pageData first.
+
+	self snippetElement addEmbeddedPage: aPage.
+	^ ''
+]
+
+{ #category : #accessing }
+GtBlueskySnippetPageFilter >> snippetElement [
+	^ snippetElement
+]
+
+{ #category : #accessing }
+GtBlueskySnippetPageFilter >> snippetElement: anObject [
+	snippetElement := anObject
+]

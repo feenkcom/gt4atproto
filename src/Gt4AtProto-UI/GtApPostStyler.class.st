@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'fuzzyUrlsParser',
 		'fuzzyUrlParser',
-		'snippetElement'
+		'snippetElement',
+		'pagesParser'
 	],
 	#category : #'Gt4AtProto-UI'
 }
@@ -78,6 +79,7 @@ GtApPostStyler >> privateStyle: aText [
 								view: #gtViewCardFor:;
 								result: [ GtApExternalWebsiteCard fromUrl: aToken value ];
 								action: [ self snippetElement addCard: (GtApExternalWebsiteCard fromUrl: aToken value) ]) ] ].
+
 	^ aText
 ]
 
