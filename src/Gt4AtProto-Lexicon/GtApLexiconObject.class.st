@@ -86,6 +86,15 @@ GtApLexiconObject >> generateDeserialization [
 		, '} asDictionary andRequest: '
 ]
 
+{ #category : #accessing }
+GtApLexiconObject >> generateJson [
+	^ {
+		'type' -> 'object'.
+		'required' -> self required asArray.
+		'properties' -> (self properties collect: #generateJson)
+	} asDictionary
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconObject >> gtViewDefinitionReferencesFor: aView [ 
 	<gtView>

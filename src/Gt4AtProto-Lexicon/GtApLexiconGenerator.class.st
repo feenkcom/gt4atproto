@@ -2,7 +2,9 @@ Class {
 	#name : #GtApLexiconGenerator,
 	#superclass : #Object,
 	#instVars : [
-		'classes'
+		'classes',
+		'id',
+		'description'
 	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
@@ -19,14 +21,12 @@ GtApLexiconGenerator >> addClass: aClass [
 
 { #category : #accessing }
 GtApLexiconGenerator >> baselineClasses [
-	^ {'String' -> 'string'.
-		'Boolean' -> 'boolean'.
-		'Number' -> 'number'.
-		'Integer' -> 'integer'.
-		'Symbol' -> 'string'.
-		'DateAndTime'
-			-> {'type' -> 'string'.
-					'format' -> 'datetime'} asOrderedDictionary} asDictionary
+	^ {'String' -> [ GtApLexiconString new ].
+		'Boolean' -> [ GtApLexiconBoolean new ].
+		'Number' -> [ GtApLexiconNumber new ].
+		'Integer' -> [ GtApLexiconInteger new ].
+		'Symbol' -> [ GtApLexiconString new ].
+		'DateAndTime' -> [ GtApLexiconString new format: 'datetime' ]} asDictionary
 ]
 
 { #category : #accessing }
@@ -35,19 +35,44 @@ GtApLexiconGenerator >> classes: aCollection [
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> defaults [
-	^ {'lexicon' -> 1.
-		'type' -> 'record'} asDictionary
+GtApLexiconGenerator >> description [
+	^ description
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> generate [
+GtApLexiconGenerator >> description: anObject [
+	description := anObject
+]
+
+{ #category : #accessing }
+GtApLexiconGenerator >> generateJson [
+	^ STONJSON
+		toStringPretty: {'lexicon' -> 1.
+				'id' -> self id.
+				'description' -> self description.
+				'defs'
+					-> (self generateModel
+							collect: [ :aRecord | aRecord key -> aRecord record generateJson ])
+							asDictionary} asDictionary
+]
+
+{ #category : #accessing }
+GtApLexiconGenerator >> generateLexiconForClass: aClass [
+	^ GtApLexiconRecord new
+		key: aClass name asLowercase;
+		id: (self idFromClassName: aClass name withSeparator: '.');
+		description: aClass comment;
+		record: (self generateRecordForClass: aClass)
+]
+
+{ #category : #accessing }
+GtApLexiconGenerator >> generateModel [
 	"we generate using an explicit whileTrue: loop because the classes collection might change size during our iteration"
 
 	| idx res |
 	idx := 1.
 	res := OrderedCollection new.
-	[ idx < classes size ]
+	[ idx <= classes size ]
 		whileTrue: [ | aClass |
 			aClass := classes at: idx.
 			res add: (self generateLexiconForClass: aClass).
@@ -56,47 +81,36 @@ GtApLexiconGenerator >> generate [
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> generateJson [
-	^ self generate collect: [ :aLexicon | STONJSON toStringPretty: aLexicon ]
+GtApLexiconGenerator >> generatePropertyIn: aClass named: aKey [
+	^ (aClass lookupSelector: aKey) pragmas
+		detect: [ :aPragma | aPragma selector = #return: ]
+		ifFound: [ :aPragma | self treatProperty: (aPragma argumentAt: 1) ]
+		ifNone: [ GtApLexiconString new ]
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> generateLexiconForClass: aClass [
+GtApLexiconGenerator >> generateRecordForClass: aClass [ 
 	| attributes |
 	attributes := aClass leJsonV4AttributeMapping collect: #key.
-	^ self defaults
-		union: {'id' -> (self idFromClassName: aClass name).
-				'description' -> aClass comment.
-				'record'
-					-> {'type' -> 'object'.
-							'required' -> attributes asArray.
-							'properties'
-								-> (attributes
-										collect: [ :aKey | aKey -> (self generatePropertyIn: aClass named: aKey) ])
-										asDictionary} asDictionary} asDictionary asDictionary
+	^ GtApLexiconObject new
+		required: attributes;
+		properties: (attributes
+							collect: [ :aKey | aKey -> (self generatePropertyIn: aClass named: aKey) ]) asDictionary
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> generatePropertyIn: aClass named: aKey [
-	| aProperty |
-	aProperty := (aClass lookupSelector: aKey) pragmas
-			detect: [ :aPragma | aPragma selector = #return: ]
-			ifFound: [ :aPragma | self treatProperty: (aPragma argumentAt: 1) ]
-			ifNone: [ 'string' ].
-
-	(aProperty isKindOf: Dictionary) ifTrue: [ ^ aProperty ].
-
-	^ {'type' -> aProperty} asDictionary
+GtApLexiconGenerator >> id [
+	^ id
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> idFromClassName: aClassName [
-	^ self idPrefix , aClassName asLowercase
+GtApLexiconGenerator >> id: anObject [
+	id := anObject
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> idPrefix [
-	^ 'com.gtoolkit.lepiter.'
+GtApLexiconGenerator >> idFromClassName: aClassName withSeparator: aString [
+	^ self id , aString , aClassName asLowercase
 ]
 
 { #category : #accessing }
@@ -107,12 +121,14 @@ GtApLexiconGenerator >> initialize [
 { #category : #accessing }
 GtApLexiconGenerator >> treatProperty: aString [
 	| aClass |
-	self baselineClasses at: aString ifPresent: [ :aValue | ^ aValue ].
+	self baselineClasses at: aString ifPresent: [ :aBlock | ^ aBlock value ].
 
-	aClass := aString asClassIfAbsent: [ ^ aString ].
+	aClass := aString
+			asClassIfAbsent: [ self error: 'Unknown class to generate ' , aString ].
 
 
 	(classes includes: aClass) ifFalse: [ self addClass: aClass ].
 
-	^ self idFromClassName: aString
+	^ GtApLexiconDefinitionReference new
+		referenceString: (self idFromClassName: aString withSeparator: '#')
 ]

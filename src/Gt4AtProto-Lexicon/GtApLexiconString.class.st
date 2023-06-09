@@ -1,6 +1,9 @@
 Class {
 	#name : #GtApLexiconString,
 	#superclass : #GtApLexiconPrimitive,
+	#instVars : [
+		'format'
+	],
 	#category : #'Gt4AtProto-Lexicon-Definitions'
 }
 
@@ -20,6 +23,16 @@ GtApLexiconString >> asClassName [
 ]
 
 { #category : #accessing }
+GtApLexiconString >> format [
+	^ format
+]
+
+{ #category : #accessing }
+GtApLexiconString >> format: anObject [
+	format := anObject
+]
+
+{ #category : #accessing }
 GtApLexiconString >> generateDescriptorFor: aString usingPrefix: aPrefix isRequired: aBoolean [
 	| source |
 	source := aString
@@ -35,6 +48,16 @@ GtApLexiconString >> generateDescriptorFor: aString usingPrefix: aPrefix isRequi
 					, ';
 	beRequired' ].
 	^ source
+]
+
+{ #category : #accessing }
+GtApLexiconString >> generateJson [
+	| json |
+	json := {'type' -> 'string'} asDictionary.
+
+	self format ifNotNil: [ :aFormat | json at: 'format' put: aFormat ].
+
+	^ json
 ]
 
 { #category : #accessing }

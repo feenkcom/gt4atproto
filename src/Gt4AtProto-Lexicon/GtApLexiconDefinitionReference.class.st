@@ -76,6 +76,12 @@ GtApLexiconDefinitionReference >> generateGetterAs: aString [
 ]
 
 { #category : #accessing }
+GtApLexiconDefinitionReference >> generateJson [
+	^ {'type' -> 'ref'.
+		'ref' -> self referenceString} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconDefinitionReference >> generateSetterAs: aString [
 	^ aString
 		, ': anObject

@@ -36,3 +36,8 @@ GtApLexiconBoolean >> generateDescriptorFor: aString usingPrefix: aPrefix isRequ
 	beRequired' ].
 	^ source
 ]
+
+{ #category : #accessing }
+GtApLexiconBoolean >> generateJson [
+	^ {'type' -> 'boolean'} asDictionary
+]

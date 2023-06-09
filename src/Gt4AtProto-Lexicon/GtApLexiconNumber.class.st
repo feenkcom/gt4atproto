@@ -13,3 +13,8 @@ GtApLexiconNumber class >> typeName [
 GtApLexiconNumber >> acceptVisitor: aLexiconVisitor [
 	^ aLexiconVisitor visitLexiconNumber:  self
 ]
+
+{ #category : #accessing }
+GtApLexiconNumber >> generateJson [
+	^ {'type' -> 'number'} asDictionary
+]
