@@ -106,14 +106,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-06-09T10:32:51.582569+02:00"
+									"dateAndTimeString" : "2023-06-09T10:55:07.516653+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "P+hNAbe3DQCpqnHLA8PxWg=="
 							},
-							"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #Gt4AtProtoGeneratedCode withPrefix: #atp;\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atp;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atp;\r\t\tuseDefinitionFromRequestBuilderWithPrefix: #atp;\r\t\tuseDefinitionMagritteBuilderWithPrefix: #atp;\r\t\tuseDocumentsBuilderInPackage: #Gt4AtProtoGeneratedCode\r\t\t\tinSubclass: #GtApGeneratedClient;\r\t\tbuild"
+							"code" : "builder := GtApModelBuilder new\r\t\tlexicons: lexicons;\r\t\tuseDefinitionsBuilderInPackage: #Gt4AtProtoGeneratedCode withPrefix: #atp;\r\t\tuseDefinitionInstanceVarBuilderWithPrefix: #atp;\r\t\tuseDefinitionAccessorBuilderWithPrefix: #atp;\r\t\tuseDefinitionFromRequestBuilderWithPrefix: #atp;\r\t\tuseDefinitionMagritteBuilderWithPrefix: #atp;\r\t\tuseDocumentsBuilderInPackage: #Gt4AtProtoGeneratedCode\r\t\t\tinSubclass: #GtApGeneratedClient"
 						}
 					]
 				},
@@ -178,14 +178,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-11T00:22:59.497972+02:00"
+									"dateAndTimeString" : "2023-06-09T10:55:12.104107+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "u2fM1lS3DQC/mk9BB1tzrA=="
 							},
-							"code" : "builder apply"
+							"code" : "builder build"
 						}
 					]
 				},
