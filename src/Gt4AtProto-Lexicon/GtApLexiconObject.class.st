@@ -88,11 +88,9 @@ GtApLexiconObject >> generateDeserialization [
 
 { #category : #accessing }
 GtApLexiconObject >> generateJson [
-	^ {
-		'type' -> 'object'.
+	^ {'type' -> 'object'.
 		'required' -> self required asArray.
-		'properties' -> (self properties collect: #generateJson)
-	} asDictionary
+		'properties' -> (self properties collect: #generateJson)} asDictionary
 ]
 
 { #category : #'gt - extensions' }

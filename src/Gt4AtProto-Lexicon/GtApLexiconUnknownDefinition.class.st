@@ -56,3 +56,8 @@ GtApLexiconUnknownDefinition >> generateDescriptorFor: aString usingPrefix: aPre
 GtApLexiconUnknownDefinition >> generateDeserialization [
 	^ 'GtApModelEntity findForRequest: '
 ]
+
+{ #category : #accessing }
+GtApLexiconUnknownDefinition >> generateJson [
+	^ {'type' -> 'unknown'} asDictionary
+]

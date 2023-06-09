@@ -26,7 +26,9 @@ GtApLexiconGenerator >> baselineClasses [
 		'Number' -> [ GtApLexiconNumber new ].
 		'Integer' -> [ GtApLexiconInteger new ].
 		'Symbol' -> [ GtApLexiconString new ].
-		'DateAndTime' -> [ GtApLexiconString new format: 'datetime' ]} asDictionary
+		'Dictionary' -> [ GtApLexiconUnknownDefinition new ].
+		'DateAndTime' -> [ GtApLexiconString new format: 'datetime' ].
+		'Array' -> [ GtApLexiconArray new items: GtApLexiconString new ]} asDictionary
 ]
 
 { #category : #accessing }

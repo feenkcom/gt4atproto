@@ -209,6 +209,7 @@ LeBlueskySnippet >> fileStreamsDo: aBlock [
 
 { #category : #accessing }
 LeBlueskySnippet >> files [
+	<return: #Array>
 	^ files
 ]
 
@@ -285,6 +286,7 @@ LeBlueskySnippet >> parentFromUrl: aUrl [
 
 { #category : #accessing }
 LeBlueskySnippet >> parentPost [
+	<return: #Dictionary>
 	^ parentPost
 ]
 
@@ -296,6 +298,7 @@ LeBlueskySnippet >> parentPost: anObject [
 
 { #category : #accessing }
 LeBlueskySnippet >> post [
+	<return: #Dictionary>
 	^ post
 ]
 
