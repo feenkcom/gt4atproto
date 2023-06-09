@@ -30,6 +30,11 @@ GtApLexiconGenerator >> baselineClasses [
 ]
 
 { #category : #accessing }
+GtApLexiconGenerator >> classes [
+	^ classes
+]
+
+{ #category : #accessing }
 GtApLexiconGenerator >> classes: aCollection [ 
 	classes := aCollection
 ]
@@ -89,13 +94,20 @@ GtApLexiconGenerator >> generatePropertyIn: aClass named: aKey [
 ]
 
 { #category : #accessing }
-GtApLexiconGenerator >> generateRecordForClass: aClass [ 
+GtApLexiconGenerator >> generateRecordForClass: aClass [
 	| attributes |
+	aClass isAbstract
+		ifTrue: [ ^ GtApLexiconUnion new
+				refs: (aClass allSubclasses
+						reject: #isAbstract
+						thenCollect: [ :aSubclass | self idFromClassName: aSubclass name withSeparator: '#' ]) ].
+
 	attributes := aClass leJsonV4AttributeMapping collect: #key.
 	^ GtApLexiconObject new
 		required: attributes;
 		properties: (attributes
-							collect: [ :aKey | aKey -> (self generatePropertyIn: aClass named: aKey) ]) asDictionary
+				collect: [ :aKey | aKey -> (self generatePropertyIn: aClass named: aKey) ])
+				asDictionary
 ]
 
 { #category : #accessing }
@@ -126,6 +138,8 @@ GtApLexiconGenerator >> treatProperty: aString [
 	aClass := aString
 			asClassIfAbsent: [ self error: 'Unknown class to generate ' , aString ].
 
+	(aClass respondsTo: #asLexiconPropertyIn:)
+		ifTrue: [ ^ aClass asLexiconPropertyIn: self ].
 
 	(classes includes: aClass) ifFalse: [ self addClass: aClass ].
 

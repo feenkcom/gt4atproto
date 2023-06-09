@@ -57,6 +57,12 @@ GtApLexiconArray >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 ]
 
 { #category : #accessing }
+GtApLexiconArray >> generateJson [
+	^ {'type' -> 'array'.
+		'items' -> self items generateJson} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconArray >> gtItemsFor: aView [
 	<gtView>
 	^ aView forward

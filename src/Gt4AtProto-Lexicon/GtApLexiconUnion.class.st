@@ -82,6 +82,12 @@ GtApLexiconUnion >> generateDeserialization [
 ]
 
 { #category : #accessing }
+GtApLexiconUnion >> generateJson [
+	^ {'type' -> 'union'.
+		'refs' -> self refs asArray} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconUnion >> gtViewResolvedDefinitionsFor: aView [
 	<gtView>
 	resolvedDefinitions ifNil: [ ^ aView empty ].
