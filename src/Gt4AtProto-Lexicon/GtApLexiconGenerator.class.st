@@ -18,6 +18,18 @@ GtApLexiconGenerator >> addClass: aClass [
 ]
 
 { #category : #accessing }
+GtApLexiconGenerator >> baselineClasses [
+	^ {'String' -> 'string'.
+		'Boolean' -> 'boolean'.
+		'Number' -> 'number'.
+		'Integer' -> 'integer'.
+		'Symbol' -> 'string'.
+		'DateAndTime'
+			-> {'type' -> 'string'.
+					'format' -> 'datetime'} asOrderedDictionary} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconGenerator >> classes: aCollection [ 
 	classes := aCollection
 ]
@@ -60,14 +72,21 @@ GtApLexiconGenerator >> generateLexiconForClass: aClass [
 							'required' -> attributes asArray.
 							'properties'
 								-> (attributes
-										collect: [ :aKey | 
-											aKey
-												-> {'type'
-															-> ((aClass lookupSelector: aKey) pragmas
-																	detect: [ :aPragma | aPragma selector = #return: ]
-																	ifFound: [ :aPragma | self treatProperty: (aPragma argumentAt: 1) ]
-																	ifNone: [ 'string' ])} asDictionary ]) asDictionary}
-							asDictionary} asDictionary asDictionary
+										collect: [ :aKey | aKey -> (self generatePropertyIn: aClass named: aKey) ])
+										asDictionary} asDictionary} asDictionary asDictionary
+]
+
+{ #category : #accessing }
+GtApLexiconGenerator >> generatePropertyIn: aClass named: aKey [
+	| aProperty |
+	aProperty := (aClass lookupSelector: aKey) pragmas
+			detect: [ :aPragma | aPragma selector = #return: ]
+			ifFound: [ :aPragma | self treatProperty: (aPragma argumentAt: 1) ]
+			ifNone: [ 'string' ].
+
+	(aProperty isKindOf: Dictionary) ifTrue: [ ^ aProperty ].
+
+	^ {'type' -> aProperty} asDictionary
 ]
 
 { #category : #accessing }
@@ -88,7 +107,10 @@ GtApLexiconGenerator >> initialize [
 { #category : #accessing }
 GtApLexiconGenerator >> treatProperty: aString [
 	| aClass |
+	self baselineClasses at: aString ifPresent: [ :aValue | ^ aValue ].
+
 	aClass := aString asClassIfAbsent: [ ^ aString ].
+
 
 	(classes includes: aClass) ifFalse: [ self addClass: aClass ].
 
