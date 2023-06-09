@@ -38,15 +38,21 @@ GtApDefinitionFromRequestBuilder >> buildUsing: aModel [
 	self lexicons definitions
 		keysAndValuesDo: [ :aKey :aDefinition | 
 			(aDefinition type = 'object' or: [ aDefinition type = 'record' ])
-				ifTrue: [ | className traitName |
+				ifTrue: [ | skip className traitName |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
 					traitName := 'T' , className.
-					(RBAddMethodRefactoring
-						model: aModel
-						addMethod: (RBParser parseMethod: (self buildFromRequestFor: aDefinition))
-								formattedCode
-						toClass: (aModel classNamed: className asSymbol) classSide
-						inProtocols: #('serialization')) primitiveExecute ] ]
+					skip := false.
+
+					className
+						asClassIfPresent: [ :aClass | (aClass respondsTo: #fromRequest:) ifTrue: [ skip := true ] ].
+
+					skip
+						ifFalse: [ (RBAddMethodRefactoring
+								model: aModel
+								addMethod: (RBParser
+										parseMethod: (self buildFromRequestFor: aDefinition)) formattedCode
+								toClass: (aModel classNamed: className asSymbol) classSide
+								inProtocols: #('serialization')) primitiveExecute ] ] ]
 ]
 
 { #category : #accessing }

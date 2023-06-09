@@ -11,6 +11,10 @@ Class {
 GtApDefinitionInstanceVarBuilder >> buildPropertyInClass: className forObject: anApObject inModel: aModel usingPropertyKey: aPropertyKey andProperty: aProperty [
 	| key |
 	key := self instanceVarPrefix , aPropertyKey asCamelCase.
+
+	className
+		asClassIfPresent: [ :aClass | (aClass hasSlotNamed: key) ifTrue: [ ^ self ] ].
+
 	(RBAddInstanceVariableRefactoring
 		model: aModel
 		variable: key

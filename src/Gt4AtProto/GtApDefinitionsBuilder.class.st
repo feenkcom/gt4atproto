@@ -17,51 +17,53 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 				ifTrue: [ | className traitName |
 					className := (aKey replaceAllRegex: '[.#]' with: ' ') asCamelCase.
 					traitName := 'T' , className.
-					(RBAddClassRefactoring
-						model: aModel
-						addClass: className
-						superclass: self modelSuperClass
-						subclasses: #()
-						category: self packageName) primitiveExecute.
+					className
+						asClassIfAbsent: [ (RBAddClassRefactoring
+								model: aModel
+								addClass: className
+								superclass: self modelSuperClass
+								subclasses: #()
+								category: self packageName) primitiveExecute.
 
-					(GtRBSilentlyAddMethodRefactoring
-						model: aModel
-						addMethod: self prefix
-								, 'RecordName
+							(GtRBSilentlyAddMethodRefactoring
+								model: aModel
+								addMethod: self prefix
+										, 'RecordName
  ^ ''' , (aKey removeSuffix: '#main') , ''''
-						toClass: (aModel classNamed: className asSymbol) classSide
-						inProtocols: {'accessing'}) primitiveExecute.
+								toClass: (aModel classNamed: className asSymbol) classSide
+								inProtocols: {'accessing'}) primitiveExecute.
 
-					(GtRBSilentlyAddMethodRefactoring
-						model: aModel
-						addMethod: self prefix
-								, 'Description
+							(GtRBSilentlyAddMethodRefactoring
+								model: aModel
+								addMethod: self prefix
+										, 'Description
  ^ ''' , (aDefinition description ifNil: [ '' ]) , ''''
-						toClass: (aModel classNamed: className asSymbol) classSide
-						inProtocols: {'accessing'}) primitiveExecute.
+								toClass: (aModel classNamed: className asSymbol) classSide
+								inProtocols: {'accessing'}) primitiveExecute.
 
-					(GtRBSilentlyAddMethodRefactoring
-						model: aModel
-						addMethod: self prefix
-								, 'Schema
+							(GtRBSilentlyAddMethodRefactoring
+								model: aModel
+								addMethod: self prefix
+										, 'Schema
  ^ ' , (aDefinition rawData ifNil: [ '' ]) asString printString
-						toClass: (aModel classNamed: className asSymbol) classSide
-						inProtocols: {'accessing'}) primitiveExecute.
+								toClass: (aModel classNamed: className asSymbol) classSide
+								inProtocols: {'accessing'}) primitiveExecute.
 
-					(GtRBSilentlyAddMethodRefactoring
-						model: aModel
-						addMethod: self prefix
-								, 'File
+							(GtRBSilentlyAddMethodRefactoring
+								model: aModel
+								addMethod: self prefix
+										, 'File
  ^ '''
-								, (aDefinition documentFile relativeTo: aDefinition documentsDirectory absolutePath) pathString
-								, ''''
-						toClass: (aModel classNamed: className asSymbol) classSide
-						inProtocols: {'accessing'}) primitiveExecute.
+										, (aDefinition documentFile
+												relativeTo: aDefinition documentsDirectory absolutePath) pathString
+										, ''''
+								toClass: (aModel classNamed: className asSymbol) classSide
+								inProtocols: {'accessing'}) primitiveExecute.
 
-					traitName
-						asClassIfPresent: [ ((GtRBAddTraitUsageToClassByNameRefactoring
-								traitName: traitName
-								inClassNamed: className asSymbol) model: aModel) primitiveExecute ] ] ]
+							traitName
+								asClassIfPresent: [ ((GtRBAddTraitUsageToClassByNameRefactoring
+										traitName: traitName
+										inClassNamed: className asSymbol) model: aModel) primitiveExecute ] ] ] ]
 ]
 
 { #category : #accessing }

@@ -5,6 +5,7 @@ Class {
 		'atpId',
 		'atpReasonType',
 		'atpReason',
+		'atpSubjectRepoHandle',
 		'atpSubject',
 		'atpReportedBy',
 		'atpCreatedAt',
@@ -30,7 +31,7 @@ ComAtprotoAdminDefsReportView class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoAdminDefsReportView class >> atpSchema [
- ^ '{"type":"object","required":["id","reasonType","subject","reportedBy","createdAt","resolvedByActionIds"],"properties":{"id":{"type":"integer"},"reasonType":{"type":"ref","ref":"com.atproto.moderation.defs#reasonType"},"reason":{"type":"string"},"subject":{"type":"union","refs":["#repoRef","com.atproto.repo.strongRef"]},"reportedBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"resolvedByActionIds":{"type":"array","items":{"type":"integer"}}}}'
+ ^ '{"type":"object","required":["id","reasonType","subject","reportedBy","createdAt","resolvedByActionIds"],"properties":{"id":{"type":"integer"},"reasonType":{"type":"ref","ref":"com.atproto.moderation.defs#reasonType"},"reason":{"type":"string"},"subjectRepoHandle":{"type":"string"},"subject":{"type":"union","refs":["#repoRef","com.atproto.repo.strongRef"]},"reportedBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"resolvedByActionIds":{"type":"array","items":{"type":"integer"}}}}'
 ]
 
 { #category : #serialization }
@@ -43,6 +44,7 @@ ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | String fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
+		atpSubjectRepoHandle: (aRequest at: 'subjectRepoHandle' ifAbsent: [ nil ]);
 		atpSubject: (aRequest
 				at: 'subject'
 				ifPresent: [ :aValue | 
@@ -140,6 +142,17 @@ ComAtprotoAdminDefsReportView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsReportView >> atpSubjectRepoHandle [
+	<atpType:#String format:nil>
+	^ atpSubjectRepoHandle
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsReportView >> atpSubjectRepoHandle: anObject [
+	atpSubjectRepoHandle := anObject
+]
+
 { #category : #magritte }
 ComAtprotoAdminDefsReportView >> createdAtDescription [
 	<magritteDescription>
@@ -203,4 +216,12 @@ ComAtprotoAdminDefsReportView >> subjectDescription [
 		label: 'Subject';
 		accessor: #atpSubject;
 		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoAdminDefsReportView >> subjectRepoHandleDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'SubjectRepoHandle';
+		accessor: #atpSubjectRepoHandle
 ]

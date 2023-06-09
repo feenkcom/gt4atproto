@@ -21,6 +21,10 @@ GtApDefinitionAccessorBuilder >> accessorPrefix: anObject [
 GtApDefinitionAccessorBuilder >> buildPropertyInClass: className forObject: anApObject inModel: aModel usingPropertyKey: aPropertyKey andProperty: aProperty [
 	| key |
 	key := self accessorPrefix , aPropertyKey asCamelCase.
+
+	className
+		asClassIfPresent: [ :aClass | (aClass canUnderstand: key) ifTrue: [ ^ self ] ].
+
 	(RBAddMethodRefactoring
 		model: aModel
 		addMethod: (aProperty generateGetterAs: key)

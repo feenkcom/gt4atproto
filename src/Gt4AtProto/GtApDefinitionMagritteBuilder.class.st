@@ -19,6 +19,9 @@ GtApDefinitionMagritteBuilder >> accessorPrefix: anObject [
 
 { #category : #accessing }
 GtApDefinitionMagritteBuilder >> buildPropertyInClass: className forObject: anApObject inModel: aModel usingPropertyKey: aPropertyKey andProperty: aProperty [
+	className
+		asClassIfPresent: [ :aClass | (aClass canUnderstand: aPropertyKey , 'Description') ifTrue: [ ^ self ] ].
+
 	(RBAddMethodRefactoring
 		model: aModel
 		addMethod: (RBParser

@@ -10,12 +10,22 @@ Class {
 
 { #category : #accessing }
 GtApDocumentsBuilder >> buildUsing: aModel [
+	| traitName |
+	self clientClass asClassIfPresent: [ ^ self ].
+
+	traitName := 'T' , self clientClass.
+
 	(RBAddClassRefactoring
 		model: aModel
 		addClass: self clientClass
 		superclass: #GtApClient
 		subclasses: {}
 		category: self packageName) primitiveExecute.
+
+	traitName
+		asClassIfPresent: [ ((GtRBAddTraitUsageToClassByNameRefactoring
+				traitName: traitName
+				inClassNamed: self clientClass asSymbol) model: aModel) primitiveExecute ].
 
 	self lexicons documents
 		keysAndValuesDo: [ :aKey :aDocument | 
