@@ -67,6 +67,7 @@ LeBlueskySnippetViewModel >> moveCursorAt: aCursorPosition [
 
 { #category : #accessing }
 LeBlueskySnippetViewModel >> onSnippetClientChanged: anObject [
+	self refreshEmbedsFromModel.
 	self announce: anObject
 ]
 
@@ -95,14 +96,14 @@ LeBlueskySnippetViewModel >> onSnippetTextChanged: anObject [
 
 { #category : #accessing }
 LeBlueskySnippetViewModel >> refreshEmbedsFromModel [
-	self snippetModel hasPost
+	(self snippetModel hasPost and: [ self snippetModel hasClient ])
 		ifTrue: [ self snippetModel atpPost atpPost atpRecord atpEmbed
 				ifNotNil: [ :anEmbed | 
 					(anEmbed isKindOf: AppBskyEmbedRecordView)
 						ifTrue: [ self addEmbeddedPost: anEmbed ].
 
-					(anEmbed isKindOf: AppBskyEmbedExternalView)
-						ifTrue: [ self addCard: (GtApExternalWebsiteCard fromExternal: anEmbed) ].
+					(anEmbed isKindOf: AppBskyEmbedExternalMain)
+						ifTrue: [ self addCard: (GtApExternalWebsiteCard fromExternal: anEmbed atpExternal) ].
 
 					((anEmbed isKindOf: GtApUnknownRecord)
 						and: [ anEmbed key = 'com.gtoolkit.embed.lepiterPage' ])

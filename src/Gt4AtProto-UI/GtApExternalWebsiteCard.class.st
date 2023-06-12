@@ -10,6 +10,15 @@ Class {
 	#category : #'Gt4AtProto-UI-Models'
 }
 
+{ #category : #accessing }
+GtApExternalWebsiteCard class >> fromExternal: anExternal [
+	^ self new
+		title: anExternal atpTitle;
+		thumb: anExternal atpThumb;
+		description: anExternal atpDescription;
+		url: anExternal atpUri
+]
+
 { #category : #'instance creation' }
 GtApExternalWebsiteCard class >> fromUrl: aUrl [
 	^ self new url: aUrl
