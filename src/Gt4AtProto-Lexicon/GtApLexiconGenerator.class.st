@@ -6,7 +6,7 @@ Class {
 		'id',
 		'description'
 	],
-	#category : #'Gt4AtProto-Lexicon-Definitions'
+	#category : #'Gt4AtProto-Lexicon-Generators'
 }
 
 { #category : #accessing }

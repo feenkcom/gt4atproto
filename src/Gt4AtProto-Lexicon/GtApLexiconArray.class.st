@@ -74,6 +74,12 @@ GtApLexiconArray >> gtItemsFor: aView [
 ]
 
 { #category : #accessing }
+GtApLexiconArray >> gtViewPropertiesFor: aView [
+	<gtView>
+	^ self gtItemsFor: aView
+]
+
+{ #category : #accessing }
 GtApLexiconArray >> isArrayDefinition [
 	^ true
 ]
