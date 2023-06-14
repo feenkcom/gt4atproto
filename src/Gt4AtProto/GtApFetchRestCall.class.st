@@ -31,11 +31,17 @@ GtApFetchRestCall >> fetch [
 
 { #category : #accessing }
 GtApFetchRestCall >> get [
-	| aResponse |
 	self validateParameters
-		ifTrue: [ aResponse := ZnResponse new.
+		ifTrue: [ | fetched aResponse |
+			fetched := self fetch.
+
+			(fetched isKindOf: ZnResponse)
+				ifTrue: [ self response: fetched.
+					^ self ].
+
+			aResponse := ZnResponse new.
 			aResponse statusLine: ZnStatusLine ok.
 			aResponse
-				entity: (ZnEntity json: (LeJsonV4 uniqueInstance serialize: self fetch)).
+				entity: (ZnEntity json: (LeJsonV4 uniqueInstance serialize: fetched)).
 			self response: aResponse ]
 ]

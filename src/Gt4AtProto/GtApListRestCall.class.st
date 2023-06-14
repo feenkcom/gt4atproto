@@ -26,15 +26,21 @@ GtApListRestCall class >> modelEntity [
 
 { #category : #accessing }
 GtApListRestCall >> get [
-	| aResponse |
 	self validateParameters
-		ifTrue: [ aResponse := ZnResponse new.
+		ifTrue: [ | listed aResponse |
+			listed := self list.
+
+			(listed isKindOf: ZnResponse)
+				ifTrue: [ self response: listed.
+					^ self ].
+
+			aResponse := ZnResponse new.
 			aResponse statusLine: ZnStatusLine ok.
 			aResponse
 				entity: (ZnEntity
 						json: '['
 								, (', '
-										join: (self list collect: [ :anEntity | LeJsonV4 uniqueInstance serialize: anEntity ]))
+										join: (listed collect: [ :anEntity | LeJsonV4 uniqueInstance serialize: anEntity ]))
 								, ']').
 			self response: aResponse ]
 ]

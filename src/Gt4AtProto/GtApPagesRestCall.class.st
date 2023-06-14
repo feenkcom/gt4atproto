@@ -16,7 +16,9 @@ GtApPagesRestCall class >> modelEntity [
 
 { #category : #accessing }
 GtApPagesRestCall class >> parameters [
-	^ #() asDictionary
+	^ {GtApRestCallParameter new
+			name: 'database';
+			type: (GtApLexiconString new format: 'uuid')}
 ]
 
 { #category : #accessing }
@@ -28,6 +30,21 @@ GtApPagesRestCall class >> pattern [
 GtApPagesRestCall >> list [
 	| database |
 	database := self delegate database.
+	(self requestBody includesKey: 'database')
+		ifTrue: [ | databaseId |
+			databaseId := self requestBody at: 'database'.
+			(self validateDatabaseUuid: databaseId)
+				ifTrue: [ database
+						databaseWithID: databaseId
+						ifNone: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Database not found') ] ]
+				ifFalse: [ database
+						databaseNamed: databaseId
+						ifNone: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Database not found') ] ] ].
 
 	^ database pages
+]
+
+{ #category : #accessing }
+GtApPagesRestCall >> validateDatabaseUuid: pageId [
+	^ '^[0-9a-z]{25}$' asRegex matches: pageId
 ]

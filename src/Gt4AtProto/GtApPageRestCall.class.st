@@ -28,10 +28,20 @@ GtApPageRestCall class >> pattern [
 
 { #category : #accessing }
 GtApPageRestCall >> fetch [
-	| database |
+	| database pageId |
 	database := self delegate database.
-	
-	^ database
-		pageWithID: (self requestBody at: 'page')
-		ifAbsent: [ ^ ZnResponse notFound: request uri ]
+	pageId := self requestBody at: 'page'.
+
+	^ (self validatePageUuid: pageId)
+		ifTrue: [ database
+				pageWithID: pageId
+				ifAbsent: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Page not found') ] ]
+		ifFalse: [ database
+				pageNamed: pageId
+				ifAbsent: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Page not found') ] ]
+]
+
+{ #category : #accessing }
+GtApPageRestCall >> validatePageUuid: pageId [
+	^ '^[0-9a-z]{25}$' asRegex matches: pageId
 ]

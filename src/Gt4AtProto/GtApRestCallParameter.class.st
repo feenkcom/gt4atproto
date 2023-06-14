@@ -27,6 +27,11 @@ GtApRestCallParameter >> initialize [
 ]
 
 { #category : #accessing }
+GtApRestCallParameter >> isOptional [
+	^ required not
+]
+
+{ #category : #accessing }
 GtApRestCallParameter >> isRequired [
 	^ required
 ]

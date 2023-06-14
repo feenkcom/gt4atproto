@@ -56,7 +56,10 @@ GtApRestCall >> requestBody: anObject [
 
 { #category : #accessing }
 GtApRestCall >> validateParameters [
-	self class parameters ifEmpty: [ ^ true ].
+	(self class parameters isEmpty
+		or: [ self class parameters allSatisfy: #isOptional ])
+		ifTrue: [ self requestBody: {} asDictionary.
+			^ true ].
 
 	self request hasEntity
 		ifFalse: [ self
