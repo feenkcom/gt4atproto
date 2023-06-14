@@ -36,7 +36,7 @@ GtApRestCall class >> match: request [
 
 { #category : #accessing }
 GtApRestCall class >> modelClass [
-	^ self explicitRequirement
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
