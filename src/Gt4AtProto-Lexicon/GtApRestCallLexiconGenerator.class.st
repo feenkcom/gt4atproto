@@ -6,7 +6,8 @@ Class {
 		'id',
 		'dataGenerator',
 		'generatedData',
-		'generatedCache'
+		'generatedCache',
+		'description'
 	],
 	#category : #'Gt4AtProto-Lexicon-Generators'
 }
@@ -24,6 +25,16 @@ GtApRestCallLexiconGenerator >> buildDataGenerator [
 ]
 
 { #category : #accessing }
+GtApRestCallLexiconGenerator >> description [
+	^ description
+]
+
+{ #category : #accessing }
+GtApRestCallLexiconGenerator >> description: anObject [
+	description := anObject
+]
+
+{ #category : #accessing }
 GtApRestCallLexiconGenerator >> generateData: aClass [
 	^ generatedCache
 		at: aClass
@@ -35,24 +46,46 @@ GtApRestCallLexiconGenerator >> generateData: aClass [
 ]
 
 { #category : #accessing }
+GtApRestCallLexiconGenerator >> generateJson [
+	^ STONJSON
+		toStringPretty: {'lexicon' -> 1.
+				'id' -> self id.
+				'description' -> self description.
+				'defs'
+					-> (self generateModel
+							collect: [ :aRecord | aRecord key -> aRecord record generateJson ])
+							asDictionary} asDictionary
+]
+
+{ #category : #accessing }
 GtApRestCallLexiconGenerator >> generateLexiconsForCall: aRestCall [
 	^ aRestCall allowedMethods
-		collect: [ :aMethod | self perform: (self generators at: aMethod) withArguments: {aRestCall} ]
+		collect: [ :aMethod | 
+			GtApLexiconRecord new
+				key: aRestCall endpointName;
+				id: self id , '#' , aRestCall endpointName;
+				description: aRestCall comment;
+				record: (self perform: (self generators at: aMethod) withArguments: {aRestCall}) ]
 ]
 
 { #category : #accessing }
 GtApRestCallLexiconGenerator >> generateModel [
 	self buildDataGenerator.
-	^ (self restCalls
-		flatCollect: [ :aRestCall | self generateLexiconsForCall: aRestCall ])
+	^ self generateModelWithoutDependencies
 		, self popGeneratedData
+]
+
+{ #category : #accessing }
+GtApRestCallLexiconGenerator >> generateModelWithoutDependencies [
+	^ self restCalls
+		flatCollect: [ :aRestCall | self generateLexiconsForCall: aRestCall ]
 ]
 
 { #category : #accessing }
 GtApRestCallLexiconGenerator >> generateProcedureFor: aRestCall [
 	^ GtApLexiconXrpcProcedure new
-		id: self id , '.', ('.' join: aRestCall pattern);
-		methodName: self id , '.', ('.' join: aRestCall pattern);
+		id: self id , '.' , aRestCall endpointName;
+		methodName: self id , '.' , aRestCall endpointName;
 		parameters: (GtApLexiconParameters new
 				required: aRestCall parameters keys;
 				properties: (aRestCall parameters associations
@@ -66,14 +99,12 @@ GtApRestCallLexiconGenerator >> generateProcedureFor: aRestCall [
 
 { #category : #accessing }
 GtApRestCallLexiconGenerator >> generateQueryFor: aRestCall [
-	^  GtApLexiconXrpcQuery new
-		id: self id , '.', ('.' join: aRestCall pattern);
-		methodName: self id , '.', ('.' join: aRestCall pattern);
+	^ GtApLexiconXrpcQuery new
+		id: self id , '.' , aRestCall endpointName;
+		methodName: self id , '.' , aRestCall endpointName;
 		parameters: (GtApLexiconParameters new
-				required: aRestCall parameters keys;
-				properties: (aRestCall parameters associations
-						collect: [ :aPair | aPair key -> (aPair value asLexiconOutputIn: self) ])
-						asDictionary);
+				required: (aRestCall parameters select: #isRequired thenCollect: #name);
+				properties: (aRestCall parameters collect: #toLexicon) asDictionary);
 		errors: aRestCall errors;
 		output: (GtApLexiconXrpcBody new
 				encoding: 'application/json';

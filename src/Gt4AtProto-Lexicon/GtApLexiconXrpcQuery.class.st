@@ -37,6 +37,13 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 ]
 
 { #category : #accessing }
+GtApLexiconXrpcQuery >> generateJson [
+	^ {'type' -> 'query'.
+		'parameters' -> self parameters generateJson.
+		'output' -> self output generateJson} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconXrpcQuery >> gtRequestActionFor: anAction [
 	<gtAction>
 	| className |

@@ -34,6 +34,12 @@ GtApLexiconXrpcBody >> generateDeserialization [
 ]
 
 { #category : #accessing }
+GtApLexiconXrpcBody >> generateJson [
+	^ {'encoding' -> self encoding.
+		'schema' -> self schema generateJson} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconXrpcBody >> gtViewSchemaPropertiesFor: aView [
 	<gtView>
 	

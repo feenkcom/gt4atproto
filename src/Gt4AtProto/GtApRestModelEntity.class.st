@@ -16,7 +16,7 @@ GtApRestModelEntity class >> forEntity: anEntity [
 GtApRestModelEntity >> asLexiconOutputIn: aGenerator [
 	^ GtApLexiconDefinitionReference new
 		referenceString: aGenerator id , '.' , entity name asLowercase;
-		referencedDefinition: (aGenerator generateData: entity)
+		referencedDefinition: (aGenerator generateData: entity) asObject
 ]
 
 { #category : #accessing }

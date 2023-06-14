@@ -1,13 +1,8 @@
 Class {
 	#name : #GtApPagesRestCall,
-	#superclass : #GtApRestCall,
+	#superclass : #GtApListRestCall,
 	#category : #'Gt4AtProto-Server'
 }
-
-{ #category : #accessing }
-GtApPagesRestCall class >> allowedMethods [
-	^ #( GET )
-]
 
 { #category : #accessing }
 GtApPagesRestCall class >> errors [
@@ -15,8 +10,8 @@ GtApPagesRestCall class >> errors [
 ]
 
 { #category : #accessing }
-GtApPagesRestCall class >> modelClass [
-	^ GtApRestModelCollection for: (GtApRestModelEntity forEntity: LePage)
+GtApPagesRestCall class >> modelEntity [
+	^ LePage
 ]
 
 { #category : #accessing }
@@ -30,17 +25,9 @@ GtApPagesRestCall class >> pattern [
 ]
 
 { #category : #accessing }
-GtApPagesRestCall >> get [
-	| database aResponse |
+GtApPagesRestCall >> list [
+	| database |
 	database := self delegate database.
 
-	aResponse := ZnResponse new.
-	aResponse statusLine: ZnStatusLine ok.
-	aResponse
-		entity: (ZnEntity
-				json: '['
-						, (', '
-								join: (database pages collect: [ :aPage | LeJsonV4 uniqueInstance serialize: aPage ]))
-						, ']').
-	self response: aResponse
+	^ database pages
 ]

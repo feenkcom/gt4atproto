@@ -1,0 +1,41 @@
+Class {
+	#name : #GtApFetchRestCall,
+	#superclass : #GtApRestCall,
+	#category : #'Gt4AtProto-Server'
+}
+
+{ #category : #accessing }
+GtApFetchRestCall class >> allowedMethods [
+	^ #( GET )
+]
+
+{ #category : #accessing }
+GtApFetchRestCall class >> endpointName [
+	^ 'get', self modelEntity name
+]
+
+{ #category : #accessing }
+GtApFetchRestCall class >> modelClass [
+	^ (GtApRestModelEntity forEntity: self modelEntity)
+]
+
+{ #category : #accessing }
+GtApFetchRestCall class >> modelEntity [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtApFetchRestCall >> fetch [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+GtApFetchRestCall >> get [
+	| aResponse |
+	self validateParameters
+		ifTrue: [ aResponse := ZnResponse new.
+			aResponse statusLine: ZnStatusLine ok.
+			aResponse
+				entity: (ZnEntity json: (LeJsonV4 uniqueInstance serialize: self fetch)).
+			self response: aResponse ]
+]

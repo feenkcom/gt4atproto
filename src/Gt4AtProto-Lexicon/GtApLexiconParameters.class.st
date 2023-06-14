@@ -19,6 +19,14 @@ GtApLexiconParameters >> acceptVisitor: aLexiconVisitor [
 ]
 
 { #category : #accessing }
+GtApLexiconParameters >> generateJson [
+	^ {
+		'properties' -> self properties.
+		'required' -> self required.
+	} asDictionary
+]
+
+{ #category : #accessing }
 GtApLexiconParameters >> gtViewPropertiesFor: aView [
 	<gtView>
 	^ aView columnedList
