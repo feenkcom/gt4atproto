@@ -71,14 +71,9 @@ GtApRestCallLexiconGenerator >> generateLexiconsForCall: aRestCall [
 { #category : #accessing }
 GtApRestCallLexiconGenerator >> generateModel [
 	self buildDataGenerator.
-	^ self generateModelWithoutDependencies
+	^ (self restCalls
+		flatCollect: [ :aRestCall | self generateLexiconsForCall: aRestCall ])
 		, self popGeneratedData
-]
-
-{ #category : #accessing }
-GtApRestCallLexiconGenerator >> generateModelWithoutDependencies [
-	^ self restCalls
-		flatCollect: [ :aRestCall | self generateLexiconsForCall: aRestCall ]
 ]
 
 { #category : #accessing }
@@ -105,7 +100,7 @@ GtApRestCallLexiconGenerator >> generateQueryFor: aRestCall [
 		parameters: (GtApLexiconParameters new
 				required: (aRestCall parameters select: #isRequired thenCollect: #name);
 				properties: (aRestCall parameters collect: #toLexicon) asDictionary);
-		errors: aRestCall errors;
+		errors: (aRestCall errors collect: [ :anError | {'name' -> anError} asDictionary ]);
 		output: (GtApLexiconXrpcBody new
 				encoding: 'application/json';
 				schema: (aRestCall modelClass asLexiconOutputIn: self))

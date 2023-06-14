@@ -6,7 +6,8 @@ Class {
 
 { #category : #accessing }
 GtApPagesRestCall class >> errors [
-	^ #()
+	^ {'BadRequest'.
+		'NotFound'}
 ]
 
 { #category : #accessing }
@@ -36,10 +37,10 @@ GtApPagesRestCall >> list [
 			(self validateDatabaseUuid: databaseId)
 				ifTrue: [ database
 						databaseWithID: databaseId
-						ifNone: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Database not found') ] ]
+						ifNone: [ self notFound: request withMessage: 'Database not found' ] ]
 				ifFalse: [ database
 						databaseNamed: databaseId
-						ifNone: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Database not found') ] ] ].
+						ifNone: [ self notFound: request uri withMessage: 'Database not found' ] ] ].
 
 	^ database pages
 ]

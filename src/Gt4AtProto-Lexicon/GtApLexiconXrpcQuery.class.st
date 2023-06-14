@@ -40,7 +40,8 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 GtApLexiconXrpcQuery >> generateJson [
 	^ {'type' -> 'query'.
 		'parameters' -> self parameters generateJson.
-		'output' -> self output generateJson} asDictionary
+		'output' -> self output generateJson.
+		'errors' -> self errors} asDictionary
 ]
 
 { #category : #accessing }

@@ -5,11 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-GtApPageRestCall class >> errors [
-	^ #()
-]
-
-{ #category : #accessing }
 GtApPageRestCall class >> modelEntity [
 	^ LePage
 ]
@@ -35,10 +30,10 @@ GtApPageRestCall >> fetch [
 	^ (self validatePageUuid: pageId)
 		ifTrue: [ database
 				pageWithID: pageId
-				ifAbsent: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Page not found') ] ]
+				ifAbsent: [ self notFound: request withMessage: 'Page not found' ] ]
 		ifFalse: [ database
 				pageNamed: pageId
-				ifAbsent: [ ZnResponse notFound: request uri entity: (ZnEntity text: 'Page not found') ] ]
+				ifAbsent: [ self notFound: request withMessage: 'Page not found' ] ]
 ]
 
 { #category : #accessing }

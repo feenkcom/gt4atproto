@@ -14,7 +14,7 @@ GtApRestCall class >> allowedMethods [
 
 { #category : #accessing }
 GtApRestCall class >> errors [
-	^ self subclassResponsibility
+	^ {}
 ]
 
 { #category : #accessing }
@@ -45,6 +45,30 @@ GtApRestCall class >> parameters [
 ]
 
 { #category : #accessing }
+GtApRestCall >> badRequest: aRequest withMessage: aString [
+	| aResponse |
+	aResponse := ZnResponse
+			badRequest: aRequest
+			entity: (ZnEntity json: '{"error": "BadRequest", "message": "' , aString , '"}').
+
+	self response: aResponse.
+
+	^ aResponse
+]
+
+{ #category : #accessing }
+GtApRestCall >> notFound: aRequest withMessage: aString [
+	| aResponse |
+	aResponse := ZnResponse
+			notFound: aRequest
+			entity: (ZnEntity json: '{"error": "NotFound", "message": "' , aString , '"}').
+
+	self response: aResponse.
+
+	^ aResponse
+]
+
+{ #category : #accessing }
 GtApRestCall >> requestBody [
 	^ requestBody
 ]
@@ -62,25 +86,16 @@ GtApRestCall >> validateParameters [
 			^ true ].
 
 	self request hasEntity
-		ifFalse: [ self
-				response: (ZnResponse
-						badRequest: request
-						entity: (ZnEntity text: 'Request body was empty')).
+		ifFalse: [ self badRequest: request withMessage: 'Request body was empty'.
 			^ false ].
 
 	self request entity contentType = ZnMimeType applicationJson
-		ifFalse: [ self
-				response: (ZnResponse
-						badRequest: request
-						entity: (ZnEntity text: 'Request body must be JSON')).
+		ifFalse: [ self badRequest: request withMessage: 'Request body must be JSON'.
 			^ false ].
 
 	[ self requestBody: (STONJSON fromString: self request entity) ]
 		on: Error
-		do: [ self
-				response: (ZnResponse
-						badRequest: request
-						entity: (ZnEntity text: 'Request body could not be parsed')).
+		do: [ self badRequest: request withMessage: 'Request body could not be parsed'.
 			^ false ].
 
 	self class parameters
@@ -88,10 +103,8 @@ GtApRestCall >> validateParameters [
 			(aParameter isRequired
 				and: [ (self requestBody includesKey: aParameter name) not ])
 				ifTrue: [ self
-						response: (ZnResponse
-								badRequest: request
-								entity: (ZnEntity
-										text: 'Request body is missing the required parameter ' , aParameter name)).
+						badRequest: request
+						withMessage: 'Request body is missing the required parameter ' , aParameter name.
 					^ false ] ].
 	^ true
 ]

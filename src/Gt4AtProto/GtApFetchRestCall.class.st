@@ -15,6 +15,12 @@ GtApFetchRestCall class >> endpointName [
 ]
 
 { #category : #accessing }
+GtApFetchRestCall class >> errors [
+	^ {'BadRequest'.
+		'NotFound'}
+]
+
+{ #category : #accessing }
 GtApFetchRestCall class >> modelClass [
 	^ (GtApRestModelEntity forEntity: self modelEntity)
 ]
