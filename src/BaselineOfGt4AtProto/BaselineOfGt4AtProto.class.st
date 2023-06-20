@@ -27,10 +27,6 @@ BaselineOfGt4AtProto >> baseline: spec [
 		do: [ spec
 				baseline: 'JSONSchema'
 				with: [ spec repository: 'github://feenkcom/JSONSchema/source' ].
-				
-			 spec
-				baseline: 'GToolkitWorld'
-				with: [ spec repository: 'github://feenkcom/gtoolkit-world/main' ].
 
 			spec package: 'Gt4AtProto'.
 			spec package: 'Gt4AtProto-Lexicon' with: [ spec requires: 'JSONSchema' ].
