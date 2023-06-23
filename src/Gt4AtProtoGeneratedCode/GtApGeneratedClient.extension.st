@@ -524,7 +524,7 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportId: id [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignoreSubjects: ignoreSubjects resolved: resolved actionType: actionType reverse: reverse [
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignoreSubjects: ignoreSubjects reporters: reporters resolved: resolved actionType: actionType reverse: reverse [
 	"List moderation reports related to a subject."
 
 	<xrpcQuery>
@@ -534,6 +534,7 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignor
 				queryOn: 'com.atproto.admin.getModerationReports'
 				parameters: {'subject' -> subject.
 						'ignoreSubjects' -> ignoreSubjects.
+						'reporters' -> reporters.
 						'resolved' -> resolved.
 						'actionType' -> actionType.
 						'reverse' -> reverse} asDictionary)
@@ -1192,22 +1193,22 @@ GtApGeneratedClient >> comAtprotoSyncListRepos [
 GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdateHostname: hostname [
 	"Notify a crawling service of a recent update. Often when a long break between updates causes the connection with the crawling service to break."
 
-	<xrpcQuery>
+	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {} asDictionary
 		andRequest: (self
-				queryOn: 'com.atproto.sync.notifyOfUpdate'
-				parameters: {'hostname' -> hostname} asDictionary)
+				procedureOn: 'com.atproto.sync.notifyOfUpdate'
+				withBody: {'hostname' -> hostname} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncRequestCrawlHostname: hostname [
 	"Request a service to persistently crawl hosted repos."
 
-	<xrpcQuery>
+	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {} asDictionary
 		andRequest: (self
-				queryOn: 'com.atproto.sync.requestCrawl'
-				parameters: {'hostname' -> hostname} asDictionary)
+				procedureOn: 'com.atproto.sync.requestCrawl'
+				withBody: {'hostname' -> hostname} asDictionary)
 ]

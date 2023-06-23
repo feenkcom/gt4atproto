@@ -34,7 +34,7 @@ AppBskyFeedDefsGeneratorView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsGeneratorView class >> atpSchema [
- ^ '{"type":"object","required":["uri","cid","creator","displayName","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"did":{"type":"string","format":"did"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"displayName":{"type":"string"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"likeCount":{"type":"integer","minimum":0},"viewer":{"type":"ref","ref":"#generatorViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","did","creator","displayName","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"did":{"type":"string","format":"did"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"displayName":{"type":"string"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"likeCount":{"type":"integer","minimum":0},"viewer":{"type":"ref","ref":"#generatorViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -237,7 +237,8 @@ AppBskyFeedDefsGeneratorView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Did';
-		accessor: #atpDid
+		accessor: #atpDid;
+		beRequired
 ]
 
 { #category : #magritte }
