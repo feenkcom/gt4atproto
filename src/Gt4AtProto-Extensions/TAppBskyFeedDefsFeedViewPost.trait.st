@@ -111,7 +111,7 @@ TAppBskyFeedDefsFeedViewPost >> gtDeleteActionFor: anAction [
 		icon: BrGlamorousVectorIcons close;
 		label: 'Delete';
 		action: [ self client
-				comAtprotoRepoDeleteRecordrepo: self atpPost atpAuthor atpDid
+				comAtprotoRepoDeleteRecordRepo: self atpPost atpAuthor atpDid
 				collection: AppBskyFeedPostMain atpRecordName
 				rkey: (#/ split: self atpPost atpUri) last
 				swapRecord: nil
