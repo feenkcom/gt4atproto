@@ -146,7 +146,7 @@ GtApLexiconCoder >> initializeContent [
 							default: [ :aStyle | BlBorder paint: self theme default lightBorderColor width: 1 ];
 							focused: [ :aStyle | 
 								BlBorder
-									paint: (self theme default primaryBorderColor alpha: 0.4) gtOpaqueColorOnWhite
+									paint: self theme default primaryBorderColor
 									width: 1 ]);
 			margin: (BlInsets all: 5);
 			hMatchParent;
