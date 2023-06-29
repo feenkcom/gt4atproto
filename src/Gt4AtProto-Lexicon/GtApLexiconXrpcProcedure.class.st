@@ -56,6 +56,14 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 		, '} asDictionary)'
 ]
 
+{ #category : #accessing }
+GtApLexiconXrpcProcedure >> generateJson [
+	^ {'type' -> 'procedure'.
+		'parameters' -> self parameters generateJson.
+		'output' -> self output generateJson.
+		'errors' -> self errors} asDictionary
+]
+
 { #category : #'gt - extensions' }
 GtApLexiconXrpcProcedure >> gtViewInputPropertiesFor: aView [
 	<gtView>
