@@ -194,7 +194,7 @@ GtApLexiconCoder >> searchButtonFor: obj [
 		valuable: [ obj lexiconDirectory ];
 		tooltip: 'Search';
 		icon: BrGlamorousVectorIcons search;
-		actOn: [ :anActOnEvent :anItem | 
+		objectActOn: [ :anActOnEvent :anItem | 
 			self updateFilesTo: anItem.
 			self updateDefinitionsTo: anItem.
 			self updateContentsTo: anItem.

@@ -86,7 +86,7 @@ LeBlueskySnippetElement >> createAddFileButton [
 			valuable: LeBlueskySpotterStart new;
 			tooltip: 'Add File or Page';
 			icon: BrGlamorousVectorIcons add;
-			actOn: [ :anActOnEvent :anItem :theButton | 
+			objectActOn: [ :anActOnEvent :anItem :theButton | 
 				((anItem isKindOf: FileReference) and: [ anItem isFile ])
 					ifTrue: [ self snippet addFile: anItem.
 						self snippetViewModel removeCard.
