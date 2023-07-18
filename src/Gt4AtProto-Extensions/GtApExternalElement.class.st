@@ -99,16 +99,6 @@ GtApExternalElement >> title: aString [
 ]
 
 { #category : #accessing }
-GtApExternalElement >> updateContent [
-	titleElement text: external atpExternal atpTitle.
-	external atpExternal atpThumb
-		ifNil: [ thumbElement visibility: BlVisibility gone ]
-		ifNotNil: [ :aUrl | thumbElement url: aUrl ].
-	descriptionElement text: external atpExternal atpDescription.
-	urlElement text: external atpExternal atpUri
-]
-
-{ #category : #accessing }
 GtApExternalElement >> url: aString [
 	urlElement text: aString
 ]
