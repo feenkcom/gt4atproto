@@ -26,7 +26,7 @@ AppBskyEmbedRecordView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedRecordView class >> atpSchema [
- ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"union","refs":["#viewRecord","#viewNotFound","#viewBlocked","app.bsky.feed.defs#generatorView"]}}}'
+ ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"union","refs":["#viewRecord","#viewNotFound","#viewBlocked","app.bsky.feed.defs#generatorView","app.bsky.graph.defs#listView"]}}}'
 ]
 
 { #category : #serialization }
@@ -39,8 +39,8 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest [
 					({'app.bsky.embed.record#viewRecord' -> AppBskyEmbedRecordViewRecord.
 						'app.bsky.embed.record#viewNotFound' -> AppBskyEmbedRecordViewNotFound.
 						'app.bsky.embed.record#viewBlocked' -> AppBskyEmbedRecordViewBlocked.
-						'app.bsky.feed.defs#generatorView' -> AppBskyFeedDefsGeneratorView}
-						asDictionary
+						'app.bsky.feed.defs#generatorView' -> AppBskyFeedDefsGeneratorView.
+						'app.bsky.graph.defs#listView' -> AppBskyGraphDefsListView} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
@@ -49,7 +49,7 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedRecordView >> atpRecord [
-	<atpType:#(AppBskyEmbedRecordViewRecord AppBskyEmbedRecordViewNotFound AppBskyEmbedRecordViewBlocked AppBskyFeedDefsGeneratorView) format:nil>
+	<atpType:#(AppBskyEmbedRecordViewRecord AppBskyEmbedRecordViewNotFound AppBskyEmbedRecordViewBlocked AppBskyFeedDefsGeneratorView AppBskyGraphDefsListView) format:nil>
 	^ atpRecord
 ]
 
@@ -65,7 +65,8 @@ AppBskyEmbedRecordView >> recordDescription [
 		options: {'#viewRecord'.
 				'#viewNotFound'.
 				'#viewBlocked'.
-				'app.bsky.feed.defs#generatorView'};
+				'app.bsky.feed.defs#generatorView'.
+				'app.bsky.graph.defs#listView'};
 		label: 'Record';
 		accessor: #atpRecord;
 		beRequired

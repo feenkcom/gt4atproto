@@ -9,6 +9,7 @@ Class {
 		'atpFacets',
 		'atpReply',
 		'atpEmbed',
+		'atpLangs',
 		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
@@ -31,7 +32,7 @@ AppBskyFeedPostMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedPostMain class >> atpSchema [
- ^ '{"type":"record","key":"tid","record":{"type":"object","required":["text","createdAt"],"properties":{"text":{"type":"string","maxLength":3000,"maxGraphemes":300},"entities":{"type":"array","description":"Deprecated: replaced by app.bsky.richtext.facet.","items":{"type":"ref","ref":"#entity"}},"facets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"reply":{"type":"ref","ref":"#replyRef"},"embed":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.external","app.bsky.embed.record","app.bsky.embed.recordWithMedia"]},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","key":"tid","record":{"type":"object","required":["text","createdAt"],"properties":{"text":{"type":"string","maxLength":3000,"maxGraphemes":300},"entities":{"type":"array","description":"Deprecated: replaced by app.bsky.richtext.facet.","items":{"type":"ref","ref":"#entity"}},"facets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"reply":{"type":"ref","ref":"#replyRef"},"embed":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.external","app.bsky.embed.record","app.bsky.embed.recordWithMedia"]},"langs":{"type":"array","maxLength":3,"items":{"type":"string","format":"language"}},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }
@@ -62,6 +63,10 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpLangs: (aRequest
+				at: 'langs'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
@@ -110,6 +115,18 @@ AppBskyFeedPostMain >> atpFacets [
 { #category : #accessing }
 AppBskyFeedPostMain >> atpFacets: anObject [
 	atpFacets := anObject
+]
+
+{ #category : #accessing }
+AppBskyFeedPostMain >> atpLangs [
+	<atpType:#String format:nil>
+	<atpCollection>
+	^ atpLangs
+]
+
+{ #category : #accessing }
+AppBskyFeedPostMain >> atpLangs: anObject [
+	atpLangs := anObject
 ]
 
 { #category : #accessing }
@@ -173,6 +190,15 @@ AppBskyFeedPostMain >> facetsDescription [
 		classes: {AppBskyRichtextFacetMain};
 		label: 'Facets';
 		accessor: #atpFacets
+]
+
+{ #category : #magritte }
+AppBskyFeedPostMain >> langsDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {String};
+		label: 'Langs';
+		accessor: #atpLangs
 ]
 
 { #category : #magritte }

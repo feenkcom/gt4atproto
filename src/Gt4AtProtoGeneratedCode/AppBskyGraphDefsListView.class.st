@@ -3,6 +3,7 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
+		'atpCid',
 		'atpCreator',
 		'atpName',
 		'atpPurpose',
@@ -32,7 +33,7 @@ AppBskyGraphDefsListView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListView class >> atpSchema [
- ^ '{"type":"object","required":["uri","creator","name","purpose","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","creator","name","purpose","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -40,6 +41,7 @@ AppBskyGraphDefsListView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpCreator: (aRequest
 				at: 'creator'
 				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
@@ -71,6 +73,17 @@ AppBskyGraphDefsListView >> atpAvatar [
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpAvatar: anObject [
 	atpAvatar := anObject
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListView >> atpCid [
+	<atpType:#String format:'cid'>
+	^ atpCid
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListView >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
@@ -174,6 +187,15 @@ AppBskyGraphDefsListView >> avatarDescription [
 	^ MAStringDescription new
 		label: 'Avatar';
 		accessor: #atpAvatar
+]
+
+{ #category : #magritte }
+AppBskyGraphDefsListView >> cidDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Cid';
+		accessor: #atpCid;
+		beRequired
 ]
 
 { #category : #magritte }

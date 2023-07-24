@@ -3,6 +3,7 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
+		'atpCid',
 		'atpName',
 		'atpPurpose',
 		'atpAvatar',
@@ -29,7 +30,7 @@ AppBskyGraphDefsListViewBasic class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic class >> atpSchema [
- ^ '{"type":"object","required":["uri","name","purpose"],"properties":{"uri":{"type":"string","format":"at-uri"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","name","purpose"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -37,6 +38,7 @@ AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpPurpose: (aRequest
 				at: 'purpose'
@@ -59,6 +61,17 @@ AppBskyGraphDefsListViewBasic >> atpAvatar [
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpAvatar: anObject [
 	atpAvatar := anObject
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListViewBasic >> atpCid [
+	<atpType:#String format:'cid'>
+	^ atpCid
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListViewBasic >> atpCid: anObject [
+	atpCid := anObject
 ]
 
 { #category : #accessing }
@@ -126,6 +139,15 @@ AppBskyGraphDefsListViewBasic >> avatarDescription [
 	^ MAStringDescription new
 		label: 'Avatar';
 		accessor: #atpAvatar
+]
+
+{ #category : #magritte }
+AppBskyGraphDefsListViewBasic >> cidDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Cid';
+		accessor: #atpCid;
+		beRequired
 ]
 
 { #category : #magritte }

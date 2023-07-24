@@ -423,15 +423,15 @@ GtApGeneratedClient >> appBskyNotificationUpdateSeenSeenAt: seenAt [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyUnspeccedGetPopularFeedGenerators [
+GtApGeneratedClient >> appBskyUnspeccedGetPopularFeedGeneratorsquery: query [
 	"An unspecced view of globally popular feed generators"
 
 	<xrpcQuery>
-	^ GtApRequestResolver
-		from: {'feeds' -> [ :aValue | aValue ]} asDictionary
-		andRequest: (self
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsGeneratorView fromRequest: aDictionary ]
+		stream: (self
 				queryOn: 'app.bsky.unspecced.getPopularFeedGenerators'
-				parameters: {} asDictionary)
+				parameters: {'query' -> query} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -444,6 +444,18 @@ GtApGeneratedClient >> appBskyUnspeccedGetPopularIncludeNsfw: includeNsfw [
 		stream: (self
 				queryOn: 'app.bsky.unspecced.getPopular'
 				parameters: {'includeNsfw' -> includeNsfw} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyUnspeccedGetTimelineSkeleton [
+	"A skeleton of a timeline - UNSPECCED & WILL GO AWAY SOON"
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsSkeletonFeedPost fromRequest: aDictionary ]
+		stream: (self
+				queryOn: 'app.bsky.unspecced.getTimelineSkeleton'
+				parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -530,7 +542,7 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportId: id [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignoreSubjects: ignoreSubjects reporters: reporters resolved: resolved actionType: actionType reverse: reverse [
+GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignoreSubjects: ignoreSubjects actionedBy: actionedBy reporters: reporters resolved: resolved actionType: actionType reverse: reverse [
 	"List moderation reports related to a subject."
 
 	<xrpcQuery>
@@ -540,6 +552,7 @@ GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignor
 				queryOn: 'com.atproto.admin.getModerationReports'
 				parameters: {'subject' -> subject.
 						'ignoreSubjects' -> ignoreSubjects.
+						'actionedBy' -> actionedBy.
 						'reporters' -> reporters.
 						'resolved' -> resolved.
 						'actionType' -> actionType.
@@ -619,6 +632,20 @@ GtApGeneratedClient >> comAtprotoAdminSearchReposTerm: term invitedBy: invitedBy
 				queryOn: 'com.atproto.admin.searchRepos'
 				parameters: {'term' -> term.
 						'invitedBy' -> invitedBy} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminSendEmailRecipientDid: recipientDid content: content subject: subject [
+	"Send email to a user's primary email address"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'sent' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.sendEmail'
+				withBody: {'recipientDid' -> recipientDid.
+						'content' -> content.
+						'subject' -> subject} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
