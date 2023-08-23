@@ -17,6 +17,33 @@ GtApRestCall class >> errors [
 	^ {}
 ]
 
+{ #category : #'gt - extensions' }
+GtApRestCall class >> gtParametersFor: aView [
+	<gtView>
+	<gtClassView>
+	self isAbstract ifTrue: [ ^ aView empty ].
+
+	^ aView columnedList
+		title: 'REST parameters';
+		items: [ self parameters ];
+		column: 'Index'
+			text: [ :_ :anIndex | anIndex ]
+			width: 40;
+		column: 'Name' text: #name;
+		column: 'Type'
+			text: [ :aParameter | aParameter type ifNotNil: #asClassName ]
+			width: 70;
+		column: 'Required'
+			text: [ :aParameter | 
+				| aText |
+				aText := aParameter isRequired asRopedText.
+				aParameter isRequired
+					ifTrue: [ aText ]
+					ifFalse: [ aText foreground: BrGlamorousColors disabledButtonTextColor ].
+				aText ]
+			width: 70
+]
+
 { #category : #accessing }
 GtApRestCall class >> isAbstract [
 	^ self hasAbstractMethods
