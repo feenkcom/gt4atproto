@@ -99,7 +99,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T18:58:30.237552+02:00"
+						"dateAndTimeString" : "2023-05-16T18:58:33.424743+02:00"
 					}
 				},
 				"uid" : {
@@ -109,7 +109,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "To learn how to achieve the same with code, take a look at [[Inspecting a user through an API query]]]"
+				"string" : "To learn how to achieve the same with code, take a look at [[Inspecting a user through an API query]]"
 			}
 		]
 	},
