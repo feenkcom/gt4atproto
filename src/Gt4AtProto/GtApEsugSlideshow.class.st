@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #accessing }
+GtApEsugSlideshow >> apDb [
+	<gtExample>
+	<noTest>
+	^ LeDatabasesRegistry getDatabaseByName: self dbName
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> appetizerJson [
 	^ '{
   "lexicon": 1,
@@ -71,20 +78,20 @@ GtApEsugSlideshow >> bigCodeAndTextSize [
 ]
 
 { #category : #accessing }
+GtApEsugSlideshow >> bskyPage [
+	^ (LePage named: 'Let’s search for things!')
+		addSnippet: LeApLoginSnippet empty;
+		yourself
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> codegenHowFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: (self priorityFor: #codegenHowFor:);
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'Generating code from lexicons')))
+				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Generating code from lexicons')))
 				maximized ]
-]
-
-{ #category : #accessing }
-GtApEsugSlideshow >> db [
-	<gtExample>
-	<noTest>
-	^ LeDatabasesRegistry getDatabaseByName: self dbName
 ]
 
 { #category : #accessing }
@@ -110,8 +117,16 @@ GtApEsugSlideshow >> environmentFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: (self priorityFor: #environmentFor:);
+		element: [ (GtPager createWrappedOn: (LePagePhlowTool page: self bskyPage)) ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> explorePageFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #explorePageFor:);
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'Posting to Bluesky from your knowledge base')))
+				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Posting to Bluesky from your knowledge base')))
 				maximized ]
 ]
 
@@ -234,6 +249,7 @@ GtApEsugSlideshow >> slidePriorities [
 		lexiconAppetizerCodeFor:
 		lexiconAppetizerCode2For:
 		codegenHowFor:
+		explorePageFor:
 		environmentFor:
 	)
 ]

@@ -1,5 +1,5 @@
 Class {
-	#name : #LeAtLoginSnippet,
+	#name : #LeApLoginSnippet,
 	#superclass : #LeSnippet,
 	#instVars : [
 		'jenkinsUrl'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'api - accessing menu' }
-LeAtLoginSnippet class >> contextMenuItemSpecification [
+LeApLoginSnippet class >> contextMenuItemSpecification [
 	<leSnippetSpecification>
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
@@ -16,40 +16,40 @@ LeAtLoginSnippet class >> contextMenuItemSpecification [
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet class >> empty [ 
+LeApLoginSnippet class >> empty [ 
 	^ self new
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet class >> leJsonV3AttributeMapping [
+LeApLoginSnippet class >> leJsonV3AttributeMapping [
 	^ super leJsonV3AttributeMapping
 		yourself 
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet class >> leJsonV3Name [
+LeApLoginSnippet class >> leJsonV3Name [
 	^ 'atprotoLoginSnippet'
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet class >> leJsonV4AttributeMapping [
+LeApLoginSnippet class >> leJsonV4AttributeMapping [
 	^ super leJsonV4AttributeMapping
 		yourself 
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet class >> leJsonV4Name [
+LeApLoginSnippet class >> leJsonV4Name [
 	^ 'atprotoLoginSnippet'
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet >> asSnippetViewModel [
+LeApLoginSnippet >> asSnippetViewModel [
 	<return: #LeSnippetViewModel>
 	^ LeApLoginSnippetViewModel new apSnippetModel: self
 ]
 
 { #category : #accessing }
-LeAtLoginSnippet >> contentAsString [
+LeApLoginSnippet >> contentAsString [
 	<return: #String>
 	^ String streamContents: [ :aStream | ]
 ]
