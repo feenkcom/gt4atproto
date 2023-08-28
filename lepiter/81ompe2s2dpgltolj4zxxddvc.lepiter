@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-24T22:26:21.106353+02:00"
+						"dateAndTimeString" : "2023-08-28T12:03:35.864997+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This page is written in [[Lepiter]], the knowledge management component from [[Glamorous Toolkit]]. Lepiter is made out of snippets, each of which can define its own langauge and visual appearance."
+				"string" : "This page is written in [[Lepiter]], the knowledge management component from [[Glamorous Toolkit]]. Lepiter is made out of snippets, each of which can define its own language and visual appearance."
 			},
 			{
 				"__type" : "textSnippet",
@@ -86,7 +86,8 @@
 								"timeStamp" : "2023-05-24T20:25:01.596175+02:00",
 								"uri" : "at://did:plc:7jebnrikkvqis66lqlzllxkp/app.bsky.feed.post/3jwimjow5n22w"
 							},
-							"string" : "This post was authored and posted from Glamorous Toolkit."
+							"string" : "This post was authored and posted from Glamorous Toolkit.",
+							"files" : [ ]
 						}
 					]
 				},

@@ -146,7 +146,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-24T23:10:54.80709+02:00"
+						"dateAndTimeString" : "2023-05-24T23:11:09.280994+02:00"
 					}
 				},
 				"uid" : {
@@ -156,7 +156,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Through this snippet, you can create posts from within  transform your personal knowledge base into the "
+				"string" : "Through this snippet, you can create and organize social posts from within your personal knowledge base."
 			}
 		]
 	},

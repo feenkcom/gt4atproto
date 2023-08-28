@@ -73,9 +73,23 @@ GtApEsugSlideshow >> bigCodeAndTextSize [
 { #category : #accessing }
 GtApEsugSlideshow >> codegenHowFor: aSlide [
 	<gtSlide>
-	^ aSlide lepiterPage
+	^ aSlide element
 		priority: (self priorityFor: #codegenHowFor:);
-		pageNamed: 'Generating code from lexicons' from: 'gt4atproto-lepiter'
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'Generating code from lexicons')))
+				maximized ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> db [
+	<gtExample>
+	<noTest>
+	^ LeDatabasesRegistry getDatabaseByName: self dbName
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> dbName [
+	^ 'gt4atproto-lepiter'
 ]
 
 { #category : #accessing }
@@ -89,6 +103,16 @@ GtApEsugSlideshow >> definitionSlideFor: aSlide [
 						, ', aka ' asRopedText , 'atproto' asRopedText bold
 						, ', is a federated protocol for large-scale distributed social applications.'
 								asRopedText)
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> environmentFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #environmentFor:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self db pageNamed: 'Posting to Bluesky from your knowledge base')))
+				maximized ]
 ]
 
 { #category : #accessing }
@@ -190,7 +214,7 @@ GtApEsugSlideshow >> shortAnswerSlideFor: aSlide [
 	^ aSlide title
 		priority: (self priorityFor: #shortAnswerSlideFor:);
 		titleBottomPadding: 20;
-		titleWithFormat: (self asTitle: 'In brief: we built a client for a HTTP API')
+		titleWithFormat: (self asTitle: 'In brief: we built a client environment')
 ]
 
 { #category : #accessing }
@@ -210,6 +234,7 @@ GtApEsugSlideshow >> slidePriorities [
 		lexiconAppetizerCodeFor:
 		lexiconAppetizerCode2For:
 		codegenHowFor:
+		environmentFor:
 	)
 ]
 
