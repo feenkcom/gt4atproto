@@ -79,6 +79,7 @@ GtApEsugSlideshow >> bigCodeAndTextSize [
 
 { #category : #accessing }
 GtApEsugSlideshow >> bskyPage [
+	<gtExample>
 	^ (LePage named: 'Let’s search for things!')
 		addSnippet: LeApLoginSnippet empty;
 		yourself
@@ -91,7 +92,7 @@ GtApEsugSlideshow >> codegenHowFor: aSlide [
 		priority: (self priorityFor: #codegenHowFor:);
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Generating code from lexicons')))
-				maximized ]
+				maximized background: Color white ]
 ]
 
 { #category : #accessing }
@@ -117,7 +118,8 @@ GtApEsugSlideshow >> environmentFor: aSlide [
 	<gtSlide>
 	^ aSlide element
 		priority: (self priorityFor: #environmentFor:);
-		element: [ (GtPager createWrappedOn: (LePagePhlowTool page: self bskyPage)) ]
+		element: [ (GtPager createWrappedOn: (LePagePhlowTool page: self bskyPage))
+				background: Color white ]
 ]
 
 { #category : #accessing }
@@ -126,8 +128,9 @@ GtApEsugSlideshow >> explorePageFor: aSlide [
 	^ aSlide element
 		priority: (self priorityFor: #explorePageFor:);
 		element: [ (GtPager
-				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Posting to Bluesky from your knowledge base')))
-				maximized ]
+				createWrappedOn: (LePagePhlowTool
+						page: (self apDb pageNamed: 'Posting to Bluesky from your knowledge base')))
+				maximized background: Color white ]
 ]
 
 { #category : #accessing }
