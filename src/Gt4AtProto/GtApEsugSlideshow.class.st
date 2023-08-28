@@ -86,6 +86,14 @@ GtApEsugSlideshow >> bskyPage [
 ]
 
 { #category : #accessing }
+GtApEsugSlideshow >> bskyToolPage [
+	<gtExample>
+	^ (LePage named: 'Now that we know, we do.')
+		addSnippet: LeBlueskySnippet empty;
+		yourself
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> codegenHowFor: aSlide [
 	<gtSlide>
 	^ aSlide element
@@ -114,6 +122,37 @@ GtApEsugSlideshow >> definitionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
+GtApEsugSlideshow >> documentingViewsFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #documentingViewsFor:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Documenting API endpoints')))
+				maximized background: Color white ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> editingLexiconsFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #editingLexiconsFor:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Editing lexicon files')))
+				maximized background: Color white ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> endSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide titleWithFooter
+		priority: (self priorityFor: #endSlideFor:);
+		titleBottomPadding: 20;
+		subtitleBottomPadding: 40;
+		titleWithFormat: (self asTitle: 'Thank you!');
+		footerWithFormat: (self asBigText: 'Questions?')
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> environmentFor: aSlide [
 	<gtSlide>
 	^ aSlide element
@@ -130,6 +169,16 @@ GtApEsugSlideshow >> explorePageFor: aSlide [
 		element: [ (GtPager
 				createWrappedOn: (LePagePhlowTool
 						page: (self apDb pageNamed: 'Posting to Bluesky from your knowledge base')))
+				maximized background: Color white ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> generatingLexiconsFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #generatingLexiconsFor:);
+		element: [ (GtPager
+				createWrappedOn: (LePagePhlowTool page: (self apDb pageNamed: 'Generating lexicons from code')))
 				maximized background: Color white ]
 ]
 
@@ -209,12 +258,30 @@ GtApEsugSlideshow >> lexiconAppetizerFor: aSlide [
 ]
 
 { #category : #accessing }
+GtApEsugSlideshow >> nextFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: (self priorityFor: #nextFor:);
+		titleBottomPadding: 20;
+		titleWithFormat: (self asTitle: 'What’s next?')
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> nextQuestionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: (self priorityFor: #nextQuestionSlideFor:);
 		titleBottomPadding: 20;
 		titleWithFormat: (self asTitle: 'So what?')
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> publishPageFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #publishPageFor:);
+		element: [ (GtPager createWrappedOn: (LePagePhlowTool page: self bskyToolPage))
+				background: Color white ]
 ]
 
 { #category : #accessing }
@@ -254,6 +321,12 @@ GtApEsugSlideshow >> slidePriorities [
 		codegenHowFor:
 		explorePageFor:
 		environmentFor:
+		publishPageFor:
+		nextFor:
+		generatingLexiconsFor:
+		editingLexiconsFor:
+		documentingViewsFor:
+		endSlideFor:
 	)
 ]
 

@@ -108,7 +108,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-05-16T14:02:48.916094+02:00"
+									"dateAndTimeString" : "2023-08-28T13:38:21.175456+02:00"
 								}
 							},
 							"uid" : {
@@ -118,7 +118,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Browsing a user from a dedicated snippet]]"
+							"string" : "[[Browsing a BlueSky user from a dedicated snippet]]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -490,6 +490,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[Generating lexicons from code]]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-28T16:55:02.190057+02:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2023-08-28T16:55:08.876465+02:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "mf6unV7ADQCcn/LrCql94A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "[[Documenting ]]"
 						},
 						{
 							"__type" : "textSnippet",
