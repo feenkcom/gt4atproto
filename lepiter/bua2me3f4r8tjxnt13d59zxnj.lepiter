@@ -39,7 +39,7 @@
 				"code" : "(GtPresenterSlideShow create: GtApEsugSlideshow new)",
 				"elementHeight" : 543,
 				"codeHeight" : 50,
-				"codeVisible" : true
+				"codeVisible" : false
 			}
 		]
 	},

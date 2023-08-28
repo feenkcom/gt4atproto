@@ -148,8 +148,8 @@ GtApEsugSlideshow >> lexiconAppetizerCode2For: aSlide [
 	<gtSlide>
 	^ aSlide classCoder
 		priority: (self priorityFor: #lexiconAppetizerCode2For:);
-		class: GtApGeneratedClient";
-		expandMethodAt: 56"
+		class: GtApGeneratedClient;
+		expandMethodAt: 56
 ]
 
 { #category : #accessing }
