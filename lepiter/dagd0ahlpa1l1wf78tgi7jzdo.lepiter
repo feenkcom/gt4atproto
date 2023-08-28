@@ -174,7 +174,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-28T17:17:35.260117+02:00"
+						"dateAndTimeString" : "2023-08-28T17:49:48.564113+02:00"
 					}
 				},
 				"uid" : {
@@ -184,7 +184,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "There are a few messages that need to be implemented, most notably {{gtMethod:GtApRestCall>>#allowedMethods}}, {{gtMethod:GtApRestCall>>errors}} (if your view may return status codes other than 200), {{gtMethod:GtApRestCall>>modelClass}} (which is the object we return from the system), and {{gtMethod:GtApRestCall>>parameters}} (which is the list of parameters the REST call takes."
+				"string" : "There are a few messages that need to be implemented, most notably {{gtMethod:name=GtApRestCall class>>#allowedMethods}}, {{gtMethod:GtApRestCall class>>#errors}} (if your view may return status codes other than 200), {{gtMethod:GtApRestCall class>>#modelClass}} (which is the object we return from the system), and {{gtMethod:GtApRestCall class>>#parameters}} (which is the list of parameters the REST call takes."
 			},
 			{
 				"__type" : "textSnippet",
@@ -248,7 +248,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-28T17:19:10.653901+02:00"
+						"dateAndTimeString" : "2023-08-28T17:25:50.652396+02:00"
 					}
 				},
 				"uid" : {
@@ -258,7 +258,47 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The return object needs to be serializable through {{gtClass:LeJsonV4}}."
+				"string" : "The return object needs to be serializable through {{gtClass:LeJsonV4}}. You can check {{gtClass:UUID}} as a simple example for a non-Lepiter class that is serializable by {{gtClass:LeJsonV4}}."
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-28T17:31:28.349707+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-08-28T17:31:28.349707+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "LSr9H1/ADQCYn2llCql94A=="
+				},
+				"exampleSelector" : "gtLeJsonV4Methods",
+				"previewHeight" : 500,
+				"previewShowSelector" : "gtItemsFor:",
+				"exampleBehaviorName" : "UUID",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : true
 			}
 		]
 	},
