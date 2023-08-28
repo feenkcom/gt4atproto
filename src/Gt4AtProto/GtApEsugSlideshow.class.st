@@ -71,6 +71,14 @@ GtApEsugSlideshow >> bigCodeAndTextSize [
 ]
 
 { #category : #accessing }
+GtApEsugSlideshow >> codegenHowFor: aSlide [
+	<gtSlide>
+	^ aSlide lepiterPage
+		priority: (self priorityFor: #codegenHowFor:);
+		pageNamed: 'Generating code from lexicons' from: 'gt4atproto-lepiter'
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> definitionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide paragraph
@@ -116,8 +124,8 @@ GtApEsugSlideshow >> lexiconAppetizerCode2For: aSlide [
 	<gtSlide>
 	^ aSlide classCoder
 		priority: (self priorityFor: #lexiconAppetizerCode2For:);
-		class: GtApGeneratedClient;
-		expandMethodAt: 56
+		class: GtApGeneratedClient";
+		expandMethodAt: 56"
 ]
 
 { #category : #accessing }
@@ -201,6 +209,7 @@ GtApEsugSlideshow >> slidePriorities [
 		lexiconAppetizer2For:
 		lexiconAppetizerCodeFor:
 		lexiconAppetizerCode2For:
+		codegenHowFor:
 	)
 ]
 
