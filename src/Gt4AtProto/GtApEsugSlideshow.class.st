@@ -5,6 +5,67 @@ Class {
 }
 
 { #category : #accessing }
+GtApEsugSlideshow >> appetizerJson [
+	^ '{
+  "lexicon": 1,
+  "id": "com.atproto.identity.updateHandle",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Updates the handle of the account",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": [
+            "handle"
+          ],
+          "properties": {
+            "handle": {
+              "type": "string",
+              "format": "handle"
+            }
+          }
+        }
+      }
+    }
+  }
+}'
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> appetizerJson2 [
+	^ '{
+  "lexicon": 1,
+  "id": "app.bsky.graph.follow",
+  "defs": {
+    "main": {
+      "type": "record",
+      "description": "A social follow.",
+      "key": "tid",
+      "record": {
+        "type": "object",
+        "required": [
+          "subject",
+          "createdAt"
+        ],
+        "properties": {
+          "subject": {
+            "type": "string",
+            "format": "did"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "datetime"
+          }
+        }
+      }
+    }
+  }
+}'
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> bigCodeAndTextSize [
 	^ 25
 ]
@@ -23,12 +84,105 @@ GtApEsugSlideshow >> definitionSlideFor: aSlide [
 ]
 
 { #category : #accessing }
+GtApEsugSlideshow >> lexiconAppetizer2For: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #lexiconAppetizer2For:);
+		element: [ BlElement new
+				layout: BlFrameLayout new;
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent ];
+				addChild: (BlElement new
+						aptitude: BrShadowAptitude;
+						background: Color white;
+						layout: BlLinearLayout new;
+						constraintsDo: [ :c | 
+							c frame horizontal alignCenter.
+							c frame vertical alignCenter.
+							c horizontal fitContent.
+							c vertical fitContent ];
+						padding: (BlInsets all: 10);
+						margin: (BlInsets all: 10);
+						addChild: (BrEditor new
+								aptitude: BrGlamorousCodeEditorAptitude;
+								styler: JSONParser gtStyler;
+								text: self appetizerJson2;
+								fitContent)) ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> lexiconAppetizerCode2For: aSlide [
+	<gtSlide>
+	^ aSlide classCoder
+		priority: (self priorityFor: #lexiconAppetizerCode2For:);
+		class: GtApGeneratedClient;
+		expandMethodAt: 56
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> lexiconAppetizerCodeFor: aSlide [
+	<gtSlide>
+	^ aSlide classCoder
+		priority: (self priorityFor: #lexiconAppetizerCodeFor:);
+		class: AppBskyGraphFollowMain;
+		expandMethodAt: 1;
+		expandMethodAt: 5
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> lexiconAppetizerFor: aSlide [
+	<gtSlide>
+	^ aSlide element
+		priority: (self priorityFor: #lexiconAppetizerFor:);
+		element: [ BlElement new
+				layout: BlFrameLayout new;
+				constraintsDo: [ :c | 
+					c horizontal matchParent.
+					c vertical matchParent ];
+				addChild: (BlElement new
+						aptitude: BrShadowAptitude;
+						background: Color white;
+						layout: BlLinearLayout new;
+						constraintsDo: [ :c | 
+							c frame horizontal alignCenter.
+							c frame vertical alignCenter.
+							c horizontal fitContent.
+							c vertical fitContent ];
+						padding: (BlInsets all: 10);
+						margin: (BlInsets all: 10);
+						addChild: (BrEditor new
+								aptitude: BrGlamorousCodeEditorAptitude;
+								styler: JSONParser gtStyler;
+								text: self appetizerJson;
+								fitContent)) ]
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> nextQuestionSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: (self priorityFor: #nextQuestionSlideFor:);
+		titleBottomPadding: 20;
+		titleWithFormat: (self asTitle: 'So what?')
+]
+
+{ #category : #accessing }
 GtApEsugSlideshow >> questionSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: (self priorityFor: #questionSlideFor:);
 		titleBottomPadding: 20;
 		titleWithFormat: (self asTitle: '???')
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> shortAnswerSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: (self priorityFor: #shortAnswerSlideFor:);
+		titleBottomPadding: 20;
+		titleWithFormat: (self asTitle: 'In brief: we built a client for a HTTP API')
 ]
 
 { #category : #accessing }
@@ -40,6 +194,13 @@ GtApEsugSlideshow >> slidePriorities [
 		subtitleSlideFor:
 		definitionSlideFor:
 		questionSlideFor:
+		vocabSlideFor:
+		shortAnswerSlideFor:
+		nextQuestionSlideFor:
+		lexiconAppetizerFor:
+		lexiconAppetizer2For:
+		lexiconAppetizerCodeFor:
+		lexiconAppetizerCode2For:
 	)
 ]
 
@@ -66,4 +227,13 @@ GtApEsugSlideshow >> titleSlideFor: aSlide [
 		subtitleBottomPadding: 40;
 		titleWithFormat: (self asTitle: 'gt4aproto');
 		footerWithFormat: (self asBigText: 'Veit Heller (feenk)')
+]
+
+{ #category : #accessing }
+GtApEsugSlideshow >> vocabSlideFor: aSlide [
+	<gtSlide>
+	^ aSlide title
+		priority: (self priorityFor: #vocabSlideFor:);
+		titleBottomPadding: 20;
+		titleWithFormat: (self asTitle: 'DID, PDS, BGS, NSID, XRPC...')
 ]
