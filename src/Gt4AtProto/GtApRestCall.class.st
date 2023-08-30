@@ -13,6 +13,11 @@ GtApRestCall class >> allowedMethods [
 ]
 
 { #category : #accessing }
+GtApRestCall class >> endpointName [
+	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
 GtApRestCall class >> errors [
 	^ {}
 ]
@@ -47,6 +52,11 @@ GtApRestCall class >> gtParametersFor: aView [
 { #category : #accessing }
 GtApRestCall class >> isAbstract [
 	^ self hasAbstractMethods
+]
+
+{ #category : #accessing }
+GtApRestCall class >> isExample [
+	^ false
 ]
 
 { #category : #accessing }

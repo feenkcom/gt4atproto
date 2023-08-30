@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-28T17:10:39.717869+02:00"
+						"dateAndTimeString" : "2023-08-30T15:30:12.776131+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "YHqBqF7ADQCidnxCCql94A=="
 				},
-				"code" : "GtApRestCallLexiconGenerator new\r\tid: 'com.gtoolkit.example';\r\tdescription: 'My server definitions';\r\trestCalls: (GtApRestCall allSubclasses reject: #isAbstract);\r\tgenerateJson"
+				"code" : "GtApRestCallLexiconGenerator new\r\tid: 'com.gtoolkit.example';\r\tdescription: 'My server definitions';\r\trestCalls: ((GtApRestCall allSubclasses reject: #isAbstract) select: #isExample);\r\tgenerateJson"
 			},
 			{
 				"__type" : "textSnippet",
@@ -174,7 +174,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-28T17:49:48.564113+02:00"
+						"dateAndTimeString" : "2023-08-30T15:37:59.596895+02:00"
 					}
 				},
 				"uid" : {
@@ -184,7 +184,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "There are a few messages that need to be implemented, most notably {{gtMethod:name=GtApRestCall class>>#allowedMethods}}, {{gtMethod:GtApRestCall class>>#errors}} (if your view may return status codes other than 200), {{gtMethod:GtApRestCall class>>#modelClass}} (which is the object we return from the system), and {{gtMethod:GtApRestCall class>>#parameters}} (which is the list of parameters the REST call takes."
+				"string" : "There are a few messages that need to be implemented, namely {{gtMethod:name=GtApRestCall class>>#allowedMethods}}, {{gtMethod:name=GtApRestCall class>>#endpointName}} (the name of the endpoint in the documentation), {{gtMethod:GtApRestCall class>>#errors}} (if your view may return status codes other than 200), {{gtMethod:GtApRestCall class>>#modelClass}} (which is the object we return from the system), and {{gtMethod:GtApRestCall class>>#parameters}} (which is the list of parameters the REST call takes. You can find an example in {{gtClass: GtApExampleRestCall}}."
 			},
 			{
 				"__type" : "textSnippet",
