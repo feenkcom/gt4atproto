@@ -174,7 +174,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-30T15:37:42.978803+02:00"
+						"dateAndTimeString" : "2023-08-30T15:37:59.596895+02:00"
 					}
 				},
 				"uid" : {
@@ -184,7 +184,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "There are a few messages that need to be implemented, namely {{gtMethod:name=GtApRestCall class>>#allowedMethods}}, {{gtMethod:name=GtApRestCall class>>#endpointName}} (the name of the endpoint in the documentation), {{gtMethod:GtApRestCall class>>#errors}} (if your view may return status codes other than 200), {{gtMethod:GtApRestCall class>>#modelClass}} (which is the object we return from the system), and {{gtMethod:GtApRestCall class>>#parameters}} (which is the list of parameters the REST call takes. You can find an ex"
+				"string" : "There are a few messages that need to be implemented, namely {{gtMethod:name=GtApRestCall class>>#allowedMethods}}, {{gtMethod:name=GtApRestCall class>>#endpointName}} (the name of the endpoint in the documentation), {{gtMethod:GtApRestCall class>>#errors}} (if your view may return status codes other than 200), {{gtMethod:GtApRestCall class>>#modelClass}} (which is the object we return from the system), and {{gtMethod:GtApRestCall class>>#parameters}} (which is the list of parameters the REST call takes. You can find an example in {{gtClass: GtApExampleRestCall}}."
 			},
 			{
 				"__type" : "textSnippet",

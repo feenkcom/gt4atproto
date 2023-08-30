@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-08-30T15:30:12.776131+02:00"
+						"dateAndTimeString" : "2023-08-30T16:28:58.340832+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "YHqBqF7ADQCidnxCCql94A=="
 				},
-				"code" : "GtApRestCallLexiconGenerator new\r\tid: 'com.gtoolkit.example';\r\tdescription: 'My server definitions';\r\trestCalls: ((GtApRestCall allSubclasses reject: #isAbstract) select: #isExample);\r\tgenerateJson"
+				"code" : "GtApRestCallLexiconGenerator new\r\tid: 'com.gtoolkit.example';\r\tdescription: 'My server definitions';\r\trestCalls: {GtApExampleRestCall};\r\tgenerateJson"
 			},
 			{
 				"__type" : "textSnippet",
