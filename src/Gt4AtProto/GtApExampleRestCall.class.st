@@ -22,7 +22,7 @@ GtApExampleRestCall class >> errors [
 ]
 
 { #category : #accessing }
-GtApExampleRestCall class >> isExample [
+GtApExampleRestCall class >> isAbstract [
 	^ true
 ]
 
@@ -39,6 +39,11 @@ GtApExampleRestCall class >> parameters [
 		GtApRestCallParameter new
 			name: 'bar';
 			type: (GtApLexiconString new format: 'uri')}
+]
+
+{ #category : #accessing }
+GtApExampleRestCall class >> pattern [
+	^ {}
 ]
 
 { #category : #accessing }

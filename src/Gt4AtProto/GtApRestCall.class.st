@@ -55,11 +55,6 @@ GtApRestCall class >> isAbstract [
 ]
 
 { #category : #accessing }
-GtApRestCall class >> isExample [
-	^ false
-]
-
-{ #category : #accessing }
 GtApRestCall class >> match: request [
 	| aResult requestMethod |
 	aResult := super match: request.
