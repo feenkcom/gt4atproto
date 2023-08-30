@@ -2,7 +2,8 @@ Class {
 	#name : #AppBskyEmbedRecordViewNotFound,
 	#superclass : #GtApModelEntity,
 	#instVars : [
-		'atpUri'
+		'atpUri',
+		'atpNotFound'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -35,6 +36,17 @@ AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordViewNotFound >> atpNotFound [
+	<atpType:#Boolean format:nil>
+	^ atpNotFound
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewNotFound >> atpNotFound: anObject [
+	atpNotFound := anObject
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordViewNotFound >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
@@ -43,6 +55,15 @@ AppBskyEmbedRecordViewNotFound >> atpUri [
 { #category : #accessing }
 AppBskyEmbedRecordViewNotFound >> atpUri: anObject [
 	atpUri := anObject
+]
+
+{ #category : #magritte }
+AppBskyEmbedRecordViewNotFound >> notFoundDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'NotFound';
+		accessor: #atpNotFound;
+		beRequired
 ]
 
 { #category : #magritte }

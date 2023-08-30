@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpId',
-		'atpAction'
+		'atpAction',
+		'atpDurationInHours'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -62,6 +63,17 @@ ComAtprotoAdminDefsActionViewCurrent >> atpAction: anObject [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsActionViewCurrent >> atpDurationInHours [
+	<atpType:#Number format:nil>
+	^ atpDurationInHours
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsActionViewCurrent >> atpDurationInHours: anObject [
+	atpDurationInHours := anObject
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsActionViewCurrent >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
@@ -70,6 +82,14 @@ ComAtprotoAdminDefsActionViewCurrent >> atpId [
 { #category : #accessing }
 ComAtprotoAdminDefsActionViewCurrent >> atpId: anObject [
 	atpId := anObject
+]
+
+{ #category : #magritte }
+ComAtprotoAdminDefsActionViewCurrent >> durationInHoursDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'DurationInHours';
+		accessor: #atpDurationInHours
 ]
 
 { #category : #magritte }

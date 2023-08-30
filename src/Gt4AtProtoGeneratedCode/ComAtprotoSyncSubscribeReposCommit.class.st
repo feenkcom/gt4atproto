@@ -11,7 +11,9 @@ Class {
 		'atpBlocks',
 		'atpOps',
 		'atpBlobs',
-		'atpTime'
+		'atpTime',
+		'atpRev',
+		'atpSince'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -140,6 +142,17 @@ ComAtprotoSyncSubscribeReposCommit >> atpRepo: anObject [
 ]
 
 { #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit >> atpRev [
+	<atpType:#String format:nil>
+	^ atpRev
+]
+
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit >> atpRev: anObject [
+	atpRev := anObject
+]
+
+{ #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
@@ -148,6 +161,17 @@ ComAtprotoSyncSubscribeReposCommit >> atpSeq [
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit >> atpSeq: anObject [
 	atpSeq := anObject
+]
+
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit >> atpSince [
+	<atpType:#String format:nil>
+	^ atpSince
+]
+
+{ #category : #accessing }
+ComAtprotoSyncSubscribeReposCommit >> atpSince: anObject [
+	atpSince := anObject
 ]
 
 { #category : #accessing }
@@ -238,11 +262,29 @@ ComAtprotoSyncSubscribeReposCommit >> repoDescription [
 ]
 
 { #category : #magritte }
+ComAtprotoSyncSubscribeReposCommit >> revDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Rev';
+		accessor: #atpRev;
+		beRequired
+]
+
+{ #category : #magritte }
 ComAtprotoSyncSubscribeReposCommit >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'Seq';
 		accessor: #atpSeq;
+		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoSyncSubscribeReposCommit >> sinceDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Since';
+		accessor: #atpSince;
 		beRequired
 ]
 

@@ -7,7 +7,8 @@ Class {
 		'atpDisplayName',
 		'atpDescription',
 		'atpAvatar',
-		'atpBanner'
+		'atpBanner',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -86,6 +87,17 @@ AppBskyActorProfileMain >> atpDisplayName: anObject [
 	atpDisplayName := anObject
 ]
 
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpLabels [
+	<atpType:#(ComAtprotoLabelDefsSelfLabels) format:nil>
+	^ atpLabels
+]
+
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpLabels: anObject [
+	atpLabels := anObject
+]
+
 { #category : #magritte }
 AppBskyActorProfileMain >> avatarDescription [
 	<magritteDescription>
@@ -116,4 +128,13 @@ AppBskyActorProfileMain >> displayNameDescription [
 	^ MAStringDescription new
 		label: 'DisplayName';
 		accessor: #atpDisplayName
+]
+
+{ #category : #magritte }
+AppBskyActorProfileMain >> labelsDescription [
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		options: {'com.atproto.label.defs#selfLabels'};
+		label: 'Labels';
+		accessor: #atpLabels
 ]

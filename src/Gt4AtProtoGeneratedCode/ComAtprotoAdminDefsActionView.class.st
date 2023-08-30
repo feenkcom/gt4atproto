@@ -12,7 +12,8 @@ Class {
 		'atpCreatedBy',
 		'atpCreatedAt',
 		'atpReversal',
-		'atpResolvedReportIds'
+		'atpResolvedReportIds',
+		'atpDurationInHours'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -137,6 +138,17 @@ ComAtprotoAdminDefsActionView >> atpCreatedBy: anObject [
 ]
 
 { #category : #accessing }
+ComAtprotoAdminDefsActionView >> atpDurationInHours [
+	<atpType:#Number format:nil>
+	^ atpDurationInHours
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsActionView >> atpDurationInHours: anObject [
+	atpDurationInHours := anObject
+]
+
+{ #category : #accessing }
 ComAtprotoAdminDefsActionView >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
@@ -243,6 +255,14 @@ ComAtprotoAdminDefsActionView >> createdByDescription [
 		label: 'CreatedBy';
 		accessor: #atpCreatedBy;
 		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoAdminDefsActionView >> durationInHoursDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'DurationInHours';
+		accessor: #atpDurationInHours
 ]
 
 { #category : #magritte }

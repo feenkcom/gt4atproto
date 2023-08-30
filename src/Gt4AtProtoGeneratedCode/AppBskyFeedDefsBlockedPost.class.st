@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri',
-		'atpBlocked'
+		'atpBlocked',
+		'atpAuthor'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -37,6 +38,19 @@ AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsBlockedPost >> atpAuthor [
+	<referenceTo:'#blockedAuthor'>
+	<atpType:#AppBskyFeedDefsBlockedAuthor format:nil>
+	^ atpAuthor
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsBlockedPost >> atpAuthor: anObject [
+	<referenceTo:'#blockedAuthor'>
+	atpAuthor := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsBlockedPost >> atpBlocked [
 	<atpType:#Boolean format:nil>
 	^ atpBlocked
@@ -56,6 +70,15 @@ AppBskyFeedDefsBlockedPost >> atpUri [
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost >> atpUri: anObject [
 	atpUri := anObject
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsBlockedPost >> authorDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'Author';
+		accessor: #atpAuthor;
+		beRequired
 ]
 
 { #category : #magritte }

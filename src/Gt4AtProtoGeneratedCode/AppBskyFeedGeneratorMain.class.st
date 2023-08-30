@@ -7,7 +7,8 @@ Class {
 		'atpDescription',
 		'atpDescriptionFacets',
 		'atpAvatar',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -114,6 +115,17 @@ AppBskyFeedGeneratorMain >> atpDisplayName: anObject [
 	atpDisplayName := anObject
 ]
 
+{ #category : #accessing }
+AppBskyFeedGeneratorMain >> atpLabels [
+	<atpType:#(ComAtprotoLabelDefsSelfLabels) format:nil>
+	^ atpLabels
+]
+
+{ #category : #accessing }
+AppBskyFeedGeneratorMain >> atpLabels: anObject [
+	atpLabels := anObject
+]
+
 { #category : #magritte }
 AppBskyFeedGeneratorMain >> avatarDescription [
 	<magritteDescription>
@@ -164,4 +176,13 @@ AppBskyFeedGeneratorMain >> displayNameDescription [
 		label: 'DisplayName';
 		accessor: #atpDisplayName;
 		beRequired
+]
+
+{ #category : #magritte }
+AppBskyFeedGeneratorMain >> labelsDescription [
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		options: {'com.atproto.label.defs#selfLabels'};
+		label: 'Labels';
+		accessor: #atpLabels
 ]

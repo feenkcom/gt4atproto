@@ -73,11 +73,6 @@ GtApEsugSlideshow >> appetizerJson2 [
 ]
 
 { #category : #accessing }
-GtApEsugSlideshow >> bigCodeAndTextSize [
-	^ 25
-]
-
-{ #category : #accessing }
 GtApEsugSlideshow >> bskyPage [
 	<gtExample>
 	^ (LePage named: 'Let’s search for things!')
@@ -204,7 +199,7 @@ GtApEsugSlideshow >> lexiconAppetizer2For: aSlide [
 						padding: (BlInsets all: 10);
 						margin: (BlInsets all: 10);
 						addChild: (BrEditor new
-								aptitude: BrGlamorousCodeEditorAptitude;
+								aptitude: (BrGlamorousCodeEditorAptitude new fontSize: self textSize);
 								styler: JSONParser gtStyler;
 								text: self appetizerJson2;
 								fitContent)) ]
@@ -251,7 +246,7 @@ GtApEsugSlideshow >> lexiconAppetizerFor: aSlide [
 						padding: (BlInsets all: 10);
 						margin: (BlInsets all: 10);
 						addChild: (BrEditor new
-								aptitude: BrGlamorousCodeEditorAptitude;
+								aptitude: (BrGlamorousCodeEditorAptitude new fontSize: self textSize);
 								styler: JSONParser gtStyler;
 								text: self appetizerJson;
 								fitContent)) ]
@@ -335,13 +330,12 @@ GtApEsugSlideshow >> subtitleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide title
 		priority: (self priorityFor: #subtitleSlideFor:);
-		titleBottomPadding: 20;
 		titleWithFormat: (self asTitle: 'What is atproto?')
 ]
 
 { #category : #accessing }
-GtApEsugSlideshow >> titleSize [
-	^ 45
+GtApEsugSlideshow >> textSize [
+	^ 25
 ]
 
 { #category : #accessing }
@@ -349,8 +343,8 @@ GtApEsugSlideshow >> titleSlideFor: aSlide [
 	<gtSlide>
 	^ aSlide titleWithFooter
 		priority: (self priorityFor: #titleSlideFor:);
-		titleBottomPadding: 20;
-		subtitleBottomPadding: 40;
+		titleBottomPadding: 10;
+		subtitleBottomPadding: 10;
 		titleWithFormat: (self asTitle: 'gt4aproto');
 		footerWithFormat: (self asBigText: 'Veit Heller (feenk)')
 ]

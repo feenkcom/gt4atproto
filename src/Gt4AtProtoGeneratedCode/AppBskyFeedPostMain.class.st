@@ -10,7 +10,8 @@ Class {
 		'atpReply',
 		'atpEmbed',
 		'atpLangs',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -118,6 +119,17 @@ AppBskyFeedPostMain >> atpFacets: anObject [
 ]
 
 { #category : #accessing }
+AppBskyFeedPostMain >> atpLabels [
+	<atpType:#(ComAtprotoLabelDefsSelfLabels) format:nil>
+	^ atpLabels
+]
+
+{ #category : #accessing }
+AppBskyFeedPostMain >> atpLabels: anObject [
+	atpLabels := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedPostMain >> atpLangs [
 	<atpType:#String format:nil>
 	<atpCollection>
@@ -190,6 +202,15 @@ AppBskyFeedPostMain >> facetsDescription [
 		classes: {AppBskyRichtextFacetMain};
 		label: 'Facets';
 		accessor: #atpFacets
+]
+
+{ #category : #magritte }
+AppBskyFeedPostMain >> labelsDescription [
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		options: {'com.atproto.label.defs#selfLabels'};
+		label: 'Labels';
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }

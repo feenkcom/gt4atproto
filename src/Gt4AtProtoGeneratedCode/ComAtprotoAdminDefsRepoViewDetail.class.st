@@ -11,7 +11,8 @@ Class {
 		'atpLabels',
 		'atpInvitedBy',
 		'atpInvites',
-		'atpInvitesDisabled'
+		'atpInvitesDisabled',
+		'atpInviteNote'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -111,6 +112,17 @@ ComAtprotoAdminDefsRepoViewDetail >> atpIndexedAt [
 { #category : #accessing }
 ComAtprotoAdminDefsRepoViewDetail >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsRepoViewDetail >> atpInviteNote [
+	<atpType:#String format:nil>
+	^ atpInviteNote
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsRepoViewDetail >> atpInviteNote: anObject [
+	atpInviteNote := anObject
 ]
 
 { #category : #accessing }
@@ -219,6 +231,14 @@ ComAtprotoAdminDefsRepoViewDetail >> indexedAtDescription [
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
 		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoAdminDefsRepoViewDetail >> inviteNoteDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'InviteNote';
+		accessor: #atpInviteNote
 ]
 
 { #category : #magritte }

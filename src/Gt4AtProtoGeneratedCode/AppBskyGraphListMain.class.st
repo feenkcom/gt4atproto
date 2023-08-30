@@ -7,7 +7,8 @@ Class {
 		'atpDescription',
 		'atpDescriptionFacets',
 		'atpAvatar',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -96,6 +97,17 @@ AppBskyGraphListMain >> atpDescriptionFacets: anObject [
 ]
 
 { #category : #accessing }
+AppBskyGraphListMain >> atpLabels [
+	<atpType:#(ComAtprotoLabelDefsSelfLabels) format:nil>
+	^ atpLabels
+]
+
+{ #category : #accessing }
+AppBskyGraphListMain >> atpLabels: anObject [
+	atpLabels := anObject
+]
+
+{ #category : #accessing }
 AppBskyGraphListMain >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
@@ -151,6 +163,15 @@ AppBskyGraphListMain >> descriptionFacetsDescription [
 		classes: {AppBskyRichtextFacetMain};
 		label: 'DescriptionFacets';
 		accessor: #atpDescriptionFacets
+]
+
+{ #category : #magritte }
+AppBskyGraphListMain >> labelsDescription [
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		options: {'com.atproto.label.defs#selfLabels'};
+		label: 'Labels';
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }
