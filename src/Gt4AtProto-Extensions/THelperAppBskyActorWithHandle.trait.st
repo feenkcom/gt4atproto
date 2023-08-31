@@ -3,7 +3,8 @@ Trait {
 	#instVars : [
 		'posts',
 		'followers',
-		'follows'
+		'follows',
+		'timelinePosts'
 	],
 	#category : #'Gt4AtProto-Extensions-Traits'
 }
@@ -26,6 +27,13 @@ THelperAppBskyActorWithHandle >> downloadFollows [
 THelperAppBskyActorWithHandle >> downloadPosts [
 	^ GtApPostsStream
 		posts: ((self client appBskyFeedGetAuthorFeedActor: self atpHandle)
+				collect: [ :aPost | aPost client: self client ])
+]
+
+{ #category : #accessing }
+THelperAppBskyActorWithHandle >> downloadTimelinePosts [
+	^ GtApPostsStream
+		posts: ((self client appBskyFeedGetTimelineAlgorithm: 'reverse-chronological')
 				collect: [ :aPost | aPost client: self client ])
 ]
 
@@ -66,7 +74,7 @@ THelperAppBskyActorWithHandle >> gtViewCardPostsFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Post cards';
-		priority: 1;
+		priority: 2;
 		stencil: [ BrSimpleList new
 				stream: self posts;
 				itemStencil: [ GtApFeedPostSummaryElement new withShadowAndHighlighting ];
@@ -86,7 +94,7 @@ THelperAppBskyActorWithHandle >> gtViewCompactPostsFor: aView [
 	<gtView>
 	^ aView columnedList
 		title: 'Compact posts';
-		priority: 1;
+		priority: 3;
 		items: [ self posts ];
 		column: 'Name'
 			text: [ :each | each atpPost atpAuthor atpDisplayName ]
@@ -140,6 +148,28 @@ THelperAppBskyActorWithHandle >> gtViewFollowingFor: aView [
 ]
 
 { #category : #accessing }
+THelperAppBskyActorWithHandle >> gtViewTimelineFor: aView [
+	<gtView>
+	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
+	
+	^ aView explicit
+		title: 'Timeline';
+		priority: 1;
+		stencil: [ BrSimpleList new
+				stream: self timelinePosts;
+				itemStencil: [ GtApFeedPostSummaryElement new withShadowAndHighlighting ];
+				itemDataBinder: [ :aPostElement :aPost | 
+					aPostElement
+						post: aPost;
+						withSpawnHandlers ] ];
+		actionButtonIcon: BrGlamorousVectorIcons refresh
+			tooltip: 'Update'
+			action: [ :aButton :aTab | 
+				self timelinePosts: self downloadTimelinePosts asyncSimilarCopy.
+				aTab viewContentElement phlow update ]
+]
+
+{ #category : #accessing }
 THelperAppBskyActorWithHandle >> posts [
 	^ (posts ifNil: [  posts := self downloadPosts cached ]) asyncSimilarCopy
 ]
@@ -147,4 +177,14 @@ THelperAppBskyActorWithHandle >> posts [
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> posts: aListOfPosts [
 	posts := aListOfPosts
+]
+
+{ #category : #accessing }
+THelperAppBskyActorWithHandle >> timelinePosts [
+	^ (timelinePosts ifNil: [  timelinePosts := self downloadTimelinePosts cached ]) asyncSimilarCopy
+]
+
+{ #category : #accessing }
+THelperAppBskyActorWithHandle >> timelinePosts: aListOfPosts [
+	timelinePosts := aListOfPosts
 ]

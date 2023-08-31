@@ -110,9 +110,9 @@ GtApEsugSlideshow >> definitionSlideFor: aSlide [
 		priority: (self priorityFor: #definitionSlideFor:);
 		subtitleWithFormat: (self asTitle: 'What is atproto?' asRopedText bold);
 		paragraphWithFormat: (self
-				asBigText: 'The ' asRopedText , 'Authenticated Transfer Protocol' asRopedText bold
+				asBigText: '“The ' asRopedText , 'Authenticated Transfer Protocol' asRopedText bold
 						, ', aka ' asRopedText , 'atproto' asRopedText bold
-						, ', is a federated protocol for large-scale distributed social applications.'
+						, ', is a federated protocol for large-scale distributed social applications.”'
 								asRopedText)
 ]
 
