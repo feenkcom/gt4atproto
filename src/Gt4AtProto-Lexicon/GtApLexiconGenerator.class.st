@@ -113,6 +113,15 @@ GtApLexiconGenerator >> generateRecordForClass: aClass [
 ]
 
 { #category : #accessing }
+GtApLexiconGenerator >> gtClassesFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Classes';
+		priority: 1;
+		items: [ self classes ]
+]
+
+{ #category : #accessing }
 GtApLexiconGenerator >> id [
 	^ id
 ]
