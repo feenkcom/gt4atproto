@@ -9,6 +9,13 @@ Class {
 }
 
 { #category : #accessing }
+GtApUnknownRecord >> asEmbeddedElement [
+	^ BrLabel new
+		aptitude: BrGlamorousLabelAptitude new bold;
+		text: 'Unknown record: ' , self key
+]
+
+{ #category : #accessing }
 GtApUnknownRecord >> fromRequest: aData [
 	rawData := aData
 ]

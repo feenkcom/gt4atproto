@@ -23,7 +23,7 @@ TAppBskyFeedDefsFeedViewPost >> createdAtTimestamp [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> embed [
-	^ self atpPost atpEmbed
+	^ self atpPost atpRecord atpEmbed
 ]
 
 { #category : #accessing }
@@ -127,6 +127,18 @@ TAppBskyFeedDefsFeedViewPost >> gtDisplayOn: aStream [
 ]
 
 { #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> gtPageFor: aView [
+	<gtView>
+	self hasPage ifFalse: [ ^ aView empty ].
+
+	^ aView forward
+		title: 'Page';
+		priority: 21;
+		object: [ (LeJsonV4 uniqueInstance deserialize: (self embed rawData at: 'record') readStream) asContentUIModel ];
+		view: #gtLiveFor:
+]
+
+{ #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 	^ self embed isNotNil
 ]
@@ -134,6 +146,11 @@ TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasMedia [
 	^ self hasEmbed and: [ self embed hasMedia ]
+]
+
+{ #category : #accessing }
+TAppBskyFeedDefsFeedViewPost >> hasPage [
+	^ self hasEmbed and: [ (self embed rawData at: '$type') = 'com.gtoolkit.embed.lepiterPage' ]
 ]
 
 { #category : #accessing }

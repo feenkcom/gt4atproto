@@ -345,7 +345,7 @@ GtApEsugSlideshow >> titleSlideFor: aSlide [
 		priority: (self priorityFor: #titleSlideFor:);
 		titleBottomPadding: 10;
 		subtitleBottomPadding: 10;
-		titleWithFormat: (self asTitle: 'gt4aproto');
+		titleWithFormat: (self asTitle: 'gt4atproto');
 		footerWithFormat: (self asBigText: 'Veit Heller (feenk)')
 ]
 
