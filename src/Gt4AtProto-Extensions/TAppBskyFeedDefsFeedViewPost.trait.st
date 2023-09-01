@@ -23,7 +23,7 @@ TAppBskyFeedDefsFeedViewPost >> createdAtTimestamp [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> embed [
-	^ self atpPost atpRecord atpEmbed
+	^ self atpPost atpEmbed
 ]
 
 { #category : #accessing }
@@ -134,7 +134,7 @@ TAppBskyFeedDefsFeedViewPost >> gtPageFor: aView [
 	^ aView forward
 		title: 'Page';
 		priority: 21;
-		object: [ (LeJsonV4 uniqueInstance deserialize: (self embed rawData at: 'record') readStream) asContentUIModel ];
+		object: [ (LeJsonV4 uniqueInstance deserialize: (self atpPost atpRecord atpEmbed rawData at: 'record') readStream) asContentUIModel ];
 		view: #gtLiveFor:
 ]
 
@@ -150,7 +150,7 @@ TAppBskyFeedDefsFeedViewPost >> hasMedia [
 
 { #category : #accessing }
 TAppBskyFeedDefsFeedViewPost >> hasPage [
-	^ self hasEmbed and: [ (self embed rawData at: '$type') = 'com.gtoolkit.embed.lepiterPage' ]
+	^ self atpPost atpRecord atpEmbed isNotNil and: [ (self atpPost atpRecord atpEmbed rawData at: '$type') = 'com.gtoolkit.embed.lepiterPage' ]
 ]
 
 { #category : #accessing }

@@ -39,6 +39,11 @@ GtApUnknownRecord >> gtRawDataFor: aView [
 ]
 
 { #category : #accessing }
+GtApUnknownRecord >> hasMedia [
+	^ false
+]
+
+{ #category : #accessing }
 GtApUnknownRecord >> key [
 	^ key
 ]
