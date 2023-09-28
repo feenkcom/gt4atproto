@@ -89,10 +89,10 @@ GtApRestCall >> badRequest: aRequest withMessage: aString [
 ]
 
 { #category : #accessing }
-GtApRestCall >> notFound: aRequest withMessage: aString [
+GtApRestCall >> notFound: anUrl withMessage: aString [
 	| aResponse |
 	aResponse := ZnResponse
-			notFound: aRequest
+			notFound: anUrl
 			entity: (ZnEntity json: '{"error": "NotFound", "message": "' , aString , '"}').
 
 	self response: aResponse.
