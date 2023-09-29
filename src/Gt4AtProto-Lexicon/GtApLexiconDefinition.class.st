@@ -17,7 +17,7 @@ GtApLexiconDefinition class >> needsCustomAttributeMappings [
 
 { #category : #visiting }
 GtApLexiconDefinition >> acceptVisitor: aLexiconVisitor [
-	self subclassResponsibility
+	^ self subclassResponsibility
 ]
 
 { #category : #accessing }
