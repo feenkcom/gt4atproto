@@ -13,6 +13,11 @@ GtApRestModelEntity class >> forEntity: anEntity [
 ]
 
 { #category : #accessing }
+GtApRestModelEntity >> asClassName [
+	^ self entity name
+]
+
+{ #category : #accessing }
 GtApRestModelEntity >> asLexiconOutputIn: aGenerator [
 	^ GtApLexiconDefinitionReference new
 		referenceString: aGenerator id , '.' , entity name asLowercase;
