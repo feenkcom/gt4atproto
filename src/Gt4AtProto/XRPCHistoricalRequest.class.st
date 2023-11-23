@@ -12,7 +12,7 @@ Class {
 { #category : #accessing }
 XRPCHistoricalRequest >> gtRequestFor: aView [
 	<gtView>
-	^ (request gtViewRequestLineTextFor: aView) priority: 1
+	^ (request gtHttpFor: aView) priority: 1
 ]
 
 { #category : #accessing }
