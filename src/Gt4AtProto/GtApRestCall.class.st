@@ -30,14 +30,11 @@ GtApRestCall class >> gtParametersFor: aView [
 
 	^ aView columnedList
 		title: 'REST parameters';
+		priority: 31;
 		items: [ self parameters ];
-		column: 'Index'
-			text: [ :_ :anIndex | anIndex ]
-			width: 40;
+		column: 'Index' text: [ :_ :anIndex | anIndex ];
 		column: 'Name' text: #name;
-		column: 'Type'
-			text: [ :aParameter | aParameter type ifNotNil: #asClassName ]
-			width: 70;
+		column: 'Type' text: [ :aParameter | aParameter type ifNotNil: #asClassName ];
 		column: 'Required'
 			text: [ :aParameter | 
 				| aText |
@@ -46,7 +43,6 @@ GtApRestCall class >> gtParametersFor: aView [
 					ifTrue: [ aText ]
 					ifFalse: [ aText foreground: BrGlamorousColors disabledButtonTextColor ].
 				aText ]
-			width: 70
 ]
 
 { #category : #accessing }
