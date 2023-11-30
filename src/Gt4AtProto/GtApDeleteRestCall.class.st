@@ -5,11 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-GtApDeleteRestCall class >> modelClass [
-	^ nil
-]
-
-{ #category : #accessing }
 GtApDeleteRestCall >> delete [
 	^ self subclassResponsibility
 ]
