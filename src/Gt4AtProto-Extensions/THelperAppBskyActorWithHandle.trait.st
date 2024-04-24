@@ -74,7 +74,7 @@ THelperAppBskyActorWithHandle >> gtViewCardPostsFor: aView [
 	<gtView>
 	^ aView explicit
 		title: 'Post cards';
-		priority: 2;
+		priority: 0;
 		stencil: [ BrSimpleList new
 				stream: self posts;
 				itemStencil: [ GtApFeedPostSummaryElement new withShadowAndHighlighting ];
