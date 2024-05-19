@@ -10,8 +10,8 @@ GtApHomeSection >> lepiterCard [
 	<gtExample>
 	<notest>
 	^ GtHomeCard lepiterBaseWithTableOfContents
-		title: 'AT Proto documentation';
-		description: 'Read the documentation';
+		title: 'GT for ATProto docs';
+		description: 'Read the docs';
 		priority: 10;
 		pageName: 'About Glamorous Toolkit for AT Protocol';
 		databaseName: 'gt4atproto-lepiter';
