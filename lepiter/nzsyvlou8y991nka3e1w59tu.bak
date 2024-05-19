@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T12:06:24.659026+02:00"
+						"dateAndTimeString" : "2024-05-19T19:05:10.463527+02:00"
 					}
 				},
 				"uid" : {
@@ -76,7 +76,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Let's explore these possibilities through a couple of examples. First, please initialize these variables with your preferred coordinates:"
+				"string" : "Let's explore these possibilities through a couple of examples. First, please initialize these variables with your preferred coordinates (please note that your user name is a url; the one below is a custom one; the default Bluesky users are of the form `xyz.bsky.social`):"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-20T22:49:31.640112+02:00"
+						"dateAndTimeString" : "2024-05-19T19:05:44.031491+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "vQ0MLC64DQCGFbkQBR1CCw=="
 				},
-				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'tudorgirba.com'.\npassword := Clipboard clipboardText asString \"app password\""
+				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'youruserna.bsky.social'.\npassword := Clipboard clipboardText asString \"app password\""
 			},
 			{
 				"__type" : "textSnippet",
@@ -245,7 +245,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-05-16T14:23:43.694681+02:00"
+						"dateAndTimeString" : "2023-05-23T12:54:30.823496+02:00"
 					}
 				},
 				"uid" : {
@@ -255,7 +255,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The query above is nice but it depends on strings and it returns generic dictionaries. You can do much better.  {{gtClass:GtApGeneratedClient}}  provides higher level query API. This client was generated as described in [[Importing lexicons and generating code]]."
+				"string" : "The query above is nice but it depends on strings and it returns generic dictionaries. You can do much better.  {{gtClass:GtApGeneratedClient}}  provides higher level query API. This client was generated as described in [[Generating code from lexicons]]."
 			},
 			{
 				"__type" : "textSnippet",

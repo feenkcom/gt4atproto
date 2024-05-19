@@ -1,22 +1,20 @@
 Class {
 	#name : #GtApHomeSection,
-	#superclass : #GtHomeSection,
+	#superclass : #GtHomeMultiCardSection,
 	#category : #'Gt4AtProto-UI'
 }
 
 { #category : #accessing }
-GtApHomeSection >> create [
-	| sectionContainer cardsContainer |
-	sectionContainer := self newSectionContainer.
-	sectionContainer addChild: (self newSectionTitle: 'AT Protocol').
-	cardsContainer := self newCardsContainer.
-	cardsContainer
-		addChild: (self
-				newLepiterPageCardForPageNamed: 'About Glamorous Toolkit for AT Protocol'
-				inDatabaseNamed: 'gt4atproto-lepiter'
-				withTitle: 'AT Protocol knowledge base'
-				andDescription: 'Read the knowledge base related to the environment for AT Protocol').
-
-	sectionContainer addChild: cardsContainer.
-	^ sectionContainer
+GtApHomeSection >> lepiterCard [
+	<gtSectionCard>
+	<gtExample>
+	<notest>
+	^ GtHomeCard lepiterBaseWithTableOfContents
+		title: 'AT Proto documentation';
+		description: 'Read the documentation';
+		priority: 10;
+		pageName: 'About Glamorous Toolkit for AT Protocol';
+		databaseName: 'gt4atproto-lepiter';
+		details: [ :db | 
+			'This knowledge base documents the interactions with the AT Proto protocol and the Bluesky social network.' ]
 ]
