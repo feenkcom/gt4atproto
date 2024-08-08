@@ -37,7 +37,7 @@ GtApDefinitionsBuilder >> buildUsing: aModel [
 								model: aModel
 								addMethod: self prefix
 										, 'Description
- ^ ''' , (aDefinition description ifNil: [ '' ]) , ''''
+ ^  ' , (aDefinition description ifNil: [ '' ]) printString
 								toClass: (aModel classNamed: className asSymbol) classSide
 								inProtocols: {'accessing'}) primitiveExecute.
 

@@ -21,7 +21,9 @@ GtApDefinitionFromRequestBuilder >> accessorPrefix: anObject [
 GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
 	^ 'fromRequest: aRequest
 	^ self new
-		rawData: aRequest;
+		rawData: aRequest'
+		, (aDefinition properties ifEmpty: [ '' ] ifNotEmpty: [ ';' ])
+		, '
 		'
 		, ('; 
 		'
@@ -30,7 +32,8 @@ GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
 							| aKey aChildDefinition |
 							aKey := anAssociation key.
 							aChildDefinition := anAssociation value.
-							self accessorPrefix , aKey asCamelCase , ': (', (aChildDefinition buildFromRequestWithKey: aKey), ')' ]))
+							self accessorPrefix , aKey asCamelCase , ': ('
+								, (aChildDefinition buildFromRequestWithKey: aKey) , ')' ]))
 ]
 
 { #category : #accessing }
