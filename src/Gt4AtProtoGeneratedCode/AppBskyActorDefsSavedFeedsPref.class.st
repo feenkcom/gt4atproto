@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpPinned',
-		'atpSaved'
+		'atpSaved',
+		'atpTimelineIndex'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -66,6 +67,17 @@ AppBskyActorDefsSavedFeedsPref >> atpSaved: anObject [
 	atpSaved := anObject
 ]
 
+{ #category : #accessing }
+AppBskyActorDefsSavedFeedsPref >> atpTimelineIndex [
+	<atpType:#Number format:nil>
+	^ atpTimelineIndex
+]
+
+{ #category : #accessing }
+AppBskyActorDefsSavedFeedsPref >> atpTimelineIndex: anObject [
+	atpTimelineIndex := anObject
+]
+
 { #category : #magritte }
 AppBskyActorDefsSavedFeedsPref >> pinnedDescription [
 	<magritteDescription>
@@ -84,4 +96,12 @@ AppBskyActorDefsSavedFeedsPref >> savedDescription [
 		label: 'Saved';
 		accessor: #atpSaved;
 		beRequired
+]
+
+{ #category : #magritte }
+AppBskyActorDefsSavedFeedsPref >> timelineIndexDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'TimelineIndex';
+		accessor: #atpTimelineIndex
 ]

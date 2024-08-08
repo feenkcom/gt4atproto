@@ -11,7 +11,9 @@ Class {
 		'atpDescriptionFacets',
 		'atpAvatar',
 		'atpViewer',
-		'atpIndexedAt'
+		'atpIndexedAt',
+		'atpListItemCount',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -134,6 +136,29 @@ AppBskyGraphDefsListView >> atpIndexedAt: anObject [
 ]
 
 { #category : #accessing }
+AppBskyGraphDefsListView >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
+	^ atpLabels
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListView >> atpLabels: anObject [
+	atpLabels := anObject
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListView >> atpListItemCount [
+	<atpType:#Number format:nil>
+	^ atpListItemCount
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListView >> atpListItemCount: anObject [
+	atpListItemCount := anObject
+]
+
+{ #category : #accessing }
 AppBskyGraphDefsListView >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
@@ -231,6 +256,23 @@ AppBskyGraphDefsListView >> indexedAtDescription [
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
 		beRequired
+]
+
+{ #category : #magritte }
+AppBskyGraphDefsListView >> labelsDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {ComAtprotoLabelDefsLabel};
+		label: 'Labels';
+		accessor: #atpLabels
+]
+
+{ #category : #magritte }
+AppBskyGraphDefsListView >> listItemCountDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'ListItemCount';
+		accessor: #atpListItemCount
 ]
 
 { #category : #magritte }

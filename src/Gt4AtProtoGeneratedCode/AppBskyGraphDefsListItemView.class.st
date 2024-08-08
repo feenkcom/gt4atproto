@@ -2,7 +2,8 @@ Class {
 	#name : #AppBskyGraphDefsListItemView,
 	#superclass : #GtApModelEntity,
 	#instVars : [
-		'atpSubject'
+		'atpSubject',
+		'atpUri'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -50,11 +51,31 @@ AppBskyGraphDefsListItemView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
+{ #category : #accessing }
+AppBskyGraphDefsListItemView >> atpUri [
+	<atpType:#String format:'at-uri'>
+	^ atpUri
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListItemView >> atpUri: anObject [
+	atpUri := anObject
+]
+
 { #category : #magritte }
 AppBskyGraphDefsListItemView >> subjectDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		label: 'Subject';
 		accessor: #atpSubject;
+		beRequired
+]
+
+{ #category : #magritte }
+AppBskyGraphDefsListItemView >> uriDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Uri';
+		accessor: #atpUri;
 		beRequired
 ]

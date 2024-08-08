@@ -15,7 +15,10 @@ Class {
 		'atpPostsCount',
 		'atpIndexedAt',
 		'atpViewer',
-		'atpLabels'
+		'atpLabels',
+		'atpAssociated',
+		'atpJoinedViaStarterPack',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -64,6 +67,27 @@ AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
+{ #category : #magritte }
+AppBskyActorDefsProfileViewDetailed >> associatedDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'Associated';
+		accessor: #atpAssociated
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpAssociated [
+	<referenceTo:'#profileAssociated'>
+	<atpType:#AppBskyActorDefsProfileAssociated format:nil>
+	^ atpAssociated
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpAssociated: anObject [
+	<referenceTo:'#profileAssociated'>
+	atpAssociated := anObject
+]
+
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpAvatar [
 	<atpType:#String format:nil>
@@ -84,6 +108,17 @@ AppBskyActorDefsProfileViewDetailed >> atpBanner [
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpBanner: anObject [
 	atpBanner := anObject
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpCreatedAt [
+	<atpType:#String format:'datetime'>
+	^ atpCreatedAt
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
@@ -164,6 +199,19 @@ AppBskyActorDefsProfileViewDetailed >> atpIndexedAt: anObject [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpJoinedViaStarterPack [
+	<referenceTo:'app.bsky.graph.defs#starterPackViewBasic'>
+	<atpType:#AppBskyGraphDefsStarterPackViewBasic format:nil>
+	^ atpJoinedViaStarterPack
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpJoinedViaStarterPack: anObject [
+	<referenceTo:'app.bsky.graph.defs#starterPackViewBasic'>
+	atpJoinedViaStarterPack := anObject
+]
+
+{ #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
@@ -213,6 +261,14 @@ AppBskyActorDefsProfileViewDetailed >> bannerDescription [
 	^ MAStringDescription new
 		label: 'Banner';
 		accessor: #atpBanner
+]
+
+{ #category : #magritte }
+AppBskyActorDefsProfileViewDetailed >> createdAtDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'CreatedAt';
+		accessor: #atpCreatedAt
 ]
 
 { #category : #magritte }
@@ -271,6 +327,14 @@ AppBskyActorDefsProfileViewDetailed >> indexedAtDescription [
 	^ MAStringDescription new
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt
+]
+
+{ #category : #magritte }
+AppBskyActorDefsProfileViewDetailed >> joinedViaStarterPackDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'JoinedViaStarterPack';
+		accessor: #atpJoinedViaStarterPack
 ]
 
 { #category : #magritte }

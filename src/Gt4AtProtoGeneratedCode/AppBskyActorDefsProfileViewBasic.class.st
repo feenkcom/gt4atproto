@@ -7,7 +7,9 @@ Class {
 		'atpDisplayName',
 		'atpAvatar',
 		'atpViewer',
-		'atpLabels'
+		'atpLabels',
+		'atpAssociated',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -50,6 +52,27 @@ AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
+{ #category : #magritte }
+AppBskyActorDefsProfileViewBasic >> associatedDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'Associated';
+		accessor: #atpAssociated
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewBasic >> atpAssociated [
+	<referenceTo:'#profileAssociated'>
+	<atpType:#AppBskyActorDefsProfileAssociated format:nil>
+	^ atpAssociated
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewBasic >> atpAssociated: anObject [
+	<referenceTo:'#profileAssociated'>
+	atpAssociated := anObject
+]
+
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpAvatar [
 	<atpType:#String format:nil>
@@ -59,6 +82,17 @@ AppBskyActorDefsProfileViewBasic >> atpAvatar [
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpAvatar: anObject [
 	atpAvatar := anObject
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewBasic >> atpCreatedAt [
+	<atpType:#String format:'datetime'>
+	^ atpCreatedAt
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewBasic >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
 ]
 
 { #category : #accessing }
@@ -125,6 +159,14 @@ AppBskyActorDefsProfileViewBasic >> avatarDescription [
 	^ MAStringDescription new
 		label: 'Avatar';
 		accessor: #atpAvatar
+]
+
+{ #category : #magritte }
+AppBskyActorDefsProfileViewBasic >> createdAtDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'CreatedAt';
+		accessor: #atpCreatedAt
 ]
 
 { #category : #magritte }

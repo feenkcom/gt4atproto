@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpPost',
-		'atpReason'
+		'atpReason',
+		'atpFeedContext'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -45,6 +46,17 @@ AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsSkeletonFeedPost >> atpFeedContext [
+	<atpType:#String format:nil>
+	^ atpFeedContext
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsSkeletonFeedPost >> atpFeedContext: anObject [
+	atpFeedContext := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsSkeletonFeedPost >> atpPost [
 	<atpType:#String format:'at-uri'>
 	^ atpPost
@@ -64,6 +76,14 @@ AppBskyFeedDefsSkeletonFeedPost >> atpReason [
 { #category : #accessing }
 AppBskyFeedDefsSkeletonFeedPost >> atpReason: anObject [
 	atpReason := anObject
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsSkeletonFeedPost >> feedContextDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'FeedContext';
+		accessor: #atpFeedContext
 ]
 
 { #category : #magritte }

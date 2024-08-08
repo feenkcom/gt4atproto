@@ -8,7 +8,9 @@ Class {
 		'atpDescription',
 		'atpAvatar',
 		'atpBanner',
-		'atpLabels'
+		'atpLabels',
+		'atpJoinedViaStarterPack',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -66,6 +68,17 @@ AppBskyActorProfileMain >> atpBanner: anObject [
 ]
 
 { #category : #accessing }
+AppBskyActorProfileMain >> atpCreatedAt [
+	<atpType:#String format:'datetime'>
+	^ atpCreatedAt
+]
+
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpCreatedAt: anObject [
+	atpCreatedAt := anObject
+]
+
+{ #category : #accessing }
 AppBskyActorProfileMain >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
@@ -85,6 +98,19 @@ AppBskyActorProfileMain >> atpDisplayName [
 { #category : #accessing }
 AppBskyActorProfileMain >> atpDisplayName: anObject [
 	atpDisplayName := anObject
+]
+
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpJoinedViaStarterPack [
+	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
+	^ atpJoinedViaStarterPack
+]
+
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpJoinedViaStarterPack: anObject [
+	<referenceTo:'com.atproto.repo.strongRef'>
+	atpJoinedViaStarterPack := anObject
 ]
 
 { #category : #accessing }
@@ -115,6 +141,14 @@ AppBskyActorProfileMain >> bannerDescription [
 ]
 
 { #category : #magritte }
+AppBskyActorProfileMain >> createdAtDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'CreatedAt';
+		accessor: #atpCreatedAt
+]
+
+{ #category : #magritte }
 AppBskyActorProfileMain >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -128,6 +162,14 @@ AppBskyActorProfileMain >> displayNameDescription [
 	^ MAStringDescription new
 		label: 'DisplayName';
 		accessor: #atpDisplayName
+]
+
+{ #category : #magritte }
+AppBskyActorProfileMain >> joinedViaStarterPackDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'JoinedViaStarterPack';
+		accessor: #atpJoinedViaStarterPack
 ]
 
 { #category : #magritte }

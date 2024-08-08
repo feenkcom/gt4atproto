@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRoot',
-		'atpParent'
+		'atpParent',
+		'atpGrandparentAuthor'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -57,6 +58,19 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsReplyRef >> atpGrandparentAuthor [
+	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
+	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
+	^ atpGrandparentAuthor
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsReplyRef >> atpGrandparentAuthor: anObject [
+	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
+	atpGrandparentAuthor := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpParent [
 	<atpType:#(AppBskyFeedDefsPostView AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpParent
@@ -76,6 +90,14 @@ AppBskyFeedDefsReplyRef >> atpRoot [
 { #category : #accessing }
 AppBskyFeedDefsReplyRef >> atpRoot: anObject [
 	atpRoot := anObject
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsReplyRef >> grandparentAuthorDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'GrandparentAuthor';
+		accessor: #atpGrandparentAuthor
 ]
 
 { #category : #magritte }

@@ -6,7 +6,8 @@ Class {
 	#instVars : [
 		'atpThumb',
 		'atpFullsize',
-		'atpAlt'
+		'atpAlt',
+		'atpAspectRatio'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -49,6 +50,14 @@ AppBskyEmbedImagesViewImage >> altDescription [
 		beRequired
 ]
 
+{ #category : #magritte }
+AppBskyEmbedImagesViewImage >> aspectRatioDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'AspectRatio';
+		accessor: #atpAspectRatio
+]
+
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpAlt [
 	<atpType:#String format:nil>
@@ -58,6 +67,19 @@ AppBskyEmbedImagesViewImage >> atpAlt [
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpAlt: anObject [
 	atpAlt := anObject
+]
+
+{ #category : #accessing }
+AppBskyEmbedImagesViewImage >> atpAspectRatio [
+	<referenceTo:'#aspectRatio'>
+	<atpType:#AppBskyEmbedImagesAspectRatio format:nil>
+	^ atpAspectRatio
+]
+
+{ #category : #accessing }
+AppBskyEmbedImagesViewImage >> atpAspectRatio: anObject [
+	<referenceTo:'#aspectRatio'>
+	atpAspectRatio := anObject
 ]
 
 { #category : #accessing }

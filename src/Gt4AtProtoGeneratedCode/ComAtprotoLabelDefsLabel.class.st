@@ -7,7 +7,10 @@ Class {
 		'atpCid',
 		'atpVal',
 		'atpNeg',
-		'atpCts'
+		'atpCts',
+		'atpVer',
+		'atpExp',
+		'atpSig'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -67,6 +70,17 @@ ComAtprotoLabelDefsLabel >> atpCts: anObject [
 ]
 
 { #category : #accessing }
+ComAtprotoLabelDefsLabel >> atpExp [
+	<atpType:#String format:'datetime'>
+	^ atpExp
+]
+
+{ #category : #accessing }
+ComAtprotoLabelDefsLabel >> atpExp: anObject [
+	atpExp := anObject
+]
+
+{ #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpNeg [
 	<atpType:#Boolean format:nil>
 	^ atpNeg
@@ -75,6 +89,17 @@ ComAtprotoLabelDefsLabel >> atpNeg [
 { #category : #accessing }
 ComAtprotoLabelDefsLabel >> atpNeg: anObject [
 	atpNeg := anObject
+]
+
+{ #category : #accessing }
+ComAtprotoLabelDefsLabel >> atpSig [
+	<atpType:#ByteArray format:nil>
+	^ atpSig
+]
+
+{ #category : #accessing }
+ComAtprotoLabelDefsLabel >> atpSig: anObject [
+	atpSig := anObject
 ]
 
 { #category : #accessing }
@@ -110,6 +135,17 @@ ComAtprotoLabelDefsLabel >> atpVal: anObject [
 	atpVal := anObject
 ]
 
+{ #category : #accessing }
+ComAtprotoLabelDefsLabel >> atpVer [
+	<atpType:#Number format:nil>
+	^ atpVer
+]
+
+{ #category : #accessing }
+ComAtprotoLabelDefsLabel >> atpVer: anObject [
+	atpVer := anObject
+]
+
 { #category : #magritte }
 ComAtprotoLabelDefsLabel >> cidDescription [
 	<magritteDescription>
@@ -128,11 +164,27 @@ ComAtprotoLabelDefsLabel >> ctsDescription [
 ]
 
 { #category : #magritte }
+ComAtprotoLabelDefsLabel >> expDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Exp';
+		accessor: #atpExp
+]
+
+{ #category : #magritte }
 ComAtprotoLabelDefsLabel >> negDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		label: 'Neg';
 		accessor: #atpNeg
+]
+
+{ #category : #magritte }
+ComAtprotoLabelDefsLabel >> sigDescription [
+	<magritteDescription>
+	^ MAFileDescription new
+		label: 'Sig';
+		accessor: #atpSig
 ]
 
 { #category : #magritte }
@@ -160,4 +212,12 @@ ComAtprotoLabelDefsLabel >> valDescription [
 		label: 'Val';
 		accessor: #atpVal;
 		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoLabelDefsLabel >> verDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'Ver';
+		accessor: #atpVer
 ]

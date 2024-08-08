@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpLabel',
-		'atpVisibility'
+		'atpVisibility',
+		'atpLabelerDid'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -48,6 +49,17 @@ AppBskyActorDefsContentLabelPref >> atpLabel: anObject [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsContentLabelPref >> atpLabelerDid [
+	<atpType:#String format:'did'>
+	^ atpLabelerDid
+]
+
+{ #category : #accessing }
+AppBskyActorDefsContentLabelPref >> atpLabelerDid: anObject [
+	atpLabelerDid := anObject
+]
+
+{ #category : #accessing }
 AppBskyActorDefsContentLabelPref >> atpVisibility [
 	<atpType:#String format:nil>
 	^ atpVisibility
@@ -65,6 +77,14 @@ AppBskyActorDefsContentLabelPref >> labelDescription [
 		label: 'Label';
 		accessor: #atpLabel;
 		beRequired
+]
+
+{ #category : #magritte }
+AppBskyActorDefsContentLabelPref >> labelerDidDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'LabelerDid';
+		accessor: #atpLabelerDid
 ]
 
 { #category : #magritte }

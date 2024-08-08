@@ -12,7 +12,8 @@ Class {
 		'atpLikeCount',
 		'atpIndexedAt',
 		'atpViewer',
-		'atpLabels'
+		'atpLabels',
+		'atpThreadgate'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -180,6 +181,19 @@ AppBskyFeedDefsPostView >> atpRepostCount: anObject [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsPostView >> atpThreadgate [
+	<referenceTo:'#threadgateView'>
+	<atpType:#AppBskyFeedDefsThreadgateView format:nil>
+	^ atpThreadgate
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsPostView >> atpThreadgate: anObject [
+	<referenceTo:'#threadgateView'>
+	atpThreadgate := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsPostView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
@@ -282,6 +296,14 @@ AppBskyFeedDefsPostView >> repostCountDescription [
 	^ MANumberDescription new
 		label: 'RepostCount';
 		accessor: #atpRepostCount
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsPostView >> threadgateDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'Threadgate';
+		accessor: #atpThreadgate
 ]
 
 { #category : #magritte }

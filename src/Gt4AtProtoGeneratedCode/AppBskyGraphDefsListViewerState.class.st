@@ -2,7 +2,8 @@ Class {
 	#name : #AppBskyGraphDefsListViewerState,
 	#superclass : #GtApModelEntity,
 	#instVars : [
-		'atpMuted'
+		'atpMuted',
+		'atpBlocked'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -35,6 +36,17 @@ AppBskyGraphDefsListViewerState class >> fromRequest: aRequest [
 ]
 
 { #category : #accessing }
+AppBskyGraphDefsListViewerState >> atpBlocked [
+	<atpType:#String format:'at-uri'>
+	^ atpBlocked
+]
+
+{ #category : #accessing }
+AppBskyGraphDefsListViewerState >> atpBlocked: anObject [
+	atpBlocked := anObject
+]
+
+{ #category : #accessing }
 AppBskyGraphDefsListViewerState >> atpMuted [
 	<atpType:#Boolean format:nil>
 	^ atpMuted
@@ -43,6 +55,14 @@ AppBskyGraphDefsListViewerState >> atpMuted [
 { #category : #accessing }
 AppBskyGraphDefsListViewerState >> atpMuted: anObject [
 	atpMuted := anObject
+]
+
+{ #category : #magritte }
+AppBskyGraphDefsListViewerState >> blockedDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Blocked';
+		accessor: #atpBlocked
 ]
 
 { #category : #magritte }

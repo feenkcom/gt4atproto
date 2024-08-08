@@ -3,7 +3,10 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpDid',
-		'atpHead'
+		'atpHead',
+		'atpRev',
+		'atpActive',
+		'atpStatus'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -36,6 +39,25 @@ ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
 		atpHead: (aRequest at: 'head' ifAbsent: [ nil ])
 ]
 
+{ #category : #magritte }
+ComAtprotoSyncListReposRepo >> activeDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'Active';
+		accessor: #atpActive
+]
+
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo >> atpActive [
+	<atpType:#Boolean format:nil>
+	^ atpActive
+]
+
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo >> atpActive: anObject [
+	atpActive := anObject
+]
+
 { #category : #accessing }
 ComAtprotoSyncListReposRepo >> atpDid [
 	<atpType:#String format:'did'>
@@ -58,6 +80,28 @@ ComAtprotoSyncListReposRepo >> atpHead: anObject [
 	atpHead := anObject
 ]
 
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo >> atpRev [
+	<atpType:#String format:nil>
+	^ atpRev
+]
+
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo >> atpRev: anObject [
+	atpRev := anObject
+]
+
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo >> atpStatus [
+	<atpType:#String format:nil>
+	^ atpStatus
+]
+
+{ #category : #accessing }
+ComAtprotoSyncListReposRepo >> atpStatus: anObject [
+	atpStatus := anObject
+]
+
 { #category : #magritte }
 ComAtprotoSyncListReposRepo >> didDescription [
 	<magritteDescription>
@@ -74,4 +118,21 @@ ComAtprotoSyncListReposRepo >> headDescription [
 		label: 'Head';
 		accessor: #atpHead;
 		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoSyncListReposRepo >> revDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Rev';
+		accessor: #atpRev;
+		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoSyncListReposRepo >> statusDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Status';
+		accessor: #atpStatus
 ]

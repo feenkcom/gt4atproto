@@ -8,7 +8,8 @@ Class {
 		'atpDescriptionFacets',
 		'atpAvatar',
 		'atpCreatedAt',
-		'atpLabels'
+		'atpLabels',
+		'atpAcceptsInteractions'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -46,6 +47,25 @@ AppBskyFeedGeneratorMain class >> fromRequest: aRequest [
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+]
+
+{ #category : #magritte }
+AppBskyFeedGeneratorMain >> acceptsInteractionsDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'AcceptsInteractions';
+		accessor: #atpAcceptsInteractions
+]
+
+{ #category : #accessing }
+AppBskyFeedGeneratorMain >> atpAcceptsInteractions [
+	<atpType:#Boolean format:nil>
+	^ atpAcceptsInteractions
+]
+
+{ #category : #accessing }
+AppBskyFeedGeneratorMain >> atpAcceptsInteractions: anObject [
+	atpAcceptsInteractions := anObject
 ]
 
 { #category : #accessing }

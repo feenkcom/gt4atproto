@@ -6,7 +6,8 @@ Class {
 	#instVars : [
 		'atpPost',
 		'atpReply',
-		'atpReason'
+		'atpReason',
+		'atpFeedContext'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -54,6 +55,17 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsFeedViewPost >> atpFeedContext [
+	<atpType:#String format:nil>
+	^ atpFeedContext
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsFeedViewPost >> atpFeedContext: anObject [
+	atpFeedContext := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpPost [
 	<referenceTo:'#postView'>
 	<atpType:#AppBskyFeedDefsPostView format:nil>
@@ -88,6 +100,14 @@ AppBskyFeedDefsFeedViewPost >> atpReply [
 AppBskyFeedDefsFeedViewPost >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
 	atpReply := anObject
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsFeedViewPost >> feedContextDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'FeedContext';
+		accessor: #atpFeedContext
 ]
 
 { #category : #magritte }

@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'atpName',
 		'atpPassword',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpPrivileged'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -71,6 +72,17 @@ ComAtprotoServerCreateAppPasswordAppPassword >> atpPassword: anObject [
 	atpPassword := anObject
 ]
 
+{ #category : #accessing }
+ComAtprotoServerCreateAppPasswordAppPassword >> atpPrivileged [
+	<atpType:#Boolean format:nil>
+	^ atpPrivileged
+]
+
+{ #category : #accessing }
+ComAtprotoServerCreateAppPasswordAppPassword >> atpPrivileged: anObject [
+	atpPrivileged := anObject
+]
+
 { #category : #magritte }
 ComAtprotoServerCreateAppPasswordAppPassword >> createdAtDescription [
 	<magritteDescription>
@@ -96,4 +108,12 @@ ComAtprotoServerCreateAppPasswordAppPassword >> passwordDescription [
 		label: 'Password';
 		accessor: #atpPassword;
 		beRequired
+]
+
+{ #category : #magritte }
+ComAtprotoServerCreateAppPasswordAppPassword >> privilegedDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'Privileged';
+		accessor: #atpPrivileged
 ]

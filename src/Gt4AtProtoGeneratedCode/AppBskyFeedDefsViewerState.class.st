@@ -3,7 +3,9 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpRepost',
-		'atpLike'
+		'atpLike',
+		'atpThreadMuted',
+		'atpReplyDisabled'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -48,6 +50,17 @@ AppBskyFeedDefsViewerState >> atpLike: anObject [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsViewerState >> atpReplyDisabled [
+	<atpType:#Boolean format:nil>
+	^ atpReplyDisabled
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsViewerState >> atpReplyDisabled: anObject [
+	atpReplyDisabled := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsViewerState >> atpRepost [
 	<atpType:#String format:'at-uri'>
 	^ atpRepost
@@ -56,6 +69,17 @@ AppBskyFeedDefsViewerState >> atpRepost [
 { #category : #accessing }
 AppBskyFeedDefsViewerState >> atpRepost: anObject [
 	atpRepost := anObject
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsViewerState >> atpThreadMuted [
+	<atpType:#Boolean format:nil>
+	^ atpThreadMuted
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsViewerState >> atpThreadMuted: anObject [
+	atpThreadMuted := anObject
 ]
 
 { #category : #magritte }
@@ -67,9 +91,25 @@ AppBskyFeedDefsViewerState >> likeDescription [
 ]
 
 { #category : #magritte }
+AppBskyFeedDefsViewerState >> replyDisabledDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'ReplyDisabled';
+		accessor: #atpReplyDisabled
+]
+
+{ #category : #magritte }
 AppBskyFeedDefsViewerState >> repostDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Repost';
 		accessor: #atpRepost
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsViewerState >> threadMutedDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'ThreadMuted';
+		accessor: #atpThreadMuted
 ]

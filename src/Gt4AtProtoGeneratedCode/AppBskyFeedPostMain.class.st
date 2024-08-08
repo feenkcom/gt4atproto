@@ -11,7 +11,8 @@ Class {
 		'atpEmbed',
 		'atpLangs',
 		'atpCreatedAt',
-		'atpLabels'
+		'atpLabels',
+		'atpTags'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -155,6 +156,18 @@ AppBskyFeedPostMain >> atpReply: anObject [
 ]
 
 { #category : #accessing }
+AppBskyFeedPostMain >> atpTags [
+	<atpType:#String format:nil>
+	<atpCollection>
+	^ atpTags
+]
+
+{ #category : #accessing }
+AppBskyFeedPostMain >> atpTags: anObject [
+	atpTags := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedPostMain >> atpText [
 	<atpType:#String format:nil>
 	^ atpText
@@ -228,6 +241,15 @@ AppBskyFeedPostMain >> replyDescription [
 	^ MAToOneRelationDescription new
 		label: 'Reply';
 		accessor: #atpReply
+]
+
+{ #category : #magritte }
+AppBskyFeedPostMain >> tagsDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {String};
+		label: 'Tags';
+		accessor: #atpTags
 ]
 
 { #category : #magritte }

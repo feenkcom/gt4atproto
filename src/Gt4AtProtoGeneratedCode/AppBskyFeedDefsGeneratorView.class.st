@@ -12,7 +12,9 @@ Class {
 		'atpAvatar',
 		'atpLikeCount',
 		'atpViewer',
-		'atpIndexedAt'
+		'atpIndexedAt',
+		'atpAcceptsInteractions',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -61,6 +63,25 @@ AppBskyFeedDefsGeneratorView class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | AppBskyFeedDefsGeneratorViewerState fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsGeneratorView >> acceptsInteractionsDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'AcceptsInteractions';
+		accessor: #atpAcceptsInteractions
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsGeneratorView >> atpAcceptsInteractions [
+	<atpType:#Boolean format:nil>
+	^ atpAcceptsInteractions
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsGeneratorView >> atpAcceptsInteractions: anObject [
+	atpAcceptsInteractions := anObject
 ]
 
 { #category : #accessing }
@@ -152,6 +173,18 @@ AppBskyFeedDefsGeneratorView >> atpIndexedAt [
 { #category : #accessing }
 AppBskyFeedDefsGeneratorView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsGeneratorView >> atpLabels [
+	<atpType:#ComAtprotoLabelDefsLabel format:nil>
+	<atpCollection>
+	^ atpLabels
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsGeneratorView >> atpLabels: anObject [
+	atpLabels := anObject
 ]
 
 { #category : #accessing }
@@ -257,6 +290,15 @@ AppBskyFeedDefsGeneratorView >> indexedAtDescription [
 		label: 'IndexedAt';
 		accessor: #atpIndexedAt;
 		beRequired
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsGeneratorView >> labelsDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {ComAtprotoLabelDefsLabel};
+		label: 'Labels';
+		accessor: #atpLabels
 ]
 
 { #category : #magritte }

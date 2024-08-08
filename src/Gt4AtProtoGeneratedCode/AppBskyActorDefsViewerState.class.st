@@ -7,7 +7,9 @@ Class {
 		'atpBlockedBy',
 		'atpBlocking',
 		'atpFollowing',
-		'atpFollowedBy'
+		'atpFollowedBy',
+		'atpBlockingByList',
+		'atpKnownFollowers'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -70,6 +72,19 @@ AppBskyActorDefsViewerState >> atpBlocking: anObject [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsViewerState >> atpBlockingByList [
+	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
+	<atpType:#AppBskyGraphDefsListViewBasic format:nil>
+	^ atpBlockingByList
+]
+
+{ #category : #accessing }
+AppBskyActorDefsViewerState >> atpBlockingByList: anObject [
+	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
+	atpBlockingByList := anObject
+]
+
+{ #category : #accessing }
 AppBskyActorDefsViewerState >> atpFollowedBy [
 	<atpType:#String format:'at-uri'>
 	^ atpFollowedBy
@@ -89,6 +104,19 @@ AppBskyActorDefsViewerState >> atpFollowing [
 { #category : #accessing }
 AppBskyActorDefsViewerState >> atpFollowing: anObject [
 	atpFollowing := anObject
+]
+
+{ #category : #accessing }
+AppBskyActorDefsViewerState >> atpKnownFollowers [
+	<referenceTo:'#knownFollowers'>
+	<atpType:#AppBskyActorDefsKnownFollowers format:nil>
+	^ atpKnownFollowers
+]
+
+{ #category : #accessing }
+AppBskyActorDefsViewerState >> atpKnownFollowers: anObject [
+	<referenceTo:'#knownFollowers'>
+	atpKnownFollowers := anObject
 ]
 
 { #category : #accessing }
@@ -124,6 +152,14 @@ AppBskyActorDefsViewerState >> blockedByDescription [
 ]
 
 { #category : #magritte }
+AppBskyActorDefsViewerState >> blockingByListDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'BlockingByList';
+		accessor: #atpBlockingByList
+]
+
+{ #category : #magritte }
 AppBskyActorDefsViewerState >> blockingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -145,6 +181,14 @@ AppBskyActorDefsViewerState >> followingDescription [
 	^ MAStringDescription new
 		label: 'Following';
 		accessor: #atpFollowing
+]
+
+{ #category : #magritte }
+AppBskyActorDefsViewerState >> knownFollowersDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'KnownFollowers';
+		accessor: #atpKnownFollowers
 ]
 
 { #category : #magritte }

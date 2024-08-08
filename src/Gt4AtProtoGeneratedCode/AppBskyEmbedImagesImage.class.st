@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpImage',
-		'atpAlt'
+		'atpAlt',
+		'atpAspectRatio'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -45,6 +46,14 @@ AppBskyEmbedImagesImage >> altDescription [
 		beRequired
 ]
 
+{ #category : #magritte }
+AppBskyEmbedImagesImage >> aspectRatioDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'AspectRatio';
+		accessor: #atpAspectRatio
+]
+
 { #category : #accessing }
 AppBskyEmbedImagesImage >> atpAlt [
 	<atpType:#String format:nil>
@@ -54,6 +63,19 @@ AppBskyEmbedImagesImage >> atpAlt [
 { #category : #accessing }
 AppBskyEmbedImagesImage >> atpAlt: anObject [
 	atpAlt := anObject
+]
+
+{ #category : #accessing }
+AppBskyEmbedImagesImage >> atpAspectRatio [
+	<referenceTo:'#aspectRatio'>
+	<atpType:#AppBskyEmbedImagesAspectRatio format:nil>
+	^ atpAspectRatio
+]
+
+{ #category : #accessing }
+AppBskyEmbedImagesImage >> atpAspectRatio: anObject [
+	<referenceTo:'#aspectRatio'>
+	atpAspectRatio := anObject
 ]
 
 { #category : #accessing }

@@ -8,7 +8,10 @@ Class {
 		'atpValue',
 		'atpLabels',
 		'atpEmbeds',
-		'atpIndexedAt'
+		'atpIndexedAt',
+		'atpReplyCount',
+		'atpRepostCount',
+		'atpLikeCount'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -125,6 +128,39 @@ AppBskyEmbedRecordViewRecord >> atpLabels: anObject [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpLikeCount [
+	<atpType:#Number format:nil>
+	^ atpLikeCount
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpLikeCount: anObject [
+	atpLikeCount := anObject
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpReplyCount [
+	<atpType:#Number format:nil>
+	^ atpReplyCount
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpReplyCount: anObject [
+	atpReplyCount := anObject
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpRepostCount [
+	<atpType:#Number format:nil>
+	^ atpRepostCount
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpRepostCount: anObject [
+	atpRepostCount := anObject
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
@@ -190,6 +226,30 @@ AppBskyEmbedRecordViewRecord >> labelsDescription [
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
 		accessor: #atpLabels
+]
+
+{ #category : #magritte }
+AppBskyEmbedRecordViewRecord >> likeCountDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'LikeCount';
+		accessor: #atpLikeCount
+]
+
+{ #category : #magritte }
+AppBskyEmbedRecordViewRecord >> replyCountDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'ReplyCount';
+		accessor: #atpReplyCount
+]
+
+{ #category : #magritte }
+AppBskyEmbedRecordViewRecord >> repostCountDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'RepostCount';
+		accessor: #atpRepostCount
 ]
 
 { #category : #magritte }
