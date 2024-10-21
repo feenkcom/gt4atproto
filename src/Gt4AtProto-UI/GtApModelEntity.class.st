@@ -133,10 +133,7 @@ GtApModelEntity class >> paintDefinitionReferences: aCollectionOfDefinitions on:
 						toHead: (BlArrowheadSimpleArrow new border: lineColor) ] ];
 		connectToAll: [ :aDefinition | aDefinition customReferences ].
 
-	aView layout horizontalTree
-		levelDistance: 30;
-		nodeDistance: 10.
-
+	aView layout horizontalDominanceTree.
 	aView
 ]
 

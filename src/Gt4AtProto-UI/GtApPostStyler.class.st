@@ -72,12 +72,12 @@ GtApPostStyler >> privateStyle: aText [
 				ifTrue: [ aUrlText
 						attribute: (GtPlaygroundEvaluatedCodeViewButtonAttribute new
 								view: #gtCardFor:;
-								result: [ self postFromUrl: aToken value ];
+								result: (self postFromUrl: aToken value);
 								action: [ self snippetElement addEmbeddedPost: (self postFromUrl: aToken value) ]) ]
 				ifFalse: [ aUrlText
 						attribute: (GtPlaygroundEvaluatedCodeViewButtonAttribute new
 								view: #gtViewCardFor:;
-								result: [ GtApExternalWebsiteCard fromUrl: aToken value ];
+								result: (GtApExternalWebsiteCard fromUrl: aToken value);
 								action: [ self snippetElement addCard: (GtApExternalWebsiteCard fromUrl: aToken value) ]) ] ].
 
 	^ aText
