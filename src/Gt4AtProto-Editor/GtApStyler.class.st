@@ -103,23 +103,31 @@ GtApStyler >> styleReference: aStringNode in: txt [
 		ifNotNil: [ | position |
 			position := aStringNode stopPosition - 1.
 			self highlight: aStringNode in: txt.
-			txt
-				attribute: (BrTextAdornmentDynamicAttribute new
-						beAppend;
-						stencil: [ BrButton new
-								background: BrGlamorousColors defaultButtonBorderColor;
-								size: 8 @ 8;
-								geometry: BlEllipseGeometry new;
-								margin: (BlInsets left: 2 right: 2);
-								action: [ :button | 
-									block value
-										ifNotNil: [ :obj | 
-											button phlow
-												spawnTool: (GtPhlowValuableTool new
-														name: obj gtDisplayString;
-														valuable: [ GtApLexiconCoder new object: obj ]) ] ] ])
-				from: position
-				to: position ]
+			block value
+				ifNotNil: [ :obj | 
+					txt
+						attributes: {BrTextAdornmentDynamicAttribute new
+									beAppend;
+									stencil: [ BrButton new
+											background: BrGlamorousColors defaultButtonBorderColor;
+											size: 8 @ 8;
+											geometry: BlEllipseGeometry new;
+											margin: (BlInsets left: 2 right: 2);
+											action: [ :button | 
+												button phlow
+													spawnTool: (GtPhlowValuableTool new
+															name: obj gtDisplayString;
+															valuable: [ GtApLexiconCoder new object: obj ]) ] ].
+								BrGlamorousTriangleExpanderTextAttribute new
+									isExpanded: false;
+									attributesCreatingBlock: [ BrTextAdornmentDynamicAttribute new
+											beAppend;
+											stencil: [ GtApLexiconCoder new
+													object: obj;
+													background: Color white;
+													addAptitude: BrShadowAptitude ] ]}
+						from: position
+						to: position ] ]
 ]
 
 { #category : #private }
