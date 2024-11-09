@@ -74,11 +74,21 @@ GtApLexiconDirectoryModel >> files [
 									yourself ] ] ]
 ]
 
+{ #category : #'as yet unclassified' }
+GtApLexiconDirectoryModel >> gtCoderFor: aView [
+	<gtView>
+	^ aView explicit
+		title: 'Coder';
+		stencil: [ GtApLexiconCoder new object: self ]
+]
+
 { #category : #accessing }
 GtApLexiconDirectoryModel >> gtDefaultInspectorTool [
-	^ GtPhlowValuableTool new
-		name: self gtDisplayString;
-		valuable: [ GtApLexiconCoder new object: self ]
+	^ GtPhlowCompositeTool new
+		addTool: (GtPhlowValuableTool new
+				name: self gtDisplayString;
+				valuable: [ GtApLexiconCoder new object: self ]);
+		addTool: super gtDefaultInspectorTool
 ]
 
 { #category : #accessing }
@@ -108,6 +118,13 @@ GtApLexiconDirectoryModel >> gtDefinitionSearch: aSearch [
 												startingAt: 1
 												caseSensitive: false) > 0 ] ] ]) flatten ];
 		yourself
+]
+
+{ #category : #'as yet unclassified' }
+GtApLexiconDirectoryModel >> gtDisplayOn: stream [
+	stream
+		nextPutAll: 'Lexicons in ';
+		nextPutAll: self directory gtDisplayString
 ]
 
 { #category : #accessing }

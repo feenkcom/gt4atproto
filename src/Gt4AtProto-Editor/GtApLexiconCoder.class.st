@@ -141,8 +141,7 @@ GtApLexiconCoder >> initialize [
 GtApLexiconCoder >> initializeContent [
 	contentElement := BrHorizontalPane new
 			background: Color white;
-			aptitude: BrShadowAptitude new
-					+ (BrStyleCommonAptitude new
+			aptitude: (BrStyleCommonAptitude new
 							default: [ :aStyle | BlBorder paint: self theme default lightBorderColor width: 1 ];
 							focused: [ :aStyle | 
 								BlBorder
