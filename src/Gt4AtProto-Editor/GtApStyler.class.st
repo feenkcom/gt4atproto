@@ -123,6 +123,7 @@ GtApStyler >> styleReference: aStringNode in: txt [
 									attributesCreatingBlock: [ BrTextAdornmentDynamicAttribute new
 											beAppend;
 											stencil: [ GtApLexiconCoder new
+													shouldHaveSidebar: false;
 													object: obj;
 													background: Color white;
 													addAptitude: BrShadowAptitude ] ]}

@@ -5,7 +5,8 @@ Class {
 		'contentElement',
 		'sidebarElement',
 		'modified',
-		'lexiconObject'
+		'lexiconObject',
+		'shouldHaveSidebar'
 	],
 	#category : #'Gt4AtProto-Editor-View'
 }
@@ -120,6 +121,14 @@ GtApLexiconCoder >> createFilesTreeFor: obj [
 	^ tree
 ]
 
+{ #category : #initialization }
+GtApLexiconCoder >> createSidebarElement [
+	^ GtPhlowHorizontalSidebarElement new
+			beLeft;
+			matchParent;
+			background: BrGlamorousColors neutralBackgroundColor
+]
+
 { #category : #accessing }
 GtApLexiconCoder >> editorChangedTo: aString [
 	contentElement
@@ -128,11 +137,20 @@ GtApLexiconCoder >> editorChangedTo: aString [
 ]
 
 { #category : #initialization }
+GtApLexiconCoder >> hideSidebar [
+	shouldHaveSidebar ifFalse: [ ^ self ].
+	sidebarElement ifNil: [ ^ self ].
+	sidebarElement
+		hide";
+		removeFromParent"
+]
+
+{ #category : #initialization }
 GtApLexiconCoder >> initialize [
 	super initialize.
 	self matchParent.
-	self initializeSidebar.
 	self initializeContent.
+	self initializeSidebar.
 	self addChild: sidebarElement as: #sidebar.
 	self addChild: contentElement as: #content
 ]
@@ -154,14 +172,14 @@ GtApLexiconCoder >> initializeContent [
 
 { #category : #initialization }
 GtApLexiconCoder >> initializeSidebar [
+	shouldHaveSidebar := true.
 	sidebarElement := GtPhlowHorizontalSidebarElement new
 			beLeft;
 			matchParent;
 			background: BrGlamorousColors neutralBackgroundColor.
-	self
-		addAptitude: (GtPhlowToolDetailAptitude new
-				normal: [ :theInstance | sidebarElement hide ];
-				detailed: [ :theInstance | sidebarElement show ]).
+	self addAptitude: (GtPhlowToolDetailAptitude new
+			normal: [ :aStyle | aStyle do: [ self hideSidebar ] ];
+			detailed: [ :aStyle | aStyle do: [ self showSidebar ] ]).
 	sidebarElement hide
 ]
 
@@ -198,6 +216,29 @@ GtApLexiconCoder >> searchButtonFor: obj [
 			self updateDefinitionsTo: anItem.
 			self updateContentsTo: anItem.
 			anActOnEvent beActed ]) asElement
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> shouldHaveSidebar [
+	^ shouldHaveSidebar
+]
+
+{ #category : #accessing }
+GtApLexiconCoder >> shouldHaveSidebar: anObject [
+	shouldHaveSidebar := anObject
+]
+
+{ #category : #initialization }
+GtApLexiconCoder >> showSidebar [
+	shouldHaveSidebar ifFalse: [ ^ self ].
+	sidebarElement ifNil: [ ^ self ].
+"	sidebarElement ifNotNil: [ sidebarElement := self createSidebarElement ].
+"	sidebarElement show.
+
+"	(sidebarElement hasParent: self)
+		ifTrue: [ ^ self ].
+		
+	self addChildFirst: sidebarElement"
 ]
 
 { #category : #accessing }
