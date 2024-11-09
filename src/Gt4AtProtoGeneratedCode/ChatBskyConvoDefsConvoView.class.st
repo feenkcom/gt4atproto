@@ -7,7 +7,8 @@ Class {
 		'atpMembers',
 		'atpLastMessage',
 		'atpMuted',
-		'atpUnreadCount'
+		'atpUnreadCount',
+		'atpOpened'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -104,6 +105,17 @@ ChatBskyConvoDefsConvoView >> atpMuted: anObject [
 ]
 
 { #category : #accessing }
+ChatBskyConvoDefsConvoView >> atpOpened [
+	<atpType:#Boolean format:nil>
+	^ atpOpened
+]
+
+{ #category : #accessing }
+ChatBskyConvoDefsConvoView >> atpOpened: anObject [
+	atpOpened := anObject
+]
+
+{ #category : #accessing }
 ChatBskyConvoDefsConvoView >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
@@ -161,6 +173,14 @@ ChatBskyConvoDefsConvoView >> mutedDescription [
 		label: 'Muted';
 		accessor: #atpMuted;
 		beRequired
+]
+
+{ #category : #magritte }
+ChatBskyConvoDefsConvoView >> openedDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'Opened';
+		accessor: #atpOpened
 ]
 
 { #category : #magritte }

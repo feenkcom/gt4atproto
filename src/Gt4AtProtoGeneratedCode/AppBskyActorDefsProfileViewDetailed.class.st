@@ -18,7 +18,8 @@ Class {
 		'atpLabels',
 		'atpAssociated',
 		'atpJoinedViaStarterPack',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpPinnedPost'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -224,6 +225,19 @@ AppBskyActorDefsProfileViewDetailed >> atpLabels: anObject [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpPinnedPost [
+	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
+	^ atpPinnedPost
+]
+
+{ #category : #accessing }
+AppBskyActorDefsProfileViewDetailed >> atpPinnedPost: anObject [
+	<referenceTo:'com.atproto.repo.strongRef'>
+	atpPinnedPost := anObject
+]
+
+{ #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpPostsCount [
 	<atpType:#Number format:nil>
 	^ atpPostsCount
@@ -344,6 +358,14 @@ AppBskyActorDefsProfileViewDetailed >> labelsDescription [
 		classes: {ComAtprotoLabelDefsLabel};
 		label: 'Labels';
 		accessor: #atpLabels
+]
+
+{ #category : #magritte }
+AppBskyActorDefsProfileViewDetailed >> pinnedPostDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'PinnedPost';
+		accessor: #atpPinnedPost
 ]
 
 { #category : #magritte }

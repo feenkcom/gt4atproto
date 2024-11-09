@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpActiveProgressGuide',
-		'atpQueuedNudges'
+		'atpQueuedNudges',
+		'atpNuxs'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -64,6 +65,18 @@ AppBskyActorDefsBskyAppStatePref >> atpActiveProgressGuide: anObject [
 ]
 
 { #category : #accessing }
+AppBskyActorDefsBskyAppStatePref >> atpNuxs [
+	<atpType:#AppBskyActorDefsNux format:nil>
+	<atpCollection>
+	^ atpNuxs
+]
+
+{ #category : #accessing }
+AppBskyActorDefsBskyAppStatePref >> atpNuxs: anObject [
+	atpNuxs := anObject
+]
+
+{ #category : #accessing }
 AppBskyActorDefsBskyAppStatePref >> atpQueuedNudges [
 	<atpType:#String format:nil>
 	<atpCollection>
@@ -73,6 +86,15 @@ AppBskyActorDefsBskyAppStatePref >> atpQueuedNudges [
 { #category : #accessing }
 AppBskyActorDefsBskyAppStatePref >> atpQueuedNudges: anObject [
 	atpQueuedNudges := anObject
+]
+
+{ #category : #magritte }
+AppBskyActorDefsBskyAppStatePref >> nuxsDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {AppBskyActorDefsNux};
+		label: 'Nuxs';
+		accessor: #atpNuxs
 ]
 
 { #category : #magritte }

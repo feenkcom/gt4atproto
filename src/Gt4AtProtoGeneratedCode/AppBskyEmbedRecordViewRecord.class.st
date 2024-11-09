@@ -11,7 +11,8 @@ Class {
 		'atpIndexedAt',
 		'atpReplyCount',
 		'atpRepostCount',
-		'atpLikeCount'
+		'atpLikeCount',
+		'atpQuoteCount'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -139,6 +140,17 @@ AppBskyEmbedRecordViewRecord >> atpLikeCount: anObject [
 ]
 
 { #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpQuoteCount [
+	<atpType:#Number format:nil>
+	^ atpQuoteCount
+]
+
+{ #category : #accessing }
+AppBskyEmbedRecordViewRecord >> atpQuoteCount: anObject [
+	atpQuoteCount := anObject
+]
+
+{ #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpReplyCount [
 	<atpType:#Number format:nil>
 	^ atpReplyCount
@@ -234,6 +246,14 @@ AppBskyEmbedRecordViewRecord >> likeCountDescription [
 	^ MANumberDescription new
 		label: 'LikeCount';
 		accessor: #atpLikeCount
+]
+
+{ #category : #magritte }
+AppBskyEmbedRecordViewRecord >> quoteCountDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'QuoteCount';
+		accessor: #atpQuoteCount
 ]
 
 { #category : #magritte }

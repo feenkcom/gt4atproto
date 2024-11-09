@@ -9,7 +9,8 @@ Class {
 		'atpDisabled',
 		'atpLastUpdatedBy',
 		'atpCreatedAt',
-		'atpUpdatedAt'
+		'atpUpdatedAt',
+		'atpLang'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -93,6 +94,17 @@ ToolsOzoneCommunicationDefsTemplateView >> atpId: anObject [
 ]
 
 { #category : #accessing }
+ToolsOzoneCommunicationDefsTemplateView >> atpLang [
+	<atpType:#String format:'language'>
+	^ atpLang
+]
+
+{ #category : #accessing }
+ToolsOzoneCommunicationDefsTemplateView >> atpLang: anObject [
+	atpLang := anObject
+]
+
+{ #category : #accessing }
 ToolsOzoneCommunicationDefsTemplateView >> atpLastUpdatedBy [
 	<atpType:#String format:'did'>
 	^ atpLastUpdatedBy
@@ -170,6 +182,14 @@ ToolsOzoneCommunicationDefsTemplateView >> idDescription [
 		label: 'Id';
 		accessor: #atpId;
 		beRequired
+]
+
+{ #category : #magritte }
+ToolsOzoneCommunicationDefsTemplateView >> langDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		label: 'Lang';
+		accessor: #atpLang
 ]
 
 { #category : #magritte }

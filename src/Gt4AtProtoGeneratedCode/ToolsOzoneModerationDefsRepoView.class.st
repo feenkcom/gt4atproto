@@ -11,7 +11,8 @@ Class {
 		'atpInvitedBy',
 		'atpInvitesDisabled',
 		'atpInviteNote',
-		'atpDeactivatedAt'
+		'atpDeactivatedAt',
+		'atpThreatSignatures'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -176,6 +177,18 @@ ToolsOzoneModerationDefsRepoView >> atpRelatedRecords: anObject [
 	atpRelatedRecords := anObject
 ]
 
+{ #category : #accessing }
+ToolsOzoneModerationDefsRepoView >> atpThreatSignatures [
+	<atpType:#ComAtprotoAdminDefsThreatSignature format:nil>
+	<atpCollection>
+	^ atpThreatSignatures
+]
+
+{ #category : #accessing }
+ToolsOzoneModerationDefsRepoView >> atpThreatSignatures: anObject [
+	atpThreatSignatures := anObject
+]
+
 { #category : #magritte }
 ToolsOzoneModerationDefsRepoView >> deactivatedAtDescription [
 	<magritteDescription>
@@ -260,4 +273,13 @@ ToolsOzoneModerationDefsRepoView >> relatedRecordsDescription [
 		label: 'RelatedRecords';
 		accessor: #atpRelatedRecords;
 		beRequired
+]
+
+{ #category : #magritte }
+ToolsOzoneModerationDefsRepoView >> threatSignaturesDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {ComAtprotoAdminDefsThreatSignature};
+		label: 'ThreatSignatures';
+		accessor: #atpThreatSignatures
 ]

@@ -12,7 +12,8 @@ Class {
 		'atpInvitesDisabled',
 		'atpEmailConfirmedAt',
 		'atpInviteNote',
-		'atpDeactivatedAt'
+		'atpDeactivatedAt',
+		'atpThreatSignatures'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -190,6 +191,18 @@ ComAtprotoAdminDefsAccountView >> atpRelatedRecords: anObject [
 	atpRelatedRecords := anObject
 ]
 
+{ #category : #accessing }
+ComAtprotoAdminDefsAccountView >> atpThreatSignatures [
+	<atpType:#ComAtprotoAdminDefsThreatSignature format:nil>
+	<atpCollection>
+	^ atpThreatSignatures
+]
+
+{ #category : #accessing }
+ComAtprotoAdminDefsAccountView >> atpThreatSignatures: anObject [
+	atpThreatSignatures := anObject
+]
+
 { #category : #magritte }
 ComAtprotoAdminDefsAccountView >> deactivatedAtDescription [
 	<magritteDescription>
@@ -281,4 +294,13 @@ ComAtprotoAdminDefsAccountView >> relatedRecordsDescription [
 		classes: {Object};
 		label: 'RelatedRecords';
 		accessor: #atpRelatedRecords
+]
+
+{ #category : #magritte }
+ComAtprotoAdminDefsAccountView >> threatSignaturesDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {ComAtprotoAdminDefsThreatSignature};
+		label: 'ThreatSignatures';
+		accessor: #atpThreatSignatures
 ]

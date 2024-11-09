@@ -19,7 +19,8 @@ Class {
 		'atpTakendown',
 		'atpAppealed',
 		'atpSuspendUntil',
-		'atpTags'
+		'atpTags',
+		'atpHosting'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -124,6 +125,17 @@ ToolsOzoneModerationDefsSubjectStatusView >> atpCreatedAt [
 { #category : #accessing }
 ToolsOzoneModerationDefsSubjectStatusView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
+]
+
+{ #category : #accessing }
+ToolsOzoneModerationDefsSubjectStatusView >> atpHosting [
+	<atpType:#(ToolsOzoneModerationDefsAccountHosting ToolsOzoneModerationDefsRecordHosting) format:nil>
+	^ atpHosting
+]
+
+{ #category : #accessing }
+ToolsOzoneModerationDefsSubjectStatusView >> atpHosting: anObject [
+	atpHosting := anObject
 ]
 
 { #category : #accessing }
@@ -310,6 +322,16 @@ ToolsOzoneModerationDefsSubjectStatusView >> createdAtDescription [
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
 		beRequired
+]
+
+{ #category : #magritte }
+ToolsOzoneModerationDefsSubjectStatusView >> hostingDescription [
+	<magritteDescription>
+	^ MASingleOptionDescription new
+		options: {'#accountHosting'.
+				'#recordHosting'};
+		label: 'Hosting';
+		accessor: #atpHosting
 ]
 
 { #category : #magritte }

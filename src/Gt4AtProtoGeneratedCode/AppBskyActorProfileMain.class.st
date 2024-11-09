@@ -10,7 +10,8 @@ Class {
 		'atpBanner',
 		'atpLabels',
 		'atpJoinedViaStarterPack',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpPinnedPost'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -124,6 +125,19 @@ AppBskyActorProfileMain >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpPinnedPost [
+	<referenceTo:'com.atproto.repo.strongRef'>
+	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
+	^ atpPinnedPost
+]
+
+{ #category : #accessing }
+AppBskyActorProfileMain >> atpPinnedPost: anObject [
+	<referenceTo:'com.atproto.repo.strongRef'>
+	atpPinnedPost := anObject
+]
+
 { #category : #magritte }
 AppBskyActorProfileMain >> avatarDescription [
 	<magritteDescription>
@@ -179,4 +193,12 @@ AppBskyActorProfileMain >> labelsDescription [
 		options: {'com.atproto.label.defs#selfLabels'};
 		label: 'Labels';
 		accessor: #atpLabels
+]
+
+{ #category : #magritte }
+AppBskyActorProfileMain >> pinnedPostDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		label: 'PinnedPost';
+		accessor: #atpPinnedPost
 ]

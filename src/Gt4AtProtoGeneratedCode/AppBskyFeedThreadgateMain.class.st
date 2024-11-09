@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'atpPost',
 		'atpAllow',
-		'atpCreatedAt'
+		'atpCreatedAt',
+		'atpHiddenReplies'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -82,6 +83,18 @@ AppBskyFeedThreadgateMain >> atpCreatedAt: anObject [
 ]
 
 { #category : #accessing }
+AppBskyFeedThreadgateMain >> atpHiddenReplies [
+	<atpType:#String format:nil>
+	<atpCollection>
+	^ atpHiddenReplies
+]
+
+{ #category : #accessing }
+AppBskyFeedThreadgateMain >> atpHiddenReplies: anObject [
+	atpHiddenReplies := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedThreadgateMain >> atpPost [
 	<atpType:#String format:'at-uri'>
 	^ atpPost
@@ -99,6 +112,15 @@ AppBskyFeedThreadgateMain >> createdAtDescription [
 		label: 'CreatedAt';
 		accessor: #atpCreatedAt;
 		beRequired
+]
+
+{ #category : #magritte }
+AppBskyFeedThreadgateMain >> hiddenRepliesDescription [
+	<magritteDescription>
+	^ MAToManyRelationDescription new
+		classes: {String};
+		label: 'HiddenReplies';
+		accessor: #atpHiddenReplies
 ]
 
 { #category : #magritte }

@@ -13,7 +13,8 @@ Class {
 		'atpIndexedAt',
 		'atpViewer',
 		'atpLabels',
-		'atpThreadgate'
+		'atpThreadgate',
+		'atpQuoteCount'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -148,6 +149,17 @@ AppBskyFeedDefsPostView >> atpLikeCount: anObject [
 ]
 
 { #category : #accessing }
+AppBskyFeedDefsPostView >> atpQuoteCount [
+	<atpType:#Number format:nil>
+	^ atpQuoteCount
+]
+
+{ #category : #accessing }
+AppBskyFeedDefsPostView >> atpQuoteCount: anObject [
+	atpQuoteCount := anObject
+]
+
+{ #category : #accessing }
 AppBskyFeedDefsPostView >> atpRecord [
 	<atpType:#Object format:nil>
 	^ atpRecord
@@ -271,6 +283,14 @@ AppBskyFeedDefsPostView >> likeCountDescription [
 	^ MANumberDescription new
 		label: 'LikeCount';
 		accessor: #atpLikeCount
+]
+
+{ #category : #magritte }
+AppBskyFeedDefsPostView >> quoteCountDescription [
+	<magritteDescription>
+	^ MANumberDescription new
+		label: 'QuoteCount';
+		accessor: #atpQuoteCount
 ]
 
 { #category : #magritte }

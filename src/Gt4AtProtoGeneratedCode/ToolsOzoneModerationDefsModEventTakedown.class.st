@@ -3,7 +3,8 @@ Class {
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpComment',
-		'atpDurationInHours'
+		'atpDurationInHours',
+		'atpAcknowledgeAccountSubjects'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -34,6 +35,25 @@ ToolsOzoneModerationDefsModEventTakedown class >> fromRequest: aRequest [
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ])
+]
+
+{ #category : #magritte }
+ToolsOzoneModerationDefsModEventTakedown >> acknowledgeAccountSubjectsDescription [
+	<magritteDescription>
+	^ MABooleanDescription new
+		label: 'AcknowledgeAccountSubjects';
+		accessor: #atpAcknowledgeAccountSubjects
+]
+
+{ #category : #accessing }
+ToolsOzoneModerationDefsModEventTakedown >> atpAcknowledgeAccountSubjects [
+	<atpType:#Boolean format:nil>
+	^ atpAcknowledgeAccountSubjects
+]
+
+{ #category : #accessing }
+ToolsOzoneModerationDefsModEventTakedown >> atpAcknowledgeAccountSubjects: anObject [
+	atpAcknowledgeAccountSubjects := anObject
 ]
 
 { #category : #accessing }
