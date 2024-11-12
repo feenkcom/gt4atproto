@@ -117,7 +117,7 @@ GtApStyler >> styleReference: aStringNode in: txt [
 												button phlow
 													spawnTool: (GtPhlowValuableTool new
 															name: obj gtDisplayString;
-															valuable: [ GtApLexiconCoder new object: obj ]) ] ].
+															stencil: [ GtApLexiconCoder new object: obj ]) ] ].
 								BrGlamorousTriangleExpanderTextAttribute new
 									isExpanded: false;
 									attributesCreatingBlock: [ BrTextAdornmentDynamicAttribute new
