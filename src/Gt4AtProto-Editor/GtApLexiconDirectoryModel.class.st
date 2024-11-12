@@ -87,7 +87,7 @@ GtApLexiconDirectoryModel >> gtDefaultInspectorTool [
 	^ GtPhlowCompositeTool new
 		addTool: (GtPhlowValuableTool new
 				name: self gtDisplayString;
-				valuable: [ GtApLexiconCoder new object: self ]);
+				stencil: [ GtApLexiconCoder new object: self ]);
 		addTool: super gtDefaultInspectorTool
 ]
 
