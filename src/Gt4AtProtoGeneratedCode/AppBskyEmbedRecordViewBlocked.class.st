@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedRecordViewBlocked class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,14 +26,19 @@ AppBskyEmbedRecordViewBlocked class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewBlocked class >> atpSchema [
- ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
+ ^ '{"type":"object","required":["uri","blocked","author"],"properties":{"uri":{"type":"string","format":"at-uri"},"blocked":{"type":"boolean","const":true},"author":{"type":"ref","ref":"app.bsky.feed.defs#blockedAuthor"}}}'
 ]
 
 { #category : #serialization }
 AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ]);
+		atpAuthor: (aRequest
+				at: 'author'
+				ifPresent: [ :aValue | AppBskyFeedDefsBlockedAuthor fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

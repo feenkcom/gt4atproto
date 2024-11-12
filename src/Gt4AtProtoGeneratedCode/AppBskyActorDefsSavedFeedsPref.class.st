@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyActorDefsSavedFeedsPref class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyActorDefsSavedFeedsPref class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsSavedFeedsPref class >> atpSchema [
- ^ '{"type":"object","required":["pinned","saved"],"properties":{"pinned":{"type":"array","items":{"type":"string","format":"at-uri"}},"saved":{"type":"array","items":{"type":"string","format":"at-uri"}}}}'
+ ^ '{"type":"object","required":["pinned","saved"],"properties":{"pinned":{"type":"array","items":{"type":"string","format":"at-uri"}},"saved":{"type":"array","items":{"type":"string","format":"at-uri"}},"timelineIndex":{"type":"integer"}}}'
 ]
 
 { #category : #serialization }
@@ -40,7 +40,8 @@ AppBskyActorDefsSavedFeedsPref class >> fromRequest: aRequest [
 		atpSaved: (aRequest
 				at: 'saved'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
-				ifAbsent: [ nil ])
+				ifAbsent: [ nil ]);
+		atpTimelineIndex: (aRequest at: 'timelineIndex' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

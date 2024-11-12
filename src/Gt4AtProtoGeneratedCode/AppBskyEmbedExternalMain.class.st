@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedExternalMain class >> atpDescription [
- ^ ''
+ ^  'A representation of some externally linked content (eg, a URL and ''card''), embedded in a Bluesky record (eg, a post).'
 ]
 
 { #category : #accessing }
@@ -24,7 +24,7 @@ AppBskyEmbedExternalMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedExternalMain class >> atpSchema [
- ^ '{"type":"object","required":["external"],"properties":{"external":{"type":"ref","ref":"#external"}}}'
+ ^ '{"type":"object","description":"A representation of some externally linked content (eg, a URL and ''card''), embedded in a Bluesky record (eg, a post).","required":["external"],"properties":{"external":{"type":"ref","ref":"#external"}}}'
 ]
 
 { #category : #serialization }

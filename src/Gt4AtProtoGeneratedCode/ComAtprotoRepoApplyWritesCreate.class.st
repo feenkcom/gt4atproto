@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesCreate class >> atpDescription [
- ^ 'Create a new record.'
+ ^  'Operation which creates a new record.'
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ ComAtprotoRepoApplyWritesCreate class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesCreate class >> atpSchema [
- ^ '{"type":"object","description":"Create a new record.","required":["collection","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string","maxLength":15},"value":{"type":"unknown"}}}'
+ ^ '{"type":"object","description":"Operation which creates a new record.","required":["collection","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string","maxLength":512},"value":{"type":"unknown"}}}'
 ]
 
 { #category : #serialization }

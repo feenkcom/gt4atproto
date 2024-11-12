@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedRecordView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyEmbedRecordView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedRecordView class >> atpSchema [
- ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"union","refs":["#viewRecord","#viewNotFound","#viewBlocked","app.bsky.feed.defs#generatorView","app.bsky.graph.defs#listView"]}}}'
+ ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"union","refs":["#viewRecord","#viewNotFound","#viewBlocked","#viewDetached","app.bsky.feed.defs#generatorView","app.bsky.graph.defs#listView","app.bsky.labeler.defs#labelerView","app.bsky.graph.defs#starterPackViewBasic"]}}}'
 ]
 
 { #category : #serialization }
@@ -39,8 +39,12 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest [
 					({'app.bsky.embed.record#viewRecord' -> AppBskyEmbedRecordViewRecord.
 						'app.bsky.embed.record#viewNotFound' -> AppBskyEmbedRecordViewNotFound.
 						'app.bsky.embed.record#viewBlocked' -> AppBskyEmbedRecordViewBlocked.
+						'app.bsky.embed.record#viewDetached' -> AppBskyEmbedRecordViewDetached.
 						'app.bsky.feed.defs#generatorView' -> AppBskyFeedDefsGeneratorView.
-						'app.bsky.graph.defs#listView' -> AppBskyGraphDefsListView} asDictionary
+						'app.bsky.graph.defs#listView' -> AppBskyGraphDefsListView.
+						'app.bsky.labeler.defs#labelerView' -> AppBskyLabelerDefsLabelerView.
+						'app.bsky.graph.defs#starterPackViewBasic'
+							-> AppBskyGraphDefsStarterPackViewBasic} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
@@ -49,7 +53,7 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedRecordView >> atpRecord [
-	<atpType:#(AppBskyEmbedRecordViewRecord AppBskyEmbedRecordViewNotFound AppBskyEmbedRecordViewBlocked AppBskyFeedDefsGeneratorView AppBskyGraphDefsListView) format:nil>
+	<atpType:#(AppBskyEmbedRecordViewRecord AppBskyEmbedRecordViewNotFound AppBskyEmbedRecordViewBlocked AppBskyEmbedRecordViewDetached AppBskyFeedDefsGeneratorView AppBskyGraphDefsListView AppBskyLabelerDefsLabelerView AppBskyGraphDefsStarterPackViewBasic) format:nil>
 	^ atpRecord
 ]
 
@@ -65,8 +69,11 @@ AppBskyEmbedRecordView >> recordDescription [
 		options: {'#viewRecord'.
 				'#viewNotFound'.
 				'#viewBlocked'.
+				'#viewDetached'.
 				'app.bsky.feed.defs#generatorView'.
-				'app.bsky.graph.defs#listView'};
+				'app.bsky.graph.defs#listView'.
+				'app.bsky.labeler.defs#labelerView'.
+				'app.bsky.graph.defs#starterPackViewBasic'};
 		label: 'Record';
 		accessor: #atpRecord;
 		beRequired

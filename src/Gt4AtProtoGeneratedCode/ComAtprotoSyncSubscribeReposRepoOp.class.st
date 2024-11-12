@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp class >> atpDescription [
- ^ ''
+ ^  'A repo operation, ie a mutation of a single record.'
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ ComAtprotoSyncSubscribeReposRepoOp class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposRepoOp class >> atpSchema [
- ^ '{"type":"object","required":["action","path","cid"],"nullable":["cid"],"properties":{"action":{"type":"string","knownValues":["create","update","delete"]},"path":{"type":"string"},"cid":{"type":"cid-link"}}}'
+ ^ '{"type":"object","description":"A repo operation, ie a mutation of a single record.","required":["action","path","cid"],"nullable":["cid"],"properties":{"action":{"type":"string","knownValues":["create","update","delete"]},"path":{"type":"string"},"cid":{"type":"cid-link","description":"For creates and updates, the new record CID. For deletions, null."}}}'
 ]
 
 { #category : #serialization }

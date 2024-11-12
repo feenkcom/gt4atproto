@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'atpId',
 		'atpSubject',
+		'atpHosting',
 		'atpSubjectBlobCids',
 		'atpSubjectRepoHandle',
 		'atpUpdatedAt',
@@ -19,8 +20,7 @@ Class {
 		'atpTakendown',
 		'atpAppealed',
 		'atpSuspendUntil',
-		'atpTags',
-		'atpHosting'
+		'atpTags'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -42,7 +42,7 @@ ToolsOzoneModerationDefsSubjectStatusView class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsSubjectStatusView class >> atpSchema [
- ^ '{"type":"object","required":["id","subject","createdAt","updatedAt","reviewState"],"properties":{"id":{"type":"integer"},"subject":{"type":"union","refs":["com.atproto.admin.defs#repoRef","com.atproto.repo.strongRef"]},"subjectBlobCids":{"type":"array","items":{"type":"string","format":"cid"}},"subjectRepoHandle":{"type":"string"},"updatedAt":{"type":"string","format":"datetime","description":"Timestamp referencing when the last update was made to the moderation status of the subject"},"createdAt":{"type":"string","format":"datetime","description":"Timestamp referencing the first moderation status impacting event was emitted on the subject"},"reviewState":{"type":"ref","ref":"#subjectReviewState"},"comment":{"type":"string","description":"Sticky comment on the subject."},"muteUntil":{"type":"string","format":"datetime"},"muteReportingUntil":{"type":"string","format":"datetime"},"lastReviewedBy":{"type":"string","format":"did"},"lastReviewedAt":{"type":"string","format":"datetime"},"lastReportedAt":{"type":"string","format":"datetime"},"lastAppealedAt":{"type":"string","format":"datetime","description":"Timestamp referencing when the author of the subject appealed a moderation action"},"takendown":{"type":"boolean"},"appealed":{"type":"boolean","description":"True indicates that the a previously taken moderator action was appealed against, by the author of the content. False indicates last appeal was resolved by moderators."},"suspendUntil":{"type":"string","format":"datetime"},"tags":{"type":"array","items":{"type":"string"}}}}'
+ ^ '{"type":"object","required":["id","subject","createdAt","updatedAt","reviewState"],"properties":{"id":{"type":"integer"},"subject":{"type":"union","refs":["com.atproto.admin.defs#repoRef","com.atproto.repo.strongRef"]},"hosting":{"type":"union","refs":["#accountHosting","#recordHosting"]},"subjectBlobCids":{"type":"array","items":{"type":"string","format":"cid"}},"subjectRepoHandle":{"type":"string"},"updatedAt":{"type":"string","format":"datetime","description":"Timestamp referencing when the last update was made to the moderation status of the subject"},"createdAt":{"type":"string","format":"datetime","description":"Timestamp referencing the first moderation status impacting event was emitted on the subject"},"reviewState":{"type":"ref","ref":"#subjectReviewState"},"comment":{"type":"string","description":"Sticky comment on the subject."},"muteUntil":{"type":"string","format":"datetime"},"muteReportingUntil":{"type":"string","format":"datetime"},"lastReviewedBy":{"type":"string","format":"did"},"lastReviewedAt":{"type":"string","format":"datetime"},"lastReportedAt":{"type":"string","format":"datetime"},"lastAppealedAt":{"type":"string","format":"datetime","description":"Timestamp referencing when the author of the subject appealed a moderation action"},"takendown":{"type":"boolean"},"appealed":{"type":"boolean","description":"True indicates that the a previously taken moderator action was appealed against, by the author of the content. False indicates last appeal was resolved by moderators."},"suspendUntil":{"type":"string","format":"datetime"},"tags":{"type":"array","items":{"type":"string"}}}}'
 ]
 
 { #category : #serialization }
@@ -59,6 +59,17 @@ ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest [
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
+		atpHosting: (aRequest
+				at: 'hosting'
+				ifPresent: [ :aValue | 
+					({'tools.ozone.moderation.defs#accountHosting'
+							-> ToolsOzoneModerationDefsAccountHosting.
+						'tools.ozone.moderation.defs#recordHosting'
+							-> ToolsOzoneModerationDefsRecordHosting} asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpSubjectBlobCids: (aRequest
 				at: 'subjectBlobCids'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
@@ -66,10 +77,7 @@ ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest [
 		atpSubjectRepoHandle: (aRequest at: 'subjectRepoHandle' ifAbsent: [ nil ]);
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
-		atpReviewState: (aRequest
-				at: 'reviewState'
-				ifPresent: [ :aValue | String fromRequest: aValue ]
-				ifAbsent: [ nil ]);
+		atpReviewState: (aRequest at: 'reviewState' ifAbsent: [ nil ]);
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpMuteUntil: (aRequest at: 'muteUntil' ifAbsent: [ nil ]);
 		atpMuteReportingUntil: (aRequest at: 'muteReportingUntil' ifAbsent: [ nil ]);

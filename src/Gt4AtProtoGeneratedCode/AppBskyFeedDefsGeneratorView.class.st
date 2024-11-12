@@ -11,17 +11,17 @@ Class {
 		'atpDescriptionFacets',
 		'atpAvatar',
 		'atpLikeCount',
-		'atpViewer',
-		'atpIndexedAt',
 		'atpAcceptsInteractions',
-		'atpLabels'
+		'atpLabels',
+		'atpViewer',
+		'atpIndexedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyFeedDefsGeneratorView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -36,7 +36,7 @@ AppBskyFeedDefsGeneratorView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsGeneratorView class >> atpSchema [
- ^ '{"type":"object","required":["uri","cid","did","creator","displayName","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"did":{"type":"string","format":"did"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"displayName":{"type":"string"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"likeCount":{"type":"integer","minimum":0},"viewer":{"type":"ref","ref":"#generatorViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","did","creator","displayName","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"did":{"type":"string","format":"did"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"displayName":{"type":"string"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string","format":"uri"},"likeCount":{"type":"integer","minimum":0},"acceptsInteractions":{"type":"boolean"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"viewer":{"type":"ref","ref":"#generatorViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -58,6 +58,11 @@ AppBskyFeedDefsGeneratorView class >> fromRequest: aRequest [
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]);
+		atpAcceptsInteractions: (aRequest at: 'acceptsInteractions' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
 				ifPresent: [ :aValue | AppBskyFeedDefsGeneratorViewerState fromRequest: aValue ]
@@ -86,7 +91,7 @@ AppBskyFeedDefsGeneratorView >> atpAcceptsInteractions: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsGeneratorView >> atpAvatar [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 

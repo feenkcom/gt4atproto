@@ -14,7 +14,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -29,7 +29,7 @@ AppBskyEmbedImagesViewImage class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage class >> atpSchema [
- ^ '{"type":"object","required":["thumb","fullsize","alt"],"properties":{"thumb":{"type":"string"},"fullsize":{"type":"string"},"alt":{"type":"string"}}}'
+ ^ '{"type":"object","required":["thumb","fullsize","alt"],"properties":{"thumb":{"type":"string","format":"uri","description":"Fully-qualified URL where a thumbnail of the image can be fetched. For example, CDN location provided by the App View."},"fullsize":{"type":"string","format":"uri","description":"Fully-qualified URL where a large version of the image can be fetched. May or may not be the exact original blob. For example, CDN location provided by the App View."},"alt":{"type":"string","description":"Alt text description of the image, for accessibility."},"aspectRatio":{"type":"ref","ref":"app.bsky.embed.defs#aspectRatio"}}}'
 ]
 
 { #category : #serialization }
@@ -38,7 +38,11 @@ AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
 		rawData: aRequest;
 		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]);
 		atpFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]);
-		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
+		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ]);
+		atpAspectRatio: (aRequest
+				at: 'aspectRatio'
+				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -71,20 +75,20 @@ AppBskyEmbedImagesViewImage >> atpAlt: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpAspectRatio [
-	<referenceTo:'#aspectRatio'>
-	<atpType:#AppBskyEmbedImagesAspectRatio format:nil>
+	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
+	<atpType:#AppBskyEmbedDefsAspectRatio format:nil>
 	^ atpAspectRatio
 ]
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpAspectRatio: anObject [
-	<referenceTo:'#aspectRatio'>
+	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	atpAspectRatio := anObject
 ]
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpFullsize [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpFullsize
 ]
 
@@ -95,7 +99,7 @@ AppBskyEmbedImagesViewImage >> atpFullsize: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesViewImage >> atpThumb [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpThumb
 ]
 

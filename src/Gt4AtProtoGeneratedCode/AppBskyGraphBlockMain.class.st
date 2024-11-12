@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyGraphBlockMain class >> atpDescription [
- ^ 'A block.'
+ ^  'Record declaring a ''block'' relationship against another account. NOTE: blocks are public in Bluesky; see blog posts for details.'
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ AppBskyGraphBlockMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphBlockMain class >> atpSchema [
- ^ '{"type":"record","description":"A block.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","description":"Record declaring a ''block'' relationship against another account. NOTE: blocks are public in Bluesky; see blog posts for details.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did","description":"DID of the account to be blocked."},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }

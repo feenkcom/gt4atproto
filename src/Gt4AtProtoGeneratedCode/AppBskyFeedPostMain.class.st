@@ -10,16 +10,16 @@ Class {
 		'atpReply',
 		'atpEmbed',
 		'atpLangs',
-		'atpCreatedAt',
 		'atpLabels',
-		'atpTags'
+		'atpTags',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyFeedPostMain class >> atpDescription [
- ^ ''
+ ^  'Record containing a Bluesky post.'
 ]
 
 { #category : #accessing }
@@ -34,7 +34,7 @@ AppBskyFeedPostMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedPostMain class >> atpSchema [
- ^ '{"type":"record","key":"tid","record":{"type":"object","required":["text","createdAt"],"properties":{"text":{"type":"string","maxLength":3000,"maxGraphemes":300},"entities":{"type":"array","description":"Deprecated: replaced by app.bsky.richtext.facet.","items":{"type":"ref","ref":"#entity"}},"facets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"reply":{"type":"ref","ref":"#replyRef"},"embed":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.external","app.bsky.embed.record","app.bsky.embed.recordWithMedia"]},"langs":{"type":"array","maxLength":3,"items":{"type":"string","format":"language"}},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","description":"Record containing a Bluesky post.","key":"tid","record":{"type":"object","required":["text","createdAt"],"properties":{"text":{"type":"string","maxLength":3000,"maxGraphemes":300,"description":"The primary post content. May be an empty string, if there are embeds."},"entities":{"type":"array","description":"DEPRECATED: replaced by app.bsky.richtext.facet.","items":{"type":"ref","ref":"#entity"}},"facets":{"type":"array","description":"Annotations of text (mentions, URLs, hashtags, etc)","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"reply":{"type":"ref","ref":"#replyRef"},"embed":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.video","app.bsky.embed.external","app.bsky.embed.record","app.bsky.embed.recordWithMedia"]},"langs":{"type":"array","description":"Indicates human language of post primary text content.","maxLength":3,"items":{"type":"string","format":"language"}},"labels":{"type":"union","description":"Self-label values for this post. Effectively content warnings.","refs":["com.atproto.label.defs#selfLabels"]},"tags":{"type":"array","description":"Additional hashtags, in addition to any included in post text and facets.","maxLength":8,"items":{"type":"string","maxLength":640,"maxGraphemes":64}},"createdAt":{"type":"string","format":"datetime","description":"Client-declared timestamp when this post was originally created."}}}}'
 ]
 
 { #category : #serialization }
@@ -58,6 +58,7 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 				at: 'embed'
 				ifPresent: [ :aValue | 
 					({'app.bsky.embed.images' -> AppBskyEmbedImagesMain.
+						'app.bsky.embed.video' -> AppBskyEmbedVideoMain.
 						'app.bsky.embed.external' -> AppBskyEmbedExternalMain.
 						'app.bsky.embed.record' -> AppBskyEmbedRecordMain.
 						'app.bsky.embed.recordWithMedia' -> AppBskyEmbedRecordWithMediaMain}
@@ -68,6 +69,19 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 				ifAbsent: [ nil ]);
 		atpLangs: (aRequest
 				at: 'langs'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :aValue | 
+					({'com.atproto.label.defs#selfLabels' -> ComAtprotoLabelDefsSelfLabels}
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpTags: (aRequest
+				at: 'tags'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
@@ -86,7 +100,7 @@ AppBskyFeedPostMain >> atpCreatedAt: anObject [
 
 { #category : #accessing }
 AppBskyFeedPostMain >> atpEmbed [
-	<atpType:#(AppBskyEmbedImagesMain AppBskyEmbedExternalMain AppBskyEmbedRecordMain AppBskyEmbedRecordWithMediaMain) format:nil>
+	<atpType:#(AppBskyEmbedImagesMain AppBskyEmbedVideoMain AppBskyEmbedExternalMain AppBskyEmbedRecordMain AppBskyEmbedRecordWithMediaMain) format:nil>
 	^ atpEmbed
 ]
 
@@ -192,6 +206,7 @@ AppBskyFeedPostMain >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images'.
+				'app.bsky.embed.video'.
 				'app.bsky.embed.external'.
 				'app.bsky.embed.record'.
 				'app.bsky.embed.recordWithMedia'};

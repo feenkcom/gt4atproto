@@ -12,7 +12,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -27,7 +27,7 @@ AppBskyEmbedRecordWithMediaView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView class >> atpSchema [
- ^ '{"type":"object","required":["record","media"],"properties":{"record":{"type":"ref","ref":"app.bsky.embed.record#view"},"media":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.external#view"]}}}'
+ ^ '{"type":"object","required":["record","media"],"properties":{"record":{"type":"ref","ref":"app.bsky.embed.record#view"},"media":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.video#view","app.bsky.embed.external#view"]}}}'
 ]
 
 { #category : #serialization }
@@ -42,6 +42,7 @@ AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
 				at: 'media'
 				ifPresent: [ :aValue | 
 					({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView.
+						'app.bsky.embed.video#view' -> AppBskyEmbedVideoView.
 						'app.bsky.embed.external#view' -> AppBskyEmbedExternalView} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
@@ -51,7 +52,7 @@ AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyEmbedRecordWithMediaView >> atpMedia [
-	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedExternalView) format:nil>
+	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView) format:nil>
 	^ atpMedia
 ]
 
@@ -78,6 +79,7 @@ AppBskyEmbedRecordWithMediaView >> mediaDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images#view'.
+				'app.bsky.embed.video#view'.
 				'app.bsky.embed.external#view'};
 		label: 'Media';
 		accessor: #atpMedia;

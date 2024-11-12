@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoLabelDefsSelfLabel class >> atpDescription [
- ^ 'Metadata tag on an atproto record, published by the author within the record. Note -- schemas should use #selfLabels, not #selfLabel.'
+ ^  'Metadata tag on an atproto record, published by the author within the record. Note that schemas should use #selfLabels, not #selfLabel.'
 ]
 
 { #category : #accessing }
@@ -24,7 +24,7 @@ ComAtprotoLabelDefsSelfLabel class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoLabelDefsSelfLabel class >> atpSchema [
- ^ '{"type":"object","description":"Metadata tag on an atproto record, published by the author within the record. Note -- schemas should use #selfLabels, not #selfLabel.","required":["val"],"properties":{"val":{"type":"string","maxLength":128,"description":"the short string name of the value or type of this label"}}}'
+ ^ '{"type":"object","description":"Metadata tag on an atproto record, published by the author within the record. Note that schemas should use #selfLabels, not #selfLabel.","required":["val"],"properties":{"val":{"type":"string","maxLength":128,"description":"The short string name of the value or type of this label."}}}'
 ]
 
 { #category : #serialization }

@@ -29,7 +29,7 @@ ToolsOzoneModerationDefsModEventViewDetail class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsModEventViewDetail class >> atpSchema [
- ^ '{"type":"object","required":["id","event","subject","subjectBlobs","createdBy","createdAt"],"properties":{"id":{"type":"integer"},"event":{"type":"union","refs":["#modEventTakedown","#modEventReverseTakedown","#modEventComment","#modEventReport","#modEventLabel","#modEventAcknowledge","#modEventEscalate","#modEventMute","#modEventUnmute","#modEventMuteReporter","#modEventUnmuteReporter","#modEventEmail","#modEventResolveAppeal","#modEventDivert","#modEventTag"]},"subject":{"type":"union","refs":["#repoView","#repoViewNotFound","#recordView","#recordViewNotFound"]},"subjectBlobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["id","event","subject","subjectBlobs","createdBy","createdAt"],"properties":{"id":{"type":"integer"},"event":{"type":"union","refs":["#modEventTakedown","#modEventReverseTakedown","#modEventComment","#modEventReport","#modEventLabel","#modEventAcknowledge","#modEventEscalate","#modEventMute","#modEventUnmute","#modEventMuteReporter","#modEventUnmuteReporter","#modEventEmail","#modEventResolveAppeal","#modEventDivert","#modEventTag","#accountEvent","#identityEvent","#recordEvent"]},"subject":{"type":"union","refs":["#repoView","#repoViewNotFound","#recordView","#recordViewNotFound"]},"subjectBlobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -69,7 +69,13 @@ ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest [
 						'tools.ozone.moderation.defs#modEventDivert'
 							-> ToolsOzoneModerationDefsModEventDivert.
 						'tools.ozone.moderation.defs#modEventTag'
-							-> ToolsOzoneModerationDefsModEventTag} asDictionary
+							-> ToolsOzoneModerationDefsModEventTag.
+						'tools.ozone.moderation.defs#accountEvent'
+							-> ToolsOzoneModerationDefsAccountEvent.
+						'tools.ozone.moderation.defs#identityEvent'
+							-> ToolsOzoneModerationDefsIdentityEvent.
+						'tools.ozone.moderation.defs#recordEvent'
+							-> ToolsOzoneModerationDefsRecordEvent} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
@@ -122,7 +128,7 @@ ToolsOzoneModerationDefsModEventViewDetail >> atpCreatedBy: anObject [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsModEventViewDetail >> atpEvent [
-	<atpType:#(ToolsOzoneModerationDefsModEventTakedown ToolsOzoneModerationDefsModEventReverseTakedown ToolsOzoneModerationDefsModEventComment ToolsOzoneModerationDefsModEventReport ToolsOzoneModerationDefsModEventLabel ToolsOzoneModerationDefsModEventAcknowledge ToolsOzoneModerationDefsModEventEscalate ToolsOzoneModerationDefsModEventMute ToolsOzoneModerationDefsModEventUnmute ToolsOzoneModerationDefsModEventMuteReporter ToolsOzoneModerationDefsModEventUnmuteReporter ToolsOzoneModerationDefsModEventEmail ToolsOzoneModerationDefsModEventResolveAppeal ToolsOzoneModerationDefsModEventDivert ToolsOzoneModerationDefsModEventTag) format:nil>
+	<atpType:#(ToolsOzoneModerationDefsModEventTakedown ToolsOzoneModerationDefsModEventReverseTakedown ToolsOzoneModerationDefsModEventComment ToolsOzoneModerationDefsModEventReport ToolsOzoneModerationDefsModEventLabel ToolsOzoneModerationDefsModEventAcknowledge ToolsOzoneModerationDefsModEventEscalate ToolsOzoneModerationDefsModEventMute ToolsOzoneModerationDefsModEventUnmute ToolsOzoneModerationDefsModEventMuteReporter ToolsOzoneModerationDefsModEventUnmuteReporter ToolsOzoneModerationDefsModEventEmail ToolsOzoneModerationDefsModEventResolveAppeal ToolsOzoneModerationDefsModEventDivert ToolsOzoneModerationDefsModEventTag ToolsOzoneModerationDefsAccountEvent ToolsOzoneModerationDefsIdentityEvent ToolsOzoneModerationDefsRecordEvent) format:nil>
 	^ atpEvent
 ]
 
@@ -201,7 +207,10 @@ ToolsOzoneModerationDefsModEventViewDetail >> eventDescription [
 				'#modEventEmail'.
 				'#modEventResolveAppeal'.
 				'#modEventDivert'.
-				'#modEventTag'};
+				'#modEventTag'.
+				'#accountEvent'.
+				'#identityEvent'.
+				'#recordEvent'};
 		label: 'Event';
 		accessor: #atpEvent;
 		beRequired

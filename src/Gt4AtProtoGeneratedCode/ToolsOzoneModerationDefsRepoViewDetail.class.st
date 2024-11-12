@@ -37,7 +37,7 @@ ToolsOzoneModerationDefsRepoViewDetail class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsRepoViewDetail class >> atpSchema [
- ^ '{"type":"object","required":["did","handle","relatedRecords","indexedAt","moderation"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderationDetail"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invites":{"type":"array","items":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"}},"invitesDisabled":{"type":"boolean"},"inviteNote":{"type":"string"},"emailConfirmedAt":{"type":"string","format":"datetime"},"deactivatedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["did","handle","relatedRecords","indexedAt","moderation"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderationDetail"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invites":{"type":"array","items":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"}},"invitesDisabled":{"type":"boolean"},"inviteNote":{"type":"string"},"emailConfirmedAt":{"type":"string","format":"datetime"},"deactivatedAt":{"type":"string","format":"datetime"},"threatSignatures":{"type":"array","items":{"type":"ref","ref":"com.atproto.admin.defs#threatSignature"}}}}'
 ]
 
 { #category : #serialization }
@@ -73,7 +73,13 @@ ToolsOzoneModerationDefsRepoViewDetail class >> fromRequest: aRequest [
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ]);
 		atpInviteNote: (aRequest at: 'inviteNote' ifAbsent: [ nil ]);
 		atpEmailConfirmedAt: (aRequest at: 'emailConfirmedAt' ifAbsent: [ nil ]);
-		atpDeactivatedAt: (aRequest at: 'deactivatedAt' ifAbsent: [ nil ])
+		atpDeactivatedAt: (aRequest at: 'deactivatedAt' ifAbsent: [ nil ]);
+		atpThreatSignatures: (aRequest
+				at: 'threatSignatures'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

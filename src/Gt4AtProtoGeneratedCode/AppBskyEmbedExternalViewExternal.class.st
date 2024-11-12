@@ -12,7 +12,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -27,7 +27,7 @@ AppBskyEmbedExternalViewExternal class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal class >> atpSchema [
- ^ '{"type":"object","required":["uri","title","description"],"properties":{"uri":{"type":"string","format":"uri"},"title":{"type":"string"},"description":{"type":"string"},"thumb":{"type":"string"}}}'
+ ^ '{"type":"object","required":["uri","title","description"],"properties":{"uri":{"type":"string","format":"uri"},"title":{"type":"string"},"description":{"type":"string"},"thumb":{"type":"string","format":"uri"}}}'
 ]
 
 { #category : #serialization }
@@ -53,7 +53,7 @@ AppBskyEmbedExternalViewExternal >> atpDescription: anObject [
 
 { #category : #accessing }
 AppBskyEmbedExternalViewExternal >> atpThumb [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpThumb
 ]
 

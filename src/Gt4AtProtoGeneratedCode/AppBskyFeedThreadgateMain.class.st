@@ -12,7 +12,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedThreadgateMain class >> atpDescription [
- ^  'Record defining interaction gating rules for a thread (aka, reply controls). The record key (rkey) of the threadgate record must match the record key of the thread''s root post, and that record must be in the same repository..'
+ ^  'Record defining interaction gating rules for a thread (aka, reply controls). The record key (rkey) of the threadgate record must match the record key of the thread''s root post, and that record must be in the same repository.'
 ]
 
 { #category : #accessing }
@@ -27,7 +27,7 @@ AppBskyFeedThreadgateMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedThreadgateMain class >> atpSchema [
- ^ '{"type":"record","key":"tid","description":"Record defining interaction gating rules for a thread (aka, reply controls). The record key (rkey) of the threadgate record must match the record key of the thread''s root post, and that record must be in the same repository..","record":{"type":"object","required":["post","createdAt"],"properties":{"post":{"type":"string","format":"at-uri","description":"Reference (AT-URI) to the post record."},"allow":{"type":"array","maxLength":5,"items":{"type":"union","refs":["#mentionRule","#followingRule","#listRule"]}},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","key":"tid","description":"Record defining interaction gating rules for a thread (aka, reply controls). The record key (rkey) of the threadgate record must match the record key of the thread''s root post, and that record must be in the same repository.","record":{"type":"object","required":["post","createdAt"],"properties":{"post":{"type":"string","format":"at-uri","description":"Reference (AT-URI) to the post record."},"allow":{"type":"array","maxLength":5,"items":{"type":"union","refs":["#mentionRule","#followingRule","#listRule"]}},"createdAt":{"type":"string","format":"datetime"},"hiddenReplies":{"type":"array","maxLength":50,"items":{"type":"string","format":"at-uri"},"description":"List of hidden reply URIs."}}}}'
 ]
 
 { #category : #serialization }
@@ -46,7 +46,11 @@ AppBskyFeedThreadgateMain class >> fromRequest: aRequest [
 								'app.bsky.feed.threadgate#listRule' -> AppBskyFeedThreadgateListRule}
 								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
 				ifAbsent: [ nil ]);
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpHiddenReplies: (aRequest
+				at: 'hiddenReplies'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

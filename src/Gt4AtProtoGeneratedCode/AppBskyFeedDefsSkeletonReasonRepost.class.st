@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsSkeletonReasonRepost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

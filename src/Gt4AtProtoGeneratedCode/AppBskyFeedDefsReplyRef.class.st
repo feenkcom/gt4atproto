@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyFeedDefsReplyRef class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsReplyRef class >> atpSchema [
- ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]},"parent":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]}}}'
+ ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]},"parent":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]},"grandparentAuthor":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic","description":"When parent is a reply to another post, this is the author of that post."}}}'
 ]
 
 { #category : #serialization }
@@ -54,6 +54,10 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpGrandparentAuthor: (aRequest
+				at: 'grandparentAuthor'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 

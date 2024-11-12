@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyGraphDefsStarterPackViewBasic,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyGraphDefsStarterPackViewBasic',
+	#classTraits : 'TAppBskyGraphDefsStarterPackViewBasic classTrait',
 	#instVars : [
 		'atpUri',
 		'atpCid',

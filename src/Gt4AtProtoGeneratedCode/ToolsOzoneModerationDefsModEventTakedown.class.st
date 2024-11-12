@@ -26,7 +26,7 @@ ToolsOzoneModerationDefsModEventTakedown class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsModEventTakedown class >> atpSchema [
- ^ '{"type":"object","description":"Take down a subject permanently or temporarily","properties":{"comment":{"type":"string"},"durationInHours":{"type":"integer","description":"Indicates how long the takedown should be in effect before automatically expiring."}}}'
+ ^ '{"type":"object","description":"Take down a subject permanently or temporarily","properties":{"comment":{"type":"string"},"durationInHours":{"type":"integer","description":"Indicates how long the takedown should be in effect before automatically expiring."},"acknowledgeAccountSubjects":{"type":"boolean","description":"If true, all other reports on content authored by this account will be resolved (acknowledged)."}}}'
 ]
 
 { #category : #serialization }
@@ -34,7 +34,8 @@ ToolsOzoneModerationDefsModEventTakedown class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
-		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ])
+		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ]);
+		atpAcknowledgeAccountSubjects: (aRequest at: 'acknowledgeAccountSubjects' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

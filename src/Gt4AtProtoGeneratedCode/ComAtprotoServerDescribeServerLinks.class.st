@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ ComAtprotoServerDescribeServerLinks class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks class >> atpSchema [
- ^ '{"type":"object","properties":{"privacyPolicy":{"type":"string"},"termsOfService":{"type":"string"}}}'
+ ^ '{"type":"object","properties":{"privacyPolicy":{"type":"string","format":"uri"},"termsOfService":{"type":"string","format":"uri"}}}'
 ]
 
 { #category : #serialization }
@@ -38,7 +38,7 @@ ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpPrivacyPolicy
 ]
 
@@ -49,7 +49,7 @@ ComAtprotoServerDescribeServerLinks >> atpPrivacyPolicy: anObject [
 
 { #category : #accessing }
 ComAtprotoServerDescribeServerLinks >> atpTermsOfService [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpTermsOfService
 ]
 

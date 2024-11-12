@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoRepoListRecordsRecord class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

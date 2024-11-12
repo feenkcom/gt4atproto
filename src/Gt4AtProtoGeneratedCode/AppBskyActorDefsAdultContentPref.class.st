@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyActorDefsAdultContentPref class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

@@ -7,10 +7,10 @@ Class {
 		'atpSubject',
 		'atpContentMarkdown',
 		'atpDisabled',
+		'atpLang',
 		'atpLastUpdatedBy',
 		'atpCreatedAt',
-		'atpUpdatedAt',
-		'atpLang'
+		'atpUpdatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -32,7 +32,7 @@ ToolsOzoneCommunicationDefsTemplateView class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneCommunicationDefsTemplateView class >> atpSchema [
- ^ '{"type":"object","required":["id","name","contentMarkdown","disabled","lastUpdatedBy","createdAt","updatedAt"],"properties":{"id":{"type":"string"},"name":{"type":"string","description":"Name of the template."},"subject":{"type":"string","description":"Content of the template, can contain markdown and variable placeholders."},"contentMarkdown":{"type":"string","description":"Subject of the message, used in emails."},"disabled":{"type":"boolean"},"lastUpdatedBy":{"type":"string","format":"did","description":"DID of the user who last updated the template."},"createdAt":{"type":"string","format":"datetime"},"updatedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["id","name","contentMarkdown","disabled","lastUpdatedBy","createdAt","updatedAt"],"properties":{"id":{"type":"string"},"name":{"type":"string","description":"Name of the template."},"subject":{"type":"string","description":"Content of the template, can contain markdown and variable placeholders."},"contentMarkdown":{"type":"string","description":"Subject of the message, used in emails."},"disabled":{"type":"boolean"},"lang":{"type":"string","format":"language","description":"Message language."},"lastUpdatedBy":{"type":"string","format":"did","description":"DID of the user who last updated the template."},"createdAt":{"type":"string","format":"datetime"},"updatedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -44,6 +44,7 @@ ToolsOzoneCommunicationDefsTemplateView class >> fromRequest: aRequest [
 		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]);
 		atpContentMarkdown: (aRequest at: 'contentMarkdown' ifAbsent: [ nil ]);
 		atpDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]);
+		atpLang: (aRequest at: 'lang' ifAbsent: [ nil ]);
 		atpLastUpdatedBy: (aRequest at: 'lastUpdatedBy' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ])

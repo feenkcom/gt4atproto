@@ -35,7 +35,7 @@ ComAtprotoAdminDefsAccountView class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoAdminDefsAccountView class >> atpSchema [
- ^ '{"type":"object","required":["did","handle","indexedAt"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invites":{"type":"array","items":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"}},"invitesDisabled":{"type":"boolean"},"emailConfirmedAt":{"type":"string","format":"datetime"},"inviteNote":{"type":"string"},"deactivatedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["did","handle","indexedAt"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invites":{"type":"array","items":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"}},"invitesDisabled":{"type":"boolean"},"emailConfirmedAt":{"type":"string","format":"datetime"},"inviteNote":{"type":"string"},"deactivatedAt":{"type":"string","format":"datetime"},"threatSignatures":{"type":"array","items":{"type":"ref","ref":"#threatSignature"}}}}'
 ]
 
 { #category : #serialization }
@@ -63,7 +63,13 @@ ComAtprotoAdminDefsAccountView class >> fromRequest: aRequest [
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ]);
 		atpEmailConfirmedAt: (aRequest at: 'emailConfirmedAt' ifAbsent: [ nil ]);
 		atpInviteNote: (aRequest at: 'inviteNote' ifAbsent: [ nil ]);
-		atpDeactivatedAt: (aRequest at: 'deactivatedAt' ifAbsent: [ nil ])
+		atpDeactivatedAt: (aRequest at: 'deactivatedAt' ifAbsent: [ nil ]);
+		atpThreatSignatures: (aRequest
+				at: 'threatSignatures'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

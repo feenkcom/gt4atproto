@@ -10,17 +10,17 @@ Class {
 		'atpDescription',
 		'atpDescriptionFacets',
 		'atpAvatar',
-		'atpViewer',
-		'atpIndexedAt',
 		'atpListItemCount',
-		'atpLabels'
+		'atpLabels',
+		'atpViewer',
+		'atpIndexedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyGraphDefsListView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -35,7 +35,7 @@ AppBskyGraphDefsListView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListView class >> atpSchema [
- ^ '{"type":"object","required":["uri","cid","creator","name","purpose","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","creator","name","purpose","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string","format":"uri"},"listItemCount":{"type":"integer","minimum":0},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -49,16 +49,18 @@ AppBskyGraphDefsListView class >> fromRequest: aRequest [
 				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
-		atpPurpose: (aRequest
-				at: 'purpose'
-				ifPresent: [ :aValue | String fromRequest: aValue ]
-				ifAbsent: [ nil ]);
+		atpPurpose: (aRequest at: 'purpose' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpDescriptionFacets: (aRequest
 				at: 'descriptionFacets'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpListItemCount: (aRequest at: 'listItemCount' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
 				ifPresent: [ :aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ]
@@ -68,7 +70,7 @@ AppBskyGraphDefsListView class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyGraphDefsListView >> atpAvatar [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 

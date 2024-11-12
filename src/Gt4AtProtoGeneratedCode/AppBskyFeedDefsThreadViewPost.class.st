@@ -13,7 +13,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsThreadViewPost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

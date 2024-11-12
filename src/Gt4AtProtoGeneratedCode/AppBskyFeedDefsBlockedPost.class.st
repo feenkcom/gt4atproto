@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyFeedDefsBlockedPost class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsBlockedPost class >> atpSchema [
- ^ '{"type":"object","required":["uri","blocked"],"properties":{"uri":{"type":"string","format":"at-uri"},"blocked":{"type":"boolean","const":true}}}'
+ ^ '{"type":"object","required":["uri","blocked","author"],"properties":{"uri":{"type":"string","format":"at-uri"},"blocked":{"type":"boolean","const":true},"author":{"type":"ref","ref":"#blockedAuthor"}}}'
 ]
 
 { #category : #serialization }
@@ -34,7 +34,11 @@ AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
-		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
+		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ]);
+		atpAuthor: (aRequest
+				at: 'author'
+				ifPresent: [ :aValue | AppBskyFeedDefsBlockedAuthor fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

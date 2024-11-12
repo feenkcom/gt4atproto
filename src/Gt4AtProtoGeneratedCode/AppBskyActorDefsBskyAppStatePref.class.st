@@ -26,7 +26,7 @@ AppBskyActorDefsBskyAppStatePref class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsBskyAppStatePref class >> atpSchema [
- ^ '{"description":"A grab bag of state that''s specific to the bsky.app program. Third-party apps shouldn''t use this.","type":"object","properties":{"activeProgressGuide":{"type":"ref","ref":"#bskyAppProgressGuide"},"queuedNudges":{"description":"An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user.","type":"array","maxLength":1000,"items":{"type":"string","maxLength":100}}}}'
+ ^ '{"description":"A grab bag of state that''s specific to the bsky.app program. Third-party apps shouldn''t use this.","type":"object","properties":{"activeProgressGuide":{"type":"ref","ref":"#bskyAppProgressGuide"},"queuedNudges":{"description":"An array of tokens which identify nudges (modals, popups, tours, highlight dots) that should be shown to the user.","type":"array","maxLength":1000,"items":{"type":"string","maxLength":100}},"nuxs":{"description":"Storage for NUXs the user has encountered.","type":"array","maxLength":100,"items":{"type":"ref","ref":"app.bsky.actor.defs#nux"}}}}'
 ]
 
 { #category : #serialization }
@@ -40,6 +40,10 @@ AppBskyActorDefsBskyAppStatePref class >> fromRequest: aRequest [
 		atpQueuedNudges: (aRequest
 				at: 'queuedNudges'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | aValue ] ]
+				ifAbsent: [ nil ]);
+		atpNuxs: (aRequest
+				at: 'nuxs'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyActorDefsNux fromRequest: aValue ] ]
 				ifAbsent: [ nil ])
 ]
 

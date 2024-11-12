@@ -10,15 +10,15 @@ Class {
 		'atpBanner',
 		'atpLabels',
 		'atpJoinedViaStarterPack',
-		'atpCreatedAt',
-		'atpPinnedPost'
+		'atpPinnedPost',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyActorProfileMain class >> atpDescription [
- ^ ''
+ ^  'A declaration of a Bluesky account profile.'
 ]
 
 { #category : #accessing }
@@ -33,7 +33,7 @@ AppBskyActorProfileMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorProfileMain class >> atpSchema [
- ^ '{"type":"record","key":"literal:self","record":{"type":"object","properties":{"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000},"banner":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000}}}}'
+ ^ '{"type":"record","description":"A declaration of a Bluesky account profile.","key":"literal:self","record":{"type":"object","properties":{"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","description":"Free-form profile description text.","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"blob","description":"Small image to be displayed next to posts from account. AKA, ''profile picture''","accept":["image/png","image/jpeg"],"maxSize":1000000},"banner":{"type":"blob","description":"Larger horizontal image to display behind profile view.","accept":["image/png","image/jpeg"],"maxSize":1000000},"labels":{"type":"union","description":"Self-label values, specific to the Bluesky application, on the overall account.","refs":["com.atproto.label.defs#selfLabels"]},"joinedViaStarterPack":{"type":"ref","ref":"com.atproto.repo.strongRef"},"pinnedPost":{"type":"ref","ref":"com.atproto.repo.strongRef"},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }
@@ -43,7 +43,25 @@ AppBskyActorProfileMain class >> fromRequest: aRequest [
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
-		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ])
+		atpBanner: (aRequest at: 'banner' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :aValue | 
+					({'com.atproto.label.defs#selfLabels' -> ComAtprotoLabelDefsSelfLabels}
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpJoinedViaStarterPack: (aRequest
+				at: 'joinedViaStarterPack'
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpPinnedPost: (aRequest
+				at: 'pinnedPost'
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

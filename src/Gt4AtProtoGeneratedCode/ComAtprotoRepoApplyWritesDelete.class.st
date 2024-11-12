@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete class >> atpDescription [
- ^ 'Delete an existing record.'
+ ^  'Operation which deletes an existing record.'
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ ComAtprotoRepoApplyWritesDelete class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoRepoApplyWritesDelete class >> atpSchema [
- ^ '{"type":"object","description":"Delete an existing record.","required":["collection","rkey"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"}}}'
+ ^ '{"type":"object","description":"Operation which deletes an existing record.","required":["collection","rkey"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"}}}'
 ]
 
 { #category : #serialization }

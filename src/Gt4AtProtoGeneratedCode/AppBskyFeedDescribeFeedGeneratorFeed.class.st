@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDescribeFeedGeneratorFeed class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

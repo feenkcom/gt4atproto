@@ -8,19 +8,19 @@ Class {
 		'atpRepo',
 		'atpCommit',
 		'atpPrev',
+		'atpRev',
+		'atpSince',
 		'atpBlocks',
 		'atpOps',
 		'atpBlobs',
-		'atpTime',
-		'atpRev',
-		'atpSince'
+		'atpTime'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit class >> atpDescription [
- ^ ''
+ ^  'Represents an update of repository state. Note that empty commits are allowed, which include no repo data changes, but an update to rev and signature.'
 ]
 
 { #category : #accessing }
@@ -35,7 +35,7 @@ ComAtprotoSyncSubscribeReposCommit class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposCommit class >> atpSchema [
- ^ '{"type":"object","required":["seq","rebase","tooBig","repo","commit","prev","blocks","ops","blobs","time"],"nullable":["prev"],"properties":{"seq":{"type":"integer"},"rebase":{"type":"boolean"},"tooBig":{"type":"boolean"},"repo":{"type":"string","format":"did"},"commit":{"type":"cid-link"},"prev":{"type":"cid-link"},"blocks":{"type":"bytes","description":"CAR file containing relevant blocks","maxLength":1000000},"ops":{"type":"array","items":{"type":"ref","ref":"#repoOp"},"maxLength":200},"blobs":{"type":"array","items":{"type":"cid-link"}},"time":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","description":"Represents an update of repository state. Note that empty commits are allowed, which include no repo data changes, but an update to rev and signature.","required":["seq","rebase","tooBig","repo","commit","rev","since","blocks","ops","blobs","time"],"nullable":["prev","since"],"properties":{"seq":{"type":"integer","description":"The stream sequence number of this message."},"rebase":{"type":"boolean","description":"DEPRECATED -- unused"},"tooBig":{"type":"boolean","description":"Indicates that this commit contained too many ops, or data size was too large. Consumers will need to make a separate request to get missing data."},"repo":{"type":"string","format":"did","description":"The repo this event comes from."},"commit":{"type":"cid-link","description":"Repo commit object CID."},"prev":{"type":"cid-link","description":"DEPRECATED -- unused. WARNING -- nullable and optional; stick with optional to ensure golang interoperability."},"rev":{"type":"string","description":"The rev of the emitted commit. Note that this information is also in the commit object included in blocks, unless this is a tooBig event."},"since":{"type":"string","description":"The rev of the last emitted commit from this repo (if any)."},"blocks":{"type":"bytes","description":"CAR file containing relevant blocks, as a diff since the previous repo state.","maxLength":1000000},"ops":{"type":"array","items":{"type":"ref","ref":"#repoOp","description":"List of repo mutation operations in this commit (eg, records created, updated, or deleted)."},"maxLength":200},"blobs":{"type":"array","items":{"type":"cid-link","description":"List of new blobs (by CID) referenced by records in this commit."}},"time":{"type":"string","format":"datetime","description":"Timestamp of when this message was originally broadcast."}}}'
 ]
 
 { #category : #serialization }
@@ -48,6 +48,8 @@ ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 		atpRepo: (aRequest at: 'repo' ifAbsent: [ nil ]);
 		atpCommit: (aRequest at: 'commit' ifAbsent: [ nil ]);
 		atpPrev: (aRequest at: 'prev' ifAbsent: [ nil ]);
+		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
+		atpSince: (aRequest at: 'since' ifAbsent: [ nil ]);
 		atpBlocks: (aRequest at: 'blocks' ifAbsent: [ nil ]);
 		atpOps: (aRequest
 				at: 'ops'
@@ -239,8 +241,7 @@ ComAtprotoSyncSubscribeReposCommit >> prevDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Prev';
-		accessor: #atpPrev;
-		beRequired
+		accessor: #atpPrev
 ]
 
 { #category : #magritte }

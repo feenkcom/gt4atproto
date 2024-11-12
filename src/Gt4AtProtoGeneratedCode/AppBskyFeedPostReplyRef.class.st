@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedPostReplyRef class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

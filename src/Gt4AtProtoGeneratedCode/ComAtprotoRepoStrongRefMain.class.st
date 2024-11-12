@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoRepoStrongRefMain class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

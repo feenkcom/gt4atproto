@@ -34,7 +34,7 @@ ToolsOzoneModerationDefsRepoView class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsRepoView class >> atpSchema [
- ^ '{"type":"object","required":["did","handle","relatedRecords","indexedAt","moderation"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderation"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invitesDisabled":{"type":"boolean"},"inviteNote":{"type":"string"},"deactivatedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["did","handle","relatedRecords","indexedAt","moderation"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderation"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invitesDisabled":{"type":"boolean"},"inviteNote":{"type":"string"},"deactivatedAt":{"type":"string","format":"datetime"},"threatSignatures":{"type":"array","items":{"type":"ref","ref":"com.atproto.admin.defs#threatSignature"}}}}'
 ]
 
 { #category : #serialization }
@@ -59,7 +59,13 @@ ToolsOzoneModerationDefsRepoView class >> fromRequest: aRequest [
 				ifAbsent: [ nil ]);
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ]);
 		atpInviteNote: (aRequest at: 'inviteNote' ifAbsent: [ nil ]);
-		atpDeactivatedAt: (aRequest at: 'deactivatedAt' ifAbsent: [ nil ])
+		atpDeactivatedAt: (aRequest at: 'deactivatedAt' ifAbsent: [ nil ]);
+		atpThreatSignatures: (aRequest
+				at: 'threatSignatures'
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue ] ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

@@ -137,6 +137,11 @@ GtApLexiconDefinition >> isObjectDefinition [
 	^ false
 ]
 
+{ #category : #'as yet unclassified' }
+GtApLexiconDefinition >> isPrimitive [
+	^ false
+]
+
 { #category : #testing }
 GtApLexiconDefinition >> isReference [
 	^ false

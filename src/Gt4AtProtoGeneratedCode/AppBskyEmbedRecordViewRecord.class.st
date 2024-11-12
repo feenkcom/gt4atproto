@@ -7,19 +7,19 @@ Class {
 		'atpAuthor',
 		'atpValue',
 		'atpLabels',
-		'atpEmbeds',
-		'atpIndexedAt',
 		'atpReplyCount',
 		'atpRepostCount',
 		'atpLikeCount',
-		'atpQuoteCount'
+		'atpQuoteCount',
+		'atpEmbeds',
+		'atpIndexedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -34,7 +34,7 @@ AppBskyEmbedRecordViewRecord class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord class >> atpSchema [
- ^ '{"type":"object","required":["uri","cid","author","value","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"value":{"type":"unknown"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"embeds":{"type":"array","items":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]}},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","author","value","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"value":{"type":"unknown","description":"The record data itself."},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"replyCount":{"type":"integer"},"repostCount":{"type":"integer"},"likeCount":{"type":"integer"},"quoteCount":{"type":"integer"},"embeds":{"type":"array","items":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.video#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]}},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -55,12 +55,17 @@ AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 				at: 'labels'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
 				ifAbsent: [ nil ]);
+		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]);
+		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]);
+		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]);
+		atpQuoteCount: (aRequest at: 'quoteCount' ifAbsent: [ nil ]);
 		atpEmbeds: (aRequest
 				at: 'embeds'
 				ifPresent: [ :anArray | 
 					anArray
 						collect: [ :aValue | 
 							({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView.
+								'app.bsky.embed.video#view' -> AppBskyEmbedVideoView.
 								'app.bsky.embed.external#view' -> AppBskyEmbedExternalView.
 								'app.bsky.embed.record#view' -> AppBskyEmbedRecordView.
 								'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView}
@@ -95,7 +100,7 @@ AppBskyEmbedRecordViewRecord >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewRecord >> atpEmbeds [
-	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
+	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
 	<atpCollection>
 	^ atpEmbeds
 ]
@@ -216,8 +221,8 @@ AppBskyEmbedRecordViewRecord >> cidDescription [
 AppBskyEmbedRecordViewRecord >> embedsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyEmbedImagesView AppBskyEmbedExternalView AppBskyEmbedRecordView
-					AppBskyEmbedRecordWithMediaView};
+		classes: {AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView
+					AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView};
 		label: 'Embeds';
 		accessor: #atpEmbeds
 ]

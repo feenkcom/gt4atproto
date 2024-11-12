@@ -13,7 +13,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoSyncListReposRepo class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -28,7 +28,7 @@ ComAtprotoSyncListReposRepo class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoSyncListReposRepo class >> atpSchema [
- ^ '{"type":"object","required":["did","head"],"properties":{"did":{"type":"string","format":"did"},"head":{"type":"string","format":"cid"}}}'
+ ^ '{"type":"object","required":["did","head","rev"],"properties":{"did":{"type":"string","format":"did"},"head":{"type":"string","format":"cid","description":"Current repo commit CID"},"rev":{"type":"string"},"active":{"type":"boolean"},"status":{"type":"string","description":"If active=false, this optional field indicates a possible reason for why the account is not active. If active=false and no status is supplied, then the host makes no claim for why the repository is no longer being hosted.","knownValues":["takendown","suspended","deactivated"]}}}'
 ]
 
 { #category : #serialization }
@@ -36,7 +36,10 @@ ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
-		atpHead: (aRequest at: 'head' ifAbsent: [ nil ])
+		atpHead: (aRequest at: 'head' ifAbsent: [ nil ]);
+		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
+		atpActive: (aRequest at: 'active' ifAbsent: [ nil ]);
+		atpStatus: (aRequest at: 'status' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }

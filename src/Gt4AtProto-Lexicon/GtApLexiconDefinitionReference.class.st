@@ -30,6 +30,9 @@ GtApLexiconDefinitionReference >> buildFromRequestOn: aKey [
 
 { #category : #accessing }
 GtApLexiconDefinitionReference >> buildFromRequestWithKey: aKey [
+	self referencedDefinition isPrimitive
+		ifTrue: [ ^ self referencedDefinition buildFromRequestWithKey: aKey ].
+
 	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | ' , self asClassName
 		, ' fromRequest: aValue ] ifAbsent: [ nil ]'
 ]
@@ -98,6 +101,11 @@ GtApLexiconDefinitionReference >> hasId [
 { #category : #accessing }
 GtApLexiconDefinitionReference >> isReference [
 	^ true
+]
+
+{ #category : #'as yet unclassified' }
+GtApLexiconDefinitionReference >> properties [
+	^ self referencedDefinition properties
 ]
 
 { #category : #accessing }

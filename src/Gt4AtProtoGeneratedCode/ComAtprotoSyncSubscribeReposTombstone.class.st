@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone class >> atpDescription [
- ^ ''
+ ^  'DEPRECATED -- Use #account event instead'
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ ComAtprotoSyncSubscribeReposTombstone class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposTombstone class >> atpSchema [
- ^ '{"type":"object","required":["seq","did","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"time":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","description":"DEPRECATED -- Use #account event instead","required":["seq","did","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"time":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }

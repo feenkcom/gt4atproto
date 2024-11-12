@@ -14,7 +14,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsViewerState class >> atpDescription [
- ^ ''
+ ^  'Metadata about the requesting account''s relationship with the subject content. Only has meaningful content for authed requests.'
 ]
 
 { #category : #accessing }
@@ -29,7 +29,7 @@ AppBskyFeedDefsViewerState class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsViewerState class >> atpSchema [
- ^ '{"type":"object","properties":{"repost":{"type":"string","format":"at-uri"},"like":{"type":"string","format":"at-uri"}}}'
+ ^ '{"type":"object","description":"Metadata about the requesting account''s relationship with the subject content. Only has meaningful content for authed requests.","properties":{"repost":{"type":"string","format":"at-uri"},"like":{"type":"string","format":"at-uri"},"threadMuted":{"type":"boolean"},"replyDisabled":{"type":"boolean"},"embeddingDisabled":{"type":"boolean"},"pinned":{"type":"boolean"}}}'
 ]
 
 { #category : #serialization }
@@ -37,7 +37,11 @@ AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ]);
-		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
+		atpLike: (aRequest at: 'like' ifAbsent: [ nil ]);
+		atpThreadMuted: (aRequest at: 'threadMuted' ifAbsent: [ nil ]);
+		atpReplyDisabled: (aRequest at: 'replyDisabled' ifAbsent: [ nil ]);
+		atpEmbeddingDisabled: (aRequest at: 'embeddingDisabled' ifAbsent: [ nil ]);
+		atpPinned: (aRequest at: 'pinned' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedImagesImage class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyEmbedImagesImage class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedImagesImage class >> atpSchema [
- ^ '{"type":"object","required":["image","alt"],"properties":{"image":{"type":"blob","accept":["image/*"],"maxSize":1000000},"alt":{"type":"string"}}}'
+ ^ '{"type":"object","required":["image","alt"],"properties":{"image":{"type":"blob","accept":["image/*"],"maxSize":1000000},"alt":{"type":"string","description":"Alt text description of the image, for accessibility."},"aspectRatio":{"type":"ref","ref":"app.bsky.embed.defs#aspectRatio"}}}'
 ]
 
 { #category : #serialization }
@@ -34,7 +34,11 @@ AppBskyEmbedImagesImage class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpImage: (aRequest at: 'image' ifAbsent: [ nil ]);
-		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ])
+		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ]);
+		atpAspectRatio: (aRequest
+				at: 'aspectRatio'
+				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -67,14 +71,14 @@ AppBskyEmbedImagesImage >> atpAlt: anObject [
 
 { #category : #accessing }
 AppBskyEmbedImagesImage >> atpAspectRatio [
-	<referenceTo:'#aspectRatio'>
-	<atpType:#AppBskyEmbedImagesAspectRatio format:nil>
+	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
+	<atpType:#AppBskyEmbedDefsAspectRatio format:nil>
 	^ atpAspectRatio
 ]
 
 { #category : #accessing }
 AppBskyEmbedImagesImage >> atpAspectRatio: anObject [
-	<referenceTo:'#aspectRatio'>
+	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	atpAspectRatio := anObject
 ]
 

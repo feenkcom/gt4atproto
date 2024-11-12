@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

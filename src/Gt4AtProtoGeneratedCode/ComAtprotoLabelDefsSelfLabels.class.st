@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoLabelDefsSelfLabels class >> atpDescription [
- ^ 'Metadata tags on an atproto record, published by the author within the record.'
+ ^  'Metadata tags on an atproto record, published by the author within the record.'
 ]
 
 { #category : #accessing }

@@ -6,9 +6,9 @@ Class {
 		'atpMutedByList',
 		'atpBlockedBy',
 		'atpBlocking',
+		'atpBlockingByList',
 		'atpFollowing',
 		'atpFollowedBy',
-		'atpBlockingByList',
 		'atpKnownFollowers'
 	],
 	#category : #Gt4AtProtoGeneratedCode
@@ -16,7 +16,7 @@ Class {
 
 { #category : #accessing }
 AppBskyActorDefsViewerState class >> atpDescription [
- ^ ''
+ ^  'Metadata about the requesting account''s relationship with the subject account. Only has meaningful content for authed requests.'
 ]
 
 { #category : #accessing }
@@ -31,7 +31,7 @@ AppBskyActorDefsViewerState class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsViewerState class >> atpSchema [
- ^ '{"type":"object","properties":{"muted":{"type":"boolean"},"mutedByList":{"type":"ref","ref":"app.bsky.graph.defs#listViewBasic"},"blockedBy":{"type":"boolean"},"blocking":{"type":"string","format":"at-uri"},"following":{"type":"string","format":"at-uri"},"followedBy":{"type":"string","format":"at-uri"}}}'
+ ^ '{"type":"object","description":"Metadata about the requesting account''s relationship with the subject account. Only has meaningful content for authed requests.","properties":{"muted":{"type":"boolean"},"mutedByList":{"type":"ref","ref":"app.bsky.graph.defs#listViewBasic"},"blockedBy":{"type":"boolean"},"blocking":{"type":"string","format":"at-uri"},"blockingByList":{"type":"ref","ref":"app.bsky.graph.defs#listViewBasic"},"following":{"type":"string","format":"at-uri"},"followedBy":{"type":"string","format":"at-uri"},"knownFollowers":{"type":"ref","ref":"#knownFollowers"}}}'
 ]
 
 { #category : #serialization }
@@ -45,8 +45,16 @@ AppBskyActorDefsViewerState class >> fromRequest: aRequest [
 				ifAbsent: [ nil ]);
 		atpBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]);
 		atpBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]);
+		atpBlockingByList: (aRequest
+				at: 'blockingByList'
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]);
-		atpFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ])
+		atpFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ]);
+		atpKnownFollowers: (aRequest
+				at: 'knownFollowers'
+				ifPresent: [ :aValue | AppBskyActorDefsKnownFollowers fromRequest: aValue ]
+				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

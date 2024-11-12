@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyRichtextFacetByteSlice class >> atpDescription [
- ^ 'A text segment. Start is inclusive, end is exclusive. Indices are for utf8-encoded strings.'
+ ^  'Specifies the sub-string range a facet feature applies to. Start index is inclusive, end index is exclusive. Indices are zero-indexed, counting bytes of the UTF-8 encoded text. NOTE: some languages, like Javascript, use UTF-16 or Unicode codepoints for string slice indexing; in these languages, convert to byte arrays before working with facets.'
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ AppBskyRichtextFacetByteSlice class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyRichtextFacetByteSlice class >> atpSchema [
- ^ '{"type":"object","description":"A text segment. Start is inclusive, end is exclusive. Indices are for utf8-encoded strings.","required":["byteStart","byteEnd"],"properties":{"byteStart":{"type":"integer","minimum":0},"byteEnd":{"type":"integer","minimum":0}}}'
+ ^ '{"type":"object","description":"Specifies the sub-string range a facet feature applies to. Start index is inclusive, end index is exclusive. Indices are zero-indexed, counting bytes of the UTF-8 encoded text. NOTE: some languages, like Javascript, use UTF-16 or Unicode codepoints for string slice indexing; in these languages, convert to byte arrays before working with facets.","required":["byteStart","byteEnd"],"properties":{"byteStart":{"type":"integer","minimum":0},"byteEnd":{"type":"integer","minimum":0}}}'
 ]
 
 { #category : #serialization }

@@ -7,16 +7,16 @@ Class {
 		'atpDescription',
 		'atpDescriptionFacets',
 		'atpAvatar',
-		'atpCreatedAt',
+		'atpAcceptsInteractions',
 		'atpLabels',
-		'atpAcceptsInteractions'
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyFeedGeneratorMain class >> atpDescription [
- ^ 'A declaration of the existence of a feed generator'
+ ^  'Record declaring of the existence of a feed generator, and containing metadata about it. The record can exist in any repository.'
 ]
 
 { #category : #accessing }
@@ -31,7 +31,7 @@ AppBskyFeedGeneratorMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedGeneratorMain class >> atpSchema [
- ^ '{"type":"record","description":"A declaration of the existence of a feed generator","key":"any","record":{"type":"object","required":["did","displayName","createdAt"],"properties":{"did":{"type":"string","format":"did"},"displayName":{"type":"string","maxGraphemes":24,"maxLength":240},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","description":"Record declaring of the existence of a feed generator, and containing metadata about it. The record can exist in any repository.","key":"any","record":{"type":"object","required":["did","displayName","createdAt"],"properties":{"did":{"type":"string","format":"did"},"displayName":{"type":"string","maxGraphemes":24,"maxLength":240},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000},"acceptsInteractions":{"type":"boolean","description":"Declaration that a feed accepts feedback interactions from a client through app.bsky.feed.sendInteractions"},"labels":{"type":"union","description":"Self-label values","refs":["com.atproto.label.defs#selfLabels"]},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }
@@ -46,6 +46,16 @@ AppBskyFeedGeneratorMain class >> fromRequest: aRequest [
 				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpAcceptsInteractions: (aRequest at: 'acceptsInteractions' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :aValue | 
+					({'com.atproto.label.defs#selfLabels' -> ComAtprotoLabelDefsSelfLabels}
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 

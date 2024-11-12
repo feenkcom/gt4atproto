@@ -7,17 +7,17 @@ Class {
 		'atpName',
 		'atpPurpose',
 		'atpAvatar',
-		'atpViewer',
-		'atpIndexedAt',
 		'atpListItemCount',
-		'atpLabels'
+		'atpLabels',
+		'atpViewer',
+		'atpIndexedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -32,7 +32,7 @@ AppBskyGraphDefsListViewBasic class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic class >> atpSchema [
- ^ '{"type":"object","required":["uri","cid","name","purpose"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["uri","cid","name","purpose"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"avatar":{"type":"string","format":"uri"},"listItemCount":{"type":"integer","minimum":0},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -42,11 +42,13 @@ AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
-		atpPurpose: (aRequest
-				at: 'purpose'
-				ifPresent: [ :aValue | String fromRequest: aValue ]
-				ifAbsent: [ nil ]);
+		atpPurpose: (aRequest at: 'purpose' ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpListItemCount: (aRequest at: 'listItemCount' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
 				ifPresent: [ :aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ]
@@ -56,7 +58,7 @@ AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewBasic >> atpAvatar [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 

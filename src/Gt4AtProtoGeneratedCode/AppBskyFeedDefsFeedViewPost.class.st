@@ -14,7 +14,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -29,7 +29,7 @@ AppBskyFeedDefsFeedViewPost class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost class >> atpSchema [
- ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"#postView"},"reply":{"type":"ref","ref":"#replyRef"},"reason":{"type":"union","refs":["#reasonRepost"]}}}'
+ ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"#postView"},"reply":{"type":"ref","ref":"#replyRef"},"reason":{"type":"union","refs":["#reasonRepost","#reasonPin"]},"feedContext":{"type":"string","description":"Context provided by feed generator that may be passed back alongside interactions.","maxLength":2000}}}'
 ]
 
 { #category : #serialization }
@@ -47,11 +47,13 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 		atpReason: (aRequest
 				at: 'reason'
 				ifPresent: [ :aValue | 
-					({'app.bsky.feed.defs#reasonRepost' -> AppBskyFeedDefsReasonRepost} asDictionary
+					({'app.bsky.feed.defs#reasonRepost' -> AppBskyFeedDefsReasonRepost.
+						'app.bsky.feed.defs#reasonPin' -> AppBskyFeedDefsReasonPin} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
-				ifAbsent: [ nil ])
+				ifAbsent: [ nil ]);
+		atpFeedContext: (aRequest at: 'feedContext' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -80,7 +82,7 @@ AppBskyFeedDefsFeedViewPost >> atpPost: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsFeedViewPost >> atpReason [
-	<atpType:#(AppBskyFeedDefsReasonRepost) format:nil>
+	<atpType:#(AppBskyFeedDefsReasonRepost AppBskyFeedDefsReasonPin) format:nil>
 	^ atpReason
 ]
 
@@ -123,7 +125,8 @@ AppBskyFeedDefsFeedViewPost >> postDescription [
 AppBskyFeedDefsFeedViewPost >> reasonDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#reasonRepost'};
+		options: {'#reasonRepost'.
+				'#reasonPin'};
 		label: 'Reason';
 		accessor: #atpReason
 ]

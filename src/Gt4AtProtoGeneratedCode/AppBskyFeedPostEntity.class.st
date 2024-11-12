@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedPostEntity class >> atpDescription [
- ^ 'Deprecated: use facets instead.'
+ ^  'Deprecated: use facets instead.'
 ]
 
 { #category : #accessing }

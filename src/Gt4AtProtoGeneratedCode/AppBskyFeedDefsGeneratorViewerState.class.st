@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsGeneratorViewerState class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

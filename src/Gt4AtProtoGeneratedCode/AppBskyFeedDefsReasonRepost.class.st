@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsReasonRepost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

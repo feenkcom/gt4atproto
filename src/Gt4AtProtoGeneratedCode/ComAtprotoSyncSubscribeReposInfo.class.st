@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposInfo class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

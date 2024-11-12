@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedGetLikesLike class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

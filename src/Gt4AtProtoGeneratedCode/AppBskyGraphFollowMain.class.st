@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyGraphFollowMain class >> atpDescription [
- ^ 'A social follow.'
+ ^  'Record declaring a social ''follow'' relationship of another account. Duplicate follows will be ignored by the AppView.'
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ AppBskyGraphFollowMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphFollowMain class >> atpSchema [
- ^ '{"type":"record","description":"A social follow.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","description":"Record declaring a social ''follow'' relationship of another account. Duplicate follows will be ignored by the AppView.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }

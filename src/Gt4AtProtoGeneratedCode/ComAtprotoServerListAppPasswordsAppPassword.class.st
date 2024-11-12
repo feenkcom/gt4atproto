@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoServerListAppPasswordsAppPassword class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ ComAtprotoServerListAppPasswordsAppPassword class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoServerListAppPasswordsAppPassword class >> atpSchema [
- ^ '{"type":"object","required":["name","createdAt"],"properties":{"name":{"type":"string"},"createdAt":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","required":["name","createdAt"],"properties":{"name":{"type":"string"},"createdAt":{"type":"string","format":"datetime"},"privileged":{"type":"boolean"}}}'
 ]
 
 { #category : #serialization }
@@ -34,7 +34,8 @@ ComAtprotoServerListAppPasswordsAppPassword class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
-		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
+		atpPrivileged: (aRequest at: 'privileged' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

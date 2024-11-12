@@ -6,9 +6,9 @@ Class {
 		'atpHandle',
 		'atpDisplayName',
 		'atpAvatar',
+		'atpAssociated',
 		'atpViewer',
 		'atpLabels',
-		'atpAssociated',
 		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
@@ -16,7 +16,7 @@ Class {
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -31,7 +31,7 @@ AppBskyActorDefsProfileViewBasic class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic class >> atpSchema [
- ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"avatar":{"type":"string"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+ ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"avatar":{"type":"string","format":"uri"},"associated":{"type":"ref","ref":"#profileAssociated"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"createdAt":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }
@@ -42,6 +42,10 @@ AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpAssociated: (aRequest
+				at: 'associated'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociated fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
 				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
@@ -49,7 +53,8 @@ AppBskyActorDefsProfileViewBasic class >> fromRequest: aRequest [
 		atpLabels: (aRequest
 				at: 'labels'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
-				ifAbsent: [ nil ])
+				ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
 { #category : #magritte }
@@ -75,7 +80,7 @@ AppBskyActorDefsProfileViewBasic >> atpAssociated: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewBasic >> atpAvatar [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 

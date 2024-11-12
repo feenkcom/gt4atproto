@@ -137,6 +137,53 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 ]
 
 { #category : #accessing }
+GtApClient >> paginatedQueryOn: aMethodId parameters: aDictionary [
+	| res filteredProperties rightKey |
+	res := [ (self clientFor: aMethodId parameters: aDictionary) query ]
+			on: GtXRPCError
+			do: [ :anError | 
+				anError errorMessage = 'ExpiredToken'
+					ifTrue: [ self refreshToken.
+						^ self queryOn: aMethodId parameters: aDictionary ]
+					ifFalse: [ anError signal ] ].
+
+
+
+	(res includesKey: 'cursor')
+		ifFalse: [ rightKey := res keys
+					detect: [ :aKey | (res at: aKey) isKindOf: Array ]
+					ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
+			^ GtApResultStream new
+				resultsList: (res at: rightKey) asOrderedCollection;
+				method: aMethodId;
+				parameters: aDictionary;
+				client: self ].
+
+	filteredProperties := res keys reject: [ :aKey | aKey = 'cursor' ].
+
+	filteredProperties size > 1
+		ifTrue: [ rightKey := res keys
+					detect: [ :aKey | ('cursor' = aKey) not and: [ (res at: aKey) isKindOf: Array ] ]
+					ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
+			res
+				at: rightKey
+				put: (GtApResultStream new
+						cursor: (res removeKey: 'cursor');
+						key: rightKey;
+						resultsList: (res removeKey: rightKey) asOrderedCollection;
+						method: aMethodId;
+						parameters: aDictionary;
+						client: self).
+			^ res ].
+
+	^ GtApResultStream new
+		result: res;
+		method: aMethodId;
+		parameters: aDictionary;
+		client: self
+]
+
+{ #category : #accessing }
 GtApClient >> procedureOn: aMethodId withBinary: anObject [
 	[ ^ (self clientFor: aMethodId body: anObject readStream) procedure ]
 		on: GtXRPCError
@@ -219,40 +266,13 @@ GtApClient >> queryOn: aMethodId [
 
 { #category : #accessing }
 GtApClient >> queryOn: aMethodId parameters: aDictionary [
-	| res filteredProperties |
-	res := [ (self clientFor: aMethodId parameters: aDictionary) query ]
-			on: GtXRPCError
-			do: [ :anError | 
-				anError errorMessage = 'ExpiredToken'
-					ifTrue: [ self refreshToken.
-						^ self queryOn: aMethodId parameters: aDictionary ]
-					ifFalse: [ anError signal ] ].
-
-	(res includesKey: 'cursor') ifFalse: [ ^ res ].
-
-	filteredProperties := res keys reject: [ :aKey | aKey = 'cursor' ].
-
-	filteredProperties size > 1
-		ifTrue: [ | rightKey |
-			rightKey := res keys
-					detect: [ :aKey | ('cursor' = aKey) not and: [ (res at: aKey) isKindOf: Array ] ]
-					ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
-			res
-				at: rightKey
-				put: (GtApResultStream new
-						cursor: (res removeKey: 'cursor');
-						key: rightKey;
-						resultsList: (res removeKey: rightKey) asOrderedCollection;
-						method: aMethodId;
-						parameters: aDictionary;
-						client: self).
-			^ res ].
-
-	^ GtApResultStream new
-		result: res;
-		method: aMethodId;
-		parameters: aDictionary;
-		client: self
+	^ [ (self clientFor: aMethodId parameters: aDictionary) query ]
+		on: GtXRPCError
+		do: [ :anError | 
+			anError errorMessage = 'ExpiredToken'
+				ifTrue: [ self refreshToken.
+					^ self queryOn: aMethodId parameters: aDictionary ]
+				ifFalse: [ anError signal ] ]
 ]
 
 { #category : #accessing }

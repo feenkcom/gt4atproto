@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoAdminDefsRepoRef class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

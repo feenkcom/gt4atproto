@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyRichtextFacetLink class >> atpDescription [
- ^ 'A facet feature for links.'
+ ^  'Facet feature for a URL. The text URL may have been simplified or truncated, but the facet reference should be a complete URL.'
 ]
 
 { #category : #accessing }
@@ -24,7 +24,7 @@ AppBskyRichtextFacetLink class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyRichtextFacetLink class >> atpSchema [
- ^ '{"type":"object","description":"A facet feature for links.","required":["uri"],"properties":{"uri":{"type":"string","format":"uri"}}}'
+ ^ '{"type":"object","description":"Facet feature for a URL. The text URL may have been simplified or truncated, but the facet reference should be a complete URL.","required":["uri"],"properties":{"uri":{"type":"string","format":"uri"}}}'
 ]
 
 { #category : #serialization }

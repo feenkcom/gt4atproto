@@ -10,18 +10,18 @@ Class {
 		'atpReplyCount',
 		'atpRepostCount',
 		'atpLikeCount',
+		'atpQuoteCount',
 		'atpIndexedAt',
 		'atpViewer',
 		'atpLabels',
-		'atpThreadgate',
-		'atpQuoteCount'
+		'atpThreadgate'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyFeedDefsPostView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -36,7 +36,7 @@ AppBskyFeedDefsPostView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView class >> atpSchema [
- ^ '{"type":"object","required":["uri","cid","author","record","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"record":{"type":"unknown"},"embed":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]},"replyCount":{"type":"integer"},"repostCount":{"type":"integer"},"likeCount":{"type":"integer"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+ ^ '{"type":"object","required":["uri","cid","author","record","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"record":{"type":"unknown"},"embed":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.video#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]},"replyCount":{"type":"integer"},"repostCount":{"type":"integer"},"likeCount":{"type":"integer"},"quoteCount":{"type":"integer"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"threadgate":{"type":"ref","ref":"#threadgateView"}}}'
 ]
 
 { #category : #serialization }
@@ -57,6 +57,7 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 				at: 'embed'
 				ifPresent: [ :aValue | 
 					({'app.bsky.embed.images#view' -> AppBskyEmbedImagesView.
+						'app.bsky.embed.video#view' -> AppBskyEmbedVideoView.
 						'app.bsky.embed.external#view' -> AppBskyEmbedExternalView.
 						'app.bsky.embed.record#view' -> AppBskyEmbedRecordView.
 						'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView}
@@ -68,6 +69,7 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]);
 		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]);
 		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]);
+		atpQuoteCount: (aRequest at: 'quoteCount' ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
@@ -76,6 +78,10 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 		atpLabels: (aRequest
 				at: 'labels'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpThreadgate: (aRequest
+				at: 'threadgate'
+				ifPresent: [ :aValue | AppBskyFeedDefsThreadgateView fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 
@@ -105,7 +111,7 @@ AppBskyFeedDefsPostView >> atpCid: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsPostView >> atpEmbed [
-	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
+	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
 	^ atpEmbed
 ]
 
@@ -252,6 +258,7 @@ AppBskyFeedDefsPostView >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
 		options: {'app.bsky.embed.images#view'.
+				'app.bsky.embed.video#view'.
 				'app.bsky.embed.external#view'.
 				'app.bsky.embed.record#view'.
 				'app.bsky.embed.recordWithMedia#view'};

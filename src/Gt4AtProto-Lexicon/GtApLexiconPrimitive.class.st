@@ -26,3 +26,8 @@ GtApLexiconPrimitive >> description [
 GtApLexiconPrimitive >> description: anObject [
 	description := anObject
 ]
+
+{ #category : #'as yet unclassified' }
+GtApLexiconPrimitive >> isPrimitive [
+	^ true
+]

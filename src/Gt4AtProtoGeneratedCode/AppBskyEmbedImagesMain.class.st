@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedImagesMain class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

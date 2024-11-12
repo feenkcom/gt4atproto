@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyGraphDefsListViewerState class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -25,14 +25,15 @@ AppBskyGraphDefsListViewerState class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListViewerState class >> atpSchema [
- ^ '{"type":"object","properties":{"muted":{"type":"boolean"}}}'
+ ^ '{"type":"object","properties":{"muted":{"type":"boolean"},"blocked":{"type":"string","format":"at-uri"}}}'
 ]
 
 { #category : #serialization }
 AppBskyGraphDefsListViewerState class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ])
+		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]);
+		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

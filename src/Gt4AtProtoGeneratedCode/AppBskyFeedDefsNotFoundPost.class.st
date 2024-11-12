@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsNotFoundPost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

@@ -15,7 +15,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoServerDefsInviteCode class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

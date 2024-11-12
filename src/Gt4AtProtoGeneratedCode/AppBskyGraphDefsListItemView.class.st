@@ -2,15 +2,15 @@ Class {
 	#name : #AppBskyGraphDefsListItemView,
 	#superclass : #GtApModelEntity,
 	#instVars : [
-		'atpSubject',
-		'atpUri'
+		'atpUri',
+		'atpSubject'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyGraphDefsListItemView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -25,13 +25,14 @@ AppBskyGraphDefsListItemView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphDefsListItemView class >> atpSchema [
- ^ '{"type":"object","required":["subject"],"properties":{"subject":{"type":"ref","ref":"app.bsky.actor.defs#profileView"}}}'
+ ^ '{"type":"object","required":["uri","subject"],"properties":{"uri":{"type":"string","format":"at-uri"},"subject":{"type":"ref","ref":"app.bsky.actor.defs#profileView"}}}'
 ]
 
 { #category : #serialization }
 AppBskyGraphDefsListItemView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpSubject: (aRequest
 				at: 'subject'
 				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]

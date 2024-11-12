@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyGraphListitemMain class >> atpDescription [
- ^ 'An item under a declared list of actors'
+ ^  'Record representing an account''s inclusion on a specific list. The AppView will ignore duplicate listitem records.'
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyGraphListitemMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphListitemMain class >> atpSchema [
- ^ '{"type":"record","description":"An item under a declared list of actors","key":"tid","record":{"type":"object","required":["subject","list","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"list":{"type":"string","format":"at-uri"},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","description":"Record representing an account''s inclusion on a specific list. The AppView will ignore duplicate listitem records.","key":"tid","record":{"type":"object","required":["subject","list","createdAt"],"properties":{"subject":{"type":"string","format":"did","description":"The account which is included on the list."},"list":{"type":"string","format":"at-uri","description":"Reference (AT-URI) to the list record (app.bsky.graph.list)."},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }

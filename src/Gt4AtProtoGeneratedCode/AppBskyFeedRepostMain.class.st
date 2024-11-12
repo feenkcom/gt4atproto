@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedRepostMain class >> atpDescription [
- ^ ''
+ ^  'Record representing a ''repost'' of an existing Bluesky post.'
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ AppBskyFeedRepostMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedRepostMain class >> atpSchema [
- ^ '{"type":"record","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"ref","ref":"com.atproto.repo.strongRef"},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"description":"Record representing a ''repost'' of an existing Bluesky post.","type":"record","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"ref","ref":"com.atproto.repo.strongRef"},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }

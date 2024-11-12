@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsSkeletonFeedPost class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,7 +26,7 @@ AppBskyFeedDefsSkeletonFeedPost class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyFeedDefsSkeletonFeedPost class >> atpSchema [
- ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"string","format":"at-uri"},"reason":{"type":"union","refs":["#skeletonReasonRepost"]}}}'
+ ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"string","format":"at-uri"},"reason":{"type":"union","refs":["#skeletonReasonRepost","#skeletonReasonPin"]},"feedContext":{"type":"string","description":"Context that will be passed through to client and may be passed to feed generator back alongside interactions.","maxLength":2000}}}'
 ]
 
 { #category : #serialization }
@@ -38,11 +38,14 @@ AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest [
 				at: 'reason'
 				ifPresent: [ :aValue | 
 					({'app.bsky.feed.defs#skeletonReasonRepost'
-							-> AppBskyFeedDefsSkeletonReasonRepost} asDictionary
+							-> AppBskyFeedDefsSkeletonReasonRepost.
+						'app.bsky.feed.defs#skeletonReasonPin' -> AppBskyFeedDefsSkeletonReasonPin}
+						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
 						fromRequest: aValue ]
-				ifAbsent: [ nil ])
+				ifAbsent: [ nil ]);
+		atpFeedContext: (aRequest at: 'feedContext' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
@@ -69,7 +72,7 @@ AppBskyFeedDefsSkeletonFeedPost >> atpPost: anObject [
 
 { #category : #accessing }
 AppBskyFeedDefsSkeletonFeedPost >> atpReason [
-	<atpType:#(AppBskyFeedDefsSkeletonReasonRepost) format:nil>
+	<atpType:#(AppBskyFeedDefsSkeletonReasonRepost AppBskyFeedDefsSkeletonReasonPin) format:nil>
 	^ atpReason
 ]
 
@@ -99,7 +102,8 @@ AppBskyFeedDefsSkeletonFeedPost >> postDescription [
 AppBskyFeedDefsSkeletonFeedPost >> reasonDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
-		options: {'#skeletonReasonRepost'};
+		options: {'#skeletonReasonRepost'.
+				'#skeletonReasonPin'};
 		label: 'Reason';
 		accessor: #atpReason
 ]

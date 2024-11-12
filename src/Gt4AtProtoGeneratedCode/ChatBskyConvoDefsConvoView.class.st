@@ -7,8 +7,8 @@ Class {
 		'atpMembers',
 		'atpLastMessage',
 		'atpMuted',
-		'atpUnreadCount',
-		'atpOpened'
+		'atpOpened',
+		'atpUnreadCount'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
@@ -30,7 +30,7 @@ ChatBskyConvoDefsConvoView class >> atpRecordName [
 
 { #category : #accessing }
 ChatBskyConvoDefsConvoView class >> atpSchema [
- ^ '{"type":"object","required":["id","rev","members","muted","unreadCount"],"properties":{"id":{"type":"string"},"rev":{"type":"string"},"members":{"type":"array","items":{"type":"ref","ref":"chat.bsky.actor.defs#profileViewBasic"}},"lastMessage":{"type":"union","refs":["#messageView","#deletedMessageView"]},"muted":{"type":"boolean"},"unreadCount":{"type":"integer"}}}'
+ ^ '{"type":"object","required":["id","rev","members","muted","unreadCount"],"properties":{"id":{"type":"string"},"rev":{"type":"string"},"members":{"type":"array","items":{"type":"ref","ref":"chat.bsky.actor.defs#profileViewBasic"}},"lastMessage":{"type":"union","refs":["#messageView","#deletedMessageView"]},"muted":{"type":"boolean"},"opened":{"type":"boolean"},"unreadCount":{"type":"integer"}}}'
 ]
 
 { #category : #serialization }
@@ -56,6 +56,7 @@ ChatBskyConvoDefsConvoView class >> fromRequest: aRequest [
 						fromRequest: aValue ]
 				ifAbsent: [ nil ]);
 		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]);
+		atpOpened: (aRequest at: 'opened' ifAbsent: [ nil ]);
 		atpUnreadCount: (aRequest at: 'unreadCount' ifAbsent: [ nil ])
 ]
 

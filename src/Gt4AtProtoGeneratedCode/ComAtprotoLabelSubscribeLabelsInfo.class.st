@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoLabelSubscribeLabelsInfo class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

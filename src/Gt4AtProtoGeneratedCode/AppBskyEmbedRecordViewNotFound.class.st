@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedRecordViewNotFound class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -25,14 +25,15 @@ AppBskyEmbedRecordViewNotFound class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyEmbedRecordViewNotFound class >> atpSchema [
- ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
+ ^ '{"type":"object","required":["uri","notFound"],"properties":{"uri":{"type":"string","format":"at-uri"},"notFound":{"type":"boolean","const":true}}}'
 ]
 
 { #category : #serialization }
 AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
+		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
+		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

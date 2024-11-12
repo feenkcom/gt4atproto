@@ -2,7 +2,7 @@ Extension { #name : #GtApGeneratedClient }
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetPreferences [
-	"Get private preferences attached to the account."
+	"Get private preferences attached to the current account. Expected use is synchronization between multiple devices, and import/export during account migration. Requires auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -12,7 +12,7 @@ GtApGeneratedClient >> appBskyActorGetPreferences [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetProfileActor: actor [
-	""
+	"Get detailed profile view of an actor. Does not require auth, but contains relevant metadata with auth."
 
 	<xrpcQuery>
 	^ AppBskyActorDefsProfileViewDetailed
@@ -23,7 +23,7 @@ GtApGeneratedClient >> appBskyActorGetProfileActor: actor [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetProfilesActors: actors [
-	""
+	"Get detailed profile views of multiple actors."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -35,17 +35,19 @@ GtApGeneratedClient >> appBskyActorGetProfilesActors: actors [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorGetSuggestions [
-	"Get a list of actors suggested for following. Used in discovery UIs."
+	"Get a list of suggested actors. Expected use is discovery of accounts to follow during new account onboarding."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
-		stream: (self queryOn: 'app.bsky.actor.getSuggestions' parameters: {} asDictionary)
+		stream: (self
+				paginatedQueryOn: 'app.bsky.actor.getSuggestions'
+				parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyActorPutPreferencesPreferences: preferences [
-	"Sets the private preferences attached to the account."
+	"Set the private preferences attached to the account."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -56,32 +58,34 @@ GtApGeneratedClient >> appBskyActorPutPreferencesPreferences: preferences [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsTerm: term [
-	"Find actors matching search criteria."
+GtApGeneratedClient >> appBskyActorSearchActorsTerm: term q: q [
+	"Find actors (profiles) matching search criteria. Does not require auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.actor.searchActors'
-				parameters: {'term' -> term} asDictionary)
+				paginatedQueryOn: 'app.bsky.actor.searchActors'
+				parameters: {'term' -> term.
+						'q' -> q} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadTerm: term [
-	"Find actor suggestions for a search term."
+GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadTerm: term q: q [
+	"Find actor suggestions for a prefix search term. Expected use is for auto-completion during text field entry. Does not require auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
 		from: {'actors' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.actor.searchActorsTypeahead'
-				parameters: {'term' -> term} asDictionary)
+				parameters: {'term' -> term.
+						'q' -> q} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedDescribeFeedGenerator [
-	"Returns information about a given feed generator including TOS & offered feed URIs"
+	"Get information about a feed generator, including policies and offered feed URIs. Does not require auth; implemented by Feed Generator services (not App View)."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -97,41 +101,57 @@ GtApGeneratedClient >> appBskyFeedDescribeFeedGenerator [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetActorFeedsActor: actor [
-	"Retrieve a list of feeds created by a given actor"
+	"Get a list of feeds (feed generator records) created by the actor (in the actor's repo)."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyFeedDefsGeneratorView fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.feed.getActorFeeds'
+				paginatedQueryOn: 'app.bsky.feed.getActorFeeds'
 				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetAuthorFeedActor: actor [
-	"A view of an actor's feed."
+GtApGeneratedClient >> appBskyFeedGetActorLikesActor: actor [
+	"Get a list of posts liked by an actor. Requires auth, actor must be the requesting account."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.feed.getAuthorFeed'
+				paginatedQueryOn: 'app.bsky.feed.getActorLikes'
 				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyFeedGetFeedFeed: feed [
-	"Compose and hydrate a feed from a user's selected feed generator"
+GtApGeneratedClient >> appBskyFeedGetAuthorFeedActor: actor filter: filter includePins: includePins [
+	"Get a view of an actor's 'author feed' (post and reposts by the author). Does not require auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
-		stream: (self queryOn: 'app.bsky.feed.getFeed' parameters: {'feed' -> feed} asDictionary)
+		stream: (self
+				paginatedQueryOn: 'app.bsky.feed.getAuthorFeed'
+				parameters: {'actor' -> actor.
+						'filter' -> filter.
+						'includePins' -> includePins} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetFeedFeed: feed [
+	"Get a hydrated feed from an actor's selected feed generator. Implemented by App View."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'app.bsky.feed.getFeed'
+				parameters: {'feed' -> feed} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetFeedGeneratorFeed: feed [
-	"Get information about a specific feed offered by a feed generator, such as its online status"
+	"Get information about a feed generator. Implemented by AppView."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -145,7 +165,7 @@ GtApGeneratedClient >> appBskyFeedGetFeedGeneratorFeed: feed [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetFeedGeneratorsFeeds: feeds [
-	"Get information about a list of feed generators"
+	"Get information about a list of feed generators."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -157,19 +177,19 @@ GtApGeneratedClient >> appBskyFeedGetFeedGeneratorsFeeds: feeds [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetFeedSkeletonFeed: feed [
-	"A skeleton of a feed provided by a feed generator"
+	"Get a skeleton of a feed provided by a feed generator. Auth is optional, depending on provider requirements, and provides the DID of the requester. Implemented by Feed Generator Service."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyFeedDefsSkeletonFeedPost fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.feed.getFeedSkeleton'
+				paginatedQueryOn: 'app.bsky.feed.getFeedSkeleton'
 				parameters: {'feed' -> feed} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetLikesUri: uri cid: cid [
-	""
+	"Get like records which reference a subject (by AT-URI and CID)."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -180,18 +200,33 @@ GtApGeneratedClient >> appBskyFeedGetLikesUri: uri cid: cid [
 				'cid' -> [ :aValue | aValue ].
 				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
-				queryOn: 'app.bsky.feed.getLikes'
+				paginatedQueryOn: 'app.bsky.feed.getLikes'
 				parameters: {'uri' -> uri.
 						'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetListFeedList: list [
+	"Get a feed of recent posts from a list (posts and reposts from any actors on the list). Does not require auth."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'app.bsky.feed.getListFeed'
+				parameters: {'list' -> list} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth parentHeight: parentHeight [
-	""
+	"Get posts in a thread. Does not require auth, but additional metadata and filtering will be applied for authed requests."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'thread' -> [ :aValue | GtApModelEntity findForRequest: aValue ]} asDictionary
+		from: {'thread' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'threadgate'
+					-> [ :aValue | AppBskyFeedDefsThreadgateView fromRequest: aValue ]}
+				asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.feed.getPostThread'
 				parameters: {'uri' -> uri.
@@ -201,7 +236,7 @@ GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth parentHeigh
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetPostsUris: uris [
-	"A view of an actor's feed."
+	"Gets post views for a specified list of posts (by AT-URI). This is sometimes referred to as 'hydrating' a 'feed skeleton'."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -212,8 +247,26 @@ GtApGeneratedClient >> appBskyFeedGetPostsUris: uris [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetQuotesUri: uri cid: cid [
+	"Get a list of quotes for a given post."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'posts'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyFeedDefsPostView fromRequest: aDictionary ]).
+				'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.feed.getQuotes'
+				parameters: {'uri' -> uri.
+						'cid' -> cid} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetRepostedByUri: uri cid: cid [
-	""
+	"Get a list of reposts for a given post."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -224,36 +277,97 @@ GtApGeneratedClient >> appBskyFeedGetRepostedByUri: uri cid: cid [
 				'cid' -> [ :aValue | aValue ].
 				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
-				queryOn: 'app.bsky.feed.getRepostedBy'
+				paginatedQueryOn: 'app.bsky.feed.getRepostedBy'
 				parameters: {'uri' -> uri.
 						'cid' -> cid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedGetSuggestedFeeds [
+	"Get a list of suggested feeds (feed generators) for the requesting account."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyFeedDefsGeneratorView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'app.bsky.feed.getSuggestedFeeds'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyFeedGetTimelineAlgorithm: algorithm [
-	"A view of the user's home timeline."
+	"Get a view of the requesting account's home timeline. This is expected to be some form of reverse-chronological feed."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.feed.getTimeline'
+				paginatedQueryOn: 'app.bsky.feed.getTimeline'
 				parameters: {'algorithm' -> algorithm} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedSearchPostsQ: q sort: sort since: since until: until mentions: mentions author: author lang: lang domain: domain url: url tag: tag [
+	"Find posts matching search criteria, returning views of those posts."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'posts'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyFeedDefsPostView fromRequest: aDictionary ]).
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.feed.searchPosts'
+				parameters: {'q' -> q.
+						'sort' -> sort.
+						'since' -> since.
+						'until' -> until.
+						'mentions' -> mentions.
+						'author' -> author.
+						'lang' -> lang.
+						'domain' -> domain.
+						'url' -> url.
+						'tag' -> tag} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyFeedSendInteractionsInteractions: interactions [
+	"Send information about interactions with feed items back to the feed generator that served them."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.feed.sendInteractions'
+				withBody: {'interactions' -> interactions} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetActorStarterPacksActor: actor [
+	"Get a list of starter packs created by the actor."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyGraphDefsStarterPackViewBasic fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'app.bsky.graph.getActorStarterPacks'
+				parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetBlocks [
-	"Who is the requester's account blocking?"
+	"Enumerates which accounts the requesting account is currently blocking. Requires auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
-		stream: (self queryOn: 'app.bsky.graph.getBlocks' parameters: {} asDictionary)
+		stream: (self paginatedQueryOn: 'app.bsky.graph.getBlocks' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetFollowersActor: actor [
-	"Who is following an actor?"
+	"Enumerates accounts which follow a specified account (actor)."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -263,13 +377,13 @@ GtApGeneratedClient >> appBskyGraphGetFollowersActor: actor [
 				'subject' -> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ].
 				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
-				queryOn: 'app.bsky.graph.getFollowers'
+				paginatedQueryOn: 'app.bsky.graph.getFollowers'
 				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetFollowsActor: actor [
-	"Who is an actor following?"
+	"Enumerates accounts which a specified account (actor) follows."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -279,13 +393,41 @@ GtApGeneratedClient >> appBskyGraphGetFollowsActor: actor [
 				'subject' -> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ].
 				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
-				queryOn: 'app.bsky.graph.getFollows'
+				paginatedQueryOn: 'app.bsky.graph.getFollows'
 				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetKnownFollowersActor: actor [
+	"Enumerates accounts which follow a specified account (actor) and are followed by the viewer."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'followers'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]).
+				'subject' -> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.graph.getKnownFollowers'
+				parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetListBlocks [
+	"Get mod lists that the requesting account (actor) is blocking. Requires auth."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyGraphDefsListView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'app.bsky.graph.getListBlocks'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetListList: list [
-	"Fetch a list of actors"
+	"Gets a 'view' (with additional context) of a specified list."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -296,45 +438,100 @@ GtApGeneratedClient >> appBskyGraphGetListList: list [
 				'list' -> [ :aValue | AppBskyGraphDefsListView fromRequest: aValue ]}
 				asDictionary
 		andRequest: (self
-				queryOn: 'app.bsky.graph.getList'
+				paginatedQueryOn: 'app.bsky.graph.getList'
 				parameters: {'list' -> list} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetListMutes [
-	"Which lists is the requester's account muting?"
-
-	<xrpcQuery>
-	^ AsyncMapStream
-		mapBlock: [ :aDictionary | AppBskyGraphDefsListView fromRequest: aDictionary ]
-		stream: (self queryOn: 'app.bsky.graph.getListMutes' parameters: {} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyGraphGetListsActor: actor [
-	"Fetch a list of lists that belong to an actor"
+	"Enumerates mod lists that the requesting account (actor) currently has muted. Requires auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyGraphDefsListView fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.graph.getLists'
+				paginatedQueryOn: 'app.bsky.graph.getListMutes'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetListsActor: actor [
+	"Enumerates the lists created by a specified account (actor)."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | AppBskyGraphDefsListView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'app.bsky.graph.getLists'
 				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphGetMutes [
-	"Who does the viewer mute?"
+	"Enumerates accounts that the requesting account (actor) currently has muted. Requires auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary ]
-		stream: (self queryOn: 'app.bsky.graph.getMutes' parameters: {} asDictionary)
+		stream: (self paginatedQueryOn: 'app.bsky.graph.getMutes' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetRelationshipsActor: actor others: others [
+	"Enumerates public relationships between one account, and a list of other accounts. Does not require auth."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'actor' -> [ :aValue | aValue ].
+				'relationships' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getRelationships'
+				parameters: {'actor' -> actor.
+						'others' -> others} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetStarterPackStarterPack: starterPack [
+	"Gets a view of a starter pack."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'starterPack'
+					-> [ :aValue | AppBskyGraphDefsStarterPackView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getStarterPack'
+				parameters: {'starterPack' -> starterPack} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetStarterPacksUris: uris [
+	"Get views for a list of starter packs."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'starterPacks' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getStarterPacks'
+				parameters: {'uris' -> uris} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphGetSuggestedFollowsByActorActor: actor [
+	"Enumerates follows similar to a given account (actor). Expected use is to recommend additional accounts immediately after following one account."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'suggestions' -> [ :aValue | aValue ].
+				'isFallback' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.graph.getSuggestedFollowsByActor'
+				parameters: {'actor' -> actor} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphMuteActorActor: actor [
-	"Mute an actor by did or handle."
+	"Creates a mute relationship for the specified account. Mutes are private in Bluesky. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -346,7 +543,7 @@ GtApGeneratedClient >> appBskyGraphMuteActorActor: actor [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphMuteActorListList: list [
-	"Mute a list of actors."
+	"Creates a mute relationship for the specified list of accounts. Mutes are private in Bluesky. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -357,8 +554,20 @@ GtApGeneratedClient >> appBskyGraphMuteActorListList: list [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyGraphMuteThreadRoot: root [
+	"Mutes a thread preventing notifications from the thread and any of its children. Mutes are private in Bluesky. Requires auth."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.graph.muteThread'
+				withBody: {'root' -> root} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphUnmuteActorActor: actor [
-	"Unmute an actor by did or handle."
+	"Unmutes the specified account. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -370,7 +579,7 @@ GtApGeneratedClient >> appBskyGraphUnmuteActorActor: actor [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyGraphUnmuteActorListList: list [
-	"Unmute a list of actors."
+	"Unmutes the specified list of accounts. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -381,32 +590,91 @@ GtApGeneratedClient >> appBskyGraphUnmuteActorListList: list [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationGetUnreadCountSeenAt: seenAt [
-	""
+GtApGeneratedClient >> appBskyGraphUnmuteThreadRoot: root [
+	"Unmutes the specified thread. Requires auth."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.graph.unmuteThread'
+				withBody: {'root' -> root} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyLabelerGetServicesDids: dids detailed: detailed [
+	"Get information about a list of labeler services."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'views' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.labeler.getServices'
+				parameters: {'dids' -> dids.
+						'detailed' -> detailed} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyNotificationGetUnreadCountPriority: priority seenAt: seenAt [
+	"Count the number of unread notifications for the requesting account. Requires auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
 		from: {'count' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.notification.getUnreadCount'
-				parameters: {'seenAt' -> seenAt} asDictionary)
+				parameters: {'priority' -> priority.
+						'seenAt' -> seenAt} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationListNotificationsseenAt: seenAt [
-	""
+GtApGeneratedClient >> appBskyNotificationListNotificationspriority: priority seenAt: seenAt [
+	"Enumerate notifications for the requesting account. Requires auth."
 
 	<xrpcQuery>
-	^ AsyncMapStream
-		mapBlock: [ :aDictionary | AppBskyNotificationListNotificationsNotification fromRequest: aDictionary ]
-		stream: (self
-				queryOn: 'app.bsky.notification.listNotifications'
-				parameters: {'seenAt' -> seenAt} asDictionary)
+	^ GtApRequestResolver
+		from: {'notifications'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyNotificationListNotificationsNotification fromRequest: aDictionary ]).
+				'cursor' -> [ :aValue | aValue ].
+				'priority' -> [ :aValue | aValue ].
+				'seenAt' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.notification.listNotifications'
+				parameters: {'priority' -> priority.
+						'seenAt' -> seenAt} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyNotificationPutPreferencesPriority: priority [
+	"Set notification-related preferences for an account. Requires auth."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.notification.putPreferences'
+				withBody: {'priority' -> priority} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyNotificationRegisterPushServiceDid: serviceDid token: token platform: platform appId: appId [
+	"Register to receive push notifications, via a specified service, for the requesting account. Requires auth."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.notification.registerPush'
+				withBody: {'serviceDid' -> serviceDid.
+						'token' -> token.
+						'platform' -> platform.
+						'appId' -> appId} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyNotificationUpdateSeenSeenAt: seenAt [
-	"Notify server that the user has seen notifications."
+	"Notify server that the requesting account has seen notifications. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -417,56 +685,384 @@ GtApGeneratedClient >> appBskyNotificationUpdateSeenSeenAt: seenAt [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyUnspeccedGetConfig [
+	"Get miscellaneous runtime configuration."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'checkEmailConfirmed' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self queryOn: 'app.bsky.unspecced.getConfig' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> appBskyUnspeccedGetPopularFeedGeneratorsquery: query [
-	"An unspecced view of globally popular feed generators"
+	"An unspecced view of globally popular feed generators."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | AppBskyFeedDefsGeneratorView fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'app.bsky.unspecced.getPopularFeedGenerators'
+				paginatedQueryOn: 'app.bsky.unspecced.getPopularFeedGenerators'
 				parameters: {'query' -> query} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyUnspeccedGetPopularIncludeNsfw: includeNsfw [
-	"An unspecced view of globally popular items"
+GtApGeneratedClient >> appBskyUnspeccedGetSuggestionsSkeletonViewer: viewer relativeToDid: relativeToDid [
+	"Get a skeleton of suggested actors. Intended to be called and then hydrated through app.bsky.actor.getSuggestions"
 
 	<xrpcQuery>
-	^ AsyncMapStream
-		mapBlock: [ :aDictionary | AppBskyFeedDefsFeedViewPost fromRequest: aDictionary ]
-		stream: (self
-				queryOn: 'app.bsky.unspecced.getPopular'
-				parameters: {'includeNsfw' -> includeNsfw} asDictionary)
+	^ GtApRequestResolver
+		from: {'actors'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyUnspeccedDefsSkeletonSearchActor fromRequest: aDictionary ]).
+				'cursor' -> [ :aValue | aValue ].
+				'relativeToDid' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.unspecced.getSuggestionsSkeleton'
+				parameters: {'viewer' -> viewer.
+						'relativeToDid' -> relativeToDid} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyUnspeccedGetTimelineSkeleton [
-	"A skeleton of a timeline - UNSPECCED & WILL GO AWAY SOON"
+GtApGeneratedClient >> appBskyUnspeccedGetTaggedSuggestions [
+	"Get a list of suggestions (feeds and users) tagged with categories"
 
 	<xrpcQuery>
-	^ AsyncMapStream
-		mapBlock: [ :aDictionary | AppBskyFeedDefsSkeletonFeedPost fromRequest: aDictionary ]
-		stream: (self
-				queryOn: 'app.bsky.unspecced.getTimelineSkeleton'
+	^ GtApRequestResolver
+		from: {'suggestions' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.unspecced.getTaggedSuggestions'
 				parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminDisableAccountInvitesAccount: account [
-	"Disable an account from receiving new invite codes, but does not invalidate existing codes"
+GtApGeneratedClient >> appBskyUnspeccedSearchActorsSkeletonQ: q viewer: viewer typeahead: typeahead [
+	"Backend Actors (profile) search, returns only skeleton."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'actors'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyUnspeccedDefsSkeletonSearchActor fromRequest: aDictionary ]).
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.unspecced.searchActorsSkeleton'
+				parameters: {'q' -> q.
+						'viewer' -> viewer.
+						'typeahead' -> typeahead} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyUnspeccedSearchPostsSkeletonQ: q sort: sort since: since until: until mentions: mentions author: author lang: lang domain: domain url: url tag: tag viewer: viewer [
+	"Backend Posts search, returns only skeleton"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'posts'
+					-> (GtApRequestStreamResolver new
+							block: [ :aDictionary | AppBskyUnspeccedDefsSkeletonSearchPost fromRequest: aDictionary ]).
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'app.bsky.unspecced.searchPostsSkeleton'
+				parameters: {'q' -> q.
+						'sort' -> sort.
+						'since' -> since.
+						'until' -> until.
+						'mentions' -> mentions.
+						'author' -> author.
+						'lang' -> lang.
+						'domain' -> domain.
+						'url' -> url.
+						'tag' -> tag.
+						'viewer' -> viewer} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyVideoGetJobStatusJobId: jobId [
+	"Get status details for a video processing job."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'jobStatus' -> [ :aValue | AppBskyVideoDefsJobStatus fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.video.getJobStatus'
+				parameters: {'jobId' -> jobId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyVideoGetUploadLimits [
+	"Get video upload limits for the authenticated user."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'canUpload' -> [ :aValue | aValue ].
+				'remainingDailyVideos' -> [ :aValue | aValue ].
+				'remainingDailyBytes' -> [ :aValue | aValue ].
+				'message' -> [ :aValue | aValue ].
+				'error' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'app.bsky.video.getUploadLimits'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> appBskyVideoUploadVideo [
+	"Upload a video to be processed then stored on the PDS."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'jobStatus' -> [ :aValue | AppBskyVideoDefsJobStatus fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'app.bsky.video.uploadVideo'
+				withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyActorDeleteAccount [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self procedureOn: 'chat.bsky.actor.deleteAccount' withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyActorExportAccountData [
+	""
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self queryOn: 'chat.bsky.actor.exportAccountData' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoDeleteMessageForSelfConvoId: convoId messageId: messageId [
+	""
+
+	<xrpcProcedure>
+	^ ChatBskyConvoDefsDeletedMessageView
+		fromRequest: (self
+				procedureOn: 'chat.bsky.convo.deleteMessageForSelf'
+				withBody: {'convoId' -> convoId.
+						'messageId' -> messageId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoGetConvoConvoId: convoId [
+	""
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'convo' -> [ :aValue | ChatBskyConvoDefsConvoView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'chat.bsky.convo.getConvo'
+				parameters: {'convoId' -> convoId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoGetConvoForMembersMembers: members [
+	""
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'convo' -> [ :aValue | ChatBskyConvoDefsConvoView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'chat.bsky.convo.getConvoForMembers'
+				parameters: {'members' -> members} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoGetLog [
+	""
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | GtApModelEntity findForRequest: aDictionary ]
+		stream: (self paginatedQueryOn: 'chat.bsky.convo.getLog' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoGetMessagesConvoId: convoId [
+	""
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | GtApModelEntity findForRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'chat.bsky.convo.getMessages'
+				parameters: {'convoId' -> convoId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoLeaveConvoConvoId: convoId [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'convoId' -> [ :aValue | aValue ].
+				'rev' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'chat.bsky.convo.leaveConvo'
+				withBody: {'convoId' -> convoId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoListConvos [
+	""
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ChatBskyConvoDefsConvoView fromRequest: aDictionary ]
+		stream: (self paginatedQueryOn: 'chat.bsky.convo.listConvos' parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoMuteConvoConvoId: convoId [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'convo' -> [ :aValue | ChatBskyConvoDefsConvoView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'chat.bsky.convo.muteConvo'
+				withBody: {'convoId' -> convoId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoSendMessageBatchItems: items [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'items' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'chat.bsky.convo.sendMessageBatch'
+				withBody: {'items' -> items} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoSendMessageConvoId: convoId message: message [
+	""
+
+	<xrpcProcedure>
+	^ ChatBskyConvoDefsMessageView
+		fromRequest: (self
+				procedureOn: 'chat.bsky.convo.sendMessage'
+				withBody: {'convoId' -> convoId.
+						'message' -> message} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoUnmuteConvoConvoId: convoId [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'convo' -> [ :aValue | ChatBskyConvoDefsConvoView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'chat.bsky.convo.unmuteConvo'
+				withBody: {'convoId' -> convoId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyConvoUpdateReadConvoId: convoId messageId: messageId [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'convo' -> [ :aValue | ChatBskyConvoDefsConvoView fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'chat.bsky.convo.updateRead'
+				withBody: {'convoId' -> convoId.
+						'messageId' -> messageId} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyModerationGetActorMetadataActor: actor [
+	""
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'day'
+					-> [ :aValue | ChatBskyModerationGetActorMetadataMetadata fromRequest: aValue ].
+				'month'
+					-> [ :aValue | ChatBskyModerationGetActorMetadataMetadata fromRequest: aValue ].
+				'all'
+					-> [ :aValue | ChatBskyModerationGetActorMetadataMetadata fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'chat.bsky.moderation.getActorMetadata'
+				parameters: {'actor' -> actor} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyModerationGetMessageContextConvoId: convoId messageId: messageId before: before after: after [
+	""
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'messages' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'chat.bsky.moderation.getMessageContext'
+				parameters: {'convoId' -> convoId.
+						'messageId' -> messageId.
+						'before' -> before.
+						'after' -> after} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> chatBskyModerationUpdateActorAccessActor: actor allowAccess: allowAccess ref: ref [
+	""
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'chat.bsky.moderation.updateActorAccess'
+				withBody: {'actor' -> actor.
+						'allowAccess' -> allowAccess.
+						'ref' -> ref} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminDeleteAccountDid: did [
+	"Delete a user account as an administrator."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.deleteAccount'
+				withBody: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminDisableAccountInvitesAccount: account note: note [
+	"Disable an account from receiving new invite codes, but does not invalidate existing codes."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.admin.disableAccountInvites'
-				withBody: {'account' -> account} asDictionary)
+				withBody: {'account' -> account.
+						'note' -> note} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminDisableInviteCodesCodes: codes accounts: accounts [
-	"Disable some set of codes and/or all codes associated with a set of users"
+	"Disable some set of codes and/or all codes associated with a set of users."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -478,159 +1074,87 @@ GtApGeneratedClient >> comAtprotoAdminDisableInviteCodesCodes: codes accounts: a
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminEnableAccountInvitesAccount: account [
-	"Re-enable an accounts ability to receive invite codes"
+GtApGeneratedClient >> comAtprotoAdminEnableAccountInvitesAccount: account note: note [
+	"Re-enable an account's ability to receive invite codes."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.admin.enableAccountInvites'
-				withBody: {'account' -> account} asDictionary)
+				withBody: {'account' -> account.
+						'note' -> note} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminGetAccountInfoDid: did [
+	"Get details about an account."
+
+	<xrpcQuery>
+	^ ComAtprotoAdminDefsAccountView
+		fromRequest: (self
+				queryOn: 'com.atproto.admin.getAccountInfo'
+				parameters: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminGetAccountInfosDids: dids [
+	"Get details about some accounts."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'infos' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.admin.getAccountInfos'
+				parameters: {'dids' -> dids} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminGetInviteCodesSort: sort [
-	"Admin view of invite codes"
+	"Get an admin view of invite codes."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | ComAtprotoServerDefsInviteCode fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'com.atproto.admin.getInviteCodes'
+				paginatedQueryOn: 'com.atproto.admin.getInviteCodes'
 				parameters: {'sort' -> sort} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationActionId: id [
-	"View details about a moderation action."
+GtApGeneratedClient >> comAtprotoAdminGetSubjectStatusDid: did uri: uri blob: blob [
+	"Get the service-specific admin status of a subject (account, record, or blob)."
 
 	<xrpcQuery>
-	^ ComAtprotoAdminDefsActionViewDetail
-		fromRequest: (self
-				queryOn: 'com.atproto.admin.getModerationAction'
-				parameters: {'id' -> id} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationActionsSubject: subject [
-	"List moderation actions related to a subject."
-
-	<xrpcQuery>
-	^ AsyncMapStream
-		mapBlock: [ :aDictionary | ComAtprotoAdminDefsActionView fromRequest: aDictionary ]
-		stream: (self
-				queryOn: 'com.atproto.admin.getModerationActions'
-				parameters: {'subject' -> subject} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportId: id [
-	"View details about a moderation report."
-
-	<xrpcQuery>
-	^ ComAtprotoAdminDefsReportViewDetail
-		fromRequest: (self
-				queryOn: 'com.atproto.admin.getModerationReport'
-				parameters: {'id' -> id} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetModerationReportsSubject: subject ignoreSubjects: ignoreSubjects actionedBy: actionedBy reporters: reporters resolved: resolved actionType: actionType reverse: reverse [
-	"List moderation reports related to a subject."
-
-	<xrpcQuery>
-	^ AsyncMapStream
-		mapBlock: [ :aDictionary | ComAtprotoAdminDefsReportView fromRequest: aDictionary ]
-		stream: (self
-				queryOn: 'com.atproto.admin.getModerationReports'
-				parameters: {'subject' -> subject.
-						'ignoreSubjects' -> ignoreSubjects.
-						'actionedBy' -> actionedBy.
-						'reporters' -> reporters.
-						'resolved' -> resolved.
-						'actionType' -> actionType.
-						'reverse' -> reverse} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetRecordUri: uri cid: cid [
-	"View details about a record."
-
-	<xrpcQuery>
-	^ ComAtprotoAdminDefsRecordViewDetail
-		fromRequest: (self
-				queryOn: 'com.atproto.admin.getRecord'
-				parameters: {'uri' -> uri.
-						'cid' -> cid} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminGetRepoDid: did [
-	"View details about a repository."
-
-	<xrpcQuery>
-	^ ComAtprotoAdminDefsRepoViewDetail
-		fromRequest: (self
-				queryOn: 'com.atproto.admin.getRepo'
-				parameters: {'did' -> did} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminRebaseRepoRepo: repo swapCommit: swapCommit [
-	"Administrative action to rebase an account's repo"
-
-	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {} asDictionary
+		from: {'subject' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'takedown'
+					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue ].
+				'deactivated'
+					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue ]}
+				asDictionary
 		andRequest: (self
-				procedureOn: 'com.atproto.admin.rebaseRepo'
-				withBody: {'repo' -> repo.
-						'swapCommit' -> swapCommit} asDictionary)
+				queryOn: 'com.atproto.admin.getSubjectStatus'
+				parameters: {'did' -> did.
+						'uri' -> uri.
+						'blob' -> blob} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminResolveModerationReportsActionId: actionId reportIds: reportIds createdBy: createdBy [
-	"Resolve moderation reports by an action."
-
-	<xrpcProcedure>
-	^ ComAtprotoAdminDefsActionView
-		fromRequest: (self
-				procedureOn: 'com.atproto.admin.resolveModerationReports'
-				withBody: {'actionId' -> actionId.
-						'reportIds' -> reportIds.
-						'createdBy' -> createdBy} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminReverseModerationActionId: id reason: reason createdBy: createdBy [
-	"Reverse a moderation action."
-
-	<xrpcProcedure>
-	^ ComAtprotoAdminDefsActionView
-		fromRequest: (self
-				procedureOn: 'com.atproto.admin.reverseModerationAction'
-				withBody: {'id' -> id.
-						'reason' -> reason.
-						'createdBy' -> createdBy} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminSearchReposTerm: term invitedBy: invitedBy [
-	"Find repositories based on a search term."
+GtApGeneratedClient >> comAtprotoAdminSearchAccountsEmail: email [
+	"Get list of accounts that matches your search query."
 
 	<xrpcQuery>
 	^ AsyncMapStream
-		mapBlock: [ :aDictionary | ComAtprotoAdminDefsRepoView fromRequest: aDictionary ]
+		mapBlock: [ :aDictionary | ComAtprotoAdminDefsAccountView fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'com.atproto.admin.searchRepos'
-				parameters: {'term' -> term.
-						'invitedBy' -> invitedBy} asDictionary)
+				paginatedQueryOn: 'com.atproto.admin.searchAccounts'
+				parameters: {'email' -> email} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminSendEmailRecipientDid: recipientDid content: content subject: subject [
-	"Send email to a user's primary email address"
+GtApGeneratedClient >> comAtprotoAdminSendEmailRecipientDid: recipientDid content: content subject: subject senderDid: senderDid comment: comment [
+	"Send email to a user's account email address."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -639,29 +1163,14 @@ GtApGeneratedClient >> comAtprotoAdminSendEmailRecipientDid: recipientDid conten
 				procedureOn: 'com.atproto.admin.sendEmail'
 				withBody: {'recipientDid' -> recipientDid.
 						'content' -> content.
-						'subject' -> subject} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoAdminTakeModerationActionAction: action subject: subject subjectBlobCids: subjectBlobCids createLabelVals: createLabelVals negateLabelVals: negateLabelVals reason: reason createdBy: createdBy [
-	"Take a moderation action on a repo."
-
-	<xrpcProcedure>
-	^ ComAtprotoAdminDefsActionView
-		fromRequest: (self
-				procedureOn: 'com.atproto.admin.takeModerationAction'
-				withBody: {'action' -> action.
 						'subject' -> subject.
-						'subjectBlobCids' -> subjectBlobCids.
-						'createLabelVals' -> createLabelVals.
-						'negateLabelVals' -> negateLabelVals.
-						'reason' -> reason.
-						'createdBy' -> createdBy} asDictionary)
+						'senderDid' -> senderDid.
+						'comment' -> comment} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminUpdateAccountEmailAccount: account email: email [
-	"Administrative action to update an account's email"
+	"Administrative action to update an account's email."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -674,7 +1183,7 @@ GtApGeneratedClient >> comAtprotoAdminUpdateAccountEmailAccount: account email: 
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoAdminUpdateAccountHandleDid: did handle: handle [
-	"Administrative action to update an account's handle"
+	"Administrative action to update an account's handle."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -686,8 +1195,67 @@ GtApGeneratedClient >> comAtprotoAdminUpdateAccountHandleDid: did handle: handle
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminUpdateAccountPasswordDid: did password: password [
+	"Update the password for a user account as an administrator."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.updateAccountPassword'
+				withBody: {'did' -> did.
+						'password' -> password} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoAdminUpdateSubjectStatusSubject: subject takedown: takedown deactivated: deactivated [
+	"Update the service-specific admin status of a subject (account, record, or blob)."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'subject' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'takedown'
+					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.admin.updateSubjectStatus'
+				withBody: {'subject' -> subject.
+						'takedown' -> takedown.
+						'deactivated' -> deactivated} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoIdentityGetRecommendedDidCredentials [
+	"Describe the credentials that should be included in the DID doc of an account that is migrating to this service."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'rotationKeys' -> [ :aValue | aValue ].
+				'alsoKnownAs' -> [ :aValue | aValue ].
+				'verificationMethods'
+					-> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'services' -> [ :aValue | GtApModelEntity findForRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.identity.getRecommendedDidCredentials'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoIdentityRequestPlcOperationSignature [
+	"Request an email with a code to in order to request a signed PLC operation. Requires Auth."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.identity.requestPlcOperationSignature'
+				withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoIdentityResolveHandleHandle: handle [
-	"Provides the DID of a repo."
+	"Resolves a handle (domain name) to a DID."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -698,8 +1266,37 @@ GtApGeneratedClient >> comAtprotoIdentityResolveHandleHandle: handle [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoIdentitySignPlcOperationToken: token rotationKeys: rotationKeys alsoKnownAs: alsoKnownAs verificationMethods: verificationMethods services: services [
+	"Signs a PLC operation to update some value(s) in the requesting DID's document."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'operation' -> [ :aValue | GtApModelEntity findForRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.identity.signPlcOperation'
+				withBody: {'token' -> token.
+						'rotationKeys' -> rotationKeys.
+						'alsoKnownAs' -> alsoKnownAs.
+						'verificationMethods' -> verificationMethods.
+						'services' -> services} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoIdentitySubmitPlcOperationOperation: operation [
+	"Validates a PLC operation to ensure that it doesn't violate a service's constraints or get the identity into a bad state, then submits it to the PLC registry"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.identity.submitPlcOperation'
+				withBody: {'operation' -> operation} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoIdentityUpdateHandleHandle: handle [
-	"Updates the handle of the account"
+	"Updates the current account's handle. Verifies handle validity, and updates did:plc document if necessary. Implemented by PDS, and requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -711,20 +1308,20 @@ GtApGeneratedClient >> comAtprotoIdentityUpdateHandleHandle: handle [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoLabelQueryLabelsUriPatterns: uriPatterns sources: sources [
-	"Find labels relevant to the provided URI patterns."
+	"Find labels relevant to the provided AT-URI patterns. Public endpoint for moderation services, though may return different or additional results with auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | ComAtprotoLabelDefsLabel fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'com.atproto.label.queryLabels'
+				paginatedQueryOn: 'com.atproto.label.queryLabels'
 				parameters: {'uriPatterns' -> uriPatterns.
 						'sources' -> sources} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoModerationCreateReportReasonType: reasonType reason: reason subject: subject [
-	"Report a repo or a record."
+	"Submit a moderation report regarding an atproto account or record. Implemented by moderation services (with PDS proxying), and requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -743,11 +1340,12 @@ GtApGeneratedClient >> comAtprotoModerationCreateReportReasonType: reasonType re
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoApplyWritesRepo: repo validate: validate writes: writes swapCommit: swapCommit [
-	"Apply a batch transaction of creates, updates, and deletes."
+	"Apply a batch transaction of repository creates, updates, and deletes. Requires auth, implemented by PDS."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {} asDictionary
+		from: {'commit' -> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue ].
+				'results' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.applyWrites'
 				withBody: {'repo' -> repo.
@@ -758,12 +1356,14 @@ GtApGeneratedClient >> comAtprotoRepoApplyWritesRepo: repo validate: validate wr
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoCreateRecordRepo: repo collection: collection rkey: rkey validate: validate record: record swapCommit: swapCommit [
-	"Create a new record."
+	"Create a single new repository record. Requires auth, implemented by PDS."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {'uri' -> [ :aValue | aValue ].
-				'cid' -> [ :aValue | aValue ]} asDictionary
+				'cid' -> [ :aValue | aValue ].
+				'commit' -> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue ].
+				'validationStatus' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.createRecord'
 				withBody: {'repo' -> repo.
@@ -776,11 +1376,12 @@ GtApGeneratedClient >> comAtprotoRepoCreateRecordRepo: repo collection: collecti
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoDeleteRecordRepo: repo collection: collection rkey: rkey swapRecord: swapRecord swapCommit: swapCommit [
-	"Delete a record, or ensure it doesn't exist."
+	"Delete a repository record, or ensure it doesn't exist. Requires auth, implemented by PDS."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {} asDictionary
+		from: {'commit' -> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue ]}
+				asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.deleteRecord'
 				withBody: {'repo' -> repo.
@@ -792,7 +1393,7 @@ GtApGeneratedClient >> comAtprotoRepoDeleteRecordRepo: repo collection: collecti
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoDescribeRepoRepo: repo [
-	"Get information about the repo, including the list of collections."
+	"Get information about an account and repository, including the list of collections. Does not require auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -808,7 +1409,7 @@ GtApGeneratedClient >> comAtprotoRepoDescribeRepoRepo: repo [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoGetRecordRepo: repo collection: collection rkey: rkey cid: cid [
-	"Get a record."
+	"Get a single record from a repository. Does not require auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -825,14 +1426,36 @@ GtApGeneratedClient >> comAtprotoRepoGetRecordRepo: repo collection: collection 
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoRepoImportRepo [
+	"Import a repo in the form of a CAR file. Requires Content-Length HTTP header to be set."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self procedureOn: 'com.atproto.repo.importRepo' withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoRepoListMissingBlobs [
+	"Returns a list of missing blobs for the requesting account. Intended to be used in the account migration flow."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoRepoListMissingBlobsRecordBlob fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'com.atproto.repo.listMissingBlobs'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoListRecordsRepo: repo collection: collection rkeyStart: rkeyStart rkeyEnd: rkeyEnd reverse: reverse [
-	"List a range of records in a collection."
+	"List a range of records in a repository, matching a specific collection. Does not require auth."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | ComAtprotoRepoListRecordsRecord fromRequest: aDictionary ]
 		stream: (self
-				queryOn: 'com.atproto.repo.listRecords'
+				paginatedQueryOn: 'com.atproto.repo.listRecords'
 				parameters: {'repo' -> repo.
 						'collection' -> collection.
 						'rkeyStart' -> rkeyStart.
@@ -842,12 +1465,14 @@ GtApGeneratedClient >> comAtprotoRepoListRecordsRepo: repo collection: collectio
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoPutRecordRepo: repo collection: collection rkey: rkey validate: validate record: record swapRecord: swapRecord swapCommit: swapCommit [
-	"Write a record, creating or updating it as needed."
+	"Write a repository record, creating or updating it as needed. Requires auth, implemented by PDS."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {'uri' -> [ :aValue | aValue ].
-				'cid' -> [ :aValue | aValue ]} asDictionary
+				'cid' -> [ :aValue | aValue ].
+				'commit' -> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue ].
+				'validationStatus' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.putRecord'
 				withBody: {'repo' -> repo.
@@ -860,21 +1485,8 @@ GtApGeneratedClient >> comAtprotoRepoPutRecordRepo: repo collection: collection 
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoRepoRebaseRepoRepo: repo swapCommit: swapCommit [
-	"Simple rebase of repo that deletes history"
-
-	<xrpcProcedure>
-	^ GtApRequestResolver
-		from: {} asDictionary
-		andRequest: (self
-				procedureOn: 'com.atproto.repo.rebaseRepo'
-				withBody: {'repo' -> repo.
-						'swapCommit' -> swapCommit} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoRepoUploadBlobFile: aFile [
-	"Upload a new blob to be added to repo in a later request."
+	"Upload a new blob, to be referenced from a repository record. The blob will be deleted if it is not referenced within a time window (eg, minutes). Blob restrictions (mimetype, size, etc) are enforced when the reference is created. Requires auth, implemented by PDS."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -883,34 +1495,85 @@ GtApGeneratedClient >> comAtprotoRepoUploadBlobFile: aFile [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateAccountEmail: email handle: handle did: did inviteCode: inviteCode password: password recoveryKey: recoveryKey [
-	"Create an account."
+GtApGeneratedClient >> comAtprotoServerActivateAccount [
+	"Activates a currently deactivated account. Used to finalize account migration after the account's repo is imported and identity is setup."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.activateAccount'
+				withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerCheckAccountStatus [
+	"Returns the status of an account, especially as pertaining to import or recovery. Can be called many times over the course of an account migration. Requires auth and can only be called pertaining to oneself."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'activated' -> [ :aValue | aValue ].
+				'validDid' -> [ :aValue | aValue ].
+				'repoCommit' -> [ :aValue | aValue ].
+				'repoRev' -> [ :aValue | aValue ].
+				'repoBlocks' -> [ :aValue | aValue ].
+				'indexedRecords' -> [ :aValue | aValue ].
+				'privateStateValues' -> [ :aValue | aValue ].
+				'expectedBlobs' -> [ :aValue | aValue ].
+				'importedBlobs' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.server.checkAccountStatus'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerConfirmEmailEmail: email token: token [
+	"Confirm an email using a token from com.atproto.server.requestEmailConfirmation."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.confirmEmail'
+				withBody: {'email' -> email.
+						'token' -> token} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerCreateAccountEmail: email handle: handle did: did inviteCode: inviteCode verificationCode: verificationCode verificationPhone: verificationPhone password: password recoveryKey: recoveryKey plcOp: plcOp [
+	"Create an account. Implemented by PDS."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {'accessJwt' -> [ :aValue | aValue ].
 				'refreshJwt' -> [ :aValue | aValue ].
 				'handle' -> [ :aValue | aValue ].
-				'did' -> [ :aValue | aValue ]} asDictionary
+				'did' -> [ :aValue | aValue ].
+				'didDoc' -> [ :aValue | GtApModelEntity findForRequest: aValue ]}
+				asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.createAccount'
 				withBody: {'email' -> email.
 						'handle' -> handle.
 						'did' -> did.
 						'inviteCode' -> inviteCode.
+						'verificationCode' -> verificationCode.
+						'verificationPhone' -> verificationPhone.
 						'password' -> password.
-						'recoveryKey' -> recoveryKey} asDictionary)
+						'recoveryKey' -> recoveryKey.
+						'plcOp' -> plcOp} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateAppPasswordName: name [
-	"Create an app-specific password."
+GtApGeneratedClient >> comAtprotoServerCreateAppPasswordName: name privileged: privileged [
+	"Create an App Password."
 
 	<xrpcProcedure>
 	^ ComAtprotoServerCreateAppPasswordAppPassword
 		fromRequest: (self
 				procedureOn: 'com.atproto.server.createAppPassword'
-				withBody: {'name' -> name} asDictionary)
+				withBody: {'name' -> name.
+						'privileged' -> privileged} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -928,7 +1591,7 @@ GtApGeneratedClient >> comAtprotoServerCreateInviteCodeUseCount: useCount forAcc
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerCreateInviteCodesCodeCount: codeCount useCount: useCount forAccounts: forAccounts [
-	"Create an invite code."
+	"Create invite codes."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -941,7 +1604,7 @@ GtApGeneratedClient >> comAtprotoServerCreateInviteCodesCodeCount: codeCount use
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoServerCreateSessionIdentifier: identifier password: password [
+GtApGeneratedClient >> comAtprotoServerCreateSessionIdentifier: identifier password: password authFactorToken: authFactorToken [
 	"Create an authentication session."
 
 	<xrpcProcedure>
@@ -950,16 +1613,34 @@ GtApGeneratedClient >> comAtprotoServerCreateSessionIdentifier: identifier passw
 				'refreshJwt' -> [ :aValue | aValue ].
 				'handle' -> [ :aValue | aValue ].
 				'did' -> [ :aValue | aValue ].
-				'email' -> [ :aValue | aValue ]} asDictionary
+				'didDoc' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'email' -> [ :aValue | aValue ].
+				'emailConfirmed' -> [ :aValue | aValue ].
+				'emailAuthFactor' -> [ :aValue | aValue ].
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.createSession'
 				withBody: {'identifier' -> identifier.
-						'password' -> password} asDictionary)
+						'password' -> password.
+						'authFactorToken' -> authFactorToken} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerDeactivateAccountDeleteAfter: deleteAfter [
+	"Deactivates a currently active account. Stops serving of repo, and future writes to repo until reactivated. Used to finalize account migration with the old host after the account has been activated on the new host."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.deactivateAccount'
+				withBody: {'deleteAfter' -> deleteAfter} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDeleteAccountDid: did password: password token: token [
-	"Delete a user account with a token and password."
+	"Delete an actor's account with a token and password. Can only be called after requesting a deletion token. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -973,7 +1654,7 @@ GtApGeneratedClient >> comAtprotoServerDeleteAccountDid: did password: password 
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDeleteSession [
-	"Delete the current session."
+	"Delete the current session. Requires auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -983,15 +1664,18 @@ GtApGeneratedClient >> comAtprotoServerDeleteSession [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerDescribeServer [
-	"Get a document describing the service's accounts configuration."
+	"Describes the server's account creation requirements and capabilities. Implemented by PDS."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
 		from: {'inviteCodeRequired' -> [ :aValue | aValue ].
+				'phoneVerificationRequired' -> [ :aValue | aValue ].
 				'availableUserDomains' -> [ :aValue | aValue ].
 				'links'
-					-> [ :aValue | ComAtprotoServerDescribeServerLinks fromRequest: aValue ]}
-				asDictionary
+					-> [ :aValue | ComAtprotoServerDescribeServerLinks fromRequest: aValue ].
+				'contact'
+					-> [ :aValue | ComAtprotoServerDescribeServerContact fromRequest: aValue ].
+				'did' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.describeServer'
 				parameters: {} asDictionary)
@@ -999,7 +1683,7 @@ GtApGeneratedClient >> comAtprotoServerDescribeServer [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodesIncludeUsed: includeUsed createAvailable: createAvailable [
-	"Get all invite codes for a given account"
+	"Get all invite codes for the current account. Requires auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1011,14 +1695,33 @@ GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodesIncludeUsed: include
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerGetServiceAuthAud: aud exp: exp lxm: lxm [
+	"Get a signed token on behalf of the requesting DID for the requested service."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'token' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.server.getServiceAuth'
+				parameters: {'aud' -> aud.
+						'exp' -> exp.
+						'lxm' -> lxm} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerGetSession [
-	"Get information about the current session."
+	"Get information about the current auth session. Requires auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
 		from: {'handle' -> [ :aValue | aValue ].
 				'did' -> [ :aValue | aValue ].
-				'email' -> [ :aValue | aValue ]} asDictionary
+				'email' -> [ :aValue | aValue ].
+				'emailConfirmed' -> [ :aValue | aValue ].
+				'emailAuthFactor' -> [ :aValue | aValue ].
+				'didDoc' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.getSession'
 				parameters: {} asDictionary)
@@ -1026,7 +1729,7 @@ GtApGeneratedClient >> comAtprotoServerGetSession [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerListAppPasswords [
-	"List all app-specific passwords."
+	"List all App Passwords."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1036,14 +1739,17 @@ GtApGeneratedClient >> comAtprotoServerListAppPasswords [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRefreshSession [
-	"Refresh an authentication session."
+	"Refresh an authentication session. Requires auth using the 'refreshJwt' (not the 'accessJwt')."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {'accessJwt' -> [ :aValue | aValue ].
 				'refreshJwt' -> [ :aValue | aValue ].
 				'handle' -> [ :aValue | aValue ].
-				'did' -> [ :aValue | aValue ]} asDictionary
+				'did' -> [ :aValue | aValue ].
+				'didDoc' -> [ :aValue | GtApModelEntity findForRequest: aValue ].
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.refreshSession'
 				withBody: {} asDictionary)
@@ -1062,6 +1768,30 @@ GtApGeneratedClient >> comAtprotoServerRequestAccountDelete [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerRequestEmailConfirmation [
+	"Request an email with a code to confirm ownership of email."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.requestEmailConfirmation'
+				withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerRequestEmailUpdate [
+	"Request a token in order to update email."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'tokenRequired' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.requestEmailUpdate'
+				withBody: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRequestPasswordResetEmail: email [
 	"Initiate a user account password reset via email."
 
@@ -1071,6 +1801,18 @@ GtApGeneratedClient >> comAtprotoServerRequestPasswordResetEmail: email [
 		andRequest: (self
 				procedureOn: 'com.atproto.server.requestPasswordReset'
 				withBody: {'email' -> email} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerReserveSigningKeyDid: did [
+	"Reserve a repo signing key, for use with account creation. Necessary so that a DID PLC update operation can be constructed during an account migraiton. Public and does not require auth; implemented by PDS. NOTE: this endpoint may change when full account migration is implemented."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'signingKey' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.reserveSigningKey'
+				withBody: {'did' -> did} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -1088,7 +1830,7 @@ GtApGeneratedClient >> comAtprotoServerResetPasswordToken: token password: passw
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoServerRevokeAppPasswordName: name [
-	"Revoke an app-specific password by name."
+	"Revoke an App Password by name."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -1099,8 +1841,22 @@ GtApGeneratedClient >> comAtprotoServerRevokeAppPasswordName: name [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoServerUpdateEmailEmail: email emailAuthFactor: emailAuthFactor token: token [
+	"Update an account's email."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.server.updateEmail'
+				withBody: {'email' -> email.
+						'emailAuthFactor' -> emailAuthFactor.
+						'token' -> token} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncGetBlobDid: did cid: cid [
-	"Get a blob associated with a given repo."
+	"Get a blob associated with a given account. Returns the full blob as originally uploaded. Does not require auth; implemented by PDS."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1113,7 +1869,7 @@ GtApGeneratedClient >> comAtprotoSyncGetBlobDid: did cid: cid [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncGetBlocksDid: did cids: cids [
-	"Gets blocks from a given repo."
+	"Get data blocks from a given repo, by CID. For example, intermediate MST nodes, or records. Does not require auth; implemented by PDS."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1125,35 +1881,20 @@ GtApGeneratedClient >> comAtprotoSyncGetBlocksDid: did cids: cids [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetCheckoutDid: did commit: commit [
-	"Gets the repo state."
+GtApGeneratedClient >> comAtprotoSyncGetCheckoutDid: did [
+	"DEPRECATED - please use com.atproto.sync.getRepo instead"
 
 	<xrpcQuery>
 	^ GtApRequestResolver
 		from: {} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.sync.getCheckout'
-				parameters: {'did' -> did.
-						'commit' -> commit} asDictionary)
-]
-
-{ #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetCommitPathDid: did latest: latest earliest: earliest [
-	"Gets the path of repo commits"
-
-	<xrpcQuery>
-	^ GtApRequestResolver
-		from: {'commits' -> [ :aValue | aValue ]} asDictionary
-		andRequest: (self
-				queryOn: 'com.atproto.sync.getCommitPath'
-				parameters: {'did' -> did.
-						'latest' -> latest.
-						'earliest' -> earliest} asDictionary)
+				parameters: {'did' -> did} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncGetHeadDid: did [
-	"Gets the current HEAD CID of a repo."
+	"DEPRECATED - please use com.atproto.sync.getLatestCommit instead"
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1164,8 +1905,21 @@ GtApGeneratedClient >> comAtprotoSyncGetHeadDid: did [
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoSyncGetLatestCommitDid: did [
+	"Get the current commit CID & revision of the specified repo. Does not require auth."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'cid' -> [ :aValue | aValue ].
+				'rev' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.sync.getLatestCommit'
+				parameters: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncGetRecordDid: did collection: collection rkey: rkey commit: commit [
-	"Gets blocks needed for existence or non-existence of record."
+	"Get data blocks needed to prove the existence or non-existence of record in the current version of repo. Does not require auth."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1179,8 +1933,8 @@ GtApGeneratedClient >> comAtprotoSyncGetRecordDid: did collection: collection rk
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncGetRepoDid: did earliest: earliest latest: latest [
-	"Gets the repo state."
+GtApGeneratedClient >> comAtprotoSyncGetRepoDid: did since: since [
+	"Download a repository export as CAR file. Optionally only a 'diff' since a previous revision. Does not require auth; implemented by PDS."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
@@ -1188,37 +1942,50 @@ GtApGeneratedClient >> comAtprotoSyncGetRepoDid: did earliest: earliest latest: 
 		andRequest: (self
 				queryOn: 'com.atproto.sync.getRepo'
 				parameters: {'did' -> did.
-						'earliest' -> earliest.
-						'latest' -> latest} asDictionary)
+						'since' -> since} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> comAtprotoSyncListBlobsDid: did latest: latest earliest: earliest [
-	"List blob cids for some range of commits"
+GtApGeneratedClient >> comAtprotoSyncGetRepoStatusDid: did [
+	"Get the hosting status for a repository, on this server. Expected to be implemented by PDS and Relay."
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'cids' -> [ :aValue | aValue ]} asDictionary
+		from: {'did' -> [ :aValue | aValue ].
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ].
+				'rev' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
-				queryOn: 'com.atproto.sync.listBlobs'
+				queryOn: 'com.atproto.sync.getRepoStatus'
+				parameters: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoSyncListBlobsDid: did since: since [
+	"List blob CIDs for an account, since some repo revision. Does not require auth; implemented by PDS."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'com.atproto.sync.listBlobs'
 				parameters: {'did' -> did.
-						'latest' -> latest.
-						'earliest' -> earliest} asDictionary)
+						'since' -> since} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncListRepos [
-	"List dids and root cids of hosted repos"
+	"Enumerates all the DID, rev, and commit CID for all repos hosted by this service. Does not require auth; implemented by PDS and Relay."
 
 	<xrpcQuery>
 	^ AsyncMapStream
 		mapBlock: [ :aDictionary | ComAtprotoSyncListReposRepo fromRequest: aDictionary ]
-		stream: (self queryOn: 'com.atproto.sync.listRepos' parameters: {} asDictionary)
+		stream: (self paginatedQueryOn: 'com.atproto.sync.listRepos' parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdateHostname: hostname [
-	"Notify a crawling service of a recent update. Often when a long break between updates causes the connection with the crawling service to break."
+	"Notify a crawling service of a recent update, and that crawling should resume. Intended use is after a gap between repo stream events caused the crawling service to disconnect. Does not require auth; implemented by Relay."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -1230,7 +1997,7 @@ GtApGeneratedClient >> comAtprotoSyncNotifyOfUpdateHostname: hostname [
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
 GtApGeneratedClient >> comAtprotoSyncRequestCrawlHostname: hostname [
-	"Request a service to persistently crawl hosted repos."
+	"Request a service to persistently crawl hosted repos. Expected use is new PDS instances declaring their existence to Relays. Does not require auth."
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
@@ -1238,4 +2005,476 @@ GtApGeneratedClient >> comAtprotoSyncRequestCrawlHostname: hostname [
 		andRequest: (self
 				procedureOn: 'com.atproto.sync.requestCrawl'
 				withBody: {'hostname' -> hostname} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoTempCheckSignupQueue [
+	"Check accounts location in signup queue."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'activated' -> [ :aValue | aValue ].
+				'placeInQueue' -> [ :aValue | aValue ].
+				'estimatedTimeMs' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.temp.checkSignupQueue'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoTempFetchLabelsSince: since [
+	"DEPRECATED: use queryLabels or subscribeLabels instead -- Fetch all labels from a labeler created after a certain date."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'labels' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'com.atproto.temp.fetchLabels'
+				parameters: {'since' -> since} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> comAtprotoTempRequestPhoneVerificationPhoneNumber: phoneNumber [
+	"Request a verification code to be sent to the supplied phone number"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'com.atproto.temp.requestPhoneVerification'
+				withBody: {'phoneNumber' -> phoneNumber} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneCommunicationCreateTemplateName: name contentMarkdown: contentMarkdown subject: subject lang: lang createdBy: createdBy [
+	"Administrative action to create a new, re-usable communication (email for now) template."
+
+	<xrpcProcedure>
+	^ ToolsOzoneCommunicationDefsTemplateView
+		fromRequest: (self
+				procedureOn: 'tools.ozone.communication.createTemplate'
+				withBody: {'name' -> name.
+						'contentMarkdown' -> contentMarkdown.
+						'subject' -> subject.
+						'lang' -> lang.
+						'createdBy' -> createdBy} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneCommunicationDeleteTemplateId: id [
+	"Delete a communication template."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.communication.deleteTemplate'
+				withBody: {'id' -> id} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneCommunicationListTemplates [
+	"Get list of all communication templates."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'communicationTemplates' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'tools.ozone.communication.listTemplates'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneCommunicationUpdateTemplateId: id name: name lang: lang contentMarkdown: contentMarkdown subject: subject updatedBy: updatedBy disabled: disabled [
+	"Administrative action to update an existing communication template. Allows passing partial fields to patch specific fields only."
+
+	<xrpcProcedure>
+	^ ToolsOzoneCommunicationDefsTemplateView
+		fromRequest: (self
+				procedureOn: 'tools.ozone.communication.updateTemplate'
+				withBody: {'id' -> id.
+						'name' -> name.
+						'lang' -> lang.
+						'contentMarkdown' -> contentMarkdown.
+						'subject' -> subject.
+						'updatedBy' -> updatedBy.
+						'disabled' -> disabled} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationEmitEventEvent: event subject: subject subjectBlobCids: subjectBlobCids createdBy: createdBy [
+	"Take a moderation action on an actor."
+
+	<xrpcProcedure>
+	^ ToolsOzoneModerationDefsModEventView
+		fromRequest: (self
+				procedureOn: 'tools.ozone.moderation.emitEvent'
+				withBody: {'event' -> event.
+						'subject' -> subject.
+						'subjectBlobCids' -> subjectBlobCids.
+						'createdBy' -> createdBy} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationGetEventId: id [
+	"Get details about a moderation event."
+
+	<xrpcQuery>
+	^ ToolsOzoneModerationDefsModEventViewDetail
+		fromRequest: (self
+				queryOn: 'tools.ozone.moderation.getEvent'
+				parameters: {'id' -> id} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationGetRecordUri: uri cid: cid [
+	"Get details about a record."
+
+	<xrpcQuery>
+	^ ToolsOzoneModerationDefsRecordViewDetail
+		fromRequest: (self
+				queryOn: 'tools.ozone.moderation.getRecord'
+				parameters: {'uri' -> uri.
+						'cid' -> cid} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationGetRecordsUris: uris [
+	"Get details about some records."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'records' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'tools.ozone.moderation.getRecords'
+				parameters: {'uris' -> uris} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationGetRepoDid: did [
+	"Get details about a repository."
+
+	<xrpcQuery>
+	^ ToolsOzoneModerationDefsRepoViewDetail
+		fromRequest: (self
+				queryOn: 'tools.ozone.moderation.getRepo'
+				parameters: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationGetReposDids: dids [
+	"Get details about some repositories."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'repos' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'tools.ozone.moderation.getRepos'
+				parameters: {'dids' -> dids} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationQueryEventsTypes: types createdBy: createdBy sortDirection: sortDirection createdAfter: createdAfter createdBefore: createdBefore subject: subject collections: collections subjectType: subjectType includeAllUserRecords: includeAllUserRecords hasComment: hasComment comment: comment addedLabels: addedLabels removedLabels: removedLabels addedTags: addedTags removedTags: removedTags reportTypes: reportTypes [
+	"List moderation events related to a subject."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneModerationDefsModEventView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.moderation.queryEvents'
+				parameters: {'types' -> types.
+						'createdBy' -> createdBy.
+						'sortDirection' -> sortDirection.
+						'createdAfter' -> createdAfter.
+						'createdBefore' -> createdBefore.
+						'subject' -> subject.
+						'collections' -> collections.
+						'subjectType' -> subjectType.
+						'includeAllUserRecords' -> includeAllUserRecords.
+						'hasComment' -> hasComment.
+						'comment' -> comment.
+						'addedLabels' -> addedLabels.
+						'removedLabels' -> removedLabels.
+						'addedTags' -> addedTags.
+						'removedTags' -> removedTags.
+						'reportTypes' -> reportTypes} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationQueryStatusesIncludeAllUserRecords: includeAllUserRecords subject: subject comment: comment reportedAfter: reportedAfter reportedBefore: reportedBefore reviewedAfter: reviewedAfter hostingDeletedAfter: hostingDeletedAfter hostingDeletedBefore: hostingDeletedBefore hostingUpdatedAfter: hostingUpdatedAfter hostingUpdatedBefore: hostingUpdatedBefore hostingStatuses: hostingStatuses reviewedBefore: reviewedBefore includeMuted: includeMuted onlyMuted: onlyMuted reviewState: reviewState ignoreSubjects: ignoreSubjects lastReviewedBy: lastReviewedBy sortField: sortField sortDirection: sortDirection takendown: takendown appealed: appealed tags: tags excludeTags: excludeTags collections: collections subjectType: subjectType [
+	"View moderation statuses of subjects (record or repo)."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneModerationDefsSubjectStatusView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.moderation.queryStatuses'
+				parameters: {'includeAllUserRecords' -> includeAllUserRecords.
+						'subject' -> subject.
+						'comment' -> comment.
+						'reportedAfter' -> reportedAfter.
+						'reportedBefore' -> reportedBefore.
+						'reviewedAfter' -> reviewedAfter.
+						'hostingDeletedAfter' -> hostingDeletedAfter.
+						'hostingDeletedBefore' -> hostingDeletedBefore.
+						'hostingUpdatedAfter' -> hostingUpdatedAfter.
+						'hostingUpdatedBefore' -> hostingUpdatedBefore.
+						'hostingStatuses' -> hostingStatuses.
+						'reviewedBefore' -> reviewedBefore.
+						'includeMuted' -> includeMuted.
+						'onlyMuted' -> onlyMuted.
+						'reviewState' -> reviewState.
+						'ignoreSubjects' -> ignoreSubjects.
+						'lastReviewedBy' -> lastReviewedBy.
+						'sortField' -> sortField.
+						'sortDirection' -> sortDirection.
+						'takendown' -> takendown.
+						'appealed' -> appealed.
+						'tags' -> tags.
+						'excludeTags' -> excludeTags.
+						'collections' -> collections.
+						'subjectType' -> subjectType} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneModerationSearchReposTerm: term q: q [
+	"Find repositories based on a search term."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneModerationDefsRepoView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.moderation.searchRepos'
+				parameters: {'term' -> term.
+						'q' -> q} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneServerGetConfig [
+	"Get details about ozone's server configuration."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'appview'
+					-> [ :aValue | ToolsOzoneServerGetConfigServiceConfig fromRequest: aValue ].
+				'pds'
+					-> [ :aValue | ToolsOzoneServerGetConfigServiceConfig fromRequest: aValue ].
+				'blobDivert'
+					-> [ :aValue | ToolsOzoneServerGetConfigServiceConfig fromRequest: aValue ].
+				'chat'
+					-> [ :aValue | ToolsOzoneServerGetConfigServiceConfig fromRequest: aValue ].
+				'viewer'
+					-> [ :aValue | ToolsOzoneServerGetConfigViewerConfig fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				queryOn: 'tools.ozone.server.getConfig'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSetAddValuesName: name values: values [
+	"Add values to a specific set. Attempting to add values to a set that does not exist will result in an error."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.set.addValues'
+				withBody: {'name' -> name.
+						'values' -> values} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSetDeleteSetName: name [
+	"Delete an entire set. Attempting to delete a set that does not exist will result in an error."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.set.deleteSet'
+				withBody: {'name' -> name} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSetDeleteValuesName: name values: values [
+	"Delete values from a specific set. Attempting to delete values that are not in the set will not result in an error"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.set.deleteValues'
+				withBody: {'name' -> name.
+						'values' -> values} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSetGetValuesName: name [
+	"Get a specific set and its values"
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'values'
+					-> (GtApRequestStreamResolver new block: [ :aDictionary | aDictionary ]).
+				'set' -> [ :aValue | ToolsOzoneSetDefsSetView fromRequest: aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				paginatedQueryOn: 'tools.ozone.set.getValues'
+				parameters: {'name' -> name} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSetQuerySetsnamePrefix: namePrefix sortBy: sortBy sortDirection: sortDirection [
+	"Query available sets"
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneSetDefsSetView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.set.querySets'
+				parameters: {'namePrefix' -> namePrefix.
+						'sortBy' -> sortBy.
+						'sortDirection' -> sortDirection} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSetUpsertSetName: name description: description [
+	"Create or update set metadata"
+
+	<xrpcProcedure>
+	^ ToolsOzoneSetDefsSetView
+		fromRequest: (self
+				procedureOn: 'tools.ozone.set.upsertSet'
+				withBody: {'name' -> name.
+						'description' -> description} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSettingListOptionsscope: scope prefix: prefix keys: keys [
+	"List settings with optional filtering"
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneSettingDefsOption fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.setting.listOptions'
+				parameters: {'scope' -> scope.
+						'prefix' -> prefix.
+						'keys' -> keys} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSettingRemoveOptionsKeys: keys scope: scope [
+	"Delete settings by key"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.setting.removeOptions'
+				withBody: {'keys' -> keys.
+						'scope' -> scope} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSettingUpsertOptionKey: key scope: scope value: value description: description managerRole: managerRole [
+	"Create or update setting option"
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {'option' -> [ :aValue | ToolsOzoneSettingDefsOption fromRequest: aValue ]}
+				asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.setting.upsertOption'
+				withBody: {'key' -> key.
+						'scope' -> scope.
+						'value' -> value.
+						'description' -> description.
+						'managerRole' -> managerRole} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSignatureFindCorrelationDids: dids [
+	"Find all correlated threat signatures between 2 or more accounts."
+
+	<xrpcQuery>
+	^ GtApRequestResolver
+		from: {'details' -> [ :aValue | aValue ]} asDictionary
+		andRequest: (self
+				queryOn: 'tools.ozone.signature.findCorrelation'
+				parameters: {'dids' -> dids} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSignatureFindRelatedAccountsDid: did [
+	"Get accounts that share some matching threat signatures with the root account."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneSignatureFindRelatedAccountsRelatedAccount fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.signature.findRelatedAccounts'
+				parameters: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneSignatureSearchAccountsValues: values [
+	"Search for accounts that match one or more threat signature values."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ComAtprotoAdminDefsAccountView fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.signature.searchAccounts'
+				parameters: {'values' -> values} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneTeamAddMemberDid: did role: role [
+	"Add a member to the ozone team. Requires admin role."
+
+	<xrpcProcedure>
+	^ ToolsOzoneTeamDefsMember
+		fromRequest: (self
+				procedureOn: 'tools.ozone.team.addMember'
+				withBody: {'did' -> did.
+						'role' -> role} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneTeamDeleteMemberDid: did [
+	"Delete a member from ozone team. Requires admin role."
+
+	<xrpcProcedure>
+	^ GtApRequestResolver
+		from: {} asDictionary
+		andRequest: (self
+				procedureOn: 'tools.ozone.team.deleteMember'
+				withBody: {'did' -> did} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneTeamListMembers [
+	"List all members with access to the ozone service."
+
+	<xrpcQuery>
+	^ AsyncMapStream
+		mapBlock: [ :aDictionary | ToolsOzoneTeamDefsMember fromRequest: aDictionary ]
+		stream: (self
+				paginatedQueryOn: 'tools.ozone.team.listMembers'
+				parameters: {} asDictionary)
+]
+
+{ #category : #'*Gt4AtProtoGeneratedCode' }
+GtApGeneratedClient >> toolsOzoneTeamUpdateMemberDid: did disabled: disabled role: role [
+	"Update a member in the ozone service. Requires admin role."
+
+	<xrpcProcedure>
+	^ ToolsOzoneTeamDefsMember
+		fromRequest: (self
+				procedureOn: 'tools.ozone.team.updateMember'
+				withBody: {'did' -> did.
+						'disabled' -> disabled.
+						'role' -> role} asDictionary)
 ]

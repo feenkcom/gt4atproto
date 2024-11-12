@@ -13,12 +13,12 @@ Class {
 		'atpFollowersCount',
 		'atpFollowsCount',
 		'atpPostsCount',
-		'atpIndexedAt',
-		'atpViewer',
-		'atpLabels',
 		'atpAssociated',
 		'atpJoinedViaStarterPack',
+		'atpIndexedAt',
 		'atpCreatedAt',
+		'atpViewer',
+		'atpLabels',
 		'atpPinnedPost'
 	],
 	#category : #Gt4AtProtoGeneratedCode
@@ -26,7 +26,7 @@ Class {
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -41,7 +41,7 @@ AppBskyActorDefsProfileViewDetailed class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed class >> atpSchema [
- ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"string"},"banner":{"type":"string"},"followersCount":{"type":"integer"},"followsCount":{"type":"integer"},"postsCount":{"type":"integer"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+ ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"string","format":"uri"},"banner":{"type":"string","format":"uri"},"followersCount":{"type":"integer"},"followsCount":{"type":"integer"},"postsCount":{"type":"integer"},"associated":{"type":"ref","ref":"#profileAssociated"},"joinedViaStarterPack":{"type":"ref","ref":"app.bsky.graph.defs#starterPackViewBasic"},"indexedAt":{"type":"string","format":"datetime"},"createdAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"pinnedPost":{"type":"ref","ref":"com.atproto.repo.strongRef"}}}'
 ]
 
 { #category : #serialization }
@@ -57,7 +57,16 @@ AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
 		atpFollowersCount: (aRequest at: 'followersCount' ifAbsent: [ nil ]);
 		atpFollowsCount: (aRequest at: 'followsCount' ifAbsent: [ nil ]);
 		atpPostsCount: (aRequest at: 'postsCount' ifAbsent: [ nil ]);
+		atpAssociated: (aRequest
+				at: 'associated'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociated fromRequest: aValue ]
+				ifAbsent: [ nil ]);
+		atpJoinedViaStarterPack: (aRequest
+				at: 'joinedViaStarterPack'
+				ifPresent: [ :aValue | AppBskyGraphDefsStarterPackViewBasic fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
 				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
@@ -65,6 +74,10 @@ AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest [
 		atpLabels: (aRequest
 				at: 'labels'
 				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifAbsent: [ nil ]);
+		atpPinnedPost: (aRequest
+				at: 'pinnedPost'
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
 				ifAbsent: [ nil ])
 ]
 
@@ -91,7 +104,7 @@ AppBskyActorDefsProfileViewDetailed >> atpAssociated: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpAvatar [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 
@@ -102,7 +115,7 @@ AppBskyActorDefsProfileViewDetailed >> atpAvatar: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileViewDetailed >> atpBanner [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpBanner
 ]
 

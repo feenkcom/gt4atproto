@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyRichtextFacetMain class >> atpDescription [
- ^ ''
+ ^  'Annotation of a sub-string within rich text.'
 ]
 
 { #category : #accessing }
@@ -25,7 +25,7 @@ AppBskyRichtextFacetMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyRichtextFacetMain class >> atpSchema [
- ^ '{"type":"object","required":["index","features"],"properties":{"index":{"type":"ref","ref":"#byteSlice"},"features":{"type":"array","items":{"type":"union","refs":["#mention","#link"]}}}}'
+ ^ '{"type":"object","description":"Annotation of a sub-string within rich text.","required":["index","features"],"properties":{"index":{"type":"ref","ref":"#byteSlice"},"features":{"type":"array","items":{"type":"union","refs":["#mention","#link","#tag"]}}}}'
 ]
 
 { #category : #serialization }
@@ -42,14 +42,15 @@ AppBskyRichtextFacetMain class >> fromRequest: aRequest [
 					anArray
 						collect: [ :aValue | 
 							({'app.bsky.richtext.facet#mention' -> AppBskyRichtextFacetMention.
-								'app.bsky.richtext.facet#link' -> AppBskyRichtextFacetLink} asDictionary
+								'app.bsky.richtext.facet#link' -> AppBskyRichtextFacetLink.
+								'app.bsky.richtext.facet#tag' -> AppBskyRichtextFacetTag} asDictionary
 								at: (aValue at: '$type')) fromRequest: aValue ] ]
 				ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }
 AppBskyRichtextFacetMain >> atpFeatures [
-	<atpType:#(AppBskyRichtextFacetMention AppBskyRichtextFacetLink) format:nil>
+	<atpType:#(AppBskyRichtextFacetMention AppBskyRichtextFacetLink AppBskyRichtextFacetTag) format:nil>
 	<atpCollection>
 	^ atpFeatures
 ]
@@ -76,7 +77,7 @@ AppBskyRichtextFacetMain >> atpIndex: anObject [
 AppBskyRichtextFacetMain >> featuresDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
-		classes: {AppBskyRichtextFacetMention AppBskyRichtextFacetLink};
+		classes: {AppBskyRichtextFacetMention AppBskyRichtextFacetLink AppBskyRichtextFacetTag};
 		label: 'Features';
 		accessor: #atpFeatures;
 		beRequired

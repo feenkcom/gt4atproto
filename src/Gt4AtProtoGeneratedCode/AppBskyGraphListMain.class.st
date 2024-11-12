@@ -7,15 +7,15 @@ Class {
 		'atpDescription',
 		'atpDescriptionFacets',
 		'atpAvatar',
-		'atpCreatedAt',
-		'atpLabels'
+		'atpLabels',
+		'atpCreatedAt'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyGraphListMain class >> atpDescription [
- ^ 'A declaration of a list of actors.'
+ ^  'Record representing a list of accounts (actors). Scope includes both moderation-oriented lists and curration-oriented lists.'
 ]
 
 { #category : #accessing }
@@ -30,17 +30,14 @@ AppBskyGraphListMain class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyGraphListMain class >> atpSchema [
- ^ '{"type":"record","description":"A declaration of a list of actors.","key":"tid","record":{"type":"object","required":["name","purpose","createdAt"],"properties":{"purpose":{"type":"ref","ref":"app.bsky.graph.defs#listPurpose"},"name":{"type":"string","maxLength":64,"minLength":1},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000},"createdAt":{"type":"string","format":"datetime"}}}}'
+ ^ '{"type":"record","description":"Record representing a list of accounts (actors). Scope includes both moderation-oriented lists and curration-oriented lists.","key":"tid","record":{"type":"object","required":["name","purpose","createdAt"],"properties":{"purpose":{"type":"ref","description":"Defines the purpose of the list (aka, moderation-oriented or curration-oriented)","ref":"app.bsky.graph.defs#listPurpose"},"name":{"type":"string","maxLength":64,"minLength":1,"description":"Display name for list; can not be empty."},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"blob","accept":["image/png","image/jpeg"],"maxSize":1000000},"labels":{"type":"union","refs":["com.atproto.label.defs#selfLabels"]},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
 { #category : #serialization }
 AppBskyGraphListMain class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
-		atpPurpose: (aRequest
-				at: 'purpose'
-				ifPresent: [ :aValue | String fromRequest: aValue ]
-				ifAbsent: [ nil ]);
+		atpPurpose: (aRequest at: 'purpose' ifAbsent: [ nil ]);
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpDescriptionFacets: (aRequest
@@ -48,6 +45,15 @@ AppBskyGraphListMain class >> fromRequest: aRequest [
 				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpLabels: (aRequest
+				at: 'labels'
+				ifPresent: [ :aValue | 
+					({'com.atproto.label.defs#selfLabels' -> ComAtprotoLabelDefsSelfLabels}
+						asDictionary
+						at: (aValue at: '$type')
+						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
+						fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 

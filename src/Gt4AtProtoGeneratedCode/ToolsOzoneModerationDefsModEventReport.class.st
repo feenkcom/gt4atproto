@@ -35,10 +35,7 @@ ToolsOzoneModerationDefsModEventReport class >> fromRequest: aRequest [
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpIsReporterMuted: (aRequest at: 'isReporterMuted' ifAbsent: [ nil ]);
-		atpReportType: (aRequest
-				at: 'reportType'
-				ifPresent: [ :aValue | String fromRequest: aValue ]
-				ifAbsent: [ nil ])
+		atpReportType: (aRequest at: 'reportType' ifAbsent: [ nil ])
 ]
 
 { #category : #accessing }

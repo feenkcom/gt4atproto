@@ -9,18 +9,18 @@ Class {
 		'atpDisplayName',
 		'atpDescription',
 		'atpAvatar',
-		'atpIndexedAt',
-		'atpViewer',
-		'atpLabels',
 		'atpAssociated',
-		'atpCreatedAt'
+		'atpIndexedAt',
+		'atpCreatedAt',
+		'atpViewer',
+		'atpLabels'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyActorDefsProfileView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -35,7 +35,7 @@ AppBskyActorDefsProfileView class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView class >> atpSchema [
- ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"string"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
+ ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"string","format":"uri"},"associated":{"type":"ref","ref":"#profileAssociated"},"indexedAt":{"type":"string","format":"datetime"},"createdAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
 ]
 
 { #category : #serialization }
@@ -47,7 +47,12 @@ AppBskyActorDefsProfileView class >> fromRequest: aRequest [
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
+		atpAssociated: (aRequest
+				at: 'associated'
+				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociated fromRequest: aValue ]
+				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
+		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
 				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
@@ -81,7 +86,7 @@ AppBskyActorDefsProfileView >> atpAssociated: anObject [
 
 { #category : #accessing }
 AppBskyActorDefsProfileView >> atpAvatar [
-	<atpType:#String format:nil>
+	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 

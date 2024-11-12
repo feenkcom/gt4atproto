@@ -2,16 +2,16 @@ Class {
 	#name : #AppBskyActorDefsContentLabelPref,
 	#superclass : #GtApModelEntity,
 	#instVars : [
+		'atpLabelerDid',
 		'atpLabel',
-		'atpVisibility',
-		'atpLabelerDid'
+		'atpVisibility'
 	],
 	#category : #Gt4AtProtoGeneratedCode
 }
 
 { #category : #accessing }
 AppBskyActorDefsContentLabelPref class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
@@ -26,13 +26,14 @@ AppBskyActorDefsContentLabelPref class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsContentLabelPref class >> atpSchema [
- ^ '{"type":"object","required":["label","visibility"],"properties":{"label":{"type":"string"},"visibility":{"type":"string","knownValues":["show","warn","hide"]}}}'
+ ^ '{"type":"object","required":["label","visibility"],"properties":{"labelerDid":{"type":"string","description":"Which labeler does this preference apply to? If undefined, applies globally.","format":"did"},"label":{"type":"string"},"visibility":{"type":"string","knownValues":["ignore","show","warn","hide"]}}}'
 ]
 
 { #category : #serialization }
 AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
+		atpLabelerDid: (aRequest at: 'labelerDid' ifAbsent: [ nil ]);
 		atpLabel: (aRequest at: 'label' ifAbsent: [ nil ]);
 		atpVisibility: (aRequest at: 'visibility' ifAbsent: [ nil ])
 ]

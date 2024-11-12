@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 AppBskyEmbedExternalView class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }

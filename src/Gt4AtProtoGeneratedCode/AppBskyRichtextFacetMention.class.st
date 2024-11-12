@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 AppBskyRichtextFacetMention class >> atpDescription [
- ^ 'A facet feature for actor mentions.'
+ ^  'Facet feature for mention of another account. The text is usually a handle, including a ''@'' prefix, but the facet reference is a DID.'
 ]
 
 { #category : #accessing }
@@ -24,7 +24,7 @@ AppBskyRichtextFacetMention class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyRichtextFacetMention class >> atpSchema [
- ^ '{"type":"object","description":"A facet feature for actor mentions.","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
+ ^ '{"type":"object","description":"Facet feature for mention of another account. The text is usually a handle, including a ''@'' prefix, but the facet reference is a DID.","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
 ]
 
 { #category : #serialization }

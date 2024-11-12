@@ -16,7 +16,7 @@ GtApLexiconXrpcQuery >> acceptVisitor: aLexiconVisitor [
 
 { #category : #accessing }
 GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
-	| methodName |
+	| methodName hasCursor methodToCall |
 	methodName := self methodName: aName.	"pagination is handled elsewhere and shouldn’t be exposed to the user"
 	self parameters properties keys
 		withIndexDo: [ :anInputName :anIndex | 
@@ -25,15 +25,19 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 				ifFalse: [ methodName := methodName
 							, (anIndex = 1 ifTrue: [ anInputName capitalized ] ifFalse: [ anInputName ])
 							, ': ' , anInputName , ' ' ] ].
+	hasCursor := self parameters properties keys includes: 'cursor'.
+	methodToCall := hasCursor
+			ifTrue: [ 'paginatedQueryOn:' ]
+			ifFalse: [ 'queryOn:' ].
 
 	^ methodName
 		, '
 	<xrpcQuery>
 	"' , (self description ifNil: [ '' ])
 		, '"
-	^ ' , self output generateDeserialization , ' (self queryOn: ''' , aName
-		, ''' parameters: {' , ('. ' join: self xrpcRequestParameterAssociations)
-		, '} asDictionary)'
+	^ ' , self output generateDeserialization , ' (self ' , methodToCall , ''''
+		, aName , ''' parameters: {'
+		, ('. ' join: self xrpcRequestParameterAssociations) , '} asDictionary)'
 ]
 
 { #category : #accessing }

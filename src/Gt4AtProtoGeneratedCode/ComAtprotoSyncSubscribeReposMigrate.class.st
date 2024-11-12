@@ -12,7 +12,7 @@ Class {
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate class >> atpDescription [
- ^ ''
+ ^  'DEPRECATED -- Use #account event instead'
 ]
 
 { #category : #accessing }
@@ -27,7 +27,7 @@ ComAtprotoSyncSubscribeReposMigrate class >> atpRecordName [
 
 { #category : #accessing }
 ComAtprotoSyncSubscribeReposMigrate class >> atpSchema [
- ^ '{"type":"object","required":["seq","did","migrateTo","time"],"nullable":["migrateTo"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"migrateTo":{"type":"string"},"time":{"type":"string","format":"datetime"}}}'
+ ^ '{"type":"object","description":"DEPRECATED -- Use #account event instead","required":["seq","did","migrateTo","time"],"nullable":["migrateTo"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"migrateTo":{"type":"string"},"time":{"type":"string","format":"datetime"}}}'
 ]
 
 { #category : #serialization }

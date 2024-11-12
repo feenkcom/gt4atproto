@@ -10,7 +10,7 @@ Class {
 
 { #category : #accessing }
 AppBskyFeedDefsBlockedAuthor class >> atpDescription [
- ^ ''
+ ^  ''
 ]
 
 { #category : #accessing }
