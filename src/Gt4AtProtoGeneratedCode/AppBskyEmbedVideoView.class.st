@@ -53,6 +53,13 @@ AppBskyEmbedVideoView >> altDescription [
 		accessor: #atpAlt
 ]
 
+{ #category : #'as yet unclassified' }
+AppBskyEmbedVideoView >> asEmbeddedElement [
+	^ GtProtoWebViewElement new
+		url: self atpPlaylist;
+		constraintsDo: [ :c | c vertical exact: 200 ]
+]
+
 { #category : #magritte }
 AppBskyEmbedVideoView >> aspectRatioDescription [
 	<magritteDescription>
