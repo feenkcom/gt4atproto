@@ -237,6 +237,11 @@ GtApModelEntity >> onClientChanged [
 ]
 
 { #category : #accessing }
+GtApModelEntity >> rawData [
+	^ rawData
+]
+
+{ #category : #accessing }
 GtApModelEntity >> rawData: aDictionary [ 
 	rawData := aDictionary
 ]

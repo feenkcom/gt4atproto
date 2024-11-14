@@ -114,10 +114,14 @@ GtApFeedEmbeddedPostSummaryElement >> updateAuthorDetails [
 
 { #category : #accessing }
 GtApFeedEmbeddedPostSummaryElement >> updateContent [
+	self post isBlocked
+		ifTrue: [ postTextEditor text: 'Author/Post blocked'.
+			^ self ].
+
 	pictureElement user: self post author.
 	self updateAuthorDetails.
 	postTextEditor text: self post recordText.
-	dateLabel text: ' at ', self post createdAtTimestamp printToMinute.
+	dateLabel text: ' at ' , self post createdAtTimestamp printToMinute.
 	self updateMedia
 ]
 

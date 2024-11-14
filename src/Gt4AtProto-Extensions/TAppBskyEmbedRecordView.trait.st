@@ -19,6 +19,8 @@ TAppBskyEmbedRecordView >> author [
 
 { #category : #accessing }
 TAppBskyEmbedRecordView >> createdAt [
+	(self atpRecord isKindOf: AppBskyGraphDefsStarterPackViewBasic)
+		ifTrue: [ ^ self atpRecord atpRecord atpCreatedAt ].
 	^ self atpRecord atpValue atpCreatedAt
 ]
 
@@ -34,10 +36,20 @@ TAppBskyEmbedRecordView >> hasMedia [
 
 { #category : #accessing }
 TAppBskyEmbedRecordView >> hasPhotos [
+	(self atpRecord isKindOf: AppBskyEmbedRecordViewRecord) ifFalse: [ ^ false ].
+
 	^ self atpRecord atpEmbeds isNotNil
 ]
 
 { #category : #accessing }
+TAppBskyEmbedRecordView >> isBlocked [
+	^ self atpRecord isKindOf: AppBskyEmbedRecordViewBlocked
+]
+
+{ #category : #accessing }
 TAppBskyEmbedRecordView >> recordText [
+	(self atpRecord isKindOf: AppBskyGraphDefsStarterPackViewBasic)
+		ifTrue: [ ^ 'Starter pack "' , self atpRecord atpRecord atpName , '" from '
+				, self atpRecord atpCreator atpHandle ].
 	^ self atpRecord atpValue atpText
 ]
