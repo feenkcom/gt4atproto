@@ -108,6 +108,12 @@ LeBlueskySnippet >> addFiles: aCollectionOfFiles [
 	self announce: LeBlueskySnippetFilesChanged new
 ]
 
+{ #category : #'as yet unclassified' }
+LeBlueskySnippet >> addVideoFile: aFile [
+	self files removeAll add: (self database addAttachmentByCopy: aFile).
+	self announce: LeBlueskySnippetFilesChanged new
+]
+
 { #category : #accessing }
 LeBlueskySnippet >> appendText: aText source: anObject [
 	self string: self string , aText asString.
@@ -305,6 +311,14 @@ LeBlueskySnippet >> post [
 { #category : #accessing }
 LeBlueskySnippet >> post: anObject [
 	post := anObject.
+	post
+		ifNotNil: [ post
+				at: 'commit'
+				ifPresent: [ :aValue | 
+					post
+						at: 'commit'
+						put: {'cid' -> aValue atpCid.
+								'rev' -> aValue atpRev} asDictionary ] ].
 	self enrichPost.
 	self announce: LeBlueskySnippetPostChanged new
 ]

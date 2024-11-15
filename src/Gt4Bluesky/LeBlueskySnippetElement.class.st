@@ -46,6 +46,46 @@ LeBlueskySnippetElement >> addEmbeddedPost: aPost [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetElement >> addImageFileUsingStream: aStream andFile: aFile [
+	^ LeBlueskyPostFileWidget new
+		vExact: 200;
+		hExact: 200;
+		contents: aStream contents;
+		isDeletable: self snippet hasPost not;
+		file: (self snippet database resolveDbFile: aFile);
+		onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> addVideoFileUsingFile: aFile [
+	^ GtProtoWebViewElement new
+		constraintsDo: [ :c | 
+			c vertical exact: 200.
+			c horizontal exact: 200 ];
+		html: '<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <video id="myVideo" src="' , aFile pathString
+				, '" style="max-width: 90%; max-height: 90%;" controls></video>
+    </div>
+
+    <script>
+        document.addEventListener(''DOMContentLoaded'', function() {
+            var video = document.getElementById(''myVideo'');
+            video.currentTime = 355; // Start from 10 seconds
+        });
+    </script>
+</body>
+</html>
+'
+]
+
+{ #category : #accessing }
 LeBlueskySnippetElement >> buildGrayLabel [
 	^ BrLabel new
 		aptitude: (BrGlamorousLabelAptitude new
@@ -82,23 +122,54 @@ LeBlueskySnippetElement >> contentElement [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> createAddFileButton [
-	^ addFileButton := GtSpotterDropdownButtonStencil new beTinySize
-			valuable: LeBlueskySpotterStart new;
-			tooltip: 'Add File or Page';
-			icon: BrGlamorousVectorIcons add;
-			objectActOn: [ :anActOnEvent :anItem :theButton | 
-				((anItem isKindOf: FileReference) and: [ anItem isFile ])
-					ifTrue: [ self snippet addFile: anItem.
-						self snippetViewModel removeCard.
-						self snippetViewModel removeEmbeddedPost.
-						self updateEmbeds.
-						anActOnEvent beActed ].
-
-				(anItem isKindOf: LePage)
-					ifTrue: [ self snippetViewModel addEmbeddedPage: anItem.
-						self updateEmbeds.
-						anActOnEvent beActed ] ];
-			asElement
+	^ addFileButton := BrToggleGroup new
+			aptitude: BrGlamorousToggleGroupAptitude new;
+			addToggle: (BrToggle new
+					aptitude: BrGlamorousToggleWithLabelAptitude new
+							+ (BrGlamorousWithDropdownAptitude
+									handle: [ BrToggle new
+											aptitude: BrGlamorousToggleWithLabelAptitude;
+											label: 'Pictures' ]
+									content: [ BrFileSelector new
+											folder: FileLocator home;
+											fileFilterBlock: [ :aFileReference | aFileReference isFile and: [ GtFileUtility isImageFile: aFileReference ] ];
+											okAction: [ :aFile | 
+												self snippet addFile: aFile.
+												self snippetViewModel removeCard.
+												self snippetViewModel removeEmbeddedPost.
+												self updateEmbeds ] ]);
+					label: 'Pictures');
+			addToggle: (BrToggle new
+					aptitude: BrGlamorousToggleWithLabelAptitude new
+							+ (BrGlamorousWithDropdownAptitude
+									handle: [ BrToggle new
+											aptitude: BrGlamorousToggleWithLabelAptitude;
+											label: 'Video' ]
+									content: [ BrFileSelector new
+											folder: FileLocator home;
+											fileFilterBlock: [ :aFileReference | 
+												aFileReference isFile
+													and: [ GtFileUtility doesFile: aFileReference haveExtension: #('mp4'. 'mov') ] ];
+											okAction: [ :aFile | 
+												self snippet addVideoFile: aFile.
+												self snippetViewModel removeCard.
+												self snippetViewModel removeEmbeddedPost.
+												self updateEmbeds ] ]);
+					label: 'Video');
+			addToggle: (BrToggle new
+					aptitude: BrGlamorousToggleWithLabelAptitude new
+							+ (BrGlamorousWithDropdownAptitude
+									handle: [ BrToggle new
+											aptitude: BrGlamorousToggleWithLabelAptitude;
+											label: 'Page' ]
+									content: [ GtStreamingSpotterElement new
+											spotter: ((GtSpotter on: LeBlueskySpotterStart new)
+													when: GtSpotterObjectActOn
+														send: #addEmbeddedPage:
+														to: self;
+													yourself);
+											size: 600 @ 400 ]);
+					label: 'Page')
 ]
 
 { #category : #accessing }
@@ -150,12 +221,16 @@ LeBlueskySnippetElement >> editor [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> filesToEmbed [
-	^ {'$type' -> 'app.bsky.embed.images'.
-		'images'
-			-> (self snippet fileRecords
-					collect: [ :aRecord | 
-						{'image' -> (aRecord at: 'blob').
-							'alt' -> ''} asDictionary ]) asArray} asDictionary
+	(self snippet files allSatisfy: [ :aFile | GtFileUtility isImageFile: aFile ])
+		ifTrue: [ ^ {'$type' -> 'app.bsky.embed.images'.
+				'images'
+					-> (self snippet fileRecords
+							collect: [ :aRecord | 
+								{'image' -> (aRecord at: 'blob').
+									'alt' -> ''} asDictionary ]) asArray} asDictionary ].
+
+	^ {'$type' -> 'app.bsky.embed.video'.
+		'video' -> (self snippet fileRecords first at: 'blob')} asDictionary
 ]
 
 { #category : #accessing }
@@ -525,10 +600,10 @@ LeBlueskySnippetElement >> onPublishAction: aButton [
 
 	self snippet hasParentPost
 		ifTrue: [ | root |
-			root := ((self snippet client
+			root := (((self snippet client
 					appBskyFeedGetPostThreadUri: (self snippet parentPost at: 'uri')
 					depth: nil
-					parentHeight: nil) at: 'thread') client: self snippet client.
+					parentHeight: nil) at: 'thread') client: self snippet client) getRootPost.
 			record
 				at: 'reply'
 				put: {'parent' -> self snippet parentPost.
@@ -723,13 +798,9 @@ LeBlueskySnippetElement >> updateFileContainer [
 						attachmentBinaryStream: aFile
 						do: [ :aStream | 
 							imageContainer
-								addChild: (LeBlueskyPostFileWidget new
-										vExact: 200;
-										hExact: 200;
-										contents: aStream contents;
-										isDeletable: self snippet hasPost not;
-										file: (self snippet database resolveDbFile: aFile);
-										onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]) ] ] ]
+								addChild: ((GtFileUtility isImageFile: aFile)
+										ifTrue: [ self addImageFileUsingStream: aStream andFile: aFile ]
+										ifFalse: [ self addVideoFileUsingFile: self snippet database monitor localRoot / aFile ]) ] ] ]
 ]
 
 { #category : #accessing }

@@ -35,6 +35,12 @@ TAppBskyFeedDefsThreadViewPost >> getReplies [
 		collect: [ :aReply | aReply client: self client ]
 ]
 
+{ #category : #'as yet unclassified' }
+TAppBskyFeedDefsThreadViewPost >> getRootPost [
+	self atpParent ifNil: [ ^ self ].
+	^ self atpParent getRootPost client: self client
+]
+
 { #category : #accessing }
 TAppBskyFeedDefsThreadViewPost >> gtCardFor: aView [
 	<gtView>

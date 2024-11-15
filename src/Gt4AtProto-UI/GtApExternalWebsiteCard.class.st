@@ -71,6 +71,13 @@ GtApExternalWebsiteCard >> gtViewCardFor: aView [
 		]
 ]
 
+{ #category : #'as yet unclassified' }
+GtApExternalWebsiteCard >> initialize [
+	super initialize.
+	
+	title := ''
+]
+
 { #category : #accessing }
 GtApExternalWebsiteCard >> thumb [
 	^ thumb
