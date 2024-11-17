@@ -70,7 +70,7 @@ LeBlueskySnippetElement >> addVideoFileUsingFile: aFile [
 </head>
 <body>
     <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <video id="myVideo" src="' , aFile pathString
+        <video id="myVideo" src="file://' , aFile pathString
 				, '" style="max-width: 90%; max-height: 90%;" controls></video>
     </div>
 
@@ -83,6 +83,40 @@ LeBlueskySnippetElement >> addVideoFileUsingFile: aFile [
 </body>
 </html>
 '
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> asBlueskyRecord [
+	| record |
+	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
+			'createdAt' -> DateAndTime now printString.
+			'text' -> inputElement text asString} asDictionary.
+
+	self snippet fileRecords
+		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
+	self snippetViewModel card
+		ifNotNil: [ record at: 'embed' put: self cardToEmbed ].
+	self snippetViewModel embeddedPost
+		ifNotNil: [ record at: 'embed' put: self postToEmbed ].
+	self snippetViewModel embeddedPage
+		ifNotNil: [ record at: 'embed' put: self pageToEmbed ].
+
+	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
+
+	self snippet hasParentPost
+		ifTrue: [ | root |
+			root := (((self snippet client
+					appBskyFeedGetPostThreadUri: (self snippet parentPost at: 'uri')
+					depth: nil
+					parentHeight: nil) at: 'thread') client: self snippet client) getRootPost.
+			record
+				at: 'reply'
+				put: {'parent' -> self snippet parentPost.
+						'root'
+							-> {'uri' -> root atpPost atpUri.
+									'cid' -> root atpPost atpCid} asDictionary} asDictionary ].
+	record.
+	^ record
 ]
 
 { #category : #accessing }
@@ -233,6 +267,15 @@ LeBlueskySnippetElement >> filesToEmbed [
 		'video' -> (self snippet fileRecords first at: 'blob')} asDictionary
 ]
 
+{ #category : #views }
+LeBlueskySnippetElement >> gtRecordFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Record';
+		object: [ self asBlueskyRecord ];
+		view: #gtTreeFor:context:
+]
+
 { #category : #accessing }
 LeBlueskySnippetElement >> initialize [
 	super initialize.
@@ -377,7 +420,7 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 			icon: BrGlamorousVectorIcons accept;
 			label: 'Publish';
 			disable;
-			action: [ :aButton | self onPublishAction: aButton ].
+			action: [ :aButton | self publishPost ].
 
 	toolbarElement addItem: publishButton.
 
@@ -580,50 +623,6 @@ LeBlueskySnippetElement >> onPostChanged [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onPublishAction: aButton [
-	| record |
-	self uploadFiles.
-	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
-			'createdAt' -> DateAndTime now printString.
-			'text' -> inputElement text asString} asDictionary.
-
-	self snippet fileRecords
-		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
-	self snippetViewModel card
-		ifNotNil: [ record at: 'embed' put: self cardToEmbed ].
-	self snippetViewModel embeddedPost
-		ifNotNil: [ record at: 'embed' put: self postToEmbed ].
-	self snippetViewModel embeddedPage
-		ifNotNil: [ record at: 'embed' put: self pageToEmbed ].
-
-	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
-
-	self snippet hasParentPost
-		ifTrue: [ | root |
-			root := (((self snippet client
-					appBskyFeedGetPostThreadUri: (self snippet parentPost at: 'uri')
-					depth: nil
-					parentHeight: nil) at: 'thread') client: self snippet client) getRootPost.
-			record
-				at: 'reply'
-				put: {'parent' -> self snippet parentPost.
-						'root'
-							-> {'uri' -> root atpPost atpUri.
-									'cid' -> root atpPost atpCid} asDictionary} asDictionary ].
-
-	self snippet
-		post: (self snippet client
-				comAtprotoRepoCreateRecordRepo: self snippet actor atpDid
-				collection: AppBskyFeedPostMain atpRecordName
-				rkey: nil
-				validate: nil
-				record: record
-				swapCommit: nil).
-
-	self transformLaterSnippetsFrom: self snippet
-]
-
-{ #category : #accessing }
 LeBlueskySnippetElement >> onReplyAction: aButton [
 	self snippet
 		addSnippetAfterSelf: (LeBlueskySnippet empty
@@ -672,6 +671,22 @@ LeBlueskySnippetElement >> postToEmbed [
 			-> {'uri' -> self snippetViewModel embeddedPost atpPost atpUri.
 					'cid' -> self snippetViewModel embeddedPost atpPost atpCid} asDictionary}
 		asDictionary
+]
+
+{ #category : #accessing }
+LeBlueskySnippetElement >> publishPost [
+	| record |
+	self uploadFiles.
+	record := self asBlueskyRecord.
+	self snippet
+		post: (self snippet client
+				comAtprotoRepoCreateRecordRepo: self snippet actor atpDid
+				collection: AppBskyFeedPostMain atpRecordName
+				rkey: nil
+				validate: nil
+				record: record
+				swapCommit: nil).
+	self transformLaterSnippetsFrom: self snippet
 ]
 
 { #category : #accessing }
