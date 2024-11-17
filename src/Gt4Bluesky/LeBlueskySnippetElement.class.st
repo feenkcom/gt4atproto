@@ -271,7 +271,8 @@ LeBlueskySnippetElement >> filesToEmbed [
 LeBlueskySnippetElement >> gtRecordFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Record';
+		title: 'AT Record';
+		priority: 0.5;
 		object: [ self asBlueskyRecord ];
 		view: #gtTreeFor:context:
 ]
