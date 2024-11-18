@@ -33,9 +33,14 @@ GtBlueskyIdentity >> accessToken: anObject [
 
 { #category : #accessing }
 GtBlueskyIdentity >> createClient [
-	^ GtApGeneratedClient new
-		server: 'https://bsky.social';
-		loginInformation: self
+	| client |
+	client := GtApGeneratedClient new
+			server: 'https://bsky.social';
+			loginInformation: self.
+
+	client verify ifFalse: [ ^ nil ].
+
+	^ client
 ]
 
 { #category : #accessing }

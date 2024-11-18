@@ -145,7 +145,7 @@ LeBlueskySnippet >> atpParent [
 { #category : #accessing }
 LeBlueskySnippet >> atpPost [
 	| response |
-	self hasPost ifFalse: [ ^ nil ].
+	(self hasPost or: [ self hasClient ]) ifFalse: [ ^ nil ].
 	response := self client
 			appBskyFeedGetPostThreadUri: (self post at: 'uri')
 			depth: nil

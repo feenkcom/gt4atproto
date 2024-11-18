@@ -298,3 +298,10 @@ GtApClient >> server [
 GtApClient >> server: anObject [
 	context server: anObject
 ]
+
+{ #category : #'as yet unclassified' }
+GtApClient >> verify [
+	[ self refreshToken ] on: GtXRPCError do: [ ^ false ].
+
+	^ true
+]
