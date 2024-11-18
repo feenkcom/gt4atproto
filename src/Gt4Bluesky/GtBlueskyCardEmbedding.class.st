@@ -14,7 +14,7 @@ GtBlueskyCardEmbedding >> asElement [
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
-		addChild: (GtApExternalElement new model: self snippetViewModel card)
+		addChild: (GtApExternalElement new model: self card)
 ]
 
 { #category : #'as yet unclassified' }

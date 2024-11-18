@@ -15,7 +15,7 @@ GtBlueskyPageEmbedding >> asElement [
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
-		addChild: self snippetViewModel embeddedPage asPreviewElement
+		addChild: self page asPreviewElement
 ]
 
 { #category : #'as yet unclassified' }

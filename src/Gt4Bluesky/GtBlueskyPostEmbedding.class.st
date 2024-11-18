@@ -14,7 +14,7 @@ GtBlueskyPostEmbedding >> asElement [
 		background: Color white;
 		aptitude: BrShadowAptitude;
 		margin: (BlInsets all: 5);
-		addChild: (GtApFeedPostSummaryElement new post: self snippetViewModel embeddedPost)
+		addChild: (GtApFeedPostSummaryElement new post: self post)
 ]
 
 { #category : #'as yet unclassified' }
