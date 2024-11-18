@@ -197,5 +197,6 @@ GtApCreatePostForm >> updateFileContainer [
 
 { #category : #accessing }
 GtApCreatePostForm >> uploadFiles [
+	self halt.
 	self files do: [ :aFile | self fileRecords add: (self client comAtprotoRepoUploadBlobFile: aFile) ]
 ]

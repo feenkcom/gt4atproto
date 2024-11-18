@@ -3,41 +3,10 @@ Class {
 	#superclass : #LeTextualSnippetViewModel,
 	#instVars : [
 		'cursor',
-		'card',
-		'embeddedPost',
-		'embeddedPage'
+		'embed'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> addCard: aCard [
-	card := aCard.
-	self snippetModel files: OrderedCollection new.
-	self removeEmbeddedPost.
-	self removeEmbeddedPage
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> addEmbeddedPage: aPage [
-	embeddedPage := aPage.
-	self snippetModel files: OrderedCollection new.
-	self removeEmbeddedPost.
-	self removeCard
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> addEmbeddedPost: aPost [
-	embeddedPost := aPost.
-	self snippetModel files: OrderedCollection new.
-	self removeCard.
-	self removeEmbeddedPage
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> card [
-	^ card
-]
 
 { #category : #accessing }
 LeBlueskySnippetViewModel >> cursor [
@@ -50,13 +19,13 @@ LeBlueskySnippetViewModel >> cursor: anObject [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> embeddedPage [
-	^ embeddedPage
+LeBlueskySnippetViewModel >> embed [
+	^ embed
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> embeddedPost [
-	^ embeddedPost
+LeBlueskySnippetViewModel >> embed: anObject [
+	embed := anObject
 ]
 
 { #category : #accessing }
@@ -100,33 +69,30 @@ LeBlueskySnippetViewModel >> refreshEmbedsFromModel [
 		ifTrue: [ self snippetModel atpPost atpPost atpRecord atpEmbed
 				ifNotNil: [ :anEmbed | 
 					(anEmbed isKindOf: AppBskyEmbedRecordView)
-						ifTrue: [ self addEmbeddedPost: anEmbed ].
+						ifTrue: [ self
+								embed: (GtBlueskyPostEmbedding new
+										post: anEmbed;
+										snippet: self snippet;
+										snippetViewModel: self) ].
 
 					(anEmbed isKindOf: AppBskyEmbedExternalMain)
-						ifTrue: [ self addCard: (GtApExternalWebsiteCard fromExternal: anEmbed atpExternal) ].
+						ifTrue: [ self
+								embed: (GtBlueskyCardEmbedding new
+										card: (GtApExternalWebsiteCard fromExternal: anEmbed atpExternal);
+										snippet: self snippet;
+										snippetViewModel: self) ].
 
 					((anEmbed isKindOf: GtApUnknownRecord)
 						and: [ anEmbed key = 'com.gtoolkit.embed.lepiterPage' ])
 						ifTrue: [ | stringStream |
 							stringStream := (anEmbed rawData at: 'record') readStream.
-							self addEmbeddedPage: (LeJsonV4 uniqueInstance deserialize: stringStream).
+							self
+								embed: (GtBlueskyPageEmbedding new
+										page: (LeJsonV4 uniqueInstance deserialize: stringStream);
+										snippet: self snippet;
+										snippetViewModel: self).
 							stringStream close ] ].
 			self announce: LeBlueskySnippetPostChanged new ]
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> removeCard [
-	card := nil
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> removeEmbeddedPage [
-	embeddedPage := nil
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> removeEmbeddedPost [
-	embeddedPost := nil
 ]
 
 { #category : #accessing }

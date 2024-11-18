@@ -146,16 +146,24 @@ LeBlueskySnippet >> atpParent [
 LeBlueskySnippet >> atpPost [
 	| response |
 	(self hasPost or: [ self hasClient ]) ifFalse: [ ^ nil ].
-	response := self client
+	[ response := self client
 			appBskyFeedGetPostThreadUri: (self post at: 'uri')
 			depth: nil
-			parentHeight: nil.
+			parentHeight: nil ]
+		on: GtXRPCError
+		do: [ self post: nil.
+			^ nil ].
 
 	(response includesKey: 'error')
 		ifTrue: [ self post: nil.
 			^ nil ].
 
 	^ (response at: 'thread') client: self client
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskySnippet >> clearFiles [
+	self files removeAll
 ]
 
 { #category : #accessing }

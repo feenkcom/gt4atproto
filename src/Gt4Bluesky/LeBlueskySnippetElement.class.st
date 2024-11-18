@@ -16,73 +16,38 @@ Class {
 		'dateLabel',
 		'profilePicture',
 		'addFileButton',
-		'imageContainer',
 		'parentInfoElement',
 		'inspectButton',
 		'writingIndicator',
-		'cardContainer',
-		'embeddedPostContainer',
-		'embeddedPageContainer'
+		'embedContainer'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
 
 { #category : #accessing }
 LeBlueskySnippetElement >> addCard: aCard [
-	self snippetViewModel addCard: aCard.
-	self updateEmbeds
+	self
+		embed: (GtBlueskyCardEmbedding new
+				card: aCard;
+				snippet: self snippet;
+				snippetViewModel: self snippetViewModel)
 ]
 
 { #category : #accessing }
 LeBlueskySnippetElement >> addEmbeddedPage: aPage [
-	self snippetViewModel addEmbeddedPage: aPage.
-	self updateEmbeds
+	self
+		embed: (GtBlueskyPageEmbedding new
+				page: aPage;
+				snippet: self snippet)
 ]
 
 { #category : #accessing }
 LeBlueskySnippetElement >> addEmbeddedPost: aPost [
-	self snippetViewModel addEmbeddedPost: aPost.
-	self updateEmbeds
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> addImageFileUsingStream: aStream andFile: aFile [
-	^ LeBlueskyPostFileWidget new
-		vExact: 200;
-		hExact: 200;
-		contents: aStream contents;
-		isDeletable: self snippet hasPost not;
-		file: (self snippet database resolveDbFile: aFile);
-		onDeletion: [ :aFileForDeletion | self snippet removeFileReference: aFileForDeletion ]
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> addVideoFileUsingFile: aFile [
-	^ GtProtoWebViewElement new
-		constraintsDo: [ :c | 
-			c vertical exact: 200.
-			c horizontal exact: 200 ];
-		html: '<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-        <video id="myVideo" src="file://' , aFile pathString
-				, '" style="max-width: 90%; max-height: 90%;" controls></video>
-    </div>
-
-    <script>
-        document.addEventListener(''DOMContentLoaded'', function() {
-            var video = document.getElementById(''myVideo'');
-            video.currentTime = 355; // Start from 10 seconds
-        });
-    </script>
-</body>
-</html>
-'
+	self
+		embed: (GtBlueskyPostEmbedding new
+				post: aPost;
+				snippet: self snippet;
+				snippetViewModel: self snippetViewModel)
 ]
 
 { #category : #accessing }
@@ -92,14 +57,8 @@ LeBlueskySnippetElement >> asBlueskyRecord [
 			'createdAt' -> DateAndTime now printString.
 			'text' -> inputElement text asString} asDictionary.
 
-	self snippet fileRecords
-		ifNotEmpty: [ record at: 'embed' put: self filesToEmbed ].
-	self snippetViewModel card
-		ifNotNil: [ record at: 'embed' put: self cardToEmbed ].
-	self snippetViewModel embeddedPost
-		ifNotNil: [ record at: 'embed' put: self postToEmbed ].
-	self snippetViewModel embeddedPage
-		ifNotNil: [ record at: 'embed' put: self pageToEmbed ].
+	self snippetViewModel embed
+		ifNotNil: [ :anEmbed | record at: 'embed' put: anEmbed asJson ].
 
 	self links ifNotEmpty: [ record at: 'facets' put: self linksToFacets ].
 
@@ -168,10 +127,11 @@ LeBlueskySnippetElement >> createAddFileButton [
 											folder: FileLocator home;
 											fileFilterBlock: [ :aFileReference | aFileReference isFile and: [ GtFileUtility isImageFile: aFileReference ] ];
 											okAction: [ :aFile | 
-												self snippet addFile: aFile.
-												self snippetViewModel removeCard.
-												self snippetViewModel removeEmbeddedPost.
-												self updateEmbeds ] ]);
+												self
+													embed: (GtBlueskyPictureEmbedding new
+															snippet: self snippet;
+															file: aFile).
+												addFileButton dispatchEvent: BrDropdownHideWish new ] ]);
 					label: 'Pictures');
 			addToggle: (BrToggle new
 					aptitude: BrGlamorousToggleWithLabelAptitude new
@@ -183,12 +143,13 @@ LeBlueskySnippetElement >> createAddFileButton [
 											folder: FileLocator home;
 											fileFilterBlock: [ :aFileReference | 
 												aFileReference isFile
-													and: [ GtFileUtility doesFile: aFileReference haveExtension: #('mp4'. 'mov') ] ];
+													and: [ GtFileUtility doesFile: aFileReference haveExtension: #('mp4' #'.' 'mov') ] ];
 											okAction: [ :aFile | 
-												self snippet addVideoFile: aFile.
-												self snippetViewModel removeCard.
-												self snippetViewModel removeEmbeddedPost.
-												self updateEmbeds ] ]);
+												self
+													embed: (GtBlueskyVideoEmbedding new
+															snippet: self snippet;
+															file: aFile).
+												addFileButton dispatchEvent: BrDropdownHideWish new ] ]);
 					label: 'Video');
 			addToggle: (BrToggle new
 					aptitude: BrGlamorousToggleWithLabelAptitude new
@@ -207,50 +168,20 @@ LeBlueskySnippetElement >> createAddFileButton [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> createCardContainer [
-	^ cardContainer := BrHorizontalPane new fitContent
-			visibility: BlVisibility gone;
-			clipChildren: false;
-			background: Color white;
-			aptitude: BrShadowAptitude;
-			margin: (BlInsets all: 5)
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> createEmbeddedPageContainer [
-	^ embeddedPageContainer := BrHorizontalPane new hMatchParent
-			vExact: 200;
-			visibility: BlVisibility gone;
-			clipChildren: false;
-			background: Color white;
-			aptitude: BrShadowAptitude;
-			margin: (BlInsets all: 5)
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> createEmbeddedPostContainer [
-	^ embeddedPostContainer := BrHorizontalPane new fitContent
-			visibility: BlVisibility gone;
-			clipChildren: false;
-			background: Color white;
-			aptitude: BrShadowAptitude;
-			margin: (BlInsets all: 5)
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> createImageContainer [
-	^ imageContainer := BrHorizontalPane new
-			hMatchParent;
-			vExact: 200;
-			visibility: BlVisibility gone;
-			clipChildren: false;
-			margin: (BlInsets all: 5)
+LeBlueskySnippetElement >> createEmbedContainer [
+	^ embedContainer := BrHorizontalPane new fitContent
 ]
 
 { #category : #accessing }
 LeBlueskySnippetElement >> editor [
 	"Required by ${method:LeTextualSnippetElement>>#registerFocusEventHandlers}$"
 	^ self inputElement
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskySnippetElement >> embed: anEmbedding [
+	self snippetViewModel embed: anEmbedding.
+	self updateEmbeds
 ]
 
 { #category : #accessing }
@@ -350,10 +281,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 
 	contentPane addChild: inputElement as: #editor.
 
-	contentPane addChild: self createImageContainer.
-	contentPane addChild: self createCardContainer.
-	contentPane addChild: self createEmbeddedPostContainer.
-	contentPane addChild: self createEmbeddedPageContainer.
+	contentPane addChild: self createEmbedContainer.
 
 	contentElement addChild: self initializeToolbarElement.
 
@@ -585,7 +513,7 @@ LeBlueskySnippetElement >> onDeleteAction: aButton [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> onFilesChanged [
-	self inUIProcessDo: [ self updateFileContainer. self updateCardContainer ]
+	self inUIProcessDo: [ self updateEmbeds ]
 ]
 
 { #category : #accessing }
@@ -602,7 +530,7 @@ LeBlueskySnippetElement >> onPostChanged [
 			^ self ].
 
 	self updateHeader.
-	self updateFileContainer.
+	self updateEmbeds.
 
 	self snippet hasPost
 		ifTrue: [ publishButton visibility: BlVisibility gone.
@@ -765,58 +693,11 @@ LeBlueskySnippetElement >> transformLaterSnippetsFrom: aSnippet [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> updateCardContainer [
-	cardContainer removeChildren.
-	self snippetViewModel card
-		ifNil: [ cardContainer visibility: BlVisibility gone ]
-		ifNotNil: [ cardContainer visibility: BlVisibility visible.
-			cardContainer
-				addChild: (GtApExternalElement new model: self snippetViewModel card) ]
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> updateEmbeddedPageContainer [
-	embeddedPageContainer removeChildren.
-	self snippetViewModel embeddedPage
-		ifNil: [ embeddedPageContainer visibility: BlVisibility gone ]
-		ifNotNil: [ embeddedPageContainer visibility: BlVisibility visible.
-			embeddedPageContainer
-				addChild: self snippetViewModel embeddedPage asPreviewElement ]
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> updateEmbeddedPostContainer [
-	embeddedPostContainer removeChildren.
-	self snippetViewModel embeddedPost
-		ifNil: [ embeddedPostContainer visibility: BlVisibility gone ]
-		ifNotNil: [ embeddedPostContainer visibility: BlVisibility visible.
-			embeddedPostContainer
-				addChild: (GtApFeedPostSummaryElement new post: self snippetViewModel embeddedPost) ]
-]
-
-{ #category : #accessing }
 LeBlueskySnippetElement >> updateEmbeds [
-	self updateFileContainer.
-	self updateCardContainer.
-	self updateEmbeddedPostContainer.
-	self updateEmbeddedPageContainer
-]
+	embedContainer removeChildren.
 
-{ #category : #accessing }
-LeBlueskySnippetElement >> updateFileContainer [
-	imageContainer removeChildren.
-	self snippet files
-		ifEmpty: [ imageContainer visibility: BlVisibility gone ]
-		ifNotEmpty: [ imageContainer visibility: BlVisibility visible.
-			self snippet files
-				do: [ :aFile | 
-					self snippet database
-						attachmentBinaryStream: aFile
-						do: [ :aStream | 
-							imageContainer
-								addChild: ((GtFileUtility isImageFile: aFile)
-										ifTrue: [ self addImageFileUsingStream: aStream andFile: aFile ]
-										ifFalse: [ self addVideoFileUsingFile: self snippet database monitor localRoot / aFile ]) ] ] ]
+	self snippetViewModel embed
+		ifNotNil: [ :anEmbed | embedContainer addChild: anEmbed asElement ]
 ]
 
 { #category : #accessing }
