@@ -132,7 +132,7 @@ LeBlueskySnippetElement >> createAddFileButton [
 														embed: (GtBlueskyPictureEmbedding new
 																snippetViewModel: self snippetViewModel;
 																snippet: self snippet;
-																file: aFile).
+																addFile: aFile).
 													fileSelector
 														inUIProcessDo: [ fileSelector dispatchEvent: BrDropdownHideWish new ] ] ]);
 					label: 'Pictures');
@@ -146,7 +146,7 @@ LeBlueskySnippetElement >> createAddFileButton [
 												folder: FileLocator home;
 												fileFilterBlock: [ :aFileReference | 
 													aFileReference isFile
-														and: [ GtFileUtility doesFile: aFileReference haveExtension: #('mp4' #'.' 'mov') ] ];
+														and: [ GtFileUtility doesFile: aFileReference haveExtension: {'mp4'. 'mov'} ] ];
 												okAction: [ :aFile | 
 													self
 														embed: (GtBlueskyVideoEmbedding new

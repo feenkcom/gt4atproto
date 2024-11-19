@@ -1,6 +1,9 @@
 Class {
 	#name : #GtBlueskyPictureEmbedding,
-	#superclass : #GtBlueskyFileEmbedding,
+	#superclass : #GtBlueskyEmbedding,
+	#instVars : [
+		'files'
+	],
 	#category : #'Gt4Bluesky-Models'
 }
 
@@ -20,7 +23,56 @@ GtBlueskyPictureEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
 	^ GtBlueskyPictureEmbedding new
 		snippet: aViewModel snippetModel;
 		snippetViewModel: aViewModel;
-		file: FileLocator imageDirectory / 'buesky_download_tempfile'
+		files: aViewModel snippetModel files
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyPictureEmbedding >> addFile: aFile [
+	self snippet addFile: aFile.
+	files add: self snippet fileReferences last.
+	self snippetViewModel onSnippetFilesChanged: LeBlueskySnippetFilesChanged new
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyPictureEmbedding >> asElement [
+	| aContainer button |
+	aContainer := BrHorizontalPane new vFitContent hMatchParent
+			padding: (BlInsets all: 5);
+			clipChildren: false.
+
+	self files
+		do: [ :aFile | 
+			aContainer
+				addChild: (LeBlueskyPostFileWidget new
+						vExact: 200;
+						hExact: 200;
+						isDeletable: self snippet hasPost not;
+						file: aFile;
+						onDeletion: [ :aFileForDeletion | 
+							self files remove: aFileForDeletion.
+							self files ifEmpty: [ self snippetViewModel embed: nil ].
+							self snippet removeFileReference: aFileForDeletion ]) ].
+
+	self snippet hasPost
+		ifFalse: [ aContainer
+				addChild: (button := BrButton new beLargeSize
+							aptitude: BrGlamorousButtonWithIconCircularAptitude
+									+ (BrGlamorousWithDropdownAptitude
+											handle: [ BrButton new beLargeSize
+													aptitude: BrGlamorousButtonWithIconCircularAptitude;
+													icon: BrGlamorousVectorIcons add ]
+											content: [ BrFileSelector new
+													folder: FileLocator home;
+													fileFilterBlock: [ :aFileReference | aFileReference isFile and: [ GtFileUtility isImageFile: aFileReference ] ];
+													okAction: [ :aFile | 
+														self addFile: aFile.
+														button
+															inUIProcessDo: [ button dispatchEvent: BrDropdownHideWish new ] ] ]);
+							icon: BrGlamorousVectorIcons add;
+							label: 'Add file';
+							margin: (BlInsets top: 85 left: 30)) ].
+
+	^ aContainer
 ]
 
 { #category : #'as yet unclassified' }
@@ -33,35 +85,27 @@ GtBlueskyPictureEmbedding >> asJson [
 							'alt' -> ''} asDictionary ]) asArray} asDictionary
 ]
 
+{ #category : #accessing }
+GtBlueskyPictureEmbedding >> files [
+	^ files
+]
+
+{ #category : #accessing }
+GtBlueskyPictureEmbedding >> files: anObject [
+	files := anObject
+]
+
 { #category : #'as yet unclassified' }
-GtBlueskyPictureEmbedding >> fileElement [
-	| aContainer |
-	aContainer := BrHorizontalPane new vFitContent hMatchParent
-			padding: (BlInsets all: 5);
-			clipChildren: false;
-			addChild: (LeBlueskyPostFileWidget new
-					vExact: 200;
-					hExact: 200;
-					isDeletable: self snippet hasPost not;
-					file: self file;
-					onDeletion: [ :aFileForDeletion | 
-						self snippet clearFiles.
-						self snippetViewModel embed: nil ]).
-
-	self snippet hasPost
-		ifFalse: [ aContainer
-				addChild: (BrButton new beLargeSize
-						aptitude: BrGlamorousButtonWithIconCircularAptitude;
-						icon: BrGlamorousVectorIcons add;
-						label: 'Add file';
-						action: [  ];
-						margin: (BlInsets top: 85 left: 30)) ].
-
-	^ aContainer
+GtBlueskyPictureEmbedding >> initialize [
+	super initialize.
+	
+	files := OrderedCollection new
 ]
 
 { #category : #'as yet unclassified' }
 GtBlueskyPictureEmbedding >> upload [
-	self snippet fileRecords
-		add: (self snippet client comAtprotoRepoUploadBlobFile: self file)
+	self files
+		do: [ :aFile | 
+			self snippet fileRecords
+				add: (self snippet client comAtprotoRepoUploadBlobFile: aFile asFileReference) ]
 ]
