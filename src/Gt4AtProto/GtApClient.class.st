@@ -138,7 +138,7 @@ GtApClient >> loginUser: aUserNameString withPass: aPasswordString [
 
 { #category : #accessing }
 GtApClient >> paginatedQueryOn: aMethodId parameters: aDictionary [
-	| res filteredProperties rightKey |
+	| res filteredProperties rightKey hasCursor |
 	res := [ (self clientFor: aMethodId parameters: aDictionary) query ]
 			on: GtXRPCError
 			do: [ :anError | 
@@ -149,15 +149,7 @@ GtApClient >> paginatedQueryOn: aMethodId parameters: aDictionary [
 
 
 
-	(res includesKey: 'cursor')
-		ifFalse: [ rightKey := res keys
-					detect: [ :aKey | (res at: aKey) isKindOf: Array ]
-					ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
-			^ GtApResultStream new
-				resultsList: (res at: rightKey) asOrderedCollection;
-				method: aMethodId;
-				parameters: aDictionary;
-				client: self ].
+	hasCursor := res includesKey: 'cursor'.
 
 	filteredProperties := res keys reject: [ :aKey | aKey = 'cursor' ].
 
@@ -168,13 +160,20 @@ GtApClient >> paginatedQueryOn: aMethodId parameters: aDictionary [
 			res
 				at: rightKey
 				put: (GtApResultStream new
-						cursor: (res removeKey: 'cursor');
+						cursor: (hasCursor ifNotNil: [ res removeKey: 'cursor' ]);
 						key: rightKey;
 						resultsList: (res removeKey: rightKey) asOrderedCollection;
 						method: aMethodId;
 						parameters: aDictionary;
 						client: self).
 			^ res ].
+
+	hasCursor
+		ifFalse: [ ^ GtApResultStream new
+				resultsList: (res at: filteredProperties first) asOrderedCollection;
+				method: aMethodId;
+				parameters: aDictionary;
+				client: self ].
 
 	^ GtApResultStream new
 		result: res;
