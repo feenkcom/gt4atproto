@@ -34,10 +34,10 @@ LeBlueskySnippetElement >> addCard: aCard [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> addEmbeddedPage: aPage [
+LeBlueskySnippetElement >> addEmbeddedPage: anEvent [
 	self
 		embed: (GtBlueskyPageEmbedding new
-				page: aPage;
+				page: anEvent rawObject;
 				snippet: self snippet)
 ]
 

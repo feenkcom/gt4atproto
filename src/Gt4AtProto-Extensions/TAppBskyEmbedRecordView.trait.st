@@ -13,6 +13,11 @@ TAppBskyEmbedRecordView >> asEmbeddedElement [
 ]
 
 { #category : #accessing }
+TAppBskyEmbedRecordView >> atpPost [
+	^ self atpRecord
+]
+
+{ #category : #accessing }
 TAppBskyEmbedRecordView >> author [
 	^ self atpRecord atpAuthor
 ]
@@ -27,6 +32,11 @@ TAppBskyEmbedRecordView >> createdAt [
 { #category : #accessing }
 TAppBskyEmbedRecordView >> createdAtTimestamp [
 	^ DateAndTime fromString: self createdAt
+]
+
+{ #category : #accessing }
+TAppBskyEmbedRecordView >> hasEmbed [
+	^ self atpRecord atpEmbeds isEmptyOrNil not
 ]
 
 { #category : #accessing }

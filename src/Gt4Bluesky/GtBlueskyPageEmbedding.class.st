@@ -8,6 +8,26 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GtBlueskyPageEmbedding class >> blueskyRecord [
+	^ GtApUnknownRecord
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyPageEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
+	| stringStream anEmbedding |
+	stringStream := (aPost atpPost atpRecord atpEmbed rawData at: 'record')
+			readStream.
+
+	anEmbedding := self new
+			page: (LeJsonV4 uniqueInstance deserialize: stringStream);
+			snippet: aViewModel snippetModel;
+			snippetViewModel: aViewModel.
+
+	stringStream close.
+	^ anEmbedding
+]
+
+{ #category : #'as yet unclassified' }
 GtBlueskyPageEmbedding >> asElement [
 	^ BrHorizontalPane new hMatchParent
 		vExact: 200;

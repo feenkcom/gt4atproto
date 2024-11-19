@@ -36,14 +36,14 @@ LeBlueskyPostFileWidget >> file [
 { #category : #accessing }
 LeBlueskyPostFileWidget >> file: aFile [
 	file := aFile.
-	super file: aFile.
-	isDeletable := true
+	super file: aFile
 ]
 
 { #category : #accessing }
 LeBlueskyPostFileWidget >> initialize [
 	super initialize.
 	self clipChildren: false.
+	isDeletable := true.
 
 	self postAction: self defaultPostAction
 ]

@@ -9,6 +9,26 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GtBlueskyEmbedding class >> blueskyRecord [
+	^ nil
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyEmbedding class >> findEmbeddingFor: anEmbedding [
+	self
+		allSubclassesDo: [ :aClass | 
+			aClass hasAbstractMethods
+				ifFalse: [ (anEmbedding isKindOf: aClass blueskyRecord) ifTrue: [ ^ aClass ] ] ].
+
+	^ self error: 'Unknown embedding!'
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
+	^ self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
 GtBlueskyEmbedding >> asElement [
 	^ self subclassResponsibility
 ]

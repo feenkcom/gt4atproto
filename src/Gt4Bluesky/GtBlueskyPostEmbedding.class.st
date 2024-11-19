@@ -8,6 +8,19 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GtBlueskyPostEmbedding class >> blueskyRecord [
+	^ AppBskyEmbedRecordMain
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyPostEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
+	^ GtBlueskyPostEmbedding new
+		post: aPost atpPost atpEmbed;
+		snippet: aViewModel snippetModel;
+		snippetViewModel: aViewModel
+]
+
+{ #category : #'as yet unclassified' }
 GtBlueskyPostEmbedding >> asElement [
 	^ BrHorizontalPane new fitContent
 		clipChildren: false;

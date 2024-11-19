@@ -68,30 +68,11 @@ LeBlueskySnippetViewModel >> refreshEmbedsFromModel [
 	(self snippetModel hasPost and: [ self snippetModel hasClient ])
 		ifTrue: [ self snippetModel atpPost atpPost atpRecord atpEmbed
 				ifNotNil: [ :anEmbed | 
-					(anEmbed isKindOf: AppBskyEmbedRecordView)
-						ifTrue: [ self
-								embed: (GtBlueskyPostEmbedding new
-										post: anEmbed;
-										snippet: self snippet;
-										snippetViewModel: self) ].
+					self
+						embed: ((GtBlueskyEmbedding findEmbeddingFor: anEmbed)
+								fromRecord: self snippetModel atpPost
+								inViewModel: self) ].
 
-					(anEmbed isKindOf: AppBskyEmbedExternalMain)
-						ifTrue: [ self
-								embed: (GtBlueskyCardEmbedding new
-										card: (GtApExternalWebsiteCard fromExternal: anEmbed atpExternal);
-										snippet: self snippet;
-										snippetViewModel: self) ].
-
-					((anEmbed isKindOf: GtApUnknownRecord)
-						and: [ anEmbed key = 'com.gtoolkit.embed.lepiterPage' ])
-						ifTrue: [ | stringStream |
-							stringStream := (anEmbed rawData at: 'record') readStream.
-							self
-								embed: (GtBlueskyPageEmbedding new
-										page: (LeJsonV4 uniqueInstance deserialize: stringStream);
-										snippet: self snippet;
-										snippetViewModel: self).
-							stringStream close ] ].
 			self announce: LeBlueskySnippetPostChanged new ]
 ]
 

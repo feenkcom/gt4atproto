@@ -8,6 +8,20 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+GtBlueskyCardEmbedding class >> blueskyRecord [
+	^ AppBskyEmbedExternalMain
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyCardEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
+	^ self new
+		card: (GtApExternalWebsiteCard
+				fromExternal: aPost atpPost atpRecord atpEmbed atpExternal);
+		snippet: aViewModel snippetModel;
+		snippetViewModel: aViewModel
+]
+
+{ #category : #'as yet unclassified' }
 GtBlueskyCardEmbedding >> asElement [
 	^ BrHorizontalPane new fitContent
 		clipChildren: false;
