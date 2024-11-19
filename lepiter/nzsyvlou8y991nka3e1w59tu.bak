@@ -103,14 +103,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-05-19T19:05:46.2167+02:00"
+						"dateAndTimeString" : "2024-05-19T23:18:23.324301+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "vQ0MLC64DQCGFbkQBR1CCw=="
 				},
-				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'yourusernamegoeshere.bsky.social'.\npassword := Clipboard clipboardText asString \"app password\""
+				"code" : "pdsUrl := 'https://bsky.social'.\rhandle := 'tudorgirba.com'.\npassword := Clipboard clipboardText asString \"app password\""
 			},
 			{
 				"__type" : "textSnippet",
