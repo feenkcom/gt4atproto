@@ -36,7 +36,7 @@ GtBlueskyPictureEmbedding >> addFile: aFile [
 { #category : #'as yet unclassified' }
 GtBlueskyPictureEmbedding >> asElement [
 	| aContainer button |
-	aContainer := BrHorizontalPane new vFitContent hMatchParent
+	aContainer := BrHorizontalPane new fitContent
 			padding: (BlInsets all: 5);
 			clipChildren: false.
 
@@ -51,10 +51,11 @@ GtBlueskyPictureEmbedding >> asElement [
 						onDeletion: [ :aFileForDeletion | 
 							self files remove: aFileForDeletion.
 							self files ifEmpty: [ self snippetViewModel embed: nil ].
-							self snippet removeFileReference: aFileForDeletion ]) ].
-
-	self snippet hasPost
-		ifFalse: [ aContainer
+							self snippet removeFileReference: aFileForDeletion ]) ].	
+							
+	"can not add to existing post and can only add up to 4 images"
+	(self snippet hasPost not and: [ self files size < 4 ])
+		ifTrue: [ aContainer
 				addChild: (button := BrButton new beLargeSize
 							aptitude: BrGlamorousButtonWithIconCircularAptitude
 									+ (BrGlamorousWithDropdownAptitude
@@ -72,7 +73,9 @@ GtBlueskyPictureEmbedding >> asElement [
 							label: 'Add file';
 							margin: (BlInsets top: 85 left: 30)) ].
 
-	^ aContainer
+	^ BrScrollPane new fitContent
+		aptitude: BrScrollPaneAptitude + BrGlamorousWithHorizontalScrollbarAptitude;
+		content: aContainer
 ]
 
 { #category : #'as yet unclassified' }
