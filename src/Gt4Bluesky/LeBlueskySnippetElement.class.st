@@ -115,6 +115,7 @@ LeBlueskySnippetElement >> contentElement [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> createAddFileButton [
+	| fileSelector |
 	^ addFileButton := BrToggleGroup new
 			aptitude: BrGlamorousToggleGroupAptitude new;
 			addToggle: (BrToggle new
@@ -123,15 +124,17 @@ LeBlueskySnippetElement >> createAddFileButton [
 									handle: [ BrToggle new
 											aptitude: BrGlamorousToggleWithLabelAptitude;
 											label: 'Pictures' ]
-									content: [ BrFileSelector new
-											folder: FileLocator home;
-											fileFilterBlock: [ :aFileReference | aFileReference isFile and: [ GtFileUtility isImageFile: aFileReference ] ];
-											okAction: [ :aFile | 
-												self
-													embed: (GtBlueskyPictureEmbedding new
-															snippet: self snippet;
-															file: aFile).
-												addFileButton dispatchEvent: BrDropdownHideWish new ] ]);
+									content: [ fileSelector := BrFileSelector new
+												folder: FileLocator home;
+												fileFilterBlock: [ :aFileReference | aFileReference isFile and: [ GtFileUtility isImageFile: aFileReference ] ];
+												okAction: [ :aFile | 
+													self
+														embed: (GtBlueskyPictureEmbedding new
+																snippetViewModel: self snippetViewModel;
+																snippet: self snippet;
+																file: aFile).
+													fileSelector
+														inUIProcessDo: [ fileSelector dispatchEvent: BrDropdownHideWish new ] ] ]);
 					label: 'Pictures');
 			addToggle: (BrToggle new
 					aptitude: BrGlamorousToggleWithLabelAptitude new
@@ -139,17 +142,19 @@ LeBlueskySnippetElement >> createAddFileButton [
 									handle: [ BrToggle new
 											aptitude: BrGlamorousToggleWithLabelAptitude;
 											label: 'Video' ]
-									content: [ BrFileSelector new
-											folder: FileLocator home;
-											fileFilterBlock: [ :aFileReference | 
-												aFileReference isFile
-													and: [ GtFileUtility doesFile: aFileReference haveExtension: #('mp4' #'.' 'mov') ] ];
-											okAction: [ :aFile | 
-												self
-													embed: (GtBlueskyVideoEmbedding new
-															snippet: self snippet;
-															file: aFile).
-												addFileButton dispatchEvent: BrDropdownHideWish new ] ]);
+									content: [ fileSelector := BrFileSelector new
+												folder: FileLocator home;
+												fileFilterBlock: [ :aFileReference | 
+													aFileReference isFile
+														and: [ GtFileUtility doesFile: aFileReference haveExtension: #('mp4' #'.' 'mov') ] ];
+												okAction: [ :aFile | 
+													self
+														embed: (GtBlueskyVideoEmbedding new
+																snippetViewModel: self snippetViewModel;
+																snippet: self snippet;
+																file: aFile).
+													fileSelector
+														inUIProcessDo: [ fileSelector dispatchEvent: BrDropdownHideWish new ] ] ]);
 					label: 'Video');
 			addToggle: (BrToggle new
 					aptitude: BrGlamorousToggleWithLabelAptitude new
@@ -730,8 +735,5 @@ LeBlueskySnippetElement >> updateHeader [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> uploadFiles [
-	self snippet fileReferences
-		do: [ :aFile | 
-			self snippet fileRecords
-				add: (self snippet client comAtprotoRepoUploadBlobFile: aFile) ]
+	self snippetViewModel embed upload
 ]

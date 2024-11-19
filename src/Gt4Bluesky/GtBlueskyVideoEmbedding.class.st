@@ -36,5 +36,28 @@ GtBlueskyVideoEmbedding >> fileElement [
     </script>
 </body>
 </html>
-'
+';
+		clipChildren: false;
+		addChild: (BrButton new beTinySize
+				aptitude: BrGlamorousButtonWithIconCircularAptitude;
+				icon: BrGlamorousVectorIcons cancel;
+				label: 'Remove file';
+				action: [ self snippet clearFiles.
+					self snippetViewModel embed: nil ];
+				constraintsDo: [ :c | 
+					c ignoreByLayout.
+					c ignored horizontal alignRight.
+					c ignored vertical alignTop ];
+				margin: (BlInsets top: -16 right: -16));
+		margin: (BlInsets all: 20)
+]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyVideoEmbedding >> upload [
+	self snippet fileRecords
+		add: (self snippet client comAtprotoRepoUploadBlobFile: self file)
+	"self snippet fileRecords
+		add: (self snippet client
+				procedureOn: 'app.bsky.video.uploadVideo'
+				withFile: self file)"
 ]

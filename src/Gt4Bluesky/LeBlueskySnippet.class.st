@@ -163,7 +163,9 @@ LeBlueskySnippet >> atpPost [
 
 { #category : #'as yet unclassified' }
 LeBlueskySnippet >> clearFiles [
-	self files removeAll
+	self fileRecords removeAll.
+	self files removeAll.
+	self announce: LeBlueskySnippetFilesChanged new
 ]
 
 { #category : #accessing }

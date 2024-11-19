@@ -46,3 +46,7 @@ GtBlueskyEmbedding >> snippetViewModel [
 GtBlueskyEmbedding >> snippetViewModel: anObject [
 	snippetViewModel := anObject
 ]
+
+{ #category : #'as yet unclassified' }
+GtBlueskyEmbedding >> upload [
+]
