@@ -29,6 +29,11 @@ LeBlueskySnippetViewModel >> embed: anObject [
 ]
 
 { #category : #accessing }
+LeBlueskySnippetViewModel >> hasEmbed [
+	^ self embed notNil
+]
+
+{ #category : #accessing }
 LeBlueskySnippetViewModel >> moveCursorAt: aCursorPosition [
 	self cursor: (BrTextEditorCursor at: aCursorPosition).
 	self announce: LeBlueskySnippetCursorChanged new

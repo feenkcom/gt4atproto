@@ -112,6 +112,32 @@ AppBskyFeedDefsFeedViewPost >> feedContextDescription [
 		accessor: #atpFeedContext
 ]
 
+{ #category : #views }
+AppBskyFeedDefsFeedViewPost >> gtDetailsFor: aView [
+	<gtView>
+	| details |
+	^ aView columnedList
+		title: 'Details';
+		priority: 1;
+		items: [ details := OrderedCollection new.
+			details
+						addAll: {'Text' -> self atpPost atpRecord atpText.
+						'Indexed at' -> self atpPost atpIndexedAt.
+						'Repost count' -> self atpPost atpRepostCount.
+						'Reply count' -> self atpPost atpReplyCount.
+						'Like count' -> self atpPost atpLikeCount. 
+						'Quote count' -> self atpPost atpQuoteCount. }.
+			self isReply
+				ifTrue: [ details
+						addAll: {'Parent post text' -> self atpReply atpParent atpRecord atpText.
+								'Root post text' -> self atpReply atpRoot atpRecord atpText} ].
+			details ];
+		column: 'Key'
+			text: [ :each | each key gtDisplayString ]
+			width: 100;
+		column: 'Value' text: [ :each | each value gtDisplayString ]
+]
+
 { #category : #magritte }
 AppBskyFeedDefsFeedViewPost >> postDescription [
 	<magritteDescription>

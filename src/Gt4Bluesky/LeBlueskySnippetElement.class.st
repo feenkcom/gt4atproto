@@ -735,5 +735,5 @@ LeBlueskySnippetElement >> updateHeader [
 
 { #category : #accessing }
 LeBlueskySnippetElement >> uploadFiles [
-	self snippetViewModel embed upload
+	self snippetViewModel hasEmbed ifTrue: [ self snippetViewModel embed upload ]
 ]
