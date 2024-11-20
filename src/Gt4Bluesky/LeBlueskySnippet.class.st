@@ -189,12 +189,15 @@ LeBlueskySnippet >> contentAsString [
 
 { #category : #accessing }
 LeBlueskySnippet >> enrichPost [
-	| response |
+	| response atURI |
 	(self hasPost and: [ self hasClient ]) ifFalse: [ ^ nil ].
-	response := self client
-			appBskyFeedGetPostThreadUri: (self post at: 'uri')
+	atURI := self post at: 'uri'.
+	response := [ self client
+			appBskyFeedGetPostThreadUri: atURI
 			depth: nil
-			parentHeight: nil.
+			parentHeight: nil ]
+			on: GtXRPCError
+			do: [ :anError | anError errorMessage = 'NotFound' ifTrue: [ ^ self ] ifFalse: [ anError signal ] ].
 
 	response := response at: 'thread'.
 	post at: 'avatar' put: response author atpAvatar.
