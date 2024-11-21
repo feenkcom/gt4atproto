@@ -160,7 +160,7 @@ GtApClient >> paginatedQueryOn: aMethodId parameters: aDictionary [
 			res
 				at: rightKey
 				put: (GtApResultStream new
-						cursor: (hasCursor ifNotNil: [ res removeKey: 'cursor' ]);
+						cursor: (hasCursor ifTrue: [ res removeKey: 'cursor' ]);
 						key: rightKey;
 						resultsList: (res removeKey: rightKey) asOrderedCollection;
 						method: aMethodId;
