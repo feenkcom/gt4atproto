@@ -62,6 +62,11 @@ AppBskyEmbedRecordView >> atpRecord: anObject [
 	atpRecord := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+AppBskyEmbedRecordView >> embed [
+	^ self atpRecord atpEmbeds anyOne
+]
+
 { #category : #magritte }
 AppBskyEmbedRecordView >> recordDescription [
 	<magritteDescription>
