@@ -28,6 +28,18 @@ LeBlueskySnippetViewModel >> embed: anObject [
 	embed := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+LeBlueskySnippetViewModel >> gtEmbedFor: aView [
+	<gtView>
+	self embed ifNil: [ ^ aView empty ].
+
+	^ aView forward
+		title: 'Embed';
+		priority: 5;
+		object: [ self embed ];
+		view: #gtPreviewFor:
+]
+
 { #category : #accessing }
 LeBlueskySnippetViewModel >> hasEmbed [
 	^ self embed notNil

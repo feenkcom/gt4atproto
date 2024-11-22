@@ -14,16 +14,21 @@ GtBlueskyPictureEmbedding class >> blueskyRecord [
 
 { #category : #'as yet unclassified' }
 GtBlueskyPictureEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
-	aViewModel snippetModel
+	| files |
+	files := OrderedCollection new.
+	aViewModel snippetModel clearFiles
 		addFiles: (aPost atpPost atpEmbed atpImages
 				collect: [ :anImage | 
-					(FileLocator imageDirectory / 'buesky_download_tempfile') ensureDelete.
-					anImage atpFullsize asZnUrl
-						saveContentsToFile: FileLocator imageDirectory / 'buesky_download_tempfile' ]).
+					| tempFile |
+					tempFile := FileLocator temp / UUID new asString.
+					anImage atpFullsize asZnUrl saveContentsToFile: tempFile.
+					files add: tempFile.
+					tempFile ]).
+	files do: #ensureDelete.
 	^ GtBlueskyPictureEmbedding new
 		snippet: aViewModel snippetModel;
 		snippetViewModel: aViewModel;
-		files: aViewModel snippetModel files
+		files: aViewModel snippetModel fileReferences
 ]
 
 { #category : #'as yet unclassified' }

@@ -238,6 +238,17 @@ LeBlueskySnippet >> files: anObject [
 	self announce: LeBlueskySnippetFilesChanged new
 ]
 
+{ #category : #'as yet unclassified' }
+LeBlueskySnippet >> gtViewFilesFor: aView [
+	<gtView>
+	self files ifEmpty: [ ^ aView empty ].
+
+	^ aView list
+		title: 'Files';
+		priority: 5;
+		items: [ self files ]
+]
+
 { #category : #accessing }
 LeBlueskySnippet >> hasClient [
 	^ client isNotNil
