@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyRichtextFacetTag,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyRichtextFacetTag',
+	#classTraits : 'TAppBskyRichtextFacetTag classTrait',
 	#instVars : [
 		'atpTag'
 	],

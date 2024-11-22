@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyRichtextFacetLink,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyRichtextFacetLink',
+	#classTraits : 'TAppBskyRichtextFacetLink classTrait',
 	#instVars : [
 		'atpUri'
 	],

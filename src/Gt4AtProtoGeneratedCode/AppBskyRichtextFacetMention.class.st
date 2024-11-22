@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyRichtextFacetMention,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyRichtextFacetMention',
+	#classTraits : 'TAppBskyRichtextFacetMention classTrait',
 	#instVars : [
 		'atpDid'
 	],
