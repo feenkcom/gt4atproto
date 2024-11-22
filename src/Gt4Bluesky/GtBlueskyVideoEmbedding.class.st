@@ -14,8 +14,8 @@ GtBlueskyVideoEmbedding >> asJson [
 GtBlueskyVideoEmbedding >> fileElement [
 	^ GtProtoWebViewVideoFileElement new
 		constraintsDo: [ :c | 
-			c vertical exact: 200.
-			c horizontal exact: 200 ];
+			c vertical exact: 180.
+			c horizontal exact: 180 ];
 		file: self file;
 		clipChildren: false;
 		addChild: (BrButton new beTinySize

@@ -31,8 +31,8 @@ GtBlueskyRemoteVideoEmbedding >> file: anObject [
 GtBlueskyRemoteVideoEmbedding >> fileElement [
 	^ GtProtoWebViewElement new
 		constraintsDo: [ :c | 
-			c vertical exact: 200.
-			c horizontal exact: 200 ];
+			c vertical exact: 180.
+			c horizontal exact: 180 ];
 		html: '<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,13 +44,6 @@ GtBlueskyRemoteVideoEmbedding >> fileElement [
         <video id="myVideo" src="' , self file
 				, '" style="max-width: 90%; max-height: 90%;" controls></video>
     </div>
-
-    <script>
-        document.addEventListener(''DOMContentLoaded'', function() {
-            var video = document.getElementById(''myVideo'');
-            video.currentTime = 355; // Start from 10 seconds
-        });
-    </script>
 </body>
 </html>
 '
