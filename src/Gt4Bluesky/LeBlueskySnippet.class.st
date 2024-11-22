@@ -151,8 +151,11 @@ LeBlueskySnippet >> atpPost [
 			depth: nil
 			parentHeight: nil ]
 		on: GtXRPCError
-		do: [ self post: nil.
-			^ nil ].
+		do: [ :anError | 
+			anError isNotFound
+				ifTrue: [ self post: nil.
+					^ nil ]
+				ifFalse: [ anError signal ] ].
 
 	(response includesKey: 'error')
 		ifTrue: [ self post: nil.
@@ -190,14 +193,14 @@ LeBlueskySnippet >> contentAsString [
 { #category : #accessing }
 LeBlueskySnippet >> enrichPost [
 	| response atURI |
-	(self hasPost and: [ self hasClient ]) ifFalse: [ ^ nil ].
+	(self hasPost and: [ self hasClient ]) ifFalse: [ ^ self ].
 	atURI := self post at: 'uri'.
 	response := [ self client
 			appBskyFeedGetPostThreadUri: atURI
 			depth: nil
 			parentHeight: nil ]
 			on: GtXRPCError
-			do: [ :anError | anError errorMessage = 'NotFound' ifTrue: [ ^ self ] ifFalse: [ anError signal ] ].
+			do: [ :anError | anError isNotFound ifTrue: [ ^ self ] ifFalse: [ anError signal ] ].
 
 	response := response at: 'thread'.
 	post at: 'avatar' put: response author atpAvatar.

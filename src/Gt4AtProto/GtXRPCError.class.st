@@ -16,3 +16,8 @@ GtXRPCError >> errorMessage [
 GtXRPCError >> errorMessage: anObject [
 	errorMessage := anObject
 ]
+
+{ #category : #'as yet unclassified' }
+GtXRPCError >> isNotFound [
+	^ self errorMessage = 'NotFound'
+]
