@@ -134,7 +134,7 @@ LeBlueskySnippetElement >> createAddFileButton [
 																snippet: self snippet;
 																addFile: aFile).
 													fileSelector
-														inUIProcessDo: [ fileSelector dispatchEvent: BrDropdownHideWish new ] ] ]);
+														inUIProcessDo: [ fileSelector fireEvent: BrDropdownHideWish new ] ] ]);
 					label: 'Pictures');
 			addToggle: (BrToggle new
 					aptitude: BrGlamorousToggleWithLabelAptitude new
@@ -154,7 +154,7 @@ LeBlueskySnippetElement >> createAddFileButton [
 																snippet: self snippet;
 																file: aFile).
 													fileSelector
-														inUIProcessDo: [ fileSelector dispatchEvent: BrDropdownHideWish new ] ] ]);
+														inUIProcessDo: [ fileSelector fireEvent: BrDropdownHideWish new ] ] ]);
 					label: 'Video');
 			addToggle: (BrToggle new
 					aptitude: BrGlamorousToggleWithLabelAptitude new
@@ -322,13 +322,16 @@ LeBlueskySnippetElement >> initializeParentDropdown [
 							handle: [ BrButton new
 									icon: BrGlamorousVectorIcons spawn;
 									aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonExteriorAptitude ]
-							content: [ self snippet hasParentPost
-									ifTrue: [ GtApReplyElement new snippet: self snippet ]
-									ifFalse: [ GtApAddReplyForm new
-											isReadOnly: self snippet hasPost;
-											onAccept: [ :aUrl | 
-												self snippet parentFromUrl: aUrl.
-												self dispatchEvent: BrDropdownHideWish new ] ] ]) beNotResizable;
+							content: [ | anElement |
+								anElement := self snippet hasParentPost
+										ifTrue: [ GtApReplyElement new snippet: self snippet ]
+										ifFalse: [ GtApAddReplyForm new
+												isReadOnly: self snippet hasPost;
+												onAccept: [ :aUrl | 
+													self snippet parentFromUrl: aUrl.
+													anElement
+														inUIProcessDo: [ anElement fireEvent: BrDropdownHideWish new ] ];
+												asElement ] ]) beNotResizable;
 			constraintsDo: [ :c | 
 				c ignoreByLayout.
 				c ignored horizontal alignRight.
@@ -513,7 +516,8 @@ LeBlueskySnippetElement >> onDeleteAction: aButton [
 		rkey: (#/ split: (self snippet post at: 'uri')) last
 		swapRecord: nil
 		swapCommit: nil.
-	self snippet post: nil
+	self snippet post: nil.
+	self snippetViewModel embed: nil
 ]
 
 { #category : #accessing }

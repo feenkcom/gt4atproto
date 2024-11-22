@@ -37,7 +37,10 @@ LeBlueskySnippetViewModel >> gtEmbedFor: aView [
 		title: 'Embed';
 		priority: 5;
 		object: [ self embed ];
-		view: #gtPreviewFor:
+		view: #gtPreviewFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect
+			tooltip: 'Inspect embed'
+			action: [ :aButton | aButton phlow spawnObject: self embed ]
 ]
 
 { #category : #accessing }

@@ -40,9 +40,9 @@ GtBlueskyPictureEmbedding >> addFile: aFile [
 
 { #category : #'as yet unclassified' }
 GtBlueskyPictureEmbedding >> asElement [
-	| aContainer button |
+	| aContainer |
 	aContainer := BrHorizontalPane new fitContent
-			padding: (BlInsets all: 5);
+			padding: (BlInsets all: 10);
 			clipChildren: false.
 
 	self files
@@ -61,22 +61,23 @@ GtBlueskyPictureEmbedding >> asElement [
 	"can not add to existing post and can only add up to 4 images"
 	(self snippet hasPost not and: [ self files size < 4 ])
 		ifTrue: [ aContainer
-				addChild: (button := BrButton new beLargeSize
-							aptitude: BrGlamorousButtonWithIconCircularAptitude
-									+ (BrGlamorousWithDropdownAptitude
-											handle: [ BrButton new beLargeSize
-													aptitude: BrGlamorousButtonWithIconCircularAptitude;
-													icon: BrGlamorousVectorIcons add ]
-											content: [ BrFileSelector new
+				addChild: (BrButton new beLargeSize
+						aptitude: BrGlamorousButtonWithIconCircularAptitude
+								+ (BrGlamorousWithDropdownAptitude
+										handle: [ BrButton new beLargeSize
+												aptitude: BrGlamorousButtonWithIconAptitude - BrGlamorousButtonExteriorAptitude;
+												icon: BrGlamorousVectorIcons add ]
+										content: [ | selector |
+											selector := BrFileSelector new
 													folder: FileLocator home;
 													fileFilterBlock: [ :aFileReference | aFileReference isFile and: [ GtFileUtility isImageFile: aFileReference ] ];
 													okAction: [ :aFile | 
 														self addFile: aFile.
-														button
-															inUIProcessDo: [ button dispatchEvent: BrDropdownHideWish new ] ] ]);
-							icon: BrGlamorousVectorIcons add;
-							label: 'Add file';
-							margin: (BlInsets top: 85 left: 30)) ].
+														selector
+															inUIProcessDo: [ selector fireEvent: BrDropdownHideWish new ] ] ]);
+						icon: BrGlamorousVectorIcons add;
+						label: 'Add file';
+						margin: (BlInsets top: 85 left: 30)) ].
 
 	^ BrScrollPane new fitContent
 		aptitude: BrScrollPaneAptitude + BrGlamorousWithHorizontalScrollbarAptitude;

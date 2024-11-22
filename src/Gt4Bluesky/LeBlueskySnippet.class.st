@@ -300,6 +300,9 @@ LeBlueskySnippet >> onAddedToDatabaseCallback: anObject [
 { #category : #accessing }
 LeBlueskySnippet >> parentFromUrl: aUrl [
 	| path handle recordId did aPost |
+	aUrl isEmptyOrNil
+		ifTrue: [ self parentPost: nil.
+			^ self ].
 	path := '/' split: (aUrl removePrefix: 'https://bsky.app/').
 	handle := path second.
 	recordId := path last.

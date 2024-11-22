@@ -35,6 +35,6 @@ GtApReplyElement >> snippet: anObject [
 						, ('/' split: atpParent atpPost atpUri) last;
 				onAccept: [ :aUrl | 
 					self snippet parentFromUrl: aUrl.
-					self dispatchEvent: BrDropdownHideWish new ]) asElement.
+					self inUIProcessDo: [ self fireEvent: BrDropdownHideWish new ] ]) asElement.
 	self addChild: (GtApFeedPostSummaryElement new post: atpParent)
 ]
