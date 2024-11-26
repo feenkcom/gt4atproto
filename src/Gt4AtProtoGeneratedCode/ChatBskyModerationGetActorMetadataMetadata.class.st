@@ -31,8 +31,9 @@ ChatBskyModerationGetActorMetadataMetadata class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyModerationGetActorMetadataMetadata class >> fromRequest: aRequest [
+ChatBskyModerationGetActorMetadataMetadata class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpMessagesSent: (aRequest at: 'messagesSent' ifAbsent: [ nil ]);
 		atpMessagesReceived: (aRequest at: 'messagesReceived' ifAbsent: [ nil ]);

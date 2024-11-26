@@ -39,8 +39,9 @@ AppBskyActorDefsProfileView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsProfileView class >> fromRequest: aRequest [
+AppBskyActorDefsProfileView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
@@ -49,17 +50,19 @@ AppBskyActorDefsProfileView class >> fromRequest: aRequest [
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpAssociated: (aRequest
 				at: 'associated'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociated fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociated fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
-				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

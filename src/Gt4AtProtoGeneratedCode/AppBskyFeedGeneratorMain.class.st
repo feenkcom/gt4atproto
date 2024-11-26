@@ -35,15 +35,18 @@ AppBskyFeedGeneratorMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedGeneratorMain class >> fromRequest: aRequest [
+AppBskyFeedGeneratorMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpDescriptionFacets: (aRequest
 				at: 'descriptionFacets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpAcceptsInteractions: (aRequest at: 'acceptsInteractions' ifAbsent: [ nil ]);
@@ -54,7 +57,8 @@ AppBskyFeedGeneratorMain class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

@@ -30,8 +30,9 @@ ToolsOzoneModerationDefsModEventEmail class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventEmail class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventEmail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSubjectLine: (aRequest at: 'subjectLine' ifAbsent: [ nil ]);
 		atpContent: (aRequest at: 'content' ifAbsent: [ nil ]);

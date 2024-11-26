@@ -32,12 +32,13 @@ AppBskyFeedDefsThreadViewPost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
+AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPost: (aRequest
 				at: 'post'
-				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpParent: (aRequest
 				at: 'parent'
@@ -48,7 +49,8 @@ AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpReplies: (aRequest
 				at: 'replies'
@@ -58,7 +60,9 @@ AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest [
 							({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost.
 								'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
 								'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
-								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
+								asDictionary at: (aValue at: '$type'))
+								fromRequest: aValue
+								withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

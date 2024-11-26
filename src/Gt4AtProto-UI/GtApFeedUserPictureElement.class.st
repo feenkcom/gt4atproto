@@ -73,7 +73,11 @@ GtApFeedUserPictureElement >> initialize [
 GtApFeedUserPictureElement >> updateContentForUser: aUser [
 	aUser atpAvatar ifNotNil: [ self avatar: aUser atpAvatar ].
 
-	self when: BlClickEvent do: [ self phlow spawnObject: aUser ]
+	self
+		when: BlClickEvent
+		do: [ :anEvent | 
+			anEvent consumed: true.
+			self phlow spawnObject: aUser ]
 ]
 
 { #category : #accessing }

@@ -30,13 +30,16 @@ ChatBskyConvoDefsMessageInput class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsMessageInput class >> fromRequest: aRequest [
+ChatBskyConvoDefsMessageInput class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpText: (aRequest at: 'text' ifAbsent: [ nil ]);
 		atpFacets: (aRequest
 				at: 'facets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpEmbed: (aRequest
 				at: 'embed'
@@ -44,7 +47,8 @@ ChatBskyConvoDefsMessageInput class >> fromRequest: aRequest [
 					({'app.bsky.embed.record' -> AppBskyEmbedRecordMain} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

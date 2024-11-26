@@ -28,8 +28,9 @@ AppBskyActorDefsInterestsPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsInterestsPref class >> fromRequest: aRequest [
+AppBskyActorDefsInterestsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpTags: (aRequest
 				at: 'tags'

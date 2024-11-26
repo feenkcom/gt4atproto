@@ -34,14 +34,15 @@ ToolsOzoneTeamDefsMember class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneTeamDefsMember class >> fromRequest: aRequest [
+ToolsOzoneTeamDefsMember class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpDisabled: (aRequest at: 'disabled' ifAbsent: [ nil ]);
 		atpProfile: (aRequest
 				at: 'profile'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewDetailed fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewDetailed fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ]);

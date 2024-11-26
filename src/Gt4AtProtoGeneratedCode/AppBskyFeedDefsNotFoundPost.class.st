@@ -29,8 +29,9 @@ AppBskyFeedDefsNotFoundPost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest [
+AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])

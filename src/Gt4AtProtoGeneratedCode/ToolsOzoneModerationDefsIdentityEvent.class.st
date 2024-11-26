@@ -32,8 +32,9 @@ ToolsOzoneModerationDefsIdentityEvent class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsIdentityEvent class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsIdentityEvent class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);

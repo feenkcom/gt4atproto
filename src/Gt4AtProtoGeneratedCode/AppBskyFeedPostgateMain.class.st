@@ -31,8 +31,9 @@ AppBskyFeedPostgateMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedPostgateMain class >> fromRequest: aRequest [
+AppBskyFeedPostgateMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpPost: (aRequest at: 'post' ifAbsent: [ nil ]);
@@ -46,7 +47,9 @@ AppBskyFeedPostgateMain class >> fromRequest: aRequest [
 					anArray
 						collect: [ :aValue | 
 							({'app.bsky.feed.postgate#disableRule' -> AppBskyFeedPostgateDisableRule}
-								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
+								asDictionary at: (aValue at: '$type'))
+								fromRequest: aValue
+								withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

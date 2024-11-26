@@ -30,8 +30,9 @@ AppBskyFeedDefsInteraction class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsInteraction class >> fromRequest: aRequest [
+AppBskyFeedDefsInteraction class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpItem: (aRequest at: 'item' ifAbsent: [ nil ]);
 		atpEvent: (aRequest at: 'event' ifAbsent: [ nil ]);

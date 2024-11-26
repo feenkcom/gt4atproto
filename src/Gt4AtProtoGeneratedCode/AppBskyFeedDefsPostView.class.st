@@ -40,18 +40,19 @@ AppBskyFeedDefsPostView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsPostView class >> fromRequest: aRequest [
+AppBskyFeedDefsPostView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpAuthor: (aRequest
 				at: 'author'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpEmbed: (aRequest
 				at: 'embed'
@@ -64,7 +65,8 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]);
 		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]);
@@ -73,15 +75,17 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest [
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
-				ifPresent: [ :aValue | AppBskyFeedDefsViewerState fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsViewerState fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpThreadgate: (aRequest
 				at: 'threadgate'
-				ifPresent: [ :aValue | AppBskyFeedDefsThreadgateView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsThreadgateView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

@@ -30,8 +30,9 @@ ToolsOzoneModerationDefsModEventReport class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventReport class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventReport class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpIsReporterMuted: (aRequest at: 'isReporterMuted' ifAbsent: [ nil ]);

@@ -30,8 +30,9 @@ AppBskyEmbedRecordView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedRecordView class >> fromRequest: aRequest [
+AppBskyEmbedRecordView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRecord: (aRequest
 				at: 'record'
@@ -47,7 +48,8 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest [
 							-> AppBskyGraphDefsStarterPackViewBasic} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 
@@ -60,11 +62,6 @@ AppBskyEmbedRecordView >> atpRecord [
 { #category : #accessing }
 AppBskyEmbedRecordView >> atpRecord: anObject [
 	atpRecord := anObject
-]
-
-{ #category : #'as yet unclassified' }
-AppBskyEmbedRecordView >> embed [
-	^ self atpRecord atpEmbeds anyOne
 ]
 
 { #category : #magritte }

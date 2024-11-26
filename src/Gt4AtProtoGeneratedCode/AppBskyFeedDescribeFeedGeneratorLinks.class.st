@@ -29,8 +29,9 @@ AppBskyFeedDescribeFeedGeneratorLinks class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDescribeFeedGeneratorLinks class >> fromRequest: aRequest [
+AppBskyFeedDescribeFeedGeneratorLinks class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]);
 		atpTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])

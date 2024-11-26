@@ -29,8 +29,8 @@ GtApLexiconXrpcBody >> encoding: anObject [
 ]
 
 { #category : #accessing }
-GtApLexiconXrpcBody >> generateDeserialization [
-	^ self schema generateDeserialization
+GtApLexiconXrpcBody >> generateDeserializationFor: aValue [
+	^ self schema generateDeserializationFor: aValue
 ]
 
 { #category : #accessing }

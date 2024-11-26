@@ -31,8 +31,9 @@ ComAtprotoSyncSubscribeReposMigrate class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest [
+ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);

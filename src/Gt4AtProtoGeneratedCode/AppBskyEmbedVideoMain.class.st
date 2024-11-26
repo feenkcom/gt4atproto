@@ -31,18 +31,21 @@ AppBskyEmbedVideoMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedVideoMain class >> fromRequest: aRequest [
+AppBskyEmbedVideoMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpVideo: (aRequest at: 'video' ifAbsent: [ nil ]);
 		atpCaptions: (aRequest
 				at: 'captions'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyEmbedVideoCaption fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyEmbedVideoCaption fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ]);
 		atpAspectRatio: (aRequest
 				at: 'aspectRatio'
-				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

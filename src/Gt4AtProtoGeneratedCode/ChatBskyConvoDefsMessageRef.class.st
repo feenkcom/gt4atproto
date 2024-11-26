@@ -30,8 +30,9 @@ ChatBskyConvoDefsMessageRef class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsMessageRef class >> fromRequest: aRequest [
+ChatBskyConvoDefsMessageRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpConvoId: (aRequest at: 'convoId' ifAbsent: [ nil ]);

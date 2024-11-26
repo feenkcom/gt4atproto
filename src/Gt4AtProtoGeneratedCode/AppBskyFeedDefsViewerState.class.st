@@ -33,8 +33,9 @@ AppBskyFeedDefsViewerState class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsViewerState class >> fromRequest: aRequest [
+AppBskyFeedDefsViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ]);
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ]);

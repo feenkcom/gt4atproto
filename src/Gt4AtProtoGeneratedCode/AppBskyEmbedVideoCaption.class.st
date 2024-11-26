@@ -29,8 +29,9 @@ AppBskyEmbedVideoCaption class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedVideoCaption class >> fromRequest: aRequest [
+AppBskyEmbedVideoCaption class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLang: (aRequest at: 'lang' ifAbsent: [ nil ]);
 		atpFile: (aRequest at: 'file' ifAbsent: [ nil ])

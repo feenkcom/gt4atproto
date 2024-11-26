@@ -35,8 +35,9 @@ ToolsOzoneModerationDefsModEventView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventView class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpEvent: (aRequest
@@ -80,7 +81,8 @@ ToolsOzoneModerationDefsModEventView class >> fromRequest: aRequest [
 							-> ToolsOzoneModerationDefsRecordEvent} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSubject: (aRequest
 				at: 'subject'
@@ -91,7 +93,8 @@ ToolsOzoneModerationDefsModEventView class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSubjectBlobCids: (aRequest
 				at: 'subjectBlobCids'

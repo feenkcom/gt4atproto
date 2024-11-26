@@ -25,6 +25,8 @@ ComAtprotoRepoApplyWritesDeleteResult class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoApplyWritesDeleteResult class >> fromRequest: aRequest [
-	^ self new rawData: aRequest
+ComAtprotoRepoApplyWritesDeleteResult class >> fromRequest: aRequest withClient: aClient [
+	^ self new
+		client: aClient;
+		rawData: aRequest
 ]

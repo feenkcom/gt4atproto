@@ -28,8 +28,9 @@ AppBskyActorDefsBskyAppProgressGuide class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsBskyAppProgressGuide class >> fromRequest: aRequest [
+AppBskyActorDefsBskyAppProgressGuide class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpGuide: (aRequest at: 'guide' ifAbsent: [ nil ])
 ]

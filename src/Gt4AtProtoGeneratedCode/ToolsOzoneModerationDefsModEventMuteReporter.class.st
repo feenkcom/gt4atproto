@@ -25,12 +25,13 @@ ToolsOzoneModerationDefsModEventMuteReporter class >> atpRecordName [
 
 { #category : #accessing }
 ToolsOzoneModerationDefsModEventMuteReporter class >> atpSchema [
- ^ '{"type":"object","description":"Mute incoming reports from an account","required":["durationInHours"],"properties":{"comment":{"type":"string"},"durationInHours":{"type":"integer","description":"Indicates how long the account should remain muted."}}}'
+ ^ '{"type":"object","description":"Mute incoming reports from an account","properties":{"comment":{"type":"string"},"durationInHours":{"type":"integer","description":"Indicates how long the account should remain muted. Falsy value here means a permanent mute."}}}'
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventMuteReporter class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventMuteReporter class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ])
@@ -71,6 +72,5 @@ ToolsOzoneModerationDefsModEventMuteReporter >> durationInHoursDescription [
 	<magritteDescription>
 	^ MANumberDescription new
 		label: 'DurationInHours';
-		accessor: #atpDurationInHours;
-		beRequired
+		accessor: #atpDurationInHours
 ]

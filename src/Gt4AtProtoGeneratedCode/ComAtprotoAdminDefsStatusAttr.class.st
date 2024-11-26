@@ -29,8 +29,9 @@ ComAtprotoAdminDefsStatusAttr class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoAdminDefsStatusAttr class >> fromRequest: aRequest [
+ComAtprotoAdminDefsStatusAttr class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpApplied: (aRequest at: 'applied' ifAbsent: [ nil ]);
 		atpRef: (aRequest at: 'ref' ifAbsent: [ nil ])

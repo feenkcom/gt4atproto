@@ -30,8 +30,9 @@ AppBskyActorDefsSavedFeedsPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsSavedFeedsPref class >> fromRequest: aRequest [
+AppBskyActorDefsSavedFeedsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPinned: (aRequest
 				at: 'pinned'

@@ -34,8 +34,9 @@ ChatBskyConvoDefsConvoView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsConvoView class >> fromRequest: aRequest [
+ChatBskyConvoDefsConvoView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
@@ -43,7 +44,7 @@ ChatBskyConvoDefsConvoView class >> fromRequest: aRequest [
 				at: 'members'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ChatBskyActorDefsProfileViewBasic fromRequest: aValue ] ]
+						collect: [ :aValue | ChatBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpLastMessage: (aRequest
 				at: 'lastMessage'
@@ -53,7 +54,8 @@ ChatBskyConvoDefsConvoView class >> fromRequest: aRequest [
 							-> ChatBskyConvoDefsDeletedMessageView} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]);
 		atpOpened: (aRequest at: 'opened' ifAbsent: [ nil ]);

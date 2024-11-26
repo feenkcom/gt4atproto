@@ -33,8 +33,9 @@ ComAtprotoLabelDefsLabelValueDefinition class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelDefsLabelValueDefinition class >> fromRequest: aRequest [
+ComAtprotoLabelDefsLabelValueDefinition class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpIdentifier: (aRequest at: 'identifier' ifAbsent: [ nil ]);
 		atpSeverity: (aRequest at: 'severity' ifAbsent: [ nil ]);
@@ -45,7 +46,10 @@ ComAtprotoLabelDefsLabelValueDefinition class >> fromRequest: aRequest [
 				at: 'locales'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoLabelDefsLabelValueDefinitionStrings fromRequest: aValue ] ]
+						collect: [ :aValue | 
+							ComAtprotoLabelDefsLabelValueDefinitionStrings
+								fromRequest: aValue
+								withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

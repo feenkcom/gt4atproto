@@ -34,24 +34,27 @@ AppBskyLabelerDefsLabelerView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyLabelerDefsLabelerView class >> fromRequest: aRequest [
+AppBskyLabelerDefsLabelerView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpCreator: (aRequest
 				at: 'creator'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
-				ifPresent: [ :aValue | AppBskyLabelerDefsLabelerViewerState fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyLabelerDefsLabelerViewerState fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

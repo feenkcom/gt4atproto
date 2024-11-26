@@ -46,8 +46,9 @@ ToolsOzoneModerationDefsSubjectStatusView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpSubject: (aRequest
@@ -57,7 +58,8 @@ ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest [
 						'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpHosting: (aRequest
 				at: 'hosting'
@@ -68,7 +70,8 @@ ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest [
 							-> ToolsOzoneModerationDefsRecordHosting} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSubjectBlobCids: (aRequest
 				at: 'subjectBlobCids'

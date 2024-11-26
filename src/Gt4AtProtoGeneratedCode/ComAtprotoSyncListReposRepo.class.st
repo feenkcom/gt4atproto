@@ -32,8 +32,9 @@ ComAtprotoSyncListReposRepo class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoSyncListReposRepo class >> fromRequest: aRequest [
+ComAtprotoSyncListReposRepo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpHead: (aRequest at: 'head' ifAbsent: [ nil ]);

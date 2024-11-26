@@ -19,8 +19,9 @@ GtApDefinitionFromRequestBuilder >> accessorPrefix: anObject [
 
 { #category : #accessing }
 GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
-	^ 'fromRequest: aRequest
+	^ 'fromRequest: aRequest withClient: aClient
 	^ self new
+		client: aClient;
 		rawData: aRequest'
 		, (aDefinition properties ifEmpty: [ '' ] ifNotEmpty: [ ';' ])
 		, '

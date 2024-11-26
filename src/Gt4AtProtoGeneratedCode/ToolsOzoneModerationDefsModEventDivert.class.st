@@ -28,8 +28,9 @@ ToolsOzoneModerationDefsModEventDivert class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventDivert class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventDivert class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]

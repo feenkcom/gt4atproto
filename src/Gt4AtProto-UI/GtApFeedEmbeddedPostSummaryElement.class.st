@@ -118,7 +118,8 @@ GtApFeedEmbeddedPostSummaryElement >> updateContent [
 		ifTrue: [ postTextEditor text: 'Author/Post blocked'.
 			^ self ].
 
-	pictureElement user: self post author.
+	pictureElement
+		user: (self post client appBskyActorGetProfileActor: self post author atpHandle).
 	self updateAuthorDetails.
 	postTextEditor text: self post recordText.
 	dateLabel text: ' at ' , self post createdAtTimestamp printToMinute.

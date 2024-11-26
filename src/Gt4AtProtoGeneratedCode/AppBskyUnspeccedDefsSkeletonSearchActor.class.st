@@ -28,8 +28,9 @@ AppBskyUnspeccedDefsSkeletonSearchActor class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyUnspeccedDefsSkeletonSearchActor class >> fromRequest: aRequest [
+AppBskyUnspeccedDefsSkeletonSearchActor class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]

@@ -29,8 +29,9 @@ ChatBskyConvoDefsLogLeaveConvo class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsLogLeaveConvo class >> fromRequest: aRequest [
+ChatBskyConvoDefsLogLeaveConvo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
 		atpConvoId: (aRequest at: 'convoId' ifAbsent: [ nil ])

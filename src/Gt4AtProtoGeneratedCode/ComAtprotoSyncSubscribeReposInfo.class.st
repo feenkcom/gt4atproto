@@ -29,8 +29,9 @@ ComAtprotoSyncSubscribeReposInfo class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest [
+ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])

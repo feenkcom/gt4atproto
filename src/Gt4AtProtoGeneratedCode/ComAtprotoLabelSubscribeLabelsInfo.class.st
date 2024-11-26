@@ -29,8 +29,9 @@ ComAtprotoLabelSubscribeLabelsInfo class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest [
+ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])

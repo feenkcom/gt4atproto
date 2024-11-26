@@ -28,8 +28,9 @@ ToolsOzoneModerationDefsModEventResolveAppeal class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventResolveAppeal class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventResolveAppeal class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]

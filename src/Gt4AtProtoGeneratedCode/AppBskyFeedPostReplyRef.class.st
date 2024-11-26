@@ -29,16 +29,17 @@ AppBskyFeedPostReplyRef class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedPostReplyRef class >> fromRequest: aRequest [
+AppBskyFeedPostReplyRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRoot: (aRequest
 				at: 'root'
-				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpParent: (aRequest
 				at: 'parent'
-				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

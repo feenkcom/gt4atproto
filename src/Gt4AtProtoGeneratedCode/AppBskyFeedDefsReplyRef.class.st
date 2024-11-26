@@ -30,8 +30,9 @@ AppBskyFeedDefsReplyRef class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
+AppBskyFeedDefsReplyRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRoot: (aRequest
 				at: 'root'
@@ -42,7 +43,8 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpParent: (aRequest
 				at: 'parent'
@@ -53,11 +55,12 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpGrandparentAuthor: (aRequest
 				at: 'grandparentAuthor'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

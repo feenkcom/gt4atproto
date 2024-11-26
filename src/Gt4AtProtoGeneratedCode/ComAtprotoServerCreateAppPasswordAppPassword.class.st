@@ -31,8 +31,9 @@ ComAtprotoServerCreateAppPasswordAppPassword class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest [
+ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpPassword: (aRequest at: 'password' ifAbsent: [ nil ]);

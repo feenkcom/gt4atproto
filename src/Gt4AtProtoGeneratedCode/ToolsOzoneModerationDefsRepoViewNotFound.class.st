@@ -28,8 +28,9 @@ ToolsOzoneModerationDefsRepoViewNotFound class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRepoViewNotFound class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRepoViewNotFound class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]

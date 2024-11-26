@@ -30,8 +30,9 @@ AppBskyActorDefsContentLabelPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest [
+AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLabelerDid: (aRequest at: 'labelerDid' ifAbsent: [ nil ]);
 		atpLabel: (aRequest at: 'label' ifAbsent: [ nil ]);

@@ -32,8 +32,9 @@ AppBskyActorDefsProfileAssociated class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsProfileAssociated class >> fromRequest: aRequest [
+AppBskyActorDefsProfileAssociated class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLists: (aRequest at: 'lists' ifAbsent: [ nil ]);
 		atpFeedgens: (aRequest at: 'feedgens' ifAbsent: [ nil ]);
@@ -41,7 +42,7 @@ AppBskyActorDefsProfileAssociated class >> fromRequest: aRequest [
 		atpLabeler: (aRequest at: 'labeler' ifAbsent: [ nil ]);
 		atpChat: (aRequest
 				at: 'chat'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociatedChat fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileAssociatedChat fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

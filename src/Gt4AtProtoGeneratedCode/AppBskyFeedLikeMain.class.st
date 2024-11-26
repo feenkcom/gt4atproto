@@ -29,12 +29,13 @@ AppBskyFeedLikeMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedLikeMain class >> fromRequest: aRequest [
+AppBskyFeedLikeMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSubject: (aRequest
 				at: 'subject'
-				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

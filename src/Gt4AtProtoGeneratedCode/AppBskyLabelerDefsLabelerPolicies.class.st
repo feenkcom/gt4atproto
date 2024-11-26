@@ -29,18 +29,19 @@ AppBskyLabelerDefsLabelerPolicies class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyLabelerDefsLabelerPolicies class >> fromRequest: aRequest [
+AppBskyLabelerDefsLabelerPolicies class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLabelValues: (aRequest
 				at: 'labelValues'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | String fromRequest: aValue ] ]
+				ifPresent: [ :anArray | anArray collect: [ :aValue | String fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpLabelValueDefinitions: (aRequest
 				at: 'labelValueDefinitions'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoLabelDefsLabelValueDefinition fromRequest: aValue ] ]
+						collect: [ :aValue | ComAtprotoLabelDefsLabelValueDefinition fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

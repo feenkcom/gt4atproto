@@ -30,14 +30,15 @@ AppBskyFeedDefsBlockedPost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest [
+AppBskyFeedDefsBlockedPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ]);
 		atpAuthor: (aRequest
 				at: 'author'
-				ifPresent: [ :aValue | AppBskyFeedDefsBlockedAuthor fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsBlockedAuthor fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

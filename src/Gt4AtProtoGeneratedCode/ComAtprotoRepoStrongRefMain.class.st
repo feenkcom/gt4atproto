@@ -29,8 +29,9 @@ ComAtprotoRepoStrongRefMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest [
+ComAtprotoRepoStrongRefMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ])

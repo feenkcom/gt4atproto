@@ -29,8 +29,9 @@ ToolsOzoneModerationDefsModEventMute class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventMute class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventMute class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ])

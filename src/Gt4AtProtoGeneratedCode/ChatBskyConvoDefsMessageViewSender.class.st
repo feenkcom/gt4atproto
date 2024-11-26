@@ -28,8 +28,9 @@ ChatBskyConvoDefsMessageViewSender class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsMessageViewSender class >> fromRequest: aRequest [
+ChatBskyConvoDefsMessageViewSender class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]

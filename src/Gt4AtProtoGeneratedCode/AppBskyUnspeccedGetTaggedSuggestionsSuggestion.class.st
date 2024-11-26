@@ -30,8 +30,9 @@ AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> fromRequest: aRequest [
+AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpTag: (aRequest at: 'tag' ifAbsent: [ nil ]);
 		atpSubjectType: (aRequest at: 'subjectType' ifAbsent: [ nil ]);

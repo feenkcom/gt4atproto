@@ -29,8 +29,9 @@ ToolsOzoneModerationDefsModEventComment class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventComment class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventComment class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpSticky: (aRequest at: 'sticky' ifAbsent: [ nil ])

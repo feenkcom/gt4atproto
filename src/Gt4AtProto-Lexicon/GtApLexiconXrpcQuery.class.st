@@ -35,9 +35,10 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 	<xrpcQuery>
 	"' , (self description ifNil: [ '' ])
 		, '"
-	^ ' , self output generateDeserialization , ' (self ' , methodToCall , ''''
-		, aName , ''' parameters: {'
-		, ('. ' join: self xrpcRequestParameterAssociations) , '} asDictionary)'
+	^ '
+		, (self output
+				generateDeserializationFor: ' (self ' , methodToCall , '''' , aName , ''' parameters: {'
+						, ('. ' join: self xrpcRequestParameterAssociations) , '} asDictionary)')
 ]
 
 { #category : #accessing }

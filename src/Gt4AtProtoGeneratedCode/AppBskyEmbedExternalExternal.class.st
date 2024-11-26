@@ -31,8 +31,9 @@ AppBskyEmbedExternalExternal class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedExternalExternal class >> fromRequest: aRequest [
+AppBskyEmbedExternalExternal class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpTitle: (aRequest at: 'title' ifAbsent: [ nil ]);

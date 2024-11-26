@@ -43,8 +43,11 @@ GtApLexiconObject >> asObject [
 ]
 
 { #category : #accessing }
-GtApLexiconObject >> generateDeserialization [
-	self hasId ifTrue: [ ^ self asClassName , ' fromRequest: ' ].	"we only treat this if we have only one other property"
+GtApLexiconObject >> generateDeserializationFor: aValue [
+	self hasId
+		ifTrue: [ ^ self asClassName , ' fromRequest: ' , aValue , ' withClient: self' ].
+		
+	"we only treat this if we have only one other property"
 	(self properties includesKey: 'cursor')
 		ifTrue: [ | filteredProperties propertyKey property |
 			filteredProperties := self properties keys
@@ -61,29 +64,29 @@ GtApLexiconObject >> generateDeserialization [
 							ifNone: [ self error: 'Could not determine what the cursor refers to.' ].
 					^ 'GtApRequestResolver from: {''' , rightKey
 						, ''' -> (GtApRequestStreamResolver new block: [:aDictionary | '
-						, (self properties at: rightKey) items generateDeserialization
-						, ' aDictionary ]). '
+						, ((self properties at: rightKey) items generateDeserializationFor: 'aDictionary')
+						, ' ]). '
 						, ('. '
 								join: (self properties associations
 										select: [ :anAssociation | (anAssociation key = rightKey) not ]
 										thenCollect: [ :anAssociation | 
 											'''' , anAssociation key , ''' -> [:aValue |'
-												, anAssociation value generateDeserialization , ' aValue]' ]))
-						, '} asDictionary andRequest: ' ].
+												, (anAssociation value generateDeserializationFor: 'aValue') , ']' ]))
+						, '} asDictionary andRequest: ', aValue ].
 
 			propertyKey := filteredProperties anyOne.
 			property := self properties at: propertyKey.
 
 			^ 'AsyncMapStream mapBlock: [:aDictionary | '
-				, property items generateDeserialization , ' aDictionary ] stream: ' ].
+				, (property items generateDeserializationFor: 'aDictionary') , ' ] stream: ', aValue ].
 
 	^ 'GtApRequestResolver from: {'
 		, ('. '
 				join: (self properties associations
 						collect: [ :anAssociation | 
 							'''' , anAssociation key , ''' -> [:aValue |'
-								, anAssociation value generateDeserialization , ' aValue]' ]))
-		, '} asDictionary andRequest: '
+								, (anAssociation value generateDeserializationFor: 'aValue') , ']' ]))
+		, '} asDictionary andRequest: ', aValue
 ]
 
 { #category : #accessing }

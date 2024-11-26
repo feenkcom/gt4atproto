@@ -30,12 +30,15 @@ AppBskyEmbedImagesView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedImagesView class >> fromRequest: aRequest [
+AppBskyEmbedImagesView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpImages: (aRequest
 				at: 'images'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyEmbedImagesViewImage fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyEmbedImagesViewImage fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

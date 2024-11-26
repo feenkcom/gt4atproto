@@ -29,8 +29,9 @@ AppBskyGraphDefsListViewerState class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsListViewerState class >> fromRequest: aRequest [
+AppBskyGraphDefsListViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]);
 		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])

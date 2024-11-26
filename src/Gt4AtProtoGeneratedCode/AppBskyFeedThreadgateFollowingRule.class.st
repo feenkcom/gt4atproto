@@ -25,6 +25,8 @@ AppBskyFeedThreadgateFollowingRule class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedThreadgateFollowingRule class >> fromRequest: aRequest [
-	^ self new rawData: aRequest
+AppBskyFeedThreadgateFollowingRule class >> fromRequest: aRequest withClient: aClient [
+	^ self new
+		client: aClient;
+		rawData: aRequest
 ]

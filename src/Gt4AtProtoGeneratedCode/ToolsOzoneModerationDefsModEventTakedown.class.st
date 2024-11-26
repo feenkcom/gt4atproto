@@ -30,8 +30,9 @@ ToolsOzoneModerationDefsModEventTakedown class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventTakedown class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventTakedown class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ]);

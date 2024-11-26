@@ -30,14 +30,15 @@ AppBskyEmbedImagesImage class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedImagesImage class >> fromRequest: aRequest [
+AppBskyEmbedImagesImage class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpImage: (aRequest at: 'image' ifAbsent: [ nil ]);
 		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ]);
 		atpAspectRatio: (aRequest
 				at: 'aspectRatio'
-				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

@@ -34,14 +34,15 @@ ToolsOzoneModerationDefsRecordView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRecordView class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRecordView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpValue: (aRequest
 				at: 'value'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpBlobCids: (aRequest
 				at: 'blobCids'
@@ -50,11 +51,11 @@ ToolsOzoneModerationDefsRecordView class >> fromRequest: aRequest [
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpModeration: (aRequest
 				at: 'moderation'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsModeration fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsModeration fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpRepo: (aRequest
 				at: 'repo'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsRepoView fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsRepoView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

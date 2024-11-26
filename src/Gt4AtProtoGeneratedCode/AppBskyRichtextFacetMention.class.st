@@ -30,8 +30,9 @@ AppBskyRichtextFacetMention class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyRichtextFacetMention class >> fromRequest: aRequest [
+AppBskyRichtextFacetMention class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]

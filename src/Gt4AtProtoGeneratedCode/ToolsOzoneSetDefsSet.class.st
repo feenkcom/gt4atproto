@@ -29,8 +29,9 @@ ToolsOzoneSetDefsSet class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneSetDefsSet class >> fromRequest: aRequest [
+ToolsOzoneSetDefsSet class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ])

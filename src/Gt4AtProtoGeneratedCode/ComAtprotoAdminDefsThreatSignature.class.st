@@ -29,8 +29,9 @@ ComAtprotoAdminDefsThreatSignature class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoAdminDefsThreatSignature class >> fromRequest: aRequest [
+ComAtprotoAdminDefsThreatSignature class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpProperty: (aRequest at: 'property' ifAbsent: [ nil ]);
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])

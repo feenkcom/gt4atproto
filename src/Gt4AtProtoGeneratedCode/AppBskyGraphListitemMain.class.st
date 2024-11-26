@@ -30,8 +30,9 @@ AppBskyGraphListitemMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphListitemMain class >> fromRequest: aRequest [
+AppBskyGraphListitemMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]);
 		atpList: (aRequest at: 'list' ifAbsent: [ nil ]);

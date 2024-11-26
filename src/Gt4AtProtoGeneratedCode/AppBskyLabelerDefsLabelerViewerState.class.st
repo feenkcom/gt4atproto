@@ -28,8 +28,9 @@ AppBskyLabelerDefsLabelerViewerState class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyLabelerDefsLabelerViewerState class >> fromRequest: aRequest [
+AppBskyLabelerDefsLabelerViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
 ]

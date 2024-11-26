@@ -28,8 +28,9 @@ ComAtprotoLabelDefsSelfLabel class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelDefsSelfLabel class >> fromRequest: aRequest [
+ComAtprotoLabelDefsSelfLabel class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpVal: (aRequest at: 'val' ifAbsent: [ nil ])
 ]

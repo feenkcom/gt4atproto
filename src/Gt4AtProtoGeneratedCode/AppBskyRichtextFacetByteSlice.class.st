@@ -29,8 +29,9 @@ AppBskyRichtextFacetByteSlice class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest [
+AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpByteStart: (aRequest at: 'byteStart' ifAbsent: [ nil ]);
 		atpByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])

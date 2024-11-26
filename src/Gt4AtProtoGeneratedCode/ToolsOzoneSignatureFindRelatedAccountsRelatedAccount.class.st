@@ -29,18 +29,19 @@ ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> fromRequest: aRequest [
+ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpAccount: (aRequest
 				at: 'account'
-				ifPresent: [ :aValue | ComAtprotoAdminDefsAccountView fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoAdminDefsAccountView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSimilarities: (aRequest
 				at: 'similarities'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ToolsOzoneSignatureDefsSigDetail fromRequest: aValue ] ]
+						collect: [ :aValue | ToolsOzoneSignatureDefsSigDetail fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

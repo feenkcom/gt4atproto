@@ -25,6 +25,8 @@ AppBskyFeedThreadgateMentionRule class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedThreadgateMentionRule class >> fromRequest: aRequest [
-	^ self new rawData: aRequest
+AppBskyFeedThreadgateMentionRule class >> fromRequest: aRequest withClient: aClient [
+	^ self new
+		client: aClient;
+		rawData: aRequest
 ]

@@ -42,13 +42,13 @@ GtApModelEntity class >> customReferences [
 ]
 
 { #category : #accessing }
-GtApModelEntity class >> findForRequest: aRequest [
+GtApModelEntity class >> findForRequest: aRequest withClient: aClient [
 	| typeName |
 	typeName := aRequest at: '$type' ifAbsent: [ ^ aRequest ].
 	self
 		allSubclassesDo: [ :aModelEntityClass | 
 			aModelEntityClass atpRecordName = typeName
-				ifTrue: [ ^ aModelEntityClass fromRequest: aRequest ] ].
+				ifTrue: [ ^ aModelEntityClass fromRequest: aRequest withClient: aClient ] ].
 	^ aRequest
 ]
 

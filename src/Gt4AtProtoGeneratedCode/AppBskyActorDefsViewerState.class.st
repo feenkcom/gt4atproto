@@ -35,25 +35,26 @@ AppBskyActorDefsViewerState class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsViewerState class >> fromRequest: aRequest [
+AppBskyActorDefsViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpMuted: (aRequest at: 'muted' ifAbsent: [ nil ]);
 		atpMutedByList: (aRequest
 				at: 'mutedByList'
-				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpBlockedBy: (aRequest at: 'blockedBy' ifAbsent: [ nil ]);
 		atpBlocking: (aRequest at: 'blocking' ifAbsent: [ nil ]);
 		atpBlockingByList: (aRequest
 				at: 'blockingByList'
-				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]);
 		atpFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ]);
 		atpKnownFollowers: (aRequest
 				at: 'knownFollowers'
-				ifPresent: [ :aValue | AppBskyActorDefsKnownFollowers fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsKnownFollowers fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

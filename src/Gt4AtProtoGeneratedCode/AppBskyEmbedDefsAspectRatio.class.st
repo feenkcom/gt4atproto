@@ -29,8 +29,9 @@ AppBskyEmbedDefsAspectRatio class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedDefsAspectRatio class >> fromRequest: aRequest [
+AppBskyEmbedDefsAspectRatio class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]);
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])

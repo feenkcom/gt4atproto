@@ -36,8 +36,9 @@ AppBskyGraphDefsListViewBasic class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
+AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
@@ -47,11 +48,13 @@ AppBskyGraphDefsListViewBasic class >> fromRequest: aRequest [
 		atpListItemCount: (aRequest at: 'listItemCount' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
-				ifPresent: [ :aValue | AppBskyGraphDefsListViewerState fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewerState fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]

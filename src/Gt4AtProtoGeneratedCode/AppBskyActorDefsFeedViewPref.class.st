@@ -33,8 +33,9 @@ AppBskyActorDefsFeedViewPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsFeedViewPref class >> fromRequest: aRequest [
+AppBskyActorDefsFeedViewPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpFeed: (aRequest at: 'feed' ifAbsent: [ nil ]);
 		atpHideReplies: (aRequest at: 'hideReplies' ifAbsent: [ nil ]);

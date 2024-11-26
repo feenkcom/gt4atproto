@@ -30,8 +30,9 @@ ComAtprotoLabelDefsLabelValueDefinitionStrings class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelDefsLabelValueDefinitionStrings class >> fromRequest: aRequest [
+ComAtprotoLabelDefsLabelValueDefinitionStrings class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLang: (aRequest at: 'lang' ifAbsent: [ nil ]);
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);

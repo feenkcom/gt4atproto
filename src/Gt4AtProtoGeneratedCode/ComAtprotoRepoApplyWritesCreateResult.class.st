@@ -30,8 +30,9 @@ ComAtprotoRepoApplyWritesCreateResult class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoApplyWritesCreateResult class >> fromRequest: aRequest [
+ComAtprotoRepoApplyWritesCreateResult class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);

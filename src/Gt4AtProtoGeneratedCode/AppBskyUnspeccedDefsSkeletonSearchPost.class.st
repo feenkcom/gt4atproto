@@ -28,8 +28,9 @@ AppBskyUnspeccedDefsSkeletonSearchPost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyUnspeccedDefsSkeletonSearchPost class >> fromRequest: aRequest [
+AppBskyUnspeccedDefsSkeletonSearchPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]

@@ -30,12 +30,13 @@ AppBskyFeedPostEntity class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedPostEntity class >> fromRequest: aRequest [
+AppBskyFeedPostEntity class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpIndex: (aRequest
 				at: 'index'
-				ifPresent: [ :aValue | AppBskyFeedPostTextSlice fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedPostTextSlice fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpType: (aRequest at: 'type' ifAbsent: [ nil ]);
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])

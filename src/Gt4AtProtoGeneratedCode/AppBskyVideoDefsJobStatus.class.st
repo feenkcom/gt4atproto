@@ -34,8 +34,9 @@ AppBskyVideoDefsJobStatus class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyVideoDefsJobStatus class >> fromRequest: aRequest [
+AppBskyVideoDefsJobStatus class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpJobId: (aRequest at: 'jobId' ifAbsent: [ nil ]);
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);

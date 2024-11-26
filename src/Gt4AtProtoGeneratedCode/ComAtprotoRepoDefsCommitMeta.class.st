@@ -29,8 +29,9 @@ ComAtprotoRepoDefsCommitMeta class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoDefsCommitMeta class >> fromRequest: aRequest [
+ComAtprotoRepoDefsCommitMeta class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ])

@@ -30,8 +30,9 @@ ChatBskyConvoDefsLogCreateMessage class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsLogCreateMessage class >> fromRequest: aRequest [
+ChatBskyConvoDefsLogCreateMessage class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
 		atpConvoId: (aRequest at: 'convoId' ifAbsent: [ nil ]);
@@ -43,7 +44,8 @@ ChatBskyConvoDefsLogCreateMessage class >> fromRequest: aRequest [
 							-> ChatBskyConvoDefsDeletedMessageView} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

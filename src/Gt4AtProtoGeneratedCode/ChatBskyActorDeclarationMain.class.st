@@ -28,8 +28,9 @@ ChatBskyActorDeclarationMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyActorDeclarationMain class >> fromRequest: aRequest [
+ChatBskyActorDeclarationMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpAllowIncoming: (aRequest at: 'allowIncoming' ifAbsent: [ nil ])
 ]

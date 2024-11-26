@@ -29,15 +29,16 @@ AppBskyActorDefsKnownFollowers class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsKnownFollowers class >> fromRequest: aRequest [
+AppBskyActorDefsKnownFollowers class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCount: (aRequest at: 'count' ifAbsent: [ nil ]);
 		atpFollowers: (aRequest
 				at: 'followers'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ] ]
+						collect: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

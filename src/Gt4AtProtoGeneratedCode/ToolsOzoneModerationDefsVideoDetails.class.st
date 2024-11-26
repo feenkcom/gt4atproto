@@ -30,8 +30,9 @@ ToolsOzoneModerationDefsVideoDetails class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsVideoDetails class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsVideoDetails class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpWidth: (aRequest at: 'width' ifAbsent: [ nil ]);
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ]);

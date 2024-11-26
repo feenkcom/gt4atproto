@@ -21,12 +21,12 @@ GtApLexiconUnknownDefinition >> asClassName [
 
 { #category : #accessing }
 GtApLexiconUnknownDefinition >> buildFromRequestOn: aKey [
-	^ 'GtApModelEntity findForRequest: ', aKey
+	^ 'GtApModelEntity findForRequest: ', aKey, ' withClient: aClient'
 ]
 
 { #category : #accessing }
 GtApLexiconUnknownDefinition >> buildFromRequestWithKey: aKey [
-	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue ] ifAbsent: [ nil ]'
+	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | GtApModelEntity findForRequest: aValue withClient: aClient ] ifAbsent: [ nil ]'
 ]
 
 { #category : #accessing }
@@ -53,8 +53,8 @@ GtApLexiconUnknownDefinition >> generateDescriptorFor: aString usingPrefix: aPre
 ]
 
 { #category : #accessing }
-GtApLexiconUnknownDefinition >> generateDeserialization [
-	^ 'GtApModelEntity findForRequest: '
+GtApLexiconUnknownDefinition >> generateDeserializationFor: aValue [
+	^ 'GtApModelEntity findForRequest: ', aValue, ' withClient: aClient'
 ]
 
 { #category : #accessing }

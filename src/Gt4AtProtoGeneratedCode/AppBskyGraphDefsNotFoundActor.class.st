@@ -29,8 +29,9 @@ AppBskyGraphDefsNotFoundActor class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsNotFoundActor class >> fromRequest: aRequest [
+AppBskyGraphDefsNotFoundActor class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpActor: (aRequest at: 'actor' ifAbsent: [ nil ]);
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])

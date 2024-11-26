@@ -28,8 +28,9 @@ AppBskyFeedDefsGeneratorViewerState class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsGeneratorViewerState class >> fromRequest: aRequest [
+AppBskyFeedDefsGeneratorViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
 ]

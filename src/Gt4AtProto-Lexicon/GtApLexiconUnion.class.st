@@ -34,7 +34,7 @@ GtApLexiconUnion >> buildFromRequestOn: aName [
 		, ('. '
 				join: (self referencedDefinitions
 						collect: [ :anObject | '''' , (anObject id removeSuffix: '#main') , ''' -> ' , anObject asClassName ]))
-		, '} asDictionary at: (' , aName , ' at: ''$type'')) fromRequest: ' , aName
+		, '} asDictionary at: (' , aName , ' at: ''$type'')) fromRequest: ' , aName, ' withClient: aClient'
 ]
 
 { #category : #accessing }
@@ -43,7 +43,7 @@ GtApLexiconUnion >> buildFromRequestWithKey: aKey [
 		, ('. '
 				join: (self referencedDefinitions
 						collect: [ :anObject | '''' , (anObject id removeSuffix: '#main') , ''' -> ' , anObject asClassName ]))
-		, '} asDictionary at: (aValue at: ''$type'') ifAbsent: [ GtApUnknownRecord new key: (aValue at: ''$type'')]) fromRequest: aValue] ifAbsent: [ nil ]'
+		, '} asDictionary at: (aValue at: ''$type'') ifAbsent: [ GtApUnknownRecord new key: (aValue at: ''$type'')]) fromRequest: aValue withClient: aClient ] ifAbsent: [ nil ]'
 ]
 
 { #category : #accessing }
@@ -74,11 +74,6 @@ GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 					, ';
 		beRequired' ].
 	^ source
-]
-
-{ #category : #accessing }
-GtApLexiconUnion >> generateDeserialization [
-	^ 'GtApModelEntity findForRequest: '
 ]
 
 { #category : #accessing }

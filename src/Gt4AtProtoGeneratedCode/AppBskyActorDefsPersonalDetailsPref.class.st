@@ -28,8 +28,9 @@ AppBskyActorDefsPersonalDetailsPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsPersonalDetailsPref class >> fromRequest: aRequest [
+AppBskyActorDefsPersonalDetailsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpBirthDate: (aRequest at: 'birthDate' ifAbsent: [ nil ])
 ]

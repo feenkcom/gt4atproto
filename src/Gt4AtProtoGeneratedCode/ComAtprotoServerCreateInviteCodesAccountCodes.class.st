@@ -29,8 +29,9 @@ ComAtprotoServerCreateInviteCodesAccountCodes class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest [
+ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpAccount: (aRequest at: 'account' ifAbsent: [ nil ]);
 		atpCodes: (aRequest

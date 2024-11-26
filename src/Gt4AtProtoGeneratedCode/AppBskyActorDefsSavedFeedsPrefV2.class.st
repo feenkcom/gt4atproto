@@ -28,12 +28,15 @@ AppBskyActorDefsSavedFeedsPrefV2 class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsSavedFeedsPrefV2 class >> fromRequest: aRequest [
+AppBskyActorDefsSavedFeedsPrefV2 class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpItems: (aRequest
 				at: 'items'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyActorDefsSavedFeed fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyActorDefsSavedFeed fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

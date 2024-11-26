@@ -30,8 +30,9 @@ ToolsOzoneModerationDefsModEventLabel class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventLabel class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventLabel class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpCreateLabelVals: (aRequest

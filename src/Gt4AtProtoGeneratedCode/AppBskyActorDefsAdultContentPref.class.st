@@ -28,8 +28,9 @@ AppBskyActorDefsAdultContentPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest [
+AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpEnabled: (aRequest at: 'enabled' ifAbsent: [ nil ])
 ]

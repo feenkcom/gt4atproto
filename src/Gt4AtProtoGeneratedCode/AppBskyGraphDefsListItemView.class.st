@@ -29,13 +29,14 @@ AppBskyGraphDefsListItemView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsListItemView class >> fromRequest: aRequest [
+AppBskyGraphDefsListItemView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpSubject: (aRequest
 				at: 'subject'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

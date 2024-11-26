@@ -31,8 +31,9 @@ AppBskyActorDefsSavedFeed class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsSavedFeed class >> fromRequest: aRequest [
+AppBskyActorDefsSavedFeed class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpType: (aRequest at: 'type' ifAbsent: [ nil ]);

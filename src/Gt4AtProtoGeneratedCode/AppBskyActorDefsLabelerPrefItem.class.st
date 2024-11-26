@@ -28,8 +28,9 @@ AppBskyActorDefsLabelerPrefItem class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsLabelerPrefItem class >> fromRequest: aRequest [
+AppBskyActorDefsLabelerPrefItem class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]

@@ -34,8 +34,9 @@ AppBskyEmbedVideoView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedVideoView class >> fromRequest: aRequest [
+AppBskyEmbedVideoView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpPlaylist: (aRequest at: 'playlist' ifAbsent: [ nil ]);
@@ -43,7 +44,7 @@ AppBskyEmbedVideoView class >> fromRequest: aRequest [
 		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ]);
 		atpAspectRatio: (aRequest
 				at: 'aspectRatio'
-				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

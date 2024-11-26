@@ -30,12 +30,13 @@ AppBskyActorDefsBskyAppStatePref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsBskyAppStatePref class >> fromRequest: aRequest [
+AppBskyActorDefsBskyAppStatePref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpActiveProgressGuide: (aRequest
 				at: 'activeProgressGuide'
-				ifPresent: [ :aValue | AppBskyActorDefsBskyAppProgressGuide fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsBskyAppProgressGuide fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpQueuedNudges: (aRequest
 				at: 'queuedNudges'
@@ -43,7 +44,9 @@ AppBskyActorDefsBskyAppStatePref class >> fromRequest: aRequest [
 				ifAbsent: [ nil ]);
 		atpNuxs: (aRequest
 				at: 'nuxs'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyActorDefsNux fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyActorDefsNux fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

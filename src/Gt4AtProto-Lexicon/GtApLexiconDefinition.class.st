@@ -71,7 +71,7 @@ GtApLexiconDefinition >> embeddedPragmaType [
 ]
 
 { #category : #accessing }
-GtApLexiconDefinition >> generateDeserialization [
+GtApLexiconDefinition >> generateDeserializationFor: aValue [
 	^ ''
 ]
 

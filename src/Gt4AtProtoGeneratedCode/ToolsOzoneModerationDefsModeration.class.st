@@ -28,12 +28,16 @@ ToolsOzoneModerationDefsModeration class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModeration class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModeration class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSubjectStatus: (aRequest
 				at: 'subjectStatus'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsSubjectStatusView fromRequest: aValue ]
+				ifPresent: [ :aValue | 
+					ToolsOzoneModerationDefsSubjectStatusView
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

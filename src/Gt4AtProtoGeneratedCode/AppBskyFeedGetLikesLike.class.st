@@ -30,14 +30,15 @@ AppBskyFeedGetLikesLike class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedGetLikesLike class >> fromRequest: aRequest [
+AppBskyFeedGetLikesLike class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpActor: (aRequest
 				at: 'actor'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

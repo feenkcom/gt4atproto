@@ -30,8 +30,9 @@ AppBskyRichtextFacetLink class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyRichtextFacetLink class >> fromRequest: aRequest [
+AppBskyRichtextFacetLink class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]

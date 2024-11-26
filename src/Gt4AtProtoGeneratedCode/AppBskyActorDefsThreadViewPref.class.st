@@ -25,12 +25,13 @@ AppBskyActorDefsThreadViewPref class >> atpRecordName [
 
 { #category : #accessing }
 AppBskyActorDefsThreadViewPref class >> atpSchema [
- ^ '{"type":"object","properties":{"sort":{"type":"string","description":"Sorting mode for threads.","knownValues":["oldest","newest","most-likes","random"]},"prioritizeFollowedUsers":{"type":"boolean","description":"Show followed users at the top of all replies."}}}'
+ ^ '{"type":"object","properties":{"sort":{"type":"string","description":"Sorting mode for threads.","knownValues":["oldest","newest","most-likes","random","hotness"]},"prioritizeFollowedUsers":{"type":"boolean","description":"Show followed users at the top of all replies."}}}'
 ]
 
 { #category : #serialization }
-AppBskyActorDefsThreadViewPref class >> fromRequest: aRequest [
+AppBskyActorDefsThreadViewPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSort: (aRequest at: 'sort' ifAbsent: [ nil ]);
 		atpPrioritizeFollowedUsers: (aRequest at: 'prioritizeFollowedUsers' ifAbsent: [ nil ])

@@ -33,21 +33,24 @@ AppBskyGraphStarterpackMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphStarterpackMain class >> fromRequest: aRequest [
+AppBskyGraphStarterpackMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpName: (aRequest at: 'name' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpDescriptionFacets: (aRequest
 				at: 'descriptionFacets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpList: (aRequest at: 'list' ifAbsent: [ nil ]);
 		atpFeeds: (aRequest
 				at: 'feeds'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | AppBskyGraphStarterpackFeedItem fromRequest: aValue ] ]
+						collect: [ :aValue | AppBskyGraphStarterpackFeedItem fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

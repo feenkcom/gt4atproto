@@ -30,12 +30,13 @@ AppBskyLabelerServiceMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyLabelerServiceMain class >> fromRequest: aRequest [
+AppBskyLabelerServiceMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPolicies: (aRequest
 				at: 'policies'
-				ifPresent: [ :aValue | AppBskyLabelerDefsLabelerPolicies fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyLabelerDefsLabelerPolicies fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
@@ -44,7 +45,8 @@ AppBskyLabelerServiceMain class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

@@ -28,8 +28,9 @@ ComAtprotoAdminDefsRepoRef class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest [
+ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]

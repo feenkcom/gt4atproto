@@ -31,8 +31,9 @@ AppBskyActorDefsNux class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsNux class >> fromRequest: aRequest [
+AppBskyActorDefsNux class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpCompleted: (aRequest at: 'completed' ifAbsent: [ nil ]);

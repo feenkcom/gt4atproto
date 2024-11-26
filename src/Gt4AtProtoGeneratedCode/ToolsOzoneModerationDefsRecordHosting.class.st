@@ -31,8 +31,9 @@ ToolsOzoneModerationDefsRecordHosting class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRecordHosting class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRecordHosting class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpStatus: (aRequest at: 'status' ifAbsent: [ nil ]);
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ]);

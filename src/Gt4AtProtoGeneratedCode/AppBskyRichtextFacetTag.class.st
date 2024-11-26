@@ -30,8 +30,9 @@ AppBskyRichtextFacetTag class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyRichtextFacetTag class >> fromRequest: aRequest [
+AppBskyRichtextFacetTag class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpTag: (aRequest at: 'tag' ifAbsent: [ nil ])
 ]

@@ -41,34 +41,39 @@ ToolsOzoneModerationDefsRepoViewDetail class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRepoViewDetail class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRepoViewDetail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
 		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]);
 		atpRelatedRecords: (aRequest
 				at: 'relatedRecords'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | GtApModelEntity findForRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpModeration: (aRequest
 				at: 'moderation'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsModerationDetail fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsModerationDetail fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpInvitedBy: (aRequest
 				at: 'invitedBy'
-				ifPresent: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpInvites: (aRequest
 				at: 'invites'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ] ]
+						collect: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ]);
 		atpInviteNote: (aRequest at: 'inviteNote' ifAbsent: [ nil ]);
@@ -78,7 +83,7 @@ ToolsOzoneModerationDefsRepoViewDetail class >> fromRequest: aRequest [
 				at: 'threatSignatures'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue ] ]
+						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

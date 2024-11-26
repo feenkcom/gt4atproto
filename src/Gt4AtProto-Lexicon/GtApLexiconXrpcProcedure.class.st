@@ -37,8 +37,9 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 	<xrpcProcedure>
 	"' , (self description ifNil: [ '' ])
 				, '"
-	^ ' , self output generateDeserialization , ' (self procedureOn: ''' , aName
-				, ''' withFile: aFile)' ].
+	^ '
+				, (self output
+						generateDeserializationFor: ' (self procedureOn: ''' , aName , ''' withFile: aFile)') ].
 
 	self schema properties keys
 		withIndexDo: [ :anInputName :anIndex | 
@@ -51,9 +52,10 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 	<xrpcProcedure>
 	"' , (self description ifNil: [ '' ])
 		, '"
-	^ ' , self output generateDeserialization , ' (self procedureOn: ''' , aName
-		, ''' withBody: {' , ('. ' join: self xrpcRequestBodyAssociations)
-		, '} asDictionary)'
+	^ '
+		, (self output
+				generateDeserializationFor: ' (self procedureOn: ''' , aName , ''' withBody: {'
+						, ('. ' join: self xrpcRequestBodyAssociations) , '} asDictionary)')
 ]
 
 { #category : #accessing }

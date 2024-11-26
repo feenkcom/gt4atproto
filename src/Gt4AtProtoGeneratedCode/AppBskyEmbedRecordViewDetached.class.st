@@ -29,8 +29,9 @@ AppBskyEmbedRecordViewDetached class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedRecordViewDetached class >> fromRequest: aRequest [
+AppBskyEmbedRecordViewDetached class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpDetached: (aRequest at: 'detached' ifAbsent: [ nil ])

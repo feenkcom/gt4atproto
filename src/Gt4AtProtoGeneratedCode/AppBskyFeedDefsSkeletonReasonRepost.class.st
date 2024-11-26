@@ -28,8 +28,9 @@ AppBskyFeedDefsSkeletonReasonRepost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsSkeletonReasonRepost class >> fromRequest: aRequest [
+AppBskyFeedDefsSkeletonReasonRepost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ])
 ]

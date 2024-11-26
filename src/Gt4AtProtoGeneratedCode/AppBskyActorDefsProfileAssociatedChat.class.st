@@ -28,8 +28,9 @@ AppBskyActorDefsProfileAssociatedChat class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsProfileAssociatedChat class >> fromRequest: aRequest [
+AppBskyActorDefsProfileAssociatedChat class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpAllowIncoming: (aRequest at: 'allowIncoming' ifAbsent: [ nil ])
 ]

@@ -36,8 +36,9 @@ ComAtprotoLabelDefsLabel class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelDefsLabel class >> fromRequest: aRequest [
+ComAtprotoLabelDefsLabel class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpVer: (aRequest at: 'ver' ifAbsent: [ nil ]);
 		atpSrc: (aRequest at: 'src' ifAbsent: [ nil ]);

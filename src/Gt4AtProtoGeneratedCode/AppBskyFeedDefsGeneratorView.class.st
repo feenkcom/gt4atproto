@@ -40,32 +40,37 @@ AppBskyFeedDefsGeneratorView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsGeneratorView class >> fromRequest: aRequest [
+AppBskyFeedDefsGeneratorView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpCreator: (aRequest
 				at: 'creator'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpDescriptionFacets: (aRequest
 				at: 'descriptionFacets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpAvatar: (aRequest at: 'avatar' ifAbsent: [ nil ]);
 		atpLikeCount: (aRequest at: 'likeCount' ifAbsent: [ nil ]);
 		atpAcceptsInteractions: (aRequest at: 'acceptsInteractions' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
-				ifPresent: [ :aValue | AppBskyFeedDefsGeneratorViewerState fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsGeneratorViewerState fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]

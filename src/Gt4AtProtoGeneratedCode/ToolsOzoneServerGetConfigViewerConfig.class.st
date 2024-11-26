@@ -28,8 +28,9 @@ ToolsOzoneServerGetConfigViewerConfig class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneServerGetConfigViewerConfig class >> fromRequest: aRequest [
+ToolsOzoneServerGetConfigViewerConfig class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRole: (aRequest at: 'role' ifAbsent: [ nil ])
 ]

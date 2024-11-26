@@ -28,8 +28,9 @@ AppBskyFeedThreadgateListRule class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedThreadgateListRule class >> fromRequest: aRequest [
+AppBskyFeedThreadgateListRule class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpList: (aRequest at: 'list' ifAbsent: [ nil ])
 ]

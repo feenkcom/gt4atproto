@@ -38,24 +38,27 @@ ToolsOzoneModerationDefsRepoView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRepoView class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRepoView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ]);
 		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ]);
 		atpRelatedRecords: (aRequest
 				at: 'relatedRecords'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | GtApModelEntity findForRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpModeration: (aRequest
 				at: 'moderation'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsModeration fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsModeration fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpInvitedBy: (aRequest
 				at: 'invitedBy'
-				ifPresent: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoServerDefsInviteCode fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ]);
 		atpInviteNote: (aRequest at: 'inviteNote' ifAbsent: [ nil ]);
@@ -64,7 +67,7 @@ ToolsOzoneModerationDefsRepoView class >> fromRequest: aRequest [
 				at: 'threatSignatures'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue ] ]
+						collect: [ :aValue | ComAtprotoAdminDefsThreatSignature fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

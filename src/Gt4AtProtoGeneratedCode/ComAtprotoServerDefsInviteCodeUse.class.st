@@ -29,8 +29,9 @@ ComAtprotoServerDefsInviteCodeUse class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest [
+ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUsedBy: (aRequest at: 'usedBy' ifAbsent: [ nil ]);
 		atpUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])

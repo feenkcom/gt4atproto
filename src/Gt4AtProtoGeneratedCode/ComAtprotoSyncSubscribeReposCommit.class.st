@@ -39,8 +39,9 @@ ComAtprotoSyncSubscribeReposCommit class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
+ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
 		atpRebase: (aRequest at: 'rebase' ifAbsent: [ nil ]);
@@ -55,7 +56,7 @@ ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest [
 				at: 'ops'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoSyncSubscribeReposRepoOp fromRequest: aValue ] ]
+						collect: [ :aValue | ComAtprotoSyncSubscribeReposRepoOp fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpBlobs: (aRequest
 				at: 'blobs'

@@ -25,6 +25,8 @@ AppBskyFeedDefsReasonPin class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsReasonPin class >> fromRequest: aRequest [
-	^ self new rawData: aRequest
+AppBskyFeedDefsReasonPin class >> fromRequest: aRequest withClient: aClient [
+	^ self new
+		client: aClient;
+		rawData: aRequest
 ]

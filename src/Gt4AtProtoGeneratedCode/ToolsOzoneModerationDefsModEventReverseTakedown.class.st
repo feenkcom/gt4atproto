@@ -28,8 +28,9 @@ ToolsOzoneModerationDefsModEventReverseTakedown class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventReverseTakedown class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventReverseTakedown class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]

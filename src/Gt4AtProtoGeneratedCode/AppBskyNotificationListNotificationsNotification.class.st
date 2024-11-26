@@ -36,26 +36,29 @@ AppBskyNotificationListNotificationsNotification class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest [
+AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpAuthor: (aRequest
 				at: 'author'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpReason: (aRequest at: 'reason' ifAbsent: [ nil ]);
 		atpReasonSubject: (aRequest at: 'reasonSubject' ifAbsent: [ nil ]);
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpIsRead: (aRequest at: 'isRead' ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

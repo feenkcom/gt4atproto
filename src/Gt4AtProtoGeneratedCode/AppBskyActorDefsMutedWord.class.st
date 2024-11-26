@@ -32,14 +32,15 @@ AppBskyActorDefsMutedWord class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsMutedWord class >> fromRequest: aRequest [
+AppBskyActorDefsMutedWord class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ]);
 		atpTargets: (aRequest
 				at: 'targets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | String fromRequest: aValue ] ]
+				ifPresent: [ :anArray | anArray collect: [ :aValue | String fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpActorTarget: (aRequest at: 'actorTarget' ifAbsent: [ nil ]);
 		atpExpiresAt: (aRequest at: 'expiresAt' ifAbsent: [ nil ])

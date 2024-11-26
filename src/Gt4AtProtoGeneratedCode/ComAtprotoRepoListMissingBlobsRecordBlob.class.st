@@ -29,8 +29,9 @@ ComAtprotoRepoListMissingBlobsRecordBlob class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoListMissingBlobsRecordBlob class >> fromRequest: aRequest [
+ComAtprotoRepoListMissingBlobsRecordBlob class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpRecordUri: (aRequest at: 'recordUri' ifAbsent: [ nil ])

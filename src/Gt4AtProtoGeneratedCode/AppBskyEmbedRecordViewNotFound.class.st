@@ -29,8 +29,9 @@ AppBskyEmbedRecordViewNotFound class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest [
+AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])

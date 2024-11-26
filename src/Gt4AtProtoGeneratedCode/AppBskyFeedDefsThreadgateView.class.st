@@ -31,18 +31,21 @@ AppBskyFeedDefsThreadgateView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsThreadgateView class >> fromRequest: aRequest [
+AppBskyFeedDefsThreadgateView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLists: (aRequest
 				at: 'lists'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

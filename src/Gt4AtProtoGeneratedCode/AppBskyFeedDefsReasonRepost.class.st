@@ -29,12 +29,13 @@ AppBskyFeedDefsReasonRepost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest [
+AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpBy: (aRequest
 				at: 'by'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]

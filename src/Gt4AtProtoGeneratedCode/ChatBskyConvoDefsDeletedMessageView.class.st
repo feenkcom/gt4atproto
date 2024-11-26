@@ -31,14 +31,15 @@ ChatBskyConvoDefsDeletedMessageView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsDeletedMessageView class >> fromRequest: aRequest [
+ChatBskyConvoDefsDeletedMessageView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
 		atpSender: (aRequest
 				at: 'sender'
-				ifPresent: [ :aValue | ChatBskyConvoDefsMessageViewSender fromRequest: aValue ]
+				ifPresent: [ :aValue | ChatBskyConvoDefsMessageViewSender fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSentAt: (aRequest at: 'sentAt' ifAbsent: [ nil ])
 ]

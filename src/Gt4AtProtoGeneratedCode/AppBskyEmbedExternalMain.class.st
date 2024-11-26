@@ -28,12 +28,13 @@ AppBskyEmbedExternalMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedExternalMain class >> fromRequest: aRequest [
+AppBskyEmbedExternalMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpExternal: (aRequest
 				at: 'external'
-				ifPresent: [ :aValue | AppBskyEmbedExternalExternal fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyEmbedExternalExternal fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

@@ -29,12 +29,13 @@ AppBskyRichtextFacetMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyRichtextFacetMain class >> fromRequest: aRequest [
+AppBskyRichtextFacetMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpIndex: (aRequest
 				at: 'index'
-				ifPresent: [ :aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyRichtextFacetByteSlice fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpFeatures: (aRequest
 				at: 'features'
@@ -44,7 +45,7 @@ AppBskyRichtextFacetMain class >> fromRequest: aRequest [
 							({'app.bsky.richtext.facet#mention' -> AppBskyRichtextFacetMention.
 								'app.bsky.richtext.facet#link' -> AppBskyRichtextFacetLink.
 								'app.bsky.richtext.facet#tag' -> AppBskyRichtextFacetTag} asDictionary
-								at: (aValue at: '$type')) fromRequest: aValue ] ]
+								at: (aValue at: '$type')) fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

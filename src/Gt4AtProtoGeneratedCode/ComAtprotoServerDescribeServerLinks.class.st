@@ -29,8 +29,9 @@ ComAtprotoServerDescribeServerLinks class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest [
+ComAtprotoServerDescribeServerLinks class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPrivacyPolicy: (aRequest at: 'privacyPolicy' ifAbsent: [ nil ]);
 		atpTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])

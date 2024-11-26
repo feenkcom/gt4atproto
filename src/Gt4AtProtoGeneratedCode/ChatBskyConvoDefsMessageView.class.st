@@ -34,15 +34,18 @@ ChatBskyConvoDefsMessageView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoDefsMessageView class >> fromRequest: aRequest [
+ChatBskyConvoDefsMessageView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpRev: (aRequest at: 'rev' ifAbsent: [ nil ]);
 		atpText: (aRequest at: 'text' ifAbsent: [ nil ]);
 		atpFacets: (aRequest
 				at: 'facets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpEmbed: (aRequest
 				at: 'embed'
@@ -50,11 +53,12 @@ ChatBskyConvoDefsMessageView class >> fromRequest: aRequest [
 					({'app.bsky.embed.record#view' -> AppBskyEmbedRecordView} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSender: (aRequest
 				at: 'sender'
-				ifPresent: [ :aValue | ChatBskyConvoDefsMessageViewSender fromRequest: aValue ]
+				ifPresent: [ :aValue | ChatBskyConvoDefsMessageViewSender fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSentAt: (aRequest at: 'sentAt' ifAbsent: [ nil ])
 ]

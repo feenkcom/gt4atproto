@@ -28,12 +28,13 @@ AppBskyEmbedRecordMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedRecordMain class >> fromRequest: aRequest [
+AppBskyEmbedRecordMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

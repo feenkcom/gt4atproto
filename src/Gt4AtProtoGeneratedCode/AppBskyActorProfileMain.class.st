@@ -37,8 +37,9 @@ AppBskyActorProfileMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorProfileMain class >> fromRequest: aRequest [
+AppBskyActorProfileMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDisplayName: (aRequest at: 'displayName' ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
@@ -51,15 +52,16 @@ AppBskyActorProfileMain class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpJoinedViaStarterPack: (aRequest
 				at: 'joinedViaStarterPack'
-				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpPinnedPost: (aRequest
 				at: 'pinnedPost'
-				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue ]
+				ifPresent: [ :aValue | ComAtprotoRepoStrongRefMain fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]

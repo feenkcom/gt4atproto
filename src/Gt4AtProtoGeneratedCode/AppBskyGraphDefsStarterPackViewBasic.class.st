@@ -38,25 +38,28 @@ AppBskyGraphDefsStarterPackViewBasic class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsStarterPackViewBasic class >> fromRequest: aRequest [
+AppBskyGraphDefsStarterPackViewBasic class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreator: (aRequest
 				at: 'creator'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpListItemCount: (aRequest at: 'listItemCount' ifAbsent: [ nil ]);
 		atpJoinedWeekCount: (aRequest at: 'joinedWeekCount' ifAbsent: [ nil ]);
 		atpJoinedAllTimeCount: (aRequest at: 'joinedAllTimeCount' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]

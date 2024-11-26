@@ -28,8 +28,9 @@ ToolsOzoneServerGetConfigServiceConfig class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneServerGetConfigServiceConfig class >> fromRequest: aRequest [
+ToolsOzoneServerGetConfigServiceConfig class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUrl: (aRequest at: 'url' ifAbsent: [ nil ])
 ]

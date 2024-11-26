@@ -35,33 +35,36 @@ ToolsOzoneModerationDefsRecordViewDetail class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRecordViewDetail class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRecordViewDetail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpValue: (aRequest
 				at: 'value'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpBlobs: (aRequest
 				at: 'blobs'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ToolsOzoneModerationDefsBlobView fromRequest: aValue ] ]
+						collect: [ :aValue | ToolsOzoneModerationDefsBlobView fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ]);
 		atpModeration: (aRequest
 				at: 'moderation'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsModerationDetail fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsModerationDetail fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpRepo: (aRequest
 				at: 'repo'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsRepoView fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsRepoView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

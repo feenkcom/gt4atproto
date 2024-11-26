@@ -29,13 +29,14 @@ AppBskyFeedDefsBlockedAuthor class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsBlockedAuthor class >> fromRequest: aRequest [
+AppBskyFeedDefsBlockedAuthor class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpViewer: (aRequest
 				at: 'viewer'
-				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsViewerState fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

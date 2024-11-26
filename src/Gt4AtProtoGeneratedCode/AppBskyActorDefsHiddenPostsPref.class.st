@@ -28,8 +28,9 @@ AppBskyActorDefsHiddenPostsPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsHiddenPostsPref class >> fromRequest: aRequest [
+AppBskyActorDefsHiddenPostsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpItems: (aRequest
 				at: 'items'

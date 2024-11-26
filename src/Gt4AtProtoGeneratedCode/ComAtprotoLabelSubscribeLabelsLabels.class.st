@@ -29,13 +29,16 @@ ComAtprotoLabelSubscribeLabelsLabels class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest [
+ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSeq: (aRequest at: 'seq' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

@@ -29,8 +29,9 @@ AppBskyFeedPostTextSlice class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedPostTextSlice class >> fromRequest: aRequest [
+AppBskyFeedPostTextSlice class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpStart: (aRequest at: 'start' ifAbsent: [ nil ]);
 		atpEnd: (aRequest at: 'end' ifAbsent: [ nil ])

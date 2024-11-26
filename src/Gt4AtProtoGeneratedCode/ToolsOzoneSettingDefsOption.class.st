@@ -37,14 +37,15 @@ ToolsOzoneSettingDefsOption class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneSettingDefsOption class >> fromRequest: aRequest [
+ToolsOzoneSettingDefsOption class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpKey: (aRequest at: 'key' ifAbsent: [ nil ]);
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpValue: (aRequest
 				at: 'value'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);

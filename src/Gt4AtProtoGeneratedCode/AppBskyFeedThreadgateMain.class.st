@@ -31,8 +31,9 @@ AppBskyFeedThreadgateMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedThreadgateMain class >> fromRequest: aRequest [
+AppBskyFeedThreadgateMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPost: (aRequest at: 'post' ifAbsent: [ nil ]);
 		atpAllow: (aRequest
@@ -44,7 +45,9 @@ AppBskyFeedThreadgateMain class >> fromRequest: aRequest [
 								'app.bsky.feed.threadgate#followingRule'
 									-> AppBskyFeedThreadgateFollowingRule.
 								'app.bsky.feed.threadgate#listRule' -> AppBskyFeedThreadgateListRule}
-								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
+								asDictionary at: (aValue at: '$type'))
+								fromRequest: aValue
+								withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ]);
 		atpHiddenReplies: (aRequest

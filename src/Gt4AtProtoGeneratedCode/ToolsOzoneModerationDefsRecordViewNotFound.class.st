@@ -28,8 +28,9 @@ ToolsOzoneModerationDefsRecordViewNotFound class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRecordViewNotFound class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRecordViewNotFound class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]

@@ -30,8 +30,9 @@ ComAtprotoAdminDefsRepoBlobRef class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoAdminDefsRepoBlobRef class >> fromRequest: aRequest [
+ComAtprotoAdminDefsRepoBlobRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);

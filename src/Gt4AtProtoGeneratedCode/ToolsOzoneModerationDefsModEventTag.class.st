@@ -30,8 +30,9 @@ ToolsOzoneModerationDefsModEventTag class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventTag class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventTag class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpAdd: (aRequest
 				at: 'add'

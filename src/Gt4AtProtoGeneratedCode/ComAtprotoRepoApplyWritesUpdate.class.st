@@ -30,14 +30,15 @@ ComAtprotoRepoApplyWritesUpdate class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoApplyWritesUpdate class >> fromRequest: aRequest [
+ComAtprotoRepoApplyWritesUpdate class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCollection: (aRequest at: 'collection' ifAbsent: [ nil ]);
 		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ]);
 		atpValue: (aRequest
 				at: 'value'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

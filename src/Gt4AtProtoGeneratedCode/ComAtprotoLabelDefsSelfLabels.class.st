@@ -28,12 +28,15 @@ ComAtprotoLabelDefsSelfLabels class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoLabelDefsSelfLabels class >> fromRequest: aRequest [
+ComAtprotoLabelDefsSelfLabels class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpValues: (aRequest
 				at: 'values'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsSelfLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsSelfLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

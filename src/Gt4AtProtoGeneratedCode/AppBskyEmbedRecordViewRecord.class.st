@@ -38,22 +38,25 @@ AppBskyEmbedRecordViewRecord class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
+AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpAuthor: (aRequest
 				at: 'author'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpValue: (aRequest
 				at: 'value'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpReplyCount: (aRequest at: 'replyCount' ifAbsent: [ nil ]);
 		atpRepostCount: (aRequest at: 'repostCount' ifAbsent: [ nil ]);
@@ -69,7 +72,9 @@ AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest [
 								'app.bsky.embed.external#view' -> AppBskyEmbedExternalView.
 								'app.bsky.embed.record#view' -> AppBskyEmbedRecordView.
 								'app.bsky.embed.recordWithMedia#view' -> AppBskyEmbedRecordWithMediaView}
-								asDictionary at: (aValue at: '$type')) fromRequest: aValue ] ]
+								asDictionary at: (aValue at: '$type'))
+								fromRequest: aValue
+								withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]

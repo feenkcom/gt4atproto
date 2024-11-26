@@ -33,15 +33,16 @@ AppBskyEmbedImagesViewImage class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedImagesViewImage class >> fromRequest: aRequest [
+AppBskyEmbedImagesViewImage class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ]);
 		atpFullsize: (aRequest at: 'fullsize' ifAbsent: [ nil ]);
 		atpAlt: (aRequest at: 'alt' ifAbsent: [ nil ]);
 		atpAspectRatio: (aRequest
 				at: 'aspectRatio'
-				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyEmbedDefsAspectRatio fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

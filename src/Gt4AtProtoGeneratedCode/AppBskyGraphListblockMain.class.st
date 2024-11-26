@@ -29,8 +29,9 @@ AppBskyGraphListblockMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphListblockMain class >> fromRequest: aRequest [
+AppBskyGraphListblockMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])

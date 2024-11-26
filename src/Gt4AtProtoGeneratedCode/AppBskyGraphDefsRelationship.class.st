@@ -30,8 +30,9 @@ AppBskyGraphDefsRelationship class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsRelationship class >> fromRequest: aRequest [
+AppBskyGraphDefsRelationship class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ]);
 		atpFollowing: (aRequest at: 'following' ifAbsent: [ nil ]);

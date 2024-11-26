@@ -25,7 +25,7 @@ GtApLexiconDefinitionReference >> asClassName [
 
 { #category : #accessing }
 GtApLexiconDefinitionReference >> buildFromRequestOn: aKey [
-	^ self asClassName , ' fromRequest: ' , aKey
+	^ self asClassName , ' fromRequest: ' , aKey, ' withClient: aClient'
 ]
 
 { #category : #accessing }
@@ -34,7 +34,7 @@ GtApLexiconDefinitionReference >> buildFromRequestWithKey: aKey [
 		ifTrue: [ ^ self referencedDefinition buildFromRequestWithKey: aKey ].
 
 	^ 'aRequest at: ''' , aKey , ''' ifPresent: [:aValue | ' , self asClassName
-		, ' fromRequest: aValue ] ifAbsent: [ nil ]'
+		, ' fromRequest: aValue withClient: aClient ] ifAbsent: [ nil ]'
 ]
 
 { #category : #accessing }
@@ -63,8 +63,8 @@ GtApLexiconDefinitionReference >> generateDescriptorFor: aString usingPrefix: aP
 ]
 
 { #category : #accessing }
-GtApLexiconDefinitionReference >> generateDeserialization [
-	^ self referencedDefinition generateDeserialization
+GtApLexiconDefinitionReference >> generateDeserializationFor: aValue [
+	^ self referencedDefinition generateDeserializationFor: aValue
 ]
 
 { #category : #accessing }

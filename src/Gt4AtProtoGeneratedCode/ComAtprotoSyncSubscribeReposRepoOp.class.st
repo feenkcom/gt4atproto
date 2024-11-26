@@ -30,8 +30,9 @@ ComAtprotoSyncSubscribeReposRepoOp class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest [
+ComAtprotoSyncSubscribeReposRepoOp class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpAction: (aRequest at: 'action' ifAbsent: [ nil ]);
 		atpPath: (aRequest at: 'path' ifAbsent: [ nil ]);

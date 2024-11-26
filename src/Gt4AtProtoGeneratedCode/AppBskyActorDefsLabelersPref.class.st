@@ -28,14 +28,15 @@ AppBskyActorDefsLabelersPref class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyActorDefsLabelersPref class >> fromRequest: aRequest [
+AppBskyActorDefsLabelersPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpLabelers: (aRequest
 				at: 'labelers'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | AppBskyActorDefsLabelerPrefItem fromRequest: aValue ] ]
+						collect: [ :aValue | AppBskyActorDefsLabelerPrefItem fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

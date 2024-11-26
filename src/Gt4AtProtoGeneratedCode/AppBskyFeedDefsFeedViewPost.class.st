@@ -33,16 +33,17 @@ AppBskyFeedDefsFeedViewPost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
+AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPost: (aRequest
 				at: 'post'
-				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsPostView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpReply: (aRequest
 				at: 'reply'
-				ifPresent: [ :aValue | AppBskyFeedDefsReplyRef fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedDefsReplyRef fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpReason: (aRequest
 				at: 'reason'
@@ -51,7 +52,8 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest [
 						'app.bsky.feed.defs#reasonPin' -> AppBskyFeedDefsReasonPin} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpFeedContext: (aRequest at: 'feedContext' ifAbsent: [ nil ])
 ]
@@ -110,32 +112,6 @@ AppBskyFeedDefsFeedViewPost >> feedContextDescription [
 	^ MAStringDescription new
 		label: 'FeedContext';
 		accessor: #atpFeedContext
-]
-
-{ #category : #views }
-AppBskyFeedDefsFeedViewPost >> gtDetailsFor: aView [
-	<gtView>
-	| details |
-	^ aView columnedList
-		title: 'Details';
-		priority: 1;
-		items: [ details := OrderedCollection new.
-			details
-						addAll: {'Text' -> self atpPost atpRecord atpText.
-						'Indexed at' -> self atpPost atpIndexedAt.
-						'Repost count' -> self atpPost atpRepostCount.
-						'Reply count' -> self atpPost atpReplyCount.
-						'Like count' -> self atpPost atpLikeCount. 
-						'Quote count' -> self atpPost atpQuoteCount. }.
-			self isReply
-				ifTrue: [ details
-						addAll: {'Parent post text' -> self atpReply atpParent atpRecord atpText.
-								'Root post text' -> self atpReply atpRoot atpRecord atpText} ].
-			details ];
-		column: 'Key'
-			text: [ :each | each key gtDisplayString ]
-			width: 100;
-		column: 'Value' text: [ :each | each value gtDisplayString ]
 ]
 
 { #category : #magritte }

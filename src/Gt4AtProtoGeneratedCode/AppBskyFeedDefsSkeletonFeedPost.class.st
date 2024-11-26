@@ -30,8 +30,9 @@ AppBskyFeedDefsSkeletonFeedPost class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest [
+AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpPost: (aRequest at: 'post' ifAbsent: [ nil ]);
 		atpReason: (aRequest
@@ -43,7 +44,8 @@ AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpFeedContext: (aRequest at: 'feedContext' ifAbsent: [ nil ])
 ]

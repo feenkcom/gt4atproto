@@ -38,21 +38,26 @@ AppBskyFeedPostMain class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedPostMain class >> fromRequest: aRequest [
+AppBskyFeedPostMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpText: (aRequest at: 'text' ifAbsent: [ nil ]);
 		atpEntities: (aRequest
 				at: 'entities'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyFeedPostEntity fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyFeedPostEntity fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpFacets: (aRequest
 				at: 'facets'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyRichtextFacetMain fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpReply: (aRequest
 				at: 'reply'
-				ifPresent: [ :aValue | AppBskyFeedPostReplyRef fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyFeedPostReplyRef fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpEmbed: (aRequest
 				at: 'embed'
@@ -65,7 +70,8 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpLangs: (aRequest
 				at: 'langs'
@@ -78,7 +84,8 @@ AppBskyFeedPostMain class >> fromRequest: aRequest [
 						asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpTags: (aRequest
 				at: 'tags'

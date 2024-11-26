@@ -34,8 +34,9 @@ ComAtprotoServerDefsInviteCode class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
+ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCode: (aRequest at: 'code' ifAbsent: [ nil ]);
 		atpAvailable: (aRequest at: 'available' ifAbsent: [ nil ]);
@@ -47,7 +48,7 @@ ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest [
 				at: 'uses'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ComAtprotoServerDefsInviteCodeUse fromRequest: aValue ] ]
+						collect: [ :aValue | ComAtprotoServerDefsInviteCodeUse fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ])
 ]
 

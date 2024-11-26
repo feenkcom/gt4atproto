@@ -33,8 +33,9 @@ ToolsOzoneModerationDefsBlobView class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsBlobView class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsBlobView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpMimeType: (aRequest at: 'mimeType' ifAbsent: [ nil ]);
@@ -49,11 +50,12 @@ ToolsOzoneModerationDefsBlobView class >> fromRequest: aRequest [
 							-> ToolsOzoneModerationDefsVideoDetails} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpModeration: (aRequest
 				at: 'moderation'
-				ifPresent: [ :aValue | ToolsOzoneModerationDefsModeration fromRequest: aValue ]
+				ifPresent: [ :aValue | ToolsOzoneModerationDefsModeration fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

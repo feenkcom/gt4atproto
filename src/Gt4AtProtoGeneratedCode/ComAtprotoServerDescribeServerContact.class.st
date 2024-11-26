@@ -28,8 +28,9 @@ ComAtprotoServerDescribeServerContact class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoServerDescribeServerContact class >> fromRequest: aRequest [
+ComAtprotoServerDescribeServerContact class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ])
 ]

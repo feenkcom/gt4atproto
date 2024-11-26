@@ -1,5 +1,5 @@
 Class {
-	#name : #AppBskyGraphStarterpackFeedItem,
+	#name : #AppBskyUnspeccedDefsSkeletonSearchStarterPack,
 	#superclass : #GtApModelEntity,
 	#instVars : [
 		'atpUri'
@@ -8,27 +8,27 @@ Class {
 }
 
 { #category : #accessing }
-AppBskyGraphStarterpackFeedItem class >> atpDescription [
+AppBskyUnspeccedDefsSkeletonSearchStarterPack class >> atpDescription [
  ^  ''
 ]
 
 { #category : #accessing }
-AppBskyGraphStarterpackFeedItem class >> atpFile [
- ^ 'app/bsky/graph/starterpack.json'
+AppBskyUnspeccedDefsSkeletonSearchStarterPack class >> atpFile [
+ ^ 'app/bsky/unspecced/defs.json'
 ]
 
 { #category : #accessing }
-AppBskyGraphStarterpackFeedItem class >> atpRecordName [
- ^ 'app.bsky.graph.starterpack#feedItem'
+AppBskyUnspeccedDefsSkeletonSearchStarterPack class >> atpRecordName [
+ ^ 'app.bsky.unspecced.defs#skeletonSearchStarterPack'
 ]
 
 { #category : #accessing }
-AppBskyGraphStarterpackFeedItem class >> atpSchema [
+AppBskyUnspeccedDefsSkeletonSearchStarterPack class >> atpSchema [
  ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
 ]
 
 { #category : #serialization }
-AppBskyGraphStarterpackFeedItem class >> fromRequest: aRequest withClient: aClient [
+AppBskyUnspeccedDefsSkeletonSearchStarterPack class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
 		rawData: aRequest;
@@ -36,18 +36,18 @@ AppBskyGraphStarterpackFeedItem class >> fromRequest: aRequest withClient: aClie
 ]
 
 { #category : #accessing }
-AppBskyGraphStarterpackFeedItem >> atpUri [
+AppBskyUnspeccedDefsSkeletonSearchStarterPack >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
 { #category : #accessing }
-AppBskyGraphStarterpackFeedItem >> atpUri: anObject [
+AppBskyUnspeccedDefsSkeletonSearchStarterPack >> atpUri: anObject [
 	atpUri := anObject
 ]
 
 { #category : #magritte }
-AppBskyGraphStarterpackFeedItem >> uriDescription [
+AppBskyUnspeccedDefsSkeletonSearchStarterPack >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		label: 'Uri';

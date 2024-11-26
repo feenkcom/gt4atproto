@@ -25,6 +25,8 @@ AppBskyFeedPostgateDisableRule class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyFeedPostgateDisableRule class >> fromRequest: aRequest [
-	^ self new rawData: aRequest
+AppBskyFeedPostgateDisableRule class >> fromRequest: aRequest withClient: aClient [
+	^ self new
+		client: aClient;
+		rawData: aRequest
 ]

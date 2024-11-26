@@ -38,36 +38,43 @@ AppBskyGraphDefsStarterPackView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyGraphDefsStarterPackView class >> fromRequest: aRequest [
+AppBskyGraphDefsStarterPackView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpCreator: (aRequest
 				at: 'creator'
-				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyActorDefsProfileViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpList: (aRequest
 				at: 'list'
-				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyGraphDefsListViewBasic fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpListItemsSample: (aRequest
 				at: 'listItemsSample'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyGraphDefsListItemView fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyGraphDefsListItemView fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpFeeds: (aRequest
 				at: 'feeds'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | AppBskyFeedDefsGeneratorView fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | AppBskyFeedDefsGeneratorView fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpJoinedWeekCount: (aRequest at: 'joinedWeekCount' ifAbsent: [ nil ]);
 		atpJoinedAllTimeCount: (aRequest at: 'joinedAllTimeCount' ifAbsent: [ nil ]);
 		atpLabels: (aRequest
 				at: 'labels'
-				ifPresent: [ :anArray | anArray collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue ] ]
+				ifPresent: [ :anArray | 
+					anArray
+						collect: [ :aValue | ComAtprotoLabelDefsLabel fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]

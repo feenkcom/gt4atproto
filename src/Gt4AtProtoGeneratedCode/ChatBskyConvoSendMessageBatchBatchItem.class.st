@@ -29,13 +29,14 @@ ChatBskyConvoSendMessageBatchBatchItem class >> atpSchema [
 ]
 
 { #category : #serialization }
-ChatBskyConvoSendMessageBatchBatchItem class >> fromRequest: aRequest [
+ChatBskyConvoSendMessageBatchBatchItem class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpConvoId: (aRequest at: 'convoId' ifAbsent: [ nil ]);
 		atpMessage: (aRequest
 				at: 'message'
-				ifPresent: [ :aValue | ChatBskyConvoDefsMessageInput fromRequest: aValue ]
+				ifPresent: [ :aValue | ChatBskyConvoDefsMessageInput fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

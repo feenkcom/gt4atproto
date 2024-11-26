@@ -31,12 +31,13 @@ AppBskyEmbedRecordWithMediaView class >> atpSchema [
 ]
 
 { #category : #serialization }
-AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
+AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpRecord: (aRequest
 				at: 'record'
-				ifPresent: [ :aValue | AppBskyEmbedRecordView fromRequest: aValue ]
+				ifPresent: [ :aValue | AppBskyEmbedRecordView fromRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpMedia: (aRequest
 				at: 'media'
@@ -46,7 +47,8 @@ AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest [
 						'app.bsky.embed.external#view' -> AppBskyEmbedExternalView} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

@@ -33,8 +33,9 @@ ToolsOzoneModerationDefsModEventViewDetail class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpId: (aRequest at: 'id' ifAbsent: [ nil ]);
 		atpEvent: (aRequest
@@ -78,7 +79,8 @@ ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest [
 							-> ToolsOzoneModerationDefsRecordEvent} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSubject: (aRequest
 				at: 'subject'
@@ -92,13 +94,14 @@ ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest [
 							-> ToolsOzoneModerationDefsRecordViewNotFound} asDictionary
 						at: (aValue at: '$type')
 						ifAbsent: [ GtApUnknownRecord new key: (aValue at: '$type') ])
-						fromRequest: aValue ]
+						fromRequest: aValue
+						withClient: aClient ]
 				ifAbsent: [ nil ]);
 		atpSubjectBlobs: (aRequest
 				at: 'subjectBlobs'
 				ifPresent: [ :anArray | 
 					anArray
-						collect: [ :aValue | ToolsOzoneModerationDefsBlobView fromRequest: aValue ] ]
+						collect: [ :aValue | ToolsOzoneModerationDefsBlobView fromRequest: aValue withClient: aClient ] ]
 				ifAbsent: [ nil ]);
 		atpCreatedBy: (aRequest at: 'createdBy' ifAbsent: [ nil ]);
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])

@@ -33,8 +33,9 @@ ToolsOzoneModerationDefsAccountHosting class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsAccountHosting class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsAccountHosting class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpStatus: (aRequest at: 'status' ifAbsent: [ nil ]);
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ]);

@@ -30,14 +30,15 @@ ComAtprotoRepoListRecordsRecord class >> atpSchema [
 ]
 
 { #category : #serialization }
-ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest [
+ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ]);
 		atpCid: (aRequest at: 'cid' ifAbsent: [ nil ]);
 		atpValue: (aRequest
 				at: 'value'
-				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue ]
+				ifPresent: [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]
 				ifAbsent: [ nil ])
 ]
 

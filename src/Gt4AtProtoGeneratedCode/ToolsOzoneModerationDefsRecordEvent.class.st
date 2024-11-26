@@ -31,8 +31,9 @@ ToolsOzoneModerationDefsRecordEvent class >> atpSchema [
 ]
 
 { #category : #serialization }
-ToolsOzoneModerationDefsRecordEvent class >> fromRequest: aRequest [
+ToolsOzoneModerationDefsRecordEvent class >> fromRequest: aRequest withClient: aClient [
 	^ self new
+		client: aClient;
 		rawData: aRequest;
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ]);
 		atpOp: (aRequest at: 'op' ifAbsent: [ nil ]);
