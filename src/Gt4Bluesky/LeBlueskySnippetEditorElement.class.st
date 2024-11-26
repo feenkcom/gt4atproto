@@ -1,5 +1,5 @@
 Class {
-	#name : #LeBlueskySnippetElement,
+	#name : #LeBlueskySnippetEditorElement,
 	#superclass : #LeTextualSnippetElement,
 	#instVars : [
 		'contentElement',
@@ -9,23 +9,20 @@ Class {
 		'identityElement',
 		'publishButton',
 		'replyButton',
-		'deleteButton',
-		'headerElement',
-		'authorNameLabel',
-		'authorHandleLabel',
-		'dateLabel',
-		'profilePicture',
 		'addFileButton',
 		'parentInfoElement',
 		'inspectButton',
 		'writingIndicator',
-		'embedContainer'
+		'embedContainer',
+		'profilePicture',
+		'authorNameLabel',
+		'authorHandleLabel'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
 
 { #category : #accessing }
-LeBlueskySnippetElement >> addCard: aCard [
+LeBlueskySnippetEditorElement >> addCard: aCard [
 	self
 		embed: (GtBlueskyCardEmbedding new
 				card: aCard;
@@ -34,7 +31,7 @@ LeBlueskySnippetElement >> addCard: aCard [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> addEmbeddedPage: anEvent [
+LeBlueskySnippetEditorElement >> addEmbeddedPage: anEvent [
 	self
 		embed: (GtBlueskyPageEmbedding new
 				page: anEvent rawObject;
@@ -42,7 +39,7 @@ LeBlueskySnippetElement >> addEmbeddedPage: anEvent [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> addEmbeddedPost: aPost [
+LeBlueskySnippetEditorElement >> addEmbeddedPost: aPost [
 	self
 		embed: (GtBlueskyPostEmbedding new
 				post: aPost;
@@ -51,7 +48,7 @@ LeBlueskySnippetElement >> addEmbeddedPost: aPost [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> asBlueskyRecord [
+LeBlueskySnippetEditorElement >> asBlueskyRecord [
 	| record |
 	record := {'$type' -> AppBskyFeedPostMain atpRecordName.
 			'createdAt' -> DateAndTime now printString.
@@ -79,14 +76,7 @@ LeBlueskySnippetElement >> asBlueskyRecord [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> buildGrayLabel [
-	^ BrLabel new
-		aptitude: (BrGlamorousLabelAptitude new
-			foreground:  Color lightGray)
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> cardToEmbed [
+LeBlueskySnippetEditorElement >> cardToEmbed [
 	| externalDictionary tempfile thumbUrl fileReference blob |
 	externalDictionary := {'description' -> self snippetViewModel card description.
 			'title' -> self snippetViewModel card title.
@@ -108,13 +98,13 @@ LeBlueskySnippetElement >> cardToEmbed [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> contentElement [
+LeBlueskySnippetEditorElement >> contentElement [
 	<return: #BrFrame>
 	^ contentElement
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> createAddFileButton [
+LeBlueskySnippetEditorElement >> createAddFileButton [
 	| fileSelector |
 	^ addFileButton := BrToggleGroup new
 			aptitude: BrGlamorousToggleGroupAptitude new;
@@ -173,24 +163,24 @@ LeBlueskySnippetElement >> createAddFileButton [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> createEmbedContainer [
+LeBlueskySnippetEditorElement >> createEmbedContainer [
 	^ embedContainer := BrHorizontalPane new fitContent
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> editor [
+LeBlueskySnippetEditorElement >> editor [
 	"Required by ${method:LeTextualSnippetElement>>#registerFocusEventHandlers}$"
 	^ self inputElement
 ]
 
 { #category : #'as yet unclassified' }
-LeBlueskySnippetElement >> embed: anEmbedding [
+LeBlueskySnippetEditorElement >> embed: anEmbedding [
 	self snippetViewModel embed: anEmbedding.
 	self updateEmbeds
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> filesToEmbed [
+LeBlueskySnippetEditorElement >> filesToEmbed [
 	(self snippet files allSatisfy: [ :aFile | GtFileUtility isImageFile: aFile ])
 		ifTrue: [ ^ {'$type' -> 'app.bsky.embed.images'.
 				'images'
@@ -204,7 +194,7 @@ LeBlueskySnippetElement >> filesToEmbed [
 ]
 
 { #category : #views }
-LeBlueskySnippetElement >> gtRecordFor: aView [
+LeBlueskySnippetEditorElement >> gtRecordFor: aView [
 	<gtView>
 	^ aView forward
 		title: 'AT Record';
@@ -214,7 +204,7 @@ LeBlueskySnippetElement >> gtRecordFor: aView [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> initialize [
+LeBlueskySnippetEditorElement >> initialize [
 	super initialize.
 
 	self initializeContentElement.
@@ -231,7 +221,7 @@ LeBlueskySnippetElement >> initialize [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> initializeContentElement [
+LeBlueskySnippetEditorElement >> initializeContentElement [
 	| contentPane contentWrapper |
 	contentElement := BrVerticalPane new vFitContentLimited hMatchParent.
 
@@ -273,7 +263,7 @@ LeBlueskySnippetElement >> initializeContentElement [
 				combination: (self keyboardShortcut: #DeleteNext)).
 
 	inputElement editor
-		inputFilter: (GtBlueskySnippetPageFilter new snippetElement: self).
+		inputFilter: (GtBlueskySnippetEditorPageFilter new snippetElement: self).
 
 	inputElement editor
 		addEventHandler: (LeEditorReachedBorderEventHandler new snippetElement: self).
@@ -294,24 +284,23 @@ LeBlueskySnippetElement >> initializeContentElement [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> initializeHeader [
+LeBlueskySnippetEditorElement >> initializeHeader [
+	| headerElement |
 	headerElement := BrHorizontalPane new
 			hMatchParent;
 			vFitContent;
 			padding: (BlInsets all: 3).
 
 	headerElement
-		addChild: (authorNameLabel := BrLabel new
-					aptitude: BrGlamorousLabelAptitude new;
-					visibility: BlVisibility gone);
-		addChild: (authorHandleLabel := self buildGrayLabel visibility: BlVisibility gone);
-		addChild: (dateLabel := self buildGrayLabel visibility: BlVisibility gone).
+		addChild: (authorNameLabel := BrLabel new aptitude: BrGlamorousLabelAptitude new);
+		addChild: (authorHandleLabel := BrLabel new
+					aptitude: (BrGlamorousLabelAptitude new foreground: Color lightGray)).
 
 	^ headerElement
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> initializeParentDropdown [
+LeBlueskySnippetEditorElement >> initializeParentDropdown [
 	^ parentInfoElement := BrButton new
 			icon: (BrGlamorousVectorIcons spawn asElement
 					background: BrGlamorousColors disabledButtonTextColor);
@@ -339,7 +328,7 @@ LeBlueskySnippetElement >> initializeParentDropdown [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> initializeToolbarElement [
+LeBlueskySnippetEditorElement >> initializeToolbarElement [
 	| toolbarContainer |
 	toolbarContainer := BrHorizontalPane new vFitContent hMatchParent.
 
@@ -379,16 +368,6 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 			action: [ :aButton | self onReplyAction: aButton ].
 
 	toolbarElement addItem: replyButton.
-
-	deleteButton := BrButton new
-			beTinySize;
-			aptitude: BrGlamorousButtonWithIconAptitude;
-			icon: BrGlamorousVectorIcons cancel;
-			label: 'Delete';
-			visibility: BlVisibility gone;
-			action: [ :aButton | self onDeleteAction: aButton ].
-
-	toolbarElement addItem: deleteButton.
 
 	inspectButton := BrButton new
 			beTinySize;
@@ -432,17 +411,17 @@ LeBlueskySnippetElement >> initializeToolbarElement [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> inputElement [
+LeBlueskySnippetEditorElement >> inputElement [
 	^ inputElement
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> inputElement: anObject [
+LeBlueskySnippetEditorElement >> inputElement: anObject [
 	inputElement := anObject
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> linkToFeature: aString [
+LeBlueskySnippetEditorElement >> linkToFeature: aString [
 	^ (aString beginsWith: '@')
 		ifTrue: [ {'$type' -> 'app.bsky.richtext.facet#mention'.
 				'did' -> (self lookupUserDid: aString allButFirst)} asDictionary ]
@@ -454,7 +433,7 @@ LeBlueskySnippetElement >> linkToFeature: aString [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> links [
+LeBlueskySnippetEditorElement >> links [
 	| text result |
 	text := inputElement text.
 	result := OrderedCollection new.
@@ -468,7 +447,7 @@ LeBlueskySnippetElement >> links [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> linksToFacets [
+LeBlueskySnippetEditorElement >> linksToFacets [
 	^ (self links
 		collect: [ :aLinkDefinition | 
 			{'index'
@@ -480,27 +459,32 @@ LeBlueskySnippetElement >> linksToFacets [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> lookupUserDid: aHandle [
+LeBlueskySnippetEditorElement >> lookupUserDid: aHandle [
 	^ (self snippet client comAtprotoIdentityResolveHandleHandle: aHandle)
 		at: 'did'
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> maximumPostSize [
+LeBlueskySnippetEditorElement >> maximumPostSize [
 	^ 300
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onClientChanged [
+LeBlueskySnippetEditorElement >> onClientChanged [
 	(self snippet client isNotNil and: [ self snippet client isLoggedIn ])
 		ifTrue: [ identityElement label: self snippet client handle.
+			authorHandleLabel text: '@' , self snippet client handle.
+			authorNameLabel text: self snippetViewModel actor atpDisplayName.
+			profilePicture
+				user: self snippetViewModel actor;
+				visibility: BlVisibility visible.
 			publishButton enable ].
-			
+
 	self onPostChanged
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onCursorChanged [
+LeBlueskySnippetEditorElement >> onCursorChanged [
 	inputElement
 		inUIProcessDo: [ inputElement navigator
 				removeAll;
@@ -509,68 +493,27 @@ LeBlueskySnippetElement >> onCursorChanged [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onDeleteAction: aButton [
-	self snippet client
-		comAtprotoRepoDeleteRecordRepo: self snippet actor atpDid
-		collection: AppBskyFeedPostMain atpRecordName
-		rkey: (#/ split: (self snippet post at: 'uri')) last
-		swapRecord: nil
-		swapCommit: nil.
-	self snippet post: nil.
-	self snippetViewModel embed: nil
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> onFilesChanged [
+LeBlueskySnippetEditorElement >> onFilesChanged [
 	self inUIProcessDo: [ self updateEmbeds ]
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onInspectAction: aButton [
-	aButton phlow spawnObject: self snippet atpPost
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> onPostChanged [
-	(self snippet hasPost not or: [ self snippet post includesKey: 'uri' ])
-		ifTrue: [ errorLabelElement text: '' ]
-		ifFalse: [ errorLabelElement text: 'Malformed post in snippet definition'.
-
-			^ self ].
-
+LeBlueskySnippetEditorElement >> onPostChanged [
 	self updateHeader.
-	self updateEmbeds.
-
-	self snippet hasPost
-		ifTrue: [ publishButton visibility: BlVisibility gone.
-			addFileButton visibility: BlVisibility gone.
-			writingIndicator visibility: BlVisibility gone.
-			identityElement visibility: BlVisibility gone.
-			replyButton visibility: BlVisibility visible.
-			deleteButton visibility: BlVisibility visible.
-			inspectButton visibility: BlVisibility visible.
-			inputElement beReadOnlyWithSelection ]
-		ifFalse: [ publishButton visibility: BlVisibility visible.
-			addFileButton visibility: BlVisibility visible.
-			writingIndicator visibility: BlVisibility visible.
-			identityElement visibility: BlVisibility visible.
-			replyButton visibility: BlVisibility gone.
-			deleteButton visibility: BlVisibility gone.
-			inspectButton visibility: BlVisibility gone.
-			inputElement beEditable ]
+	self updateEmbeds
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onReplyAction: aButton [
+LeBlueskySnippetEditorElement >> onReplyAction: aButton [
 	self snippet
-		addSnippetAfterSelf: (LeBlueskySnippet empty
+		addSnippetAfterSelf: (LeBlueskyEditorSnippet empty
 				client: self snippet client;
 				parentPost: self snippet post).
 	self snippetViewModel focusNextSnippet
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onSnippetViewModelChanged [
+LeBlueskySnippetEditorElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
 	self onClientChanged.
 	inputElement text: self snippet text.
@@ -578,7 +521,7 @@ LeBlueskySnippetElement >> onSnippetViewModelChanged [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onSnippetViewModelFocused: aBoolean [
+LeBlueskySnippetEditorElement >> onSnippetViewModelFocused: aBoolean [
 	"Override me to either request or lose focus depending on the boolean"
 
 	aBoolean
@@ -587,7 +530,7 @@ LeBlueskySnippetElement >> onSnippetViewModelFocused: aBoolean [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> onTextChanged [
+LeBlueskySnippetEditorElement >> onTextChanged [
 	inputElement
 		inUIProcessDo: [ inputElement text: self snippet text.
 			writingIndicator
@@ -595,40 +538,23 @@ LeBlueskySnippetElement >> onTextChanged [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> pageToEmbed [
-	^ {'$type' -> 'com.gtoolkit.embed.lepiterPage'.
-		'record'
-			-> (LeJsonV4 uniqueInstance serialize: self snippetViewModel embeddedPage)}
-		asDictionary
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> postToEmbed [
-	^ {'$type' -> 'app.bsky.embed.record'.
-		'record'
-			-> {'uri' -> self snippetViewModel embeddedPost atpPost atpUri.
-					'cid' -> self snippetViewModel embeddedPost atpPost atpCid} asDictionary}
-		asDictionary
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> publishPost [
-	| record |
+LeBlueskySnippetEditorElement >> publishPost [
+	| record post |
 	self uploadFiles.
 	record := self asBlueskyRecord.
-	self snippet
-		post: (self snippet client
-				comAtprotoRepoCreateRecordRepo: self snippet actor atpDid
+	post := (self snippet client
+				comAtprotoRepoCreateRecordRepo: self snippetViewModel actor atpDid
 				collection: AppBskyFeedPostMain atpRecordName
 				rkey: nil
 				validate: nil
 				record: record
 				swapCommit: nil).
-	self transformLaterSnippetsFrom: self snippet
+	self transformLaterSnippetsFrom: self snippet withPost: post.
+	self transformSnippetUsingPost: post
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> snippetContent [
+LeBlueskySnippetEditorElement >> snippetContent [
 	"Return an element that represents a content of the snippet.
 	The embedder is responsible for placing #snippetContent in the right place within snippet element depending on the
 	View Model properties and derived look"
@@ -638,7 +564,7 @@ LeBlueskySnippetElement >> snippetContent [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> snippetToolbar [
+LeBlueskySnippetEditorElement >> snippetToolbar [
 	"Return an element that represents a toolbar of the snippet. A toolbar usually appears below the snippet content.
 	The embedder is responsible for placing #snippetToolbar in the right place within snippet element depending on the
 	View Model properties and derived look.
@@ -649,7 +575,7 @@ LeBlueskySnippetElement >> snippetToolbar [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> subscribeToSnippetViewModel [
+LeBlueskySnippetEditorElement >> subscribeToSnippetViewModel [
 	super subscribeToSnippetViewModel.
 
 	self snippetViewModel
@@ -679,30 +605,32 @@ LeBlueskySnippetElement >> subscribeToSnippetViewModel [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> textToLink: aString [
-	^ (aString beginsWith: '@')
-		ifTrue: [ 'https://bsky.app/profile/' , aString allButFirst ]
-		ifFalse: [ aString ]
-]
-
-{ #category : #accessing }
-LeBlueskySnippetElement >> toolbarElement [
+LeBlueskySnippetEditorElement >> toolbarElement [
 	<return: #BrToolbar>
 	^ toolbarElement
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> transformLaterSnippetsFrom: aSnippet [
+LeBlueskySnippetEditorElement >> transformLaterSnippetsFrom: aSnippet withPost: aPost [
 	aSnippet
 		nextSnippetDo: [ :nextSnippet | 
-			(nextSnippet isKindOf: LeBlueskySnippet)
-				ifTrue: [ nextSnippet parentPost: self snippet post ].
-			self transformLaterSnippetsFrom: nextSnippet ]
+			(nextSnippet isKindOf: LeBlueskyEditorSnippet)
+				ifTrue: [ nextSnippet parentPost: aPost ].
+			self transformLaterSnippetsFrom: nextSnippet withPost: aPost ]
 		ifNone: [  ]
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> updateEmbeds [
+LeBlueskySnippetEditorElement >> transformSnippetUsingPost: aPost [
+	self snippet
+		addSnippetAfterSelf: (LeBlueskyPostSnippet new
+				url: 'https://bsky.app/profile/' , self snippet client handle , '/post/'
+						, ('/' split: (aPost at: 'uri')) last).
+	self snippet parent removeSnippet: self snippet
+]
+
+{ #category : #accessing }
+LeBlueskySnippetEditorElement >> updateEmbeds [
 	embedContainer removeChildren.
 
 	self snippetViewModel embed
@@ -710,27 +638,7 @@ LeBlueskySnippetElement >> updateEmbeds [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> updateHeader [
-	| post |
-	self snippet hasPost
-		ifTrue: [ post := self snippet post.
-			(post at: 'avatar')
-				ifNotNil: [ profilePicture avatar: (post at: 'avatar').
-					profilePicture visibility: BlVisibility visible ].
-
-			(post at: 'displayName')
-				ifNotNil: [ authorNameLabel text: (post at: 'displayName').
-					authorNameLabel visibility: BlVisibility visible ].
-
-			authorHandleLabel text: '@' , (post at: 'handle').
-			authorHandleLabel visibility: BlVisibility visible.
-			dateLabel
-				text: ' at ' , (DateAndTime fromString: (post at: 'timeStamp')) printToMinute.
-			dateLabel visibility: BlVisibility visible ]
-		ifFalse: [ authorNameLabel visibility: BlVisibility gone.
-			authorHandleLabel visibility: BlVisibility gone.
-			dateLabel visibility: BlVisibility gone.
-			profilePicture visibility: BlVisibility gone ].
+LeBlueskySnippetEditorElement >> updateHeader [
 
 	self snippet hasParentPost
 		ifTrue: [ parentInfoElement icon background: Color black ]
@@ -738,6 +646,6 @@ LeBlueskySnippetElement >> updateHeader [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetElement >> uploadFiles [
+LeBlueskySnippetEditorElement >> uploadFiles [
 	self snippetViewModel hasEmbed ifTrue: [ self snippetViewModel embed upload ]
 ]

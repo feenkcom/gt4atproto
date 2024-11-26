@@ -54,7 +54,7 @@ LeBlueskyPostSnippet >> client: anObject [
 
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippet >> contentAsString [
-	^ self url
+	^ self url ifNil: [ '' ]
 ]
 
 { #category : #'as yet unclassified' }

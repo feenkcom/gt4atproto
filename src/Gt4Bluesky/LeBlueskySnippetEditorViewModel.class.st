@@ -1,5 +1,5 @@
 Class {
-	#name : #LeBlueskySnippetViewModel,
+	#name : #LeBlueskySnippetEditorViewModel,
 	#superclass : #LeTextualSnippetViewModel,
 	#instVars : [
 		'cursor',
@@ -8,28 +8,34 @@ Class {
 	#category : #'Gt4Bluesky-Snippet'
 }
 
+{ #category : #'as yet unclassified' }
+LeBlueskySnippetEditorViewModel >> actor [
+	^ self snippetModel client
+		appBskyActorGetProfileActor: self snippetModel client handle
+]
+
 { #category : #accessing }
-LeBlueskySnippetViewModel >> cursor [
+LeBlueskySnippetEditorViewModel >> cursor [
 	^ cursor
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> cursor: anObject [
+LeBlueskySnippetEditorViewModel >> cursor: anObject [
 	cursor := anObject
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> embed [
+LeBlueskySnippetEditorViewModel >> embed [
 	^ embed
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> embed: anObject [
+LeBlueskySnippetEditorViewModel >> embed: anObject [
 	embed := anObject
 ]
 
 { #category : #'as yet unclassified' }
-LeBlueskySnippetViewModel >> gtEmbedFor: aView [
+LeBlueskySnippetEditorViewModel >> gtEmbedFor: aView [
 	<gtView>
 	self embed ifNil: [ ^ aView empty ].
 
@@ -44,65 +50,49 @@ LeBlueskySnippetViewModel >> gtEmbedFor: aView [
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> hasEmbed [
+LeBlueskySnippetEditorViewModel >> hasEmbed [
 	^ self embed notNil
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> moveCursorAt: aCursorPosition [
+LeBlueskySnippetEditorViewModel >> moveCursorAt: aCursorPosition [
 	self cursor: (BrTextEditorCursor at: aCursorPosition).
 	self announce: LeBlueskySnippetCursorChanged new
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> onSnippetClientChanged: anObject [
-	self refreshEmbedsFromModel.
+LeBlueskySnippetEditorViewModel >> onSnippetClientChanged: anObject [
 	self announce: anObject
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> onSnippetFilesChanged: anObject [
+LeBlueskySnippetEditorViewModel >> onSnippetFilesChanged: anObject [
 	self announce: anObject
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> onSnippetModelChanged [
-	super onSnippetModelChanged.
-	
-	self refreshEmbedsFromModel
-]
-
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> onSnippetPostChanged: anObject [
-	self refreshEmbedsFromModel.
+LeBlueskySnippetEditorViewModel >> onSnippetPostChanged: anObject [
 	self announce: anObject
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> onSnippetTextChanged: anObject [
+LeBlueskySnippetEditorViewModel >> onSnippetTextChanged: anObject [
 	self announce: anObject
 ]
 
-{ #category : #accessing }
-LeBlueskySnippetViewModel >> refreshEmbedsFromModel [
-	(self snippetModel hasPost and: [ self snippetModel hasClient ])
-		ifTrue: [ self snippetModel atpPost atpPost atpRecord atpEmbed
-				ifNotNil: [ :anEmbed | 
-					self
-						embed: ((GtBlueskyEmbedding findEmbeddingFor: anEmbed)
-								fromRecord: self snippetModel atpPost
-								inViewModel: self) ].
-
-			self announce: LeBlueskySnippetPostChanged new ]
+{ #category : #'as yet unclassified' }
+LeBlueskySnippetEditorViewModel >> post [
+	^ self snippetModel client
+		appBskyActorGetProfileActor: self snippetModel client handle
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> snippetElementClass [
-	^ LeBlueskySnippetElement
+LeBlueskySnippetEditorViewModel >> snippetElementClass [
+	^ LeBlueskySnippetEditorElement
 ]
 
 { #category : #accessing }
-LeBlueskySnippetViewModel >> subscribeToSnippetModel [
+LeBlueskySnippetEditorViewModel >> subscribeToSnippetModel [
 	super subscribeToSnippetModel.
 	
 	self snippetModel weak
