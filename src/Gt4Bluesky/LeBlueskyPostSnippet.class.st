@@ -2,10 +2,19 @@ Class {
 	#name : #LeBlueskyPostSnippet,
 	#superclass : #LeTextualSnippet,
 	#instVars : [
-		'url'
+		'url',
+		'client'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
+
+{ #category : #'as yet unclassified' }
+LeBlueskyPostSnippet class >> contextMenuItemSpefication [
+	<leSnippetSpecification>
+	^ LeContextMenuItemSpecification new
+		snippetClass: self;
+		title: 'Bluesky post'
+]
 
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippet class >> empty [
@@ -31,6 +40,41 @@ LeBlueskyPostSnippet class >> leJsonV4Name [
 LeBlueskyPostSnippet >> asSnippetViewModel [
 	<return: #LeSnippetViewModel>
 	^ LeBlueskyPostSnippetViewModel new snippetModel: self
+]
+
+{ #category : #accessing }
+LeBlueskyPostSnippet >> client [
+	^ client
+]
+
+{ #category : #accessing }
+LeBlueskyPostSnippet >> client: anObject [
+	client := anObject
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyPostSnippet >> contentAsString [
+	^ self url
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyPostSnippet >> initialize [
+	super initialize.
+	
+	url := ''.
+	
+	self initializeClient
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyPostSnippet >> initializeClient [
+	client := (GtIdentityRegistry uniqueInstance firstOfType: GtBlueskyIdentity)
+			ifNotNil: #createClient
+]
+
+{ #category : #accessing }
+LeBlueskyPostSnippet >> text [
+	^ self url
 ]
 
 { #category : #accessing }

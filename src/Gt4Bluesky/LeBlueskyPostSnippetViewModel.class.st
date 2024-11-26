@@ -7,6 +7,7 @@ Class {
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippetViewModel >> post [
 	| path handle recordId did |
+	self url isEmptyOrNil ifTrue: [ ^ nil ].
 	path := '/' split: (self url removePrefix: 'https://bsky.app/').
 	handle := path second.
 	recordId := path last.
@@ -27,4 +28,9 @@ LeBlueskyPostSnippetViewModel >> snippetElementClass [
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippetViewModel >> url [
 	^ self snippetModel url
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyPostSnippetViewModel >> url: aUrl [ 
+	self snippetModel url: aUrl
 ]

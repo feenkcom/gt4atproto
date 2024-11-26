@@ -20,8 +20,8 @@ Class {
 { #category : #'building widgets' }
 GtApFeedPostSummaryElement >> buildGrayLabel [
 	^ BrLabel new
-		aptitude: (BrGlamorousLabelAptitude new
-			foreground:  Color lightGray)
+		aptitude: (BrGlamorousLabelAptitude new foreground: Color lightGray);
+		text: ''
 ]
 
 { #category : #initialization }
@@ -31,6 +31,7 @@ GtApFeedPostSummaryElement >> buildPostContentElement [
 		aptitude: BrGlamorousRegularEditorAptitude;
 		hMatchParent;
 		vFitContent;
+		text: '';
 		margin: (BlInsets top: 0 left: 0 bottom: 10 right: 0) )
 ]
 
@@ -66,19 +67,19 @@ GtApFeedPostSummaryElement >> buildProfilePictureElement [
 
 { #category : #'building widgets' }
 GtApFeedPostSummaryElement >> buildUserHeaderElement [
-	| headerElement|
-	
+	| headerElement |
 	headerElement := BrHorizontalPane new
-		hMatchParent;
-		vFitContent;
-		margin: (BlInsets left: 3).
-	
-	headerElement 
-		addChild: (authorNameLabel := (BrLabel new 
-			aptitude: BrGlamorousLabelAptitude new));
+			hMatchParent;
+			vFitContent;
+			margin: (BlInsets left: 3).
+
+	headerElement
+		addChild: (authorNameLabel := BrLabel new
+					aptitude: BrGlamorousLabelAptitude new;
+					text: '');
 		addChild: (authorHandleLabel := self buildGrayLabel);
 		addChild: (dateLabel := self buildGrayLabel).
-	
+
 	^ headerElement
 ]
 

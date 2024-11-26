@@ -2,10 +2,10 @@ Class {
 	#name : #LeBlueskyPostSnippetElement,
 	#superclass : #LeTextualSnippetElement,
 	#instVars : [
-		'toolbarElement',
 		'urlEditorElement',
 		'postElement',
-		'contentElement'
+		'contentElement',
+		'toolbarContainer'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -15,6 +15,7 @@ LeBlueskyPostSnippetElement >> initialize [
 	super initialize.
 
 	self initializeContentElement.
+	self initializeToolbarElement.
 
 	self
 		addAptitude: (BrLazyStyleCommonAptitude new
@@ -32,18 +33,16 @@ LeBlueskyPostSnippetElement >> initializeContentElement [
 	contentElement := BrVerticalPane new vFitContentLimited hMatchParent.
 
 	contentElement addChild: self initializePostElement.
-
-	contentElement addChild: self initializeToolbarElement
 ]
 
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippetElement >> initializePostElement [
-	postElement := GtApFeedPostSummaryElement new
+	^ postElement := GtApFeedPostSummaryElement new
 ]
 
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippetElement >> initializeToolbarElement [
-	| toolbarContainer urlContainer |
+	| urlContainer |
 	toolbarContainer := BrHorizontalPane new vFitContent hMatchParent.
 
 	toolbarElement := BrToolbar new
@@ -100,10 +99,10 @@ LeBlueskyPostSnippetElement >> onSnippetViewModelChanged [
 ]
 
 { #category : #'as yet unclassified' }
-LeBlueskyPostSnippetElement >> onURLModifiedEvent: anEvent [ 
-	self snippetViewModel url: urlEditorElement url.
-	
-	self updateElement
+LeBlueskyPostSnippetElement >> onURLModifiedEvent: anEvent [
+	self snippetViewModel url: urlEditorElement text asString.
+
+	self enqueueTask: (BlTaskAction new action: [ self updateElement ])
 ]
 
 { #category : #'as yet unclassified' }
@@ -118,12 +117,13 @@ LeBlueskyPostSnippetElement >> snippetContent [
 
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippetElement >> snippetToolbar [
-	^ toolbarElement
+	^ toolbarContainer
 ]
 
 { #category : #'as yet unclassified' }
 LeBlueskyPostSnippetElement >> updateElement [
 	urlEditorElement text: self snippetViewModel url.
-	
-	postElement post: self snippetViewModel post
+
+	self snippetViewModel post
+		ifNotNil: [ postElement post: self snippetViewModel post ]
 ]
