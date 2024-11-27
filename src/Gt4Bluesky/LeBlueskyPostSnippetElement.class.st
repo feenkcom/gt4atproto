@@ -333,14 +333,6 @@ LeBlueskyPostSnippetElement >> initializeToolbarElement [
 
 	toolbarElement addItem: writingIndicator.
 
-	replyButton := BrButton new
-			beTinySize;
-			aptitude: BrGlamorousButtonWithIconAptitude;
-			icon: BrGlamorousVectorIcons spawn;
-			label: 'Reply';
-			visibility: BlVisibility gone;
-			action: [ :aButton | self onReplyAction: aButton ].
-
 	toolbarElement addItem: replyButton.
 
 	inspectButton := BrButton new
@@ -473,15 +465,6 @@ LeBlueskyPostSnippetElement >> onPostChanged [
 ]
 
 { #category : #accessing }
-LeBlueskyPostSnippetElement >> onReplyAction: aButton [
-	self snippet
-		addSnippetAfterSelf: (LeBlueskyPostSnippet empty
-				client: self snippet client;
-				parentPost: self snippet post).
-	self snippetViewModel focusNextSnippet
-]
-
-{ #category : #accessing }
 LeBlueskyPostSnippetElement >> onSnippetViewModelChanged [
 	super onSnippetViewModelChanged.
 	self onClientChanged.
@@ -584,7 +567,9 @@ LeBlueskyPostSnippetElement >> transformLaterSnippetsFrom: aSnippet withPost: aP
 	aSnippet
 		nextSnippetDo: [ :nextSnippet | 
 			(nextSnippet isKindOf: LeBlueskyPostSnippet)
-				ifTrue: [ nextSnippet parentPost: aPost ].
+				ifTrue: [ nextSnippet
+						parentPost: {'uri' -> aPost atpUri.
+								'cid' -> aPost atpCid} ].
 			self transformLaterSnippetsFrom: nextSnippet withPost: aPost ]
 		ifNone: [  ]
 ]
