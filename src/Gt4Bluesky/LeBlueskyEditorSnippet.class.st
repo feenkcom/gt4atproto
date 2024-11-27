@@ -16,7 +16,7 @@ LeBlueskyEditorSnippet class >> contextMenuItemSpefication [
 	<leSnippetSpecification>
 	^ LeContextMenuItemSpecification new
 		snippetClass: self;
-		title: 'Bluesky editor'
+		title: 'Bluesky post'
 ]
 
 { #category : #accessing }
