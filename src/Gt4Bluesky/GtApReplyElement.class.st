@@ -30,7 +30,7 @@ GtApReplyElement >> snippet: anObject [
 
 	self
 		addChild: (GtApAddReplyForm new
-				isReadOnly: self snippet hasPost;
+				isReadOnly: false;
 				url: 'https://bsky.app/profile/' , atpParent atpPost atpAuthor atpHandle , '/post/'
 						, ('/' split: atpParent atpPost atpUri) last;
 				onAccept: [ :aUrl | 

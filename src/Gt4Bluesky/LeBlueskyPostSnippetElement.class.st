@@ -565,8 +565,8 @@ LeBlueskyPostSnippetElement >> transformLaterSnippetsFrom: aSnippet withPost: aP
 		nextSnippetDo: [ :nextSnippet | 
 			(nextSnippet isKindOf: LeBlueskyPostSnippet)
 				ifTrue: [ nextSnippet
-						parentPost: {'uri' -> aPost atpUri.
-								'cid' -> aPost atpCid} ].
+						parentPost: {'uri' -> (aPost at: 'uri').
+								'cid' -> (aPost at: 'cid')} asDictionary ].
 			self transformLaterSnippetsFrom: nextSnippet withPost: aPost ]
 		ifNone: [  ]
 ]
