@@ -6,7 +6,7 @@ GtApGeneratedClient >> appBskyActorGetPreferences [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'preferences' -> [ :aValue |  ]} asDictionary
+		from: {'preferences' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self queryOn: 'app.bsky.actor.getPreferences' parameters: {} asDictionary)
 ]
 
@@ -28,7 +28,7 @@ GtApGeneratedClient >> appBskyActorGetProfilesActors: actors [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'profiles' -> [ :aValue |  ]} asDictionary
+		from: {'profiles' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.actor.getProfiles'
 				parameters: {'actors' -> actors} asDictionary)
@@ -77,7 +77,7 @@ GtApGeneratedClient >> appBskyActorSearchActorsTypeaheadTerm: term q: q [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'actors' -> [ :aValue |  ]} asDictionary
+		from: {'actors' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.actor.searchActorsTypeahead'
 				parameters: {'term' -> term.
@@ -90,8 +90,8 @@ GtApGeneratedClient >> appBskyFeedDescribeFeedGenerator [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'did' -> [ :aValue |  ].
-				'feeds' -> [ :aValue |  ].
+		from: {'did' -> [ :aValue | aValue ].
+				'feeds' -> [ :aValue | aValue ].
 				'links'
 					-> [ :aValue | AppBskyFeedDescribeFeedGeneratorLinks fromRequest: aValue withClient: self ]}
 				asDictionary
@@ -158,8 +158,8 @@ GtApGeneratedClient >> appBskyFeedGetFeedGeneratorFeed: feed [
 	^ GtApRequestResolver
 		from: {'view'
 					-> [ :aValue | AppBskyFeedDefsGeneratorView fromRequest: aValue withClient: self ].
-				'isOnline' -> [ :aValue |  ].
-				'isValid' -> [ :aValue |  ]} asDictionary
+				'isOnline' -> [ :aValue | aValue ].
+				'isValid' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.feed.getFeedGenerator'
 				parameters: {'feed' -> feed} asDictionary)
@@ -171,7 +171,7 @@ GtApGeneratedClient >> appBskyFeedGetFeedGeneratorsFeeds: feeds [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'feeds' -> [ :aValue |  ]} asDictionary
+		from: {'feeds' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.feed.getFeedGenerators'
 				parameters: {'feeds' -> feeds} asDictionary)
@@ -198,9 +198,9 @@ GtApGeneratedClient >> appBskyFeedGetLikesUri: uri cid: cid [
 		from: {'likes'
 					-> (GtApRequestStreamResolver new
 							block: [ :aDictionary | AppBskyFeedGetLikesLike fromRequest: aDictionary withClient: self ]).
-				'uri' -> [ :aValue |  ].
-				'cid' -> [ :aValue |  ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.feed.getLikes'
 				parameters: {'uri' -> uri.
@@ -225,7 +225,14 @@ GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth parentHeigh
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'thread' -> [ :aValue |  ].
+		from: {'thread'
+					-> [ :aValue | 
+						({'app.bsky.feed.defs#threadViewPost' -> AppBskyFeedDefsThreadViewPost.
+							'app.bsky.feed.defs#notFoundPost' -> AppBskyFeedDefsNotFoundPost.
+							'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
+							asDictionary at: (aValue at: '$type'))
+							fromRequest: aValue
+							withClient: aClient ].
 				'threadgate'
 					-> [ :aValue | AppBskyFeedDefsThreadgateView fromRequest: aValue withClient: self ]}
 				asDictionary
@@ -242,7 +249,7 @@ GtApGeneratedClient >> appBskyFeedGetPostsUris: uris [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'posts' -> [ :aValue |  ]} asDictionary
+		from: {'posts' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.feed.getPosts'
 				parameters: {'uris' -> uris} asDictionary)
@@ -257,9 +264,9 @@ GtApGeneratedClient >> appBskyFeedGetQuotesUri: uri cid: cid [
 		from: {'posts'
 					-> (GtApRequestStreamResolver new
 							block: [ :aDictionary | AppBskyFeedDefsPostView fromRequest: aDictionary withClient: self ]).
-				'uri' -> [ :aValue |  ].
-				'cid' -> [ :aValue |  ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.feed.getQuotes'
 				parameters: {'uri' -> uri.
@@ -275,9 +282,9 @@ GtApGeneratedClient >> appBskyFeedGetRepostedByUri: uri cid: cid [
 		from: {'repostedBy'
 					-> (GtApRequestStreamResolver new
 							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary withClient: self ]).
-				'uri' -> [ :aValue |  ].
-				'cid' -> [ :aValue |  ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.feed.getRepostedBy'
 				parameters: {'uri' -> uri.
@@ -317,8 +324,8 @@ GtApGeneratedClient >> appBskyFeedSearchPostsQ: q sort: sort since: since until:
 		from: {'posts'
 					-> (GtApRequestStreamResolver new
 							block: [ :aDictionary | AppBskyFeedDefsPostView fromRequest: aDictionary withClient: self ]).
-				'cursor' -> [ :aValue |  ].
-				'hitsTotal' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.feed.searchPosts'
 				parameters: {'q' -> q.
@@ -378,7 +385,7 @@ GtApGeneratedClient >> appBskyGraphGetFollowersActor: actor [
 							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary withClient: self ]).
 				'subject'
 					-> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: self ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.graph.getFollowers'
 				parameters: {'actor' -> actor} asDictionary)
@@ -395,7 +402,7 @@ GtApGeneratedClient >> appBskyGraphGetFollowsActor: actor [
 							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary withClient: self ]).
 				'subject'
 					-> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: self ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.graph.getFollows'
 				parameters: {'actor' -> actor} asDictionary)
@@ -412,7 +419,7 @@ GtApGeneratedClient >> appBskyGraphGetKnownFollowersActor: actor [
 							block: [ :aDictionary | AppBskyActorDefsProfileView fromRequest: aDictionary withClient: self ]).
 				'subject'
 					-> [ :aValue | AppBskyActorDefsProfileView fromRequest: aValue withClient: self ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.graph.getKnownFollowers'
 				parameters: {'actor' -> actor} asDictionary)
@@ -439,7 +446,7 @@ GtApGeneratedClient >> appBskyGraphGetListList: list [
 		from: {'items'
 					-> (GtApRequestStreamResolver new
 							block: [ :aDictionary | AppBskyGraphDefsListItemView fromRequest: aDictionary withClient: self ]).
-				'cursor' -> [ :aValue |  ].
+				'cursor' -> [ :aValue | aValue ].
 				'list'
 					-> [ :aValue | AppBskyGraphDefsListView fromRequest: aValue withClient: self ]}
 				asDictionary
@@ -488,8 +495,8 @@ GtApGeneratedClient >> appBskyGraphGetRelationshipsActor: actor others: others [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'actor' -> [ :aValue |  ].
-				'relationships' -> [ :aValue |  ]} asDictionary
+		from: {'actor' -> [ :aValue | aValue ].
+				'relationships' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.graph.getRelationships'
 				parameters: {'actor' -> actor.
@@ -516,7 +523,7 @@ GtApGeneratedClient >> appBskyGraphGetStarterPacksUris: uris [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'starterPacks' -> [ :aValue |  ]} asDictionary
+		from: {'starterPacks' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.graph.getStarterPacks'
 				parameters: {'uris' -> uris} asDictionary)
@@ -528,8 +535,8 @@ GtApGeneratedClient >> appBskyGraphGetSuggestedFollowsByActorActor: actor [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'suggestions' -> [ :aValue |  ].
-				'isFallback' -> [ :aValue |  ]} asDictionary
+		from: {'suggestions' -> [ :aValue | aValue ].
+				'isFallback' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.graph.getSuggestedFollowsByActor'
 				parameters: {'actor' -> actor} asDictionary)
@@ -625,7 +632,7 @@ GtApGeneratedClient >> appBskyLabelerGetServicesDids: dids detailed: detailed [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'views' -> [ :aValue |  ]} asDictionary
+		from: {'views' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.labeler.getServices'
 				parameters: {'dids' -> dids.
@@ -638,7 +645,7 @@ GtApGeneratedClient >> appBskyNotificationGetUnreadCountPriority: priority seenA
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'count' -> [ :aValue |  ]} asDictionary
+		from: {'count' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.notification.getUnreadCount'
 				parameters: {'priority' -> priority.
@@ -657,9 +664,9 @@ GtApGeneratedClient >> appBskyNotificationListNotificationspriority: priority se
 								AppBskyNotificationListNotificationsNotification
 									fromRequest: aDictionary
 									withClient: self ]).
-				'cursor' -> [ :aValue |  ].
-				'priority' -> [ :aValue |  ].
-				'seenAt' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ].
+				'priority' -> [ :aValue | aValue ].
+				'seenAt' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.notification.listNotifications'
 				parameters: {'priority' -> priority.
@@ -711,7 +718,7 @@ GtApGeneratedClient >> appBskyUnspeccedGetConfig [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'checkEmailConfirmed' -> [ :aValue |  ]} asDictionary
+		from: {'checkEmailConfirmed' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self queryOn: 'app.bsky.unspecced.getConfig' parameters: {} asDictionary)
 ]
 
@@ -739,8 +746,8 @@ GtApGeneratedClient >> appBskyUnspeccedGetSuggestionsSkeletonViewer: viewer rela
 								AppBskyUnspeccedDefsSkeletonSearchActor
 									fromRequest: aDictionary
 									withClient: self ]).
-				'cursor' -> [ :aValue |  ].
-				'relativeToDid' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ].
+				'relativeToDid' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.unspecced.getSuggestionsSkeleton'
 				parameters: {'viewer' -> viewer.
@@ -753,7 +760,7 @@ GtApGeneratedClient >> appBskyUnspeccedGetTaggedSuggestions [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'suggestions' -> [ :aValue |  ]} asDictionary
+		from: {'suggestions' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.unspecced.getTaggedSuggestions'
 				parameters: {} asDictionary)
@@ -771,8 +778,8 @@ GtApGeneratedClient >> appBskyUnspeccedSearchActorsSkeletonQ: q viewer: viewer t
 								AppBskyUnspeccedDefsSkeletonSearchActor
 									fromRequest: aDictionary
 									withClient: self ]).
-				'cursor' -> [ :aValue |  ].
-				'hitsTotal' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.unspecced.searchActorsSkeleton'
 				parameters: {'q' -> q.
@@ -789,8 +796,8 @@ GtApGeneratedClient >> appBskyUnspeccedSearchPostsSkeletonQ: q sort: sort since:
 		from: {'posts'
 					-> (GtApRequestStreamResolver new
 							block: [ :aDictionary | AppBskyUnspeccedDefsSkeletonSearchPost fromRequest: aDictionary withClient: self ]).
-				'cursor' -> [ :aValue |  ].
-				'hitsTotal' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.unspecced.searchPostsSkeleton'
 				parameters: {'q' -> q.
@@ -818,8 +825,8 @@ GtApGeneratedClient >> appBskyUnspeccedSearchStarterPacksSkeletonQ: q viewer: vi
 								AppBskyUnspeccedDefsSkeletonSearchStarterPack
 									fromRequest: aDictionary
 									withClient: self ]).
-				'cursor' -> [ :aValue |  ].
-				'hitsTotal' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ].
+				'hitsTotal' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.unspecced.searchStarterPacksSkeleton'
 				parameters: {'q' -> q.
@@ -846,11 +853,11 @@ GtApGeneratedClient >> appBskyVideoGetUploadLimits [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'canUpload' -> [ :aValue |  ].
-				'remainingDailyVideos' -> [ :aValue |  ].
-				'remainingDailyBytes' -> [ :aValue |  ].
-				'message' -> [ :aValue |  ].
-				'error' -> [ :aValue |  ]} asDictionary
+		from: {'canUpload' -> [ :aValue | aValue ].
+				'remainingDailyVideos' -> [ :aValue | aValue ].
+				'remainingDailyBytes' -> [ :aValue | aValue ].
+				'message' -> [ :aValue | aValue ].
+				'error' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'app.bsky.video.getUploadLimits'
 				parameters: {} asDictionary)
@@ -937,8 +944,17 @@ GtApGeneratedClient >> chatBskyConvoGetLog [
 
 	<xrpcQuery>
 	^ AsyncMapStream
-		mapBlock: [ :aDictionary |  ]
-		stream: (self paginatedQueryOn: 'chat.bsky.convo.getLog' parameters: {} asDictionary)
+		mapBlock: [ :aDictionary | 
+			({'chat.bsky.convo.defs#logBeginConvo' -> ChatBskyConvoDefsLogBeginConvo.
+				'chat.bsky.convo.defs#logLeaveConvo' -> ChatBskyConvoDefsLogLeaveConvo.
+				'chat.bsky.convo.defs#logCreateMessage' -> ChatBskyConvoDefsLogCreateMessage.
+				'chat.bsky.convo.defs#logDeleteMessage' -> ChatBskyConvoDefsLogDeleteMessage}
+				asDictionary at: (aDictionary at: '$type'))
+				fromRequest: aDictionary
+				withClient: aClient ]
+		stream: (self
+				paginatedQueryOn: 'chat.bsky.convo.getLog'
+				parameters: {} asDictionary)
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
@@ -947,7 +963,11 @@ GtApGeneratedClient >> chatBskyConvoGetMessagesConvoId: convoId [
 
 	<xrpcQuery>
 	^ AsyncMapStream
-		mapBlock: [ :aDictionary |  ]
+		mapBlock: [ :aDictionary | 
+			({'chat.bsky.convo.defs#messageView' -> ChatBskyConvoDefsMessageView.
+				'chat.bsky.convo.defs#deletedMessageView'
+					-> ChatBskyConvoDefsDeletedMessageView} asDictionary
+				at: (aDictionary at: '$type')) fromRequest: aDictionary withClient: aClient ]
 		stream: (self
 				paginatedQueryOn: 'chat.bsky.convo.getMessages'
 				parameters: {'convoId' -> convoId} asDictionary)
@@ -959,8 +979,8 @@ GtApGeneratedClient >> chatBskyConvoLeaveConvoConvoId: convoId [
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'convoId' -> [ :aValue |  ].
-				'rev' -> [ :aValue |  ]} asDictionary
+		from: {'convoId' -> [ :aValue | aValue ].
+				'rev' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'chat.bsky.convo.leaveConvo'
 				withBody: {'convoId' -> convoId} asDictionary)
@@ -996,7 +1016,7 @@ GtApGeneratedClient >> chatBskyConvoSendMessageBatchItems: items [
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'items' -> [ :aValue |  ]} asDictionary
+		from: {'items' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'chat.bsky.convo.sendMessageBatch'
 				withBody: {'items' -> items} asDictionary)
@@ -1068,7 +1088,7 @@ GtApGeneratedClient >> chatBskyModerationGetMessageContextConvoId: convoId messa
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'messages' -> [ :aValue |  ]} asDictionary
+		from: {'messages' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'chat.bsky.moderation.getMessageContext'
 				parameters: {'convoId' -> convoId.
@@ -1160,7 +1180,7 @@ GtApGeneratedClient >> comAtprotoAdminGetAccountInfosDids: dids [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'infos' -> [ :aValue |  ]} asDictionary
+		from: {'infos' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.admin.getAccountInfos'
 				parameters: {'dids' -> dids} asDictionary)
@@ -1184,7 +1204,14 @@ GtApGeneratedClient >> comAtprotoAdminGetSubjectStatusDid: did uri: uri blob: bl
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'subject' -> [ :aValue |  ].
+		from: {'subject'
+					-> [ :aValue | 
+						({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef.
+							'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain.
+							'com.atproto.admin.defs#repoBlobRef' -> ComAtprotoAdminDefsRepoBlobRef}
+							asDictionary at: (aValue at: '$type'))
+							fromRequest: aValue
+							withClient: aClient ].
 				'takedown'
 					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue withClient: self ].
 				'deactivated'
@@ -1215,7 +1242,7 @@ GtApGeneratedClient >> comAtprotoAdminSendEmailRecipientDid: recipientDid conten
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'sent' -> [ :aValue |  ]} asDictionary
+		from: {'sent' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.admin.sendEmail'
 				withBody: {'recipientDid' -> recipientDid.
@@ -1270,7 +1297,14 @@ GtApGeneratedClient >> comAtprotoAdminUpdateSubjectStatusSubject: subject takedo
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'subject' -> [ :aValue |  ].
+		from: {'subject'
+					-> [ :aValue | 
+						({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef.
+							'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain.
+							'com.atproto.admin.defs#repoBlobRef' -> ComAtprotoAdminDefsRepoBlobRef}
+							asDictionary at: (aValue at: '$type'))
+							fromRequest: aValue
+							withClient: aClient ].
 				'takedown'
 					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue withClient: self ]}
 				asDictionary
@@ -1287,8 +1321,8 @@ GtApGeneratedClient >> comAtprotoIdentityGetRecommendedDidCredentials [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'rotationKeys' -> [ :aValue |  ].
-				'alsoKnownAs' -> [ :aValue |  ].
+		from: {'rotationKeys' -> [ :aValue | aValue ].
+				'alsoKnownAs' -> [ :aValue | aValue ].
 				'verificationMethods'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
 				'services'
@@ -1317,7 +1351,7 @@ GtApGeneratedClient >> comAtprotoIdentityResolveHandleHandle: handle [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'did' -> [ :aValue |  ]} asDictionary
+		from: {'did' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.identity.resolveHandle'
 				parameters: {'handle' -> handle} asDictionary)
@@ -1384,12 +1418,16 @@ GtApGeneratedClient >> comAtprotoModerationCreateReportReasonType: reasonType re
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'id' -> [ :aValue |  ].
-				'reasonType' -> [ :aValue |  ].
-				'reason' -> [ :aValue |  ].
-				'subject' -> [ :aValue |  ].
-				'reportedBy' -> [ :aValue |  ].
-				'createdAt' -> [ :aValue |  ]} asDictionary
+		from: {'id' -> [ :aValue | aValue ].
+				'reasonType' -> [ :aValue | aValue ].
+				'reason' -> [ :aValue | aValue ].
+				'subject'
+					-> [ :aValue | 
+						({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef.
+							'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary
+							at: (aValue at: '$type')) fromRequest: aValue withClient: aClient ].
+				'reportedBy' -> [ :aValue | aValue ].
+				'createdAt' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.moderation.createReport'
 				withBody: {'reasonType' -> reasonType.
@@ -1405,7 +1443,7 @@ GtApGeneratedClient >> comAtprotoRepoApplyWritesRepo: repo validate: validate wr
 	^ GtApRequestResolver
 		from: {'commit'
 					-> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue withClient: self ].
-				'results' -> [ :aValue |  ]} asDictionary
+				'results' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.applyWrites'
 				withBody: {'repo' -> repo.
@@ -1420,11 +1458,11 @@ GtApGeneratedClient >> comAtprotoRepoCreateRecordRepo: repo collection: collecti
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'uri' -> [ :aValue |  ].
-				'cid' -> [ :aValue |  ].
+		from: {'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
 				'commit'
 					-> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue withClient: self ].
-				'validationStatus' -> [ :aValue |  ]} asDictionary
+				'validationStatus' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.createRecord'
 				withBody: {'repo' -> repo.
@@ -1459,12 +1497,12 @@ GtApGeneratedClient >> comAtprotoRepoDescribeRepoRepo: repo [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'handle' -> [ :aValue |  ].
-				'did' -> [ :aValue |  ].
+		from: {'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
 				'didDoc'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
-				'collections' -> [ :aValue |  ].
-				'handleIsCorrect' -> [ :aValue |  ]} asDictionary
+				'collections' -> [ :aValue | aValue ].
+				'handleIsCorrect' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.repo.describeRepo'
 				parameters: {'repo' -> repo} asDictionary)
@@ -1476,8 +1514,8 @@ GtApGeneratedClient >> comAtprotoRepoGetRecordRepo: repo collection: collection 
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'uri' -> [ :aValue |  ].
-				'cid' -> [ :aValue |  ].
+		from: {'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
 				'value'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]}
 				asDictionary
@@ -1536,11 +1574,11 @@ GtApGeneratedClient >> comAtprotoRepoPutRecordRepo: repo collection: collection 
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'uri' -> [ :aValue |  ].
-				'cid' -> [ :aValue |  ].
+		from: {'uri' -> [ :aValue | aValue ].
+				'cid' -> [ :aValue | aValue ].
 				'commit'
 					-> [ :aValue | ComAtprotoRepoDefsCommitMeta fromRequest: aValue withClient: self ].
-				'validationStatus' -> [ :aValue |  ]} asDictionary
+				'validationStatus' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.repo.putRecord'
 				withBody: {'repo' -> repo.
@@ -1558,7 +1596,7 @@ GtApGeneratedClient >> comAtprotoRepoUploadBlobFile: aFile [
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'blob' -> [ :aValue |  ]} asDictionary
+		from: {'blob' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self procedureOn: 'com.atproto.repo.uploadBlob' withFile: aFile)
 ]
 
@@ -1580,15 +1618,15 @@ GtApGeneratedClient >> comAtprotoServerCheckAccountStatus [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'activated' -> [ :aValue |  ].
-				'validDid' -> [ :aValue |  ].
-				'repoCommit' -> [ :aValue |  ].
-				'repoRev' -> [ :aValue |  ].
-				'repoBlocks' -> [ :aValue |  ].
-				'indexedRecords' -> [ :aValue |  ].
-				'privateStateValues' -> [ :aValue |  ].
-				'expectedBlobs' -> [ :aValue |  ].
-				'importedBlobs' -> [ :aValue |  ]} asDictionary
+		from: {'activated' -> [ :aValue | aValue ].
+				'validDid' -> [ :aValue | aValue ].
+				'repoCommit' -> [ :aValue | aValue ].
+				'repoRev' -> [ :aValue | aValue ].
+				'repoBlocks' -> [ :aValue | aValue ].
+				'indexedRecords' -> [ :aValue | aValue ].
+				'privateStateValues' -> [ :aValue | aValue ].
+				'expectedBlobs' -> [ :aValue | aValue ].
+				'importedBlobs' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.checkAccountStatus'
 				parameters: {} asDictionary)
@@ -1613,10 +1651,10 @@ GtApGeneratedClient >> comAtprotoServerCreateAccountEmail: email handle: handle 
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'accessJwt' -> [ :aValue |  ].
-				'refreshJwt' -> [ :aValue |  ].
-				'handle' -> [ :aValue |  ].
-				'did' -> [ :aValue |  ].
+		from: {'accessJwt' -> [ :aValue | aValue ].
+				'refreshJwt' -> [ :aValue | aValue ].
+				'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
 				'didDoc'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]}
 				asDictionary
@@ -1652,7 +1690,7 @@ GtApGeneratedClient >> comAtprotoServerCreateInviteCodeUseCount: useCount forAcc
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'code' -> [ :aValue |  ]} asDictionary
+		from: {'code' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.createInviteCode'
 				withBody: {'useCount' -> useCount.
@@ -1665,7 +1703,7 @@ GtApGeneratedClient >> comAtprotoServerCreateInviteCodesCodeCount: codeCount use
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'codes' -> [ :aValue |  ]} asDictionary
+		from: {'codes' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.createInviteCodes'
 				withBody: {'codeCount' -> codeCount.
@@ -1679,17 +1717,17 @@ GtApGeneratedClient >> comAtprotoServerCreateSessionIdentifier: identifier passw
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'accessJwt' -> [ :aValue |  ].
-				'refreshJwt' -> [ :aValue |  ].
-				'handle' -> [ :aValue |  ].
-				'did' -> [ :aValue |  ].
+		from: {'accessJwt' -> [ :aValue | aValue ].
+				'refreshJwt' -> [ :aValue | aValue ].
+				'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
 				'didDoc'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
-				'email' -> [ :aValue |  ].
-				'emailConfirmed' -> [ :aValue |  ].
-				'emailAuthFactor' -> [ :aValue |  ].
-				'active' -> [ :aValue |  ].
-				'status' -> [ :aValue |  ]} asDictionary
+				'email' -> [ :aValue | aValue ].
+				'emailConfirmed' -> [ :aValue | aValue ].
+				'emailAuthFactor' -> [ :aValue | aValue ].
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.createSession'
 				withBody: {'identifier' -> identifier.
@@ -1739,14 +1777,14 @@ GtApGeneratedClient >> comAtprotoServerDescribeServer [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'inviteCodeRequired' -> [ :aValue |  ].
-				'phoneVerificationRequired' -> [ :aValue |  ].
-				'availableUserDomains' -> [ :aValue |  ].
+		from: {'inviteCodeRequired' -> [ :aValue | aValue ].
+				'phoneVerificationRequired' -> [ :aValue | aValue ].
+				'availableUserDomains' -> [ :aValue | aValue ].
 				'links'
 					-> [ :aValue | ComAtprotoServerDescribeServerLinks fromRequest: aValue withClient: self ].
 				'contact'
 					-> [ :aValue | ComAtprotoServerDescribeServerContact fromRequest: aValue withClient: self ].
-				'did' -> [ :aValue |  ]} asDictionary
+				'did' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.describeServer'
 				parameters: {} asDictionary)
@@ -1758,7 +1796,7 @@ GtApGeneratedClient >> comAtprotoServerGetAccountInviteCodesIncludeUsed: include
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'codes' -> [ :aValue |  ]} asDictionary
+		from: {'codes' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.getAccountInviteCodes'
 				parameters: {'includeUsed' -> includeUsed.
@@ -1771,7 +1809,7 @@ GtApGeneratedClient >> comAtprotoServerGetServiceAuthAud: aud exp: exp lxm: lxm 
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'token' -> [ :aValue |  ]} asDictionary
+		from: {'token' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.getServiceAuth'
 				parameters: {'aud' -> aud.
@@ -1785,15 +1823,15 @@ GtApGeneratedClient >> comAtprotoServerGetSession [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'handle' -> [ :aValue |  ].
-				'did' -> [ :aValue |  ].
-				'email' -> [ :aValue |  ].
-				'emailConfirmed' -> [ :aValue |  ].
-				'emailAuthFactor' -> [ :aValue |  ].
+		from: {'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
+				'email' -> [ :aValue | aValue ].
+				'emailConfirmed' -> [ :aValue | aValue ].
+				'emailAuthFactor' -> [ :aValue | aValue ].
 				'didDoc'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
-				'active' -> [ :aValue |  ].
-				'status' -> [ :aValue |  ]} asDictionary
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.server.getSession'
 				parameters: {} asDictionary)
@@ -1805,7 +1843,7 @@ GtApGeneratedClient >> comAtprotoServerListAppPasswords [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'passwords' -> [ :aValue |  ]} asDictionary
+		from: {'passwords' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self queryOn: 'com.atproto.server.listAppPasswords' parameters: {} asDictionary)
 ]
 
@@ -1815,14 +1853,14 @@ GtApGeneratedClient >> comAtprotoServerRefreshSession [
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'accessJwt' -> [ :aValue |  ].
-				'refreshJwt' -> [ :aValue |  ].
-				'handle' -> [ :aValue |  ].
-				'did' -> [ :aValue |  ].
+		from: {'accessJwt' -> [ :aValue | aValue ].
+				'refreshJwt' -> [ :aValue | aValue ].
+				'handle' -> [ :aValue | aValue ].
+				'did' -> [ :aValue | aValue ].
 				'didDoc'
 					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
-				'active' -> [ :aValue |  ].
-				'status' -> [ :aValue |  ]} asDictionary
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.refreshSession'
 				withBody: {} asDictionary)
@@ -1858,7 +1896,7 @@ GtApGeneratedClient >> comAtprotoServerRequestEmailUpdate [
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'tokenRequired' -> [ :aValue |  ]} asDictionary
+		from: {'tokenRequired' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.requestEmailUpdate'
 				withBody: {} asDictionary)
@@ -1882,7 +1920,7 @@ GtApGeneratedClient >> comAtprotoServerReserveSigningKeyDid: did [
 
 	<xrpcProcedure>
 	^ GtApRequestResolver
-		from: {'signingKey' -> [ :aValue |  ]} asDictionary
+		from: {'signingKey' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.reserveSigningKey'
 				withBody: {'did' -> did} asDictionary)
@@ -1971,7 +2009,7 @@ GtApGeneratedClient >> comAtprotoSyncGetHeadDid: did [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'root' -> [ :aValue |  ]} asDictionary
+		from: {'root' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.sync.getHead'
 				parameters: {'did' -> did} asDictionary)
@@ -1983,8 +2021,8 @@ GtApGeneratedClient >> comAtprotoSyncGetLatestCommitDid: did [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'cid' -> [ :aValue |  ].
-				'rev' -> [ :aValue |  ]} asDictionary
+		from: {'cid' -> [ :aValue | aValue ].
+				'rev' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.sync.getLatestCommit'
 				parameters: {'did' -> did} asDictionary)
@@ -2024,10 +2062,10 @@ GtApGeneratedClient >> comAtprotoSyncGetRepoStatusDid: did [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'did' -> [ :aValue |  ].
-				'active' -> [ :aValue |  ].
-				'status' -> [ :aValue |  ].
-				'rev' -> [ :aValue |  ]} asDictionary
+		from: {'did' -> [ :aValue | aValue ].
+				'active' -> [ :aValue | aValue ].
+				'status' -> [ :aValue | aValue ].
+				'rev' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.sync.getRepoStatus'
 				parameters: {'did' -> did} asDictionary)
@@ -2039,7 +2077,7 @@ GtApGeneratedClient >> comAtprotoSyncListBlobsDid: did since: since [
 
 	<xrpcQuery>
 	^ AsyncMapStream
-		mapBlock: [ :aDictionary |  ]
+		mapBlock: [ :aDictionary | aDictionary ]
 		stream: (self
 				paginatedQueryOn: 'com.atproto.sync.listBlobs'
 				parameters: {'did' -> did.
@@ -2098,9 +2136,9 @@ GtApGeneratedClient >> comAtprotoTempCheckSignupQueue [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'activated' -> [ :aValue |  ].
-				'placeInQueue' -> [ :aValue |  ].
-				'estimatedTimeMs' -> [ :aValue |  ]} asDictionary
+		from: {'activated' -> [ :aValue | aValue ].
+				'placeInQueue' -> [ :aValue | aValue ].
+				'estimatedTimeMs' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.temp.checkSignupQueue'
 				parameters: {} asDictionary)
@@ -2112,7 +2150,7 @@ GtApGeneratedClient >> comAtprotoTempFetchLabelsSince: since [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'labels' -> [ :aValue |  ]} asDictionary
+		from: {'labels' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.temp.fetchLabels'
 				parameters: {'since' -> since} asDictionary)
@@ -2164,7 +2202,7 @@ GtApGeneratedClient >> toolsOzoneCommunicationListTemplates [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'communicationTemplates' -> [ :aValue |  ]} asDictionary
+		from: {'communicationTemplates' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'tools.ozone.communication.listTemplates'
 				parameters: {} asDictionary)
@@ -2234,7 +2272,7 @@ GtApGeneratedClient >> toolsOzoneModerationGetRecordsUris: uris [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'records' -> [ :aValue |  ]} asDictionary
+		from: {'records' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'tools.ozone.moderation.getRecords'
 				parameters: {'uris' -> uris} asDictionary)
@@ -2258,7 +2296,7 @@ GtApGeneratedClient >> toolsOzoneModerationGetReposDids: dids [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'repos' -> [ :aValue |  ]} asDictionary
+		from: {'repos' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'tools.ozone.moderation.getRepos'
 				parameters: {'dids' -> dids} asDictionary)
@@ -2409,10 +2447,11 @@ GtApGeneratedClient >> toolsOzoneSetGetValuesName: name [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'values' -> (GtApRequestStreamResolver new block: [ :aDictionary |  ]).
+		from: {'values'
+					-> (GtApRequestStreamResolver new block: [ :aDictionary | aDictionary ]).
 				'set'
 					-> [ :aValue | ToolsOzoneSetDefsSetView fromRequest: aValue withClient: self ].
-				'cursor' -> [ :aValue |  ]} asDictionary
+				'cursor' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'tools.ozone.set.getValues'
 				parameters: {'name' -> name} asDictionary)
@@ -2496,7 +2535,7 @@ GtApGeneratedClient >> toolsOzoneSignatureFindCorrelationDids: dids [
 
 	<xrpcQuery>
 	^ GtApRequestResolver
-		from: {'details' -> [ :aValue |  ]} asDictionary
+		from: {'details' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				queryOn: 'tools.ozone.signature.findCorrelation'
 				parameters: {'dids' -> dids} asDictionary)

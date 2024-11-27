@@ -76,6 +76,11 @@ GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 	^ source
 ]
 
+{ #category : #'as yet unclassified' }
+GtApLexiconUnion >> generateDeserializationFor: aValue [
+	^ self buildFromRequestOn: aValue
+]
+
 { #category : #accessing }
 GtApLexiconUnion >> generateJson [
 	^ {'type' -> 'union'.
