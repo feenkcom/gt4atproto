@@ -232,7 +232,7 @@ GtApGeneratedClient >> appBskyFeedGetPostThreadUri: uri depth: depth parentHeigh
 							'app.bsky.feed.defs#blockedPost' -> AppBskyFeedDefsBlockedPost}
 							asDictionary at: (aValue at: '$type'))
 							fromRequest: aValue
-							withClient: aClient ].
+							withClient: self ].
 				'threadgate'
 					-> [ :aValue | AppBskyFeedDefsThreadgateView fromRequest: aValue withClient: self ]}
 				asDictionary
@@ -951,7 +951,7 @@ GtApGeneratedClient >> chatBskyConvoGetLog [
 				'chat.bsky.convo.defs#logDeleteMessage' -> ChatBskyConvoDefsLogDeleteMessage}
 				asDictionary at: (aDictionary at: '$type'))
 				fromRequest: aDictionary
-				withClient: aClient ]
+				withClient: self ]
 		stream: (self
 				paginatedQueryOn: 'chat.bsky.convo.getLog'
 				parameters: {} asDictionary)
@@ -967,7 +967,7 @@ GtApGeneratedClient >> chatBskyConvoGetMessagesConvoId: convoId [
 			({'chat.bsky.convo.defs#messageView' -> ChatBskyConvoDefsMessageView.
 				'chat.bsky.convo.defs#deletedMessageView'
 					-> ChatBskyConvoDefsDeletedMessageView} asDictionary
-				at: (aDictionary at: '$type')) fromRequest: aDictionary withClient: aClient ]
+				at: (aDictionary at: '$type')) fromRequest: aDictionary withClient: self ]
 		stream: (self
 				paginatedQueryOn: 'chat.bsky.convo.getMessages'
 				parameters: {'convoId' -> convoId} asDictionary)
@@ -1211,7 +1211,7 @@ GtApGeneratedClient >> comAtprotoAdminGetSubjectStatusDid: did uri: uri blob: bl
 							'com.atproto.admin.defs#repoBlobRef' -> ComAtprotoAdminDefsRepoBlobRef}
 							asDictionary at: (aValue at: '$type'))
 							fromRequest: aValue
-							withClient: aClient ].
+							withClient: self ].
 				'takedown'
 					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue withClient: self ].
 				'deactivated'
@@ -1304,7 +1304,7 @@ GtApGeneratedClient >> comAtprotoAdminUpdateSubjectStatusSubject: subject takedo
 							'com.atproto.admin.defs#repoBlobRef' -> ComAtprotoAdminDefsRepoBlobRef}
 							asDictionary at: (aValue at: '$type'))
 							fromRequest: aValue
-							withClient: aClient ].
+							withClient: self ].
 				'takedown'
 					-> [ :aValue | ComAtprotoAdminDefsStatusAttr fromRequest: aValue withClient: self ]}
 				asDictionary
@@ -1425,7 +1425,7 @@ GtApGeneratedClient >> comAtprotoModerationCreateReportReasonType: reasonType re
 					-> [ :aValue | 
 						({'com.atproto.admin.defs#repoRef' -> ComAtprotoAdminDefsRepoRef.
 							'com.atproto.repo.strongRef' -> ComAtprotoRepoStrongRefMain} asDictionary
-							at: (aValue at: '$type')) fromRequest: aValue withClient: aClient ].
+							at: (aValue at: '$type')) fromRequest: aValue withClient: self ].
 				'reportedBy' -> [ :aValue | aValue ].
 				'createdAt' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self

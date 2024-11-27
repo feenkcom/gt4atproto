@@ -77,8 +77,12 @@ GtApLexiconUnion >> generateDescriptorFor: aString usingPrefix: aPrefix isRequir
 ]
 
 { #category : #'as yet unclassified' }
-GtApLexiconUnion >> generateDeserializationFor: aValue [
-	^ self buildFromRequestOn: aValue
+GtApLexiconUnion >> generateDeserializationFor: aName [
+	^ '({'
+		, ('. '
+				join: (self referencedDefinitions
+						collect: [ :anObject | '''' , (anObject id removeSuffix: '#main') , ''' -> ' , anObject asClassName ]))
+		, '} asDictionary at: (' , aName , ' at: ''$type'')) fromRequest: ' , aName, ' withClient: self'
 ]
 
 { #category : #accessing }

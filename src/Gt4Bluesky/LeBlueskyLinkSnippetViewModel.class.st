@@ -5,6 +5,30 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> actor [
+	^ self snippetModel client
+		appBskyActorGetProfileActor: self snippetModel client handle
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> deletePost [
+	self snippetModel client
+		comAtprotoRepoDeleteRecordRepo: self actor atpDid
+		collection: AppBskyFeedPostMain atpRecordName
+		rkey: (#/ split: self post atpPost atpUri) last
+		swapRecord: nil
+		swapCommit: nil.
+	self url: ''
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> isOwnPost [
+	^ self post isNotNil
+		and: [ self snippetModel client isNotNil
+				and: [ self post author atpHandle = self snippetModel client handle ] ]
+]
+
+{ #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetViewModel >> post [
 	| path handle recordId did |
 	self url isEmptyOrNil ifTrue: [ ^ nil ].

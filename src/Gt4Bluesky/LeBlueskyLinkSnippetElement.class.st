@@ -5,10 +5,16 @@ Class {
 		'urlEditorElement',
 		'postElement',
 		'contentElement',
-		'toolbarContainer'
+		'toolbarContainer',
+		'deleteButton'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetElement >> editor [
+	^ urlEditorElement
+]
 
 { #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetElement >> initialize [
@@ -16,14 +22,6 @@ LeBlueskyLinkSnippetElement >> initialize [
 
 	self initializeContentElement.
 	self initializeToolbarElement.
-
-	self
-		addAptitude: (BrLazyStyleCommonAptitude new
-				when: BlElementState focused | BlElementState hovered
-				style: [ :aStyle | 
-					aStyle
-						do: [ toolbarElement visibility: BlVisibility visible ]
-						after: [ toolbarElement visibility: BlVisibility hidden ] ]).
 
 	self padding: (BlInsets all: 5)
 ]
@@ -42,7 +40,7 @@ LeBlueskyLinkSnippetElement >> initializePostElement [
 
 { #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetElement >> initializeToolbarElement [
-	| urlContainer |
+	| urlContainer toolbarElement |
 	toolbarContainer := BrHorizontalPane new vFitContent hMatchParent.
 
 	toolbarElement := BrToolbar new
@@ -54,48 +52,56 @@ LeBlueskyLinkSnippetElement >> initializeToolbarElement [
 	toolbarContainer addChild: toolbarElement.
 
 	urlContainer := BrHorizontalPane new
-		hMatchParent;
-		alignCenterLeft;
-		vFitContent;
-		constraintsDo: [ :c | 
-			c grid vertical alignCenter ].
+			hMatchParent;
+			alignCenterLeft;
+			vFitContent;
+			constraintsDo: [ :c | c grid vertical alignCenter ].
 
 	urlEditorElement := BrEditor new
-		id: LePictureSnippetUrlEditorElementId;
-		aptitude: BrGlamorousRegularEditorAptitude new glamorousRegularSmallSize + BrGlamorousInputFieldSpacingAptitude new;
-		vFitContent;
-		hMatchParent;
-		margin: (BlInsets right: 3);
-		constraintsDo: [ :c | c minWidth: 100 ].
+			id: LePictureSnippetUrlEditorElementId;
+			aptitude: BrGlamorousRegularEditorAptitude new glamorousRegularSmallSize
+					+ BrGlamorousInputFieldSpacingAptitude new;
+			vFitContent;
+			hMatchParent;
+			margin: (BlInsets right: 3);
+			constraintsDo: [ :c | c minWidth: 100 ].
 
 	urlEditorElement editor
 		when: BrTextEditorModifiedEvent
 		do: [ :anEvent | self onURLModifiedEvent: anEvent ].
-		
+
 	LeSnippetEditorElementShortcuter new
 		editor: urlEditorElement;
 		indent;
 		moveUpAndDown;
 		loseFocus.
 
-	urlContainer
-		addChild: urlEditorElement.
-		
-	toolbarContainer 
+	urlContainer addChild: urlEditorElement.
+
+	toolbarContainer
 		addChild: (BrLabel new
-			aptitude: (BrGlamorousLabelAptitude new foreground: BrGlamorousColors disabledButtonTextColor);
-			beSmallSize;
-			text: 'URL:';
-			constraintsDo: [ :c | 
-				c grid vertical alignCenter ]);
+				aptitude: (BrGlamorousLabelAptitude new
+						foreground: BrGlamorousColors disabledButtonTextColor);
+				beSmallSize;
+				text: 'URL:';
+				constraintsDo: [ :c | c grid vertical alignCenter ]);
 		addChild: urlContainer.
+
+	toolbarContainer
+		addChild: (deleteButton := BrButton new
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousVectorIcons cancel;
+					label: 'Delete post';
+					visibility: BlVisibility gone;
+					action: [ self snippetViewModel deletePost.
+						self enqueueTask: (BlTaskAction new action: [ self updateElement ]) ]).
 
 	^ toolbarContainer
 ]
 
 { #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetElement >> onSnippetViewModelChanged [
-	self updateElement
+	self enqueueTask: (BlTaskAction new action: [ self updateElement ])
 ]
 
 { #category : #'as yet unclassified' }
@@ -124,6 +130,9 @@ LeBlueskyLinkSnippetElement >> snippetToolbar [
 LeBlueskyLinkSnippetElement >> updateElement [
 	urlEditorElement text: self snippetViewModel url.
 
-	self snippetViewModel post
-		ifNotNil: [ postElement post: self snippetViewModel post ]
+	postElement post: self snippetViewModel post.
+
+	self snippetViewModel isOwnPost
+		ifTrue: [ deleteButton visibility: BlVisibility visible ]
+		ifFalse: [ deleteButton visibility: BlVisibility gone ]
 ]

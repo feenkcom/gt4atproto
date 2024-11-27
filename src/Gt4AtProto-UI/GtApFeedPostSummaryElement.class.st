@@ -85,32 +85,35 @@ GtApFeedPostSummaryElement >> buildUserHeaderElement [
 
 { #category : #initialization }
 GtApFeedPostSummaryElement >> initialize [
-	| mainContainer contentContainer |
-	
 	super initialize.
-	
-	self 
+	self
 		hExact: 400;
 		vFitContent;
 		padding: (BlInsets all: 10).
-		
-	mainContainer  := BrHorizontalPane new
-		hMatchParent;
-		vFitContent.
-		
-	mainContainer addChild:  self buildProfilePictureElement.
-	
+
+	self initializeMainContainer
+]
+
+{ #category : #initialization }
+GtApFeedPostSummaryElement >> initializeMainContainer [
+	| contentContainer mainContainer |
+	mainContainer := BrHorizontalPane new
+			hMatchParent;
+			vFitContent.
+
+	mainContainer addChild: self buildProfilePictureElement.
+
 	contentContainer := BrVerticalPane new
-		hMatchParent;
-		vFitContent.
-	
+			hMatchParent;
+			vFitContent.
+
 	contentContainer addChild: self buildUserHeaderElement.
 	contentContainer addChild: self buildPostContentElement.
 	contentContainer addChild: self buildPostMediaElement.
 	contentContainer addChild: self buildPostDetailsElement.
-	
+
 	mainContainer addChild: contentContainer.
-	self addChild:  mainContainer.
+	self addChild: mainContainer
 ]
 
 { #category : #accessing }
@@ -138,6 +141,10 @@ GtApFeedPostSummaryElement >> updateAuthorDetails [
 
 { #category : #accessing }
 GtApFeedPostSummaryElement >> updateContent [
+	self post
+		ifNil: [ self removeChildren initializeMainContainer.
+			^ self ].
+
 	pictureElement user: self post author.
 	self updateAuthorDetails.
 	postTextEditor text: self post recordText.
