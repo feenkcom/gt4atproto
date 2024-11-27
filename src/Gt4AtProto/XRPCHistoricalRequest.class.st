@@ -12,13 +12,13 @@ Class {
 { #category : #accessing }
 XRPCHistoricalRequest >> gtRequestFor: aView [
 	<gtView>
-	^ (request gtHttpFor: aView) priority: 1
+	^ (request gtViewRequestLineTextFor: aView) priority: 1
 ]
 
 { #category : #accessing }
-XRPCHistoricalRequest >> gtResponseFor: aView context: aContext [
+XRPCHistoricalRequest >> gtResponseFor: aView [
 	<gtView>
-	^ (response gtJSONFor: aView context: aContext)
+	^ (response gtJSONFor: aView)
 		title: 'Response';
 		priority: 2
 ]

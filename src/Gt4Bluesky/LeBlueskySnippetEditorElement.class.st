@@ -13,10 +13,7 @@ Class {
 		'parentInfoElement',
 		'inspectButton',
 		'writingIndicator',
-		'embedContainer',
-		'profilePicture',
-		'authorNameLabel',
-		'authorHandleLabel'
+		'embedContainer'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -229,18 +226,11 @@ LeBlueskySnippetEditorElement >> initializeContentElement [
 
 	contentElement addChild: contentWrapper.
 
-	contentWrapper
-		addChild: (profilePicture := GtApFeedUserPictureElement new
-					visibility: BlVisibility gone;
-					padding: (BlInsets all: 3)).
-
 	contentPane := BrVerticalPane new
 			vFitContentLimited;
 			hMatchParent.
 
 	contentWrapper addChild: contentPane.
-
-	contentPane addChild: self initializeHeader.
 
 	inputElement := BrEditor new
 			aptitude: BrGlamorousRegularEditorAptitude;
@@ -281,22 +271,6 @@ LeBlueskySnippetEditorElement >> initializeContentElement [
 	contentElement addChild: self initializeToolbarElement.
 
 	contentElement addChild: self initializeParentDropdown
-]
-
-{ #category : #accessing }
-LeBlueskySnippetEditorElement >> initializeHeader [
-	| headerElement |
-	headerElement := BrHorizontalPane new
-			hMatchParent;
-			vFitContent;
-			padding: (BlInsets all: 3).
-
-	headerElement
-		addChild: (authorNameLabel := BrLabel new aptitude: BrGlamorousLabelAptitude new);
-		addChild: (authorHandleLabel := BrLabel new
-					aptitude: (BrGlamorousLabelAptitude new foreground: Color lightGray)).
-
-	^ headerElement
 ]
 
 { #category : #accessing }
@@ -473,11 +447,6 @@ LeBlueskySnippetEditorElement >> maximumPostSize [
 LeBlueskySnippetEditorElement >> onClientChanged [
 	(self snippet client isNotNil and: [ self snippet client isLoggedIn ])
 		ifTrue: [ identityElement label: self snippet client handle.
-			authorHandleLabel text: '@' , self snippet client handle.
-			authorNameLabel text: self snippetViewModel actor atpDisplayName.
-			profilePicture
-				user: self snippetViewModel actor;
-				visibility: BlVisibility visible.
 			publishButton enable ].
 
 	self onPostChanged
