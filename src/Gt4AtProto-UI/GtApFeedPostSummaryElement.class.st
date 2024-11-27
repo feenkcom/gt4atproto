@@ -141,7 +141,7 @@ GtApFeedPostSummaryElement >> updateContent [
 	pictureElement user: self post author.
 	self updateAuthorDetails.
 	postTextEditor text: self post recordText.
-	postTextEditor styler: (GtBlueskyPostStyler new blueskyPost: self post).
+	postTextEditor styler: (GtBlueskyLinkStyler new blueskyPost: self post).
 	dateLabel text: ' at ' , self post createdAtTimestamp printToMinute.
 	self updateMedia.
 	repliesCountLabel text: self post atpPost atpReplyCount asString , ' Replies'.

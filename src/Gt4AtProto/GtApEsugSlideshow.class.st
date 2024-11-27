@@ -84,7 +84,7 @@ GtApEsugSlideshow >> bskyPage [
 GtApEsugSlideshow >> bskyToolPage [
 	<gtExample>
 	^ (LePage named: 'Now that we know, we do.')
-		addSnippet: LeBlueskyEditorSnippet empty;
+		addSnippet: LeBlueskyPostSnippet empty;
 		yourself
 ]
 

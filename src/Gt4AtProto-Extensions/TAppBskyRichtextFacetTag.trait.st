@@ -8,7 +8,7 @@ TAppBskyRichtextFacetTag >> adorn: aText usingPost: aPost [
 	aText
 		appendingAdornment: [ :aTBrTextEditorTextualPiece :anEditorElement | 
 			| button oldLook |
-			button := GtBlueskyPostStyler
+			button := GtBlueskyLinkStyler
 					textLinkButtonPadding: aTBrTextEditorTextualPiece wordPadding
 					margin: aTBrTextEditorTextualPiece wordMargin.
 			oldLook := button aptitude.

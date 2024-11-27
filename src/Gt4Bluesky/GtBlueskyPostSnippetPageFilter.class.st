@@ -1,5 +1,5 @@
 Class {
-	#name : #GtBlueskySnippetEditorPageFilter,
+	#name : #GtBlueskyPostSnippetPageFilter,
 	#superclass : #BrTextEditorInputFilter,
 	#instVars : [
 		'snippetElement'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-GtBlueskySnippetEditorPageFilter >> filter: aString [
+GtBlueskyPostSnippetPageFilter >> filter: aString [
 	<return: #String>
 	| pageParser pageData aPage aDatabase |
 	pageParser := '{{gtPage:' asPParser , '|' asPParser negate plus
@@ -33,11 +33,11 @@ GtBlueskySnippetEditorPageFilter >> filter: aString [
 ]
 
 { #category : #accessing }
-GtBlueskySnippetEditorPageFilter >> snippetElement [
+GtBlueskyPostSnippetPageFilter >> snippetElement [
 	^ snippetElement
 ]
 
 { #category : #accessing }
-GtBlueskySnippetEditorPageFilter >> snippetElement: anObject [
+GtBlueskyPostSnippetPageFilter >> snippetElement: anObject [
 	snippetElement := anObject
 ]

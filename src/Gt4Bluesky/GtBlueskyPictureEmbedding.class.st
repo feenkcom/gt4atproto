@@ -48,7 +48,7 @@ GtBlueskyPictureEmbedding >> asElement [
 	self files
 		do: [ :aFile | 
 			aContainer
-				addChild: (LeBlueskyPostFileWidget new
+				addChild: (LeBlueskyLinkFileWidget new
 						vExact: 200;
 						hExact: 200;
 						isDeletable: self snippet hasPost not;

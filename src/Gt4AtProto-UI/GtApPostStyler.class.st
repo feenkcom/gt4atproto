@@ -46,7 +46,7 @@ GtApPostStyler >> postFromUrl: aUrl [
 	path := '/' split: (aUrl removePrefix: 'https://bsky.app/').
 	handle := path second.
 	recordId := path last.
-	snippet := LeBlueskyEditorSnippet new.
+	snippet := LeBlueskyPostSnippet new.
 	snippet client
 		ifNil: [ self error: 'Not logged into Bluesky, cannot retrieve post.' ].
 	did := (snippet client comAtprotoIdentityResolveHandleHandle: handle) at: 'did'.

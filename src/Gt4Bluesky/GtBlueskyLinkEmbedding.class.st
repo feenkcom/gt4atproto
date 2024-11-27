@@ -1,5 +1,5 @@
 Class {
-	#name : #GtBlueskyPostEmbedding,
+	#name : #GtBlueskyLinkEmbedding,
 	#superclass : #GtBlueskyEmbedding,
 	#instVars : [
 		'post'
@@ -8,20 +8,20 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-GtBlueskyPostEmbedding class >> blueskyRecord [
+GtBlueskyLinkEmbedding class >> blueskyRecord [
 	^ AppBskyEmbedRecordMain
 ]
 
 { #category : #'as yet unclassified' }
-GtBlueskyPostEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
-	^ GtBlueskyPostEmbedding new
+GtBlueskyLinkEmbedding class >> fromRecord: aPost inViewModel: aViewModel [
+	^ GtBlueskyLinkEmbedding new
 		post: aPost atpPost atpEmbed;
 		snippet: aViewModel snippetModel;
 		snippetViewModel: aViewModel
 ]
 
 { #category : #'as yet unclassified' }
-GtBlueskyPostEmbedding >> asElement [
+GtBlueskyLinkEmbedding >> asElement [
 	^ BrHorizontalPane new fitContent
 		clipChildren: false;
 		background: Color white;
@@ -31,7 +31,7 @@ GtBlueskyPostEmbedding >> asElement [
 ]
 
 { #category : #'as yet unclassified' }
-GtBlueskyPostEmbedding >> asJson [
+GtBlueskyLinkEmbedding >> asJson [
 	^ {'$type' -> 'app.bsky.embed.record'.
 		'record'
 			-> {'uri' -> self post atpPost atpUri.
@@ -39,11 +39,11 @@ GtBlueskyPostEmbedding >> asJson [
 ]
 
 { #category : #accessing }
-GtBlueskyPostEmbedding >> post [
+GtBlueskyLinkEmbedding >> post [
 	^ post
 ]
 
 { #category : #accessing }
-GtBlueskyPostEmbedding >> post: anObject [
+GtBlueskyLinkEmbedding >> post: anObject [
 	post := anObject
 ]

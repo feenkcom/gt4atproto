@@ -1,5 +1,5 @@
 Class {
-	#name : #GtBlueskyPostStyler,
+	#name : #GtBlueskyLinkStyler,
 	#superclass : #BlTextStyler,
 	#traits : 'TLeAnnotationParseNodeVisitor + (TLeContentNodeVisitor - {#visitAnnotation:})',
 	#classTraits : 'TLeAnnotationParseNodeVisitor classTrait + TLeContentNodeVisitor classTrait',
@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #generated }
-GtBlueskyPostStyler class >> textLinkButtonPadding: additionalPadding margin: additionalMargin [
+GtBlueskyLinkStyler class >> textLinkButtonPadding: additionalPadding margin: additionalMargin [
 	"Answer a button used for in-text links in Lepiter.
 	This sets a common font, size, color and style for the button"
 
@@ -21,7 +21,7 @@ GtBlueskyPostStyler class >> textLinkButtonPadding: additionalPadding margin: ad
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler class >> textLinkButtonPadding: additionalPadding margin: additionalMargin valid: isValid [
+GtBlueskyLinkStyler class >> textLinkButtonPadding: additionalPadding margin: additionalMargin valid: isValid [
 	"Answer a button used for in-text links in Lepiter.
 	This sets a common font, size, color and style for the button"
 	| color button |
@@ -50,27 +50,27 @@ GtBlueskyPostStyler class >> textLinkButtonPadding: additionalPadding margin: ad
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> blueskyPost [
+GtBlueskyLinkStyler >> blueskyPost [
 	^ blueskyPost
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> blueskyPost: anObject [
+GtBlueskyLinkStyler >> blueskyPost: anObject [
 	blueskyPost := anObject
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> elements [
+GtBlueskyLinkStyler >> elements [
 	^ elements
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> expanded [
+GtBlueskyLinkStyler >> expanded [
 	^ expanded
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> fontSizeForHeadingLevel: aHeadingLevel [
+GtBlueskyLinkStyler >> fontSizeForHeadingLevel: aHeadingLevel [
 	"Compute the relative (em) font size for a text with a given heading level (1-6)"
 	<return: #BlFontSize>
 	"
@@ -92,7 +92,7 @@ GtBlueskyPostStyler >> fontSizeForHeadingLevel: aHeadingLevel [
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> initialize [
+GtBlueskyLinkStyler >> initialize [
 	super initialize.
 	
 	lastId := 0.
@@ -101,11 +101,11 @@ GtBlueskyPostStyler >> initialize [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> isCursorInside: nodeInterval [ 
+GtBlueskyLinkStyler >> isCursorInside: nodeInterval [ 
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> isValidLink: urlString [
+GtBlueskyLinkStyler >> isValidLink: urlString [
 	"Answer a boolean indicating whether the supplied string is valid.
 	There's no restriction on what schemes are supported as we don't know what schemes the OS supports, so any scheme other than file:// will answer true.
 	If the scheme is file:// or no scheme is provided, answer a boolean based on the files existence."
@@ -115,13 +115,13 @@ GtBlueskyPostStyler >> isValidLink: urlString [
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> nextUniqueId [
+GtBlueskyLinkStyler >> nextUniqueId [
 	lastId := lastId + 1.
 	^ lastId
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> privateStyle: aText [ 
+GtBlueskyLinkStyler >> privateStyle: aText [ 
 	<return: #BlText>
 	| ast |
 	text := aText.
@@ -134,7 +134,7 @@ GtBlueskyPostStyler >> privateStyle: aText [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> resolveUrl: aUrlString [
+GtBlueskyLinkStyler >> resolveUrl: aUrlString [
 	"For file urls, resolve against the database directory or root directory, and allow file urls of the form 'file://path/to/image.png' (the host is missing), with the same resolution"
 	<return: #GtUrlStringUtility>
 	| rootDir |
@@ -146,7 +146,7 @@ GtBlueskyPostStyler >> resolveUrl: aUrlString [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleAutoHiding: leftRange and: rightRange whenOutside: nodeInterval [
+GtBlueskyLinkStyler >> styleAutoHiding: leftRange and: rightRange whenOutside: nodeInterval [
 	| anAttribute marker1 marker2 cursorAttribute |
 	marker1 := BrTextInvisibleMarkerAttribute new.
 	marker2 := BrTextInvisibleMarkerAttribute new.
@@ -202,7 +202,7 @@ GtBlueskyPostStyler >> styleAutoHiding: leftRange and: rightRange whenOutside: n
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleAutoHiding: anInterval text: aSubText [
+GtBlueskyLinkStyler >> styleAutoHiding: anInterval text: aSubText [
 	| anAttribute aMarkerAttribute cursorAttribute |
 	
 	aMarkerAttribute := BrTextInvisibleMarkerAttribute new.
@@ -245,7 +245,7 @@ GtBlueskyPostStyler >> styleAutoHiding: anInterval text: aSubText [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleAutoHidingAnnotation: anAnnotation [
+GtBlueskyLinkStyler >> styleAutoHidingAnnotation: anAnnotation [
 	| anAttribute aMarkerAttribute aStartPositionToHide aStopPositionToHide anAnnotationTextToHide aSurroundingTextToRespondToCursor aStartPositionToReactToCursor aStopPositionToReactToCursor |
 	anAnnotation isDefined ifFalse: [ ^ self ].
 
@@ -288,7 +288,7 @@ GtBlueskyPostStyler >> styleAutoHidingAnnotation: anAnnotation [
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> styleBold: aBoldNode [
+GtBlueskyLinkStyler >> styleBold: aBoldNode [
 	(self text from: aBoldNode startPosition to: aBoldNode stopPosition)
 		attributes: {BlFontWeightAttribute bold}.
 	self
@@ -300,7 +300,7 @@ GtBlueskyPostStyler >> styleBold: aBoldNode [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleExternalLink: anExternalLink [
+GtBlueskyLinkStyler >> styleExternalLink: anExternalLink [
 	| linkText |
 
 	linkText := self text
@@ -312,7 +312,7 @@ GtBlueskyPostStyler >> styleExternalLink: anExternalLink [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleExternalLinkButton: aLink text: aSubText [
+GtBlueskyLinkStyler >> styleExternalLinkButton: aLink text: aSubText [
 	"Append a button to the supplied link text.
 	If the link is defined (not empty), the button opens the link.
 	If the link is empty, open a dialog allowing the user to select a file"
@@ -323,7 +323,7 @@ GtBlueskyPostStyler >> styleExternalLinkButton: aLink text: aSubText [
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> styleFacets: aText [
+GtBlueskyLinkStyler >> styleFacets: aText [
 	blueskyPost ifNil: [ ^ self ].
 
 	blueskyPost atpPost atpRecord atpFacets
@@ -340,7 +340,7 @@ GtBlueskyPostStyler >> styleFacets: aText [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleFileSelection: aLink text: aSubText [
+GtBlueskyLinkStyler >> styleFileSelection: aLink text: aSubText [
 	"Append a button to the supplied link text that opens the link"
 
 	aSubText appendingAdornment: [ :aTBrTextEditorTextualPiece :anEditorElement | 
@@ -359,7 +359,7 @@ GtBlueskyPostStyler >> styleFileSelection: aLink text: aSubText [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleHeader: aHeaderNode [
+GtBlueskyLinkStyler >> styleHeader: aHeaderNode [
 	aHeaderNode parts isEmpty ifTrue: [ ^ self ].
 
 	(self text from: aHeaderNode startPosition to: aHeaderNode stopPosition)
@@ -381,7 +381,7 @@ GtBlueskyPostStyler >> styleHeader: aHeaderNode [
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> styleItalic: anItalicNode [
+GtBlueskyLinkStyler >> styleItalic: anItalicNode [
 	(self text
 		from: anItalicNode startPosition
 		to: anItalicNode stopPosition)
@@ -394,7 +394,7 @@ GtBlueskyPostStyler >> styleItalic: anItalicNode [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleLinkText: aSubText valid: hasValidTarget [
+GtBlueskyLinkStyler >> styleLinkText: aSubText valid: hasValidTarget [
 	"Set the colour of the source markup text"
 	| aColor |
 	aColor := hasValidTarget
@@ -405,7 +405,7 @@ GtBlueskyPostStyler >> styleLinkText: aSubText valid: hasValidTarget [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleOpenExternalImage: aLink text: aSubText [
+GtBlueskyLinkStyler >> styleOpenExternalImage: aLink text: aSubText [
 	| anImageURL attribute pictureContainer widget |
 	anImageURL := (self resolveUrl: aLink url) url asString.
 
@@ -444,7 +444,7 @@ GtBlueskyPostStyler >> styleOpenExternalImage: aLink text: aSubText [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> styleOpenExternalLinkButton: aLink text: aSubText [
+GtBlueskyLinkStyler >> styleOpenExternalLinkButton: aLink text: aSubText [
 	"Append a button to the supplied link text that opens the link"
 
 	aSubText
@@ -470,24 +470,24 @@ GtBlueskyPostStyler >> styleOpenExternalLinkButton: aLink text: aSubText [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> text [
+GtBlueskyLinkStyler >> text [
 	^ text
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> visitAnnotation: anAnnotation [
+GtBlueskyLinkStyler >> visitAnnotation: anAnnotation [
 	self styleAutoHidingAnnotation: anAnnotation.
 	^ self visitAnnotationParse: anAnnotation
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> visitBold: aBoldNode [
+GtBlueskyLinkStyler >> visitBold: aBoldNode [
 	self styleBold: aBoldNode.
 	^ self visitContent: aBoldNode
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> visitExternalImageLink: anExternalLink [ 
+GtBlueskyLinkStyler >> visitExternalImageLink: anExternalLink [ 
 	| linkText url validLink |
 
 	linkText := self text
@@ -505,25 +505,25 @@ GtBlueskyPostStyler >> visitExternalImageLink: anExternalLink [
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> visitExternalLabelUrlLink: anExternalLabelUrlLink [
+GtBlueskyLinkStyler >> visitExternalLabelUrlLink: anExternalLabelUrlLink [
 	self visitExternalLink: anExternalLabelUrlLink.
 	self styleExternalLink: anExternalLabelUrlLink
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> visitExternalUrlLink: anExternalUrlLink [
+GtBlueskyLinkStyler >> visitExternalUrlLink: anExternalUrlLink [
 	self visitExternalLink: anExternalUrlLink.
 	self styleExternalLink: anExternalUrlLink
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> visitHeader: aHeader [
+GtBlueskyLinkStyler >> visitHeader: aHeader [
 	self styleHeader: aHeader.
 	^ self visitContent: aHeader
 ]
 
 { #category : #generated }
-GtBlueskyPostStyler >> visitInlineCode: aCodeNode [
+GtBlueskyLinkStyler >> visitInlineCode: aCodeNode [
 	| size |
 	size := (aCodeNode code source at: 2) = $` ifTrue: [ 2 ] ifFalse: [ 1 ].
 	(self text from: aCodeNode startPosition to: aCodeNode stopPosition)
@@ -537,7 +537,7 @@ GtBlueskyPostStyler >> visitInlineCode: aCodeNode [
 ]
 
 { #category : #accessing }
-GtBlueskyPostStyler >> visitItalic: anItalicNode [
+GtBlueskyLinkStyler >> visitItalic: anItalicNode [
 	self styleItalic: anItalicNode.
 	^ self visitContent: anItalicNode
 ]

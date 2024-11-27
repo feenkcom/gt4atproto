@@ -14,6 +14,6 @@ LeContextMenuSpotterStart >> gtSpotterForBlueskyFor: aSearch [
 						and: [ aQuery includesSubstring: '/post/' ] ])
 				collect: [ :aUrl | 
 					LeContextMenuItemValuableSpecification new
-						valuable: [ LeBlueskyEditorSnippet fromUrl: aUrl ];
+						valuable: [ LeBlueskyPostSnippet fromUrl: aUrl ];
 						title: 'Bluesky post' ] ]
 ]

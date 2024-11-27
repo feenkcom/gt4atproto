@@ -1,5 +1,5 @@
 Class {
-	#name : #LeBlueskyPostFileWidget,
+	#name : #LeBlueskyLinkFileWidget,
 	#superclass : #BrAsyncFileWidget,
 	#instVars : [
 		'isDeletable',
@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> buildDeleter [
+LeBlueskyLinkFileWidget >> buildDeleter [
 	^ BrButton new beTinySize
 		aptitude: BrGlamorousButtonWithIconCircularAptitude;
 		icon: BrGlamorousVectorIcons cancel;
@@ -24,23 +24,23 @@ LeBlueskyPostFileWidget >> buildDeleter [
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> defaultPostAction [
+LeBlueskyLinkFileWidget >> defaultPostAction [
 	^ [ :anElement | self isDeletable ifTrue: [ anElement addChild: self buildDeleter ] ]
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> file [
+LeBlueskyLinkFileWidget >> file [
 	^ file
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> file: aFile [
+LeBlueskyLinkFileWidget >> file: aFile [
 	file := aFile.
 	super file: aFile
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> initialize [
+LeBlueskyLinkFileWidget >> initialize [
 	super initialize.
 	self clipChildren: false.
 	isDeletable := true.
@@ -49,21 +49,21 @@ LeBlueskyPostFileWidget >> initialize [
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> isDeletable [
+LeBlueskyLinkFileWidget >> isDeletable [
 	^ isDeletable
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> isDeletable: anObject [
+LeBlueskyLinkFileWidget >> isDeletable: anObject [
 	isDeletable := anObject
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> onDeletion [
+LeBlueskyLinkFileWidget >> onDeletion [
 	^ onDeletion
 ]
 
 { #category : #accessing }
-LeBlueskyPostFileWidget >> onDeletion: anObject [
+LeBlueskyLinkFileWidget >> onDeletion: anObject [
 	onDeletion := anObject
 ]
