@@ -8,7 +8,6 @@ Class {
 		'errorLabelElement',
 		'identityElement',
 		'publishButton',
-		'replyButton',
 		'addFileButton',
 		'parentInfoElement',
 		'inspectButton',
@@ -332,8 +331,6 @@ LeBlueskyPostSnippetElement >> initializeToolbarElement [
 			text: '0/' , self maximumPostSize asString.
 
 	toolbarElement addItem: writingIndicator.
-
-	toolbarElement addItem: replyButton.
 
 	inspectButton := BrButton new
 			beTinySize;
