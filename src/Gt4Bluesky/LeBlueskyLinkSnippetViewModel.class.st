@@ -1,6 +1,6 @@
 Class {
 	#name : #LeBlueskyLinkSnippetViewModel,
-	#superclass : #LeSnippetViewModel,
+	#superclass : #LeTextualSnippetViewModel,
 	#category : #'Gt4Bluesky-Snippet'
 }
 
