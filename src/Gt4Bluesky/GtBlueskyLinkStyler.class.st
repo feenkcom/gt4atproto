@@ -330,8 +330,8 @@ GtBlueskyLinkStyler >> styleFacets: aText [
 		do: [ :aFacet | 
 			| textBlock |
 			textBlock := aText
-					from: aFacet atpIndex atpByteStart
-					to: aFacet atpIndex atpByteEnd.
+					from: (aText asString gtCharIndexAtByteOffset: aFacet atpIndex atpByteStart)
+					to: (aText asString gtCharIndexAtByteOffset: aFacet atpIndex atpByteEnd).
 
 			textBlock foreground: BrGlamorousColors linkColor.
 
