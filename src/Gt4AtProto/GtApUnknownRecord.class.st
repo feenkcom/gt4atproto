@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'key',
-		'rawData'
+		'rawData',
+		'client'
 	],
 	#category : #'Gt4AtProto-Records'
 }
@@ -16,8 +17,24 @@ GtApUnknownRecord >> asEmbeddedElement [
 ]
 
 { #category : #accessing }
+GtApUnknownRecord >> client [
+	^ client
+]
+
+{ #category : #accessing }
+GtApUnknownRecord >> client: anObject [
+	client := anObject
+]
+
+{ #category : #accessing }
 GtApUnknownRecord >> fromRequest: aData [
 	rawData := aData
+]
+
+{ #category : #accessing }
+GtApUnknownRecord >> fromRequest: aData withClient: aClient [
+	rawData := aData.
+	client := aClient
 ]
 
 { #category : #accessing }
