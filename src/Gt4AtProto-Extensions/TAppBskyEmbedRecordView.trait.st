@@ -26,6 +26,10 @@ TAppBskyEmbedRecordView >> author [
 TAppBskyEmbedRecordView >> createdAt [
 	(self atpRecord isKindOf: AppBskyGraphDefsStarterPackViewBasic)
 		ifTrue: [ ^ self atpRecord atpRecord atpCreatedAt ].
+
+	(self atpRecord isKindOf: AppBskyFeedDefsGeneratorView)
+		ifTrue: [ ^ self atpRecord atpCreator atpCreatedAt ].
+
 	^ self atpRecord atpValue atpCreatedAt
 ]
 
@@ -61,5 +65,10 @@ TAppBskyEmbedRecordView >> recordText [
 	(self atpRecord isKindOf: AppBskyGraphDefsStarterPackViewBasic)
 		ifTrue: [ ^ 'Starter pack "' , self atpRecord atpRecord atpName , '" from '
 				, self atpRecord atpCreator atpHandle ].
+				
+		(self atpRecord isKindOf: AppBskyFeedDefsGeneratorView)
+		ifTrue: [ ^ 'Feed "' , self atpRecord atpDisplayName , '" from '
+				, self atpRecord atpCreator atpHandle ].
+				
 	^ self atpRecord atpValue atpText
 ]

@@ -1,6 +1,8 @@
 Class {
 	#name : #AppBskyFeedDefsGeneratorView,
 	#superclass : #GtApModelEntity,
+	#traits : 'TAppBskyFeedDefsGeneratorView',
+	#classTraits : 'TAppBskyFeedDefsGeneratorView classTrait',
 	#instVars : [
 		'atpUri',
 		'atpCid',
