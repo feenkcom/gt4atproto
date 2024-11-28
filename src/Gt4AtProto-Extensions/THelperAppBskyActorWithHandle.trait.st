@@ -12,31 +12,28 @@ Trait {
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadFollowers [
 	^ GtApUsersStream
-		users: (((self client appBskyGraphGetFollowersActor: self atpHandle) at: 'followers')
-				collect: [ :anActor | anActor client: self client ])
+		users: ((self client appBskyGraphGetFollowersActor: self atpHandle) at: 'followers')
 ]
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadFollows [
 	^ GtApUsersStream
-		users: (((self client appBskyGraphGetFollowsActor: self atpHandle) at: 'follows')
-				collect: [ :anActor | anActor client: self client ])
+		users: ((self client appBskyGraphGetFollowsActor: self atpHandle) at: 'follows')
 ]
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadPosts [
 	^ GtApPostsStream
-		posts: ((self client
+		posts: (self client
 				appBskyFeedGetAuthorFeedActor: self atpHandle
 				filter: ''
-				includePins: true) collect: [ :aPost | aPost client: self client ])
+				includePins: true)
 ]
 
 { #category : #accessing }
 THelperAppBskyActorWithHandle >> downloadTimelinePosts [
 	^ GtApPostsStream
-		posts: ((self client appBskyFeedGetTimelineAlgorithm: 'reverse-chronological')
-				collect: [ :aPost | aPost client: self client ])
+		posts: (self client appBskyFeedGetTimelineAlgorithm: 'reverse-chronological')
 ]
 
 { #category : #accessing }
