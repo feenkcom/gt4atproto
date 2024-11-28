@@ -12,6 +12,12 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetElement >> addReplyElement [
+	self snippet
+		addSnippetAfterSelf: (LeBlueskyPostSnippet new parentFromUrl: self snippetViewModel url)
+]
+
+{ #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetElement >> editor [
 	^ urlEditorElement
 ]
@@ -86,6 +92,13 @@ LeBlueskyLinkSnippetElement >> initializeToolbarElement [
 				text: 'URL:';
 				constraintsDo: [ :c | c grid vertical alignCenter ]);
 		addChild: urlContainer.
+		
+	toolbarContainer
+		addChild: (BrButton new
+					aptitude: BrGlamorousButtonWithIconAptitude;
+					icon: BrGlamorousVectorIcons spawn;
+					label: 'Reply to post';
+					action: [ self enqueueTask: (BlTaskAction new action: [ self addReplyElement ]) ]).
 
 	toolbarContainer
 		addChild: (deleteButton := BrButton new
