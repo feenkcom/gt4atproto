@@ -288,7 +288,7 @@ LeBlueskyPostSnippetElement >> initializeParentDropdown [
 								anElement := self snippet hasParentPost
 										ifTrue: [ GtApReplyElement new snippet: self snippet ]
 										ifFalse: [ GtApAddReplyForm new
-												isReadOnly: self snippet hasPost;
+												isReadOnly: false;
 												onAccept: [ :aUrl | 
 													self snippet parentFromUrl: aUrl.
 													anElement
