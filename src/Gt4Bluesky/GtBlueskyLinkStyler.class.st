@@ -327,16 +327,17 @@ GtBlueskyLinkStyler >> styleFacets: aText [
 	blueskyPost ifNil: [ ^ self ].
 
 	blueskyPost atpPost atpRecord atpFacets
-		do: [ :aFacet | 
-			| textBlock |
-			textBlock := aText
-					from: (aText asString gtCharIndexAtByteOffset: aFacet atpIndex atpByteStart)
-					to: (aText asString gtCharIndexAtByteOffset: aFacet atpIndex atpByteEnd).
+		ifNotNil: [ blueskyPost atpPost atpRecord atpFacets
+				do: [ :aFacet | 
+					| textBlock |
+					textBlock := aText
+							from: (aText asString gtCharIndexAtByteOffset: aFacet atpIndex atpByteStart)
+							to: (aText asString gtCharIndexAtByteOffset: aFacet atpIndex atpByteEnd).
 
-			textBlock foreground: BrGlamorousColors linkColor.
+					textBlock foreground: BrGlamorousColors linkColor.
 
-			aFacet atpFeatures
-				do: [ :aFeature | aFeature adorn: textBlock usingPost: blueskyPost ] ]
+					aFacet atpFeatures
+						do: [ :aFeature | aFeature adorn: textBlock usingPost: blueskyPost ] ] ]
 ]
 
 { #category : #generated }

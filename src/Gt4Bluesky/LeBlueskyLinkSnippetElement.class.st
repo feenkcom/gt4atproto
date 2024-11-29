@@ -6,7 +6,8 @@ Class {
 		'postElement',
 		'contentElement',
 		'toolbarContainer',
-		'deleteButton'
+		'deleteButton',
+		'parentDropdown'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -37,6 +38,21 @@ LeBlueskyLinkSnippetElement >> initializeContentElement [
 	contentElement := BrVerticalPane new vFitContentLimited hMatchParent.
 
 	contentElement addChild: self initializePostElement.
+	contentElement addChild: self initializeParentButton
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetElement >> initializeParentButton [
+	^ parentDropdown := BrButton new
+			icon: BrGlamorousVectorIcons spawn asElement;
+			label: 'Reply Information';
+			aptitude: BrGlamorousButtonWithIconAptitude
+					+ (BrGlamorousButtonExteriorAptitude new borderPaint: Color transparent);
+			action: [ self phlow spawnObject: self snippetViewModel parent ];
+			constraintsDo: [ :c | 
+				c ignoreByLayout.
+				c ignored horizontal alignRight.
+				c ignored vertical alignTop ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -144,6 +160,10 @@ LeBlueskyLinkSnippetElement >> updateElement [
 	urlEditorElement text: self snippetViewModel url.
 
 	postElement post: self snippetViewModel post.
+
+	self snippetViewModel parent
+		ifNil: [ parentDropdown visibility: BlVisibility gone ]
+		ifNotNil: [ parentDropdown visibility: BlVisibility visible ].
 
 	self snippetViewModel isOwnPost
 		ifTrue: [ deleteButton visibility: BlVisibility visible ]

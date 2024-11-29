@@ -1,6 +1,9 @@
 Class {
 	#name : #LeBlueskyLinkSnippetViewModel,
 	#superclass : #LeTextualSnippetViewModel,
+	#instVars : [
+		'post'
+	],
 	#category : #'Gt4Bluesky-Snippet'
 }
 
@@ -22,15 +25,8 @@ LeBlueskyLinkSnippetViewModel >> deletePost [
 ]
 
 { #category : #'as yet unclassified' }
-LeBlueskyLinkSnippetViewModel >> isOwnPost [
-	^ self post isNotNil
-		and: [ self snippetModel client isNotNil
-				and: [ self post author atpHandle = self snippetModel client handle ] ]
-]
-
-{ #category : #'as yet unclassified' }
-LeBlueskyLinkSnippetViewModel >> post [
-	| path handle recordId did |
+LeBlueskyLinkSnippetViewModel >> initializePost [
+	| handle path recordId did |
 	self url isEmptyOrNil ifTrue: [ ^ nil ].
 	path := '/' split: (self url removePrefix: 'https://bsky.app/').
 	handle := path second.
@@ -38,10 +34,29 @@ LeBlueskyLinkSnippetViewModel >> post [
 	self snippetModel client ifNil: [ ^ nil ].
 	did := (self snippetModel client comAtprotoIdentityResolveHandleHandle: handle)
 			at: 'did'.
-	^ (self snippetModel client
-		appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/' , recordId
-		depth: nil
-		parentHeight: nil) at: 'thread'
+	post := (self snippetModel client
+			appBskyFeedGetPostThreadUri: 'at://' , did , '/app.bsky.feed.post/'
+					, recordId
+			depth: nil
+			parentHeight: nil) at: 'thread'.
+	^ post
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> isOwnPost [
+	^ self post isNotNil
+		and: [ self snippetModel client isNotNil
+				and: [ self post author atpHandle = self snippetModel client handle ] ]
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> parent [
+	^ self post atpParent
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> post [
+	^ post ifNil: [ ^ self initializePost ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -56,5 +71,6 @@ LeBlueskyLinkSnippetViewModel >> url [
 
 { #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetViewModel >> url: aUrl [ 
-	self snippetModel url: aUrl
+	self snippetModel url: aUrl.
+	self initializePost
 ]
