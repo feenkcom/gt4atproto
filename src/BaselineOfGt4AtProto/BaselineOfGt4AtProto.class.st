@@ -6,17 +6,16 @@ Class {
 
 { #category : #loading }
 BaselineOfGt4AtProto class >> loadLepiter [
-	IceRepository registry  
-		detect: [ :aRepository |
-			aRepository name = 'gt4atproto' ]
+	IceRepository registry
+		detect: [ :aRepository | aRepository name = 'gt4atproto' ]
 		ifFound: [ :aRepository | 
 			| defaultDatabase currentProperties |
 			defaultDatabase := LeDatabasesRegistry defaultLogicalDatabase.
 			currentProperties := defaultDatabase properties.
-			currentProperties addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
-			defaultDatabase reload ]
-		ifNone: [
-			self inform: 'Repository not found.' ]
+			currentProperties
+				addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
+			LeLogicalDatabase allInstancesDo: #fullReload ]
+		ifNone: [ self inform: 'Repository not found.' ]
 ]
 
 { #category : #baseline }
