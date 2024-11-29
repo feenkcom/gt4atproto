@@ -14,6 +14,11 @@ LeBlueskyLinkSnippetViewModel >> actor [
 ]
 
 { #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetViewModel >> client [
+	^ self snippetModel client
+]
+
+{ #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetViewModel >> deletePost [
 	self snippetModel client
 		comAtprotoRepoDeleteRecordRepo: self actor atpDid

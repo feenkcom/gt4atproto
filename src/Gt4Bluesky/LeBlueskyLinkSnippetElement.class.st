@@ -46,7 +46,9 @@ LeBlueskyLinkSnippetElement >> initializeContentElement [
 { #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetElement >> initializeLoginElement [
 	^ loginElement := (GtBlueskyLoginForm new
-			clientCallback: [ :aClient | self snippet client: aClient ]) asElement
+			clientCallback: [ :aClient | 
+				self snippet client: aClient.
+				self onSnippetViewModelChanged ]) asElement
 ]
 
 { #category : #'as yet unclassified' }
@@ -178,6 +180,8 @@ LeBlueskyLinkSnippetElement >> updateElement [
 		ifFalse: [ deleteButton visibility: BlVisibility gone ].
 
 	self snippetViewModel client
-		ifNil: [ loginElement visibility: BlVisibility visible ]
-		ifNotNil: [ loginElement visibility: BlVisibility gone ]
+		ifNil: [ loginElement visibility: BlVisibility visible.
+			postElement visibility: BlVisibility gone ]
+		ifNotNil: [ loginElement visibility: BlVisibility gone.
+			postElement visibility: BlVisibility visible ]
 ]
