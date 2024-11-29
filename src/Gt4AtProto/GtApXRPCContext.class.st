@@ -54,8 +54,15 @@ GtApXRPCContext >> loginInformation: anObject for: aUserNameString [
 			accessToken: (anObject at: 'accessJwt');
 			refreshToken: (anObject at: 'refreshJwt');
 			handle: aUserNameString.
-			
-	GtIdentityRegistry registry addCredential: loginInformation
+
+	(GtIdentityRegistry registry allOfType: GtBlueskyIdentity)
+		do: [ :anIdentity | 
+			anIdentity handle = aUserNameString
+				ifTrue: [ GtIdentityRegistry registry removeCredential: anIdentity ] ].
+
+	GtIdentityRegistry registry
+		addCredential: loginInformation;
+		saveCredentials
 ]
 
 { #category : #accessing }
@@ -72,7 +79,9 @@ GtApXRPCContext >> replaceLoginInformation: anObject [
 			refreshToken: (anObject at: 'refreshJwt');
 			handle: loginInformation handle.
 
-	GtIdentityRegistry registry addCredential: loginInformation
+	GtIdentityRegistry registry
+		addCredential: loginInformation;
+		saveCredentials
 ]
 
 { #category : #accessing }
