@@ -7,7 +7,8 @@ Class {
 		'contentElement',
 		'toolbarContainer',
 		'deleteButton',
-		'parentDropdown'
+		'parentDropdown',
+		'loginElement'
 	],
 	#category : #'Gt4Bluesky-Snippet'
 }
@@ -38,7 +39,14 @@ LeBlueskyLinkSnippetElement >> initializeContentElement [
 	contentElement := BrVerticalPane new vFitContentLimited hMatchParent.
 
 	contentElement addChild: self initializePostElement.
+	contentElement addChild: self initializeLoginElement.
 	contentElement addChild: self initializeParentButton
+]
+
+{ #category : #'as yet unclassified' }
+LeBlueskyLinkSnippetElement >> initializeLoginElement [
+	^ loginElement := (GtBlueskyLoginForm new
+			clientCallback: [ :aClient | self snippet client: aClient ]) asElement
 ]
 
 { #category : #'as yet unclassified' }
@@ -167,5 +175,9 @@ LeBlueskyLinkSnippetElement >> updateElement [
 
 	self snippetViewModel isOwnPost
 		ifTrue: [ deleteButton visibility: BlVisibility visible ]
-		ifFalse: [ deleteButton visibility: BlVisibility gone ]
+		ifFalse: [ deleteButton visibility: BlVisibility gone ].
+
+	self snippetViewModel client
+		ifNil: [ loginElement visibility: BlVisibility visible ]
+		ifNotNil: [ loginElement visibility: BlVisibility gone ]
 ]

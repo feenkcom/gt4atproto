@@ -51,6 +51,8 @@ LeBlueskyLinkSnippetViewModel >> isOwnPost [
 
 { #category : #'as yet unclassified' }
 LeBlueskyLinkSnippetViewModel >> parent [
+	self post ifNil: [ ^ nil ].
+
 	^ self post atpParent
 ]
 
