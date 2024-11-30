@@ -140,14 +140,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-29T12:34:08.18145+01:00"
+						"dateAndTimeString" : "2024-11-29T19:00:25.850545+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "4VpmCm3kDQC/wasMCc20XA=="
 				},
-				"code" : "pages := LeDatabasesRegistry defaultLogicalDatabase pages.\r\roldSnippets := (pages withDeepCollect: [ :aPage | aPage children ])\r\t\tselect: [ :aSnippet | \r\t\t\t(aSnippet isKindOf: LeUnknownSnippet)\r\t\t\t\tand: [ (aSnippet jsonObject at: '__type') = 'blueskyPostSnippet' ] ]"
+				"code" : "pages := LeDatabasesRegistry defaultLogicalDatabase pages.\r\roldSnippets := (pages flatCollect: #allChildrenDepthFirst)\r\t\tselect: [ :aSnippet | \r\t\t\t(aSnippet isKindOf: LeUnknownSnippet)\r\t\t\t\tand: [ (aSnippet jsonObject at: '__type') = 'blueskyPostSnippet' ] ]"
 			},
 			{
 				"__type" : "textSnippet",
