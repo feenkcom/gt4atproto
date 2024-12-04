@@ -51,7 +51,7 @@ GtBlueskyPictureEmbedding >> asElement [
 				addChild: (LeBlueskyLinkFileWidget new
 						vExact: 200;
 						hExact: 200;
-						isDeletable: self snippet hasPost not;
+						isDeletable: true;
 						file: aFile;
 						onDeletion: [ :aFileForDeletion | 
 							self files remove: aFileForDeletion.
@@ -59,7 +59,7 @@ GtBlueskyPictureEmbedding >> asElement [
 							self snippet removeFileReference: aFileForDeletion ]) ].	
 							
 	"can not add to existing post and can only add up to 4 images"
-	(self snippet hasPost not and: [ self files size < 4 ])
+	self files size < 4
 		ifTrue: [ aContainer
 				addChild: (BrButton new beLargeSize
 						aptitude: BrGlamorousButtonWithIconCircularAptitude
