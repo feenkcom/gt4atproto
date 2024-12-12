@@ -54,7 +54,7 @@ GtApLexiconUnknownDefinition >> generateDescriptorFor: aString usingPrefix: aPre
 
 { #category : #accessing }
 GtApLexiconUnknownDefinition >> generateDeserializationFor: aValue [
-	^ 'GtApModelEntity findForRequest: ', aValue, ' withClient: aClient'
+	^ 'GtApModelEntity findForRequest: ', aValue, ' withClient: self'
 ]
 
 { #category : #accessing }

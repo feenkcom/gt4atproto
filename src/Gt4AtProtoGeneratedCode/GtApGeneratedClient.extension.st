@@ -653,7 +653,7 @@ GtApGeneratedClient >> appBskyNotificationGetUnreadCountPriority: priority seenA
 ]
 
 { #category : #'*Gt4AtProtoGeneratedCode' }
-GtApGeneratedClient >> appBskyNotificationListNotificationspriority: priority seenAt: seenAt [
+GtApGeneratedClient >> appBskyNotificationListNotificationsReasons: reasons priority: priority seenAt: seenAt [
 	"Enumerate notifications for the requesting account. Requires auth."
 
 	<xrpcQuery>
@@ -669,7 +669,8 @@ GtApGeneratedClient >> appBskyNotificationListNotificationspriority: priority se
 				'seenAt' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
 				paginatedQueryOn: 'app.bsky.notification.listNotifications'
-				parameters: {'priority' -> priority.
+				parameters: {'reasons' -> reasons.
+						'priority' -> priority.
 						'seenAt' -> seenAt} asDictionary)
 ]
 
@@ -1324,9 +1325,9 @@ GtApGeneratedClient >> comAtprotoIdentityGetRecommendedDidCredentials [
 		from: {'rotationKeys' -> [ :aValue | aValue ].
 				'alsoKnownAs' -> [ :aValue | aValue ].
 				'verificationMethods'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ].
 				'services'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]}
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ]}
 				asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.identity.getRecommendedDidCredentials'
@@ -1364,7 +1365,7 @@ GtApGeneratedClient >> comAtprotoIdentitySignPlcOperationToken: token rotationKe
 	<xrpcProcedure>
 	^ GtApRequestResolver
 		from: {'operation'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]}
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ]}
 				asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.identity.signPlcOperation'
@@ -1500,7 +1501,7 @@ GtApGeneratedClient >> comAtprotoRepoDescribeRepoRepo: repo [
 		from: {'handle' -> [ :aValue | aValue ].
 				'did' -> [ :aValue | aValue ].
 				'didDoc'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ].
 				'collections' -> [ :aValue | aValue ].
 				'handleIsCorrect' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
@@ -1517,7 +1518,7 @@ GtApGeneratedClient >> comAtprotoRepoGetRecordRepo: repo collection: collection 
 		from: {'uri' -> [ :aValue | aValue ].
 				'cid' -> [ :aValue | aValue ].
 				'value'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]}
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ]}
 				asDictionary
 		andRequest: (self
 				queryOn: 'com.atproto.repo.getRecord'
@@ -1656,7 +1657,7 @@ GtApGeneratedClient >> comAtprotoServerCreateAccountEmail: email handle: handle 
 				'handle' -> [ :aValue | aValue ].
 				'did' -> [ :aValue | aValue ].
 				'didDoc'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ]}
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ]}
 				asDictionary
 		andRequest: (self
 				procedureOn: 'com.atproto.server.createAccount'
@@ -1722,7 +1723,7 @@ GtApGeneratedClient >> comAtprotoServerCreateSessionIdentifier: identifier passw
 				'handle' -> [ :aValue | aValue ].
 				'did' -> [ :aValue | aValue ].
 				'didDoc'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ].
 				'email' -> [ :aValue | aValue ].
 				'emailConfirmed' -> [ :aValue | aValue ].
 				'emailAuthFactor' -> [ :aValue | aValue ].
@@ -1829,7 +1830,7 @@ GtApGeneratedClient >> comAtprotoServerGetSession [
 				'emailConfirmed' -> [ :aValue | aValue ].
 				'emailAuthFactor' -> [ :aValue | aValue ].
 				'didDoc'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ].
 				'active' -> [ :aValue | aValue ].
 				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
@@ -1858,7 +1859,7 @@ GtApGeneratedClient >> comAtprotoServerRefreshSession [
 				'handle' -> [ :aValue | aValue ].
 				'did' -> [ :aValue | aValue ].
 				'didDoc'
-					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: aClient ].
+					-> [ :aValue | GtApModelEntity findForRequest: aValue withClient: self ].
 				'active' -> [ :aValue | aValue ].
 				'status' -> [ :aValue | aValue ]} asDictionary
 		andRequest: (self
