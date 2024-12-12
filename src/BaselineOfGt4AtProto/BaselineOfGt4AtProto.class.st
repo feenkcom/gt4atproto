@@ -36,7 +36,7 @@ BaselineOfGt4AtProto >> baseline: spec [
 				with: [ spec requires: 'Gt4AtProto-Lexicon' ].
 			spec
 				package: 'Gt4AtProtoGeneratedCode'
-				with: [ spec requires: 'Gt4AtProto-Extensions' ].
+				with: [ spec requires: #( 'Gt4AtProto-Extensions' 'Gt4AtProto' 'Gt4AtProto-UI' ) ].
 			spec
 				package: 'Gt4AtProto-Lepiter'
 				with: [ spec requires: 'Gt4AtProtoGeneratedCode' ].
