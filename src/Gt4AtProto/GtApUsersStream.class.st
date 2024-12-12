@@ -20,20 +20,6 @@ GtApUsersStream >> asyncSimilarCopy [
 ]
 
 { #category : #accessing }
-GtApUsersStream >> gtViewUsersFor: aView [
-	<gtView>
-	
-	^ aView list
-		title: 'Users';
-		priority: 1;
-		items: [ self stream asyncSimilarCopy ];
-		itemStencil: [ 
-			GtApFeedUserSummaryListContainerElement new ];
-		itemDataBinder: [ :aUserElement :aUser | 
-			aUserElement user: aUser ].
-]
-
-{ #category : #accessing }
 GtApUsersStream >> stream [
 	^ stream
 ]

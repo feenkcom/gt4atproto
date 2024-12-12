@@ -28,9 +28,15 @@ BaselineOfGt4AtProto >> baseline: spec [
 				with: [ spec repository: 'github://feenkcom/JSONSchema/source' ].
 
 			spec package: 'Gt4AtProto'.
-			spec package: 'Gt4AtProto-Lexicon' with: [ spec requires: 'JSONSchema' ].
-			spec package: 'Gt4AtProto-UI'.
-			spec package: 'Gt4AtProto-Extensions'.
+			spec 
+				package: 'Gt4AtProto-Lexicon' 
+				with: [ spec requires: #( 'JSONSchema' 'Gt4AtProto' ) ].
+			spec 
+				package: 'Gt4AtProto-UI'
+				with: [ spec requires: #( 'Gt4AtProto' ) ].
+			spec 
+				package: 'Gt4AtProto-Extensions' 
+				with: [ spec requires: #( 'Gt4AtProto-UI' 'Gt4AtProto' ) ].
 			spec
 				package: 'Gt4AtProto-Editor'
 				with: [ spec requires: 'Gt4AtProto-Lexicon' ].
@@ -40,5 +46,13 @@ BaselineOfGt4AtProto >> baseline: spec [
 			spec
 				package: 'Gt4AtProto-Lepiter'
 				with: [ spec requires: 'Gt4AtProtoGeneratedCode' ].
-			spec package: 'Gt4Bluesky' with: [ spec requires: {'Gt4AtProto'} ] ]
+			
+			spec 
+				package: 'Gt4Bluesky' 
+				with: [ spec requires: #( 
+					'Gt4AtProto' 'Gt4AtProto-UI' 'Gt4AtProtoGeneratedCode' 'Gt4AtProto-Extensions' ) ].
+					
+			spec
+				package: 'Gt4AtProto-Demos'
+				with: [ spec requires: #( 'Gt4Bluesky' 'Gt4AtProto-Lepiter' ) ] ]
 ]

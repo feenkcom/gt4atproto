@@ -1,7 +1,7 @@
 Class {
 	#name : #GtApEsugSlideshow,
 	#superclass : #PrioritySlideshow,
-	#category : #'Gt4AtProto-Slideshows'
+	#category : #'Gt4AtProto-Demos-Slideshows'
 }
 
 { #category : #accessing }
