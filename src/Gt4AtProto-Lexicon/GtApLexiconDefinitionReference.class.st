@@ -86,8 +86,8 @@ GtApLexiconDefinitionReference >> generateJson [
 
 { #category : #accessing }
 GtApLexiconDefinitionReference >> generateSetterAs: aString [
-	^ aString
-		, ': anObject
+	^ aString asMutator
+		, ' anObject
 	<referenceTo:''' , self referenceString
 		, '''>
 	', aString, ' := anObject'

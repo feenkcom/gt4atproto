@@ -85,8 +85,8 @@ GtApLexiconDefinition >> generateGetterAs: aString [
 
 { #category : #accessing }
 GtApLexiconDefinition >> generateSetterAs: aString [
-	^ aString
-		, ': anObject
+	^ aString asMutator
+		, ' anObject
 	', aString, ' := anObject'
 ]
 

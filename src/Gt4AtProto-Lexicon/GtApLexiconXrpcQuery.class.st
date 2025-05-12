@@ -24,7 +24,7 @@ GtApLexiconXrpcQuery >> asXRPCMethodNamed: aName [
 				'cursor'} includes: anInputName)
 				ifFalse: [ methodName := methodName
 							, (anIndex = 1 ifTrue: [ anInputName capitalized ] ifFalse: [ anInputName ])
-							, ': ' , anInputName , ' ' ] ].
+									asMutator , anInputName , ' ' ] ].
 	hasCursor := self parameters properties keys includes: 'cursor'.
 	methodToCall := hasCursor
 			ifTrue: [ 'paginatedQueryOn:' ]

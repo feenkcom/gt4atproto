@@ -33,7 +33,7 @@ GtApDefinitionFromRequestBuilder >> buildFromRequestFor: aDefinition [
 							| aKey aChildDefinition |
 							aKey := anAssociation key.
 							aChildDefinition := anAssociation value.
-							self accessorPrefix , aKey asCamelCase , ': ('
+							self accessorPrefix , aKey asCamelCase  , ': ('
 								, (aChildDefinition buildFromRequestWithKey: aKey) , ')' ]))
 ]
 

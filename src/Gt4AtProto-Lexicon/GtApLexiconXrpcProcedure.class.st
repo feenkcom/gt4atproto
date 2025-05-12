@@ -45,7 +45,7 @@ GtApLexiconXrpcProcedure >> asXRPCMethodNamed: aName [
 		withIndexDo: [ :anInputName :anIndex | 
 			methodName := methodName
 					, (anIndex = 1 ifTrue: [ anInputName capitalized ] ifFalse: [ anInputName ])
-					, ': ' , anInputName , ' ' ].
+							asMutator , anInputName , ' ' ].
 
 	^ methodName
 		, '
