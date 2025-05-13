@@ -48,7 +48,7 @@ GtBlueskyPictureEmbedding >> asElement [
 	self files
 		do: [ :aFile | 
 			aContainer
-				addChild: (LeBlueskyLinkFileWidget new
+				addChild: (BrDeletableFileWidget new
 						vExact: 200;
 						hExact: 200;
 						isDeletable: true;
