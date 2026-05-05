@@ -1,16 +1,17 @@
 Class {
-	#name : #GtApExternalElement,
-	#superclass : #BrVerticalPane,
+	#name : 'GtApExternalElement',
+	#superclass : 'BrVerticalPane',
 	#instVars : [
 		'titleElement',
 		'thumbElement',
 		'descriptionElement',
 		'urlElement'
 	],
-	#category : #'Gt4AtProto-Extensions'
+	#category : 'Gt4AtProto-Extensions',
+	#package : 'Gt4AtProto-Extensions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> buildDescriptionElement [
 	^ descriptionElement := BrEditor new
 			beReadOnlyWithoutSelection;
@@ -24,30 +25,30 @@ GtApExternalElement >> buildDescriptionElement [
 					right: 0)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> buildThumbElement [
 	^ thumbElement := BrAsyncFileWidget new
 			hMatchParent;
 			vExact: 200
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> buildTitleElement [
 	^ titleElement := BrLabel new aptitude: BrGlamorousLabelAptitude new bold
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> buildUrlElement [
 	^ urlElement := BrLabel new
 			aptitude: (BrGlamorousLabelAptitude new foreground: Color lightGray)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> description: aString [
 	descriptionElement text: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> external: anExternalRecord [
 	self title: anExternalRecord atpExternal atpTitle.
 	self thumb: anExternalRecord atpExternal atpThumb.
@@ -55,7 +56,7 @@ GtApExternalElement >> external: anExternalRecord [
 	self url: anExternalRecord atpExternal atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> initialize [
 	| contentContainer |
 	
@@ -78,7 +79,7 @@ GtApExternalElement >> initialize [
 	self addChild:  contentContainer.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> model: aModel [
 	self title: aModel title.
 	self thumb: aModel thumb.
@@ -86,19 +87,19 @@ GtApExternalElement >> model: aModel [
 	self url: aModel url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> thumb: anObject [
 	anObject
 		ifNil: [ thumbElement visibility: BlVisibility gone ]
 		ifNotNil: [ :aUrl | thumbElement url: aUrl ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> title: aString [
 	titleElement text: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApExternalElement >> url: aString [
 	urlElement text: aString
 ]

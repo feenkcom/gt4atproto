@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoAdminDefsActionViewCurrent,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsActionViewCurrent',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpAction',
 		'atpDurationInHours'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionViewCurrent'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent class >> atpSchema [
  ^ '{"type":"object","required":["id","action"],"properties":{"id":{"type":"integer"},"action":{"type":"ref","ref":"#actionType"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -40,7 +41,7 @@ ComAtprotoAdminDefsActionViewCurrent class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionViewCurrent >> actionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -49,42 +50,42 @@ ComAtprotoAdminDefsActionViewCurrent >> actionDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent >> atpAction [
 	<referenceTo:'#actionType'>
 	<atpType:#String format:nil>
 	^ atpAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent >> atpAction: anObject [
 	<referenceTo:'#actionType'>
 	atpAction := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent >> atpDurationInHours [
 	<atpType:#Number format:nil>
 	^ atpDurationInHours
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent >> atpDurationInHours: anObject [
 	atpDurationInHours := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionViewCurrent >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionViewCurrent >> durationInHoursDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -92,7 +93,7 @@ ComAtprotoAdminDefsActionViewCurrent >> durationInHoursDescription [
 		accessor: #atpDurationInHours
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionViewCurrent >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new

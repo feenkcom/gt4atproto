@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyFeedPostReplyRef,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedPostReplyRef',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRoot',
 		'atpParent'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef class >> atpFile [
  ^ 'app/bsky/feed/post.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef class >> atpRecordName [
  ^ 'app.bsky.feed.post#replyRef'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef class >> atpSchema [
  ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"ref","ref":"com.atproto.repo.strongRef"},"parent":{"type":"ref","ref":"com.atproto.repo.strongRef"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedPostReplyRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -43,33 +44,33 @@ AppBskyFeedPostReplyRef class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef >> atpParent [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpParent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef >> atpParent: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	atpParent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef >> atpRoot [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpRoot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostReplyRef >> atpRoot: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	atpRoot := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostReplyRef >> parentDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -78,7 +79,7 @@ AppBskyFeedPostReplyRef >> parentDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostReplyRef >> rootDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

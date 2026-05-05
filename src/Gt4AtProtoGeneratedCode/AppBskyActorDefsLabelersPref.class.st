@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsLabelersPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsLabelersPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpLabelers'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelersPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelersPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelersPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#labelersPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelersPref class >> atpSchema [
  ^ '{"type":"object","required":["labelers"],"properties":{"labelers":{"type":"array","items":{"type":"ref","ref":"#labelerPrefItem"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsLabelersPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,19 +41,19 @@ AppBskyActorDefsLabelersPref class >> fromRequest: aRequest withClient: aClient 
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelersPref >> atpLabelers [
 	<atpType:#AppBskyActorDefsLabelerPrefItem format:nil>
 	<atpCollection>
 	^ atpLabelers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelersPref >> atpLabelers: anObject [
 	atpLabelers := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsLabelersPref >> labelersDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

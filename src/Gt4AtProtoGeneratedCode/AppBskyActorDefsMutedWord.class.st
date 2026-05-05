@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyActorDefsMutedWord,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsMutedWord',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpValue',
@@ -8,30 +8,31 @@ Class {
 		'atpActorTarget',
 		'atpExpiresAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord class >> atpDescription [
  ^  'A word that the account owner has muted.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord class >> atpRecordName [
  ^ 'app.bsky.actor.defs#mutedWord'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord class >> atpSchema [
  ^ '{"type":"object","description":"A word that the account owner has muted.","required":["value","targets"],"properties":{"id":{"type":"string"},"value":{"type":"string","description":"The muted word itself.","maxLength":10000,"maxGraphemes":1000},"targets":{"type":"array","description":"The intended targets of the muted word.","items":{"type":"ref","ref":"app.bsky.actor.defs#mutedWordTarget"}},"actorTarget":{"type":"string","description":"Groups of users to apply the muted word to. If undefined, applies to all users.","knownValues":["all","exclude-following"],"default":"all"},"expiresAt":{"type":"string","format":"datetime","description":"The date and time at which the muted word will expire and no longer be applied."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsMutedWord class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -46,7 +47,7 @@ AppBskyActorDefsMutedWord class >> fromRequest: aRequest withClient: aClient [
 		atpExpiresAt: (aRequest at: 'expiresAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsMutedWord >> actorTargetDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -54,63 +55,63 @@ AppBskyActorDefsMutedWord >> actorTargetDescription [
 		accessor: #atpActorTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpActorTarget [
 	<atpType:#String format:nil>
 	^ atpActorTarget
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpActorTarget: anObject [
 	atpActorTarget := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpExpiresAt [
 	<atpType:#String format:'datetime'>
 	^ atpExpiresAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpExpiresAt: anObject [
 	atpExpiresAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpId [
 	<atpType:#String format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpTargets [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpTargets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpTargets: anObject [
 	atpTargets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpValue [
 	<atpType:#String format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWord >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsMutedWord >> expiresAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -118,7 +119,7 @@ AppBskyActorDefsMutedWord >> expiresAtDescription [
 		accessor: #atpExpiresAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsMutedWord >> idDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -126,7 +127,7 @@ AppBskyActorDefsMutedWord >> idDescription [
 		accessor: #atpId
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsMutedWord >> targetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -136,7 +137,7 @@ AppBskyActorDefsMutedWord >> targetsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsMutedWord >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

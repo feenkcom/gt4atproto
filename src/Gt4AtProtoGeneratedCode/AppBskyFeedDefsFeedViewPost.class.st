@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyFeedDefsFeedViewPost,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsFeedViewPost',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyFeedDefsFeedViewPost',
 	#classTraits : 'TAppBskyFeedDefsFeedViewPost classTrait',
 	#instVars : [
@@ -9,30 +9,31 @@ Class {
 		'atpReason',
 		'atpFeedContext'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#feedViewPost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost class >> atpSchema [
  ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"#postView"},"reply":{"type":"ref","ref":"#replyRef"},"reason":{"type":"union","refs":["#reasonRepost","#reasonPin"]},"feedContext":{"type":"string","description":"Context provided by feed generator that may be passed back alongside interactions.","maxLength":2000}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -58,55 +59,55 @@ AppBskyFeedDefsFeedViewPost class >> fromRequest: aRequest withClient: aClient [
 		atpFeedContext: (aRequest at: 'feedContext' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpFeedContext [
 	<atpType:#String format:nil>
 	^ atpFeedContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpFeedContext: anObject [
 	atpFeedContext := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpPost [
 	<referenceTo:'#postView'>
 	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpPost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpPost: anObject [
 	<referenceTo:'#postView'>
 	atpPost := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpReason [
 	<atpType:#(AppBskyFeedDefsReasonRepost AppBskyFeedDefsReasonPin) format:nil>
 	^ atpReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpReason: anObject [
 	atpReason := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpReply [
 	<referenceTo:'#replyRef'>
 	<atpType:#AppBskyFeedDefsReplyRef format:nil>
 	^ atpReply
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsFeedViewPost >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
 	atpReply := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsFeedViewPost >> feedContextDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -114,7 +115,7 @@ AppBskyFeedDefsFeedViewPost >> feedContextDescription [
 		accessor: #atpFeedContext
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsFeedViewPost >> postDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -123,7 +124,7 @@ AppBskyFeedDefsFeedViewPost >> postDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsFeedViewPost >> reasonDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -133,7 +134,7 @@ AppBskyFeedDefsFeedViewPost >> reasonDescription [
 		accessor: #atpReason
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsFeedViewPost >> replyDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

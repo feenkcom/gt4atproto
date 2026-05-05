@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyEmbedVideoCaption,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedVideoCaption',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpLang',
 		'atpFile'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption class >> atpFile [
  ^ 'app/bsky/embed/video.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption class >> atpRecordName [
  ^ 'app.bsky.embed.video#caption'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption class >> atpSchema [
  ^ '{"type":"object","required":["lang","file"],"properties":{"lang":{"type":"string","format":"language"},"file":{"type":"blob","accept":["text/vtt"],"maxSize":20000}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedVideoCaption class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyEmbedVideoCaption class >> fromRequest: aRequest withClient: aClient [
 		atpFile: (aRequest at: 'file' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption >> atpFile [
 	<atpType:#ByteArray format:nil>
 	^ atpFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption >> atpFile: anObject [
 	atpFile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption >> atpLang [
 	<atpType:#String format:'language'>
 	^ atpLang
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoCaption >> atpLang: anObject [
 	atpLang := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoCaption >> fileDescription [
 	<magritteDescription>
 	^ MAFileDescription new
@@ -68,7 +69,7 @@ AppBskyEmbedVideoCaption >> fileDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoCaption >> langDescription [
 	<magritteDescription>
 	^ MAStringDescription new

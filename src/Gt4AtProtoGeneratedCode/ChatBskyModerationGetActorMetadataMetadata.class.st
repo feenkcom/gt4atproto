@@ -1,36 +1,37 @@
 Class {
-	#name : #ChatBskyModerationGetActorMetadataMetadata,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyModerationGetActorMetadataMetadata',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpMessagesSent',
 		'atpMessagesReceived',
 		'atpConvos',
 		'atpConvosStarted'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata class >> atpFile [
  ^ 'chat/bsky/moderation/getActorMetadata.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata class >> atpRecordName [
  ^ 'chat.bsky.moderation.getActorMetadata#metadata'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata class >> atpSchema [
  ^ '{"type":"object","required":["messagesSent","messagesReceived","convos","convosStarted"],"properties":{"messagesSent":{"type":"integer"},"messagesReceived":{"type":"integer"},"convos":{"type":"integer"},"convosStarted":{"type":"integer"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyModerationGetActorMetadataMetadata class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ ChatBskyModerationGetActorMetadataMetadata class >> fromRequest: aRequest withCl
 		atpConvosStarted: (aRequest at: 'convosStarted' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpConvos [
 	<atpType:#Number format:nil>
 	^ atpConvos
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpConvos: anObject [
 	atpConvos := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpConvosStarted [
 	<atpType:#Number format:nil>
 	^ atpConvosStarted
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpConvosStarted: anObject [
 	atpConvosStarted := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpMessagesReceived [
 	<atpType:#Number format:nil>
 	^ atpMessagesReceived
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpMessagesReceived: anObject [
 	atpMessagesReceived := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpMessagesSent [
 	<atpType:#Number format:nil>
 	^ atpMessagesSent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyModerationGetActorMetadataMetadata >> atpMessagesSent: anObject [
 	atpMessagesSent := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyModerationGetActorMetadataMetadata >> convosDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -94,7 +95,7 @@ ChatBskyModerationGetActorMetadataMetadata >> convosDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyModerationGetActorMetadataMetadata >> convosStartedDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -103,7 +104,7 @@ ChatBskyModerationGetActorMetadataMetadata >> convosStartedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyModerationGetActorMetadataMetadata >> messagesReceivedDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -112,7 +113,7 @@ ChatBskyModerationGetActorMetadataMetadata >> messagesReceivedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyModerationGetActorMetadataMetadata >> messagesSentDescription [
 	<magritteDescription>
 	^ MANumberDescription new

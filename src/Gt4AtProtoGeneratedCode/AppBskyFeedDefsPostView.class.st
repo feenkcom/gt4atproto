@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyFeedDefsPostView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsPostView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -16,30 +16,31 @@ Class {
 		'atpLabels',
 		'atpThreadgate'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView class >> atpRecordName [
  ^ 'app.bsky.feed.defs#postView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","author","record","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"record":{"type":"unknown"},"embed":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.video#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]},"replyCount":{"type":"integer"},"repostCount":{"type":"integer"},"likeCount":{"type":"integer"},"quoteCount":{"type":"integer"},"indexedAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"threadgate":{"type":"ref","ref":"#threadgateView"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsPostView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -89,157 +90,157 @@ AppBskyFeedDefsPostView class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	atpAuthor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpEmbed [
 	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
 	^ atpEmbed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpEmbed: anObject [
 	atpEmbed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpLikeCount [
 	<atpType:#Number format:nil>
 	^ atpLikeCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpLikeCount: anObject [
 	atpLikeCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpQuoteCount [
 	<atpType:#Number format:nil>
 	^ atpQuoteCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpQuoteCount: anObject [
 	atpQuoteCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpRecord [
 	<atpType:#Object format:nil>
 	^ atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpRecord: anObject [
 	atpRecord := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpReplyCount [
 	<atpType:#Number format:nil>
 	^ atpReplyCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpReplyCount: anObject [
 	atpReplyCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpRepostCount [
 	<atpType:#Number format:nil>
 	^ atpRepostCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpRepostCount: anObject [
 	atpRepostCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpThreadgate [
 	<referenceTo:'#threadgateView'>
 	<atpType:#AppBskyFeedDefsThreadgateView format:nil>
 	^ atpThreadgate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpThreadgate: anObject [
 	<referenceTo:'#threadgateView'>
 	atpThreadgate := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpViewer [
 	<referenceTo:'#viewerState'>
 	<atpType:#AppBskyFeedDefsViewerState format:nil>
 	^ atpViewer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsPostView >> atpViewer: anObject [
 	<referenceTo:'#viewerState'>
 	atpViewer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -248,7 +249,7 @@ AppBskyFeedDefsPostView >> authorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -257,7 +258,7 @@ AppBskyFeedDefsPostView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -270,7 +271,7 @@ AppBskyFeedDefsPostView >> embedDescription [
 		accessor: #atpEmbed
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -279,7 +280,7 @@ AppBskyFeedDefsPostView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -288,7 +289,7 @@ AppBskyFeedDefsPostView >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> likeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -296,7 +297,7 @@ AppBskyFeedDefsPostView >> likeCountDescription [
 		accessor: #atpLikeCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> quoteCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -304,7 +305,7 @@ AppBskyFeedDefsPostView >> quoteCountDescription [
 		accessor: #atpQuoteCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> recordDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -313,7 +314,7 @@ AppBskyFeedDefsPostView >> recordDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> replyCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -321,7 +322,7 @@ AppBskyFeedDefsPostView >> replyCountDescription [
 		accessor: #atpReplyCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> repostCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -329,7 +330,7 @@ AppBskyFeedDefsPostView >> repostCountDescription [
 		accessor: #atpRepostCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> threadgateDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -337,7 +338,7 @@ AppBskyFeedDefsPostView >> threadgateDescription [
 		accessor: #atpThreadgate
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -346,7 +347,7 @@ AppBskyFeedDefsPostView >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsPostView >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

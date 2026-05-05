@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyFeedThreadgateListRule,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedThreadgateListRule',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpList'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateListRule class >> atpDescription [
  ^  'Allow replies from actors on a list.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateListRule class >> atpFile [
  ^ 'app/bsky/feed/threadgate.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateListRule class >> atpRecordName [
  ^ 'app.bsky.feed.threadgate#listRule'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateListRule class >> atpSchema [
  ^ '{"type":"object","description":"Allow replies from actors on a list.","required":["list"],"properties":{"list":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedThreadgateListRule class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyFeedThreadgateListRule class >> fromRequest: aRequest withClient: aClient
 		atpList: (aRequest at: 'list' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateListRule >> atpList [
 	<atpType:#String format:'at-uri'>
 	^ atpList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateListRule >> atpList: anObject [
 	atpList := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedThreadgateListRule >> listDescription [
 	<magritteDescription>
 	^ MAStringDescription new

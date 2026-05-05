@@ -1,35 +1,36 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventLabel,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventLabel',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpCreateLabelVals',
 		'atpNegateLabelVals'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel class >> atpDescription [
  ^  'Apply/Negate labels on a subject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventLabel'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel class >> atpSchema [
  ^ '{"type":"object","description":"Apply/Negate labels on a subject","required":["createLabelVals","negateLabelVals"],"properties":{"comment":{"type":"string"},"createLabelVals":{"type":"array","items":{"type":"string"}},"negateLabelVals":{"type":"array","items":{"type":"string"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventLabel class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -45,42 +46,42 @@ ToolsOzoneModerationDefsModEventLabel class >> fromRequest: aRequest withClient:
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel >> atpCreateLabelVals [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpCreateLabelVals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel >> atpCreateLabelVals: anObject [
 	atpCreateLabelVals := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel >> atpNegateLabelVals [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpNegateLabelVals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventLabel >> atpNegateLabelVals: anObject [
 	atpNegateLabelVals := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventLabel >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -88,7 +89,7 @@ ToolsOzoneModerationDefsModEventLabel >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventLabel >> createLabelValsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -98,7 +99,7 @@ ToolsOzoneModerationDefsModEventLabel >> createLabelValsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventLabel >> negateLabelValsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

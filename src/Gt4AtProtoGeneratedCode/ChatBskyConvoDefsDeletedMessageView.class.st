@@ -1,36 +1,37 @@
 Class {
-	#name : #ChatBskyConvoDefsDeletedMessageView,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoDefsDeletedMessageView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpRev',
 		'atpSender',
 		'atpSentAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView class >> atpFile [
  ^ 'chat/bsky/convo/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView class >> atpRecordName [
  ^ 'chat.bsky.convo.defs#deletedMessageView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView class >> atpSchema [
  ^ '{"type":"object","required":["id","rev","sender","sentAt"],"properties":{"id":{"type":"string"},"rev":{"type":"string"},"sender":{"type":"ref","ref":"#messageViewSender"},"sentAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoDefsDeletedMessageView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -44,53 +45,53 @@ ChatBskyConvoDefsDeletedMessageView class >> fromRequest: aRequest withClient: a
 		atpSentAt: (aRequest at: 'sentAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpId [
 	<atpType:#String format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpSender [
 	<referenceTo:'#messageViewSender'>
 	<atpType:#ChatBskyConvoDefsMessageViewSender format:nil>
 	^ atpSender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpSender: anObject [
 	<referenceTo:'#messageViewSender'>
 	atpSender := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpSentAt [
 	<atpType:#String format:'datetime'>
 	^ atpSentAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsDeletedMessageView >> atpSentAt: anObject [
 	atpSentAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsDeletedMessageView >> idDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -99,7 +100,7 @@ ChatBskyConvoDefsDeletedMessageView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsDeletedMessageView >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -108,7 +109,7 @@ ChatBskyConvoDefsDeletedMessageView >> revDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsDeletedMessageView >> senderDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -117,7 +118,7 @@ ChatBskyConvoDefsDeletedMessageView >> senderDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsDeletedMessageView >> sentAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

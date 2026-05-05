@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyFeedDefsSkeletonReasonRepost,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsSkeletonReasonRepost',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRepost'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonRepost class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonRepost class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonRepost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#skeletonReasonRepost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonRepost class >> atpSchema [
  ^ '{"type":"object","required":["repost"],"properties":{"repost":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsSkeletonReasonRepost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyFeedDefsSkeletonReasonRepost class >> fromRequest: aRequest withClient: a
 		atpRepost: (aRequest at: 'repost' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonRepost >> atpRepost [
 	<atpType:#String format:'at-uri'>
 	^ atpRepost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonRepost >> atpRepost: anObject [
 	atpRepost := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsSkeletonReasonRepost >> repostDescription [
 	<magritteDescription>
 	^ MAStringDescription new

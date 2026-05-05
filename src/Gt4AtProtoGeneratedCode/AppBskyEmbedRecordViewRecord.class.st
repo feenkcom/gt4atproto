@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyEmbedRecordViewRecord,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordViewRecord',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -14,30 +14,31 @@ Class {
 		'atpEmbeds',
 		'atpIndexedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord class >> atpFile [
  ^ 'app/bsky/embed/record.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewRecord'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","author","value","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"value":{"type":"unknown","description":"The record data itself."},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"replyCount":{"type":"integer"},"repostCount":{"type":"integer"},"likeCount":{"type":"integer"},"quoteCount":{"type":"integer"},"embeds":{"type":"array","items":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.video#view","app.bsky.embed.external#view","app.bsky.embed.record#view","app.bsky.embed.recordWithMedia#view"]}},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -79,132 +80,132 @@ AppBskyEmbedRecordViewRecord class >> fromRequest: aRequest withClient: aClient 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	atpAuthor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpEmbeds [
 	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView AppBskyEmbedRecordView AppBskyEmbedRecordWithMediaView) format:nil>
 	<atpCollection>
 	^ atpEmbeds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpEmbeds: anObject [
 	atpEmbeds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpLikeCount [
 	<atpType:#Number format:nil>
 	^ atpLikeCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpLikeCount: anObject [
 	atpLikeCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpQuoteCount [
 	<atpType:#Number format:nil>
 	^ atpQuoteCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpQuoteCount: anObject [
 	atpQuoteCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpReplyCount [
 	<atpType:#Number format:nil>
 	^ atpReplyCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpReplyCount: anObject [
 	atpReplyCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpRepostCount [
 	<atpType:#Number format:nil>
 	^ atpRepostCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpRepostCount: anObject [
 	atpRepostCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewRecord >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -213,7 +214,7 @@ AppBskyEmbedRecordViewRecord >> authorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -222,7 +223,7 @@ AppBskyEmbedRecordViewRecord >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> embedsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -232,7 +233,7 @@ AppBskyEmbedRecordViewRecord >> embedsDescription [
 		accessor: #atpEmbeds
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -241,7 +242,7 @@ AppBskyEmbedRecordViewRecord >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -250,7 +251,7 @@ AppBskyEmbedRecordViewRecord >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> likeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -258,7 +259,7 @@ AppBskyEmbedRecordViewRecord >> likeCountDescription [
 		accessor: #atpLikeCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> quoteCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -266,7 +267,7 @@ AppBskyEmbedRecordViewRecord >> quoteCountDescription [
 		accessor: #atpQuoteCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> replyCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -274,7 +275,7 @@ AppBskyEmbedRecordViewRecord >> replyCountDescription [
 		accessor: #atpReplyCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> repostCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -282,7 +283,7 @@ AppBskyEmbedRecordViewRecord >> repostCountDescription [
 		accessor: #atpRepostCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -291,7 +292,7 @@ AppBskyEmbedRecordViewRecord >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewRecord >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

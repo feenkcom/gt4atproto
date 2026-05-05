@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoAdminDefsImageDetails,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsImageDetails',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpWidth',
 		'atpHeight'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#imageDetails'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails class >> atpSchema [
  ^ '{"type":"object","required":["width","height"],"properties":{"width":{"type":"integer"},"height":{"type":"integer"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -36,29 +37,29 @@ ComAtprotoAdminDefsImageDetails class >> fromRequest: aRequest [
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails >> atpHeight [
 	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails >> atpHeight: anObject [
 	atpHeight := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails >> atpWidth [
 	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsImageDetails >> atpWidth: anObject [
 	atpWidth := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsImageDetails >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -67,7 +68,7 @@ ComAtprotoAdminDefsImageDetails >> heightDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsImageDetails >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new

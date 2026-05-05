@@ -1,36 +1,37 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposHandle,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposHandle',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpDid',
 		'atpHandle',
 		'atpTime'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle class >> atpDescription [
  ^  'DEPRECATED -- Use #identity event instead'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#handle'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle class >> atpSchema [
  ^ '{"type":"object","description":"DEPRECATED -- Use #identity event instead","required":["seq","did","handle","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"time":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ ComAtprotoSyncSubscribeReposHandle class >> fromRequest: aRequest withClient: aC
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpTime [
 	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposHandle >> atpTime: anObject [
 	atpTime := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposHandle >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -94,7 +95,7 @@ ComAtprotoSyncSubscribeReposHandle >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposHandle >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -103,7 +104,7 @@ ComAtprotoSyncSubscribeReposHandle >> handleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposHandle >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -112,7 +113,7 @@ ComAtprotoSyncSubscribeReposHandle >> seqDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposHandle >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

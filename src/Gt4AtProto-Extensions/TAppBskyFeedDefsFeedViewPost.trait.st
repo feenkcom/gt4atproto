@@ -1,32 +1,34 @@
 Trait {
-	#name : #TAppBskyFeedDefsFeedViewPost,
+	#name : 'TAppBskyFeedDefsFeedViewPost',
 	#instVars : [
 		'replies'
 	],
-	#category : #'Gt4AtProto-Extensions-Traits'
+	#category : 'Gt4AtProto-Extensions-Traits',
+	#package : 'Gt4AtProto-Extensions',
+	#tag : 'Traits'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> author [
 	^ self atpPost atpAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> createdAt [
 	^ self atpPost atpRecord atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> createdAtTimestamp [
 	^ DateAndTime fromString: self createdAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> embed [
 	^ self atpPost atpEmbed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> getReplies [
 	^ ((self client
 		appBskyFeedGetPostThreadUri: self atpPost atpUri
@@ -35,7 +37,7 @@ TAppBskyFeedDefsFeedViewPost >> getReplies [
 		collect: [ :aReply | aReply client: self client ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> getRoot [
 	self atpReply ifNil: [ ^ self ].
 
@@ -45,7 +47,7 @@ TAppBskyFeedDefsFeedViewPost >> getRoot [
 		parentHeight: nil) at: 'thread') client: self client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 	<gtView>
 	
@@ -58,7 +60,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardFor: aView [
 				withShadowAndHighlighting ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 	<gtView>
 	^ aView explicit
@@ -78,7 +80,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCardsThreadFor: aView [
 				expandOneLevel ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
 	<gtView>
 	^ aView columnedTree
@@ -91,7 +93,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCompactThreadFor: aView [
 		column: 'Created at' text: [ :each | each atpPost atpRecord createdAtTimestamp printToSeconds ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtCreatePostFor: aView [
 	<gtView>
 
@@ -104,7 +106,7 @@ TAppBskyFeedDefsFeedViewPost >> gtCreatePostFor: aView [
 				actor: (self client appBskyActorGetProfileActor: self client handle) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtDeleteActionFor: anAction [
 	<gtAction>
 	^ anAction button
@@ -118,7 +120,7 @@ TAppBskyFeedDefsFeedViewPost >> gtDeleteActionFor: anAction [
 				swapCommit: nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtDisplayOn: aStream [
 	aStream 
 		nextPutAll: self author atpDisplayName;
@@ -126,7 +128,7 @@ TAppBskyFeedDefsFeedViewPost >> gtDisplayOn: aStream [
 		nextPutAll: self recordText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> gtPageFor: aView [
 	<gtView>
 	self hasPage ifFalse: [ ^ aView empty ].
@@ -138,48 +140,48 @@ TAppBskyFeedDefsFeedViewPost >> gtPageFor: aView [
 		view: #gtLiveFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> hasEmbed [
 	^ self embed isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> hasMedia [
 	^ self hasEmbed and: [ self embed hasMedia ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> hasPage [
 	^ self atpPost atpRecord atpEmbed isNotNil and: [ (self atpPost atpRecord atpEmbed rawData at: '$type') = 'com.gtoolkit.embed.lepiterPage' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> hasReplies [
 	^ self atpPost atpReplyCount > 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> hasRepliesFromHandle: aHandle [
 	^ self replies
 		anySatisfy: [ :aPost | aPost author atpHandle = aHandle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> hasRepliesFromSameHandle [
 	^ self hasRepliesFromHandle: self author atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> isReply [
 	^ self atpReply notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> recordText [
 	^ self atpPost atpRecord atpText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyFeedDefsFeedViewPost >> replies [
 	^ replies ifNil: [ replies := self getReplies ]
 ]

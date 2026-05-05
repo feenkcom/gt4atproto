@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyGraphBlockMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphBlockMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSubject',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain class >> atpDescription [
  ^  'Record declaring a ''block'' relationship against another account. NOTE: blocks are public in Bluesky; see blog posts for details.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain class >> atpFile [
  ^ 'app/bsky/graph/block.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain class >> atpRecordName [
  ^ 'app.bsky.graph.block'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain class >> atpSchema [
  ^ '{"type":"record","description":"Record declaring a ''block'' relationship against another account. NOTE: blocks are public in Bluesky; see blog posts for details.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did","description":"DID of the account to be blocked."},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphBlockMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyGraphBlockMain class >> fromRequest: aRequest withClient: aClient [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain >> atpSubject [
 	<atpType:#String format:'did'>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphBlockMain >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphBlockMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ AppBskyGraphBlockMain >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphBlockMain >> subjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new

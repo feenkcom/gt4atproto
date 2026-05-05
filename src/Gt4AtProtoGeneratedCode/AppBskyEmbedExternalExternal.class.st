@@ -1,36 +1,37 @@
 Class {
-	#name : #AppBskyEmbedExternalExternal,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedExternalExternal',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpTitle',
 		'atpDescription',
 		'atpThumb'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal class >> atpFile [
  ^ 'app/bsky/embed/external.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal class >> atpRecordName [
  ^ 'app.bsky.embed.external#external'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal class >> atpSchema [
  ^ '{"type":"object","required":["uri","title","description"],"properties":{"uri":{"type":"string","format":"uri"},"title":{"type":"string"},"description":{"type":"string"},"thumb":{"type":"blob","accept":["image/*"],"maxSize":1000000}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedExternalExternal class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ AppBskyEmbedExternalExternal class >> fromRequest: aRequest withClient: aClient 
 		atpThumb: (aRequest at: 'thumb' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpThumb [
 	<atpType:#ByteArray format:nil>
 	^ atpThumb
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpThumb: anObject [
 	atpThumb := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpTitle [
 	<atpType:#String format:nil>
 	^ atpTitle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpTitle: anObject [
 	atpTitle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpUri [
 	<atpType:#String format:'uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalExternal >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedExternalExternal >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -94,7 +95,7 @@ AppBskyEmbedExternalExternal >> descriptionDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedExternalExternal >> thumbDescription [
 	<magritteDescription>
 	^ MAFileDescription new
@@ -102,7 +103,7 @@ AppBskyEmbedExternalExternal >> thumbDescription [
 		accessor: #atpThumb
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedExternalExternal >> titleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -111,7 +112,7 @@ AppBskyEmbedExternalExternal >> titleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedExternalExternal >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

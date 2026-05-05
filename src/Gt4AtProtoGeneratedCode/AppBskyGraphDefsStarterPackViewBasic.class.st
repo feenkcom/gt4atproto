@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyGraphDefsStarterPackViewBasic,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphDefsStarterPackViewBasic',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyGraphDefsStarterPackViewBasic',
 	#classTraits : 'TAppBskyGraphDefsStarterPackViewBasic classTrait',
 	#instVars : [
@@ -14,30 +14,31 @@ Class {
 		'atpLabels',
 		'atpIndexedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic class >> atpFile [
  ^ 'app/bsky/graph/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic class >> atpRecordName [
  ^ 'app.bsky.graph.defs#starterPackViewBasic'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","record","creator","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"record":{"type":"unknown"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"listItemCount":{"type":"integer","minimum":0},"joinedWeekCount":{"type":"integer","minimum":0},"joinedAllTimeCount":{"type":"integer","minimum":0},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphDefsStarterPackViewBasic class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -64,109 +65,109 @@ AppBskyGraphDefsStarterPackViewBasic class >> fromRequest: aRequest withClient: 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpCreator [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpCreator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpCreator: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	atpCreator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpJoinedAllTimeCount [
 	<atpType:#Number format:nil>
 	^ atpJoinedAllTimeCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpJoinedAllTimeCount: anObject [
 	atpJoinedAllTimeCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpJoinedWeekCount [
 	<atpType:#Number format:nil>
 	^ atpJoinedWeekCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpJoinedWeekCount: anObject [
 	atpJoinedWeekCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpListItemCount [
 	<atpType:#Number format:nil>
 	^ atpListItemCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpListItemCount: anObject [
 	atpListItemCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpRecord [
 	<atpType:#Object format:nil>
 	^ atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpRecord: anObject [
 	atpRecord := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsStarterPackViewBasic >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -175,7 +176,7 @@ AppBskyGraphDefsStarterPackViewBasic >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> creatorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -184,7 +185,7 @@ AppBskyGraphDefsStarterPackViewBasic >> creatorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -193,7 +194,7 @@ AppBskyGraphDefsStarterPackViewBasic >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> joinedAllTimeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -201,7 +202,7 @@ AppBskyGraphDefsStarterPackViewBasic >> joinedAllTimeCountDescription [
 		accessor: #atpJoinedAllTimeCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> joinedWeekCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -209,7 +210,7 @@ AppBskyGraphDefsStarterPackViewBasic >> joinedWeekCountDescription [
 		accessor: #atpJoinedWeekCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -218,7 +219,7 @@ AppBskyGraphDefsStarterPackViewBasic >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> listItemCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -226,7 +227,7 @@ AppBskyGraphDefsStarterPackViewBasic >> listItemCountDescription [
 		accessor: #atpListItemCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> recordDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -235,7 +236,7 @@ AppBskyGraphDefsStarterPackViewBasic >> recordDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsStarterPackViewBasic >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

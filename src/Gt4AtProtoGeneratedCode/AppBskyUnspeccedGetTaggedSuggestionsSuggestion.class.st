@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyUnspeccedGetTaggedSuggestionsSuggestion,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyUnspeccedGetTaggedSuggestionsSuggestion',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpTag',
 		'atpSubjectType',
 		'atpSubject'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> atpFile [
  ^ 'app/bsky/unspecced/getTaggedSuggestions.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> atpRecordName [
  ^ 'app.bsky.unspecced.getTaggedSuggestions#suggestion'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> atpSchema [
  ^ '{"type":"object","required":["tag","subjectType","subject"],"properties":{"tag":{"type":"string"},"subjectType":{"type":"string","knownValues":["actor","feed"]},"subject":{"type":"string","format":"uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ AppBskyUnspeccedGetTaggedSuggestionsSuggestion class >> fromRequest: aRequest wi
 		atpSubject: (aRequest at: 'subject' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> atpSubject [
 	<atpType:#String format:'uri'>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> atpSubjectType [
 	<atpType:#String format:nil>
 	^ atpSubjectType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> atpSubjectType: anObject [
 	atpSubjectType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> atpTag [
 	<atpType:#String format:nil>
 	^ atpTag
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> atpTag: anObject [
 	atpTag := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> subjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> subjectDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> subjectTypeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -90,7 +91,7 @@ AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> subjectTypeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyUnspeccedGetTaggedSuggestionsSuggestion >> tagDescription [
 	<magritteDescription>
 	^ MAStringDescription new

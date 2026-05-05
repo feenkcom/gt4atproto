@@ -1,21 +1,23 @@
 Class {
-	#name : #GtApLexiconDirectoryModel,
-	#superclass : #GtApLexiconModel,
+	#name : 'GtApLexiconDirectoryModel',
+	#superclass : 'GtApLexiconModel',
 	#instVars : [
 		'directory',
 		'lexicons',
 		'files',
 		'fileWatcher'
 	],
-	#category : #'Gt4AtProto-Editor-Model'
+	#category : 'Gt4AtProto-Editor-Model',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> directory [
 	^ directory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> directory: aFileReference [
 	self stopFileWatcher.
 	directory := aFileReference asFileReference.
@@ -24,7 +26,7 @@ GtApLexiconDirectoryModel >> directory: aFileReference [
 	files := nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApLexiconDirectoryModel >> fileDeleted: aFileReference [
 	lexicons ifNotNil: [ lexicons removeLexiconDocumentForFile: aFileReference ].
 	files
@@ -35,12 +37,12 @@ GtApLexiconDirectoryModel >> fileDeleted: aFileReference [
 					^ self announce: (GtApLexiconFileDeleted new lexiconFile: file) ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> fileFor: aFileReference [
 	^ files detect: [ :each | each filename = aFileReference ] ifNone: [  ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApLexiconDirectoryModel >> fileUpdated: aFileReference [
 	lexicons
 		ifNotNil: [ lexicons removeLexiconDocumentForFile: aFileReference.
@@ -62,7 +64,7 @@ GtApLexiconDirectoryModel >> fileUpdated: aFileReference [
 					self announce: (GtApLexiconFileAdded new lexiconFile: file) ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> files [
 	^ files
 		ifNil: [ directory
@@ -74,7 +76,7 @@ GtApLexiconDirectoryModel >> files [
 									yourself ] ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtApLexiconDirectoryModel >> gtCoderFor: aView [
 	<gtView>
 	^ aView explicit
@@ -82,7 +84,7 @@ GtApLexiconDirectoryModel >> gtCoderFor: aView [
 		stencil: [ GtApLexiconCoder new object: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> gtDefaultInspectorTool [
 	^ GtPhlowCompositeTool new
 		addTool: (GtPhlowValuableTool new
@@ -91,7 +93,7 @@ GtApLexiconDirectoryModel >> gtDefaultInspectorTool [
 		addTool: super gtDefaultInspectorTool
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> gtDefinitionSearch: aSearch [
 	<gtSearch>
 	^ aSearch explicit
@@ -120,14 +122,14 @@ GtApLexiconDirectoryModel >> gtDefinitionSearch: aSearch [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtApLexiconDirectoryModel >> gtDisplayOn: stream [
 	stream
 		nextPutAll: 'Lexicons in ';
 		nextPutAll: self directory gtDisplayString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> gtFileSearch: aSearch [
 	<gtSearch>
 	^ aSearch list
@@ -138,44 +140,48 @@ GtApLexiconDirectoryModel >> gtFileSearch: aSearch [
 		filterBySubstring
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> isLexiconDirectory [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> lexiconDirectory [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> lexiconFileFor: aFileReference [
 	^ self files detect: [ :each | each filename = aFileReference ] ifNone: [  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> lexicons [
 	^ lexicons
 		ifNil: [ directory
 				ifNotNil: [ lexicons := GtApLexiconImporter new importLexiconsFromDirectory: directory ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> startFileWatcher [
 	self stopFileWatcher.
 	fileWatcher := GtFileWatcherEventLoop new.
 	fileWatcher watch: directory.
-	fileWatcher onEvent: [ :anEvent | self updateFileEvent: anEvent ].
+	fileWatcher announcer
+		when: GtFileWatcherChangeAnnouncement
+		send: #updateFileEvent:
+		to: self.
+	"fileWatcher onEvent: [ :anEvent | self updateFileEvent: anEvent ]."
 	fileWatcher startLoop
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDirectoryModel >> stopFileWatcher [
 	fileWatcher ifNotNil: [ fileWatcher stopLoop ].
 	fileWatcher := nil
 ]
 
-{ #category : #events }
+{ #category : 'events' }
 GtApLexiconDirectoryModel >> updateFileEvent: anEvent [
 	anEvent paths
 		do: [ :each | 

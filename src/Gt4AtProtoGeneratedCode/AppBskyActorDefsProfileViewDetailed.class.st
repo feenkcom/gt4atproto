@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyActorDefsProfileViewDetailed,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsProfileViewDetailed',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyActorDefsProfileViewDetailed',
 	#classTraits : 'TAppBskyActorDefsProfileViewDetailed classTrait',
 	#instVars : [
@@ -21,30 +21,31 @@ Class {
 		'atpLabels',
 		'atpPinnedPost'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed class >> atpRecordName [
  ^ 'app.bsky.actor.defs#profileViewDetailed'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed class >> atpSchema [
  ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"description":{"type":"string","maxGraphemes":256,"maxLength":2560},"avatar":{"type":"string","format":"uri"},"banner":{"type":"string","format":"uri"},"followersCount":{"type":"integer"},"followsCount":{"type":"integer"},"postsCount":{"type":"integer"},"associated":{"type":"ref","ref":"#profileAssociated"},"joinedViaStarterPack":{"type":"ref","ref":"app.bsky.graph.defs#starterPackViewBasic"},"indexedAt":{"type":"string","format":"datetime"},"createdAt":{"type":"string","format":"datetime"},"viewer":{"type":"ref","ref":"#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"pinnedPost":{"type":"ref","ref":"com.atproto.repo.strongRef"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -84,7 +85,7 @@ AppBskyActorDefsProfileViewDetailed class >> fromRequest: aRequest withClient: a
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> associatedDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -92,192 +93,192 @@ AppBskyActorDefsProfileViewDetailed >> associatedDescription [
 		accessor: #atpAssociated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpAssociated [
 	<referenceTo:'#profileAssociated'>
 	<atpType:#AppBskyActorDefsProfileAssociated format:nil>
 	^ atpAssociated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpAssociated: anObject [
 	<referenceTo:'#profileAssociated'>
 	atpAssociated := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpAvatar [
 	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpAvatar: anObject [
 	atpAvatar := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpBanner [
 	<atpType:#String format:'uri'>
 	^ atpBanner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpBanner: anObject [
 	atpBanner := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpDisplayName [
 	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpDisplayName: anObject [
 	atpDisplayName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpFollowersCount [
 	<atpType:#Number format:nil>
 	^ atpFollowersCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpFollowersCount: anObject [
 	atpFollowersCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpFollowsCount [
 	<atpType:#Number format:nil>
 	^ atpFollowsCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpFollowsCount: anObject [
 	atpFollowsCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpJoinedViaStarterPack [
 	<referenceTo:'app.bsky.graph.defs#starterPackViewBasic'>
 	<atpType:#AppBskyGraphDefsStarterPackViewBasic format:nil>
 	^ atpJoinedViaStarterPack
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpJoinedViaStarterPack: anObject [
 	<referenceTo:'app.bsky.graph.defs#starterPackViewBasic'>
 	atpJoinedViaStarterPack := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpPinnedPost [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpPinnedPost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpPinnedPost: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	atpPinnedPost := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpPostsCount [
 	<atpType:#Number format:nil>
 	^ atpPostsCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpPostsCount: anObject [
 	atpPostsCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpViewer [
 	<referenceTo:'#viewerState'>
 	<atpType:#AppBskyActorDefsViewerState format:nil>
 	^ atpViewer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileViewDetailed >> atpViewer: anObject [
 	<referenceTo:'#viewerState'>
 	atpViewer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> avatarDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -285,7 +286,7 @@ AppBskyActorDefsProfileViewDetailed >> avatarDescription [
 		accessor: #atpAvatar
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> bannerDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -293,7 +294,7 @@ AppBskyActorDefsProfileViewDetailed >> bannerDescription [
 		accessor: #atpBanner
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -301,7 +302,7 @@ AppBskyActorDefsProfileViewDetailed >> createdAtDescription [
 		accessor: #atpCreatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -309,7 +310,7 @@ AppBskyActorDefsProfileViewDetailed >> descriptionDescription [
 		accessor: #atpDescription
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -318,7 +319,7 @@ AppBskyActorDefsProfileViewDetailed >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> displayNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -326,7 +327,7 @@ AppBskyActorDefsProfileViewDetailed >> displayNameDescription [
 		accessor: #atpDisplayName
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> followersCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -334,7 +335,7 @@ AppBskyActorDefsProfileViewDetailed >> followersCountDescription [
 		accessor: #atpFollowersCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> followsCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -342,7 +343,7 @@ AppBskyActorDefsProfileViewDetailed >> followsCountDescription [
 		accessor: #atpFollowsCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -351,7 +352,7 @@ AppBskyActorDefsProfileViewDetailed >> handleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -359,7 +360,7 @@ AppBskyActorDefsProfileViewDetailed >> indexedAtDescription [
 		accessor: #atpIndexedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> joinedViaStarterPackDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -367,7 +368,7 @@ AppBskyActorDefsProfileViewDetailed >> joinedViaStarterPackDescription [
 		accessor: #atpJoinedViaStarterPack
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -376,7 +377,7 @@ AppBskyActorDefsProfileViewDetailed >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> pinnedPostDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -384,7 +385,7 @@ AppBskyActorDefsProfileViewDetailed >> pinnedPostDescription [
 		accessor: #atpPinnedPost
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> postsCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -392,7 +393,7 @@ AppBskyActorDefsProfileViewDetailed >> postsCountDescription [
 		accessor: #atpPostsCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileViewDetailed >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

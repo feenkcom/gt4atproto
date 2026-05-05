@@ -1,36 +1,37 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposIdentity,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposIdentity',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpDid',
 		'atpTime',
 		'atpHandle'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity class >> atpDescription [
  ^  'Represents a change to an account''s identity. Could be an updated handle, signing key, or pds hosting endpoint. Serves as a prod to all downstream services to refresh their identity cache.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#identity'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity class >> atpSchema [
  ^ '{"type":"object","description":"Represents a change to an account''s identity. Could be an updated handle, signing key, or pds hosting endpoint. Serves as a prod to all downstream services to refresh their identity cache.","required":["seq","did","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"time":{"type":"string","format":"datetime"},"handle":{"type":"string","format":"handle","description":"The current handle for the account, or ''handle.invalid'' if validation fails. This field is optional, might have been validated or passed-through from an upstream source. Semantics and behaviors for PDS vs Relay may evolve in the future; see atproto specs for more details."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposIdentity class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ ComAtprotoSyncSubscribeReposIdentity class >> fromRequest: aRequest withClient: 
 		atpHandle: (aRequest at: 'handle' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpTime [
 	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposIdentity >> atpTime: anObject [
 	atpTime := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposIdentity >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -94,7 +95,7 @@ ComAtprotoSyncSubscribeReposIdentity >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposIdentity >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -102,7 +103,7 @@ ComAtprotoSyncSubscribeReposIdentity >> handleDescription [
 		accessor: #atpHandle
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposIdentity >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -111,7 +112,7 @@ ComAtprotoSyncSubscribeReposIdentity >> seqDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposIdentity >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

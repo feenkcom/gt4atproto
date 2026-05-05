@@ -1,15 +1,17 @@
 Class {
-	#name : #GtApDefinitionReference,
-	#superclass : #GtApLexiconModel,
+	#name : 'GtApDefinitionReference',
+	#superclass : 'GtApLexiconModel',
 	#instVars : [
 		'lexiconFile',
 		'node',
 		'lexiconDefinition'
 	],
-	#category : #'Gt4AtProto-Editor-Model'
+	#category : 'Gt4AtProto-Editor-Model',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> editor [
 	| editor |
 	editor := lexiconFile editor.
@@ -22,7 +24,7 @@ GtApDefinitionReference >> editor [
 	^ editor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> gtCoderView: aView [
 	<gtView>
 	^ aView explicit
@@ -30,39 +32,39 @@ GtApDefinitionReference >> gtCoderView: aView [
 		stencil: [ GtApLexiconCoder new object: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> gtDefaultInspectorTool [
 	^ GtPhlowValuableTool new
 		name: self gtDisplayString;
 		valuable: [ GtApLexiconCoder new object: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> lexiconDefinition [
 	^ lexiconDefinition
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> lexiconDefinition: anObject [
 	lexiconDefinition := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> lexiconDirectory [
 	^ self lexiconFile lexiconDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> lexiconFile: anObject [
 	lexiconFile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> lineSource [
 	| source |
 	source := node completeSource asString.
@@ -71,17 +73,17 @@ GtApDefinitionReference >> lineSource [
 		ifNil: [ '' ]) trim
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> node [
 	^ node
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> node: anObject [
 	node := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReference >> printOn: stream [
 	stream << self lexiconFile filename basename << ': ' << self lineSource
 ]

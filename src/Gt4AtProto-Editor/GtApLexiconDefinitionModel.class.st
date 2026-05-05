@@ -1,21 +1,23 @@
 Class {
-	#name : #GtApLexiconDefinitionModel,
-	#superclass : #GtApLexiconModel,
+	#name : 'GtApLexiconDefinitionModel',
+	#superclass : 'GtApLexiconModel',
 	#instVars : [
 		'lexiconFile',
 		'name'
 	],
-	#category : #'Gt4AtProto-Editor-Model'
+	#category : 'Gt4AtProto-Editor-Model',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Model'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 GtApLexiconDefinitionModel >> = anObject [
 	^ self == anObject
 		or: [ self class = anObject class
 				and: [ self id = anObject id and: [ self lexiconFile = anObject lexiconFile ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> editor [
 	| editor |
 	editor := lexiconFile editor.
@@ -28,14 +30,14 @@ GtApLexiconDefinitionModel >> editor [
 	^ editor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> gtDisplayOn: stream [
 	^ self id
 		ifNil: [ super gtDisplayOn: stream ]
 		ifNotNil: [ :id | stream nextPutAll: id ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> gtSourceFor: aView [
 	<gtView>
 	| editor |
@@ -49,52 +51,52 @@ GtApLexiconDefinitionModel >> gtSourceFor: aView [
 					saveFile ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 GtApLexiconDefinitionModel >> hash [
 	^ (self class hash bitXor: self id) bitXor: self lexiconFile hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> id [
 	^ lexiconFile id ifNotNil: [ :id | id , '#' , name ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconDefinitionModel >> isLexiconDefinition [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> lexiconDirectory [
 	^ self lexiconFile lexiconDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> lexiconFile: aGtApLexiconFile [
 	lexiconFile := aGtApLexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> name: aString [
 	name := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> node [
 	^ lexiconFile findDefinitionNode: name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconDefinitionModel >> references [
 	| isMain id |
 	isMain := self name = 'main'.

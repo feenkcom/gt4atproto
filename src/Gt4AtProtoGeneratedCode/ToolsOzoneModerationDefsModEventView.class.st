@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpEvent',
@@ -11,30 +11,31 @@ Class {
 		'atpCreatorHandle',
 		'atpSubjectHandle'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView class >> atpSchema [
  ^ '{"type":"object","required":["id","event","subject","subjectBlobCids","createdBy","createdAt"],"properties":{"id":{"type":"integer"},"event":{"type":"union","refs":["#modEventTakedown","#modEventReverseTakedown","#modEventComment","#modEventReport","#modEventLabel","#modEventAcknowledge","#modEventEscalate","#modEventMute","#modEventUnmute","#modEventMuteReporter","#modEventUnmuteReporter","#modEventEmail","#modEventResolveAppeal","#modEventDivert","#modEventTag","#accountEvent","#identityEvent","#recordEvent"]},"subject":{"type":"union","refs":["com.atproto.admin.defs#repoRef","com.atproto.repo.strongRef","chat.bsky.convo.defs#messageRef"]},"subjectBlobCids":{"type":"array","items":{"type":"string"}},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"creatorHandle":{"type":"string"},"subjectHandle":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -106,96 +107,96 @@ ToolsOzoneModerationDefsModEventView class >> fromRequest: aRequest withClient: 
 		atpSubjectHandle: (aRequest at: 'subjectHandle' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpCreatedBy [
 	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpCreatedBy: anObject [
 	atpCreatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpCreatorHandle [
 	<atpType:#String format:nil>
 	^ atpCreatorHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpCreatorHandle: anObject [
 	atpCreatorHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpEvent [
 	<atpType:#(ToolsOzoneModerationDefsModEventTakedown ToolsOzoneModerationDefsModEventReverseTakedown ToolsOzoneModerationDefsModEventComment ToolsOzoneModerationDefsModEventReport ToolsOzoneModerationDefsModEventLabel ToolsOzoneModerationDefsModEventAcknowledge ToolsOzoneModerationDefsModEventEscalate ToolsOzoneModerationDefsModEventMute ToolsOzoneModerationDefsModEventUnmute ToolsOzoneModerationDefsModEventMuteReporter ToolsOzoneModerationDefsModEventUnmuteReporter ToolsOzoneModerationDefsModEventEmail ToolsOzoneModerationDefsModEventResolveAppeal ToolsOzoneModerationDefsModEventDivert ToolsOzoneModerationDefsModEventTag ToolsOzoneModerationDefsAccountEvent ToolsOzoneModerationDefsIdentityEvent ToolsOzoneModerationDefsRecordEvent) format:nil>
 	^ atpEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpEvent: anObject [
 	atpEvent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpSubject [
 	<atpType:#(ComAtprotoAdminDefsRepoRef ComAtprotoRepoStrongRefMain ChatBskyConvoDefsMessageRef) format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpSubjectBlobCids [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpSubjectBlobCids
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpSubjectBlobCids: anObject [
 	atpSubjectBlobCids := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpSubjectHandle [
 	<atpType:#String format:nil>
 	^ atpSubjectHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventView >> atpSubjectHandle: anObject [
 	atpSubjectHandle := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -204,7 +205,7 @@ ToolsOzoneModerationDefsModEventView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -213,7 +214,7 @@ ToolsOzoneModerationDefsModEventView >> createdByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> creatorHandleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -221,7 +222,7 @@ ToolsOzoneModerationDefsModEventView >> creatorHandleDescription [
 		accessor: #atpCreatorHandle
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> eventDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -248,7 +249,7 @@ ToolsOzoneModerationDefsModEventView >> eventDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -257,7 +258,7 @@ ToolsOzoneModerationDefsModEventView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> subjectBlobCidsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -267,7 +268,7 @@ ToolsOzoneModerationDefsModEventView >> subjectBlobCidsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -279,7 +280,7 @@ ToolsOzoneModerationDefsModEventView >> subjectDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventView >> subjectHandleDescription [
 	<magritteDescription>
 	^ MAStringDescription new

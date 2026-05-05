@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneTeamDefsMember,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneTeamDefsMember',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpDisabled',
@@ -10,30 +10,31 @@ Class {
 		'atpLastUpdatedBy',
 		'atpRole'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember class >> atpFile [
  ^ 'tools/ozone/team/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember class >> atpRecordName [
  ^ 'tools.ozone.team.defs#member'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember class >> atpSchema [
  ^ '{"type":"object","required":["did","role"],"properties":{"did":{"type":"string","format":"did"},"disabled":{"type":"boolean"},"profile":{"type":"ref","ref":"app.bsky.actor.defs#profileViewDetailed"},"createdAt":{"type":"string","format":"datetime"},"updatedAt":{"type":"string","format":"datetime"},"lastUpdatedBy":{"type":"string"},"role":{"type":"string","knownValues":["#roleAdmin","#roleModerator","#roleTriage"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneTeamDefsMember class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -50,86 +51,86 @@ ToolsOzoneTeamDefsMember class >> fromRequest: aRequest withClient: aClient [
 		atpRole: (aRequest at: 'role' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpDisabled: anObject [
 	atpDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpLastUpdatedBy [
 	<atpType:#String format:nil>
 	^ atpLastUpdatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpLastUpdatedBy: anObject [
 	atpLastUpdatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpProfile [
 	<referenceTo:'app.bsky.actor.defs#profileViewDetailed'>
 	<atpType:#AppBskyActorDefsProfileViewDetailed format:nil>
 	^ atpProfile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpProfile: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewDetailed'>
 	atpProfile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpRole [
 	<atpType:#String format:nil>
 	^ atpRole
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpRole: anObject [
 	atpRole := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpUpdatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUpdatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneTeamDefsMember >> atpUpdatedAt: anObject [
 	atpUpdatedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -137,7 +138,7 @@ ToolsOzoneTeamDefsMember >> createdAtDescription [
 		accessor: #atpCreatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -146,7 +147,7 @@ ToolsOzoneTeamDefsMember >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> disabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -154,7 +155,7 @@ ToolsOzoneTeamDefsMember >> disabledDescription [
 		accessor: #atpDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> lastUpdatedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -162,7 +163,7 @@ ToolsOzoneTeamDefsMember >> lastUpdatedByDescription [
 		accessor: #atpLastUpdatedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> profileDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -170,7 +171,7 @@ ToolsOzoneTeamDefsMember >> profileDescription [
 		accessor: #atpProfile
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> roleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -179,7 +180,7 @@ ToolsOzoneTeamDefsMember >> roleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneTeamDefsMember >> updatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

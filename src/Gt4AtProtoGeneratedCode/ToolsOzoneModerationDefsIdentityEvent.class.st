@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsIdentityEvent,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsIdentityEvent',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpHandle',
@@ -8,30 +8,31 @@ Class {
 		'atpTombstone',
 		'atpTimestamp'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent class >> atpDescription [
  ^  'Logs identity related events on a repo subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#identityEvent'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent class >> atpSchema [
  ^ '{"type":"object","description":"Logs identity related events on a repo subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.","required":["timestamp"],"properties":{"comment":{"type":"string"},"handle":{"type":"string","format":"handle"},"pdsHost":{"type":"string","format":"uri"},"tombstone":{"type":"boolean"},"timestamp":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsIdentityEvent class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -43,62 +44,62 @@ ToolsOzoneModerationDefsIdentityEvent class >> fromRequest: aRequest withClient:
 		atpTimestamp: (aRequest at: 'timestamp' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpPdsHost [
 	<atpType:#String format:'uri'>
 	^ atpPdsHost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpPdsHost: anObject [
 	atpPdsHost := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpTimestamp [
 	<atpType:#String format:'datetime'>
 	^ atpTimestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpTimestamp: anObject [
 	atpTimestamp := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpTombstone [
 	<atpType:#Boolean format:nil>
 	^ atpTombstone
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsIdentityEvent >> atpTombstone: anObject [
 	atpTombstone := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsIdentityEvent >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -106,7 +107,7 @@ ToolsOzoneModerationDefsIdentityEvent >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsIdentityEvent >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -114,7 +115,7 @@ ToolsOzoneModerationDefsIdentityEvent >> handleDescription [
 		accessor: #atpHandle
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsIdentityEvent >> pdsHostDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -122,7 +123,7 @@ ToolsOzoneModerationDefsIdentityEvent >> pdsHostDescription [
 		accessor: #atpPdsHost
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsIdentityEvent >> timestampDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -131,7 +132,7 @@ ToolsOzoneModerationDefsIdentityEvent >> timestampDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsIdentityEvent >> tombstoneDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

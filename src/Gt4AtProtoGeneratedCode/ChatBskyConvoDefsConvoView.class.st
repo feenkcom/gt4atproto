@@ -1,6 +1,6 @@
 Class {
-	#name : #ChatBskyConvoDefsConvoView,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoDefsConvoView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpRev',
@@ -10,30 +10,31 @@ Class {
 		'atpOpened',
 		'atpUnreadCount'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView class >> atpFile [
  ^ 'chat/bsky/convo/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView class >> atpRecordName [
  ^ 'chat.bsky.convo.defs#convoView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView class >> atpSchema [
  ^ '{"type":"object","required":["id","rev","members","muted","unreadCount"],"properties":{"id":{"type":"string"},"rev":{"type":"string"},"members":{"type":"array","items":{"type":"ref","ref":"chat.bsky.actor.defs#profileViewBasic"}},"lastMessage":{"type":"union","refs":["#messageView","#deletedMessageView"]},"muted":{"type":"boolean"},"opened":{"type":"boolean"},"unreadCount":{"type":"integer"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoDefsConvoView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -62,85 +63,85 @@ ChatBskyConvoDefsConvoView class >> fromRequest: aRequest withClient: aClient [
 		atpUnreadCount: (aRequest at: 'unreadCount' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpId [
 	<atpType:#String format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpLastMessage [
 	<atpType:#(ChatBskyConvoDefsMessageView ChatBskyConvoDefsDeletedMessageView) format:nil>
 	^ atpLastMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpLastMessage: anObject [
 	atpLastMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpMembers [
 	<atpType:#ChatBskyActorDefsProfileViewBasic format:nil>
 	<atpCollection>
 	^ atpMembers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpMembers: anObject [
 	atpMembers := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpMuted [
 	<atpType:#Boolean format:nil>
 	^ atpMuted
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpMuted: anObject [
 	atpMuted := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpOpened [
 	<atpType:#Boolean format:nil>
 	^ atpOpened
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpOpened: anObject [
 	atpOpened := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpUnreadCount [
 	<atpType:#Number format:nil>
 	^ atpUnreadCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsConvoView >> atpUnreadCount: anObject [
 	atpUnreadCount := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> idDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -149,7 +150,7 @@ ChatBskyConvoDefsConvoView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> lastMessageDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -159,7 +160,7 @@ ChatBskyConvoDefsConvoView >> lastMessageDescription [
 		accessor: #atpLastMessage
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> membersDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -169,7 +170,7 @@ ChatBskyConvoDefsConvoView >> membersDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> mutedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -178,7 +179,7 @@ ChatBskyConvoDefsConvoView >> mutedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> openedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -186,7 +187,7 @@ ChatBskyConvoDefsConvoView >> openedDescription [
 		accessor: #atpOpened
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -195,7 +196,7 @@ ChatBskyConvoDefsConvoView >> revDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsConvoView >> unreadCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new

@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyRichtextFacetMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyRichtextFacetMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpIndex',
 		'atpFeatures'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain class >> atpDescription [
  ^  'Annotation of a sub-string within rich text.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain class >> atpFile [
  ^ 'app/bsky/richtext/facet.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain class >> atpRecordName [
  ^ 'app.bsky.richtext.facet'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain class >> atpSchema [
  ^ '{"type":"object","description":"Annotation of a sub-string within rich text.","required":["index","features"],"properties":{"index":{"type":"ref","ref":"#byteSlice"},"features":{"type":"array","items":{"type":"union","refs":["#mention","#link","#tag"]}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyRichtextFacetMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -49,32 +50,32 @@ AppBskyRichtextFacetMain class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain >> atpFeatures [
 	<atpType:#(AppBskyRichtextFacetMention AppBskyRichtextFacetLink AppBskyRichtextFacetTag) format:nil>
 	<atpCollection>
 	^ atpFeatures
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain >> atpFeatures: anObject [
 	atpFeatures := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain >> atpIndex [
 	<referenceTo:'#byteSlice'>
 	<atpType:#AppBskyRichtextFacetByteSlice format:nil>
 	^ atpIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetMain >> atpIndex: anObject [
 	<referenceTo:'#byteSlice'>
 	atpIndex := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyRichtextFacetMain >> featuresDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -84,7 +85,7 @@ AppBskyRichtextFacetMain >> featuresDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyRichtextFacetMain >> indexDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

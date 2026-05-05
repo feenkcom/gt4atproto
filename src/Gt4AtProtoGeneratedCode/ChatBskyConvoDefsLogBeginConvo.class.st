@@ -1,34 +1,35 @@
 Class {
-	#name : #ChatBskyConvoDefsLogBeginConvo,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoDefsLogBeginConvo',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRev',
 		'atpConvoId'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo class >> atpFile [
  ^ 'chat/bsky/convo/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo class >> atpRecordName [
  ^ 'chat.bsky.convo.defs#logBeginConvo'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo class >> atpSchema [
  ^ '{"type":"object","required":["rev","convoId"],"properties":{"rev":{"type":"string"},"convoId":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoDefsLogBeginConvo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ChatBskyConvoDefsLogBeginConvo class >> fromRequest: aRequest withClient: aClien
 		atpConvoId: (aRequest at: 'convoId' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo >> atpConvoId [
 	<atpType:#String format:nil>
 	^ atpConvoId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo >> atpConvoId: anObject [
 	atpConvoId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogBeginConvo >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsLogBeginConvo >> convoIdDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ ChatBskyConvoDefsLogBeginConvo >> convoIdDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsLogBeginConvo >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new

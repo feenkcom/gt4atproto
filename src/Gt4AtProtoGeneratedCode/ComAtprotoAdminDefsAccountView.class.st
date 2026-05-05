@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoAdminDefsAccountView,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsAccountView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpHandle',
@@ -15,30 +15,31 @@ Class {
 		'atpDeactivatedAt',
 		'atpThreatSignatures'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#accountView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView class >> atpSchema [
  ^ '{"type":"object","required":["did","handle","indexedAt"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invites":{"type":"array","items":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"}},"invitesDisabled":{"type":"boolean"},"emailConfirmedAt":{"type":"string","format":"datetime"},"inviteNote":{"type":"string"},"deactivatedAt":{"type":"string","format":"datetime"},"threatSignatures":{"type":"array","items":{"type":"ref","ref":"#threatSignature"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsAccountView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -75,144 +76,144 @@ ComAtprotoAdminDefsAccountView class >> fromRequest: aRequest withClient: aClien
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpDeactivatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpDeactivatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpDeactivatedAt: anObject [
 	atpDeactivatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpEmail [
 	<atpType:#String format:nil>
 	^ atpEmail
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpEmail: anObject [
 	atpEmail := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpEmailConfirmedAt [
 	<atpType:#String format:'datetime'>
 	^ atpEmailConfirmedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpEmailConfirmedAt: anObject [
 	atpEmailConfirmedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInviteNote [
 	<atpType:#String format:nil>
 	^ atpInviteNote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInviteNote: anObject [
 	atpInviteNote := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInvitedBy [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
 	<atpType:#ComAtprotoServerDefsInviteCode format:nil>
 	^ atpInvitedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInvitedBy: anObject [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
 	atpInvitedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInvites [
 	<atpType:#ComAtprotoServerDefsInviteCode format:nil>
 	<atpCollection>
 	^ atpInvites
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInvites: anObject [
 	atpInvites := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInvitesDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpInvitesDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpInvitesDisabled: anObject [
 	atpInvitesDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpRelatedRecords [
 	<atpType:#Object format:nil>
 	<atpCollection>
 	^ atpRelatedRecords
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpRelatedRecords: anObject [
 	atpRelatedRecords := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpThreatSignatures [
 	<atpType:#ComAtprotoAdminDefsThreatSignature format:nil>
 	<atpCollection>
 	^ atpThreatSignatures
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsAccountView >> atpThreatSignatures: anObject [
 	atpThreatSignatures := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> deactivatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -220,7 +221,7 @@ ComAtprotoAdminDefsAccountView >> deactivatedAtDescription [
 		accessor: #atpDeactivatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -229,7 +230,7 @@ ComAtprotoAdminDefsAccountView >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> emailConfirmedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -237,7 +238,7 @@ ComAtprotoAdminDefsAccountView >> emailConfirmedAtDescription [
 		accessor: #atpEmailConfirmedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> emailDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -245,7 +246,7 @@ ComAtprotoAdminDefsAccountView >> emailDescription [
 		accessor: #atpEmail
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -254,7 +255,7 @@ ComAtprotoAdminDefsAccountView >> handleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -263,7 +264,7 @@ ComAtprotoAdminDefsAccountView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> inviteNoteDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -271,7 +272,7 @@ ComAtprotoAdminDefsAccountView >> inviteNoteDescription [
 		accessor: #atpInviteNote
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> invitedByDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -279,7 +280,7 @@ ComAtprotoAdminDefsAccountView >> invitedByDescription [
 		accessor: #atpInvitedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> invitesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -288,7 +289,7 @@ ComAtprotoAdminDefsAccountView >> invitesDescription [
 		accessor: #atpInvites
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> invitesDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -296,7 +297,7 @@ ComAtprotoAdminDefsAccountView >> invitesDisabledDescription [
 		accessor: #atpInvitesDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> relatedRecordsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -305,7 +306,7 @@ ComAtprotoAdminDefsAccountView >> relatedRecordsDescription [
 		accessor: #atpRelatedRecords
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsAccountView >> threatSignaturesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

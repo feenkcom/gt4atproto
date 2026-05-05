@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyFeedDescribeFeedGeneratorLinks,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDescribeFeedGeneratorLinks',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpPrivacyPolicy',
 		'atpTermsOfService'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks class >> atpFile [
  ^ 'app/bsky/feed/describeFeedGenerator.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks class >> atpRecordName [
  ^ 'app.bsky.feed.describeFeedGenerator#links'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks class >> atpSchema [
  ^ '{"type":"object","properties":{"privacyPolicy":{"type":"string"},"termsOfService":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDescribeFeedGeneratorLinks class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyFeedDescribeFeedGeneratorLinks class >> fromRequest: aRequest withClient:
 		atpTermsOfService: (aRequest at: 'termsOfService' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks >> atpPrivacyPolicy [
 	<atpType:#String format:nil>
 	^ atpPrivacyPolicy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks >> atpPrivacyPolicy: anObject [
 	atpPrivacyPolicy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks >> atpTermsOfService [
 	<atpType:#String format:nil>
 	^ atpTermsOfService
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorLinks >> atpTermsOfService: anObject [
 	atpTermsOfService := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDescribeFeedGeneratorLinks >> privacyPolicyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -67,7 +68,7 @@ AppBskyFeedDescribeFeedGeneratorLinks >> privacyPolicyDescription [
 		accessor: #atpPrivacyPolicy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDescribeFeedGeneratorLinks >> termsOfServiceDescription [
 	<magritteDescription>
 	^ MAStringDescription new

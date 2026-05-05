@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsRecordViewNotFound,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsRecordViewNotFound',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordViewNotFound class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordViewNotFound class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordViewNotFound class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#recordViewNotFound'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordViewNotFound class >> atpSchema [
  ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsRecordViewNotFound class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneModerationDefsRecordViewNotFound class >> fromRequest: aRequest withCl
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordViewNotFound >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordViewNotFound >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordViewNotFound >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

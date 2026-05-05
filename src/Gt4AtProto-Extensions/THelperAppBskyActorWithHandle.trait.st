@@ -1,27 +1,29 @@
 Trait {
-	#name : #THelperAppBskyActorWithHandle,
+	#name : 'THelperAppBskyActorWithHandle',
 	#instVars : [
 		'posts',
 		'followers',
 		'follows',
 		'timelinePosts'
 	],
-	#category : #'Gt4AtProto-Extensions-Traits'
+	#category : 'Gt4AtProto-Extensions-Traits',
+	#package : 'Gt4AtProto-Extensions',
+	#tag : 'Traits'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> downloadFollowers [
 	^ GtApUsersStream
 		users: ((self client appBskyGraphGetFollowersActor: self atpHandle) at: 'followers')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> downloadFollows [
 	^ GtApUsersStream
 		users: ((self client appBskyGraphGetFollowsActor: self atpHandle) at: 'follows')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> downloadPosts [
 	^ GtApPostsStream
 		posts: (self client
@@ -30,23 +32,23 @@ THelperAppBskyActorWithHandle >> downloadPosts [
 				includePins: true)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> downloadTimelinePosts [
 	^ GtApPostsStream
 		posts: (self client appBskyFeedGetTimelineAlgorithm: 'reverse-chronological')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> followers [
 	^ (followers ifNil: [ followers := self downloadFollowers cached ]) asyncSimilarCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> follows [
 	^ (follows ifNil: [ follows := self downloadFollows cached ]) asyncSimilarCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtCreatePostFor: aView [
 	<gtView>
 	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
@@ -59,7 +61,7 @@ THelperAppBskyActorWithHandle >> gtCreatePostFor: aView [
 				actor: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtDisplayOn: stream [
 	stream
 		nextPutAll: (self atpDisplayName ifNil: ['']);
@@ -68,7 +70,7 @@ THelperAppBskyActorWithHandle >> gtDisplayOn: stream [
 		nextPutAll: self atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtViewCardPostsFor: aView [
 	<gtView>
 	^ aView explicit
@@ -88,7 +90,7 @@ THelperAppBskyActorWithHandle >> gtViewCardPostsFor: aView [
 				aTab viewContentElement phlow update ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtViewCompactPostsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -118,7 +120,7 @@ THelperAppBskyActorWithHandle >> gtViewCompactPostsFor: aView [
 				aTab viewContentElement phlow update ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtViewFollowersFor: aView [
 	<gtView>
 	
@@ -132,7 +134,7 @@ THelperAppBskyActorWithHandle >> gtViewFollowersFor: aView [
 			aUserElement user: aUser ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtViewFollowingFor: aView [
 	<gtView>
 	
@@ -146,7 +148,7 @@ THelperAppBskyActorWithHandle >> gtViewFollowingFor: aView [
 			aUserElement user: aUser ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> gtViewTimelineFor: aView [
 	<gtView>
 	self atpHandle = self client handle ifFalse: [ ^ aView empty ].
@@ -168,22 +170,22 @@ THelperAppBskyActorWithHandle >> gtViewTimelineFor: aView [
 				aTab viewContentElement phlow update ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> posts [
 	^ (posts ifNil: [  posts := self downloadPosts cached ]) asyncSimilarCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> posts: aListOfPosts [
 	posts := aListOfPosts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> timelinePosts [
 	^ (timelinePosts ifNil: [  timelinePosts := self downloadTimelinePosts cached ]) asyncSimilarCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 THelperAppBskyActorWithHandle >> timelinePosts: aListOfPosts [
 	timelinePosts := aListOfPosts
 ]

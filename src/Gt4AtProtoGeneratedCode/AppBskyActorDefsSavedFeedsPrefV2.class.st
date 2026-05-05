@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsSavedFeedsPrefV2,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsSavedFeedsPrefV2',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpItems'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeedsPrefV2 class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeedsPrefV2 class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeedsPrefV2 class >> atpRecordName [
  ^ 'app.bsky.actor.defs#savedFeedsPrefV2'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeedsPrefV2 class >> atpSchema [
  ^ '{"type":"object","required":["items"],"properties":{"items":{"type":"array","items":{"type":"ref","ref":"app.bsky.actor.defs#savedFeed"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsSavedFeedsPrefV2 class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,19 +41,19 @@ AppBskyActorDefsSavedFeedsPrefV2 class >> fromRequest: aRequest withClient: aCli
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeedsPrefV2 >> atpItems [
 	<atpType:#AppBskyActorDefsSavedFeed format:nil>
 	<atpCollection>
 	^ atpItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeedsPrefV2 >> atpItems: anObject [
 	atpItems := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsSavedFeedsPrefV2 >> itemsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

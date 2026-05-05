@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneSetDefsSetView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneSetDefsSetView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpName',
 		'atpDescription',
@@ -8,30 +8,31 @@ Class {
 		'atpCreatedAt',
 		'atpUpdatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView class >> atpFile [
  ^ 'tools/ozone/set/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView class >> atpRecordName [
  ^ 'tools.ozone.set.defs#setView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView class >> atpSchema [
  ^ '{"type":"object","required":["name","setSize","createdAt","updatedAt"],"properties":{"name":{"type":"string","minLength":3,"maxLength":128},"description":{"type":"string","maxGraphemes":1024,"maxLength":10240},"setSize":{"type":"integer"},"createdAt":{"type":"string","format":"datetime"},"updatedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneSetDefsSetView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -43,62 +44,62 @@ ToolsOzoneSetDefsSetView class >> fromRequest: aRequest withClient: aClient [
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpSetSize [
 	<atpType:#Number format:nil>
 	^ atpSetSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpSetSize: anObject [
 	atpSetSize := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpUpdatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUpdatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSetDefsSetView >> atpUpdatedAt: anObject [
 	atpUpdatedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSetDefsSetView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -107,7 +108,7 @@ ToolsOzoneSetDefsSetView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSetDefsSetView >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -115,7 +116,7 @@ ToolsOzoneSetDefsSetView >> descriptionDescription [
 		accessor: #atpDescription
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSetDefsSetView >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -124,7 +125,7 @@ ToolsOzoneSetDefsSetView >> nameDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSetDefsSetView >> setSizeDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -133,7 +134,7 @@ ToolsOzoneSetDefsSetView >> setSizeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSetDefsSetView >> updatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

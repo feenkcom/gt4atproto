@@ -1,34 +1,35 @@
 Class {
-	#name : #ToolsOzoneSignatureDefsSigDetail,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneSignatureDefsSigDetail',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpProperty',
 		'atpValue'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail class >> atpFile [
  ^ 'tools/ozone/signature/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail class >> atpRecordName [
  ^ 'tools.ozone.signature.defs#sigDetail'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail class >> atpSchema [
  ^ '{"type":"object","required":["property","value"],"properties":{"property":{"type":"string"},"value":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneSignatureDefsSigDetail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ToolsOzoneSignatureDefsSigDetail class >> fromRequest: aRequest withClient: aCli
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail >> atpProperty [
 	<atpType:#String format:nil>
 	^ atpProperty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail >> atpProperty: anObject [
 	atpProperty := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail >> atpValue [
 	<atpType:#String format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureDefsSigDetail >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSignatureDefsSigDetail >> propertyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ ToolsOzoneSignatureDefsSigDetail >> propertyDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSignatureDefsSigDetail >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

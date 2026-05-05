@@ -1,6 +1,6 @@
 Class {
-	#name : #GtApLexiconFileModel,
-	#superclass : #GtApLexiconModel,
+	#name : 'GtApLexiconFileModel',
+	#superclass : 'GtApLexiconModel',
 	#instVars : [
 		'filename',
 		'source',
@@ -9,27 +9,29 @@ Class {
 		'originalSource',
 		'id'
 	],
-	#category : #'Gt4AtProto-Editor-Model'
+	#category : 'Gt4AtProto-Editor-Model',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Model'
 }
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 GtApLexiconFileModel >> = anObject [
 	^ self == anObject
 		or: [ self class = anObject class and: [ self filename = anObject filename ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> ast [
 	^ ast ifNil: [ ast := JSONParser parseWithErrors: self source ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtApLexiconFileModel >> cancel [
 	self isModified ifFalse: [ ^ self ].
 	self source: self originalSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> definitionNamed: aString [
 	^ (self findDefinitionNode: aString)
 		ifNotNil: [ :node | 
@@ -39,31 +41,31 @@ GtApLexiconFileModel >> definitionNamed: aString [
 				yourself ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApLexiconFileModel >> definitionNodes [
 	^ self definitionNodesIn: self ast
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApLexiconFileModel >> definitionNodesIn: anAst [
 	^ ((anAst / JSONMemberNode) @ #name <- '"defs"') / JSONObjectNode
 		/ JSONMemberNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> definitions [
 	^ self definitionNodes
 		collect: [ :each | self definitionNamed: (each name value copyFrom: 2 to: each name value size - 1) ]
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtApLexiconFileModel >> editor [
 	^ GtApLexiconEditorElement new
 		lexiconFile: self;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> fileUpdated [
 	| modified |
 	modified := self isModified.
@@ -73,31 +75,31 @@ GtApLexiconFileModel >> fileUpdated [
 	id := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> filename [
 	^ filename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> filename: aFileReference [
 	filename := aFileReference asFileReference
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApLexiconFileModel >> findDefinitionNode: aString [
 	^ (self definitionNodes @ #name <- ('"' , aString , '"')) asOrderedCollection
 		at: 1
 		ifAbsent: [  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> gtDisplayOn: stream [
 	^ self id
 		ifNil: [ super gtDisplayOn: stream ]
 		ifNotNil: [ :id | stream nextPutAll: id ]
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtApLexiconFileModel >> gtSourceFor: aView [
 	<gtView>
 	| editor |
@@ -111,12 +113,12 @@ GtApLexiconFileModel >> gtSourceFor: aView [
 					saveFile ]
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 GtApLexiconFileModel >> hash [
 	^ self class hash bitXor: self filename hash
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> id [
 	^ id
 		ifNil: [ | idNode |
@@ -127,48 +129,48 @@ GtApLexiconFileModel >> id [
 							ifTrue: [ idNode value source allButFirst allButLast ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconFileModel >> isLexiconFile [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconFileModel >> isModified [
 	^ self originalSource ~= self source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> lexiconDirectory [
 	^ lexiconDirectory
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> lexiconDirectory: anObject [
 	lexiconDirectory := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> lexiconFile [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> lexicons [
 	^ lexiconDirectory ifNotNil: [ lexiconDirectory lexicons ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> name [
 	^ self id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> originalSource [
 	^ originalSource
 		ifNil: [ filename ifNotNil: [ originalSource := filename contents ] ]
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 GtApLexiconFileModel >> saveFile [
 	self isModified ifFalse: [ ^ self ].
 	filename
@@ -178,12 +180,12 @@ GtApLexiconFileModel >> saveFile [
 	self announce: (GtApLexiconFileSaved new lexiconFile: self)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> source [
 	^ source ifNil: [ source := self originalSource ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileModel >> source: aString [
 	| oldSource |
 	source = aString ifTrue: [ ^ self ].

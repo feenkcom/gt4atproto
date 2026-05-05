@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoLabelDefsLabelValueDefinition,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoLabelDefsLabelValueDefinition',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpIdentifier',
 		'atpSeverity',
@@ -9,30 +9,31 @@ Class {
 		'atpAdultOnly',
 		'atpLocales'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition class >> atpDescription [
  ^  'Declares a label value and its expected interpretations and behaviors.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition class >> atpFile [
  ^ 'com/atproto/label/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition class >> atpRecordName [
  ^ 'com.atproto.label.defs#labelValueDefinition'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition class >> atpSchema [
  ^ '{"type":"object","description":"Declares a label value and its expected interpretations and behaviors.","required":["identifier","severity","blurs","locales"],"properties":{"identifier":{"type":"string","description":"The value of the label being defined. Must only include lowercase ascii and the ''-'' character ([a-z-]+).","maxLength":100,"maxGraphemes":100},"severity":{"type":"string","description":"How should a client visually convey this label? ''inform'' means neutral and informational; ''alert'' means negative and warning; ''none'' means show nothing.","knownValues":["inform","alert","none"]},"blurs":{"type":"string","description":"What should this label hide in the UI, if applied? ''content'' hides all of the target; ''media'' hides the images/video/audio; ''none'' hides nothing.","knownValues":["content","media","none"]},"defaultSetting":{"type":"string","description":"The default setting for this label.","knownValues":["ignore","warn","hide"],"default":"warn"},"adultOnly":{"type":"boolean","description":"Does the user need to have adult content enabled in order to configure this label?"},"locales":{"type":"array","items":{"type":"ref","ref":"#labelValueDefinitionStrings"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoLabelDefsLabelValueDefinition class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -53,7 +54,7 @@ ComAtprotoLabelDefsLabelValueDefinition class >> fromRequest: aRequest withClien
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinition >> adultOnlyDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -61,74 +62,74 @@ ComAtprotoLabelDefsLabelValueDefinition >> adultOnlyDescription [
 		accessor: #atpAdultOnly
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpAdultOnly [
 	<atpType:#Boolean format:nil>
 	^ atpAdultOnly
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpAdultOnly: anObject [
 	atpAdultOnly := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpBlurs [
 	<atpType:#String format:nil>
 	^ atpBlurs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpBlurs: anObject [
 	atpBlurs := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpDefaultSetting [
 	<atpType:#String format:nil>
 	^ atpDefaultSetting
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpDefaultSetting: anObject [
 	atpDefaultSetting := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpIdentifier [
 	<atpType:#String format:nil>
 	^ atpIdentifier
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpIdentifier: anObject [
 	atpIdentifier := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpLocales [
 	<atpType:#ComAtprotoLabelDefsLabelValueDefinitionStrings format:nil>
 	<atpCollection>
 	^ atpLocales
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpLocales: anObject [
 	atpLocales := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpSeverity [
 	<atpType:#String format:nil>
 	^ atpSeverity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinition >> atpSeverity: anObject [
 	atpSeverity := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinition >> blursDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -137,7 +138,7 @@ ComAtprotoLabelDefsLabelValueDefinition >> blursDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinition >> defaultSettingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -145,7 +146,7 @@ ComAtprotoLabelDefsLabelValueDefinition >> defaultSettingDescription [
 		accessor: #atpDefaultSetting
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinition >> identifierDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -154,7 +155,7 @@ ComAtprotoLabelDefsLabelValueDefinition >> identifierDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinition >> localesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -164,7 +165,7 @@ ComAtprotoLabelDefsLabelValueDefinition >> localesDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinition >> severityDescription [
 	<magritteDescription>
 	^ MAStringDescription new

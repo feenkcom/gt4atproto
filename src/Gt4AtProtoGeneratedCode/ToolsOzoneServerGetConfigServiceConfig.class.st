@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneServerGetConfigServiceConfig,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneServerGetConfigServiceConfig',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUrl'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneServerGetConfigServiceConfig class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneServerGetConfigServiceConfig class >> atpFile [
  ^ 'tools/ozone/server/getConfig.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneServerGetConfigServiceConfig class >> atpRecordName [
  ^ 'tools.ozone.server.getConfig#serviceConfig'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneServerGetConfigServiceConfig class >> atpSchema [
  ^ '{"type":"object","properties":{"url":{"type":"string","format":"uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneServerGetConfigServiceConfig class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneServerGetConfigServiceConfig class >> fromRequest: aRequest withClient
 		atpUrl: (aRequest at: 'url' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneServerGetConfigServiceConfig >> atpUrl [
 	<atpType:#String format:'uri'>
 	^ atpUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneServerGetConfigServiceConfig >> atpUrl: anObject [
 	atpUrl := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneServerGetConfigServiceConfig >> urlDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposAccount,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposAccount',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpDid',
@@ -8,30 +8,31 @@ Class {
 		'atpActive',
 		'atpStatus'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount class >> atpDescription [
  ^  'Represents a change to an account''s status on a host (eg, PDS or Relay). The semantics of this event are that the status is at the host which emitted the event, not necessarily that at the currently active PDS. Eg, a Relay takedown would emit a takedown with active=false, even if the PDS is still active.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#account'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount class >> atpSchema [
  ^ '{"type":"object","description":"Represents a change to an account''s status on a host (eg, PDS or Relay). The semantics of this event are that the status is at the host which emitted the event, not necessarily that at the currently active PDS. Eg, a Relay takedown would emit a takedown with active=false, even if the PDS is still active.","required":["seq","did","time","active"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"time":{"type":"string","format":"datetime"},"active":{"type":"boolean","description":"Indicates that the account has a repository which can be fetched from the host that emitted this event."},"status":{"type":"string","description":"If active=false, this optional field indicates a reason for why the account is not active.","knownValues":["takendown","suspended","deleted","deactivated"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposAccount class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -43,7 +44,7 @@ ComAtprotoSyncSubscribeReposAccount class >> fromRequest: aRequest withClient: a
 		atpStatus: (aRequest at: 'status' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposAccount >> activeDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -52,62 +53,62 @@ ComAtprotoSyncSubscribeReposAccount >> activeDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpActive [
 	<atpType:#Boolean format:nil>
 	^ atpActive
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpActive: anObject [
 	atpActive := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpStatus [
 	<atpType:#String format:nil>
 	^ atpStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpStatus: anObject [
 	atpStatus := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpTime [
 	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposAccount >> atpTime: anObject [
 	atpTime := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposAccount >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -116,7 +117,7 @@ ComAtprotoSyncSubscribeReposAccount >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposAccount >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -125,7 +126,7 @@ ComAtprotoSyncSubscribeReposAccount >> seqDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposAccount >> statusDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -133,7 +134,7 @@ ComAtprotoSyncSubscribeReposAccount >> statusDescription [
 		accessor: #atpStatus
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposAccount >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

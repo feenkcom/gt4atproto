@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoLabelDefsLabelValueDefinitionStrings,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoLabelDefsLabelValueDefinitionStrings',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpLang',
 		'atpName',
 		'atpDescription'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings class >> atpDescription [
  ^  'Strings which describe the label in the UI, localized into a specific language.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings class >> atpFile [
  ^ 'com/atproto/label/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings class >> atpRecordName [
  ^ 'com.atproto.label.defs#labelValueDefinitionStrings'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings class >> atpSchema [
  ^ '{"type":"object","description":"Strings which describe the label in the UI, localized into a specific language.","required":["lang","name","description"],"properties":{"lang":{"type":"string","description":"The code of the language these strings are written in.","format":"language"},"name":{"type":"string","description":"A short human-readable name for the label.","maxGraphemes":64,"maxLength":640},"description":{"type":"string","description":"A longer description of what the label means and why it might be applied.","maxGraphemes":10000,"maxLength":100000}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ ComAtprotoLabelDefsLabelValueDefinitionStrings class >> fromRequest: aRequest wi
 		atpDescription: (aRequest at: 'description' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> atpLang [
 	<atpType:#String format:'language'>
 	^ atpLang
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> atpLang: anObject [
 	atpLang := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ ComAtprotoLabelDefsLabelValueDefinitionStrings >> descriptionDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> langDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -90,7 +91,7 @@ ComAtprotoLabelDefsLabelValueDefinitionStrings >> langDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabelValueDefinitionStrings >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new

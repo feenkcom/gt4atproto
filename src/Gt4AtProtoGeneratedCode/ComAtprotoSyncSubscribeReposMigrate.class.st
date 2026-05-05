@@ -1,36 +1,37 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposMigrate,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposMigrate',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpDid',
 		'atpMigrateTo',
 		'atpTime'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate class >> atpDescription [
  ^  'DEPRECATED -- Use #account event instead'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#migrate'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate class >> atpSchema [
  ^ '{"type":"object","description":"DEPRECATED -- Use #account event instead","required":["seq","did","migrateTo","time"],"nullable":["migrateTo"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"migrateTo":{"type":"string"},"time":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ ComAtprotoSyncSubscribeReposMigrate class >> fromRequest: aRequest withClient: a
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo [
 	<atpType:#String format:nil>
 	^ atpMigrateTo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpMigrateTo: anObject [
 	atpMigrateTo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpTime [
 	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposMigrate >> atpTime: anObject [
 	atpTime := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposMigrate >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -94,7 +95,7 @@ ComAtprotoSyncSubscribeReposMigrate >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposMigrate >> migrateToDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -103,7 +104,7 @@ ComAtprotoSyncSubscribeReposMigrate >> migrateToDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposMigrate >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -112,7 +113,7 @@ ComAtprotoSyncSubscribeReposMigrate >> seqDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposMigrate >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

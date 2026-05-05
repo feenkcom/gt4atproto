@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsProfileAssociatedChat,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsProfileAssociatedChat',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpAllowIncoming'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileAssociatedChat class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileAssociatedChat class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileAssociatedChat class >> atpRecordName [
  ^ 'app.bsky.actor.defs#profileAssociatedChat'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileAssociatedChat class >> atpSchema [
  ^ '{"type":"object","required":["allowIncoming"],"properties":{"allowIncoming":{"type":"string","knownValues":["all","none","following"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsProfileAssociatedChat class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,7 +36,7 @@ AppBskyActorDefsProfileAssociatedChat class >> fromRequest: aRequest withClient:
 		atpAllowIncoming: (aRequest at: 'allowIncoming' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsProfileAssociatedChat >> allowIncomingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -44,13 +45,13 @@ AppBskyActorDefsProfileAssociatedChat >> allowIncomingDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileAssociatedChat >> atpAllowIncoming [
 	<atpType:#String format:nil>
 	^ atpAllowIncoming
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsProfileAssociatedChat >> atpAllowIncoming: anObject [
 	atpAllowIncoming := anObject
 ]

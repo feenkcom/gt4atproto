@@ -1,35 +1,37 @@
 Class {
-	#name : #GtApLexiconModel,
-	#superclass : #Object,
+	#name : 'GtApLexiconModel',
+	#superclass : 'Object',
 	#traits : 'TGtAnnouncer',
 	#classTraits : 'TGtAnnouncer classTrait',
 	#instVars : [
 		'announcer'
 	],
-	#category : #'Gt4AtProto-Editor-Model'
+	#category : 'Gt4AtProto-Editor-Model',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Model'
 }
 
-{ #category : #announcer }
+{ #category : 'announcer' }
 GtApLexiconModel >> announcer [
 	^ announcer ifNil: [ announcer := Announcer new ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconModel >> isLexiconDefinition [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconModel >> isLexiconDirectory [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconModel >> isLexiconFile [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtApLexiconModel >> isReference: aStringNode [
 	(aStringNode isKindOf: JSONStringNode) ifFalse: [ ^ false ].
 	(aStringNode value source includes: $#) ifTrue: [ ^ true ].
@@ -40,12 +42,12 @@ GtApLexiconModel >> isReference: aStringNode [
 				and: [ aStringNode parent parent name source = '"refs"' ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconModel >> lexiconDirectory [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconModel >> lexiconFile [
 	^ nil
 ]

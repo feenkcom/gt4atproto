@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyFeedDefsSkeletonFeedPost,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsSkeletonFeedPost',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpPost',
 		'atpReason',
 		'atpFeedContext'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#skeletonFeedPost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost class >> atpSchema [
  ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"string","format":"at-uri"},"reason":{"type":"union","refs":["#skeletonReasonRepost","#skeletonReasonPin"]},"feedContext":{"type":"string","description":"Context that will be passed through to client and may be passed to feed generator back alongside interactions.","maxLength":2000}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -50,40 +51,40 @@ AppBskyFeedDefsSkeletonFeedPost class >> fromRequest: aRequest withClient: aClie
 		atpFeedContext: (aRequest at: 'feedContext' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost >> atpFeedContext [
 	<atpType:#String format:nil>
 	^ atpFeedContext
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost >> atpFeedContext: anObject [
 	atpFeedContext := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost >> atpPost [
 	<atpType:#String format:'at-uri'>
 	^ atpPost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost >> atpPost: anObject [
 	atpPost := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost >> atpReason [
 	<atpType:#(AppBskyFeedDefsSkeletonReasonRepost AppBskyFeedDefsSkeletonReasonPin) format:nil>
 	^ atpReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonFeedPost >> atpReason: anObject [
 	atpReason := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsSkeletonFeedPost >> feedContextDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -91,7 +92,7 @@ AppBskyFeedDefsSkeletonFeedPost >> feedContextDescription [
 		accessor: #atpFeedContext
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsSkeletonFeedPost >> postDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -100,7 +101,7 @@ AppBskyFeedDefsSkeletonFeedPost >> postDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsSkeletonFeedPost >> reasonDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new

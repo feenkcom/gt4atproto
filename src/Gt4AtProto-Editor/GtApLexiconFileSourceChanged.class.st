@@ -1,29 +1,31 @@
 Class {
-	#name : #GtApLexiconFileSourceChanged,
-	#superclass : #Announcement,
+	#name : 'GtApLexiconFileSourceChanged',
+	#superclass : 'Announcement',
 	#instVars : [
 		'oldSource',
 		'lexiconFile'
 	],
-	#category : #'Gt4AtProto-Editor-Event'
+	#category : 'Gt4AtProto-Editor-Event',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Event'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileSourceChanged >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileSourceChanged >> lexiconFile: aGtApLexiconFile [
 	lexiconFile := aGtApLexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileSourceChanged >> oldSource [
 	^ oldSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileSourceChanged >> oldSource: aString [
 	oldSource := aString
 ]

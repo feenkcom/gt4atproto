@@ -1,14 +1,15 @@
 Trait {
-	#name : #TAppBskyEmbedRecordWithMediaView,
-	#category : #'Gt4AtProto-Extensions'
+	#name : 'TAppBskyEmbedRecordWithMediaView',
+	#category : 'Gt4AtProto-Extensions',
+	#package : 'Gt4AtProto-Extensions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordWithMediaView >> asEmbeddedElement [
 	^ self atpMedia asEmbeddedElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordWithMediaView >> hasMedia [
 	^ self atpMedia notNil
 ]

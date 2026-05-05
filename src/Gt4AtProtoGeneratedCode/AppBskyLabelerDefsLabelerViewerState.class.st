@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyLabelerDefsLabelerViewerState,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyLabelerDefsLabelerViewerState',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpLike'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerViewerState class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerViewerState class >> atpFile [
  ^ 'app/bsky/labeler/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerViewerState class >> atpRecordName [
  ^ 'app.bsky.labeler.defs#labelerViewerState'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerViewerState class >> atpSchema [
  ^ '{"type":"object","properties":{"like":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyLabelerDefsLabelerViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyLabelerDefsLabelerViewerState class >> fromRequest: aRequest withClient: 
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerViewerState >> atpLike [
 	<atpType:#String format:'at-uri'>
 	^ atpLike
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerViewerState >> atpLike: anObject [
 	atpLike := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerViewerState >> likeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

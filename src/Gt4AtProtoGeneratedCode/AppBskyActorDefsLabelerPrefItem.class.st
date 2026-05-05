@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsLabelerPrefItem,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsLabelerPrefItem',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelerPrefItem class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelerPrefItem class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelerPrefItem class >> atpRecordName [
  ^ 'app.bsky.actor.defs#labelerPrefItem'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelerPrefItem class >> atpSchema [
  ^ '{"type":"object","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsLabelerPrefItem class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyActorDefsLabelerPrefItem class >> fromRequest: aRequest withClient: aClie
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelerPrefItem >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsLabelerPrefItem >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsLabelerPrefItem >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new

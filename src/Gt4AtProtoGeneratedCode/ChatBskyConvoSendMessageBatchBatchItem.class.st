@@ -1,34 +1,35 @@
 Class {
-	#name : #ChatBskyConvoSendMessageBatchBatchItem,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoSendMessageBatchBatchItem',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpConvoId',
 		'atpMessage'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem class >> atpFile [
  ^ 'chat/bsky/convo/sendMessageBatch.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem class >> atpRecordName [
  ^ 'chat.bsky.convo.sendMessageBatch#batchItem'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem class >> atpSchema [
  ^ '{"type":"object","required":["convoId","message"],"properties":{"convoId":{"type":"string"},"message":{"type":"ref","ref":"chat.bsky.convo.defs#messageInput"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoSendMessageBatchBatchItem class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,31 +41,31 @@ ChatBskyConvoSendMessageBatchBatchItem class >> fromRequest: aRequest withClient
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem >> atpConvoId [
 	<atpType:#String format:nil>
 	^ atpConvoId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem >> atpConvoId: anObject [
 	atpConvoId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem >> atpMessage [
 	<referenceTo:'chat.bsky.convo.defs#messageInput'>
 	<atpType:#ChatBskyConvoDefsMessageInput format:nil>
 	^ atpMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoSendMessageBatchBatchItem >> atpMessage: anObject [
 	<referenceTo:'chat.bsky.convo.defs#messageInput'>
 	atpMessage := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoSendMessageBatchBatchItem >> convoIdDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -73,7 +74,7 @@ ChatBskyConvoSendMessageBatchBatchItem >> convoIdDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoSendMessageBatchBatchItem >> messageDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

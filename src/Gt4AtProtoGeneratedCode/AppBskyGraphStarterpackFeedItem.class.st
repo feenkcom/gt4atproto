@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyGraphStarterpackFeedItem,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphStarterpackFeedItem',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackFeedItem class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackFeedItem class >> atpFile [
  ^ 'app/bsky/graph/starterpack.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackFeedItem class >> atpRecordName [
  ^ 'app.bsky.graph.starterpack#feedItem'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackFeedItem class >> atpSchema [
  ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphStarterpackFeedItem class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyGraphStarterpackFeedItem class >> fromRequest: aRequest withClient: aClie
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackFeedItem >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackFeedItem >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackFeedItem >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

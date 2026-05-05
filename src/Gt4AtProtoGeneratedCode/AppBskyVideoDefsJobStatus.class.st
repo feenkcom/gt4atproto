@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyVideoDefsJobStatus,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyVideoDefsJobStatus',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpJobId',
 		'atpDid',
@@ -10,30 +10,31 @@ Class {
 		'atpError',
 		'atpMessage'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus class >> atpFile [
  ^ 'app/bsky/video/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus class >> atpRecordName [
  ^ 'app.bsky.video.defs#jobStatus'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus class >> atpSchema [
  ^ '{"type":"object","required":["jobId","did","state"],"properties":{"jobId":{"type":"string"},"did":{"type":"string","format":"did"},"state":{"type":"string","description":"The state of the video processing job. All values not listed as a known value indicate that the job is in process.","knownValues":["JOB_STATE_COMPLETED","JOB_STATE_FAILED"]},"progress":{"type":"integer","minimum":0,"maximum":100,"description":"Progress within the current processing state."},"blob":{"type":"blob"},"error":{"type":"string"},"message":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyVideoDefsJobStatus class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -47,84 +48,84 @@ AppBskyVideoDefsJobStatus class >> fromRequest: aRequest withClient: aClient [
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpBlob [
 	<atpType:#ByteArray format:nil>
 	^ atpBlob
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpBlob: anObject [
 	atpBlob := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpError [
 	<atpType:#String format:nil>
 	^ atpError
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpError: anObject [
 	atpError := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpJobId [
 	<atpType:#String format:nil>
 	^ atpJobId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpJobId: anObject [
 	atpJobId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpMessage [
 	<atpType:#String format:nil>
 	^ atpMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpMessage: anObject [
 	atpMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpProgress [
 	<atpType:#Number format:nil>
 	^ atpProgress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpProgress: anObject [
 	atpProgress := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpState [
 	<atpType:#String format:nil>
 	^ atpState
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyVideoDefsJobStatus >> atpState: anObject [
 	atpState := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> blobDescription [
 	<magritteDescription>
 	^ MAFileDescription new
@@ -132,7 +133,7 @@ AppBskyVideoDefsJobStatus >> blobDescription [
 		accessor: #atpBlob
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -141,7 +142,7 @@ AppBskyVideoDefsJobStatus >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> errorDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -149,7 +150,7 @@ AppBskyVideoDefsJobStatus >> errorDescription [
 		accessor: #atpError
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> jobIdDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -158,7 +159,7 @@ AppBskyVideoDefsJobStatus >> jobIdDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> messageDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -166,7 +167,7 @@ AppBskyVideoDefsJobStatus >> messageDescription [
 		accessor: #atpMessage
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> progressDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -174,7 +175,7 @@ AppBskyVideoDefsJobStatus >> progressDescription [
 		accessor: #atpProgress
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyVideoDefsJobStatus >> stateDescription [
 	<magritteDescription>
 	^ MAStringDescription new

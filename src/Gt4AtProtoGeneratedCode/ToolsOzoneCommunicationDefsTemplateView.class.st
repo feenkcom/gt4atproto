@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneCommunicationDefsTemplateView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneCommunicationDefsTemplateView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpName',
@@ -12,30 +12,31 @@ Class {
 		'atpCreatedAt',
 		'atpUpdatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView class >> atpFile [
  ^ 'tools/ozone/communication/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView class >> atpRecordName [
  ^ 'tools.ozone.communication.defs#templateView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView class >> atpSchema [
  ^ '{"type":"object","required":["id","name","contentMarkdown","disabled","lastUpdatedBy","createdAt","updatedAt"],"properties":{"id":{"type":"string"},"name":{"type":"string","description":"Name of the template."},"subject":{"type":"string","description":"Content of the template, can contain markdown and variable placeholders."},"contentMarkdown":{"type":"string","description":"Subject of the message, used in emails."},"disabled":{"type":"boolean"},"lang":{"type":"string","format":"language","description":"Message language."},"lastUpdatedBy":{"type":"string","format":"did","description":"DID of the user who last updated the template."},"createdAt":{"type":"string","format":"datetime"},"updatedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneCommunicationDefsTemplateView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -51,106 +52,106 @@ ToolsOzoneCommunicationDefsTemplateView class >> fromRequest: aRequest withClien
 		atpUpdatedAt: (aRequest at: 'updatedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpContentMarkdown [
 	<atpType:#String format:nil>
 	^ atpContentMarkdown
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpContentMarkdown: anObject [
 	atpContentMarkdown := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpDisabled: anObject [
 	atpDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpId [
 	<atpType:#String format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpLang [
 	<atpType:#String format:'language'>
 	^ atpLang
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpLang: anObject [
 	atpLang := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpLastUpdatedBy [
 	<atpType:#String format:'did'>
 	^ atpLastUpdatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpLastUpdatedBy: anObject [
 	atpLastUpdatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpSubject [
 	<atpType:#String format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpUpdatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUpdatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneCommunicationDefsTemplateView >> atpUpdatedAt: anObject [
 	atpUpdatedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> contentMarkdownDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -159,7 +160,7 @@ ToolsOzoneCommunicationDefsTemplateView >> contentMarkdownDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -168,7 +169,7 @@ ToolsOzoneCommunicationDefsTemplateView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> disabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -177,7 +178,7 @@ ToolsOzoneCommunicationDefsTemplateView >> disabledDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> idDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -186,7 +187,7 @@ ToolsOzoneCommunicationDefsTemplateView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> langDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -194,7 +195,7 @@ ToolsOzoneCommunicationDefsTemplateView >> langDescription [
 		accessor: #atpLang
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> lastUpdatedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -203,7 +204,7 @@ ToolsOzoneCommunicationDefsTemplateView >> lastUpdatedByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -212,7 +213,7 @@ ToolsOzoneCommunicationDefsTemplateView >> nameDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> subjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -220,7 +221,7 @@ ToolsOzoneCommunicationDefsTemplateView >> subjectDescription [
 		accessor: #atpSubject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneCommunicationDefsTemplateView >> updatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventReverseTakedown,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventReverseTakedown',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReverseTakedown class >> atpDescription [
  ^  'Revert take down action on a subject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReverseTakedown class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReverseTakedown class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventReverseTakedown'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReverseTakedown class >> atpSchema [
  ^ '{"type":"object","description":"Revert take down action on a subject","properties":{"comment":{"type":"string","description":"Describe reasoning behind the reversal."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventReverseTakedown class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneModerationDefsModEventReverseTakedown class >> fromRequest: aRequest w
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReverseTakedown >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReverseTakedown >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventReverseTakedown >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new

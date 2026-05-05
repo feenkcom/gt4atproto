@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyEmbedImagesMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedImagesMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpImages'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesMain class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesMain class >> atpFile [
  ^ 'app/bsky/embed/images.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesMain class >> atpRecordName [
  ^ 'app.bsky.embed.images'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesMain class >> atpSchema [
  ^ '{"type":"object","required":["images"],"properties":{"images":{"type":"array","items":{"type":"ref","ref":"#image"},"maxLength":4}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedImagesMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,19 +41,19 @@ AppBskyEmbedImagesMain class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesMain >> atpImages [
 	<atpType:#AppBskyEmbedImagesImage format:nil>
 	<atpCollection>
 	^ atpImages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesMain >> atpImages: anObject [
 	atpImages := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedImagesMain >> imagesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

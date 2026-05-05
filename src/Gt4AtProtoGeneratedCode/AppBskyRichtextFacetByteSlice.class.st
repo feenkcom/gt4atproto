@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyRichtextFacetByteSlice,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyRichtextFacetByteSlice',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpByteStart',
 		'atpByteEnd'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice class >> atpDescription [
  ^  'Specifies the sub-string range a facet feature applies to. Start index is inclusive, end index is exclusive. Indices are zero-indexed, counting bytes of the UTF-8 encoded text. NOTE: some languages, like Javascript, use UTF-16 or Unicode codepoints for string slice indexing; in these languages, convert to byte arrays before working with facets.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice class >> atpFile [
  ^ 'app/bsky/richtext/facet.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice class >> atpRecordName [
  ^ 'app.bsky.richtext.facet#byteSlice'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice class >> atpSchema [
  ^ '{"type":"object","description":"Specifies the sub-string range a facet feature applies to. Start index is inclusive, end index is exclusive. Indices are zero-indexed, counting bytes of the UTF-8 encoded text. NOTE: some languages, like Javascript, use UTF-16 or Unicode codepoints for string slice indexing; in these languages, convert to byte arrays before working with facets.","required":["byteStart","byteEnd"],"properties":{"byteStart":{"type":"integer","minimum":0},"byteEnd":{"type":"integer","minimum":0}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyRichtextFacetByteSlice class >> fromRequest: aRequest withClient: aClient
 		atpByteEnd: (aRequest at: 'byteEnd' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice >> atpByteEnd [
 	<atpType:#Number format:nil>
 	^ atpByteEnd
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice >> atpByteEnd: anObject [
 	atpByteEnd := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice >> atpByteStart [
 	<atpType:#Number format:nil>
 	^ atpByteStart
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyRichtextFacetByteSlice >> atpByteStart: anObject [
 	atpByteStart := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyRichtextFacetByteSlice >> byteEndDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -68,7 +69,7 @@ AppBskyRichtextFacetByteSlice >> byteEndDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyRichtextFacetByteSlice >> byteStartDescription [
 	<magritteDescription>
 	^ MANumberDescription new

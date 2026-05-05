@@ -1,34 +1,35 @@
 Class {
-	#name : #ToolsOzoneModerationDefsImageDetails,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsImageDetails',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpWidth',
 		'atpHeight'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#imageDetails'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails class >> atpSchema [
  ^ '{"type":"object","required":["width","height"],"properties":{"width":{"type":"integer"},"height":{"type":"integer"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsImageDetails class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ToolsOzoneModerationDefsImageDetails class >> fromRequest: aRequest withClient: 
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails >> atpHeight [
 	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails >> atpHeight: anObject [
 	atpHeight := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails >> atpWidth [
 	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsImageDetails >> atpWidth: anObject [
 	atpWidth := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsImageDetails >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -68,7 +69,7 @@ ToolsOzoneModerationDefsImageDetails >> heightDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsImageDetails >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new

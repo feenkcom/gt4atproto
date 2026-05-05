@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoLabelSubscribeLabelsLabels,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoLabelSubscribeLabelsLabels',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpLabels'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels class >> atpFile [
  ^ 'com/atproto/label/subscribeLabels.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels class >> atpRecordName [
  ^ 'com.atproto.label.subscribeLabels#labels'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels class >> atpSchema [
  ^ '{"type":"object","required":["seq","labels"],"properties":{"seq":{"type":"integer"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,30 +43,30 @@ ComAtprotoLabelSubscribeLabelsLabels class >> fromRequest: aRequest withClient: 
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsLabels >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelSubscribeLabelsLabels >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -75,7 +76,7 @@ ComAtprotoLabelSubscribeLabelsLabels >> labelsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelSubscribeLabelsLabels >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneSettingDefsOption,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneSettingDefsOption',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpKey',
 		'atpDid',
@@ -13,30 +13,31 @@ Class {
 		'atpCreatedBy',
 		'atpLastUpdatedBy'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption class >> atpFile [
  ^ 'tools/ozone/setting/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption class >> atpRecordName [
  ^ 'tools.ozone.setting.defs#option'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption class >> atpSchema [
  ^ '{"type":"object","required":["key","value","did","scope","createdBy","lastUpdatedBy"],"properties":{"key":{"type":"string","format":"nsid"},"did":{"type":"string","format":"did"},"value":{"type":"unknown"},"description":{"type":"string","maxGraphemes":1024,"maxLength":10240},"createdAt":{"type":"string","format":"datetime"},"updatedAt":{"type":"string","format":"datetime"},"managerRole":{"type":"string","knownValues":["tools.ozone.team.defs#roleModerator","tools.ozone.team.defs#roleTriage","tools.ozone.team.defs#roleAdmin"]},"scope":{"type":"string","knownValues":["instance","personal"]},"createdBy":{"type":"string","format":"did"},"lastUpdatedBy":{"type":"string","format":"did"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneSettingDefsOption class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -56,117 +57,117 @@ ToolsOzoneSettingDefsOption class >> fromRequest: aRequest withClient: aClient [
 		atpLastUpdatedBy: (aRequest at: 'lastUpdatedBy' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpCreatedBy [
 	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpCreatedBy: anObject [
 	atpCreatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpKey [
 	<atpType:#String format:'nsid'>
 	^ atpKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpKey: anObject [
 	atpKey := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpLastUpdatedBy [
 	<atpType:#String format:'did'>
 	^ atpLastUpdatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpLastUpdatedBy: anObject [
 	atpLastUpdatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpManagerRole [
 	<atpType:#String format:nil>
 	^ atpManagerRole
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpManagerRole: anObject [
 	atpManagerRole := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpScope [
 	<atpType:#String format:nil>
 	^ atpScope
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpScope: anObject [
 	atpScope := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpUpdatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUpdatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpUpdatedAt: anObject [
 	atpUpdatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSettingDefsOption >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -174,7 +175,7 @@ ToolsOzoneSettingDefsOption >> createdAtDescription [
 		accessor: #atpCreatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -183,7 +184,7 @@ ToolsOzoneSettingDefsOption >> createdByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -191,7 +192,7 @@ ToolsOzoneSettingDefsOption >> descriptionDescription [
 		accessor: #atpDescription
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -200,7 +201,7 @@ ToolsOzoneSettingDefsOption >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> keyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -209,7 +210,7 @@ ToolsOzoneSettingDefsOption >> keyDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> lastUpdatedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -218,7 +219,7 @@ ToolsOzoneSettingDefsOption >> lastUpdatedByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> managerRoleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -226,7 +227,7 @@ ToolsOzoneSettingDefsOption >> managerRoleDescription [
 		accessor: #atpManagerRole
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> scopeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -235,7 +236,7 @@ ToolsOzoneSettingDefsOption >> scopeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> updatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -243,7 +244,7 @@ ToolsOzoneSettingDefsOption >> updatedAtDescription [
 		accessor: #atpUpdatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSettingDefsOption >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

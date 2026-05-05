@@ -1,36 +1,37 @@
 Class {
-	#name : #ToolsOzoneModerationDefsAccountEvent,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsAccountEvent',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpActive',
 		'atpStatus',
 		'atpTimestamp'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent class >> atpDescription [
  ^  'Logs account status related events on a repo subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#accountEvent'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent class >> atpSchema [
  ^ '{"type":"object","description":"Logs account status related events on a repo subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.","required":["timestamp","active"],"properties":{"comment":{"type":"string"},"active":{"type":"boolean","description":"Indicates that the account has a repository which can be fetched from the host that emitted this event."},"status":{"type":"string","knownValues":["unknown","deactivated","deleted","takendown","suspended","tombstoned"]},"timestamp":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsAccountEvent class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,7 +42,7 @@ ToolsOzoneModerationDefsAccountEvent class >> fromRequest: aRequest withClient: 
 		atpTimestamp: (aRequest at: 'timestamp' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountEvent >> activeDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -50,51 +51,51 @@ ToolsOzoneModerationDefsAccountEvent >> activeDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpActive [
 	<atpType:#Boolean format:nil>
 	^ atpActive
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpActive: anObject [
 	atpActive := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpStatus [
 	<atpType:#String format:nil>
 	^ atpStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpStatus: anObject [
 	atpStatus := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpTimestamp [
 	<atpType:#String format:'datetime'>
 	^ atpTimestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountEvent >> atpTimestamp: anObject [
 	atpTimestamp := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountEvent >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -102,7 +103,7 @@ ToolsOzoneModerationDefsAccountEvent >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountEvent >> statusDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -110,7 +111,7 @@ ToolsOzoneModerationDefsAccountEvent >> statusDescription [
 		accessor: #atpStatus
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountEvent >> timestampDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,1 +1,1 @@
-Package { #name : #'Gt4AtProto-Editor' }
+Package { #name : 'Gt4AtProto-Editor' }

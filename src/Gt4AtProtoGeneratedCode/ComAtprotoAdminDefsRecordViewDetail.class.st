@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoAdminDefsRecordViewDetail,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsRecordViewDetail',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -11,30 +11,31 @@ Class {
 		'atpModeration',
 		'atpRepo'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#recordViewDetail'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","value","blobs","indexedAt","moderation","repo"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"value":{"type":"unknown"},"blobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderationDetail"},"repo":{"type":"ref","ref":"#repoView"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsRecordViewDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -63,101 +64,101 @@ ComAtprotoAdminDefsRecordViewDetail class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpBlobs [
 	<atpType:#ComAtprotoAdminDefsBlobView format:nil>
 	<atpCollection>
 	^ atpBlobs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpBlobs: anObject [
 	atpBlobs := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpModeration [
 	<referenceTo:'#moderationDetail'>
 	<atpType:#ComAtprotoAdminDefsModerationDetail format:nil>
 	^ atpModeration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpModeration: anObject [
 	<referenceTo:'#moderationDetail'>
 	atpModeration := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpRepo [
 	<referenceTo:'#repoView'>
 	<atpType:#ComAtprotoAdminDefsRepoView format:nil>
 	^ atpRepo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpRepo: anObject [
 	<referenceTo:'#repoView'>
 	atpRepo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewDetail >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> blobsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -167,7 +168,7 @@ ComAtprotoAdminDefsRecordViewDetail >> blobsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -176,7 +177,7 @@ ComAtprotoAdminDefsRecordViewDetail >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -185,7 +186,7 @@ ComAtprotoAdminDefsRecordViewDetail >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -194,7 +195,7 @@ ComAtprotoAdminDefsRecordViewDetail >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -203,7 +204,7 @@ ComAtprotoAdminDefsRecordViewDetail >> moderationDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> repoDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -212,7 +213,7 @@ ComAtprotoAdminDefsRecordViewDetail >> repoDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -221,7 +222,7 @@ ComAtprotoAdminDefsRecordViewDetail >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewDetail >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

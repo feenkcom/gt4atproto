@@ -1,34 +1,35 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventAcknowledge,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventAcknowledge',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpAcknowledgeAccountSubjects'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventAcknowledge'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge class >> atpSchema [
  ^ '{"type":"object","properties":{"comment":{"type":"string"},"acknowledgeAccountSubjects":{"type":"boolean","description":"If true, all other reports on content authored by this account will be resolved (acknowledged)."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventAcknowledge class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,7 +38,7 @@ ToolsOzoneModerationDefsModEventAcknowledge class >> fromRequest: aRequest withC
 		atpAcknowledgeAccountSubjects: (aRequest at: 'acknowledgeAccountSubjects' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventAcknowledge >> acknowledgeAccountSubjectsDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -45,29 +46,29 @@ ToolsOzoneModerationDefsModEventAcknowledge >> acknowledgeAccountSubjectsDescrip
 		accessor: #atpAcknowledgeAccountSubjects
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge >> atpAcknowledgeAccountSubjects [
 	<atpType:#Boolean format:nil>
 	^ atpAcknowledgeAccountSubjects
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge >> atpAcknowledgeAccountSubjects: anObject [
 	atpAcknowledgeAccountSubjects := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventAcknowledge >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventAcknowledge >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new

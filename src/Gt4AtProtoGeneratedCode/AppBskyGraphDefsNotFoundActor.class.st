@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyGraphDefsNotFoundActor,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphDefsNotFoundActor',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpActor',
 		'atpNotFound'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor class >> atpDescription [
  ^  'indicates that a handle or DID could not be resolved'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor class >> atpFile [
  ^ 'app/bsky/graph/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor class >> atpRecordName [
  ^ 'app.bsky.graph.defs#notFoundActor'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor class >> atpSchema [
  ^ '{"type":"object","description":"indicates that a handle or DID could not be resolved","required":["actor","notFound"],"properties":{"actor":{"type":"string","format":"at-identifier"},"notFound":{"type":"boolean","const":true}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphDefsNotFoundActor class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,7 +38,7 @@ AppBskyGraphDefsNotFoundActor class >> fromRequest: aRequest withClient: aClient
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsNotFoundActor >> actorDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -46,29 +47,29 @@ AppBskyGraphDefsNotFoundActor >> actorDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor >> atpActor [
 	<atpType:#String format:'at-identifier'>
 	^ atpActor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor >> atpActor: anObject [
 	atpActor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor >> atpNotFound [
 	<atpType:#Boolean format:nil>
 	^ atpNotFound
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsNotFoundActor >> atpNotFound: anObject [
 	atpNotFound := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsNotFoundActor >> notFoundDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

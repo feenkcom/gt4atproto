@@ -1,36 +1,37 @@
 Class {
-	#name : #AppBskyEmbedRecordWithMediaView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordWithMediaView',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyEmbedRecordWithMediaView',
 	#classTraits : 'TAppBskyEmbedRecordWithMediaView classTrait',
 	#instVars : [
 		'atpRecord',
 		'atpMedia'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView class >> atpFile [
  ^ 'app/bsky/embed/recordWithMedia.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView class >> atpRecordName [
  ^ 'app.bsky.embed.recordWithMedia#view'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView class >> atpSchema [
  ^ '{"type":"object","required":["record","media"],"properties":{"record":{"type":"ref","ref":"app.bsky.embed.record#view"},"media":{"type":"union","refs":["app.bsky.embed.images#view","app.bsky.embed.video#view","app.bsky.embed.external#view"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -52,31 +53,31 @@ AppBskyEmbedRecordWithMediaView class >> fromRequest: aRequest withClient: aClie
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView >> atpMedia [
 	<atpType:#(AppBskyEmbedImagesView AppBskyEmbedVideoView AppBskyEmbedExternalView) format:nil>
 	^ atpMedia
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView >> atpMedia: anObject [
 	atpMedia := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView >> atpRecord [
 	<referenceTo:'app.bsky.embed.record#view'>
 	<atpType:#AppBskyEmbedRecordView format:nil>
 	^ atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordWithMediaView >> atpRecord: anObject [
 	<referenceTo:'app.bsky.embed.record#view'>
 	atpRecord := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordWithMediaView >> mediaDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -88,7 +89,7 @@ AppBskyEmbedRecordWithMediaView >> mediaDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordWithMediaView >> recordDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

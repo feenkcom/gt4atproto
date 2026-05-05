@@ -1,33 +1,34 @@
 Class {
-	#name : #ComAtprotoAdminDefsRepoRef,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsRepoRef',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoRef class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoRef class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoRef class >> atpRecordName [
  ^ 'com.atproto.admin.defs#repoRef'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoRef class >> atpSchema [
  ^ '{"type":"object","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ComAtprotoAdminDefsRepoRef class >> fromRequest: aRequest withClient: aClient [
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoRef >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoRef >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoRef >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new

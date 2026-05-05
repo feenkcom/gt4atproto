@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsSubjectStatusView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsSubjectStatusView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpSubject',
@@ -22,30 +22,31 @@ Class {
 		'atpSuspendUntil',
 		'atpTags'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#subjectStatusView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView class >> atpSchema [
  ^ '{"type":"object","required":["id","subject","createdAt","updatedAt","reviewState"],"properties":{"id":{"type":"integer"},"subject":{"type":"union","refs":["com.atproto.admin.defs#repoRef","com.atproto.repo.strongRef"]},"hosting":{"type":"union","refs":["#accountHosting","#recordHosting"]},"subjectBlobCids":{"type":"array","items":{"type":"string","format":"cid"}},"subjectRepoHandle":{"type":"string"},"updatedAt":{"type":"string","format":"datetime","description":"Timestamp referencing when the last update was made to the moderation status of the subject"},"createdAt":{"type":"string","format":"datetime","description":"Timestamp referencing the first moderation status impacting event was emitted on the subject"},"reviewState":{"type":"ref","ref":"#subjectReviewState"},"comment":{"type":"string","description":"Sticky comment on the subject."},"muteUntil":{"type":"string","format":"datetime"},"muteReportingUntil":{"type":"string","format":"datetime"},"lastReviewedBy":{"type":"string","format":"did"},"lastReviewedAt":{"type":"string","format":"datetime"},"lastReportedAt":{"type":"string","format":"datetime"},"lastAppealedAt":{"type":"string","format":"datetime","description":"Timestamp referencing when the author of the subject appealed a moderation action"},"takendown":{"type":"boolean"},"appealed":{"type":"boolean","description":"True indicates that the a previously taken moderator action was appealed against, by the author of the content. False indicates last appeal was resolved by moderators."},"suspendUntil":{"type":"string","format":"datetime"},"tags":{"type":"array","items":{"type":"string"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -97,7 +98,7 @@ ToolsOzoneModerationDefsSubjectStatusView class >> fromRequest: aRequest withCli
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> appealedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -105,220 +106,220 @@ ToolsOzoneModerationDefsSubjectStatusView >> appealedDescription [
 		accessor: #atpAppealed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpAppealed [
 	<atpType:#Boolean format:nil>
 	^ atpAppealed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpAppealed: anObject [
 	atpAppealed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpHosting [
 	<atpType:#(ToolsOzoneModerationDefsAccountHosting ToolsOzoneModerationDefsRecordHosting) format:nil>
 	^ atpHosting
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpHosting: anObject [
 	atpHosting := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastAppealedAt [
 	<atpType:#String format:'datetime'>
 	^ atpLastAppealedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastAppealedAt: anObject [
 	atpLastAppealedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastReportedAt [
 	<atpType:#String format:'datetime'>
 	^ atpLastReportedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastReportedAt: anObject [
 	atpLastReportedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastReviewedAt [
 	<atpType:#String format:'datetime'>
 	^ atpLastReviewedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastReviewedAt: anObject [
 	atpLastReviewedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastReviewedBy [
 	<atpType:#String format:'did'>
 	^ atpLastReviewedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpLastReviewedBy: anObject [
 	atpLastReviewedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpMuteReportingUntil [
 	<atpType:#String format:'datetime'>
 	^ atpMuteReportingUntil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpMuteReportingUntil: anObject [
 	atpMuteReportingUntil := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpMuteUntil [
 	<atpType:#String format:'datetime'>
 	^ atpMuteUntil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpMuteUntil: anObject [
 	atpMuteUntil := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpReviewState [
 	<referenceTo:'#subjectReviewState'>
 	<atpType:#String format:nil>
 	^ atpReviewState
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpReviewState: anObject [
 	<referenceTo:'#subjectReviewState'>
 	atpReviewState := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSubject [
 	<atpType:#(ComAtprotoAdminDefsRepoRef ComAtprotoRepoStrongRefMain) format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSubjectBlobCids [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpSubjectBlobCids
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSubjectBlobCids: anObject [
 	atpSubjectBlobCids := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSubjectRepoHandle [
 	<atpType:#String format:nil>
 	^ atpSubjectRepoHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSubjectRepoHandle: anObject [
 	atpSubjectRepoHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSuspendUntil [
 	<atpType:#String format:'datetime'>
 	^ atpSuspendUntil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpSuspendUntil: anObject [
 	atpSuspendUntil := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpTags [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpTags
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpTags: anObject [
 	atpTags := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpTakendown [
 	<atpType:#Boolean format:nil>
 	^ atpTakendown
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpTakendown: anObject [
 	atpTakendown := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpUpdatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUpdatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsSubjectStatusView >> atpUpdatedAt: anObject [
 	atpUpdatedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -326,7 +327,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -335,7 +336,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> hostingDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -345,7 +346,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> hostingDescription [
 		accessor: #atpHosting
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -354,7 +355,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> lastAppealedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -362,7 +363,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> lastAppealedAtDescription [
 		accessor: #atpLastAppealedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> lastReportedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -370,7 +371,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> lastReportedAtDescription [
 		accessor: #atpLastReportedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> lastReviewedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -378,7 +379,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> lastReviewedAtDescription [
 		accessor: #atpLastReviewedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> lastReviewedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -386,7 +387,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> lastReviewedByDescription [
 		accessor: #atpLastReviewedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> muteReportingUntilDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -394,7 +395,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> muteReportingUntilDescription [
 		accessor: #atpMuteReportingUntil
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> muteUntilDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -402,7 +403,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> muteUntilDescription [
 		accessor: #atpMuteUntil
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> reviewStateDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -411,7 +412,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> reviewStateDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> subjectBlobCidsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -420,7 +421,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> subjectBlobCidsDescription [
 		accessor: #atpSubjectBlobCids
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -431,7 +432,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> subjectDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> subjectRepoHandleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -439,7 +440,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> subjectRepoHandleDescription [
 		accessor: #atpSubjectRepoHandle
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> suspendUntilDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -447,7 +448,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> suspendUntilDescription [
 		accessor: #atpSuspendUntil
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> tagsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -456,7 +457,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> tagsDescription [
 		accessor: #atpTags
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> takendownDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -464,7 +465,7 @@ ToolsOzoneModerationDefsSubjectStatusView >> takendownDescription [
 		accessor: #atpTakendown
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsSubjectStatusView >> updatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

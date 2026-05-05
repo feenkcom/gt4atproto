@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposTombstone,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposTombstone',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpDid',
 		'atpTime'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone class >> atpDescription [
  ^  'DEPRECATED -- Use #account event instead'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#tombstone'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone class >> atpSchema [
  ^ '{"type":"object","description":"DEPRECATED -- Use #account event instead","required":["seq","did","time"],"properties":{"seq":{"type":"integer"},"did":{"type":"string","format":"did"},"time":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ ComAtprotoSyncSubscribeReposTombstone class >> fromRequest: aRequest withClient:
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone >> atpTime [
 	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposTombstone >> atpTime: anObject [
 	atpTime := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposTombstone >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ ComAtprotoSyncSubscribeReposTombstone >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposTombstone >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -90,7 +91,7 @@ ComAtprotoSyncSubscribeReposTombstone >> seqDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposTombstone >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,30 +1,31 @@
 Class {
-	#name : #AppBskyFeedDefsSkeletonReasonPin,
-	#superclass : #GtApModelEntity,
-	#category : #Gt4AtProtoGeneratedCode
+	#name : 'AppBskyFeedDefsSkeletonReasonPin',
+	#superclass : 'GtApModelEntity',
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonPin class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonPin class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonPin class >> atpRecordName [
  ^ 'app.bsky.feed.defs#skeletonReasonPin'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsSkeletonReasonPin class >> atpSchema [
  ^ '{"type":"object","properties":{}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsSkeletonReasonPin class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;

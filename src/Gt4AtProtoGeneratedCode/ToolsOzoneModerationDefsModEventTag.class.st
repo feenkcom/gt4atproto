@@ -1,35 +1,36 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventTag,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventTag',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpAdd',
 		'atpRemove',
 		'atpComment'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag class >> atpDescription [
  ^  'Add/Remove a tag on a subject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventTag'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag class >> atpSchema [
  ^ '{"type":"object","description":"Add/Remove a tag on a subject","required":["add","remove"],"properties":{"add":{"type":"array","items":{"type":"string"},"description":"Tags to be added to the subject. If already exists, won''t be duplicated."},"remove":{"type":"array","items":{"type":"string"},"description":"Tags to be removed to the subject. Ignores a tag If it doesn''t exist, won''t be duplicated."},"comment":{"type":"string","description":"Additional comment about added/removed tags."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventTag class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -45,7 +46,7 @@ ToolsOzoneModerationDefsModEventTag class >> fromRequest: aRequest withClient: a
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventTag >> addDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -55,42 +56,42 @@ ToolsOzoneModerationDefsModEventTag >> addDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag >> atpAdd [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpAdd
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag >> atpAdd: anObject [
 	atpAdd := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag >> atpRemove [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpRemove
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventTag >> atpRemove: anObject [
 	atpRemove := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventTag >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -98,7 +99,7 @@ ToolsOzoneModerationDefsModEventTag >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventTag >> removeDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

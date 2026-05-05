@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoAdminDefsVideoDetails,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsVideoDetails',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpWidth',
 		'atpHeight',
 		'atpLength'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails class >> atpRecordName [
  ^ 'com.atproto.admin.defs#videoDetails'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails class >> atpSchema [
  ^ '{"type":"object","required":["width","height","length"],"properties":{"width":{"type":"integer"},"height":{"type":"integer"},"length":{"type":"integer"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsVideoDetails class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -38,40 +39,40 @@ ComAtprotoAdminDefsVideoDetails class >> fromRequest: aRequest [
 		atpLength: (aRequest at: 'length' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails >> atpHeight [
 	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails >> atpHeight: anObject [
 	atpHeight := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails >> atpLength [
 	<atpType:#Number format:nil>
 	^ atpLength
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails >> atpLength: anObject [
 	atpLength := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails >> atpWidth [
 	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsVideoDetails >> atpWidth: anObject [
 	atpWidth := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsVideoDetails >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -80,7 +81,7 @@ ComAtprotoAdminDefsVideoDetails >> heightDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsVideoDetails >> lengthDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -89,7 +90,7 @@ ComAtprotoAdminDefsVideoDetails >> lengthDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsVideoDetails >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new

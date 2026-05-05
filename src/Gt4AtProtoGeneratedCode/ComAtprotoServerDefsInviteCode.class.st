@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoServerDefsInviteCode,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoServerDefsInviteCode',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCode',
 		'atpAvailable',
@@ -10,30 +10,31 @@ Class {
 		'atpCreatedAt',
 		'atpUses'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode class >> atpFile [
  ^ 'com/atproto/server/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode class >> atpRecordName [
  ^ 'com.atproto.server.defs#inviteCode'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode class >> atpSchema [
  ^ '{"type":"object","required":["code","available","disabled","forAccount","createdBy","createdAt","uses"],"properties":{"code":{"type":"string"},"available":{"type":"integer"},"disabled":{"type":"boolean"},"forAccount":{"type":"string"},"createdBy":{"type":"string"},"createdAt":{"type":"string","format":"datetime"},"uses":{"type":"array","items":{"type":"ref","ref":"#inviteCodeUse"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -52,85 +53,85 @@ ComAtprotoServerDefsInviteCode class >> fromRequest: aRequest withClient: aClien
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpAvailable [
 	<atpType:#Number format:nil>
 	^ atpAvailable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpAvailable: anObject [
 	atpAvailable := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpCode [
 	<atpType:#String format:nil>
 	^ atpCode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpCode: anObject [
 	atpCode := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpCreatedBy [
 	<atpType:#String format:nil>
 	^ atpCreatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpCreatedBy: anObject [
 	atpCreatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpDisabled: anObject [
 	atpDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpForAccount [
 	<atpType:#String format:nil>
 	^ atpForAccount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpForAccount: anObject [
 	atpForAccount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpUses [
 	<atpType:#ComAtprotoServerDefsInviteCodeUse format:nil>
 	<atpCollection>
 	^ atpUses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCode >> atpUses: anObject [
 	atpUses := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> availableDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -139,7 +140,7 @@ ComAtprotoServerDefsInviteCode >> availableDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> codeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -148,7 +149,7 @@ ComAtprotoServerDefsInviteCode >> codeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -157,7 +158,7 @@ ComAtprotoServerDefsInviteCode >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -166,7 +167,7 @@ ComAtprotoServerDefsInviteCode >> createdByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> disabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -175,7 +176,7 @@ ComAtprotoServerDefsInviteCode >> disabledDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> forAccountDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -184,7 +185,7 @@ ComAtprotoServerDefsInviteCode >> forAccountDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCode >> usesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

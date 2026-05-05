@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyActorDefsThreadViewPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsThreadViewPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSort',
 		'atpPrioritizeFollowedUsers'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#threadViewPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref class >> atpSchema [
  ^ '{"type":"object","properties":{"sort":{"type":"string","description":"Sorting mode for threads.","knownValues":["oldest","newest","most-likes","random","hotness"]},"prioritizeFollowedUsers":{"type":"boolean","description":"Show followed users at the top of all replies."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsThreadViewPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyActorDefsThreadViewPref class >> fromRequest: aRequest withClient: aClien
 		atpPrioritizeFollowedUsers: (aRequest at: 'prioritizeFollowedUsers' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref >> atpPrioritizeFollowedUsers [
 	<atpType:#Boolean format:nil>
 	^ atpPrioritizeFollowedUsers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref >> atpPrioritizeFollowedUsers: anObject [
 	atpPrioritizeFollowedUsers := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref >> atpSort [
 	<atpType:#String format:nil>
 	^ atpSort
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsThreadViewPref >> atpSort: anObject [
 	atpSort := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsThreadViewPref >> prioritizeFollowedUsersDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -67,7 +68,7 @@ AppBskyActorDefsThreadViewPref >> prioritizeFollowedUsersDescription [
 		accessor: #atpPrioritizeFollowedUsers
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsThreadViewPref >> sortDescription [
 	<magritteDescription>
 	^ MAStringDescription new

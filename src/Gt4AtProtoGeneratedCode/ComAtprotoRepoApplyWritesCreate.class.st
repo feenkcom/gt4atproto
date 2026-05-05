@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoRepoApplyWritesCreate,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoRepoApplyWritesCreate',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCollection',
 		'atpRkey',
 		'atpValue'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate class >> atpDescription [
  ^  'Operation which creates a new record.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate class >> atpFile [
  ^ 'com/atproto/repo/applyWrites.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#create'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate class >> atpSchema [
  ^ '{"type":"object","description":"Operation which creates a new record.","required":["collection","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string","maxLength":512},"value":{"type":"unknown"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoRepoApplyWritesCreate class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,40 +43,40 @@ ComAtprotoRepoApplyWritesCreate class >> fromRequest: aRequest withClient: aClie
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate >> atpCollection [
 	<atpType:#String format:'nsid'>
 	^ atpCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate >> atpCollection: anObject [
 	atpCollection := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate >> atpRkey [
 	<atpType:#String format:nil>
 	^ atpRkey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate >> atpRkey: anObject [
 	atpRkey := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreate >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesCreate >> collectionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -84,7 +85,7 @@ ComAtprotoRepoApplyWritesCreate >> collectionDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesCreate >> rkeyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -92,7 +93,7 @@ ComAtprotoRepoApplyWritesCreate >> rkeyDescription [
 		accessor: #atpRkey
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesCreate >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

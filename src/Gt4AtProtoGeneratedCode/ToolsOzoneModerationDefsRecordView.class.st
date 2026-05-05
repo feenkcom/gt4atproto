@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsRecordView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsRecordView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -10,30 +10,31 @@ Class {
 		'atpModeration',
 		'atpRepo'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#recordView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","value","blobCids","indexedAt","moderation","repo"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"value":{"type":"unknown"},"blobCids":{"type":"array","items":{"type":"string","format":"cid"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderation"},"repo":{"type":"ref","ref":"#repoView"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsRecordView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -59,89 +60,89 @@ ToolsOzoneModerationDefsRecordView class >> fromRequest: aRequest withClient: aC
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpBlobCids [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpBlobCids
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpBlobCids: anObject [
 	atpBlobCids := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpModeration [
 	<referenceTo:'#moderation'>
 	<atpType:#ToolsOzoneModerationDefsModeration format:nil>
 	^ atpModeration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
 	atpModeration := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpRepo [
 	<referenceTo:'#repoView'>
 	<atpType:#ToolsOzoneModerationDefsRepoView format:nil>
 	^ atpRepo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpRepo: anObject [
 	<referenceTo:'#repoView'>
 	atpRepo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordView >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> blobCidsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -151,7 +152,7 @@ ToolsOzoneModerationDefsRecordView >> blobCidsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -160,7 +161,7 @@ ToolsOzoneModerationDefsRecordView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -169,7 +170,7 @@ ToolsOzoneModerationDefsRecordView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -178,7 +179,7 @@ ToolsOzoneModerationDefsRecordView >> moderationDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> repoDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -187,7 +188,7 @@ ToolsOzoneModerationDefsRecordView >> repoDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -196,7 +197,7 @@ ToolsOzoneModerationDefsRecordView >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordView >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

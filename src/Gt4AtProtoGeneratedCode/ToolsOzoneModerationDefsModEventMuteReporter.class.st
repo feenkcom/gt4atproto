@@ -1,34 +1,35 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventMuteReporter,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventMuteReporter',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpDurationInHours'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter class >> atpDescription [
  ^  'Mute incoming reports from an account'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventMuteReporter'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter class >> atpSchema [
  ^ '{"type":"object","description":"Mute incoming reports from an account","properties":{"comment":{"type":"string"},"durationInHours":{"type":"integer","description":"Indicates how long the account should remain muted. Falsy value here means a permanent mute."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventMuteReporter class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ToolsOzoneModerationDefsModEventMuteReporter class >> fromRequest: aRequest with
 		atpDurationInHours: (aRequest at: 'durationInHours' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter >> atpDurationInHours [
 	<atpType:#Number format:nil>
 	^ atpDurationInHours
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventMuteReporter >> atpDurationInHours: anObject [
 	atpDurationInHours := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventMuteReporter >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -67,7 +68,7 @@ ToolsOzoneModerationDefsModEventMuteReporter >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventMuteReporter >> durationInHoursDescription [
 	<magritteDescription>
 	^ MANumberDescription new

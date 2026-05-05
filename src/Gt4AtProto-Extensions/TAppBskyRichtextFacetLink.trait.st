@@ -1,9 +1,11 @@
 Trait {
-	#name : #TAppBskyRichtextFacetLink,
-	#category : #'Gt4AtProto-Extensions-Traits'
+	#name : 'TAppBskyRichtextFacetLink',
+	#category : 'Gt4AtProto-Extensions-Traits',
+	#package : 'Gt4AtProto-Extensions',
+	#tag : 'Traits'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TAppBskyRichtextFacetLink >> adorn: aText usingPost: aPost [
 	aText
 		appendingAdornment: [ :aTBrTextEditorTextualPiece :anEditorElement | 

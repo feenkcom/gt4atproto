@@ -1,33 +1,34 @@
 Class {
-	#name : #ComAtprotoLabelDefsSelfLabels,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoLabelDefsSelfLabels',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpValues'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsSelfLabels class >> atpDescription [
  ^  'Metadata tags on an atproto record, published by the author within the record.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsSelfLabels class >> atpFile [
  ^ 'com/atproto/label/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsSelfLabels class >> atpRecordName [
  ^ 'com.atproto.label.defs#selfLabels'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsSelfLabels class >> atpSchema [
  ^ '{"type":"object","description":"Metadata tags on an atproto record, published by the author within the record.","required":["values"],"properties":{"values":{"type":"array","items":{"type":"ref","ref":"#selfLabel"},"maxLength":10}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoLabelDefsSelfLabels class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,19 +41,19 @@ ComAtprotoLabelDefsSelfLabels class >> fromRequest: aRequest withClient: aClient
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsSelfLabels >> atpValues [
 	<atpType:#ComAtprotoLabelDefsSelfLabel format:nil>
 	<atpCollection>
 	^ atpValues
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsSelfLabels >> atpValues: anObject [
 	atpValues := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsSelfLabels >> valuesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

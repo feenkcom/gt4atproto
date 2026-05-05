@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoRepoListRecordsRecord,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoRepoListRecordsRecord',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
 		'atpValue'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord class >> atpFile [
  ^ 'com/atproto/repo/listRecords.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord class >> atpRecordName [
  ^ 'com.atproto.repo.listRecords#record'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","value"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"value":{"type":"unknown"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,40 +43,40 @@ ComAtprotoRepoListRecordsRecord class >> fromRequest: aRequest withClient: aClie
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListRecordsRecord >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoListRecordsRecord >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -84,7 +85,7 @@ ComAtprotoRepoListRecordsRecord >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoListRecordsRecord >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -93,7 +94,7 @@ ComAtprotoRepoListRecordsRecord >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoListRecordsRecord >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

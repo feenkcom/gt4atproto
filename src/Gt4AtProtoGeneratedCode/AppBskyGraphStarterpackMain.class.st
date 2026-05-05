@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyGraphStarterpackMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphStarterpackMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpName',
 		'atpDescription',
@@ -9,30 +9,31 @@ Class {
 		'atpFeeds',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain class >> atpDescription [
  ^  'Record defining a starter pack of actors and feeds for new users.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain class >> atpFile [
  ^ 'app/bsky/graph/starterpack.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain class >> atpRecordName [
  ^ 'app.bsky.graph.starterpack'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain class >> atpSchema [
  ^ '{"type":"record","description":"Record defining a starter pack of actors and feeds for new users.","key":"tid","record":{"type":"object","required":["name","list","createdAt"],"properties":{"name":{"type":"string","maxGraphemes":50,"maxLength":500,"minLength":1,"description":"Display name for starter pack; can not be empty."},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"list":{"type":"string","format":"at-uri","description":"Reference (AT-URI) to the list record."},"feeds":{"type":"array","maxLength":3,"items":{"type":"ref","ref":"#feedItem"}},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphStarterpackMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -55,75 +56,75 @@ AppBskyGraphStarterpackMain class >> fromRequest: aRequest withClient: aClient [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpDescriptionFacets [
 	<atpType:#AppBskyRichtextFacetMain format:nil>
 	<atpCollection>
 	^ atpDescriptionFacets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpDescriptionFacets: anObject [
 	atpDescriptionFacets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpFeeds [
 	<atpType:#AppBskyGraphStarterpackFeedItem format:nil>
 	<atpCollection>
 	^ atpFeeds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpFeeds: anObject [
 	atpFeeds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpList [
 	<atpType:#String format:'at-uri'>
 	^ atpList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpList: anObject [
 	atpList := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphStarterpackMain >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -132,7 +133,7 @@ AppBskyGraphStarterpackMain >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackMain >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -140,7 +141,7 @@ AppBskyGraphStarterpackMain >> descriptionDescription [
 		accessor: #atpDescription
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackMain >> descriptionFacetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -149,7 +150,7 @@ AppBskyGraphStarterpackMain >> descriptionFacetsDescription [
 		accessor: #atpDescriptionFacets
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackMain >> feedsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -158,7 +159,7 @@ AppBskyGraphStarterpackMain >> feedsDescription [
 		accessor: #atpFeeds
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackMain >> listDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -167,7 +168,7 @@ AppBskyGraphStarterpackMain >> listDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphStarterpackMain >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new

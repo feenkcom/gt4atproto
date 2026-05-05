@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoRepoApplyWritesCreateResult,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoRepoApplyWritesCreateResult',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
 		'atpValidationStatus'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult class >> atpFile [
  ^ 'com/atproto/repo/applyWrites.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#createResult'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"validationStatus":{"type":"string","knownValues":["valid","unknown"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoRepoApplyWritesCreateResult class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ ComAtprotoRepoApplyWritesCreateResult class >> fromRequest: aRequest withClient:
 		atpValidationStatus: (aRequest at: 'validationStatus' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult >> atpValidationStatus [
 	<atpType:#String format:nil>
 	^ atpValidationStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesCreateResult >> atpValidationStatus: anObject [
 	atpValidationStatus := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesCreateResult >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ ComAtprotoRepoApplyWritesCreateResult >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesCreateResult >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -90,7 +91,7 @@ ComAtprotoRepoApplyWritesCreateResult >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesCreateResult >> validationStatusDescription [
 	<magritteDescription>
 	^ MAStringDescription new

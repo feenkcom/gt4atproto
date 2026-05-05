@@ -1,1 +1,1 @@
-Package { #name : #'Gt4AtProto-Extensions' }
+Package { #name : 'Gt4AtProto-Extensions' }

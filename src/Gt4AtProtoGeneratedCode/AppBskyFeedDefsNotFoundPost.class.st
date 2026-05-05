@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyFeedDefsNotFoundPost,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsNotFoundPost',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpNotFound'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#notFoundPost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost class >> atpSchema [
  ^ '{"type":"object","required":["uri","notFound"],"properties":{"uri":{"type":"string","format":"at-uri"},"notFound":{"type":"boolean","const":true}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyFeedDefsNotFoundPost class >> fromRequest: aRequest withClient: aClient [
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost >> atpNotFound [
 	<atpType:#Boolean format:nil>
 	^ atpNotFound
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost >> atpNotFound: anObject [
 	atpNotFound := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsNotFoundPost >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsNotFoundPost >> notFoundDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -68,7 +69,7 @@ AppBskyFeedDefsNotFoundPost >> notFoundDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsNotFoundPost >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

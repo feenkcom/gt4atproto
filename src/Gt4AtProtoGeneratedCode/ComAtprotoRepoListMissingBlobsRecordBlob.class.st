@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoRepoListMissingBlobsRecordBlob,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoRepoListMissingBlobsRecordBlob',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCid',
 		'atpRecordUri'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob class >> atpFile [
  ^ 'com/atproto/repo/listMissingBlobs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob class >> atpRecordName [
  ^ 'com.atproto.repo.listMissingBlobs#recordBlob'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob class >> atpSchema [
  ^ '{"type":"object","required":["cid","recordUri"],"properties":{"cid":{"type":"string","format":"cid"},"recordUri":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoRepoListMissingBlobsRecordBlob class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ComAtprotoRepoListMissingBlobsRecordBlob class >> fromRequest: aRequest withClie
 		atpRecordUri: (aRequest at: 'recordUri' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob >> atpRecordUri [
 	<atpType:#String format:'at-uri'>
 	^ atpRecordUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoListMissingBlobsRecordBlob >> atpRecordUri: anObject [
 	atpRecordUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoListMissingBlobsRecordBlob >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ ComAtprotoRepoListMissingBlobsRecordBlob >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoListMissingBlobsRecordBlob >> recordUriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

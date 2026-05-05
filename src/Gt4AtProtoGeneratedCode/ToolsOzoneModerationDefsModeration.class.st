@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModeration,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModeration',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSubjectStatus'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModeration class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModeration class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModeration class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#moderation'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModeration class >> atpSchema [
  ^ '{"type":"object","properties":{"subjectStatus":{"type":"ref","ref":"#subjectStatusView"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModeration class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,20 +42,20 @@ ToolsOzoneModerationDefsModeration class >> fromRequest: aRequest withClient: aC
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModeration >> atpSubjectStatus [
 	<referenceTo:'#subjectStatusView'>
 	<atpType:#ToolsOzoneModerationDefsSubjectStatusView format:nil>
 	^ atpSubjectStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModeration >> atpSubjectStatus: anObject [
 	<referenceTo:'#subjectStatusView'>
 	atpSubjectStatus := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModeration >> subjectStatusDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

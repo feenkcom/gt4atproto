@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyGraphDefsListItemView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphDefsListItemView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpSubject'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView class >> atpFile [
  ^ 'app/bsky/graph/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listItemView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView class >> atpSchema [
  ^ '{"type":"object","required":["uri","subject"],"properties":{"uri":{"type":"string","format":"at-uri"},"subject":{"type":"ref","ref":"app.bsky.actor.defs#profileView"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphDefsListItemView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,31 +41,31 @@ AppBskyGraphDefsListItemView class >> fromRequest: aRequest withClient: aClient 
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView >> atpSubject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView >> atpSubject: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListItemView >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListItemView >> subjectDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -73,7 +74,7 @@ AppBskyGraphDefsListItemView >> subjectDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListItemView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

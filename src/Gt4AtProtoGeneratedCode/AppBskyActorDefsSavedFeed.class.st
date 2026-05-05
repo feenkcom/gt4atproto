@@ -1,36 +1,37 @@
 Class {
-	#name : #AppBskyActorDefsSavedFeed,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsSavedFeed',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpType',
 		'atpValue',
 		'atpPinned'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed class >> atpRecordName [
  ^ 'app.bsky.actor.defs#savedFeed'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed class >> atpSchema [
  ^ '{"type":"object","required":["id","type","value","pinned"],"properties":{"id":{"type":"string"},"type":{"type":"string","knownValues":["feed","list","timeline"]},"value":{"type":"string"},"pinned":{"type":"boolean"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsSavedFeed class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ AppBskyActorDefsSavedFeed class >> fromRequest: aRequest withClient: aClient [
 		atpPinned: (aRequest at: 'pinned' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpId [
 	<atpType:#String format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpPinned [
 	<atpType:#Boolean format:nil>
 	^ atpPinned
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpPinned: anObject [
 	atpPinned := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpType [
 	<atpType:#String format:nil>
 	^ atpType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpType: anObject [
 	atpType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpValue [
 	<atpType:#String format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsSavedFeed >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsSavedFeed >> idDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -94,7 +95,7 @@ AppBskyActorDefsSavedFeed >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsSavedFeed >> pinnedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -103,7 +104,7 @@ AppBskyActorDefsSavedFeed >> pinnedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsSavedFeed >> typeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -112,7 +113,7 @@ AppBskyActorDefsSavedFeed >> typeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsSavedFeed >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

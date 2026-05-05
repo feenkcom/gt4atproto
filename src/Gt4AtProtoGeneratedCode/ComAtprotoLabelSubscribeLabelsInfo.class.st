@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoLabelSubscribeLabelsInfo,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoLabelSubscribeLabelsInfo',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpName',
 		'atpMessage'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo class >> atpFile [
  ^ 'com/atproto/label/subscribeLabels.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo class >> atpRecordName [
  ^ 'com.atproto.label.subscribeLabels#info'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo class >> atpSchema [
  ^ '{"type":"object","required":["name"],"properties":{"name":{"type":"string","knownValues":["OutdatedCursor"]},"message":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ComAtprotoLabelSubscribeLabelsInfo class >> fromRequest: aRequest withClient: aC
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo >> atpMessage [
 	<atpType:#String format:nil>
 	^ atpMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo >> atpMessage: anObject [
 	atpMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelSubscribeLabelsInfo >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelSubscribeLabelsInfo >> messageDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -67,7 +68,7 @@ ComAtprotoLabelSubscribeLabelsInfo >> messageDescription [
 		accessor: #atpMessage
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelSubscribeLabelsInfo >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new

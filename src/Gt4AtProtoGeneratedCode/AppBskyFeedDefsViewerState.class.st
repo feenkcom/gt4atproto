@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyFeedDefsViewerState,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsViewerState',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRepost',
 		'atpLike',
@@ -9,30 +9,31 @@ Class {
 		'atpEmbeddingDisabled',
 		'atpPinned'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState class >> atpDescription [
  ^  'Metadata about the requesting account''s relationship with the subject content. Only has meaningful content for authed requests.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.feed.defs#viewerState'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState class >> atpSchema [
  ^ '{"type":"object","description":"Metadata about the requesting account''s relationship with the subject content. Only has meaningful content for authed requests.","properties":{"repost":{"type":"string","format":"at-uri"},"like":{"type":"string","format":"at-uri"},"threadMuted":{"type":"boolean"},"replyDisabled":{"type":"boolean"},"embeddingDisabled":{"type":"boolean"},"pinned":{"type":"boolean"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -45,73 +46,73 @@ AppBskyFeedDefsViewerState class >> fromRequest: aRequest withClient: aClient [
 		atpPinned: (aRequest at: 'pinned' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpEmbeddingDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpEmbeddingDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpEmbeddingDisabled: anObject [
 	atpEmbeddingDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpLike [
 	<atpType:#String format:'at-uri'>
 	^ atpLike
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpLike: anObject [
 	atpLike := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpPinned [
 	<atpType:#Boolean format:nil>
 	^ atpPinned
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpPinned: anObject [
 	atpPinned := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpReplyDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpReplyDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpReplyDisabled: anObject [
 	atpReplyDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpRepost [
 	<atpType:#String format:'at-uri'>
 	^ atpRepost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpRepost: anObject [
 	atpRepost := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpThreadMuted [
 	<atpType:#Boolean format:nil>
 	^ atpThreadMuted
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsViewerState >> atpThreadMuted: anObject [
 	atpThreadMuted := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsViewerState >> embeddingDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -119,7 +120,7 @@ AppBskyFeedDefsViewerState >> embeddingDisabledDescription [
 		accessor: #atpEmbeddingDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsViewerState >> likeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -127,7 +128,7 @@ AppBskyFeedDefsViewerState >> likeDescription [
 		accessor: #atpLike
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsViewerState >> pinnedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -135,7 +136,7 @@ AppBskyFeedDefsViewerState >> pinnedDescription [
 		accessor: #atpPinned
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsViewerState >> replyDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -143,7 +144,7 @@ AppBskyFeedDefsViewerState >> replyDisabledDescription [
 		accessor: #atpReplyDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsViewerState >> repostDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -151,7 +152,7 @@ AppBskyFeedDefsViewerState >> repostDescription [
 		accessor: #atpRepost
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsViewerState >> threadMutedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

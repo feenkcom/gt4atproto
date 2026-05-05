@@ -1,33 +1,34 @@
 Class {
-	#name : #ChatBskyActorDeclarationMain,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyActorDeclarationMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpAllowIncoming'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDeclarationMain class >> atpDescription [
  ^  'A declaration of a Bluesky chat account.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDeclarationMain class >> atpFile [
  ^ 'chat/bsky/actor/declaration.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDeclarationMain class >> atpRecordName [
  ^ 'chat.bsky.actor.declaration'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDeclarationMain class >> atpSchema [
  ^ '{"type":"record","description":"A declaration of a Bluesky chat account.","key":"literal:self","record":{"type":"object","required":["allowIncoming"],"properties":{"allowIncoming":{"type":"string","knownValues":["all","none","following"]}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyActorDeclarationMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,7 +36,7 @@ ChatBskyActorDeclarationMain class >> fromRequest: aRequest withClient: aClient 
 		atpAllowIncoming: (aRequest at: 'allowIncoming' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDeclarationMain >> allowIncomingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -44,13 +45,13 @@ ChatBskyActorDeclarationMain >> allowIncomingDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDeclarationMain >> atpAllowIncoming [
 	<atpType:#String format:nil>
 	^ atpAllowIncoming
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDeclarationMain >> atpAllowIncoming: anObject [
 	atpAllowIncoming := anObject
 ]

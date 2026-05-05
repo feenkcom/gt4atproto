@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoAdminDefsActionReversal,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsActionReversal',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpReason',
 		'atpCreatedBy',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionReversal'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal class >> atpSchema [
  ^ '{"type":"object","required":["reason","createdBy","createdAt"],"properties":{"reason":{"type":"string"},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -38,40 +39,40 @@ ComAtprotoAdminDefsActionReversal class >> fromRequest: aRequest [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal >> atpCreatedBy [
 	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal >> atpCreatedBy: anObject [
 	atpCreatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal >> atpReason [
 	<atpType:#String format:nil>
 	^ atpReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionReversal >> atpReason: anObject [
 	atpReason := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionReversal >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -80,7 +81,7 @@ ComAtprotoAdminDefsActionReversal >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionReversal >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -89,7 +90,7 @@ ComAtprotoAdminDefsActionReversal >> createdByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionReversal >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new

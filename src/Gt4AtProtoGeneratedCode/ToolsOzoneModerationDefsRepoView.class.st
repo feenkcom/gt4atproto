@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsRepoView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsRepoView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpHandle',
@@ -14,30 +14,31 @@ Class {
 		'atpDeactivatedAt',
 		'atpThreatSignatures'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#repoView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView class >> atpSchema [
  ^ '{"type":"object","required":["did","handle","relatedRecords","indexedAt","moderation"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderation"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invitesDisabled":{"type":"boolean"},"inviteNote":{"type":"string"},"deactivatedAt":{"type":"string","format":"datetime"},"threatSignatures":{"type":"array","items":{"type":"ref","ref":"com.atproto.admin.defs#threatSignature"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsRepoView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -71,134 +72,134 @@ ToolsOzoneModerationDefsRepoView class >> fromRequest: aRequest withClient: aCli
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpDeactivatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpDeactivatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpDeactivatedAt: anObject [
 	atpDeactivatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpEmail [
 	<atpType:#String format:nil>
 	^ atpEmail
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpEmail: anObject [
 	atpEmail := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpInviteNote [
 	<atpType:#String format:nil>
 	^ atpInviteNote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpInviteNote: anObject [
 	atpInviteNote := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpInvitedBy [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
 	<atpType:#ComAtprotoServerDefsInviteCode format:nil>
 	^ atpInvitedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpInvitedBy: anObject [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
 	atpInvitedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpInvitesDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpInvitesDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpInvitesDisabled: anObject [
 	atpInvitesDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpModeration [
 	<referenceTo:'#moderation'>
 	<atpType:#ToolsOzoneModerationDefsModeration format:nil>
 	^ atpModeration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
 	atpModeration := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpRelatedRecords [
 	<atpType:#Object format:nil>
 	<atpCollection>
 	^ atpRelatedRecords
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpRelatedRecords: anObject [
 	atpRelatedRecords := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpThreatSignatures [
 	<atpType:#ComAtprotoAdminDefsThreatSignature format:nil>
 	<atpCollection>
 	^ atpThreatSignatures
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoView >> atpThreatSignatures: anObject [
 	atpThreatSignatures := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> deactivatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -206,7 +207,7 @@ ToolsOzoneModerationDefsRepoView >> deactivatedAtDescription [
 		accessor: #atpDeactivatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -215,7 +216,7 @@ ToolsOzoneModerationDefsRepoView >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> emailDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -223,7 +224,7 @@ ToolsOzoneModerationDefsRepoView >> emailDescription [
 		accessor: #atpEmail
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -232,7 +233,7 @@ ToolsOzoneModerationDefsRepoView >> handleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -241,7 +242,7 @@ ToolsOzoneModerationDefsRepoView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> inviteNoteDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -249,7 +250,7 @@ ToolsOzoneModerationDefsRepoView >> inviteNoteDescription [
 		accessor: #atpInviteNote
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> invitedByDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -257,7 +258,7 @@ ToolsOzoneModerationDefsRepoView >> invitedByDescription [
 		accessor: #atpInvitedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> invitesDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -265,7 +266,7 @@ ToolsOzoneModerationDefsRepoView >> invitesDisabledDescription [
 		accessor: #atpInvitesDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -274,7 +275,7 @@ ToolsOzoneModerationDefsRepoView >> moderationDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> relatedRecordsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -284,7 +285,7 @@ ToolsOzoneModerationDefsRepoView >> relatedRecordsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoView >> threatSignaturesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

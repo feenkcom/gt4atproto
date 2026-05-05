@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyLabelerServiceMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyLabelerServiceMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpPolicies',
 		'atpLabels',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain class >> atpDescription [
  ^  'A declaration of the existence of labeler service.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain class >> atpFile [
  ^ 'app/bsky/labeler/service.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain class >> atpRecordName [
  ^ 'app.bsky.labeler.service'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain class >> atpSchema [
  ^ '{"type":"record","description":"A declaration of the existence of labeler service.","key":"literal:self","record":{"type":"object","required":["policies","createdAt"],"properties":{"policies":{"type":"ref","ref":"app.bsky.labeler.defs#labelerPolicies"},"labels":{"type":"union","refs":["com.atproto.label.defs#selfLabels"]},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyLabelerServiceMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -51,42 +52,42 @@ AppBskyLabelerServiceMain class >> fromRequest: aRequest withClient: aClient [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain >> atpLabels [
 	<atpType:#(ComAtprotoLabelDefsSelfLabels) format:nil>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain >> atpPolicies [
 	<referenceTo:'app.bsky.labeler.defs#labelerPolicies'>
 	<atpType:#AppBskyLabelerDefsLabelerPolicies format:nil>
 	^ atpPolicies
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerServiceMain >> atpPolicies: anObject [
 	<referenceTo:'app.bsky.labeler.defs#labelerPolicies'>
 	atpPolicies := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerServiceMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -95,7 +96,7 @@ AppBskyLabelerServiceMain >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerServiceMain >> labelsDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -104,7 +105,7 @@ AppBskyLabelerServiceMain >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerServiceMain >> policiesDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

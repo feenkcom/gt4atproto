@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventResolveAppeal,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventResolveAppeal',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventResolveAppeal class >> atpDescription [
  ^  'Resolve appeal on a subject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventResolveAppeal class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventResolveAppeal class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventResolveAppeal'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventResolveAppeal class >> atpSchema [
  ^ '{"type":"object","description":"Resolve appeal on a subject","properties":{"comment":{"type":"string","description":"Describe resolution."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventResolveAppeal class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneModerationDefsModEventResolveAppeal class >> fromRequest: aRequest wit
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventResolveAppeal >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventResolveAppeal >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventResolveAppeal >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new

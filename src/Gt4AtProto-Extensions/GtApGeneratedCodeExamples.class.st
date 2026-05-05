@@ -1,10 +1,11 @@
 Class {
-	#name : #GtApGeneratedCodeExamples,
-	#superclass : #Object,
-	#category : #'Gt4AtProto-Extensions'
+	#name : 'GtApGeneratedCodeExamples',
+	#superclass : 'Object',
+	#category : 'Gt4AtProto-Extensions',
+	#package : 'Gt4AtProto-Extensions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApGeneratedCodeExamples >> appBskyActorDefsProfileViewDetailed [
 	<gtExample>
 	| generatedClass |
@@ -16,7 +17,7 @@ GtApGeneratedCodeExamples >> appBskyActorDefsProfileViewDetailed [
 	^ generatedClass
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApGeneratedCodeExamples >> generatedCodePackage [
 	<gtExample>
 	<noTest>

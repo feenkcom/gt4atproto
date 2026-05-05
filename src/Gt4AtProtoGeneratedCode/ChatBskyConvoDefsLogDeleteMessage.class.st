@@ -1,35 +1,36 @@
 Class {
-	#name : #ChatBskyConvoDefsLogDeleteMessage,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoDefsLogDeleteMessage',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRev',
 		'atpConvoId',
 		'atpMessage'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage class >> atpFile [
  ^ 'chat/bsky/convo/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage class >> atpRecordName [
  ^ 'chat.bsky.convo.defs#logDeleteMessage'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage class >> atpSchema [
  ^ '{"type":"object","required":["rev","convoId","message"],"properties":{"rev":{"type":"string"},"convoId":{"type":"string"},"message":{"type":"union","refs":["#messageView","#deletedMessageView"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoDefsLogDeleteMessage class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -49,40 +50,40 @@ ChatBskyConvoDefsLogDeleteMessage class >> fromRequest: aRequest withClient: aCl
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage >> atpConvoId [
 	<atpType:#String format:nil>
 	^ atpConvoId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage >> atpConvoId: anObject [
 	atpConvoId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage >> atpMessage [
 	<atpType:#(ChatBskyConvoDefsMessageView ChatBskyConvoDefsDeletedMessageView) format:nil>
 	^ atpMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage >> atpMessage: anObject [
 	atpMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsLogDeleteMessage >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsLogDeleteMessage >> convoIdDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -91,7 +92,7 @@ ChatBskyConvoDefsLogDeleteMessage >> convoIdDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsLogDeleteMessage >> messageDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -102,7 +103,7 @@ ChatBskyConvoDefsLogDeleteMessage >> messageDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsLogDeleteMessage >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsHiddenPostsPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsHiddenPostsPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpItems'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsHiddenPostsPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsHiddenPostsPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsHiddenPostsPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#hiddenPostsPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsHiddenPostsPref class >> atpSchema [
  ^ '{"type":"object","required":["items"],"properties":{"items":{"type":"array","items":{"type":"string","format":"at-uri"},"description":"A list of URIs of posts the account owner has hidden."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsHiddenPostsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -38,19 +39,19 @@ AppBskyActorDefsHiddenPostsPref class >> fromRequest: aRequest withClient: aClie
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsHiddenPostsPref >> atpItems [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsHiddenPostsPref >> atpItems: anObject [
 	atpItems := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsHiddenPostsPref >> itemsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

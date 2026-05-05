@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoServerCreateInviteCodesAccountCodes,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoServerCreateInviteCodesAccountCodes',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpAccount',
 		'atpCodes'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpFile [
  ^ 'com/atproto/server/createInviteCodes.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpRecordName [
  ^ 'com.atproto.server.createInviteCodes#accountCodes'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> atpSchema [
  ^ '{"type":"object","required":["account","codes"],"properties":{"account":{"type":"string"},"codes":{"type":"array","items":{"type":"string"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,7 +41,7 @@ ComAtprotoServerCreateInviteCodesAccountCodes class >> fromRequest: aRequest wit
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerCreateInviteCodesAccountCodes >> accountDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -49,30 +50,30 @@ ComAtprotoServerCreateInviteCodesAccountCodes >> accountDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes >> atpAccount [
 	<atpType:#String format:nil>
 	^ atpAccount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes >> atpAccount: anObject [
 	atpAccount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes >> atpCodes [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpCodes
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateInviteCodesAccountCodes >> atpCodes: anObject [
 	atpCodes := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerCreateInviteCodesAccountCodes >> codesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

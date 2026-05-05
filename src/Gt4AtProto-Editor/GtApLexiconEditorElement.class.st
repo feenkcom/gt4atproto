@@ -1,13 +1,15 @@
 Class {
-	#name : #GtApLexiconEditorElement,
-	#superclass : #BrEditor,
+	#name : 'GtApLexiconEditorElement',
+	#superclass : 'BrEditor',
 	#instVars : [
 		'lexiconFile'
 	],
-	#category : #'Gt4AtProto-Editor-View'
+	#category : 'Gt4AtProto-Editor-View',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'View'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconEditorElement >> lexiconFile: anObject [
 	lexiconFile := anObject.
 	self aptitude: (GtApEditorAptitude new lexiconFile: lexiconFile).
@@ -18,7 +20,7 @@ GtApLexiconEditorElement >> lexiconFile: anObject [
 		to: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApLexiconEditorElement >> updateText: sourceChanged [
 	self
 		inUIProcessDo: [ self editor text asString = sourceChanged lexiconFile source

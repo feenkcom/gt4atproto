@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyEmbedImagesView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedImagesView',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyEmbedImagesView',
 	#classTraits : 'TAppBskyEmbedImagesView classTrait',
 	#instVars : [
 		'atpImages'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesView class >> atpFile [
  ^ 'app/bsky/embed/images.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesView class >> atpRecordName [
  ^ 'app.bsky.embed.images#view'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesView class >> atpSchema [
  ^ '{"type":"object","required":["images"],"properties":{"images":{"type":"array","items":{"type":"ref","ref":"#viewImage"},"maxLength":4}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedImagesView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,19 +43,19 @@ AppBskyEmbedImagesView class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesView >> atpImages [
 	<atpType:#AppBskyEmbedImagesViewImage format:nil>
 	<atpCollection>
 	^ atpImages
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesView >> atpImages: anObject [
 	atpImages := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedImagesView >> imagesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

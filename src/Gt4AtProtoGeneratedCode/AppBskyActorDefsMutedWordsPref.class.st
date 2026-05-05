@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsMutedWordsPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsMutedWordsPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpItems'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWordsPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWordsPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWordsPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#mutedWordsPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWordsPref class >> atpSchema [
  ^ '{"type":"object","required":["items"],"properties":{"items":{"type":"array","items":{"type":"ref","ref":"app.bsky.actor.defs#mutedWord"},"description":"A list of words the account owner has muted."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsMutedWordsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,19 +41,19 @@ AppBskyActorDefsMutedWordsPref class >> fromRequest: aRequest withClient: aClien
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWordsPref >> atpItems [
 	<atpType:#AppBskyActorDefsMutedWord format:nil>
 	<atpCollection>
 	^ atpItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsMutedWordsPref >> atpItems: anObject [
 	atpItems := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsMutedWordsPref >> itemsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

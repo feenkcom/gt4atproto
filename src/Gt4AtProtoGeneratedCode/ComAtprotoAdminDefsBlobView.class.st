@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoAdminDefsBlobView,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsBlobView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCid',
 		'atpMimeType',
@@ -9,30 +9,31 @@ Class {
 		'atpDetails',
 		'atpModeration'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#blobView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView class >> atpSchema [
  ^ '{"type":"object","required":["cid","mimeType","size","createdAt"],"properties":{"cid":{"type":"string","format":"cid"},"mimeType":{"type":"string"},"size":{"type":"integer"},"createdAt":{"type":"string","format":"datetime"},"details":{"type":"union","refs":["#imageDetails","#videoDetails"]},"moderation":{"type":"ref","ref":"#moderation"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -56,75 +57,75 @@ ComAtprotoAdminDefsBlobView class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpDetails [
 	<atpType:#(ComAtprotoAdminDefsImageDetails ComAtprotoAdminDefsVideoDetails) format:nil>
 	^ atpDetails
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpDetails: anObject [
 	atpDetails := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpMimeType [
 	<atpType:#String format:nil>
 	^ atpMimeType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpMimeType: anObject [
 	atpMimeType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpModeration [
 	<referenceTo:'#moderation'>
 	<atpType:#ComAtprotoAdminDefsModeration format:nil>
 	^ atpModeration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
 	atpModeration := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpSize [
 	<atpType:#Number format:nil>
 	^ atpSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsBlobView >> atpSize: anObject [
 	atpSize := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsBlobView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -133,7 +134,7 @@ ComAtprotoAdminDefsBlobView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsBlobView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -142,7 +143,7 @@ ComAtprotoAdminDefsBlobView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsBlobView >> detailsDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -152,7 +153,7 @@ ComAtprotoAdminDefsBlobView >> detailsDescription [
 		accessor: #atpDetails
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsBlobView >> mimeTypeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -161,7 +162,7 @@ ComAtprotoAdminDefsBlobView >> mimeTypeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsBlobView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -169,7 +170,7 @@ ComAtprotoAdminDefsBlobView >> moderationDescription [
 		accessor: #atpModeration
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsBlobView >> sizeDescription [
 	<magritteDescription>
 	^ MANumberDescription new

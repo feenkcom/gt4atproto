@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyActorDefsFeedViewPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsFeedViewPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpFeed',
 		'atpHideReplies',
@@ -9,30 +9,31 @@ Class {
 		'atpHideReposts',
 		'atpHideQuotePosts'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#feedViewPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref class >> atpSchema [
  ^ '{"type":"object","required":["feed"],"properties":{"feed":{"type":"string","description":"The URI of the feed, or an identifier which describes the feed."},"hideReplies":{"type":"boolean","description":"Hide replies in the feed."},"hideRepliesByUnfollowed":{"type":"boolean","description":"Hide replies in the feed if they are not by followed users.","default":true},"hideRepliesByLikeCount":{"type":"integer","description":"Hide replies in the feed if they do not have this number of likes."},"hideReposts":{"type":"boolean","description":"Hide reposts in the feed."},"hideQuotePosts":{"type":"boolean","description":"Hide quote posts in the feed."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsFeedViewPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -45,73 +46,73 @@ AppBskyActorDefsFeedViewPref class >> fromRequest: aRequest withClient: aClient 
 		atpHideQuotePosts: (aRequest at: 'hideQuotePosts' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpFeed [
 	<atpType:#String format:nil>
 	^ atpFeed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpFeed: anObject [
 	atpFeed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideQuotePosts [
 	<atpType:#Boolean format:nil>
 	^ atpHideQuotePosts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideQuotePosts: anObject [
 	atpHideQuotePosts := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideReplies [
 	<atpType:#Boolean format:nil>
 	^ atpHideReplies
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideReplies: anObject [
 	atpHideReplies := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideRepliesByLikeCount [
 	<atpType:#Number format:nil>
 	^ atpHideRepliesByLikeCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideRepliesByLikeCount: anObject [
 	atpHideRepliesByLikeCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideRepliesByUnfollowed [
 	<atpType:#Boolean format:nil>
 	^ atpHideRepliesByUnfollowed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideRepliesByUnfollowed: anObject [
 	atpHideRepliesByUnfollowed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideReposts [
 	<atpType:#Boolean format:nil>
 	^ atpHideReposts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsFeedViewPref >> atpHideReposts: anObject [
 	atpHideReposts := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsFeedViewPref >> feedDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -120,7 +121,7 @@ AppBskyActorDefsFeedViewPref >> feedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsFeedViewPref >> hideQuotePostsDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -128,7 +129,7 @@ AppBskyActorDefsFeedViewPref >> hideQuotePostsDescription [
 		accessor: #atpHideQuotePosts
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsFeedViewPref >> hideRepliesByLikeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -136,7 +137,7 @@ AppBskyActorDefsFeedViewPref >> hideRepliesByLikeCountDescription [
 		accessor: #atpHideRepliesByLikeCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsFeedViewPref >> hideRepliesByUnfollowedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -144,7 +145,7 @@ AppBskyActorDefsFeedViewPref >> hideRepliesByUnfollowedDescription [
 		accessor: #atpHideRepliesByUnfollowed
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsFeedViewPref >> hideRepliesDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -152,7 +153,7 @@ AppBskyActorDefsFeedViewPref >> hideRepliesDescription [
 		accessor: #atpHideReplies
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsFeedViewPref >> hideRepostsDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

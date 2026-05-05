@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventDivert,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventDivert',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventDivert class >> atpDescription [
  ^  'Divert a record''s blobs to a 3rd party service for further scanning/tagging'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventDivert class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventDivert class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventDivert'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventDivert class >> atpSchema [
  ^ '{"type":"object","description":"Divert a record''s blobs to a 3rd party service for further scanning/tagging","properties":{"comment":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventDivert class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneModerationDefsModEventDivert class >> fromRequest: aRequest withClient
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventDivert >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventDivert >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventDivert >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventViewDetail,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventViewDetail',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpEvent',
@@ -9,30 +9,31 @@ Class {
 		'atpCreatedBy',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventViewDetail'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail class >> atpSchema [
  ^ '{"type":"object","required":["id","event","subject","subjectBlobs","createdBy","createdAt"],"properties":{"id":{"type":"integer"},"event":{"type":"union","refs":["#modEventTakedown","#modEventReverseTakedown","#modEventComment","#modEventReport","#modEventLabel","#modEventAcknowledge","#modEventEscalate","#modEventMute","#modEventUnmute","#modEventMuteReporter","#modEventUnmuteReporter","#modEventEmail","#modEventResolveAppeal","#modEventDivert","#modEventTag","#accountEvent","#identityEvent","#recordEvent"]},"subject":{"type":"union","refs":["#repoView","#repoViewNotFound","#recordView","#recordViewNotFound"]},"subjectBlobs":{"type":"array","items":{"type":"ref","ref":"#blobView"}},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -107,74 +108,74 @@ ToolsOzoneModerationDefsModEventViewDetail class >> fromRequest: aRequest withCl
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpCreatedBy [
 	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpCreatedBy: anObject [
 	atpCreatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpEvent [
 	<atpType:#(ToolsOzoneModerationDefsModEventTakedown ToolsOzoneModerationDefsModEventReverseTakedown ToolsOzoneModerationDefsModEventComment ToolsOzoneModerationDefsModEventReport ToolsOzoneModerationDefsModEventLabel ToolsOzoneModerationDefsModEventAcknowledge ToolsOzoneModerationDefsModEventEscalate ToolsOzoneModerationDefsModEventMute ToolsOzoneModerationDefsModEventUnmute ToolsOzoneModerationDefsModEventMuteReporter ToolsOzoneModerationDefsModEventUnmuteReporter ToolsOzoneModerationDefsModEventEmail ToolsOzoneModerationDefsModEventResolveAppeal ToolsOzoneModerationDefsModEventDivert ToolsOzoneModerationDefsModEventTag ToolsOzoneModerationDefsAccountEvent ToolsOzoneModerationDefsIdentityEvent ToolsOzoneModerationDefsRecordEvent) format:nil>
 	^ atpEvent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpEvent: anObject [
 	atpEvent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpSubject [
 	<atpType:#(ToolsOzoneModerationDefsRepoView ToolsOzoneModerationDefsRepoViewNotFound ToolsOzoneModerationDefsRecordView ToolsOzoneModerationDefsRecordViewNotFound) format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpSubjectBlobs [
 	<atpType:#ToolsOzoneModerationDefsBlobView format:nil>
 	<atpCollection>
 	^ atpSubjectBlobs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventViewDetail >> atpSubjectBlobs: anObject [
 	atpSubjectBlobs := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventViewDetail >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -183,7 +184,7 @@ ToolsOzoneModerationDefsModEventViewDetail >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventViewDetail >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -192,7 +193,7 @@ ToolsOzoneModerationDefsModEventViewDetail >> createdByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventViewDetail >> eventDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -219,7 +220,7 @@ ToolsOzoneModerationDefsModEventViewDetail >> eventDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventViewDetail >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -228,7 +229,7 @@ ToolsOzoneModerationDefsModEventViewDetail >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventViewDetail >> subjectBlobsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -238,7 +239,7 @@ ToolsOzoneModerationDefsModEventViewDetail >> subjectBlobsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventViewDetail >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new

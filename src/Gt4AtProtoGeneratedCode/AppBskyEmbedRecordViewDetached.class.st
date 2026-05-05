@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyEmbedRecordViewDetached,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordViewDetached',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpDetached'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached class >> atpFile [
  ^ 'app/bsky/embed/record.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewDetached'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached class >> atpSchema [
  ^ '{"type":"object","required":["uri","detached"],"properties":{"uri":{"type":"string","format":"at-uri"},"detached":{"type":"boolean","const":true}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordViewDetached class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyEmbedRecordViewDetached class >> fromRequest: aRequest withClient: aClien
 		atpDetached: (aRequest at: 'detached' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached >> atpDetached [
 	<atpType:#Boolean format:nil>
 	^ atpDetached
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached >> atpDetached: anObject [
 	atpDetached := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewDetached >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewDetached >> detachedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -68,7 +69,7 @@ AppBskyEmbedRecordViewDetached >> detachedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewDetached >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

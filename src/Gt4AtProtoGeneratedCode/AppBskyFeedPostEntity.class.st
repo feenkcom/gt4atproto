@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyFeedPostEntity,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedPostEntity',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpIndex',
 		'atpType',
 		'atpValue'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity class >> atpDescription [
  ^  'Deprecated: use facets instead.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity class >> atpFile [
  ^ 'app/bsky/feed/post.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity class >> atpRecordName [
  ^ 'app.bsky.feed.post#entity'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity class >> atpSchema [
  ^ '{"type":"object","description":"Deprecated: use facets instead.","required":["index","type","value"],"properties":{"index":{"type":"ref","ref":"#textSlice"},"type":{"type":"string","description":"Expected values are ''mention'' and ''link''."},"value":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedPostEntity class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,42 +43,42 @@ AppBskyFeedPostEntity class >> fromRequest: aRequest withClient: aClient [
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity >> atpIndex [
 	<referenceTo:'#textSlice'>
 	<atpType:#AppBskyFeedPostTextSlice format:nil>
 	^ atpIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity >> atpIndex: anObject [
 	<referenceTo:'#textSlice'>
 	atpIndex := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity >> atpType [
 	<atpType:#String format:nil>
 	^ atpType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity >> atpType: anObject [
 	atpType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity >> atpValue [
 	<atpType:#String format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostEntity >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostEntity >> indexDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -86,7 +87,7 @@ AppBskyFeedPostEntity >> indexDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostEntity >> typeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -95,7 +96,7 @@ AppBskyFeedPostEntity >> typeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostEntity >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

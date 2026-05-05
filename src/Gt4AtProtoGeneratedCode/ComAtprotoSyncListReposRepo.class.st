@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoSyncListReposRepo,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncListReposRepo',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpHead',
@@ -8,30 +8,31 @@ Class {
 		'atpActive',
 		'atpStatus'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo class >> atpFile [
  ^ 'com/atproto/sync/listRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo class >> atpRecordName [
  ^ 'com.atproto.sync.listRepos#repo'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo class >> atpSchema [
  ^ '{"type":"object","required":["did","head","rev"],"properties":{"did":{"type":"string","format":"did"},"head":{"type":"string","format":"cid","description":"Current repo commit CID"},"rev":{"type":"string"},"active":{"type":"boolean"},"status":{"type":"string","description":"If active=false, this optional field indicates a possible reason for why the account is not active. If active=false and no status is supplied, then the host makes no claim for why the repository is no longer being hosted.","knownValues":["takendown","suspended","deactivated"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncListReposRepo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -43,7 +44,7 @@ ComAtprotoSyncListReposRepo class >> fromRequest: aRequest withClient: aClient [
 		atpStatus: (aRequest at: 'status' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncListReposRepo >> activeDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -51,62 +52,62 @@ ComAtprotoSyncListReposRepo >> activeDescription [
 		accessor: #atpActive
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpActive [
 	<atpType:#Boolean format:nil>
 	^ atpActive
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpActive: anObject [
 	atpActive := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpHead [
 	<atpType:#String format:'cid'>
 	^ atpHead
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpHead: anObject [
 	atpHead := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpStatus [
 	<atpType:#String format:nil>
 	^ atpStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncListReposRepo >> atpStatus: anObject [
 	atpStatus := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncListReposRepo >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -115,7 +116,7 @@ ComAtprotoSyncListReposRepo >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncListReposRepo >> headDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -124,7 +125,7 @@ ComAtprotoSyncListReposRepo >> headDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncListReposRepo >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -133,7 +134,7 @@ ComAtprotoSyncListReposRepo >> revDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncListReposRepo >> statusDescription [
 	<magritteDescription>
 	^ MAStringDescription new

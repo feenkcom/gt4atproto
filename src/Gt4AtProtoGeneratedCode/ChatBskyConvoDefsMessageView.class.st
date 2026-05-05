@@ -1,6 +1,6 @@
 Class {
-	#name : #ChatBskyConvoDefsMessageView,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoDefsMessageView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpRev',
@@ -10,30 +10,31 @@ Class {
 		'atpSender',
 		'atpSentAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView class >> atpFile [
  ^ 'chat/bsky/convo/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView class >> atpRecordName [
  ^ 'chat.bsky.convo.defs#messageView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView class >> atpSchema [
  ^ '{"type":"object","required":["id","rev","text","sender","sentAt"],"properties":{"id":{"type":"string"},"rev":{"type":"string"},"text":{"type":"string","maxLength":10000,"maxGraphemes":1000},"facets":{"type":"array","description":"Annotations of text (mentions, URLs, hashtags, etc)","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"embed":{"type":"union","refs":["app.bsky.embed.record#view"]},"sender":{"type":"ref","ref":"#messageViewSender"},"sentAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoDefsMessageView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -63,87 +64,87 @@ ChatBskyConvoDefsMessageView class >> fromRequest: aRequest withClient: aClient 
 		atpSentAt: (aRequest at: 'sentAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpEmbed [
 	<atpType:#(AppBskyEmbedRecordView) format:nil>
 	^ atpEmbed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpEmbed: anObject [
 	atpEmbed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpFacets [
 	<atpType:#AppBskyRichtextFacetMain format:nil>
 	<atpCollection>
 	^ atpFacets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpFacets: anObject [
 	atpFacets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpId [
 	<atpType:#String format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpSender [
 	<referenceTo:'#messageViewSender'>
 	<atpType:#ChatBskyConvoDefsMessageViewSender format:nil>
 	^ atpSender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpSender: anObject [
 	<referenceTo:'#messageViewSender'>
 	atpSender := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpSentAt [
 	<atpType:#String format:'datetime'>
 	^ atpSentAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpSentAt: anObject [
 	atpSentAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpText [
 	<atpType:#String format:nil>
 	^ atpText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageView >> atpText: anObject [
 	atpText := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -152,7 +153,7 @@ ChatBskyConvoDefsMessageView >> embedDescription [
 		accessor: #atpEmbed
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> facetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -161,7 +162,7 @@ ChatBskyConvoDefsMessageView >> facetsDescription [
 		accessor: #atpFacets
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> idDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -170,7 +171,7 @@ ChatBskyConvoDefsMessageView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -179,7 +180,7 @@ ChatBskyConvoDefsMessageView >> revDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> senderDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -188,7 +189,7 @@ ChatBskyConvoDefsMessageView >> senderDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> sentAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -197,7 +198,7 @@ ChatBskyConvoDefsMessageView >> sentAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageView >> textDescription [
 	<magritteDescription>
 	^ MAStringDescription new

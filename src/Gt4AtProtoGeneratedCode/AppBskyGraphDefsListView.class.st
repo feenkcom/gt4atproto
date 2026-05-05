@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyGraphDefsListView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphDefsListView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -15,30 +15,31 @@ Class {
 		'atpViewer',
 		'atpIndexedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView class >> atpFile [
  ^ 'app/bsky/graph/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","creator","name","purpose","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"name":{"type":"string","maxLength":64,"minLength":1},"purpose":{"type":"ref","ref":"#listPurpose"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string","format":"uri"},"listItemCount":{"type":"integer","minimum":0},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"viewer":{"type":"ref","ref":"#listViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphDefsListView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -73,147 +74,147 @@ AppBskyGraphDefsListView class >> fromRequest: aRequest withClient: aClient [
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpAvatar [
 	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpAvatar: anObject [
 	atpAvatar := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpCreator [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpCreator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpCreator: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	atpCreator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpDescriptionFacets [
 	<atpType:#AppBskyRichtextFacetMain format:nil>
 	<atpCollection>
 	^ atpDescriptionFacets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpDescriptionFacets: anObject [
 	atpDescriptionFacets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpListItemCount [
 	<atpType:#Number format:nil>
 	^ atpListItemCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpListItemCount: anObject [
 	atpListItemCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpPurpose [
 	<referenceTo:'#listPurpose'>
 	<atpType:#String format:nil>
 	^ atpPurpose
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpPurpose: anObject [
 	<referenceTo:'#listPurpose'>
 	atpPurpose := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpViewer [
 	<referenceTo:'#listViewerState'>
 	<atpType:#AppBskyGraphDefsListViewerState format:nil>
 	^ atpViewer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListView >> atpViewer: anObject [
 	<referenceTo:'#listViewerState'>
 	atpViewer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> avatarDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -221,7 +222,7 @@ AppBskyGraphDefsListView >> avatarDescription [
 		accessor: #atpAvatar
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -230,7 +231,7 @@ AppBskyGraphDefsListView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> creatorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -239,7 +240,7 @@ AppBskyGraphDefsListView >> creatorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -247,7 +248,7 @@ AppBskyGraphDefsListView >> descriptionDescription [
 		accessor: #atpDescription
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> descriptionFacetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -256,7 +257,7 @@ AppBskyGraphDefsListView >> descriptionFacetsDescription [
 		accessor: #atpDescriptionFacets
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -265,7 +266,7 @@ AppBskyGraphDefsListView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -274,7 +275,7 @@ AppBskyGraphDefsListView >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> listItemCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -282,7 +283,7 @@ AppBskyGraphDefsListView >> listItemCountDescription [
 		accessor: #atpListItemCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -291,7 +292,7 @@ AppBskyGraphDefsListView >> nameDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> purposeDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -300,7 +301,7 @@ AppBskyGraphDefsListView >> purposeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -309,7 +310,7 @@ AppBskyGraphDefsListView >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListView >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

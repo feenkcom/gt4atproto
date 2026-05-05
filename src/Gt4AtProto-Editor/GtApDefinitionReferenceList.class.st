@@ -1,13 +1,15 @@
 Class {
-	#name : #GtApDefinitionReferenceList,
-	#superclass : #Object,
+	#name : 'GtApDefinitionReferenceList',
+	#superclass : 'Object',
 	#instVars : [
 		'stream'
 	],
-	#category : #'Gt4AtProto-Editor-Model'
+	#category : 'Gt4AtProto-Editor-Model',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReferenceList >> gtReferenceList: aView [
 	<gtView>
 	^ aView list
@@ -15,12 +17,12 @@ GtApDefinitionReferenceList >> gtReferenceList: aView [
 		items: [ self stream ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReferenceList >> stream [
 	^ stream asyncSimilarCopy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApDefinitionReferenceList >> stream: asyncStream [
 	stream := asyncStream cached
 ]

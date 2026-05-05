@@ -2,25 +2,27 @@
 This trait is an extension for {{gtClass:AppBskyEmbedImagesViewImage}}.
 "
 Trait {
-	#name : #TAppBskyEmbedImagesViewImage,
-	#category : #'Gt4AtProto-Extensions-Traits'
+	#name : 'TAppBskyEmbedImagesViewImage',
+	#category : 'Gt4AtProto-Extensions-Traits',
+	#package : 'Gt4AtProto-Extensions',
+	#tag : 'Traits'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesViewImage >> asFullSizeElement [
 	^ BrAsyncFileWidget new hMatchParent
 		matchParent;
 		url: self atpFullsize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesViewImage >> asImageElement [
 	^ BrAsyncFileWidget new hMatchParent
 		vExact: 200;
 		url: self atpFullsize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesViewImage >> gtFullSizeImageFor: aView [
 	<gtView>
 	^ aView explicit 
@@ -28,7 +30,7 @@ TAppBskyEmbedImagesViewImage >> gtFullSizeImageFor: aView [
 		stencil: [ self asFullSizeElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesViewImage >> gtImageFor: aView [
 	<gtView>
 	^ aView explicit 

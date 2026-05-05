@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoAdminDefsThreatSignature,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsThreatSignature',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpProperty',
 		'atpValue'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature class >> atpRecordName [
  ^ 'com.atproto.admin.defs#threatSignature'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature class >> atpSchema [
  ^ '{"type":"object","required":["property","value"],"properties":{"property":{"type":"string"},"value":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsThreatSignature class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ComAtprotoAdminDefsThreatSignature class >> fromRequest: aRequest withClient: aC
 		atpValue: (aRequest at: 'value' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature >> atpProperty [
 	<atpType:#String format:nil>
 	^ atpProperty
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature >> atpProperty: anObject [
 	atpProperty := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature >> atpValue [
 	<atpType:#String format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsThreatSignature >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsThreatSignature >> propertyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ ComAtprotoAdminDefsThreatSignature >> propertyDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsThreatSignature >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

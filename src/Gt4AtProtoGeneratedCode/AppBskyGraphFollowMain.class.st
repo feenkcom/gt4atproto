@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyGraphFollowMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphFollowMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSubject',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain class >> atpDescription [
  ^  'Record declaring a social ''follow'' relationship of another account. Duplicate follows will be ignored by the AppView.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain class >> atpFile [
  ^ 'app/bsky/graph/follow.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain class >> atpRecordName [
  ^ 'app.bsky.graph.follow'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain class >> atpSchema [
  ^ '{"type":"record","description":"Record declaring a social ''follow'' relationship of another account. Duplicate follows will be ignored by the AppView.","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphFollowMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyGraphFollowMain class >> fromRequest: aRequest withClient: aClient [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain >> atpSubject [
 	<atpType:#String format:'did'>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphFollowMain >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphFollowMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ AppBskyGraphFollowMain >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphFollowMain >> subjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new

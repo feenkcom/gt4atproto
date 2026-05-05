@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoAdminDefsReportView,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsReportView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpReasonType',
@@ -11,30 +11,31 @@ Class {
 		'atpCreatedAt',
 		'atpResolvedByActionIds'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#reportView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView class >> atpSchema [
  ^ '{"type":"object","required":["id","reasonType","subject","reportedBy","createdAt","resolvedByActionIds"],"properties":{"id":{"type":"integer"},"reasonType":{"type":"ref","ref":"com.atproto.moderation.defs#reasonType"},"reason":{"type":"string"},"subjectRepoHandle":{"type":"string"},"subject":{"type":"union","refs":["#repoRef","com.atproto.repo.strongRef"]},"reportedBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"resolvedByActionIds":{"type":"array","items":{"type":"integer"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -62,98 +63,98 @@ ComAtprotoAdminDefsReportView class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpReason [
 	<atpType:#String format:nil>
 	^ atpReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpReason: anObject [
 	atpReason := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpReasonType [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
 	<atpType:#String format:nil>
 	^ atpReasonType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpReasonType: anObject [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
 	atpReasonType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpReportedBy [
 	<atpType:#String format:'did'>
 	^ atpReportedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpReportedBy: anObject [
 	atpReportedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpResolvedByActionIds [
 	<atpType:#Number format:nil>
 	<atpCollection>
 	^ atpResolvedByActionIds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpResolvedByActionIds: anObject [
 	atpResolvedByActionIds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpSubject [
 	<atpType:#(ComAtprotoAdminDefsRepoRef ComAtprotoRepoStrongRefMain) format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpSubjectRepoHandle [
 	<atpType:#String format:nil>
 	^ atpSubjectRepoHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsReportView >> atpSubjectRepoHandle: anObject [
 	atpSubjectRepoHandle := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -162,7 +163,7 @@ ComAtprotoAdminDefsReportView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -171,7 +172,7 @@ ComAtprotoAdminDefsReportView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -179,7 +180,7 @@ ComAtprotoAdminDefsReportView >> reasonDescription [
 		accessor: #atpReason
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> reasonTypeDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -188,7 +189,7 @@ ComAtprotoAdminDefsReportView >> reasonTypeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> reportedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -197,7 +198,7 @@ ComAtprotoAdminDefsReportView >> reportedByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> resolvedByActionIdsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -207,7 +208,7 @@ ComAtprotoAdminDefsReportView >> resolvedByActionIdsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -218,7 +219,7 @@ ComAtprotoAdminDefsReportView >> subjectDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsReportView >> subjectRepoHandleDescription [
 	<magritteDescription>
 	^ MAStringDescription new

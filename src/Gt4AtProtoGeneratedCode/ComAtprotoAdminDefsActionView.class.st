@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoAdminDefsActionView,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsActionView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpId',
 		'atpAction',
@@ -15,30 +15,31 @@ Class {
 		'atpResolvedReportIds',
 		'atpDurationInHours'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#actionView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView class >> atpSchema [
  ^ '{"type":"object","required":["id","action","subject","subjectBlobCids","reason","createdBy","createdAt","resolvedReportIds"],"properties":{"id":{"type":"integer"},"action":{"type":"ref","ref":"#actionType"},"subject":{"type":"union","refs":["#repoRef","com.atproto.repo.strongRef"]},"subjectBlobCids":{"type":"array","items":{"type":"string"}},"createLabelVals":{"type":"array","items":{"type":"string"}},"negateLabelVals":{"type":"array","items":{"type":"string"}},"reason":{"type":"string"},"createdBy":{"type":"string","format":"did"},"createdAt":{"type":"string","format":"datetime"},"reversal":{"type":"ref","ref":"#actionReversal"},"resolvedReportIds":{"type":"array","items":{"type":"integer"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -81,7 +82,7 @@ ComAtprotoAdminDefsActionView class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> actionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -90,147 +91,147 @@ ComAtprotoAdminDefsActionView >> actionDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpAction [
 	<referenceTo:'#actionType'>
 	<atpType:#String format:nil>
 	^ atpAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpAction: anObject [
 	<referenceTo:'#actionType'>
 	atpAction := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpCreateLabelVals [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpCreateLabelVals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpCreateLabelVals: anObject [
 	atpCreateLabelVals := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpCreatedBy [
 	<atpType:#String format:'did'>
 	^ atpCreatedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpCreatedBy: anObject [
 	atpCreatedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpDurationInHours [
 	<atpType:#Number format:nil>
 	^ atpDurationInHours
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpDurationInHours: anObject [
 	atpDurationInHours := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpId [
 	<atpType:#Number format:nil>
 	^ atpId
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpId: anObject [
 	atpId := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpNegateLabelVals [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpNegateLabelVals
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpNegateLabelVals: anObject [
 	atpNegateLabelVals := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpReason [
 	<atpType:#String format:nil>
 	^ atpReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpReason: anObject [
 	atpReason := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpResolvedReportIds [
 	<atpType:#Number format:nil>
 	<atpCollection>
 	^ atpResolvedReportIds
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpResolvedReportIds: anObject [
 	atpResolvedReportIds := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpReversal [
 	<referenceTo:'#actionReversal'>
 	<atpType:#ComAtprotoAdminDefsActionReversal format:nil>
 	^ atpReversal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpReversal: anObject [
 	<referenceTo:'#actionReversal'>
 	atpReversal := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpSubject [
 	<atpType:#(ComAtprotoAdminDefsRepoRef ComAtprotoRepoStrongRefMain) format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpSubject: anObject [
 	atpSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpSubjectBlobCids [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpSubjectBlobCids
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsActionView >> atpSubjectBlobCids: anObject [
 	atpSubjectBlobCids := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> createLabelValsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -239,7 +240,7 @@ ComAtprotoAdminDefsActionView >> createLabelValsDescription [
 		accessor: #atpCreateLabelVals
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -248,7 +249,7 @@ ComAtprotoAdminDefsActionView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> createdByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -257,7 +258,7 @@ ComAtprotoAdminDefsActionView >> createdByDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> durationInHoursDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -265,7 +266,7 @@ ComAtprotoAdminDefsActionView >> durationInHoursDescription [
 		accessor: #atpDurationInHours
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> idDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -274,7 +275,7 @@ ComAtprotoAdminDefsActionView >> idDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> negateLabelValsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -283,7 +284,7 @@ ComAtprotoAdminDefsActionView >> negateLabelValsDescription [
 		accessor: #atpNegateLabelVals
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -292,7 +293,7 @@ ComAtprotoAdminDefsActionView >> reasonDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> resolvedReportIdsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -302,7 +303,7 @@ ComAtprotoAdminDefsActionView >> resolvedReportIdsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> reversalDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -310,7 +311,7 @@ ComAtprotoAdminDefsActionView >> reversalDescription [
 		accessor: #atpReversal
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> subjectBlobCidsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -320,7 +321,7 @@ ComAtprotoAdminDefsActionView >> subjectBlobCidsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsActionView >> subjectDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new

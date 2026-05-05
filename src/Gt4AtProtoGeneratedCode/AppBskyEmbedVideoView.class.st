@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyEmbedVideoView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedVideoView',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyEmbedVideoView',
 	#classTraits : 'TAppBskyEmbedVideoView classTrait',
 	#instVars : [
@@ -10,30 +10,31 @@ Class {
 		'atpAlt',
 		'atpAspectRatio'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView class >> atpFile [
  ^ 'app/bsky/embed/video.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView class >> atpRecordName [
  ^ 'app.bsky.embed.video#view'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView class >> atpSchema [
  ^ '{"type":"object","required":["cid","playlist"],"properties":{"cid":{"type":"string","format":"cid"},"playlist":{"type":"string","format":"uri"},"thumbnail":{"type":"string","format":"uri"},"alt":{"type":"string","maxGraphemes":1000,"maxLength":10000},"aspectRatio":{"type":"ref","ref":"app.bsky.embed.defs#aspectRatio"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedVideoView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -48,7 +49,7 @@ AppBskyEmbedVideoView class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoView >> altDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -56,7 +57,7 @@ AppBskyEmbedVideoView >> altDescription [
 		accessor: #atpAlt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoView >> aspectRatioDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -64,64 +65,64 @@ AppBskyEmbedVideoView >> aspectRatioDescription [
 		accessor: #atpAspectRatio
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpAlt [
 	<atpType:#String format:nil>
 	^ atpAlt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpAlt: anObject [
 	atpAlt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpAspectRatio [
 	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	<atpType:#AppBskyEmbedDefsAspectRatio format:nil>
 	^ atpAspectRatio
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpAspectRatio: anObject [
 	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	atpAspectRatio := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpPlaylist [
 	<atpType:#String format:'uri'>
 	^ atpPlaylist
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpPlaylist: anObject [
 	atpPlaylist := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpThumbnail [
 	<atpType:#String format:'uri'>
 	^ atpThumbnail
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoView >> atpThumbnail: anObject [
 	atpThumbnail := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -130,7 +131,7 @@ AppBskyEmbedVideoView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoView >> playlistDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -139,7 +140,7 @@ AppBskyEmbedVideoView >> playlistDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoView >> thumbnailDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,18 +1,20 @@
 Class {
-	#name : #GtApLexiconFileDeleted,
-	#superclass : #Announcement,
+	#name : 'GtApLexiconFileDeleted',
+	#superclass : 'Announcement',
 	#instVars : [
 		'lexiconFile'
 	],
-	#category : #'Gt4AtProto-Editor-Event'
+	#category : 'Gt4AtProto-Editor-Event',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Event'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileDeleted >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconFileDeleted >> lexiconFile: anObject [
 	lexiconFile := anObject
 ]

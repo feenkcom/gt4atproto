@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyFeedRepostMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedRepostMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSubject',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain class >> atpDescription [
  ^  'Record representing a ''repost'' of an existing Bluesky post.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain class >> atpFile [
  ^ 'app/bsky/feed/repost.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain class >> atpRecordName [
  ^ 'app.bsky.feed.repost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain class >> atpSchema [
  ^ '{"description":"Record representing a ''repost'' of an existing Bluesky post.","type":"record","key":"tid","record":{"type":"object","required":["subject","createdAt"],"properties":{"subject":{"type":"ref","ref":"com.atproto.repo.strongRef"},"createdAt":{"type":"string","format":"datetime"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedRepostMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,31 +41,31 @@ AppBskyFeedRepostMain class >> fromRequest: aRequest withClient: aClient [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain >> atpSubject [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedRepostMain >> atpSubject: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	atpSubject := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedRepostMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -73,7 +74,7 @@ AppBskyFeedRepostMain >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedRepostMain >> subjectDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

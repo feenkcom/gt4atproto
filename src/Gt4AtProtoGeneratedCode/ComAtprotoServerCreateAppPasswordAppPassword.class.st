@@ -1,36 +1,37 @@
 Class {
-	#name : #ComAtprotoServerCreateAppPasswordAppPassword,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoServerCreateAppPasswordAppPassword',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpName',
 		'atpPassword',
 		'atpCreatedAt',
 		'atpPrivileged'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword class >> atpFile [
  ^ 'com/atproto/server/createAppPassword.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword class >> atpRecordName [
  ^ 'com.atproto.server.createAppPassword#appPassword'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword class >> atpSchema [
  ^ '{"type":"object","required":["name","password","createdAt"],"properties":{"name":{"type":"string"},"password":{"type":"string"},"createdAt":{"type":"string","format":"datetime"},"privileged":{"type":"boolean"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ ComAtprotoServerCreateAppPasswordAppPassword class >> fromRequest: aRequest with
 		atpPrivileged: (aRequest at: 'privileged' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpPassword [
 	<atpType:#String format:nil>
 	^ atpPassword
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpPassword: anObject [
 	atpPassword := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpPrivileged [
 	<atpType:#Boolean format:nil>
 	^ atpPrivileged
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerCreateAppPasswordAppPassword >> atpPrivileged: anObject [
 	atpPrivileged := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerCreateAppPasswordAppPassword >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -94,7 +95,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerCreateAppPasswordAppPassword >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -103,7 +104,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> nameDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerCreateAppPasswordAppPassword >> passwordDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -112,7 +113,7 @@ ComAtprotoServerCreateAppPasswordAppPassword >> passwordDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerCreateAppPasswordAppPassword >> privilegedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

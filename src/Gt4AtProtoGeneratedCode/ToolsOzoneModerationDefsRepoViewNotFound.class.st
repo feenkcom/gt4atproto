@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsRepoViewNotFound,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsRepoViewNotFound',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoViewNotFound class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoViewNotFound class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoViewNotFound class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#repoViewNotFound'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoViewNotFound class >> atpSchema [
  ^ '{"type":"object","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsRepoViewNotFound class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneModerationDefsRepoViewNotFound class >> fromRequest: aRequest withClie
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoViewNotFound >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRepoViewNotFound >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRepoViewNotFound >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new

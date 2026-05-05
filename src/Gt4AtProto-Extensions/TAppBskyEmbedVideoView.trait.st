@@ -1,9 +1,10 @@
 Trait {
-	#name : #TAppBskyEmbedVideoView,
-	#category : #'Gt4AtProto-Extensions'
+	#name : 'TAppBskyEmbedVideoView',
+	#category : 'Gt4AtProto-Extensions',
+	#package : 'Gt4AtProto-Extensions'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TAppBskyEmbedVideoView >> asElement [
 	^ GtProtoWebViewElement new
 		html: '<!DOCTYPE html>
@@ -30,7 +31,7 @@ TAppBskyEmbedVideoView >> asElement [
 '
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TAppBskyEmbedVideoView >> asEmbeddedElement [
 	^ GtProtoWebViewElement new
 		constraintsDo: [ :c | c vertical exact: 200 ];
@@ -58,7 +59,7 @@ TAppBskyEmbedVideoView >> asEmbeddedElement [
 '
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TAppBskyEmbedVideoView >> gtWebpageFor: aView [
 	<gtView>
 	^ aView explicit

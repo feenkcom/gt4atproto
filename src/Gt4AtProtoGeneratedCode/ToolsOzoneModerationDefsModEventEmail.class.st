@@ -1,35 +1,36 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventEmail,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventEmail',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSubjectLine',
 		'atpContent',
 		'atpComment'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail class >> atpDescription [
  ^  'Keep a log of outgoing email to a user'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventEmail'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail class >> atpSchema [
  ^ '{"type":"object","description":"Keep a log of outgoing email to a user","required":["subjectLine"],"properties":{"subjectLine":{"type":"string","description":"The subject line of the email sent to the user."},"content":{"type":"string","description":"The content of the email sent to the user."},"comment":{"type":"string","description":"Additional comment about the outgoing comm."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventEmail class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ ToolsOzoneModerationDefsModEventEmail class >> fromRequest: aRequest withClient:
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail >> atpContent [
 	<atpType:#String format:nil>
 	^ atpContent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail >> atpContent: anObject [
 	atpContent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail >> atpSubjectLine [
 	<atpType:#String format:nil>
 	^ atpSubjectLine
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventEmail >> atpSubjectLine: anObject [
 	atpSubjectLine := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventEmail >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -80,7 +81,7 @@ ToolsOzoneModerationDefsModEventEmail >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventEmail >> contentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -88,7 +89,7 @@ ToolsOzoneModerationDefsModEventEmail >> contentDescription [
 		accessor: #atpContent
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventEmail >> subjectLineDescription [
 	<magritteDescription>
 	^ MAStringDescription new

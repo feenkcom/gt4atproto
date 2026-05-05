@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyEmbedExternalMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedExternalMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpExternal'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalMain class >> atpDescription [
  ^  'A representation of some externally linked content (eg, a URL and ''card''), embedded in a Bluesky record (eg, a post).'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalMain class >> atpFile [
  ^ 'app/bsky/embed/external.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalMain class >> atpRecordName [
  ^ 'app.bsky.embed.external'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalMain class >> atpSchema [
  ^ '{"type":"object","description":"A representation of some externally linked content (eg, a URL and ''card''), embedded in a Bluesky record (eg, a post).","required":["external"],"properties":{"external":{"type":"ref","ref":"#external"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedExternalMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -38,20 +39,20 @@ AppBskyEmbedExternalMain class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalMain >> atpExternal [
 	<referenceTo:'#external'>
 	<atpType:#AppBskyEmbedExternalExternal format:nil>
 	^ atpExternal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedExternalMain >> atpExternal: anObject [
 	<referenceTo:'#external'>
 	atpExternal := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedExternalMain >> externalDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

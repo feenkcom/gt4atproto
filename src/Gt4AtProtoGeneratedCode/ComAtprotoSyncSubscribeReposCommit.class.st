@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposCommit,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposCommit',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpSeq',
 		'atpRebase',
@@ -15,30 +15,31 @@ Class {
 		'atpBlobs',
 		'atpTime'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit class >> atpDescription [
  ^  'Represents an update of repository state. Note that empty commits are allowed, which include no repo data changes, but an update to rev and signature.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#commit'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit class >> atpSchema [
  ^ '{"type":"object","description":"Represents an update of repository state. Note that empty commits are allowed, which include no repo data changes, but an update to rev and signature.","required":["seq","rebase","tooBig","repo","commit","rev","since","blocks","ops","blobs","time"],"nullable":["prev","since"],"properties":{"seq":{"type":"integer","description":"The stream sequence number of this message."},"rebase":{"type":"boolean","description":"DEPRECATED -- unused"},"tooBig":{"type":"boolean","description":"Indicates that this commit contained too many ops, or data size was too large. Consumers will need to make a separate request to get missing data."},"repo":{"type":"string","format":"did","description":"The repo this event comes from."},"commit":{"type":"cid-link","description":"Repo commit object CID."},"prev":{"type":"cid-link","description":"DEPRECATED -- unused. WARNING -- nullable and optional; stick with optional to ensure golang interoperability."},"rev":{"type":"string","description":"The rev of the emitted commit. Note that this information is also in the commit object included in blocks, unless this is a tooBig event."},"since":{"type":"string","description":"The rev of the last emitted commit from this repo (if any)."},"blocks":{"type":"bytes","description":"CAR file containing relevant blocks, as a diff since the previous repo state.","maxLength":1000000},"ops":{"type":"array","items":{"type":"ref","ref":"#repoOp","description":"List of repo mutation operations in this commit (eg, records created, updated, or deleted)."},"maxLength":200},"blobs":{"type":"array","items":{"type":"cid-link","description":"List of new blobs (by CID) referenced by records in this commit."}},"time":{"type":"string","format":"datetime","description":"Timestamp of when this message was originally broadcast."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -65,141 +66,141 @@ ComAtprotoSyncSubscribeReposCommit class >> fromRequest: aRequest withClient: aC
 		atpTime: (aRequest at: 'time' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpBlobs [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpBlobs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpBlobs: anObject [
 	atpBlobs := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpBlocks [
 	<atpType:#ByteArray format:nil>
 	^ atpBlocks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpBlocks: anObject [
 	atpBlocks := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpCommit [
 	<atpType:#String format:nil>
 	^ atpCommit
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpCommit: anObject [
 	atpCommit := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpOps [
 	<atpType:#ComAtprotoSyncSubscribeReposRepoOp format:nil>
 	<atpCollection>
 	^ atpOps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpOps: anObject [
 	atpOps := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpPrev [
 	<atpType:#String format:nil>
 	^ atpPrev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpPrev: anObject [
 	atpPrev := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpRebase [
 	<atpType:#Boolean format:nil>
 	^ atpRebase
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpRebase: anObject [
 	atpRebase := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpRepo [
 	<atpType:#String format:'did'>
 	^ atpRepo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpRepo: anObject [
 	atpRepo := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpRev [
 	<atpType:#String format:nil>
 	^ atpRev
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpRev: anObject [
 	atpRev := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpSeq [
 	<atpType:#Number format:nil>
 	^ atpSeq
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpSeq: anObject [
 	atpSeq := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpSince [
 	<atpType:#String format:nil>
 	^ atpSince
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpSince: anObject [
 	atpSince := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpTime [
 	<atpType:#String format:'datetime'>
 	^ atpTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpTime: anObject [
 	atpTime := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpTooBig [
 	<atpType:#Boolean format:nil>
 	^ atpTooBig
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposCommit >> atpTooBig: anObject [
 	atpTooBig := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> blobsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -209,7 +210,7 @@ ComAtprotoSyncSubscribeReposCommit >> blobsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> blocksDescription [
 	<magritteDescription>
 	^ MAFileDescription new
@@ -218,7 +219,7 @@ ComAtprotoSyncSubscribeReposCommit >> blocksDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> commitDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -227,7 +228,7 @@ ComAtprotoSyncSubscribeReposCommit >> commitDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> opsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -237,7 +238,7 @@ ComAtprotoSyncSubscribeReposCommit >> opsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> prevDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -245,7 +246,7 @@ ComAtprotoSyncSubscribeReposCommit >> prevDescription [
 		accessor: #atpPrev
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> rebaseDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -254,7 +255,7 @@ ComAtprotoSyncSubscribeReposCommit >> rebaseDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> repoDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -263,7 +264,7 @@ ComAtprotoSyncSubscribeReposCommit >> repoDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> revDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -272,7 +273,7 @@ ComAtprotoSyncSubscribeReposCommit >> revDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> seqDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -281,7 +282,7 @@ ComAtprotoSyncSubscribeReposCommit >> seqDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> sinceDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -290,7 +291,7 @@ ComAtprotoSyncSubscribeReposCommit >> sinceDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> timeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -299,7 +300,7 @@ ComAtprotoSyncSubscribeReposCommit >> timeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposCommit >> tooBigDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

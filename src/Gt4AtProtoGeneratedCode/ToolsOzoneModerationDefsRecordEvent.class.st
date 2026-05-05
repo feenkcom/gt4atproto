@@ -1,36 +1,37 @@
 Class {
-	#name : #ToolsOzoneModerationDefsRecordEvent,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsRecordEvent',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpOp',
 		'atpCid',
 		'atpTimestamp'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent class >> atpDescription [
  ^  'Logs lifecycle event on a record subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#recordEvent'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent class >> atpSchema [
  ^ '{"type":"object","description":"Logs lifecycle event on a record subject. Normally captured by automod from the firehose and emitted to ozone for historical tracking.","required":["timestamp","op"],"properties":{"comment":{"type":"string"},"op":{"type":"string","knownValues":["create","update","delete"]},"cid":{"type":"string","format":"cid"},"timestamp":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsRecordEvent class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -41,51 +42,51 @@ ToolsOzoneModerationDefsRecordEvent class >> fromRequest: aRequest withClient: a
 		atpTimestamp: (aRequest at: 'timestamp' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpOp [
 	<atpType:#String format:nil>
 	^ atpOp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpOp: anObject [
 	atpOp := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpTimestamp [
 	<atpType:#String format:'datetime'>
 	^ atpTimestamp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsRecordEvent >> atpTimestamp: anObject [
 	atpTimestamp := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordEvent >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -93,7 +94,7 @@ ToolsOzoneModerationDefsRecordEvent >> cidDescription [
 		accessor: #atpCid
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordEvent >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -101,7 +102,7 @@ ToolsOzoneModerationDefsRecordEvent >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordEvent >> opDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -110,7 +111,7 @@ ToolsOzoneModerationDefsRecordEvent >> opDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsRecordEvent >> timestampDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,6 +1,6 @@
-Extension { #name : #GtApPostsStream }
+Extension { #name : 'GtApPostsStream' }
 
-{ #category : #'*Gt4AtProto-Extensions' }
+{ #category : '*Gt4AtProto-Extensions' }
 GtApPostsStream >> gtViewCardPostsFor: aView [
 	<gtView>
 	^ aView explicit

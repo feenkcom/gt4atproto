@@ -1,33 +1,34 @@
 Class {
-	#name : #ChatBskyConvoDefsMessageViewSender,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyConvoDefsMessageViewSender',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageViewSender class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageViewSender class >> atpFile [
  ^ 'chat/bsky/convo/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageViewSender class >> atpRecordName [
  ^ 'chat.bsky.convo.defs#messageViewSender'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageViewSender class >> atpSchema [
  ^ '{"type":"object","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyConvoDefsMessageViewSender class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ChatBskyConvoDefsMessageViewSender class >> fromRequest: aRequest withClient: aC
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageViewSender >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyConvoDefsMessageViewSender >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyConvoDefsMessageViewSender >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new

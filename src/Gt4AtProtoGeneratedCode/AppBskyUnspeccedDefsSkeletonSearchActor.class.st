@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyUnspeccedDefsSkeletonSearchActor,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyUnspeccedDefsSkeletonSearchActor',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedDefsSkeletonSearchActor class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedDefsSkeletonSearchActor class >> atpFile [
  ^ 'app/bsky/unspecced/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedDefsSkeletonSearchActor class >> atpRecordName [
  ^ 'app.bsky.unspecced.defs#skeletonSearchActor'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedDefsSkeletonSearchActor class >> atpSchema [
  ^ '{"type":"object","required":["did"],"properties":{"did":{"type":"string","format":"did"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyUnspeccedDefsSkeletonSearchActor class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyUnspeccedDefsSkeletonSearchActor class >> fromRequest: aRequest withClien
 		atpDid: (aRequest at: 'did' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedDefsSkeletonSearchActor >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyUnspeccedDefsSkeletonSearchActor >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyUnspeccedDefsSkeletonSearchActor >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new

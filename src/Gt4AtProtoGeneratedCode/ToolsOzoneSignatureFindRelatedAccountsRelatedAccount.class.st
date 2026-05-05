@@ -1,34 +1,35 @@
 Class {
-	#name : #ToolsOzoneSignatureFindRelatedAccountsRelatedAccount,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneSignatureFindRelatedAccountsRelatedAccount',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpAccount',
 		'atpSimilarities'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> atpFile [
  ^ 'tools/ozone/signature/findRelatedAccounts.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> atpRecordName [
  ^ 'tools.ozone.signature.findRelatedAccounts#relatedAccount'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> atpSchema [
  ^ '{"type":"object","required":["account"],"properties":{"account":{"type":"ref","ref":"com.atproto.admin.defs#accountView"},"similarities":{"type":"array","items":{"type":"ref","ref":"tools.ozone.signature.defs#sigDetail"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -45,7 +46,7 @@ ToolsOzoneSignatureFindRelatedAccountsRelatedAccount class >> fromRequest: aRequ
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> accountDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -54,32 +55,32 @@ ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> accountDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> atpAccount [
 	<referenceTo:'com.atproto.admin.defs#accountView'>
 	<atpType:#ComAtprotoAdminDefsAccountView format:nil>
 	^ atpAccount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> atpAccount: anObject [
 	<referenceTo:'com.atproto.admin.defs#accountView'>
 	atpAccount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> atpSimilarities [
 	<atpType:#ToolsOzoneSignatureDefsSigDetail format:nil>
 	<atpCollection>
 	^ atpSimilarities
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> atpSimilarities: anObject [
 	atpSimilarities := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneSignatureFindRelatedAccountsRelatedAccount >> similaritiesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

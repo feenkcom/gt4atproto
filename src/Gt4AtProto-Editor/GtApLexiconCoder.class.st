@@ -1,6 +1,6 @@
 Class {
-	#name : #GtApLexiconCoder,
-	#superclass : #BrHorizontalPane,
+	#name : 'GtApLexiconCoder',
+	#superclass : 'BrHorizontalPane',
 	#instVars : [
 		'contentElement',
 		'sidebarElement',
@@ -8,10 +8,12 @@ Class {
 		'lexiconObject',
 		'shouldHaveSidebar'
 	],
-	#category : #'Gt4AtProto-Editor-View'
+	#category : 'Gt4AtProto-Editor-View',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'View'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> buildSidebarFor: obj [
 	^ BrTabGroup new
 		aptitude: BrGlamorousTabGroupAptitude;
@@ -30,7 +32,7 @@ GtApLexiconCoder >> buildSidebarFor: obj [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> computeReferences: editor [
 	editor editor cursors
 		do: [ :each | 
@@ -49,7 +51,7 @@ GtApLexiconCoder >> computeReferences: editor [
 										ifNotNil: [ :def | editor phlow spawnObject: def references ] ] ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> createDefinitionsTreeFor: obj [
 	| tree |
 	tree := BrSimpleTree new
@@ -72,7 +74,7 @@ GtApLexiconCoder >> createDefinitionsTreeFor: obj [
 	^ tree
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> createFilesTreeFor: obj [
 	| tree |
 	tree := BrSimpleTree new
@@ -121,7 +123,7 @@ GtApLexiconCoder >> createFilesTreeFor: obj [
 	^ tree
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconCoder >> createSidebarElement [
 	^ GtPhlowHorizontalSidebarElement new
 			beLeft;
@@ -129,14 +131,14 @@ GtApLexiconCoder >> createSidebarElement [
 			background: BrGlamorousColors neutralBackgroundColor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> editorChangedTo: aString [
 	contentElement
 		childNamed: #editor
 		ifFound: [ :editor | self lexiconFile source: aString asString ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconCoder >> hideSidebar [
 	shouldHaveSidebar ifFalse: [ ^ self ].
 	sidebarElement ifNil: [ ^ self ].
@@ -145,7 +147,7 @@ GtApLexiconCoder >> hideSidebar [
 		removeFromParent"
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconCoder >> initialize [
 	super initialize.
 	self matchParent.
@@ -155,7 +157,7 @@ GtApLexiconCoder >> initialize [
 	self addChild: contentElement as: #content
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconCoder >> initializeContent [
 	contentElement := BrHorizontalPane new
 			background: Color white;
@@ -170,7 +172,7 @@ GtApLexiconCoder >> initializeContent [
 			vFitContentLimited
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconCoder >> initializeSidebar [
 	shouldHaveSidebar := true.
 	sidebarElement := GtPhlowHorizontalSidebarElement new
@@ -183,19 +185,19 @@ GtApLexiconCoder >> initializeSidebar [
 	sidebarElement hide
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> lexiconFile [
 	^ lexiconObject lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> modificationColor [
 	^ self lexiconFile isModified
 		ifTrue: [ self theme status changesBackgroundColor ]
 		ifFalse: [ Color transparent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> object: aLexiconModelObject [
 	lexiconObject := aLexiconModelObject isLexiconDirectory
 			ifTrue: [ aLexiconModelObject files isEmpty
@@ -205,7 +207,7 @@ GtApLexiconCoder >> object: aLexiconModelObject [
 	sidebarElement contentStencil: [ self buildSidebarFor: lexiconObject ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> searchButtonFor: obj [
 	^ (GtSpotterDropdownButtonStencil new
 		valuable: [ obj lexiconDirectory ];
@@ -218,17 +220,17 @@ GtApLexiconCoder >> searchButtonFor: obj [
 			anActOnEvent beActed ]) asElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> shouldHaveSidebar [
 	^ shouldHaveSidebar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> shouldHaveSidebar: anObject [
 	shouldHaveSidebar := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApLexiconCoder >> showSidebar [
 	shouldHaveSidebar ifFalse: [ ^ self ].
 	sidebarElement ifNil: [ ^ self ].
@@ -241,7 +243,7 @@ GtApLexiconCoder >> showSidebar [
 	self addChildFirst: sidebarElement"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateChangeStatus [
 	modified = self lexiconFile isModified ifTrue: [ ^ self ].
 	modified := self lexiconFile isModified.
@@ -262,7 +264,7 @@ GtApLexiconCoder >> updateChangeStatus [
 				ifFound: [ :elmt | self updateModifiedIn: elmt ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	| textEditor content toolbar |
 	modified := nil.
@@ -349,7 +351,7 @@ GtApLexiconCoder >> updateContentsTo: aLexiconObject [
 	self updateChangeStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateDefinitionsTo: obj [
 	self
 		childNamed: #definitions
@@ -359,7 +361,7 @@ GtApLexiconCoder >> updateDefinitionsTo: obj [
 			tree selectAndScrollTo: obj ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateDefinitionsTree: tree [
 	tree
 		items: (lexiconObject lexiconDirectory files
@@ -370,7 +372,7 @@ GtApLexiconCoder >> updateDefinitionsTree: tree [
 				ifFalse: [ #() ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateFileTreeItems: tree [
 	tree
 		items: {{lexiconObject lexiconDirectory directory absolutePath asFileReference.
@@ -392,7 +394,7 @@ GtApLexiconCoder >> updateFileTreeItems: tree [
 		expandOneLevel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateFilesTo: obj [
 	self
 		childNamed: #files
@@ -404,7 +406,7 @@ GtApLexiconCoder >> updateFilesTo: obj [
 						obj lexiconFile} ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateModifiedIn: anElement [
 	(anElement childNamed: #button)
 		visibility: (((anElement userData at: #lexiconFile ifAbsent: [  ])
@@ -414,7 +416,7 @@ GtApLexiconCoder >> updateModifiedIn: anElement [
 				ifFalse: [ BlVisibility gone ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApLexiconCoder >> updateTrees [
 	lexiconObject ifNil: [ ^ self ].
 	self

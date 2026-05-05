@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyActorDefsContentLabelPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsContentLabelPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpLabelerDid',
 		'atpLabel',
 		'atpVisibility'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#contentLabelPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref class >> atpSchema [
  ^ '{"type":"object","required":["label","visibility"],"properties":{"labelerDid":{"type":"string","description":"Which labeler does this preference apply to? If undefined, applies globally.","format":"did"},"label":{"type":"string"},"visibility":{"type":"string","knownValues":["ignore","show","warn","hide"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ AppBskyActorDefsContentLabelPref class >> fromRequest: aRequest withClient: aCli
 		atpVisibility: (aRequest at: 'visibility' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref >> atpLabel [
 	<atpType:#String format:nil>
 	^ atpLabel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref >> atpLabel: anObject [
 	atpLabel := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref >> atpLabelerDid [
 	<atpType:#String format:'did'>
 	^ atpLabelerDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref >> atpLabelerDid: anObject [
 	atpLabelerDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref >> atpVisibility [
 	<atpType:#String format:nil>
 	^ atpVisibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsContentLabelPref >> atpVisibility: anObject [
 	atpVisibility := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsContentLabelPref >> labelDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ AppBskyActorDefsContentLabelPref >> labelDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsContentLabelPref >> labelerDidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -89,7 +90,7 @@ AppBskyActorDefsContentLabelPref >> labelerDidDescription [
 		accessor: #atpLabelerDid
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsContentLabelPref >> visibilityDescription [
 	<magritteDescription>
 	^ MAStringDescription new

@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoAdminDefsModerationDetail,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsModerationDetail',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCurrentAction',
 		'atpActions',
 		'atpReports'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail class >> atpRecordName [
  ^ 'com.atproto.admin.defs#moderationDetail'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail class >> atpSchema [
  ^ '{"type":"object","required":["actions","reports"],"properties":{"currentAction":{"type":"ref","ref":"#actionViewCurrent"},"actions":{"type":"array","items":{"type":"ref","ref":"#actionView"}},"reports":{"type":"array","items":{"type":"ref","ref":"#reportView"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -47,7 +48,7 @@ ComAtprotoAdminDefsModerationDetail class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsModerationDetail >> actionsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -57,44 +58,44 @@ ComAtprotoAdminDefsModerationDetail >> actionsDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail >> atpActions [
 	<atpType:#ComAtprotoAdminDefsActionView format:nil>
 	<atpCollection>
 	^ atpActions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail >> atpActions: anObject [
 	atpActions := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail >> atpCurrentAction [
 	<referenceTo:'#actionViewCurrent'>
 	<atpType:#ComAtprotoAdminDefsActionViewCurrent format:nil>
 	^ atpCurrentAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail >> atpCurrentAction: anObject [
 	<referenceTo:'#actionViewCurrent'>
 	atpCurrentAction := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail >> atpReports [
 	<atpType:#ComAtprotoAdminDefsReportView format:nil>
 	<atpCollection>
 	^ atpReports
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModerationDetail >> atpReports: anObject [
 	atpReports := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsModerationDetail >> currentActionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -102,7 +103,7 @@ ComAtprotoAdminDefsModerationDetail >> currentActionDescription [
 		accessor: #atpCurrentAction
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsModerationDetail >> reportsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

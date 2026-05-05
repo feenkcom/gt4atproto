@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyGraphDefsListViewerState,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphDefsListViewerState',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpMuted',
 		'atpBlocked'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState class >> atpFile [
  ^ 'app/bsky/graph/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState class >> atpRecordName [
  ^ 'app.bsky.graph.defs#listViewerState'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState class >> atpSchema [
  ^ '{"type":"object","properties":{"muted":{"type":"boolean"},"blocked":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphDefsListViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyGraphDefsListViewerState class >> fromRequest: aRequest withClient: aClie
 		atpBlocked: (aRequest at: 'blocked' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState >> atpBlocked [
 	<atpType:#String format:'at-uri'>
 	^ atpBlocked
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState >> atpBlocked: anObject [
 	atpBlocked := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState >> atpMuted [
 	<atpType:#Boolean format:nil>
 	^ atpMuted
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsListViewerState >> atpMuted: anObject [
 	atpMuted := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListViewerState >> blockedDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -67,7 +68,7 @@ AppBskyGraphDefsListViewerState >> blockedDescription [
 		accessor: #atpBlocked
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsListViewerState >> mutedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

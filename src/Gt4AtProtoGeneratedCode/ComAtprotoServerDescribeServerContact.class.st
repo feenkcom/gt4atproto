@@ -1,33 +1,34 @@
 Class {
-	#name : #ComAtprotoServerDescribeServerContact,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoServerDescribeServerContact',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpEmail'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDescribeServerContact class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDescribeServerContact class >> atpFile [
  ^ 'com/atproto/server/describeServer.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDescribeServerContact class >> atpRecordName [
  ^ 'com.atproto.server.describeServer#contact'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDescribeServerContact class >> atpSchema [
  ^ '{"type":"object","properties":{"email":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoServerDescribeServerContact class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ComAtprotoServerDescribeServerContact class >> fromRequest: aRequest withClient:
 		atpEmail: (aRequest at: 'email' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDescribeServerContact >> atpEmail [
 	<atpType:#String format:nil>
 	^ atpEmail
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDescribeServerContact >> atpEmail: anObject [
 	atpEmail := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDescribeServerContact >> emailDescription [
 	<magritteDescription>
 	^ MAStringDescription new

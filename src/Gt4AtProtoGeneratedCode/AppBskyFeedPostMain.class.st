@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyFeedPostMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedPostMain',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyFeedPostMain',
 	#classTraits : 'TAppBskyFeedPostMain classTrait',
 	#instVars : [
@@ -14,30 +14,31 @@ Class {
 		'atpTags',
 		'atpCreatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain class >> atpDescription [
  ^  'Record containing a Bluesky post.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain class >> atpFile [
  ^ 'app/bsky/feed/post.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain class >> atpRecordName [
  ^ 'app.bsky.feed.post'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain class >> atpSchema [
  ^ '{"type":"record","description":"Record containing a Bluesky post.","key":"tid","record":{"type":"object","required":["text","createdAt"],"properties":{"text":{"type":"string","maxLength":3000,"maxGraphemes":300,"description":"The primary post content. May be an empty string, if there are embeds."},"entities":{"type":"array","description":"DEPRECATED: replaced by app.bsky.richtext.facet.","items":{"type":"ref","ref":"#entity"}},"facets":{"type":"array","description":"Annotations of text (mentions, URLs, hashtags, etc)","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"reply":{"type":"ref","ref":"#replyRef"},"embed":{"type":"union","refs":["app.bsky.embed.images","app.bsky.embed.video","app.bsky.embed.external","app.bsky.embed.record","app.bsky.embed.recordWithMedia"]},"langs":{"type":"array","description":"Indicates human language of post primary text content.","maxLength":3,"items":{"type":"string","format":"language"}},"labels":{"type":"union","description":"Self-label values for this post. Effectively content warnings.","refs":["com.atproto.label.defs#selfLabels"]},"tags":{"type":"array","description":"Additional hashtags, in addition to any included in post text and facets.","maxLength":8,"items":{"type":"string","maxLength":640,"maxGraphemes":64}},"createdAt":{"type":"string","format":"datetime","description":"Client-declared timestamp when this post was originally created."}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedPostMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -94,112 +95,112 @@ AppBskyFeedPostMain class >> fromRequest: aRequest withClient: aClient [
 		atpCreatedAt: (aRequest at: 'createdAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpEmbed [
 	<atpType:#(AppBskyEmbedImagesMain AppBskyEmbedVideoMain AppBskyEmbedExternalMain AppBskyEmbedRecordMain AppBskyEmbedRecordWithMediaMain) format:nil>
 	^ atpEmbed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpEmbed: anObject [
 	atpEmbed := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpEntities [
 	<atpType:#AppBskyFeedPostEntity format:nil>
 	<atpCollection>
 	^ atpEntities
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpEntities: anObject [
 	atpEntities := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpFacets [
 	<atpType:#AppBskyRichtextFacetMain format:nil>
 	<atpCollection>
 	^ atpFacets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpFacets: anObject [
 	atpFacets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpLabels [
 	<atpType:#(ComAtprotoLabelDefsSelfLabels) format:nil>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpLangs [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpLangs
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpLangs: anObject [
 	atpLangs := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpReply [
 	<referenceTo:'#replyRef'>
 	<atpType:#AppBskyFeedPostReplyRef format:nil>
 	^ atpReply
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpReply: anObject [
 	<referenceTo:'#replyRef'>
 	atpReply := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpTags [
 	<atpType:#String format:nil>
 	<atpCollection>
 	^ atpTags
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpTags: anObject [
 	atpTags := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpText [
 	<atpType:#String format:nil>
 	^ atpText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedPostMain >> atpText: anObject [
 	atpText := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -208,7 +209,7 @@ AppBskyFeedPostMain >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> embedDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -221,7 +222,7 @@ AppBskyFeedPostMain >> embedDescription [
 		accessor: #atpEmbed
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> entitiesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -230,7 +231,7 @@ AppBskyFeedPostMain >> entitiesDescription [
 		accessor: #atpEntities
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> facetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -239,7 +240,7 @@ AppBskyFeedPostMain >> facetsDescription [
 		accessor: #atpFacets
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> labelsDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -248,7 +249,7 @@ AppBskyFeedPostMain >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> langsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -257,7 +258,7 @@ AppBskyFeedPostMain >> langsDescription [
 		accessor: #atpLangs
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> replyDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -265,7 +266,7 @@ AppBskyFeedPostMain >> replyDescription [
 		accessor: #atpReply
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> tagsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -274,7 +275,7 @@ AppBskyFeedPostMain >> tagsDescription [
 		accessor: #atpTags
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedPostMain >> textDescription [
 	<magritteDescription>
 	^ MAStringDescription new

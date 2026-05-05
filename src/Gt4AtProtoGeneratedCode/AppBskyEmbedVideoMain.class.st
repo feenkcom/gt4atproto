@@ -1,36 +1,37 @@
 Class {
-	#name : #AppBskyEmbedVideoMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedVideoMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpVideo',
 		'atpCaptions',
 		'atpAlt',
 		'atpAspectRatio'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain class >> atpFile [
  ^ 'app/bsky/embed/video.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain class >> atpRecordName [
  ^ 'app.bsky.embed.video'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain class >> atpSchema [
  ^ '{"type":"object","required":["video"],"properties":{"video":{"type":"blob","accept":["video/mp4"],"maxSize":50000000},"captions":{"type":"array","items":{"type":"ref","ref":"#caption"},"maxLength":20},"alt":{"type":"string","description":"Alt text description of the video, for accessibility.","maxGraphemes":1000,"maxLength":10000},"aspectRatio":{"type":"ref","ref":"app.bsky.embed.defs#aspectRatio"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedVideoMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -49,7 +50,7 @@ AppBskyEmbedVideoMain class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoMain >> altDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -57,7 +58,7 @@ AppBskyEmbedVideoMain >> altDescription [
 		accessor: #atpAlt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoMain >> aspectRatioDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -65,54 +66,54 @@ AppBskyEmbedVideoMain >> aspectRatioDescription [
 		accessor: #atpAspectRatio
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpAlt [
 	<atpType:#String format:nil>
 	^ atpAlt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpAlt: anObject [
 	atpAlt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpAspectRatio [
 	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	<atpType:#AppBskyEmbedDefsAspectRatio format:nil>
 	^ atpAspectRatio
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpAspectRatio: anObject [
 	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	atpAspectRatio := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpCaptions [
 	<atpType:#AppBskyEmbedVideoCaption format:nil>
 	<atpCollection>
 	^ atpCaptions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpCaptions: anObject [
 	atpCaptions := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpVideo [
 	<atpType:#ByteArray format:nil>
 	^ atpVideo
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedVideoMain >> atpVideo: anObject [
 	atpVideo := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoMain >> captionsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -121,7 +122,7 @@ AppBskyEmbedVideoMain >> captionsDescription [
 		accessor: #atpCaptions
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedVideoMain >> videoDescription [
 	<magritteDescription>
 	^ MAFileDescription new

@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyFeedDefsGeneratorViewerState,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsGeneratorViewerState',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpLike'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorViewerState class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorViewerState class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorViewerState class >> atpRecordName [
  ^ 'app.bsky.feed.defs#generatorViewerState'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorViewerState class >> atpSchema [
  ^ '{"type":"object","properties":{"like":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsGeneratorViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyFeedDefsGeneratorViewerState class >> fromRequest: aRequest withClient: a
 		atpLike: (aRequest at: 'like' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorViewerState >> atpLike [
 	<atpType:#String format:'at-uri'>
 	^ atpLike
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorViewerState >> atpLike: anObject [
 	atpLike := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorViewerState >> likeDescription [
 	<magritteDescription>
 	^ MAStringDescription new

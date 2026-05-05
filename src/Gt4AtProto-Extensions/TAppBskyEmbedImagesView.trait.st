@@ -2,18 +2,20 @@
 This trait is an extension to {{gtClass:AppBskyEmbedImagesView}}.
 "
 Trait {
-	#name : #TAppBskyEmbedImagesView,
-	#category : #'Gt4AtProto-Extensions-Traits'
+	#name : 'TAppBskyEmbedImagesView',
+	#category : 'Gt4AtProto-Extensions-Traits',
+	#package : 'Gt4AtProto-Extensions',
+	#tag : 'Traits'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesView >> asEmbeddedElement [
 	^ BrVerticalPane new matchParent
 		addChildren: (self atpImages
 				collect: [ :anImage | anImage asImageElement ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesView >> gtImagesFor: aView [
 	<gtView>
 	^ aView explicit
@@ -22,7 +24,7 @@ TAppBskyEmbedImagesView >> gtImagesFor: aView [
 		stencil: [ self asEmbeddedElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedImagesView >> hasMedia [
 	^ self atpImages notEmpty
 ]

@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyFeedDefsReplyRef,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsReplyRef',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRoot',
 		'atpParent',
 		'atpGrandparentAuthor'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef class >> atpRecordName [
  ^ 'app.bsky.feed.defs#replyRef'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef class >> atpSchema [
  ^ '{"type":"object","required":["root","parent"],"properties":{"root":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]},"parent":{"type":"union","refs":["#postView","#notFoundPost","#blockedPost"]},"grandparentAuthor":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic","description":"When parent is a reply to another post, this is the author of that post."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsReplyRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -64,42 +65,42 @@ AppBskyFeedDefsReplyRef class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef >> atpGrandparentAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpGrandparentAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef >> atpGrandparentAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	atpGrandparentAuthor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef >> atpParent [
 	<atpType:#(AppBskyFeedDefsPostView AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpParent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef >> atpParent: anObject [
 	atpParent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef >> atpRoot [
 	<atpType:#(AppBskyFeedDefsPostView AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpRoot
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReplyRef >> atpRoot: anObject [
 	atpRoot := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsReplyRef >> grandparentAuthorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -107,7 +108,7 @@ AppBskyFeedDefsReplyRef >> grandparentAuthorDescription [
 		accessor: #atpGrandparentAuthor
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsReplyRef >> parentDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -119,7 +120,7 @@ AppBskyFeedDefsReplyRef >> parentDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsReplyRef >> rootDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new

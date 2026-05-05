@@ -1,24 +1,22 @@
 Class {
-	#name : #BaselineOfGt4AtProto,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfGt4AtProto
+	#name : 'BaselineOfGt4AtProto',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfGt4AtProto',
+	#package : 'BaselineOfGt4AtProto'
 }
 
-{ #category : #loading }
+{ #category : 'loading' }
 BaselineOfGt4AtProto class >> loadLepiter [
 	IceRepository registry
 		detect: [ :aRepository | aRepository name = 'gt4atproto' ]
 		ifFound: [ :aRepository | 
-			| defaultDatabase currentProperties |
-			defaultDatabase := LeDatabasesRegistry defaultLogicalDatabase.
-			currentProperties := defaultDatabase properties.
-			currentProperties
-				addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
-			LeLogicalDatabase allInstancesDo: #fullReload ]
-		ifNone: [ self inform: 'Repository not found.' ]
+			LeDatabasesRegistry defaultLogicalDatabase
+				addKnowledgebaseFromDirectory: 
+				aRepository repositoryDirectory / 'lepiter'  ]
+		ifNone: [ self inform: 'Repository not found' ]
 ]
 
-{ #category : #baseline }
+{ #category : 'baseline' }
 BaselineOfGt4AtProto >> baseline: spec [
 	<baseline>
 	^ spec

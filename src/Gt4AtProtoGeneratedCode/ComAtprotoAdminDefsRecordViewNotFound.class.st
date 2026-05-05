@@ -1,51 +1,52 @@
 Class {
-	#name : #ComAtprotoAdminDefsRecordViewNotFound,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsRecordViewNotFound',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewNotFound class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewNotFound class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewNotFound class >> atpRecordName [
  ^ 'com.atproto.admin.defs#recordViewNotFound'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewNotFound class >> atpSchema [
  ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsRecordViewNotFound class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewNotFound >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRecordViewNotFound >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRecordViewNotFound >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

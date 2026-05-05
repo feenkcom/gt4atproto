@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyActorDefsKnownFollowers,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsKnownFollowers',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCount',
 		'atpFollowers'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers class >> atpDescription [
  ^  'The subject''s followers whom you also follow'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers class >> atpRecordName [
  ^ 'app.bsky.actor.defs#knownFollowers'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers class >> atpSchema [
  ^ '{"type":"object","description":"The subject''s followers whom you also follow","required":["count","followers"],"properties":{"count":{"type":"integer"},"followers":{"type":"array","minLength":0,"maxLength":5,"items":{"type":"ref","ref":"#profileViewBasic"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsKnownFollowers class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,30 +43,30 @@ AppBskyActorDefsKnownFollowers class >> fromRequest: aRequest withClient: aClien
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers >> atpCount [
 	<atpType:#Number format:nil>
 	^ atpCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers >> atpCount: anObject [
 	atpCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers >> atpFollowers [
 	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	<atpCollection>
 	^ atpFollowers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsKnownFollowers >> atpFollowers: anObject [
 	atpFollowers := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsKnownFollowers >> countDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -74,7 +75,7 @@ AppBskyActorDefsKnownFollowers >> countDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsKnownFollowers >> followersDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

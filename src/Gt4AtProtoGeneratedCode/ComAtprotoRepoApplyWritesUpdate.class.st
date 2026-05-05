@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoRepoApplyWritesUpdate,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoRepoApplyWritesUpdate',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCollection',
 		'atpRkey',
 		'atpValue'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate class >> atpDescription [
  ^  'Operation which updates an existing record.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate class >> atpFile [
  ^ 'com/atproto/repo/applyWrites.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#update'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate class >> atpSchema [
  ^ '{"type":"object","description":"Operation which updates an existing record.","required":["collection","rkey","value"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"},"value":{"type":"unknown"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoRepoApplyWritesUpdate class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,40 +43,40 @@ ComAtprotoRepoApplyWritesUpdate class >> fromRequest: aRequest withClient: aClie
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate >> atpCollection [
 	<atpType:#String format:'nsid'>
 	^ atpCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate >> atpCollection: anObject [
 	atpCollection := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate >> atpRkey [
 	<atpType:#String format:nil>
 	^ atpRkey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate >> atpRkey: anObject [
 	atpRkey := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate >> atpValue [
 	<atpType:#Object format:nil>
 	^ atpValue
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesUpdate >> atpValue: anObject [
 	atpValue := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesUpdate >> collectionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -84,7 +85,7 @@ ComAtprotoRepoApplyWritesUpdate >> collectionDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesUpdate >> rkeyDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -93,7 +94,7 @@ ComAtprotoRepoApplyWritesUpdate >> rkeyDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesUpdate >> valueDescription [
 	<magritteDescription>
 	^ MAStringDescription new

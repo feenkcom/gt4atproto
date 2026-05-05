@@ -1,35 +1,36 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventReport,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventReport',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment',
 		'atpIsReporterMuted',
 		'atpReportType'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport class >> atpDescription [
  ^  'Report a subject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventReport'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport class >> atpSchema [
  ^ '{"type":"object","description":"Report a subject","required":["reportType"],"properties":{"comment":{"type":"string"},"isReporterMuted":{"type":"boolean","description":"Set to true if the reporter was muted from reporting at the time of the event. These reports won''t impact the reviewState of the subject."},"reportType":{"type":"ref","ref":"com.atproto.moderation.defs#reasonType"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventReport class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,42 +40,42 @@ ToolsOzoneModerationDefsModEventReport class >> fromRequest: aRequest withClient
 		atpReportType: (aRequest at: 'reportType' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport >> atpIsReporterMuted [
 	<atpType:#Boolean format:nil>
 	^ atpIsReporterMuted
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport >> atpIsReporterMuted: anObject [
 	atpIsReporterMuted := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport >> atpReportType [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
 	<atpType:#String format:nil>
 	^ atpReportType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventReport >> atpReportType: anObject [
 	<referenceTo:'com.atproto.moderation.defs#reasonType'>
 	atpReportType := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventReport >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -82,7 +83,7 @@ ToolsOzoneModerationDefsModEventReport >> commentDescription [
 		accessor: #atpComment
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventReport >> isReporterMutedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -90,7 +91,7 @@ ToolsOzoneModerationDefsModEventReport >> isReporterMutedDescription [
 		accessor: #atpIsReporterMuted
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventReport >> reportTypeDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

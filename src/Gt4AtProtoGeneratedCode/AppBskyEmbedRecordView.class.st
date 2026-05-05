@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyEmbedRecordView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordView',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyEmbedRecordView',
 	#classTraits : 'TAppBskyEmbedRecordView classTrait',
 	#instVars : [
 		'atpRecord'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordView class >> atpFile [
  ^ 'app/bsky/embed/record.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordView class >> atpRecordName [
  ^ 'app.bsky.embed.record#view'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordView class >> atpSchema [
  ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"union","refs":["#viewRecord","#viewNotFound","#viewBlocked","#viewDetached","app.bsky.feed.defs#generatorView","app.bsky.graph.defs#listView","app.bsky.labeler.defs#labelerView","app.bsky.graph.defs#starterPackViewBasic"]}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -53,18 +54,18 @@ AppBskyEmbedRecordView class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordView >> atpRecord [
 	<atpType:#(AppBskyEmbedRecordViewRecord AppBskyEmbedRecordViewNotFound AppBskyEmbedRecordViewBlocked AppBskyEmbedRecordViewDetached AppBskyFeedDefsGeneratorView AppBskyGraphDefsListView AppBskyLabelerDefsLabelerView AppBskyGraphDefsStarterPackViewBasic) format:nil>
 	^ atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordView >> atpRecord: anObject [
 	atpRecord := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordView >> recordDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoAdminDefsRepoView,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsRepoView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpHandle',
@@ -12,30 +12,31 @@ Class {
 		'atpInvitesDisabled',
 		'atpInviteNote'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView class >> atpRecordName [
  ^ 'com.atproto.admin.defs#repoView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView class >> atpSchema [
  ^ '{"type":"object","required":["did","handle","relatedRecords","indexedAt","moderation"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"email":{"type":"string"},"relatedRecords":{"type":"array","items":{"type":"unknown"}},"indexedAt":{"type":"string","format":"datetime"},"moderation":{"type":"ref","ref":"#moderation"},"invitedBy":{"type":"ref","ref":"com.atproto.server.defs#inviteCode"},"invitesDisabled":{"type":"boolean"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -58,111 +59,111 @@ ComAtprotoAdminDefsRepoView class >> fromRequest: aRequest [
 		atpInvitesDisabled: (aRequest at: 'invitesDisabled' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpEmail [
 	<atpType:#String format:nil>
 	^ atpEmail
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpEmail: anObject [
 	atpEmail := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpInviteNote [
 	<atpType:#String format:nil>
 	^ atpInviteNote
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpInviteNote: anObject [
 	atpInviteNote := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpInvitedBy [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
 	<atpType:#ComAtprotoServerDefsInviteCode format:nil>
 	^ atpInvitedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpInvitedBy: anObject [
 	<referenceTo:'com.atproto.server.defs#inviteCode'>
 	atpInvitedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpInvitesDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpInvitesDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpInvitesDisabled: anObject [
 	atpInvitesDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpModeration [
 	<referenceTo:'#moderation'>
 	<atpType:#ComAtprotoAdminDefsModeration format:nil>
 	^ atpModeration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
 	atpModeration := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpRelatedRecords [
 	<atpType:#Object format:nil>
 	<atpCollection>
 	^ atpRelatedRecords
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoView >> atpRelatedRecords: anObject [
 	atpRelatedRecords := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -171,7 +172,7 @@ ComAtprotoAdminDefsRepoView >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> emailDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -179,7 +180,7 @@ ComAtprotoAdminDefsRepoView >> emailDescription [
 		accessor: #atpEmail
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -188,7 +189,7 @@ ComAtprotoAdminDefsRepoView >> handleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -197,7 +198,7 @@ ComAtprotoAdminDefsRepoView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> inviteNoteDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -205,7 +206,7 @@ ComAtprotoAdminDefsRepoView >> inviteNoteDescription [
 		accessor: #atpInviteNote
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> invitedByDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -213,7 +214,7 @@ ComAtprotoAdminDefsRepoView >> invitedByDescription [
 		accessor: #atpInvitedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> invitesDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -221,7 +222,7 @@ ComAtprotoAdminDefsRepoView >> invitesDisabledDescription [
 		accessor: #atpInvitesDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -230,7 +231,7 @@ ComAtprotoAdminDefsRepoView >> moderationDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoView >> relatedRecordsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyEmbedImagesViewImage,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedImagesViewImage',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyEmbedImagesViewImage',
 	#classTraits : 'TAppBskyEmbedImagesViewImage classTrait',
 	#instVars : [
@@ -9,30 +9,31 @@ Class {
 		'atpAlt',
 		'atpAspectRatio'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage class >> atpFile [
  ^ 'app/bsky/embed/images.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage class >> atpRecordName [
  ^ 'app.bsky.embed.images#viewImage'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage class >> atpSchema [
  ^ '{"type":"object","required":["thumb","fullsize","alt"],"properties":{"thumb":{"type":"string","format":"uri","description":"Fully-qualified URL where a thumbnail of the image can be fetched. For example, CDN location provided by the App View."},"fullsize":{"type":"string","format":"uri","description":"Fully-qualified URL where a large version of the image can be fetched. May or may not be the exact original blob. For example, CDN location provided by the App View."},"alt":{"type":"string","description":"Alt text description of the image, for accessibility."},"aspectRatio":{"type":"ref","ref":"app.bsky.embed.defs#aspectRatio"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedImagesViewImage class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -46,7 +47,7 @@ AppBskyEmbedImagesViewImage class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedImagesViewImage >> altDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -55,7 +56,7 @@ AppBskyEmbedImagesViewImage >> altDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedImagesViewImage >> aspectRatioDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -63,53 +64,53 @@ AppBskyEmbedImagesViewImage >> aspectRatioDescription [
 		accessor: #atpAspectRatio
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpAlt [
 	<atpType:#String format:nil>
 	^ atpAlt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpAlt: anObject [
 	atpAlt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpAspectRatio [
 	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	<atpType:#AppBskyEmbedDefsAspectRatio format:nil>
 	^ atpAspectRatio
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpAspectRatio: anObject [
 	<referenceTo:'app.bsky.embed.defs#aspectRatio'>
 	atpAspectRatio := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpFullsize [
 	<atpType:#String format:'uri'>
 	^ atpFullsize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpFullsize: anObject [
 	atpFullsize := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpThumb [
 	<atpType:#String format:'uri'>
 	^ atpThumb
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedImagesViewImage >> atpThumb: anObject [
 	atpThumb := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedImagesViewImage >> fullsizeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -118,7 +119,7 @@ AppBskyEmbedImagesViewImage >> fullsizeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedImagesViewImage >> thumbDescription [
 	<magritteDescription>
 	^ MAStringDescription new

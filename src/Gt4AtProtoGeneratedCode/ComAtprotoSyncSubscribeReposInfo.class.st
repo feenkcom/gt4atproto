@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoSyncSubscribeReposInfo,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoSyncSubscribeReposInfo',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpName',
 		'atpMessage'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo class >> atpFile [
  ^ 'com/atproto/sync/subscribeRepos.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo class >> atpRecordName [
  ^ 'com.atproto.sync.subscribeRepos#info'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo class >> atpSchema [
  ^ '{"type":"object","required":["name"],"properties":{"name":{"type":"string","knownValues":["OutdatedCursor"]},"message":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ComAtprotoSyncSubscribeReposInfo class >> fromRequest: aRequest withClient: aCli
 		atpMessage: (aRequest at: 'message' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo >> atpMessage [
 	<atpType:#String format:nil>
 	^ atpMessage
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo >> atpMessage: anObject [
 	atpMessage := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo >> atpName [
 	<atpType:#String format:nil>
 	^ atpName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoSyncSubscribeReposInfo >> atpName: anObject [
 	atpName := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposInfo >> messageDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -67,7 +68,7 @@ ComAtprotoSyncSubscribeReposInfo >> messageDescription [
 		accessor: #atpMessage
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoSyncSubscribeReposInfo >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new

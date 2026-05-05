@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsBlobView,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsBlobView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCid',
 		'atpMimeType',
@@ -9,30 +9,31 @@ Class {
 		'atpDetails',
 		'atpModeration'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#blobView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView class >> atpSchema [
  ^ '{"type":"object","required":["cid","mimeType","size","createdAt"],"properties":{"cid":{"type":"string","format":"cid"},"mimeType":{"type":"string"},"size":{"type":"integer"},"createdAt":{"type":"string","format":"datetime"},"details":{"type":"union","refs":["#imageDetails","#videoDetails"]},"moderation":{"type":"ref","ref":"#moderation"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsBlobView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -59,75 +60,75 @@ ToolsOzoneModerationDefsBlobView class >> fromRequest: aRequest withClient: aCli
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpDetails [
 	<atpType:#(ToolsOzoneModerationDefsImageDetails ToolsOzoneModerationDefsVideoDetails) format:nil>
 	^ atpDetails
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpDetails: anObject [
 	atpDetails := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpMimeType [
 	<atpType:#String format:nil>
 	^ atpMimeType
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpMimeType: anObject [
 	atpMimeType := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpModeration [
 	<referenceTo:'#moderation'>
 	<atpType:#ToolsOzoneModerationDefsModeration format:nil>
 	^ atpModeration
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpModeration: anObject [
 	<referenceTo:'#moderation'>
 	atpModeration := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpSize [
 	<atpType:#Number format:nil>
 	^ atpSize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsBlobView >> atpSize: anObject [
 	atpSize := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsBlobView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -136,7 +137,7 @@ ToolsOzoneModerationDefsBlobView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsBlobView >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -145,7 +146,7 @@ ToolsOzoneModerationDefsBlobView >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsBlobView >> detailsDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -155,7 +156,7 @@ ToolsOzoneModerationDefsBlobView >> detailsDescription [
 		accessor: #atpDetails
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsBlobView >> mimeTypeDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -164,7 +165,7 @@ ToolsOzoneModerationDefsBlobView >> mimeTypeDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsBlobView >> moderationDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -172,7 +173,7 @@ ToolsOzoneModerationDefsBlobView >> moderationDescription [
 		accessor: #atpModeration
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsBlobView >> sizeDescription [
 	<magritteDescription>
 	^ MANumberDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #ToolsOzoneModerationDefsAccountHosting,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsAccountHosting',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpStatus',
 		'atpUpdatedAt',
@@ -9,30 +9,31 @@ Class {
 		'atpDeactivatedAt',
 		'atpReactivatedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#accountHosting'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting class >> atpSchema [
  ^ '{"type":"object","required":["status"],"properties":{"status":{"type":"string","knownValues":["takendown","suspended","deleted","deactivated","unknown"]},"updatedAt":{"type":"string","format":"datetime"},"createdAt":{"type":"string","format":"datetime"},"deletedAt":{"type":"string","format":"datetime"},"deactivatedAt":{"type":"string","format":"datetime"},"reactivatedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsAccountHosting class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -45,73 +46,73 @@ ToolsOzoneModerationDefsAccountHosting class >> fromRequest: aRequest withClient
 		atpReactivatedAt: (aRequest at: 'reactivatedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpDeactivatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpDeactivatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpDeactivatedAt: anObject [
 	atpDeactivatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpDeletedAt [
 	<atpType:#String format:'datetime'>
 	^ atpDeletedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpDeletedAt: anObject [
 	atpDeletedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpReactivatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpReactivatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpReactivatedAt: anObject [
 	atpReactivatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpStatus [
 	<atpType:#String format:nil>
 	^ atpStatus
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpStatus: anObject [
 	atpStatus := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpUpdatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUpdatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsAccountHosting >> atpUpdatedAt: anObject [
 	atpUpdatedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountHosting >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -119,7 +120,7 @@ ToolsOzoneModerationDefsAccountHosting >> createdAtDescription [
 		accessor: #atpCreatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountHosting >> deactivatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -127,7 +128,7 @@ ToolsOzoneModerationDefsAccountHosting >> deactivatedAtDescription [
 		accessor: #atpDeactivatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountHosting >> deletedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -135,7 +136,7 @@ ToolsOzoneModerationDefsAccountHosting >> deletedAtDescription [
 		accessor: #atpDeletedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountHosting >> reactivatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -143,7 +144,7 @@ ToolsOzoneModerationDefsAccountHosting >> reactivatedAtDescription [
 		accessor: #atpReactivatedAt
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountHosting >> statusDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -152,7 +153,7 @@ ToolsOzoneModerationDefsAccountHosting >> statusDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsAccountHosting >> updatedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

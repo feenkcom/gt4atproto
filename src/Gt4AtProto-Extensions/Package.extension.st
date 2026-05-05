@@ -1,7 +1,7 @@
-Extension { #name : #RPackage }
+Extension { #name : 'Package' }
 
-{ #category : #'*Gt4AtProto-Extensions' }
-RPackage >> gtAtpLexiconsFor: aView [
+{ #category : '*Gt4AtProto-Extensions' }
+Package >> gtAtpLexiconsFor: aView [
 	<gtPackageView>
 	<gtView>
 	self name = #Gt4AtProtoGeneratedCode ifFalse: [ ^ aView empty ].

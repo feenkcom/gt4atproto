@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyFeedDescribeFeedGeneratorFeed,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDescribeFeedGeneratorFeed',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorFeed class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorFeed class >> atpFile [
  ^ 'app/bsky/feed/describeFeedGenerator.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorFeed class >> atpRecordName [
  ^ 'app.bsky.feed.describeFeedGenerator#feed'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorFeed class >> atpSchema [
  ^ '{"type":"object","required":["uri"],"properties":{"uri":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDescribeFeedGeneratorFeed class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyFeedDescribeFeedGeneratorFeed class >> fromRequest: aRequest withClient: 
 		atpUri: (aRequest at: 'uri' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorFeed >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDescribeFeedGeneratorFeed >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDescribeFeedGeneratorFeed >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

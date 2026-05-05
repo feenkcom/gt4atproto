@@ -1,13 +1,15 @@
 Class {
-	#name : #GtApEditorAptitude,
-	#superclass : #BrGlamorousCodeEditorAptitude,
+	#name : 'GtApEditorAptitude',
+	#superclass : 'BrGlamorousCodeEditorAptitude',
 	#instVars : [
 		'lexiconFile'
 	],
-	#category : #'Gt4AtProto-Editor-Aptitude'
+	#category : 'Gt4AtProto-Editor-Aptitude',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Aptitude'
 }
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApEditorAptitude >> initialize [
 	| controller |
 	super initialize.
@@ -24,12 +26,12 @@ GtApEditorAptitude >> initialize [
 				yourself)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApEditorAptitude >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApEditorAptitude >> lexiconFile: aGtApLexiconFile [
 	| apStyler |
 	lexiconFile := aGtApLexiconFile.
@@ -38,7 +40,7 @@ GtApEditorAptitude >> lexiconFile: aGtApLexiconFile [
 	self styler: apStyler
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApEditorAptitude >> styler [
 	^ styler
 ]

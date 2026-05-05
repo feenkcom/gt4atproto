@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyFeedDefsReasonRepost,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsReasonRepost',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpBy',
 		'atpIndexedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#reasonRepost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost class >> atpSchema [
  ^ '{"type":"object","required":["by","indexedAt"],"properties":{"by":{"type":"ref","ref":"app.bsky.actor.defs#profileViewBasic"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -40,31 +41,31 @@ AppBskyFeedDefsReasonRepost class >> fromRequest: aRequest withClient: aClient [
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost >> atpBy [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	<atpType:#AppBskyActorDefsProfileViewBasic format:nil>
 	^ atpBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost >> atpBy: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileViewBasic'>
 	atpBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsReasonRepost >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsReasonRepost >> byDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -73,7 +74,7 @@ AppBskyFeedDefsReasonRepost >> byDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsReasonRepost >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

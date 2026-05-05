@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyLabelerDefsLabelerView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyLabelerDefsLabelerView',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -10,30 +10,31 @@ Class {
 		'atpIndexedAt',
 		'atpLabels'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView class >> atpFile [
  ^ 'app/bsky/labeler/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView class >> atpRecordName [
  ^ 'app.bsky.labeler.defs#labelerView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","creator","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"likeCount":{"type":"integer","minimum":0},"viewer":{"type":"ref","ref":"#labelerViewerState"},"indexedAt":{"type":"string","format":"datetime"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyLabelerDefsLabelerView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -58,89 +59,89 @@ AppBskyLabelerDefsLabelerView class >> fromRequest: aRequest withClient: aClient
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpCreator [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpCreator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpCreator: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	atpCreator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpLikeCount [
 	<atpType:#Number format:nil>
 	^ atpLikeCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpLikeCount: anObject [
 	atpLikeCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpViewer [
 	<referenceTo:'#labelerViewerState'>
 	<atpType:#AppBskyLabelerDefsLabelerViewerState format:nil>
 	^ atpViewer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyLabelerDefsLabelerView >> atpViewer: anObject [
 	<referenceTo:'#labelerViewerState'>
 	atpViewer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -149,7 +150,7 @@ AppBskyLabelerDefsLabelerView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> creatorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -158,7 +159,7 @@ AppBskyLabelerDefsLabelerView >> creatorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -167,7 +168,7 @@ AppBskyLabelerDefsLabelerView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -176,7 +177,7 @@ AppBskyLabelerDefsLabelerView >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> likeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -184,7 +185,7 @@ AppBskyLabelerDefsLabelerView >> likeCountDescription [
 		accessor: #atpLikeCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -193,7 +194,7 @@ AppBskyLabelerDefsLabelerView >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyLabelerDefsLabelerView >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

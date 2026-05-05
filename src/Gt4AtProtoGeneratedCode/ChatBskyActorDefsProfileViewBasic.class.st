@@ -1,6 +1,6 @@
 Class {
-	#name : #ChatBskyActorDefsProfileViewBasic,
-	#superclass : #GtApModelEntity,
+	#name : 'ChatBskyActorDefsProfileViewBasic',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpHandle',
@@ -11,30 +11,31 @@ Class {
 		'atpLabels',
 		'atpChatDisabled'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic class >> atpFile [
  ^ 'chat/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic class >> atpRecordName [
  ^ 'chat.bsky.actor.defs#profileViewBasic'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic class >> atpSchema [
  ^ '{"type":"object","required":["did","handle"],"properties":{"did":{"type":"string","format":"did"},"handle":{"type":"string","format":"handle"},"displayName":{"type":"string","maxGraphemes":64,"maxLength":640},"avatar":{"type":"string","format":"uri"},"associated":{"type":"ref","ref":"app.bsky.actor.defs#profileAssociated"},"viewer":{"type":"ref","ref":"app.bsky.actor.defs#viewerState"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"chatDisabled":{"type":"boolean","description":"Set to true when the actor cannot actively participate in converations"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ChatBskyActorDefsProfileViewBasic class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -60,7 +61,7 @@ ChatBskyActorDefsProfileViewBasic class >> fromRequest: aRequest withClient: aCl
 		atpChatDisabled: (aRequest at: 'chatDisabled' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> associatedDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -68,100 +69,100 @@ ChatBskyActorDefsProfileViewBasic >> associatedDescription [
 		accessor: #atpAssociated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpAssociated [
 	<referenceTo:'app.bsky.actor.defs#profileAssociated'>
 	<atpType:#AppBskyActorDefsProfileAssociated format:nil>
 	^ atpAssociated
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpAssociated: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileAssociated'>
 	atpAssociated := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpAvatar [
 	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpAvatar: anObject [
 	atpAvatar := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpChatDisabled [
 	<atpType:#Boolean format:nil>
 	^ atpChatDisabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpChatDisabled: anObject [
 	atpChatDisabled := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpDisplayName [
 	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpDisplayName: anObject [
 	atpDisplayName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpHandle [
 	<atpType:#String format:'handle'>
 	^ atpHandle
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpHandle: anObject [
 	atpHandle := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpViewer [
 	<referenceTo:'app.bsky.actor.defs#viewerState'>
 	<atpType:#AppBskyActorDefsViewerState format:nil>
 	^ atpViewer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ChatBskyActorDefsProfileViewBasic >> atpViewer: anObject [
 	<referenceTo:'app.bsky.actor.defs#viewerState'>
 	atpViewer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> avatarDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -169,7 +170,7 @@ ChatBskyActorDefsProfileViewBasic >> avatarDescription [
 		accessor: #atpAvatar
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> chatDisabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -177,7 +178,7 @@ ChatBskyActorDefsProfileViewBasic >> chatDisabledDescription [
 		accessor: #atpChatDisabled
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -186,7 +187,7 @@ ChatBskyActorDefsProfileViewBasic >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> displayNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -194,7 +195,7 @@ ChatBskyActorDefsProfileViewBasic >> displayNameDescription [
 		accessor: #atpDisplayName
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> handleDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -203,7 +204,7 @@ ChatBskyActorDefsProfileViewBasic >> handleDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -212,7 +213,7 @@ ChatBskyActorDefsProfileViewBasic >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ChatBskyActorDefsProfileViewBasic >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

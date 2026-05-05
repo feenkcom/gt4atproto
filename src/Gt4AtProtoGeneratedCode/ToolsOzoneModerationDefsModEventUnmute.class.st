@@ -1,33 +1,34 @@
 Class {
-	#name : #ToolsOzoneModerationDefsModEventUnmute,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsModEventUnmute',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpComment'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventUnmute class >> atpDescription [
  ^  'Unmute action on a subject'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventUnmute class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventUnmute class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#modEventUnmute'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventUnmute class >> atpSchema [
  ^ '{"type":"object","description":"Unmute action on a subject","properties":{"comment":{"type":"string","description":"Describe reasoning behind the reversal."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsModEventUnmute class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ ToolsOzoneModerationDefsModEventUnmute class >> fromRequest: aRequest withClient
 		atpComment: (aRequest at: 'comment' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventUnmute >> atpComment [
 	<atpType:#String format:nil>
 	^ atpComment
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsModEventUnmute >> atpComment: anObject [
 	atpComment := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsModEventUnmute >> commentDescription [
 	<magritteDescription>
 	^ MAStringDescription new

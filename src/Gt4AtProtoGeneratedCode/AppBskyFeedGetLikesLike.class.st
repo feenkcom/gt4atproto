@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyFeedGetLikesLike,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedGetLikesLike',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpIndexedAt',
 		'atpCreatedAt',
 		'atpActor'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike class >> atpFile [
  ^ 'app/bsky/feed/getLikes.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike class >> atpRecordName [
  ^ 'app.bsky.feed.getLikes#like'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike class >> atpSchema [
  ^ '{"type":"object","required":["indexedAt","createdAt","actor"],"properties":{"indexedAt":{"type":"string","format":"datetime"},"createdAt":{"type":"string","format":"datetime"},"actor":{"type":"ref","ref":"app.bsky.actor.defs#profileView"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedGetLikesLike class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,7 +43,7 @@ AppBskyFeedGetLikesLike class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedGetLikesLike >> actorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -51,42 +52,42 @@ AppBskyFeedGetLikesLike >> actorDescription [
 		beRequired
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike >> atpActor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpActor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike >> atpActor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	atpActor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike >> atpCreatedAt [
 	<atpType:#String format:'datetime'>
 	^ atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike >> atpCreatedAt: anObject [
 	atpCreatedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedGetLikesLike >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedGetLikesLike >> createdAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -95,7 +96,7 @@ AppBskyFeedGetLikesLike >> createdAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedGetLikesLike >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new

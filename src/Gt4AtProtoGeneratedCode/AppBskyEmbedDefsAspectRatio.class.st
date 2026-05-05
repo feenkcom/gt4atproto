@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyEmbedDefsAspectRatio,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedDefsAspectRatio',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpWidth',
 		'atpHeight'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio class >> atpDescription [
  ^  'width:height represents an aspect ratio. It may be approximate, and may not correspond to absolute dimensions in any given unit.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio class >> atpFile [
  ^ 'app/bsky/embed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio class >> atpRecordName [
  ^ 'app.bsky.embed.defs#aspectRatio'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio class >> atpSchema [
  ^ '{"type":"object","description":"width:height represents an aspect ratio. It may be approximate, and may not correspond to absolute dimensions in any given unit.","required":["width","height"],"properties":{"width":{"type":"integer","minimum":1},"height":{"type":"integer","minimum":1}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedDefsAspectRatio class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyEmbedDefsAspectRatio class >> fromRequest: aRequest withClient: aClient [
 		atpHeight: (aRequest at: 'height' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio >> atpHeight [
 	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio >> atpHeight: anObject [
 	atpHeight := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio >> atpWidth [
 	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedDefsAspectRatio >> atpWidth: anObject [
 	atpWidth := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedDefsAspectRatio >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -68,7 +69,7 @@ AppBskyEmbedDefsAspectRatio >> heightDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedDefsAspectRatio >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new

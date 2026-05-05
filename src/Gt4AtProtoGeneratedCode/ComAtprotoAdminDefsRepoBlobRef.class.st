@@ -1,35 +1,36 @@
 Class {
-	#name : #ComAtprotoAdminDefsRepoBlobRef,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsRepoBlobRef',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpCid',
 		'atpRecordUri'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef class >> atpRecordName [
  ^ 'com.atproto.admin.defs#repoBlobRef'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef class >> atpSchema [
  ^ '{"type":"object","required":["did","cid"],"properties":{"did":{"type":"string","format":"did"},"cid":{"type":"string","format":"cid"},"recordUri":{"type":"string","format":"at-uri"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsRepoBlobRef class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ ComAtprotoAdminDefsRepoBlobRef class >> fromRequest: aRequest withClient: aClien
 		atpRecordUri: (aRequest at: 'recordUri' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef >> atpRecordUri [
 	<atpType:#String format:'at-uri'>
 	^ atpRecordUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsRepoBlobRef >> atpRecordUri: anObject [
 	atpRecordUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoBlobRef >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ ComAtprotoAdminDefsRepoBlobRef >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoBlobRef >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -90,7 +91,7 @@ ComAtprotoAdminDefsRepoBlobRef >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsRepoBlobRef >> recordUriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

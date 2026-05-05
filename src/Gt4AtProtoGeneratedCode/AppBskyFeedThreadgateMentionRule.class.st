@@ -1,30 +1,31 @@
 Class {
-	#name : #AppBskyFeedThreadgateMentionRule,
-	#superclass : #GtApModelEntity,
-	#category : #Gt4AtProtoGeneratedCode
+	#name : 'AppBskyFeedThreadgateMentionRule',
+	#superclass : 'GtApModelEntity',
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateMentionRule class >> atpDescription [
  ^  'Allow replies from actors mentioned in your post.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateMentionRule class >> atpFile [
  ^ 'app/bsky/feed/threadgate.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateMentionRule class >> atpRecordName [
  ^ 'app.bsky.feed.threadgate#mentionRule'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateMentionRule class >> atpSchema [
  ^ '{"type":"object","description":"Allow replies from actors mentioned in your post.","properties":{}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedThreadgateMentionRule class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;

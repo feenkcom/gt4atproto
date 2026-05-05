@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyGraphDefsRelationship,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyGraphDefsRelationship',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpDid',
 		'atpFollowing',
 		'atpFollowedBy'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship class >> atpDescription [
  ^  'lists the bi-directional graph relationships between one actor (not indicated in the object), and the target actors (the DID included in the object)'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship class >> atpFile [
  ^ 'app/bsky/graph/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship class >> atpRecordName [
  ^ 'app.bsky.graph.defs#relationship'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship class >> atpSchema [
  ^ '{"type":"object","description":"lists the bi-directional graph relationships between one actor (not indicated in the object), and the target actors (the DID included in the object)","required":["did"],"properties":{"did":{"type":"string","format":"did"},"following":{"type":"string","format":"at-uri","description":"if the actor follows this DID, this is the AT-URI of the follow record"},"followedBy":{"type":"string","format":"at-uri","description":"if the actor is followed by this DID, contains the AT-URI of the follow record"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyGraphDefsRelationship class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ AppBskyGraphDefsRelationship class >> fromRequest: aRequest withClient: aClient 
 		atpFollowedBy: (aRequest at: 'followedBy' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship >> atpFollowedBy [
 	<atpType:#String format:'at-uri'>
 	^ atpFollowedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship >> atpFollowedBy: anObject [
 	atpFollowedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship >> atpFollowing [
 	<atpType:#String format:'at-uri'>
 	^ atpFollowing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyGraphDefsRelationship >> atpFollowing: anObject [
 	atpFollowing := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsRelationship >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -81,7 +82,7 @@ AppBskyGraphDefsRelationship >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsRelationship >> followedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -89,7 +90,7 @@ AppBskyGraphDefsRelationship >> followedByDescription [
 		accessor: #atpFollowedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyGraphDefsRelationship >> followingDescription [
 	<magritteDescription>
 	^ MAStringDescription new

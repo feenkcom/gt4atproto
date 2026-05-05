@@ -1,9 +1,11 @@
 Trait {
-	#name : #TAppBskyEmbedRecordView,
-	#category : #'Gt4AtProto-Extensions-Traits'
+	#name : 'TAppBskyEmbedRecordView',
+	#category : 'Gt4AtProto-Extensions-Traits',
+	#package : 'Gt4AtProto-Extensions',
+	#tag : 'Traits'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> asEmbeddedElement [
 	^ GtApFeedEmbeddedPostSummaryElement new
 		post: self;
@@ -12,17 +14,17 @@ TAppBskyEmbedRecordView >> asEmbeddedElement [
 		margin: (BlInsets all: 10)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> atpPost [
 	^ self atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> author [
 	^ self atpRecord atpAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> createdAt [
 	(self atpRecord isKindOf: AppBskyGraphDefsStarterPackViewBasic)
 		ifTrue: [ ^ self atpRecord atpRecord atpCreatedAt ].
@@ -33,34 +35,34 @@ TAppBskyEmbedRecordView >> createdAt [
 	^ self atpRecord atpValue atpCreatedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> createdAtTimestamp [
 	^ DateAndTime fromString: self createdAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> hasEmbed [
 	^ self atpRecord atpEmbeds isEmptyOrNil not
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> hasMedia [
 	^ self hasPhotos
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> hasPhotos [
 	(self atpRecord isKindOf: AppBskyEmbedRecordViewRecord) ifFalse: [ ^ false ].
 
 	^ self atpRecord atpEmbeds isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> isBlocked [
 	^ self atpRecord isKindOf: AppBskyEmbedRecordViewBlocked
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TAppBskyEmbedRecordView >> recordText [
 	(self atpRecord isKindOf: AppBskyGraphDefsStarterPackViewBasic)
 		ifTrue: [ ^ 'Starter pack "' , self atpRecord atpRecord atpName , '" from '

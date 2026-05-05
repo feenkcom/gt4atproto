@@ -1,33 +1,34 @@
 Class {
-	#name : #ComAtprotoAdminDefsModeration,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoAdminDefsModeration',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCurrentAction'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModeration class >> atpDescription [
  ^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModeration class >> atpFile [
  ^ 'com/atproto/admin/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModeration class >> atpRecordName [
  ^ 'com.atproto.admin.defs#moderation'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModeration class >> atpSchema [
  ^ '{"type":"object","required":[],"properties":{"currentAction":{"type":"ref","ref":"#actionViewCurrent"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoAdminDefsModeration class >> fromRequest: aRequest [
 	^ self new
 		rawData: aRequest;
@@ -37,20 +38,20 @@ ComAtprotoAdminDefsModeration class >> fromRequest: aRequest [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModeration >> atpCurrentAction [
 	<referenceTo:'#actionViewCurrent'>
 	<atpType:#ComAtprotoAdminDefsActionViewCurrent format:nil>
 	^ atpCurrentAction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoAdminDefsModeration >> atpCurrentAction: anObject [
 	<referenceTo:'#actionViewCurrent'>
 	atpCurrentAction := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoAdminDefsModeration >> currentActionDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

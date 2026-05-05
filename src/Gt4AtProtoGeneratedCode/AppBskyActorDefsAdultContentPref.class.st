@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsAdultContentPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsAdultContentPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpEnabled'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsAdultContentPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsAdultContentPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsAdultContentPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#adultContentPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsAdultContentPref class >> atpSchema [
  ^ '{"type":"object","required":["enabled"],"properties":{"enabled":{"type":"boolean","default":false}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyActorDefsAdultContentPref class >> fromRequest: aRequest withClient: aCli
 		atpEnabled: (aRequest at: 'enabled' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsAdultContentPref >> atpEnabled [
 	<atpType:#Boolean format:nil>
 	^ atpEnabled
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsAdultContentPref >> atpEnabled: anObject [
 	atpEnabled := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsAdultContentPref >> enabledDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

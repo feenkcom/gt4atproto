@@ -1,30 +1,31 @@
 Class {
-	#name : #AppBskyFeedThreadgateFollowingRule,
-	#superclass : #GtApModelEntity,
-	#category : #Gt4AtProtoGeneratedCode
+	#name : 'AppBskyFeedThreadgateFollowingRule',
+	#superclass : 'GtApModelEntity',
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateFollowingRule class >> atpDescription [
  ^  'Allow replies from actors you follow.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateFollowingRule class >> atpFile [
  ^ 'app/bsky/feed/threadgate.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateFollowingRule class >> atpRecordName [
  ^ 'app.bsky.feed.threadgate#followingRule'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedThreadgateFollowingRule class >> atpSchema [
  ^ '{"type":"object","description":"Allow replies from actors you follow.","properties":{}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedThreadgateFollowingRule class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;

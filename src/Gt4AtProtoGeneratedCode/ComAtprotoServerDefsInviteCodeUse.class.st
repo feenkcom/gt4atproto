@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoServerDefsInviteCodeUse,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoServerDefsInviteCodeUse',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUsedBy',
 		'atpUsedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse class >> atpFile [
  ^ 'com/atproto/server/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse class >> atpRecordName [
  ^ 'com.atproto.server.defs#inviteCodeUse'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse class >> atpSchema [
  ^ '{"type":"object","required":["usedBy","usedAt"],"properties":{"usedBy":{"type":"string","format":"did"},"usedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ComAtprotoServerDefsInviteCodeUse class >> fromRequest: aRequest withClient: aCl
 		atpUsedAt: (aRequest at: 'usedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedAt [
 	<atpType:#String format:'datetime'>
 	^ atpUsedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedAt: anObject [
 	atpUsedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedBy [
 	<atpType:#String format:'did'>
 	^ atpUsedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoServerDefsInviteCodeUse >> atpUsedBy: anObject [
 	atpUsedBy := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCodeUse >> usedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ ComAtprotoServerDefsInviteCodeUse >> usedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoServerDefsInviteCodeUse >> usedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new

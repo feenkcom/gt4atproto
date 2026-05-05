@@ -1,6 +1,6 @@
 Class {
-	#name : #GtApCreatePostForm,
-	#superclass : #BrVerticalPane,
+	#name : 'GtApCreatePostForm',
+	#superclass : 'BrVerticalPane',
 	#instVars : [
 		'editorElement',
 		'acceptButton',
@@ -12,30 +12,31 @@ Class {
 		'post',
 		'imageContainer'
 	],
-	#category : #'Gt4AtProto-Extensions'
+	#category : 'Gt4AtProto-Extensions',
+	#package : 'Gt4AtProto-Extensions'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> actor [
 	^ actor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> actor: anObject [
 	actor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> client [
 	^ client
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> client: anObject [
 	client := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> createAcceptButton [
 	^ acceptButton := BrButton new beSmallSize
 			aptitude: BrGlamorousButtonWithIconAptitude;
@@ -70,7 +71,7 @@ GtApCreatePostForm >> createAcceptButton [
 							swapCommit: nil) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> createAddFileButton [
 	^ addFileButton := BrButton new beSmallSize
 			aptitude: BrGlamorousButtonWithIconAptitude new
@@ -97,7 +98,7 @@ GtApCreatePostForm >> createAddFileButton [
 			label: 'Add File'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> createButtonToolbar [
 	^ BrToolbar new
 		aptitude: BrGlamorousToolbarAptitude new;
@@ -105,7 +106,7 @@ GtApCreatePostForm >> createButtonToolbar [
 		addItem: self createAcceptButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> createEditor [
 	^ editorElement := BrEditor new
 			hMatchParent;
@@ -113,7 +114,7 @@ GtApCreatePostForm >> createEditor [
 			aptitude: BrGlamorousRegularEditorAptitude
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> createImageContainer [
 	^ imageContainer := BrHorizontalPane new
 			hMatchParent;
@@ -121,27 +122,27 @@ GtApCreatePostForm >> createImageContainer [
 			visibility: BlVisibility gone
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> fileRecords [
 	^ fileRecords
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> fileRecords: anObject [
 	fileRecords := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> files [
 	^ files
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> files: anObject [
 	files := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> filesToEmbed [
 	^ {'$type' -> 'app.bsky.embed.images'.
 		'images'
@@ -151,12 +152,12 @@ GtApCreatePostForm >> filesToEmbed [
 							'alt' -> ''} asDictionary ]) asArray} asDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> hasPost [
 	^ self post isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> initialize [
 	super initialize.
 	
@@ -172,17 +173,17 @@ GtApCreatePostForm >> initialize [
 	self addChild: self createButtonToolbar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> post [
 	^ post
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> post: anObject [
 	post := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> updateFileContainer [
 	imageContainer removeChildren.
 	imageContainer visibility: BlVisibility visible.
@@ -195,7 +196,7 @@ GtApCreatePostForm >> updateFileContainer [
 						file: aFile) ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCreatePostForm >> uploadFiles [
 	self files do: [ :aFile | self fileRecords add: (self client comAtprotoRepoUploadBlobFile: aFile) ]
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyActorDefsViewerState,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsViewerState',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpMuted',
 		'atpMutedByList',
@@ -11,30 +11,31 @@ Class {
 		'atpFollowedBy',
 		'atpKnownFollowers'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState class >> atpDescription [
  ^  'Metadata about the requesting account''s relationship with the subject account. Only has meaningful content for authed requests.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState class >> atpRecordName [
  ^ 'app.bsky.actor.defs#viewerState'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState class >> atpSchema [
  ^ '{"type":"object","description":"Metadata about the requesting account''s relationship with the subject account. Only has meaningful content for authed requests.","properties":{"muted":{"type":"boolean"},"mutedByList":{"type":"ref","ref":"app.bsky.graph.defs#listViewBasic"},"blockedBy":{"type":"boolean"},"blocking":{"type":"string","format":"at-uri"},"blockingByList":{"type":"ref","ref":"app.bsky.graph.defs#listViewBasic"},"following":{"type":"string","format":"at-uri"},"followedBy":{"type":"string","format":"at-uri"},"knownFollowers":{"type":"ref","ref":"#knownFollowers"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsViewerState class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -58,101 +59,101 @@ AppBskyActorDefsViewerState class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpBlockedBy [
 	<atpType:#Boolean format:nil>
 	^ atpBlockedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpBlockedBy: anObject [
 	atpBlockedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpBlocking [
 	<atpType:#String format:'at-uri'>
 	^ atpBlocking
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpBlocking: anObject [
 	atpBlocking := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpBlockingByList [
 	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
 	<atpType:#AppBskyGraphDefsListViewBasic format:nil>
 	^ atpBlockingByList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpBlockingByList: anObject [
 	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
 	atpBlockingByList := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpFollowedBy [
 	<atpType:#String format:'at-uri'>
 	^ atpFollowedBy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpFollowedBy: anObject [
 	atpFollowedBy := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpFollowing [
 	<atpType:#String format:'at-uri'>
 	^ atpFollowing
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpFollowing: anObject [
 	atpFollowing := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpKnownFollowers [
 	<referenceTo:'#knownFollowers'>
 	<atpType:#AppBskyActorDefsKnownFollowers format:nil>
 	^ atpKnownFollowers
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpKnownFollowers: anObject [
 	<referenceTo:'#knownFollowers'>
 	atpKnownFollowers := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpMuted [
 	<atpType:#Boolean format:nil>
 	^ atpMuted
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpMuted: anObject [
 	atpMuted := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpMutedByList [
 	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
 	<atpType:#AppBskyGraphDefsListViewBasic format:nil>
 	^ atpMutedByList
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsViewerState >> atpMutedByList: anObject [
 	<referenceTo:'app.bsky.graph.defs#listViewBasic'>
 	atpMutedByList := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> blockedByDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -160,7 +161,7 @@ AppBskyActorDefsViewerState >> blockedByDescription [
 		accessor: #atpBlockedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> blockingByListDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -168,7 +169,7 @@ AppBskyActorDefsViewerState >> blockingByListDescription [
 		accessor: #atpBlockingByList
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> blockingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -176,7 +177,7 @@ AppBskyActorDefsViewerState >> blockingDescription [
 		accessor: #atpBlocking
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> followedByDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -184,7 +185,7 @@ AppBskyActorDefsViewerState >> followedByDescription [
 		accessor: #atpFollowedBy
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> followingDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -192,7 +193,7 @@ AppBskyActorDefsViewerState >> followingDescription [
 		accessor: #atpFollowing
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> knownFollowersDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -200,7 +201,7 @@ AppBskyActorDefsViewerState >> knownFollowersDescription [
 		accessor: #atpKnownFollowers
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> mutedByListDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -208,7 +209,7 @@ AppBskyActorDefsViewerState >> mutedByListDescription [
 		accessor: #atpMutedByList
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsViewerState >> mutedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

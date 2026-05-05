@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyFeedDefsThreadViewPost,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsThreadViewPost',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyFeedDefsThreadViewPost',
 	#classTraits : 'TAppBskyFeedDefsThreadViewPost classTrait',
 	#instVars : [
@@ -8,30 +8,31 @@ Class {
 		'atpParent',
 		'atpReplies'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost class >> atpRecordName [
  ^ 'app.bsky.feed.defs#threadViewPost'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost class >> atpSchema [
  ^ '{"type":"object","required":["post"],"properties":{"post":{"type":"ref","ref":"#postView"},"parent":{"type":"union","refs":["#threadViewPost","#notFoundPost","#blockedPost"]},"replies":{"type":"array","items":{"type":"union","refs":["#threadViewPost","#notFoundPost","#blockedPost"]}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -66,43 +67,43 @@ AppBskyFeedDefsThreadViewPost class >> fromRequest: aRequest withClient: aClient
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost >> atpParent [
 	<atpType:#(AppBskyFeedDefsThreadViewPost AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	^ atpParent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost >> atpParent: anObject [
 	atpParent := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost >> atpPost [
 	<referenceTo:'#postView'>
 	<atpType:#AppBskyFeedDefsPostView format:nil>
 	^ atpPost
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost >> atpPost: anObject [
 	<referenceTo:'#postView'>
 	atpPost := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost >> atpReplies [
 	<atpType:#(AppBskyFeedDefsThreadViewPost AppBskyFeedDefsNotFoundPost AppBskyFeedDefsBlockedPost) format:nil>
 	<atpCollection>
 	^ atpReplies
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsThreadViewPost >> atpReplies: anObject [
 	atpReplies := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsThreadViewPost >> parentDescription [
 	<magritteDescription>
 	^ MASingleOptionDescription new
@@ -113,7 +114,7 @@ AppBskyFeedDefsThreadViewPost >> parentDescription [
 		accessor: #atpParent
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsThreadViewPost >> postDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -122,7 +123,7 @@ AppBskyFeedDefsThreadViewPost >> postDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsThreadViewPost >> repliesDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new

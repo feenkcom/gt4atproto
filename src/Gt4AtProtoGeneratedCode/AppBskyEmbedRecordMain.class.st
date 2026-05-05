@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyEmbedRecordMain,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordMain',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpRecord'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordMain class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordMain class >> atpFile [
  ^ 'app/bsky/embed/record.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordMain class >> atpRecordName [
  ^ 'app.bsky.embed.record'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordMain class >> atpSchema [
  ^ '{"type":"object","required":["record"],"properties":{"record":{"type":"ref","ref":"com.atproto.repo.strongRef"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordMain class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -38,20 +39,20 @@ AppBskyEmbedRecordMain class >> fromRequest: aRequest withClient: aClient [
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordMain >> atpRecord [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	<atpType:#ComAtprotoRepoStrongRefMain format:nil>
 	^ atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordMain >> atpRecord: anObject [
 	<referenceTo:'com.atproto.repo.strongRef'>
 	atpRecord := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordMain >> recordDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

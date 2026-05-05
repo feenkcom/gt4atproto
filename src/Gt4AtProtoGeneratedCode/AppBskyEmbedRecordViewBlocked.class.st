@@ -1,35 +1,36 @@
 Class {
-	#name : #AppBskyEmbedRecordViewBlocked,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordViewBlocked',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpBlocked',
 		'atpAuthor'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked class >> atpFile [
  ^ 'app/bsky/embed/record.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewBlocked'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked class >> atpSchema [
  ^ '{"type":"object","required":["uri","blocked","author"],"properties":{"uri":{"type":"string","format":"at-uri"},"blocked":{"type":"boolean","const":true},"author":{"type":"ref","ref":"app.bsky.feed.defs#blockedAuthor"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -42,42 +43,42 @@ AppBskyEmbedRecordViewBlocked class >> fromRequest: aRequest withClient: aClient
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked >> atpAuthor [
 	<referenceTo:'app.bsky.feed.defs#blockedAuthor'>
 	<atpType:#AppBskyFeedDefsBlockedAuthor format:nil>
 	^ atpAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.feed.defs#blockedAuthor'>
 	atpAuthor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked >> atpBlocked [
 	<atpType:#Boolean format:nil>
 	^ atpBlocked
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked >> atpBlocked: anObject [
 	atpBlocked := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewBlocked >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewBlocked >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -86,7 +87,7 @@ AppBskyEmbedRecordViewBlocked >> authorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewBlocked >> blockedDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -95,7 +96,7 @@ AppBskyEmbedRecordViewBlocked >> blockedDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewBlocked >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

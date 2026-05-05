@@ -1,23 +1,25 @@
 Class {
-	#name : #GtApCompletionStrategy,
-	#superclass : #GtJSONCompletionStrategy,
+	#name : 'GtApCompletionStrategy',
+	#superclass : 'GtJSONCompletionStrategy',
 	#instVars : [
 		'lexiconFile'
 	],
 	#classVars : [
 		'Encodings'
 	],
-	#category : #'Gt4AtProto-Editor-Completion'
+	#category : 'Gt4AtProto-Editor-Completion',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Completion'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCompletionStrategy class >> encodings [
 	^ Encodings
 		ifNil: [ Encodings := GtPrefixTree
 					withAll: (ZnMimeType knownMimeTypesWithFilenameExtensions collect: #printString) ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApCompletionStrategy >> completeEncodings: str at: position hasQuote: aBoolean [
 	(str beginsWith: '"') ifFalse: [ ^ #() ].
 	^ (self class encodings asyncStreamStartingWith: str allButFirst)
@@ -31,7 +33,7 @@ GtApCompletionStrategy >> completeEncodings: str at: position hasQuote: aBoolean
 				from: position - str size + 1 ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApCompletionStrategy >> completeReference: str at: position hasQuote: aBoolean [
 	(str beginsWith: '"') ifFalse: [ ^ #() ].
 	^ (self referencesStartingWith: str)
@@ -45,7 +47,7 @@ GtApCompletionStrategy >> completeReference: str at: position hasQuote: aBoolean
 				from: position - str size + 1 ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApCompletionStrategy >> completeRequired: str at: position hasQuote: aBoolean [
 	(str beginsWith: '"') ifFalse: [ ^ #() ].
 	^ (self requiredStartingWith: str)
@@ -60,7 +62,7 @@ GtApCompletionStrategy >> completeRequired: str at: position hasQuote: aBoolean 
 				from: position - str size + 1 ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApCompletionStrategy >> initialize [
 	| ref refs doc userType token object record xrpcQuery xrpcProcedure xrpcBody xrpcError blob image video audio array primitive boolean number integer string userUnion primitiveUnion booleanValues encodings refBlock refUnion required |
 	super initialize.
@@ -245,22 +247,22 @@ GtApCompletionStrategy >> initialize [
 	self completer: doc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCompletionStrategy >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCompletionStrategy >> lexiconFile: anObject [
 	lexiconFile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApCompletionStrategy >> lexicons [
 	^ lexiconFile lexicons
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApCompletionStrategy >> referencesStartingWith: aString [
 	| stream |
 	stream := #() asAsyncStream.
@@ -282,7 +284,7 @@ GtApCompletionStrategy >> referencesStartingWith: aString [
 	^ stream
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApCompletionStrategy >> requiredStartingWith: aString [
 	^ ((((node \\ JSONObjectNode / JSONMemberNode) @ 'name' <- '"properties"')
 		/ JSONObjectNode / JSONMemberNode collect: [ :each | each name source ])

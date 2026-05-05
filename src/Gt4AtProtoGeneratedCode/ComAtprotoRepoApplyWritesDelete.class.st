@@ -1,34 +1,35 @@
 Class {
-	#name : #ComAtprotoRepoApplyWritesDelete,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoRepoApplyWritesDelete',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpCollection',
 		'atpRkey'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete class >> atpDescription [
  ^  'Operation which deletes an existing record.'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete class >> atpFile [
  ^ 'com/atproto/repo/applyWrites.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete class >> atpRecordName [
  ^ 'com.atproto.repo.applyWrites#delete'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete class >> atpSchema [
  ^ '{"type":"object","description":"Operation which deletes an existing record.","required":["collection","rkey"],"properties":{"collection":{"type":"string","format":"nsid"},"rkey":{"type":"string"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ ComAtprotoRepoApplyWritesDelete class >> fromRequest: aRequest withClient: aClie
 		atpRkey: (aRequest at: 'rkey' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete >> atpCollection [
 	<atpType:#String format:'nsid'>
 	^ atpCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete >> atpCollection: anObject [
 	atpCollection := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete >> atpRkey [
 	<atpType:#String format:nil>
 	^ atpRkey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoRepoApplyWritesDelete >> atpRkey: anObject [
 	atpRkey := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesDelete >> collectionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -68,7 +69,7 @@ ComAtprotoRepoApplyWritesDelete >> collectionDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoRepoApplyWritesDelete >> rkeyDescription [
 	<magritteDescription>
 	^ MAStringDescription new

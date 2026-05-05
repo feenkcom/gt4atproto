@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyNotificationListNotificationsNotification,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyNotificationListNotificationsNotification',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpCid',
@@ -12,30 +12,31 @@ Class {
 		'atpIndexedAt',
 		'atpLabels'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification class >> atpFile [
  ^ 'app/bsky/notification/listNotifications.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification class >> atpRecordName [
  ^ 'app.bsky.notification.listNotifications#notification'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","author","reason","record","isRead","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"author":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"reason":{"type":"string","description":"Expected values are ''like'', ''repost'', ''follow'', ''mention'', ''reply'', ''quote'', and ''starterpack-joined''.","knownValues":["like","repost","follow","mention","reply","quote","starterpack-joined"]},"reasonSubject":{"type":"string","format":"at-uri"},"record":{"type":"unknown"},"isRead":{"type":"boolean"},"indexedAt":{"type":"string","format":"datetime"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -62,109 +63,109 @@ AppBskyNotificationListNotificationsNotification class >> fromRequest: aRequest 
 				ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpAuthor [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpAuthor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpAuthor: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	atpAuthor := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpIsRead [
 	<atpType:#Boolean format:nil>
 	^ atpIsRead
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpIsRead: anObject [
 	atpIsRead := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpReason [
 	<atpType:#String format:nil>
 	^ atpReason
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpReason: anObject [
 	atpReason := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpReasonSubject [
 	<atpType:#String format:'at-uri'>
 	^ atpReasonSubject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpReasonSubject: anObject [
 	atpReasonSubject := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpRecord [
 	<atpType:#Object format:nil>
 	^ atpRecord
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpRecord: anObject [
 	atpRecord := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyNotificationListNotificationsNotification >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> authorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -173,7 +174,7 @@ AppBskyNotificationListNotificationsNotification >> authorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -182,7 +183,7 @@ AppBskyNotificationListNotificationsNotification >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -191,7 +192,7 @@ AppBskyNotificationListNotificationsNotification >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> isReadDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -200,7 +201,7 @@ AppBskyNotificationListNotificationsNotification >> isReadDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -209,7 +210,7 @@ AppBskyNotificationListNotificationsNotification >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> reasonDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -218,7 +219,7 @@ AppBskyNotificationListNotificationsNotification >> reasonDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> reasonSubjectDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -226,7 +227,7 @@ AppBskyNotificationListNotificationsNotification >> reasonSubjectDescription [
 		accessor: #atpReasonSubject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> recordDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -235,7 +236,7 @@ AppBskyNotificationListNotificationsNotification >> recordDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyNotificationListNotificationsNotification >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

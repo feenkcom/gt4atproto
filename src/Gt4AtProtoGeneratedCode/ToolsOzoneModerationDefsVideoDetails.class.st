@@ -1,35 +1,36 @@
 Class {
-	#name : #ToolsOzoneModerationDefsVideoDetails,
-	#superclass : #GtApModelEntity,
+	#name : 'ToolsOzoneModerationDefsVideoDetails',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpWidth',
 		'atpHeight',
 		'atpLength'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails class >> atpFile [
  ^ 'tools/ozone/moderation/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails class >> atpRecordName [
  ^ 'tools.ozone.moderation.defs#videoDetails'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails class >> atpSchema [
  ^ '{"type":"object","required":["width","height","length"],"properties":{"width":{"type":"integer"},"height":{"type":"integer"},"length":{"type":"integer"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ToolsOzoneModerationDefsVideoDetails class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -39,40 +40,40 @@ ToolsOzoneModerationDefsVideoDetails class >> fromRequest: aRequest withClient: 
 		atpLength: (aRequest at: 'length' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails >> atpHeight [
 	<atpType:#Number format:nil>
 	^ atpHeight
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails >> atpHeight: anObject [
 	atpHeight := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails >> atpLength [
 	<atpType:#Number format:nil>
 	^ atpLength
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails >> atpLength: anObject [
 	atpLength := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails >> atpWidth [
 	<atpType:#Number format:nil>
 	^ atpWidth
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ToolsOzoneModerationDefsVideoDetails >> atpWidth: anObject [
 	atpWidth := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsVideoDetails >> heightDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -81,7 +82,7 @@ ToolsOzoneModerationDefsVideoDetails >> heightDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsVideoDetails >> lengthDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -90,7 +91,7 @@ ToolsOzoneModerationDefsVideoDetails >> lengthDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ToolsOzoneModerationDefsVideoDetails >> widthDescription [
 	<magritteDescription>
 	^ MANumberDescription new

@@ -1,6 +1,6 @@
 Class {
-	#name : #AppBskyFeedDefsGeneratorView,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyFeedDefsGeneratorView',
+	#superclass : 'GtApModelEntity',
 	#traits : 'TAppBskyFeedDefsGeneratorView',
 	#classTraits : 'TAppBskyFeedDefsGeneratorView classTrait',
 	#instVars : [
@@ -18,30 +18,31 @@ Class {
 		'atpViewer',
 		'atpIndexedAt'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView class >> atpFile [
  ^ 'app/bsky/feed/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView class >> atpRecordName [
  ^ 'app.bsky.feed.defs#generatorView'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView class >> atpSchema [
  ^ '{"type":"object","required":["uri","cid","did","creator","displayName","indexedAt"],"properties":{"uri":{"type":"string","format":"at-uri"},"cid":{"type":"string","format":"cid"},"did":{"type":"string","format":"did"},"creator":{"type":"ref","ref":"app.bsky.actor.defs#profileView"},"displayName":{"type":"string"},"description":{"type":"string","maxGraphemes":300,"maxLength":3000},"descriptionFacets":{"type":"array","items":{"type":"ref","ref":"app.bsky.richtext.facet"}},"avatar":{"type":"string","format":"uri"},"likeCount":{"type":"integer","minimum":0},"acceptsInteractions":{"type":"boolean"},"labels":{"type":"array","items":{"type":"ref","ref":"com.atproto.label.defs#label"}},"viewer":{"type":"ref","ref":"#generatorViewerState"},"indexedAt":{"type":"string","format":"datetime"}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyFeedDefsGeneratorView class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -77,7 +78,7 @@ AppBskyFeedDefsGeneratorView class >> fromRequest: aRequest withClient: aClient 
 		atpIndexedAt: (aRequest at: 'indexedAt' ifAbsent: [ nil ])
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> acceptsInteractionsDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -85,156 +86,156 @@ AppBskyFeedDefsGeneratorView >> acceptsInteractionsDescription [
 		accessor: #atpAcceptsInteractions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpAcceptsInteractions [
 	<atpType:#Boolean format:nil>
 	^ atpAcceptsInteractions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpAcceptsInteractions: anObject [
 	atpAcceptsInteractions := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpAvatar [
 	<atpType:#String format:'uri'>
 	^ atpAvatar
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpAvatar: anObject [
 	atpAvatar := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpCreator [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	<atpType:#AppBskyActorDefsProfileView format:nil>
 	^ atpCreator
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpCreator: anObject [
 	<referenceTo:'app.bsky.actor.defs#profileView'>
 	atpCreator := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDescription [
 	<atpType:#String format:nil>
 	^ atpDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDescription: anObject [
 	atpDescription := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDescriptionFacets [
 	<atpType:#AppBskyRichtextFacetMain format:nil>
 	<atpCollection>
 	^ atpDescriptionFacets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDescriptionFacets: anObject [
 	atpDescriptionFacets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDid [
 	<atpType:#String format:'did'>
 	^ atpDid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDid: anObject [
 	atpDid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDisplayName [
 	<atpType:#String format:nil>
 	^ atpDisplayName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpDisplayName: anObject [
 	atpDisplayName := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpIndexedAt [
 	<atpType:#String format:'datetime'>
 	^ atpIndexedAt
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpIndexedAt: anObject [
 	atpIndexedAt := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpLabels [
 	<atpType:#ComAtprotoLabelDefsLabel format:nil>
 	<atpCollection>
 	^ atpLabels
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpLabels: anObject [
 	atpLabels := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpLikeCount [
 	<atpType:#Number format:nil>
 	^ atpLikeCount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpLikeCount: anObject [
 	atpLikeCount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpViewer [
 	<referenceTo:'#generatorViewerState'>
 	<atpType:#AppBskyFeedDefsGeneratorViewerState format:nil>
 	^ atpViewer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyFeedDefsGeneratorView >> atpViewer: anObject [
 	<referenceTo:'#generatorViewerState'>
 	atpViewer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> avatarDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -242,7 +243,7 @@ AppBskyFeedDefsGeneratorView >> avatarDescription [
 		accessor: #atpAvatar
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -251,7 +252,7 @@ AppBskyFeedDefsGeneratorView >> cidDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> creatorDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -260,7 +261,7 @@ AppBskyFeedDefsGeneratorView >> creatorDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -268,7 +269,7 @@ AppBskyFeedDefsGeneratorView >> descriptionDescription [
 		accessor: #atpDescription
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> descriptionFacetsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -277,7 +278,7 @@ AppBskyFeedDefsGeneratorView >> descriptionFacetsDescription [
 		accessor: #atpDescriptionFacets
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> didDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -286,7 +287,7 @@ AppBskyFeedDefsGeneratorView >> didDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> displayNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -295,7 +296,7 @@ AppBskyFeedDefsGeneratorView >> displayNameDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> indexedAtDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -304,7 +305,7 @@ AppBskyFeedDefsGeneratorView >> indexedAtDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> labelsDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -313,7 +314,7 @@ AppBskyFeedDefsGeneratorView >> labelsDescription [
 		accessor: #atpLabels
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> likeCountDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -321,7 +322,7 @@ AppBskyFeedDefsGeneratorView >> likeCountDescription [
 		accessor: #atpLikeCount
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -330,7 +331,7 @@ AppBskyFeedDefsGeneratorView >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyFeedDefsGeneratorView >> viewerDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new

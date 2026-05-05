@@ -1,33 +1,34 @@
 Class {
-	#name : #AppBskyActorDefsPersonalDetailsPref,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyActorDefsPersonalDetailsPref',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpBirthDate'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsPersonalDetailsPref class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsPersonalDetailsPref class >> atpFile [
  ^ 'app/bsky/actor/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsPersonalDetailsPref class >> atpRecordName [
  ^ 'app.bsky.actor.defs#personalDetailsPref'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsPersonalDetailsPref class >> atpSchema [
  ^ '{"type":"object","properties":{"birthDate":{"type":"string","format":"datetime","description":"The birth date of account owner."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyActorDefsPersonalDetailsPref class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -35,18 +36,18 @@ AppBskyActorDefsPersonalDetailsPref class >> fromRequest: aRequest withClient: a
 		atpBirthDate: (aRequest at: 'birthDate' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsPersonalDetailsPref >> atpBirthDate [
 	<atpType:#String format:'datetime'>
 	^ atpBirthDate
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyActorDefsPersonalDetailsPref >> atpBirthDate: anObject [
 	atpBirthDate := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyActorDefsPersonalDetailsPref >> birthDateDescription [
 	<magritteDescription>
 	^ MAStringDescription new

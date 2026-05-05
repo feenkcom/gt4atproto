@@ -1,6 +1,6 @@
 Class {
-	#name : #ComAtprotoLabelDefsLabel,
-	#superclass : #GtApModelEntity,
+	#name : 'ComAtprotoLabelDefsLabel',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpVer',
 		'atpSrc',
@@ -12,30 +12,31 @@ Class {
 		'atpExp',
 		'atpSig'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel class >> atpDescription [
  ^  'Metadata tag on an atproto resource (eg, repo or record).'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel class >> atpFile [
  ^ 'com/atproto/label/defs.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel class >> atpRecordName [
  ^ 'com.atproto.label.defs#label'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel class >> atpSchema [
  ^ '{"type":"object","description":"Metadata tag on an atproto resource (eg, repo or record).","required":["src","uri","val","cts"],"properties":{"ver":{"type":"integer","description":"The AT Protocol version of the label object."},"src":{"type":"string","format":"did","description":"DID of the actor who created this label."},"uri":{"type":"string","format":"uri","description":"AT URI of the record, repository (account), or other resource that this label applies to."},"cid":{"type":"string","format":"cid","description":"Optionally, CID specifying the specific version of ''uri'' resource this label applies to."},"val":{"type":"string","maxLength":128,"description":"The short string name of the value or type of this label."},"neg":{"type":"boolean","description":"If true, this is a negation label, overwriting a previous label."},"cts":{"type":"string","format":"datetime","description":"Timestamp when this label was created."},"exp":{"type":"string","format":"datetime","description":"Timestamp at which this label expires (no longer applies)."},"sig":{"type":"bytes","description":"Signature of dag-cbor encoded label."}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 ComAtprotoLabelDefsLabel class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -51,106 +52,106 @@ ComAtprotoLabelDefsLabel class >> fromRequest: aRequest withClient: aClient [
 		atpSig: (aRequest at: 'sig' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpCid [
 	<atpType:#String format:'cid'>
 	^ atpCid
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpCid: anObject [
 	atpCid := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpCts [
 	<atpType:#String format:'datetime'>
 	^ atpCts
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpCts: anObject [
 	atpCts := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpExp [
 	<atpType:#String format:'datetime'>
 	^ atpExp
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpExp: anObject [
 	atpExp := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpNeg [
 	<atpType:#Boolean format:nil>
 	^ atpNeg
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpNeg: anObject [
 	atpNeg := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpSig [
 	<atpType:#ByteArray format:nil>
 	^ atpSig
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpSig: anObject [
 	atpSig := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpSrc [
 	<atpType:#String format:'did'>
 	^ atpSrc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpSrc: anObject [
 	atpSrc := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpUri [
 	<atpType:#String format:'uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpVal [
 	<atpType:#String format:nil>
 	^ atpVal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpVal: anObject [
 	atpVal := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpVer [
 	<atpType:#Number format:nil>
 	^ atpVer
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComAtprotoLabelDefsLabel >> atpVer: anObject [
 	atpVer := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> cidDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -158,7 +159,7 @@ ComAtprotoLabelDefsLabel >> cidDescription [
 		accessor: #atpCid
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> ctsDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -167,7 +168,7 @@ ComAtprotoLabelDefsLabel >> ctsDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> expDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -175,7 +176,7 @@ ComAtprotoLabelDefsLabel >> expDescription [
 		accessor: #atpExp
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> negDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -183,7 +184,7 @@ ComAtprotoLabelDefsLabel >> negDescription [
 		accessor: #atpNeg
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> sigDescription [
 	<magritteDescription>
 	^ MAFileDescription new
@@ -191,7 +192,7 @@ ComAtprotoLabelDefsLabel >> sigDescription [
 		accessor: #atpSig
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> srcDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -200,7 +201,7 @@ ComAtprotoLabelDefsLabel >> srcDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -209,7 +210,7 @@ ComAtprotoLabelDefsLabel >> uriDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> valDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -218,7 +219,7 @@ ComAtprotoLabelDefsLabel >> valDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 ComAtprotoLabelDefsLabel >> verDescription [
 	<magritteDescription>
 	^ MANumberDescription new

@@ -1,6 +1,6 @@
-Extension { #name : #GtApUsersStream }
+Extension { #name : 'GtApUsersStream' }
 
-{ #category : #'*Gt4AtProto-Extensions' }
+{ #category : '*Gt4AtProto-Extensions' }
 GtApUsersStream >> gtViewUsersFor: aView [
 	<gtView>
 	

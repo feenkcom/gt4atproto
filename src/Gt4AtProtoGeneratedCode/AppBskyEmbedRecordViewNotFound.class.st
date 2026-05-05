@@ -1,34 +1,35 @@
 Class {
-	#name : #AppBskyEmbedRecordViewNotFound,
-	#superclass : #GtApModelEntity,
+	#name : 'AppBskyEmbedRecordViewNotFound',
+	#superclass : 'GtApModelEntity',
 	#instVars : [
 		'atpUri',
 		'atpNotFound'
 	],
-	#category : #Gt4AtProtoGeneratedCode
+	#category : 'Gt4AtProtoGeneratedCode',
+	#package : 'Gt4AtProtoGeneratedCode'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound class >> atpDescription [
  ^  ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound class >> atpFile [
  ^ 'app/bsky/embed/record.json'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound class >> atpRecordName [
  ^ 'app.bsky.embed.record#viewNotFound'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound class >> atpSchema [
  ^ '{"type":"object","required":["uri","notFound"],"properties":{"uri":{"type":"string","format":"at-uri"},"notFound":{"type":"boolean","const":true}}}'
 ]
 
-{ #category : #serialization }
+{ #category : 'serialization' }
 AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest withClient: aClient [
 	^ self new
 		client: aClient;
@@ -37,29 +38,29 @@ AppBskyEmbedRecordViewNotFound class >> fromRequest: aRequest withClient: aClien
 		atpNotFound: (aRequest at: 'notFound' ifAbsent: [ nil ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound >> atpNotFound [
 	<atpType:#Boolean format:nil>
 	^ atpNotFound
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound >> atpNotFound: anObject [
 	atpNotFound := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound >> atpUri [
 	<atpType:#String format:'at-uri'>
 	^ atpUri
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 AppBskyEmbedRecordViewNotFound >> atpUri: anObject [
 	atpUri := anObject
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewNotFound >> notFoundDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
@@ -68,7 +69,7 @@ AppBskyEmbedRecordViewNotFound >> notFoundDescription [
 		beRequired
 ]
 
-{ #category : #magritte }
+{ #category : 'magritte' }
 AppBskyEmbedRecordViewNotFound >> uriDescription [
 	<magritteDescription>
 	^ MAStringDescription new

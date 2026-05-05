@@ -1,15 +1,17 @@
 Class {
-	#name : #GtApStyler,
-	#superclass : #GtCompositeSmaCCASTStyler,
+	#name : 'GtApStyler',
+	#superclass : 'GtCompositeSmaCCASTStyler',
 	#instVars : [
 		'styler',
 		'document',
 		'lexiconFile'
 	],
-	#category : #'Gt4AtProto-Editor-Styler'
+	#category : 'Gt4AtProto-Editor-Styler',
+	#package : 'Gt4AtProto-Editor',
+	#tag : 'Styler'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 GtApStyler >> editorForNode: aNode [
 	| editor |
 	editor := BrEditor new.
@@ -24,7 +26,7 @@ GtApStyler >> editorForNode: aNode [
 	^ editor
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApStyler >> highlight: aNodeOrToken in: txt [
 	txt
 		attribute: (BlTextHighlightAttribute new
@@ -33,29 +35,29 @@ GtApStyler >> highlight: aNodeOrToken in: txt [
 		to: aNodeOrToken stopPosition - 1
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtApStyler >> initialize [
 	super initialize.
 	self parserClass: JSONParser.
 	self stylers: {JSONParser gtStyler}
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApStyler >> lexiconFile [
 	^ lexiconFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApStyler >> lexiconFile: anObject [
 	lexiconFile := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApStyler >> lexicons [
 	^ lexiconFile lexicons
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApStyler >> shouldHighlightName: aMemberNode [
 	(aMemberNode parent isKindOf: JSONObjectNode) ifFalse: [ ^ false ].
 	(aMemberNode parent parent isKindOf: JSONMemberNode)
@@ -63,7 +65,7 @@ GtApStyler >> shouldHighlightName: aMemberNode [
 	^ false
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApStyler >> shouldHighlightString: aStringNode [
 	(aStringNode parent isKindOf: JSONMemberNode)
 		ifTrue: [ ^ #('"id"') includes: aStringNode parent name value ].
@@ -73,14 +75,14 @@ GtApStyler >> shouldHighlightString: aStringNode [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtApStyler >> style: aText ast: anAST [
 	[ text := aText.
 	super style: aText ast: anAST.
 	self styler style: aText ast: anAST ] ensure: [ text := nil ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApStyler >> styleReference: aStringNode in: txt [
 	| source block |
 	(lexiconFile isReference: aStringNode) ifFalse: [ ^ self ].
@@ -131,7 +133,7 @@ GtApStyler >> styleReference: aStringNode in: txt [
 						to: position ] ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtApStyler >> styler [
 	^ styler
 		ifNil: [ styler := (GtSmaCCParserStyler forParser: YAMLParser)
