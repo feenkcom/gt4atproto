@@ -122,6 +122,15 @@ GtApLexiconDirectoryModel >> gtDefinitionSearch: aSearch [
 		yourself
 ]
 
+{ #category : 'views' }
+GtApLexiconDirectoryModel >> gtDirectoryFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Directory';
+		object: [ directory ];
+		view: #gtTreeFor:
+]
+
 { #category : 'as yet unclassified' }
 GtApLexiconDirectoryModel >> gtDisplayOn: stream [
 	stream
@@ -138,6 +147,16 @@ GtApLexiconDirectoryModel >> gtFileSearch: aSearch [
 		items: [ self files ];
 		itemName: [ :item | item filename basename ];
 		filterBySubstring
+]
+
+{ #category : 'views' }
+GtApLexiconDirectoryModel >> gtFilesFor: aView [
+	<gtView>
+	files ifNil: [ ^ aView empty ].
+	^ aView columnedList
+		title: 'Files';
+		items: [ files ];
+		column: 'Value' text: [ :each | each gtDisplayString ]
 ]
 
 { #category : 'accessing' }
